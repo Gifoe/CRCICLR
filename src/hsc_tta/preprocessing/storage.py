@@ -18,10 +18,13 @@ def write_subject_hdf5(path: str | Path, arrays: dict[str, np.ndarray], metadata
     temporary = path.with_suffix(path.suffix + ".part")
     with h5py.File(temporary, "w") as handle:
         for name, array in arrays.items():
-            handle.create_dataset(name, data=array, compression="gzip", compression_opts=1, chunks=True)
+            value = np.asarray(array)
+            if value.ndim == 0:
+                handle.create_dataset(name, data=value)
+            else:
+                handle.create_dataset(name, data=value, compression="gzip", compression_opts=1, chunks=True)
         handle.attrs["metadata_json"] = json.dumps(metadata, sort_keys=True)
         handle.attrs["preprocessing_config_hash"] = config_hash
         handle.attrs["complete"] = True
     os.replace(temporary, path)
     return "written"
-

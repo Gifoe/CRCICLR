@@ -14,3 +14,6 @@ On each calibration subject, the residual is maximized over the complete actionâ
 
 Selection is deterministic: feasible candidates have bound at most alpha, then minimize average set size, maximize singleton rate, minimize action cost, maximize lambda, and finally sort by action name. Absence of a feasible candidate is `uncertified`, never a successful certificate.
 
+## Feasibility warning
+
+The additive term alone is `3 log(60)/B` at the default `eta=0.05`. It exceeds 0.20 whenever `B<62`, even with zero empirical risk and variance. A typical sleep future shorter than 620 minutes therefore cannot certify `alpha=0.20` under this exact engineering bound. The CPU simulation correctly exposes this as zero CSR rather than hiding it. Before a paper claim, the protocol/bound must be changed with a matching proof or the target risk level must be reconsidered.

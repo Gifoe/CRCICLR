@@ -1,6 +1,7 @@
 dataset: cap
 version: "1.0.0"
 official_url: https://physionet.org/files/capslpdb/1.0.0/
+download_url: https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/
 task: sleep_staging
 sampling_rate: 200
 bandpass_hz: [0.3, 40.0]
@@ -9,4 +10,3 @@ epoch_seconds: 30
 preferred_channels: [C3-A2, C4-A1]
 context_minutes: 90
 minimum_future_epochs: 240
-

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import re
+from datetime import datetime, timedelta
+from pathlib import Path
+import csv
 
 SLEEP_LABEL_MAP = {
     "W": 0, "WAKE": 0, "SLEEP STAGE W": 0,
@@ -31,3 +34,27 @@ def map_mi_event(run_id: int, annotation: str) -> int | None:
         return {"T1": 2, "T2": 3}.get(label)
     raise ValueError(f"run {run_id} is not a configured motor-imagery run")
 
+
+def load_sleep_annotations(signal_path: str | Path, dataset: str, recording_start: datetime | None) -> list[dict[str, object]]:
+    path = Path(signal_path)
+    if dataset == "hmc":
+        import mne
+        sidecar = path.with_name(path.stem + "_sleepscoring.edf")
+        annotations = mne.read_annotations(sidecar)
+        return [{"onset": float(a["onset"]), "duration": float(a["duration"]), "description": str(a["description"])} for a in annotations]
+    if dataset != "cap": raise ValueError("dataset must be hmc or cap")
+    if recording_start is None: raise ValueError("CAP alignment requires EDF recording start time")
+    sidecar = path.with_suffix(".txt")
+    lines = sidecar.read_text(encoding="latin-1").splitlines()
+    header_index = next((i for i,line in enumerate(lines) if line.startswith("Sleep Stage\t")), None)
+    if header_index is None: raise ValueError(f"CAP sleep-stage table missing: {sidecar}")
+    reader = csv.DictReader(lines[header_index:], delimiter="\t")
+    output=[]
+    for row in reader:
+        event=(row.get("Event") or "").strip()
+        if not event.startswith("SLEEP-"): continue
+        clock=datetime.strptime(row["Time [hh:mm:ss]"].strip(), "%H.%M.%S").time()
+        timestamp=datetime.combine(recording_start.date(),clock,tzinfo=recording_start.tzinfo)
+        if timestamp < recording_start: timestamp += timedelta(days=1)
+        output.append({"onset": (timestamp-recording_start).total_seconds(), "duration": float(row.get("Duration[s]") or 30), "description": (row.get("Sleep Stage") or event.removeprefix("SLEEP-S"))})
+    return output

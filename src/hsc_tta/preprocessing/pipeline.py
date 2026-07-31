@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 import numpy as np
 
-from hsc_tta.preprocessing.annotations import map_mi_event, map_sleep_label
+from hsc_tta.preprocessing.annotations import load_sleep_annotations, map_mi_event, map_sleep_label
 from hsc_tta.preprocessing.channels import select_sleep_channels
 from hsc_tta.preprocessing.signal import preprocess_signal
 
@@ -17,7 +17,7 @@ def _run_id(path: Path) -> int:
 
 def preprocess_sleep_recording(path: str | Path, dataset: str, target_rate: float, bandpass: tuple[float,float], epoch_seconds: float = 30.0) -> dict[str,np.ndarray]:
     import mne
-    path=Path(path); raw=mne.io.read_raw_edf(path,preload=True,verbose="ERROR")
+    path=Path(path); raw=mne.io.read_raw_edf(path,preload=False,verbose="ERROR")
     selection=select_sleep_channels(list(raw.ch_names),dataset)
     if not selection["eligible"]: raise ValueError("required central channels missing")
     raw.pick(selection["selected"])
@@ -25,7 +25,8 @@ def preprocess_sleep_recording(path: str | Path, dataset: str, target_rate: floa
     signal=preprocess_signal(raw.get_data(),source_rate,target_rate,bandpass)
     windows=[]; labels=[]; starts=[]; ends=[]
     n_samples=int(round(epoch_seconds*target_rate))
-    for annotation in raw.annotations:
+    annotations = load_sleep_annotations(path, dataset, raw.info.get("meas_date"))
+    for annotation in annotations:
         mapped=map_sleep_label(annotation["description"],dataset)
         if mapped is None or float(annotation["duration"])+1e-6 < epoch_seconds: continue
         count=int(np.floor(float(annotation["duration"])/epoch_seconds))
@@ -42,7 +43,7 @@ def preprocess_mi_recordings(paths: list[str | Path], target_rate: float, bandpa
     import mne
     windows=[]; labels=[]; starts=[]; ends=[]; recs=[]; runs=[]; channel_names=None
     for item in sorted(map(Path,paths)):
-        run=_run_id(item); raw=mne.io.read_raw_edf(item,preload=True,verbose="ERROR")
+        run=_run_id(item); raw=mne.io.read_raw_edf(item,preload=False,verbose="ERROR")
         source_rate=float(raw.info["sfreq"]); processed=preprocess_signal(raw.get_data(),source_rate,target_rate,bandpass)
         current=list(raw.ch_names)
         if channel_names is None: channel_names=current
@@ -58,4 +59,3 @@ def preprocess_mi_recordings(paths: list[str | Path], target_rate: float, bandpa
                 windows.append(processed[:,start:end]); labels.append(mapped); starts.append(onset); ends.append(onset+event_seconds); recs.append(item.stem); runs.append(run)
     if not windows: raise ValueError("no complete mapped MI events")
     return {"signal":np.stack(windows),"label":np.asarray(labels,np.int16),"window_start":np.asarray(starts),"window_end":np.asarray(ends),"channel_names":np.asarray(channel_names,dtype="S32"),"channel_mask":np.ones(len(channel_names),bool),"sampling_rate":np.asarray(target_rate),"recording_id":np.asarray(recs,dtype="S64"),"run_id":np.asarray(runs,np.int16)}
-

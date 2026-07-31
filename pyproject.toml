@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-eeg = ["mne>=1.6,<2", "pyedflib>=0.1.36,<1", "h5py>=3.10,<4", "zarr>=2.16,<4", "numcodecs>=0.12,<1"]
+eeg = ["mne>=1.6,<2", "pyedflib>=0.1.36,<1", "wfdb>=4.1,<5", "h5py>=3.10,<4", "zarr>=2.16,<4", "numcodecs>=0.12,<1"]
 test = ["pytest>=7.4,<9", "pytest-cov>=4.1,<7"]
 report = ["matplotlib>=3.8,<4", "statsmodels>=0.14,<1", "rich>=13.7,<15", "tqdm>=4.66,<5"]
 
@@ -34,4 +34,3 @@ addopts = "-ra"
 
 [tool.coverage.run]
 source = ["hsc_tta"]
-

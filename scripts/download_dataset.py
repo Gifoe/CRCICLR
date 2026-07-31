@@ -16,19 +16,25 @@ def main() -> int:
     args = p.parse_args()
     require_cpu(args.device)
     cfg = load_yaml(args.config)
-    dataset, base = cfg["dataset"], cfg["official_url"]
+    dataset = cfg["dataset"]
+    index_base = cfg["official_url"]
+    base = cfg.get("download_url", index_base)
     root = Path("/root/autodl-tmp/hsc_tta_eeg")
     target = root / "data" / "raw" / dataset
     target.mkdir(parents=True, exist_ok=True)
-    records = read_records(base)
+    records = read_records(index_base)
     if dataset == "eegmmidb":
         target_runs = tuple(f"R{run:02d}.edf" for run in (4, 6, 8, 10, 12, 14))
         records = [record for record in records if record.endswith(target_runs)]
+    elif dataset == "hmc":
+        records = [item for record in records for item in (record, record.removesuffix(".edf") + "_sleepscoring.edf", record.removesuffix(".edf") + "_sleepscoring.txt")]
+    elif dataset == "cap":
+        records = [item for record in records for item in (record, record + ".st", record.removesuffix(".edf") + ".txt")]
     if args.smoke:
         if dataset == "eegmmidb":
             records = [record for record in records if record.startswith("S001/")][:3]
         else:
-            records = records[: min(1, len(records))]
+            records = records[: min(3, len(records))]
     frame = download_records(base, target, records, resume=args.resume, dry_run=args.dry_run, verify_only=args.verify_only, minimum_free_gb=60, num_workers=args.num_workers)
     manifest_path = root / "data" / "manifests" / f"{dataset}_download_manifest.parquet"
     manifest_path.parent.mkdir(parents=True, exist_ok=True)

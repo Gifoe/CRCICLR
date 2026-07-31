@@ -1,6 +1,7 @@
 dataset: eegmmidb
 version: "1.0.0"
 official_url: https://physionet.org/files/eegmmidb/1.0.0/
+download_url: https://physionet-open.s3.amazonaws.com/eegmmidb/1.0.0/
 task: motor_imagery
 sampling_rate: 160
 bandpass_hz: [1.0, 40.0]
@@ -8,4 +9,3 @@ target_runs: [4, 6, 8, 10, 12, 14]
 context_runs: [4, 6]
 future_runs: [8, 10, 12, 14]
 event_seconds: 4.0
-
