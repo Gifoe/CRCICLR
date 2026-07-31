@@ -1,0 +1,12 @@
+dataset: hmc
+version: "1.1"
+official_url: https://physionet.org/files/hmc-sleep-staging/1.1/
+task: sleep_staging
+sampling_rate: 200
+bandpass_hz: [0.3, 40.0]
+notch_hz: null
+epoch_seconds: 30
+preferred_channels: [C3-M2, C4-M1]
+context_minutes: 90
+minimum_future_epochs: 240
+
