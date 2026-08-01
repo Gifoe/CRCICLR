@@ -41,8 +41,5 @@ for dataset in eegmmidb hmc cap; do
   done
 done
 
-"$PYTEST" -q > "$ROOT/logs/pytest_final.log" 2>&1
-"$PYTEST" --cov=src/hsc_tta --cov-report=term-missing > "$ROOT/logs/coverage_final.log" 2>&1
-"$PY" scripts/run_mock_pipeline.py --config configs/method/hsc_tta.yaml --seed 0 --resume --device cpu > "$ROOT/logs/mock_pipeline_final.log" 2>&1
 "$PY" scripts/validate_cpu_artifacts.py --config configs/storage.yaml --device cpu > "$ROOT/logs/validate_cpu_artifacts_final.log" 2>&1
-"$PY" scripts/generate_cpu_reports.py --config configs/storage.yaml --device cpu > "$ROOT/logs/generate_cpu_reports.log" 2>&1
+bash scripts/run_critical_index_cpu_phase.sh

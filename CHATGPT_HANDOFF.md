@@ -1,4 +1,6 @@
-# HSC-TTA EEG：交付给 ChatGPT 的阶段说明
+# HSC-TTA EEG：历史交接说明（已被替代）
+
+> 本文记录旧的 upper-risk 原型状态，不能作为当前正式方法说明。当前 CPU 方法、验证结果和下一阶段接口请以 `CPU_CRITICAL_INDEX_REPAIR_REPORT.md`、`docs/THEORY_SPEC.md`、`THEORY_IMPLEMENTATION_AUDIT.md` 和 `LEAKAGE_AUDIT_REPORT.md` 为准。
 
 更新时间：2026-08-01（Asia/Shanghai）
 
