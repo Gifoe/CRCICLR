@@ -9,6 +9,16 @@ from hsc_tta.preprocessing.channels import select_sleep_channels
 from hsc_tta.preprocessing.signal import preprocess_signal
 
 
+def _window_quality_flags(windows: np.ndarray) -> np.ndarray:
+    """Return per-window [nonfinite_rate, any_flat_channel, peak_abs]."""
+    values = np.asarray(windows, dtype=np.float32)
+    finite = np.isfinite(values)
+    nonfinite_rate = 1.0 - finite.mean(axis=(1, 2))
+    flat_channel = np.any(np.nanstd(values, axis=-1) < 1e-10, axis=1)
+    peak_abs = np.nanmax(np.abs(values), axis=(1, 2))
+    return np.column_stack((nonfinite_rate, flat_channel, peak_abs)).astype(np.float32)
+
+
 def _run_id(path: Path) -> int:
     match = re.search(r"R(\d{2})", path.stem, re.I)
     if not match: raise ValueError(f"cannot parse run from {path.name}")
@@ -36,7 +46,8 @@ def preprocess_sleep_recording(path: str | Path, dataset: str, target_rate: floa
             if start>=0 and end<=signal.shape[1]:
                 windows.append(signal[:,start:end]); labels.append(mapped); starts.append(onset); ends.append(onset+epoch_seconds)
     if not windows: raise ValueError("no complete mapped sleep epochs")
-    return {"signal":np.stack(windows),"label":np.asarray(labels,np.int16),"window_start":np.asarray(starts),"window_end":np.asarray(ends),"channel_names":np.asarray(selection["selected"],dtype="S32"),"channel_mask":np.asarray(selection["channel_mask"],bool),"sampling_rate":np.asarray(target_rate),"recording_id":np.asarray([path.stem]*len(windows),dtype="S64"),"run_id":np.full(len(windows),-1,np.int16)}
+    stacked = np.stack(windows)
+    return {"signal":stacked,"label":np.asarray(labels,np.int16),"window_start":np.asarray(starts),"window_end":np.asarray(ends),"channel_names":np.asarray(selection["selected"],dtype="S32"),"channel_mask":np.asarray(selection["channel_mask"],bool),"sampling_rate":np.asarray(target_rate),"recording_id":np.asarray([path.stem]*len(windows),dtype="S64"),"run_id":np.full(len(windows),-1,np.int16),"quality_flags":_window_quality_flags(stacked)}
 
 
 def preprocess_mi_recordings(paths: list[str | Path], target_rate: float, bandpass: tuple[float,float], event_seconds: float = 4.0) -> dict[str,np.ndarray]:
@@ -58,4 +69,5 @@ def preprocess_mi_recordings(paths: list[str | Path], target_rate: float, bandpa
             if start>=0 and end<=processed.shape[1]:
                 windows.append(processed[:,start:end]); labels.append(mapped); starts.append(onset); ends.append(onset+event_seconds); recs.append(item.stem); runs.append(run)
     if not windows: raise ValueError("no complete mapped MI events")
-    return {"signal":np.stack(windows),"label":np.asarray(labels,np.int16),"window_start":np.asarray(starts),"window_end":np.asarray(ends),"channel_names":np.asarray(channel_names,dtype="S32"),"channel_mask":np.ones(len(channel_names),bool),"sampling_rate":np.asarray(target_rate),"recording_id":np.asarray(recs,dtype="S64"),"run_id":np.asarray(runs,np.int16)}
+    stacked = np.stack(windows)
+    return {"signal":stacked,"label":np.asarray(labels,np.int16),"window_start":np.asarray(starts),"window_end":np.asarray(ends),"channel_names":np.asarray(channel_names,dtype="S32"),"channel_mask":np.ones(len(channel_names),bool),"sampling_rate":np.asarray(target_rate),"recording_id":np.asarray(recs,dtype="S64"),"run_id":np.asarray(runs,np.int16),"quality_flags":_window_quality_flags(stacked)}

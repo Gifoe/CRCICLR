@@ -12,3 +12,12 @@ def test_deterministic_subject_disjoint_split():
 def test_leakage_is_rejected():
     with pytest.raises(ValueError): validate_subject_split({"train":["s1"],"test":["s1"]})
 
+
+def test_cap_calibration_is_pathology_stratified():
+    groups = {"brux": 2, "ins": 9, "n": 16, "narco": 5, "nfle": 35, "plm": 10, "rbd": 22, "sdb": 4}
+    subjects = [f"cap:{name}{index}" for name, count in groups.items() for index in range(1, count + 1)]
+    split = make_subject_split(subjects, "cap", seed=3)
+    calibration = split["target_site_calibration"]
+    represented = {''.join(character for character in sid.split(':')[-1] if not character.isdigit()) for sid in calibration}
+    assert len(calibration) == 25
+    assert represented == set(groups)

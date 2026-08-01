@@ -53,7 +53,10 @@ def load_sleep_annotations(signal_path: str | Path, dataset: str, recording_star
     for row in reader:
         event=(row.get("Event") or "").strip()
         if not event.startswith("SLEEP-"): continue
-        clock=datetime.strptime(row["Time [hh:mm:ss]"].strip(), "%H.%M.%S").time()
+        # CAP exports are inconsistent across records: older files use
+        # ``HH.MM.SS`` while most current files use ``HH:MM:SS``.
+        clock_text = row["Time [hh:mm:ss]"].strip().replace(".", ":")
+        clock=datetime.strptime(clock_text, "%H:%M:%S").time()
         timestamp=datetime.combine(recording_start.date(),clock,tzinfo=recording_start.tzinfo)
         if timestamp < recording_start: timestamp += timedelta(days=1)
         output.append({"onset": (timestamp-recording_start).total_seconds(), "duration": float(row.get("Duration[s]") or 30), "description": (row.get("Sleep Stage") or event.removeprefix("SLEEP-S"))})
