@@ -1,19 +1,9 @@
-# Method specification
+# HSC-TTA method specification
 
-For each new subject, only unlabeled context `U_s` is exposed to feature construction and adaptation. Future `V_s` is represented by a separate episode field and is accepted only by offline evaluation functions. Candidate actions are `no_tta`, `t3a`, and a CPU schema mock for `entropy_adapter`; the mock is explicitly not evidence about real EEG adaptation.
+The formal method is defined in `THEORY_SPEC.md`. Its target is empirical miscoverage on the immutable `V_s-main` episode. It uses an alpha-specific critical-index predictor and a subject-level conformal residual maximized over three actions only.
 
-For probabilities `p`, the nested set is `C_lambda={k:p_k>=1-lambda} union {argmax p}`. The default 20-point grid spans 0.50–0.99. Future miscoverage is aggregated into independent units: non-overlapping 10-minute sleep blocks or separate MI future runs.
+Prediction sets are `C_lambda(x)={k:p_k>=1-lambda} union {argmax_k p_k}`. The grid has 20 nontrivial values from 0.50 through 0.99 and a `lambda=1.0` full-set sentinel. Curves must be nested, sentinel risk must be zero, and the sentinel is excluded from nontrivial CSR.
 
-The versioned engineering bound `empirical-bernstein-block-v1` uses B block risks, sample variance with `ddof=1`, and
+Action selection reads certified indices and context-only utility diagnostics. It rejects tables containing future outcome fields and requires `n_classes`; there is no infinity default. The deterministic order is minimum context average set size, maximum context singleton rate, minimum fixed action cost, more conservative certified lambda, then action name.
 
-`margin = sqrt(2 var log(3/eta)/B) + 3 log(3/eta)/B`.
-
-It returns a conservative bound of one when fewer than three blocks exist. This is the CPU engineering version; the final manuscript theorem and implementation must use the same assumptions and constants.
-
-On each calibration subject, the residual is maximized over the complete action–lambda surface. With `m` independent calibration subjects and `k=ceil((m+1)(1-delta))`, `q` is the kth sorted subject maximum; if `k>m`, `q=1`. This single `q` is added to every target candidate before selection. No interpolated quantile is used.
-
-Selection is deterministic: feasible candidates have bound at most alpha, then minimize average set size, maximize singleton rate, minimize action cost, maximize lambda, and finally sort by action name. Absence of a feasible candidate is `uncertified`, never a successful certificate.
-
-## Feasibility warning
-
-The additive term alone is `3 log(60)/B` at the default `eta=0.05`. It exceeds 0.20 whenever `B<62`, even with zero empirical risk and variance. A typical sleep future shorter than 620 minutes therefore cannot certify `alpha=0.20` under this exact engineering bound. The CPU simulation correctly exposes this as zero CSR rather than hiding it. Before a paper claim, the protocol/bound must be changed with a matching proof or the target risk level must be reconsidered.
+The former upper-risk regression and risk-space action×lambda maximum are retired from the formal pipeline. `empirical_bernstein_bound` is retained only as a legacy supplementary diagnostic and carries an explicit diagnostic marker.

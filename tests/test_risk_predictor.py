@@ -1,15 +1,48 @@
 import numpy as np
 import pandas as pd
-from hsc_tta.risk_prediction import MetaRiskPredictor,enforce_lambda_monotonicity
+
+from hsc_tta.risk_prediction import CriticalIndexPredictor, enforce_lambda_monotonicity
 
 
-def test_grouped_fit_monotonicity_and_reload(tmp_path):
-    rows=[]
-    for s in range(8):
-      for l in [.5,.7,.9]: rows.append({"subject_id":f"s{s}","action":"no_tta","lambda":l,"x":s/8,"upper_risk":.5-.2*l+.01*s})
-    f=pd.DataFrame(rows); m=MetaRiskPredictor(["x","lambda"]).fit(f)
-    assert len(m.grouped_cv_score(f,folds=4))==4
-    f["predicted_risk"]=m.predict(f); fixed=enforce_lambda_monotonicity(f)
-    assert np.all(fixed.groupby(["subject_id","action"]).predicted_risk.apply(lambda x: np.all(np.diff(x)<=1e-12)))
-    p=tmp_path/"m.joblib"; m.save(p); assert np.allclose(m.predict(f),MetaRiskPredictor.load(p).predict(f))
+def test_alpha_specific_critical_index_predictor_round_trip(tmp_path):
+    rows = []
+    for subject in range(15):
+        for action_index, action in enumerate(("no_tta", "t3a", "entropy_adapter")):
+            rows.append(
+                {
+                    "dataset": "hmc",
+                    "seed": 0,
+                    "episode_id": f"e{subject}",
+                    "subject_id": f"s{subject}",
+                    "action": action,
+                    "alpha": 0.2,
+                    "x": subject / 15,
+                    "action_feature": action_index,
+                    "critical_index": 3 + action_index + subject % 4,
+                }
+            )
+    frame = pd.DataFrame(rows)
+    predictor = CriticalIndexPredictor(
+        ["x", "action_feature"], alpha=0.2, n_nontrivial_lambdas=20
+    ).fit(frame)
+    prediction = predictor.predict(frame)
+    assert np.all((prediction >= 0) & (prediction <= 20))
+    path = tmp_path / "critical.joblib"
+    predictor.save(path)
+    loaded = CriticalIndexPredictor.load(path)
+    assert np.allclose(prediction, loaded.predict(frame))
+    assert predictor.model_id == loaded.model_id
 
+
+def test_monotonicity_uses_complete_group_key():
+    rows = []
+    for dataset, seed, episode, alpha, values in (
+        ("hmc", 0, "e0", 0.1, (0.4, 0.6)),
+        ("cap", 1, "e1", 0.2, (0.9, 0.1)),
+    ):
+        for lam, value in zip((0.5, 0.7), values):
+            rows.append({"dataset": dataset, "seed": seed, "episode_id": episode, "subject_id": "same", "action": "no_tta", "alpha": alpha, "lambda": lam, "future_risk": value})
+    fixed = enforce_lambda_monotonicity(pd.DataFrame(rows))
+    hmc = fixed[fixed.dataset == "hmc"].future_risk.tolist()
+    assert hmc == [0.4, 0.4]
+    assert fixed[fixed.dataset == "cap"].future_risk.tolist() == [0.9, 0.1]

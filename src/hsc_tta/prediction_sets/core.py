@@ -20,6 +20,8 @@ def prediction_sets(probabilities: np.ndarray, lambdas: np.ndarray) -> np.ndarra
     grid = np.asarray(lambdas, dtype=float)
     if grid.ndim != 1 or grid.size == 0 or np.any(~np.isfinite(grid)) or np.any((grid < 0) | (grid > 1)):
         raise ValueError("lambdas must be a non-empty finite vector in [0, 1]")
+    if np.any(np.diff(grid) <= 0):
+        raise ValueError("lambdas must be strictly increasing")
     included = p[:, None, :] >= (1.0 - grid[None, :, None])
     argmax = p.argmax(axis=1)
     included[np.arange(p.shape[0])[:, None], np.arange(grid.size)[None, :], argmax[:, None]] = True
@@ -43,12 +45,13 @@ def evaluate_prediction_sets(probabilities: np.ndarray, labels: np.ndarray, lamb
         sizes = sets[:, j, :].sum(axis=1)
         rows.append({
             "lambda": float(lam),
+            "lambda_index": int(j),
             "future_risk": float(np.mean(~membership)),
             "argmax_error": argmax_error,
             "average_set_size": float(np.mean(sizes)),
             "singleton_rate": float(np.mean(sizes == 1)),
             "macro_f1": macro_f1,
             "balanced_accuracy": balanced,
+            "n_classes": int(p.shape[1]),
         })
     return rows
-

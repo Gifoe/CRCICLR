@@ -1,4 +1,13 @@
-from .model import MetaRiskPredictor, enforce_lambda_monotonicity
+from .model import (
+    CriticalIndexPredictor,
+    MetaRiskPredictor,
+    enforce_lambda_monotonicity,
+    subject_group_ids,
+)
 
-__all__ = ["MetaRiskPredictor", "enforce_lambda_monotonicity"]
-
+__all__ = [
+    "CriticalIndexPredictor",
+    "MetaRiskPredictor",
+    "enforce_lambda_monotonicity",
+    "subject_group_ids",
+]

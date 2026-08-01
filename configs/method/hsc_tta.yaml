@@ -1,14 +1,22 @@
 seed: 0
 device: cpu
 actions: [no_tta, t3a, entropy_adapter]
-lambdas: [0.50, 0.525789, 0.551579, 0.577368, 0.603158, 0.628947, 0.654737, 0.680526, 0.706316, 0.732105, 0.757895, 0.783684, 0.809474, 0.835263, 0.861053, 0.886842, 0.912632, 0.938421, 0.964211, 0.99]
+lambdas: [0.50, 0.525789, 0.551579, 0.577368, 0.603158, 0.628947, 0.654737, 0.680526, 0.706316, 0.732105, 0.757895, 0.783684, 0.809474, 0.835263, 0.861053, 0.886842, 0.912632, 0.938421, 0.964211, 0.99, 1.0]
+n_nontrivial_lambdas: 20
 alphas: [0.10, 0.20]
-eta_within: 0.05
 delta: 0.10
-block_minutes: 10
-minimum_future_blocks: 3
+risk_target: empirical_fixed_future_episode_miscoverage
+certificate: critical_index_actionwise_simultaneous
+future_episode: main120
+legacy_diagnostics:
+  empirical_bernstein:
+    enabled: true
+    formal_target: false
+    eta_within: 0.05
+    block_minutes: 10
+    minimum_future_blocks: 3
 bootstrap_replicates: 1000
 bootstrap_seed: 2027
+simulation_repetitions: 500
 simulation_subjects: 120
 simulation_classes: 5
-

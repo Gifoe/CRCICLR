@@ -1,4 +1,3 @@
-from .core import generate_subject_surface, run_simulations
+from .core import evaluate_cpu_go, run_simulations
 
-__all__ = ["generate_subject_surface", "run_simulations"]
-
+__all__ = ["evaluate_cpu_go", "run_simulations"]
