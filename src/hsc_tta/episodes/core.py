@@ -22,6 +22,41 @@ def build_sleep_episode(window_start_seconds: np.ndarray, valid_scored: np.ndarr
     return {"protocol": "first_valid_clock_context", "context_indices": context, "future_indices": future, "n_context": len(context), "n_future": len(future), "exclusion_reason": exclusion}
 
 
+def build_sleep_main120_episode(
+    window_start_seconds: np.ndarray,
+    valid_scored: np.ndarray,
+    context_minutes: int = 90,
+    future_epochs: int = 240,
+) -> dict[str, object]:
+    """Build the fixed 90-minute U_s and at-most-120-minute V_s-main protocol."""
+    starts = np.asarray(window_start_seconds, dtype=float)
+    valid = np.asarray(valid_scored, dtype=bool)
+    if starts.shape != valid.shape or starts.ndim != 1 or not np.any(valid):
+        raise ValueError("aligned one-dimensional starts and at least one valid epoch required")
+    if context_minutes <= 0 or future_epochs <= 0:
+        raise ValueError("context_minutes and future_epochs must be positive")
+    if np.any(~np.isfinite(starts)) or np.any(np.diff(starts) < 0):
+        raise ValueError("window start times must be finite and nondecreasing")
+    first = float(starts[np.flatnonzero(valid)[0]])
+    boundary = first + context_minutes * 60
+    context = np.flatnonzero(valid & (starts >= first) & (starts < boundary)).tolist()
+    future_full = np.flatnonzero(valid & (starts >= boundary)).tolist()
+    future_main = future_full[:future_epochs]
+    validate_episode(context, future_main)
+    exclusion = None if len(future_main) == future_epochs else "insufficient_future_epochs"
+    return {
+        "protocol": "fixed_context90_future120",
+        "context_indices": context,
+        "future_indices": future_main,
+        "future_full_indices": future_full,
+        "n_context": len(context),
+        "n_future": len(future_main),
+        "n_future_full": len(future_full),
+        "context_boundary_seconds": boundary,
+        "exclusion_reason": exclusion,
+    }
+
+
 def build_mi_episode(run_ids: np.ndarray, context_runs: tuple[int, ...] = (4, 6), future_runs: tuple[int, ...] = (8, 10, 12, 14)) -> dict[str, object]:
     runs = np.asarray(run_ids, dtype=int)
     missing = sorted((set(context_runs) | set(future_runs)) - set(runs.tolist()))
@@ -29,4 +64,3 @@ def build_mi_episode(run_ids: np.ndarray, context_runs: tuple[int, ...] = (4, 6)
     future = np.flatnonzero(np.isin(runs, future_runs)).tolist()
     validate_episode(context, future)
     return {"protocol": "run_disjoint", "context_indices": context, "future_indices": future, "context_runs": list(context_runs), "future_runs": list(future_runs), "n_context": len(context), "n_future": len(future), "exclusion_reason": f"missing_runs:{missing}" if missing else None}
-
