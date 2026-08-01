@@ -1,12 +1,16 @@
-# Frozen GPU interface
+# Frozen leakage-separated GPU/statistics interface
 
-The GPU phase must consume subject episodes and write three Parquet tables. It must not change subject roles or episode membership.
+GPU computation must use the fixed `episodes_main120`, internal splits, and `CHANNEL_PROTOCOL.json`. It may write embeddings and logits for all roles as a frozen transformation, but it must not use final-test performance for fitting, hyperparameter selection, calibration, or decisions.
 
-`subject_context_features.parquet` contains dataset, seed, subject_id, split_role, backbone, episode_id, n_context, embedding mean/std columns, entropy and max-probability quantiles, predicted-class proportions, instability, missing-channel rate, signal-quality features, and action-specific context features. Every value is computable from `U_s` alone.
+The interface consists of eight Parquet tables:
 
-`subject_action_surface.parquet` contains dataset, seed, subject_id, split_role, episode_id, action, lambda, predicted risk, within-subject empirical risk/margin/upper risk, certified bound, future risk, classification and set metrics, context/future/block counts, and status. Context features, adaptation, probabilities, and predicted risk use `U_s`; future risk and offline classification metrics may use `V_s` only after the decision inputs are frozen.
+1. `subject_context_features.parquet` — U-only features.
+2. `action_context_diagnostics.parquet` — U-only action diagnostics.
+3. `historical_action_outcomes.parquet` — V outcomes for permitted historical/calibration roles only.
+4. `critical_index_predictions.parquet` — alpha-specific predictions and model hashes.
+5. `certified_action_candidates.parquet` — certified indices and U-only utility.
+6. `pre_outcome_decisions.parquet` — immutable U-only final-test decisions.
+7. `final_test_outcomes.parquet` — future outcomes generated only after the freeze gate passes.
+8. `subject_decisions.parquet` — one-to-one offline join of decisions and outcomes.
 
-`subject_decisions.parquet` contains dataset, seed, subject_id, alpha, selected action/lambda, predicted and certified risk, offline true risk, certificate flags, utilities, baseline/selected errors, harm flag, status, and reason.
-
-Pydantic validators enforce ranges and required columns. Leakage audit verifies that context APIs accept no future inputs, episode indices/runs do not overlap, test subjects are absent from fitting/calibration, and every subject-action has the configured lambda grid exactly once.
-
+The selector accepts table 5 only and rejects future fields. Table 6 must be written and hash-locked before table 7 can be computed. `verify_final_test_gate` must pass immediately before any final-test V labels are opened. Schema definitions are in `hsc_tta.schemas.models`; the theoretical definitions are in `docs/THEORY_SPEC.md`.
