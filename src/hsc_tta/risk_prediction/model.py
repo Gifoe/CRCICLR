@@ -74,7 +74,13 @@ class CriticalIndexPredictor:
     def _base_model(self, params: dict[str, object]) -> HistGradientBoostingRegressor:
         return HistGradientBoostingRegressor(random_state=self.random_state, **params)
 
-    def fit(self, frame: pd.DataFrame, target: str = "critical_index", folds: int = 5) -> "CriticalIndexPredictor":
+    def fit(
+        self,
+        frame: pd.DataFrame,
+        target: str = "critical_index",
+        folds: int = 5,
+        fold_column: str | None = None,
+    ) -> "CriticalIndexPredictor":
         required = {*self.feature_columns, target, "alpha", "dataset", "seed", "episode_id", "subject_id"}
         _require_columns(frame, required)
         if frame["alpha"].nunique() != 1 or not np.isclose(float(frame["alpha"].iloc[0]), self.alpha):
@@ -86,7 +92,17 @@ class CriticalIndexPredictor:
         n_groups = len(np.unique(groups))
         if n_groups < 2:
             raise ValueError("at least two independent subjects are required")
-        cv = GroupKFold(n_splits=min(folds, n_groups))
+        if fold_column is not None:
+            _require_columns(frame, {fold_column})
+            fixed_folds = frame[fold_column].to_numpy(int)
+            unique_folds = np.unique(fixed_folds)
+            if not np.array_equal(unique_folds, np.arange(len(unique_folds))):
+                raise ValueError("fixed folds must be consecutive integers from zero")
+            splits = [(np.flatnonzero(fixed_folds != fold), np.flatnonzero(fixed_folds == fold))
+                      for fold in unique_folds]
+        else:
+            cv = GroupKFold(n_splits=min(folds, n_groups))
+            splits = list(cv.split(frame[self.feature_columns], y, groups))
         x = frame[self.feature_columns]
         candidates = [
             dict(zip(PARAMETER_GRID, values))
@@ -97,7 +113,7 @@ class CriticalIndexPredictor:
         for params in candidates:
             fold_scores: list[float] = []
             base = self._base_model(params)
-            for train, valid in cv.split(x, y, groups):
+            for train, valid in splits:
                 model = clone(base).fit(x.iloc[train], y[train])
                 prediction = np.clip(model.predict(x.iloc[valid]), 0, self.n_nontrivial_lambdas)
                 fold_scores.append(float(mean_absolute_error(y[valid], prediction)))
@@ -105,7 +121,16 @@ class CriticalIndexPredictor:
             signature = json.dumps(params, sort_keys=True)
             self.cv_results.append({"params": params, "fold_mae": fold_scores, "mean_mae": mean_mae})
             scored.append((mean_mae, signature, params))
-        _, _, self.best_params = min(scored, key=lambda item: (item[0], item[1]))
+        # Protocol tie-break: smaller tree, larger L2, smaller learning rate.
+        _, _, self.best_params = min(
+            scored,
+            key=lambda item: (
+                item[0],
+                int(item[2]["max_leaf_nodes"]),
+                -float(item[2]["l2_regularization"]),
+                float(item[2]["learning_rate"]),
+            ),
+        )
         self.model = self._base_model(self.best_params).fit(x, y)
         return self
 
