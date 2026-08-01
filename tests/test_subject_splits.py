@@ -21,3 +21,11 @@ def test_cap_calibration_is_pathology_stratified():
     represented = {''.join(character for character in sid.split(':')[-1] if not character.isdigit()) for sid in calibration}
     assert len(calibration) == 25
     assert represented == set(groups)
+
+
+def test_formal_cap_cohort_has_fixed_25_74_roles():
+    subjects = [f"cap:c4_{index:03d}" for index in range(99)]
+    split = make_subject_split(subjects, "cap", seed=4)
+    assert len(split["target_site_calibration"]) == 25
+    assert len(split["external_final_test"]) == 74
+    validate_subject_split(split, subjects)

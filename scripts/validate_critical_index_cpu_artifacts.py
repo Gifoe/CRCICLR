@@ -46,6 +46,17 @@ def main() -> int:
                 for role, ids in split_payload["roles"].items()
                 for subject_id in ids
             }
+            if dataset == "cap":
+                role_counts = {role: len(ids) for role, ids in split_payload["roles"].items()}
+                if len(role_map) != 99:
+                    failures.append(f"formal_cap_cohort_not_99:{seed}:{len(role_map)}")
+                if role_counts != {"target_site_calibration": 25, "external_final_test": 74}:
+                    failures.append(f"formal_cap_roles_not_25_74:{seed}:{role_counts}")
+                formal_ids = set(
+                    json.loads((REPO / "CHANNEL_PROTOCOL.json").read_text(encoding="utf-8"))["cap_subject_ids"]
+                )
+                if set(role_map) != formal_ids:
+                    failures.append(f"formal_cap_subjects_not_c4_protocol:{seed}")
             episodes = pd.read_parquet(
                 ROOT / f"data/episodes_main120/{dataset}/seed_{seed}.parquet"
             )

@@ -34,6 +34,8 @@ def main() -> int:
         with h5py.File(cache, "r") as handle:
             metadata = json.loads(handle.attrs["metadata_json"])
             subject_id = metadata["subject_id"]
+            if subject_id not in roles:
+                continue
             if cfg["task"] == "sleep_staging":
                 episode = build_sleep_main120_episode(
                     handle["window_start"][:],
