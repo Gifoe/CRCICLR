@@ -31,9 +31,8 @@ def _atomic(frame: pd.DataFrame, path: Path) -> None:
     os.replace(part, path)
 
 
-def _context_state(root: Path, token_dataset: str, model_dataset: str, seed: int, subject: str,
+def _context_state(root: Path, token_dataset: str, model, seed: int, subject: str,
                    indices: np.ndarray, device: str, state_path: Path) -> list[dict[str, object]]:
-    model, _ = load_source_model(root, model_dataset, seed, device)
     context = _tokens(root, token_dataset, subject, indices)
     logits, hidden = _outputs(model, context, device)
     source = softmax(logits.astype(np.float64), axis=1)
@@ -68,9 +67,8 @@ def _context_state(root: Path, token_dataset: str, model_dataset: str, seed: int
     return rows
 
 
-def _future_outcomes(root: Path, token_dataset: str, model_dataset: str, seed: int, subject: str,
+def _future_outcomes(root: Path, token_dataset: str, model, seed: int, subject: str,
                      indices: np.ndarray, device: str, state_path: Path) -> list[dict[str, object]]:
-    model, _ = load_source_model(root, model_dataset, seed, device)
     future = _tokens(root, token_dataset, subject, indices)
     labels = _labels(root, token_dataset, subject, indices)
     logits, hidden = _outputs(model, future, device)
@@ -196,6 +194,7 @@ def run_exploratory_replication(root: str | Path, device: str = "cuda", resume: 
     for seed in range(5):
         hmc_bundles = {}
         for dataset in ("hmc", "eegmmidb"):
+            source_model, _ = load_source_model(root, dataset, seed, device)
             split = json.loads((root / "data/splits" / dataset / f"seed_{seed}.json").read_text())
             roles = split["roles"]
             test_ids = set(roles["final_test"])
@@ -207,7 +206,7 @@ def run_exploratory_replication(root: str | Path, device: str = "cuda", resume: 
             completed = set(test_features.subject_id.unique()) if len(test_features) else set()
             records = test_features.to_dict("records")
             for subject in sorted(test_ids - completed):
-                records.extend(_context_state(root, dataset, dataset, seed, subject, np.asarray(episodes.loc[subject].context_indices, int),
+                records.extend(_context_state(root, dataset, source_model, seed, subject, np.asarray(episodes.loc[subject].context_indices, int),
                                               device, state_dir / f"{subject.replace(':', '_')}.pt"))
                 _atomic(pd.DataFrame(records), feature_path)
             test_features = pd.DataFrame(records)
@@ -226,7 +225,7 @@ def run_exploratory_replication(root: str | Path, device: str = "cuda", resume: 
             completed_future = set(future.subject_id.unique()) if len(future) else set()
             future_records = future.to_dict("records")
             for subject in sorted(test_ids - completed_future):
-                future_records.extend(_future_outcomes(root, dataset, dataset, seed, subject, np.asarray(episodes.loc[subject].future_indices, int),
+                future_records.extend(_future_outcomes(root, dataset, source_model, seed, subject, np.asarray(episodes.loc[subject].future_indices, int),
                                                        device, state_dir / f"{subject.replace(':', '_')}.pt"))
                 _atomic(pd.DataFrame(future_records), future_path)
             for freeze_path in (out / "decisions" / dataset).glob(f"seed_{seed}_*.freeze.json"):
@@ -235,6 +234,7 @@ def run_exploratory_replication(root: str | Path, device: str = "cuda", resume: 
             result_rows[dataset].extend(_summarize(decisions_frame, pd.DataFrame(future_records), dataset, seed))
 
         dataset = "cap"
+        source_model, _ = load_source_model(root, "hmc", seed, device)
         split = json.loads((root / "data/splits/cap" / f"seed_{seed}.json").read_text())
         roles = split["roles"]; cal_ids, test_ids = set(roles["target_site_calibration"]), set(roles["external_final_test"])
         all_ids = cal_ids | test_ids
@@ -244,14 +244,14 @@ def run_exploratory_replication(root: str | Path, device: str = "cuda", resume: 
         cap_features = pd.read_parquet(feature_path) if resume and feature_path.exists() else pd.DataFrame()
         completed = set(cap_features.subject_id.unique()) if len(cap_features) else set(); records = cap_features.to_dict("records")
         for subject in sorted(all_ids - completed):
-            records.extend(_context_state(root, "cap", "hmc", seed, subject, np.asarray(episodes.loc[subject].context_indices, int),
+            records.extend(_context_state(root, "cap", source_model, seed, subject, np.asarray(episodes.loc[subject].context_indices, int),
                                           device, state_dir / f"{subject.replace(':', '_')}.pt")); _atomic(pd.DataFrame(records), feature_path)
         cap_features = pd.DataFrame(records)
         cal_path = out / "counterfactuals/cap" / f"seed_{seed}_calibration.parquet"
         cal_outcomes = pd.read_parquet(cal_path) if resume and cal_path.exists() else pd.DataFrame()
         completed_cal = set(cal_outcomes.subject_id.unique()) if len(cal_outcomes) else set(); cal_records = cal_outcomes.to_dict("records")
         for subject in sorted(cal_ids - completed_cal):
-            cal_records.extend(_future_outcomes(root, "cap", "hmc", seed, subject, np.asarray(episodes.loc[subject].future_indices, int),
+            cal_records.extend(_future_outcomes(root, "cap", source_model, seed, subject, np.asarray(episodes.loc[subject].future_indices, int),
                                                 device, state_dir / f"{subject.replace(':', '_')}.pt")); _atomic(pd.DataFrame(cal_records), cal_path)
         decisions = []
         for alpha in ALPHAS:
@@ -262,7 +262,7 @@ def run_exploratory_replication(root: str | Path, device: str = "cuda", resume: 
         test_outcomes = pd.read_parquet(test_path) if resume and test_path.exists() else pd.DataFrame()
         completed_test = set(test_outcomes.subject_id.unique()) if len(test_outcomes) else set(); test_records = test_outcomes.to_dict("records")
         for subject in sorted(test_ids - completed_test):
-            test_records.extend(_future_outcomes(root, "cap", "hmc", seed, subject, np.asarray(episodes.loc[subject].future_indices, int),
+            test_records.extend(_future_outcomes(root, "cap", source_model, seed, subject, np.asarray(episodes.loc[subject].future_indices, int),
                                                  device, state_dir / f"{subject.replace(':', '_')}.pt")); _atomic(pd.DataFrame(test_records), test_path)
         for freeze_path in (out / "decisions/cap").glob(f"seed_{seed}_*.freeze.json"):
             payload = json.loads(freeze_path.read_text()); payload["V_opened"] = True
