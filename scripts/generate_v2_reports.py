@@ -36,6 +36,7 @@ def get(summary: pd.DataFrame, dataset: str, alpha: float, metric: str) -> float
 def main() -> None:
     REPORTS.mkdir(exist_ok=True)
     nested = pd.read_csv(BASE / "nested_dev/DEV_RESULTS_SUMMARY.csv")
+    nested.loc[nested.metric == "certified_positive_adaptation_rate", "metric"] = "tta_selection_rate"
     baselines = pd.read_csv(BASE / "baselines/EXTERNAL_BASELINE_RESULTS.csv")
     predictors = pd.read_csv(BASE / "predictors/PREDICTOR_RESULTS_ALL.csv")
     actions = pd.read_csv(BASE / "actions/ACTION_SAFE_ORACLE_HEADROOM.csv")
@@ -68,7 +69,7 @@ def main() -> None:
              f"3. **How large is Safe-Oracle headroom?** Mean development Safe-Oracle gain is approximately {hmc_headroom:.4f} for HMC and {mi_headroom:.4f} for EEGMMIDB (dataset aggregation over stored action-audit rows). It exists but is small.",
              "4. **Does the benefit predictor beat simple surrogates?** Not reliably. ElasticNet sometimes improves sign discrimination, but constant-zero often has equal or lower gain MAE. The positive-gain lower bound therefore remains non-positive for every selected candidate.",
              "5. **Is the risk predictor accurate enough?** It has usable ranking/MAE for conservative bounds, but calibration inflation is large. Risk CSR is nonzero, particularly at alpha=0.20, while many subjects still require the sentinel full set.",
-             f"6. **Does the joint certificate reach nominal validity?** Yes in nested development: joint validity is 1.000 for both tasks and alphas; simulation mean simultaneous validity is {sim_validity:.3f}. This is marginal episode-level evidence, not conditional or per-subject certainty.",
+             f"6. **Does the joint certificate reach nominal validity?** Yes at the predeclared 0.90 level in nested development: EEGMMIDB is 1.000 and HMC is 0.989/0.996 for alpha 0.10/0.20; simulation mean simultaneous validity is {sim_validity:.3f}. This is marginal episode-level evidence, not conditional or per-subject certainty.",
              "7. **Is joint calibration tighter than separate calibration?** No consistent advantage is established. The separate-calibration ablation is often less conservative; that does not give it the proposed simultaneous post-selection theorem.",
              "8. **Does the proposed policy beat No-TTA+CRC, Best-Fixed+CRC, Entropy Gate+CRC, and agreement+CRC?** No. Its argmax predictions equal No-TTA because no TTA is selected; several heuristic/fixed policies trade validity or utility differently, but the proposed method has no positive utility advantage.",
              "9. **Does it capture Safe-Oracle gain?** No: Safe-Oracle gain captured is 0.000 in all four dataset/alpha blocks.",
@@ -81,7 +82,8 @@ def main() -> None:
              "## Theoretical scope", "",
              "The theorem controls marginal episode-level risk and non-harm after an arbitrary U-only selector using a simultaneous subject score. It does not guarantee conditional validity for the certified subgroup, deterministic safety for every subject, Macro-F1, a non-full prediction set, or existence of a beneficial TTA action.", "",
              "## Reproducibility and taint", "",
-             "All method selection used source-fit and v2 nested-development subjects. Old final outcomes were accessed only by the one-time v1 diagnosis before development and, after `V2_METHOD_FREEZE.json`, by separately labeled exploratory replication. Those replications are not confirmatory and cannot be used to revise v2."]
+             "All method selection used source-fit and v2 nested-development subjects. Old final outcomes were accessed only by the one-time v1 diagnosis before development and, after `V2_METHOD_FREEZE.json`, by separately labeled exploratory replication. Those replications are not confirmatory and cannot be used to revise v2.", "",
+             "A post-freeze evaluator audit corrected risk/set metrics to use each frozen certified index instead of the oracle true critical index. No predictor, action, bound, q, selector, or decision changed; hashes before/after and the unchanged decision hash are recorded in `V2_EVALUATION_CORRECTION.json`."]
     (REPORTS / "V2_FULL_DEVELOPMENT_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     readiness = ["# V2 ICLR readiness assessment", "", "## Decision: NO-GO", "",
