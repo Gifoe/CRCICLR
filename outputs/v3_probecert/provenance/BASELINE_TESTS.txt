@@ -1,0 +1,10 @@
+........................................................................ [ 64%]
+........................................                                 [100%]
+=============================== warnings summary ===============================
+tests/test_v2_benefit_predictor.py::test_benefit_predictor_group_oof
+tests/test_v2_benefit_predictor.py::test_benefit_predictor_group_oof
+  /root/autodl-tmp/hsc_tta_eeg/repo/src/hsc_tta/v2/benefit_predictor.py:88: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+    "spearman":spearmanr(truth,prediction).statistic})
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+112 passed, 2 warnings in 5.73s

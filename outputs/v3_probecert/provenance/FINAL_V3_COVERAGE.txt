@@ -1,0 +1,16 @@
+........................                                                 [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.11.15-final-0 _______________
+
+Name                                   Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------
+src/hsc_tta/v3/access.py                  81      7    91%   38, 43, 51, 58, 62, 64, 90
+src/hsc_tta/v3/actions.py                155      8    95%   61-62, 136, 165, 169-170, 179, 194
+src/hsc_tta/v3/episodes.py                82      2    98%   89-90
+src/hsc_tta/v3/policy_certificate.py      30      0   100%
+src/hsc_tta/v3/probe_metrics.py           57      6    89%   16, 18, 28, 41, 44, 68
+src/hsc_tta/v3/probe_policy.py            39      2    95%   35, 37
+--------------------------------------------------------------------
+TOTAL                                    444     25    94%
+Required test coverage of 90% reached. Total coverage: 94.37%
+24 passed in 3.83s
