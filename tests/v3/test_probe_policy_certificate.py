@@ -40,3 +40,7 @@ def test_policy_certificate_exact_and_sentinel_rules():
     assert insufficient.insufficient and insufficient.lambda_index==20
     exact=calibrate_policy_index(np.arange(20),delta=.1,sentinel_index=20)
     assert exact.order_index==19 and exact.lambda_index==18
+    assert joint_critical_index(np.ones(21),0,alpha=.2,epsilon=.01,sentinel_index=20)==20
+    with pytest.raises(ValueError,match="risk curve"): joint_critical_index(np.ones(2),0,alpha=.2,epsilon=.01,sentinel_index=20)
+    with pytest.raises(ValueError,match="invalid calibration"): calibrate_policy_index(np.array([]),delta=.1,sentinel_index=20)
+    with pytest.raises(ValueError,match="delta"): calibrate_policy_index(np.arange(5),delta=1.,sentinel_index=20)

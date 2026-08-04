@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 
-from hsc_tta.v3.action_search import run_action_search
+from hsc_tta.v3.cross_context_surfaces import build_cross_context_surfaces
 
 from _common import load_yaml, project_root
 
@@ -11,10 +11,9 @@ from _common import load_yaml, project_root
 def main() -> None:
     parser = argparse.ArgumentParser(); parser.add_argument("--root", default="."); parser.add_argument("--config", required=True)
     parser.add_argument("--device", default="cuda"); parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--datasets", nargs="+"); parser.add_argument("--output-tag")
-    args = parser.parse_args(); root = project_root(args.root)
-    detail, summary = run_action_search(root, load_yaml(args.config), args.device, args.resume, args.datasets, args.output_tag)
-    print({"subject_rows": len(detail), "summary_rows": len(summary)})
+    args = parser.parse_args(); diagnostics, outcomes = build_cross_context_surfaces(
+        project_root(args.root), load_yaml(args.config), args.device, args.resume)
+    print({"probe_rows": len(diagnostics), "future_rows": len(outcomes)})
 
 
 if __name__ == "__main__": main()

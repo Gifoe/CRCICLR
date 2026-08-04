@@ -54,6 +54,7 @@ def run_oracle_headroom(root: str | Path, config: dict[str, object], device: str
         ci = subject_cluster_bootstrap(averaged, "relative_reduction", repetitions=reps)
         action_contribution = best[best.safe_oracle_gain > 0].action.value_counts(normalize=True).to_dict()
         per_seed_positive = best.groupby("seed").positive.mean()
+        single_action_rates = group.assign(positive_action=group.safe_oracle_gain > 0).groupby("action").positive_action.mean()
         records.append({"dataset": dataset, "alpha": alpha, "epsilon": epsilon,
                         "positive_subject_rate": float(averaged.positive.mean()),
                         "mean_gain": float(averaged.safe_oracle_gain.mean()),
@@ -61,14 +62,22 @@ def run_oracle_headroom(root: str | Path, config: dict[str, object], device: str
                         "relative_set_size_reduction": float(averaged.relative_reduction.mean()),
                         "relative_ci_lower": ci["ci_lower"], "relative_ci_upper": ci["ci_upper"],
                         "non_tta_action_subject_rate": float(best.groupby(["seed", "subject_id"]).safe_oracle_gain.max().gt(0).mean()),
+                        "maximum_single_action_positive_rate": float(single_action_rates.max()),
+                        "harm_rate": float((group.classification_degradation > epsilon).mean()),
                         "minimum_seed_positive_rate": float(per_seed_positive.min()),
                         "official_t3a_contribution": float(action_contribution.get("official_t3a", 0)),
                         "robust_adapter_contribution": float(action_contribution.get("robust_residual_adapter", 0)),
                         "n_unique_subjects": int(averaged.subject_id.nunique())})
     summary = pd.DataFrame(records); summary.to_csv(out / "ORACLE_HEADROOM_SUMMARY.csv", index=False)
+    seed_summary = frame.assign(positive=frame.safe_oracle_gain > 0,
+                                harm=frame.classification_degradation > frame.epsilon).groupby(
+        ["dataset", "seed", "alpha", "epsilon"], as_index=False).agg(
+        positive_action_row_rate=("positive", "mean"), mean_safe_oracle_gain=("safe_oracle_gain", "mean"),
+        harm_rate=("harm", "mean"))
+    seed_summary.to_csv(out / "ORACLE_HEADROOM_BY_SEED.csv", index=False)
     main = summary[summary.epsilon == float(config["epsilon"])]
     per_dataset = main.groupby("dataset").agg(ci_lower=("relative_ci_lower", "min"), positive=("positive_subject_rate", "mean"),
-                                               action_rate=("non_tta_action_subject_rate", "mean"),
+                                               action_rate=("maximum_single_action_positive_rate", "max"),
                                                min_seed=("minimum_seed_positive_rate", "min"))
     go = bool(((per_dataset.ci_lower > 0) & (per_dataset.positive >= .20) &
                (per_dataset.action_rate >= .10) & (per_dataset.min_seed > 0)).any())

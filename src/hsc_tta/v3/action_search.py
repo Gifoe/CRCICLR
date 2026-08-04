@@ -17,6 +17,12 @@ def config_id(action: str, config: dict[str, object]) -> str:
     return action + "-" + hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()[:12]
 
 
+def subject_fold(subject_id: str, seed: int, folds: int = 3) -> int:
+    if folds < 2: raise ValueError("at least two subject folds are required")
+    payload = f"{subject_id}|{seed}|inner-group-fold".encode()
+    return int.from_bytes(hashlib.sha256(payload).digest()[:4], "little") % folds
+
+
 def action_grid(config: dict[str, object]) -> dict[str, list[dict[str, object]]]:
     t3a = config["t3a"]
     t3a_grid = [dict(filter_k=int(k), confidence_threshold=c, prototype_interpolation=float(rho))
@@ -55,15 +61,16 @@ def _atomic_parquet(frame: pd.DataFrame, path: Path) -> None:
     frame.to_parquet(part, index=False); os.replace(part, path)
 
 
-def run_action_search(root: str | Path, config: dict[str, object], device: str = "cuda", resume: bool = True) -> tuple[pd.DataFrame, pd.DataFrame]:
-    root = Path(root); out = root / "outputs/v3_probecert/action_search"; out.mkdir(parents=True, exist_ok=True)
+def run_action_search(root: str | Path, config: dict[str, object], device: str = "cuda", resume: bool = True,
+                      datasets: list[str] | None = None, output_tag: str | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    root = Path(root); out = root / "outputs/v3_probecert" / (output_tag or "action_search"); out.mkdir(parents=True, exist_ok=True)
     detail_path = out / "ACTION_CONFIG_SUBJECT_RESULTS.parquet"
     detail = pd.read_parquet(detail_path) if resume and detail_path.exists() else pd.DataFrame()
     completed = set(zip(detail.get("dataset", []), detail.get("seed", []), detail.get("subject_id", []),
                         detail.get("action", []), detail.get("config_id", []), detail.get("stage", [])))
     rows = detail.to_dict("records"); grids = action_grid(config); first_n = int(config["first_stage_subjects"])
     survivors = int(config["survivors_per_action"]); epsilon = float(config["epsilon"])
-    for dataset in ("hmc", "eegmmidb"):
+    for dataset in (datasets or ["hmc", "eegmmidb"]):
         for seed in range(5):
             split = json.loads((root / "data/splits" / dataset / f"seed_{seed}.json").read_text())
             subjects = sorted(split["roles"]["meta_risk_train"])
@@ -81,6 +88,7 @@ def run_action_search(root: str | Path, config: dict[str, object], device: str =
                         current = subject_action_rows(dataset, seed, subject, action, source["future"], result["future"],
                                                       episode["labels"], available=result["available"], status=result["status"], config_id=cid)
                         for row in current: row.update({"stage": "screen", "config_json": json.dumps(candidate, sort_keys=True)})
+                        for row in current: row["inner_fold"] = subject_fold(subject, seed)
                         rows.extend(current); completed.add(key); _atomic_parquet(pd.DataFrame(rows), detail_path)
                         if torch.cuda.is_available(): torch.cuda.empty_cache()
                 screening = summarize(pd.DataFrame(rows), epsilon)
@@ -99,10 +107,20 @@ def run_action_search(root: str | Path, config: dict[str, object], device: str =
                         current = subject_action_rows(dataset, seed, subject, action, source["future"], result["future"],
                                                       episode["labels"], available=result["available"], status=result["status"], config_id=cid)
                         for row in current: row.update({"stage": "full", "config_json": json.dumps(candidate, sort_keys=True)})
+                        for row in current: row["inner_fold"] = subject_fold(subject, seed)
                         rows.extend(current); completed.add(key); _atomic_parquet(pd.DataFrame(rows), detail_path)
                         if torch.cuda.is_available(): torch.cuda.empty_cache()
     detail = pd.DataFrame(rows); summary = summarize(detail, epsilon)
     summary.to_csv(out / "ACTION_CONFIG_RESULTS.csv", index=False)
+    if "inner_fold" not in detail:
+        detail["inner_fold"] = [subject_fold(str(subject), int(seed)) for subject, seed in zip(detail.subject_id, detail.seed)]
+        _atomic_parquet(detail, detail_path)
+    grouped_cv = detail[detail.stage == "full"].assign(
+        safe_gain=lambda x: np.where(x.action_available & (x.classification_degradation <= epsilon), x.oracle_gain, 0.0)).groupby(
+        ["dataset", "seed", "action", "config_id", "inner_fold"], as_index=False).agg(
+        n_subjects=("subject_id", "nunique"), heldout_mean_safe_gain=("safe_gain", "mean"),
+        heldout_harm_rate=("classification_degradation", lambda x: float((x > epsilon).mean())))
+    grouped_cv.to_csv(out / "ACTION_CONFIG_GROUPED_CV.csv", index=False)
     chosen = []
     for (dataset, seed, action), group in summary[summary.stage == "full"].groupby(["dataset", "seed", "action"]):
         winner = group.sort_values(["mean_safe_gain", "availability_rate", "harm_rate", "config_id"],
