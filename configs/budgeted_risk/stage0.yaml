@@ -1,0 +1,35 @@
+schema_version: budgeted-risk-stage0-v1
+backbone: CBraMod
+datasets: [hmc, eegmmidb]
+external_dataset: cap
+branch: v5-budgeted-subject-risk-calibration
+alpha: 0.10
+delta: 0.10
+alpha_sensitivity: 0.20
+budgets: [0, 1, 2, 5, 10, 20, 50, full]
+random_repeats: 20
+source_seeds: [0, 1, 2, 3, 4]
+outer_folds: 5
+tps_grid: {start: 0.50, stop: 0.99, points: 20, sentinel_index: 20}
+head_architectures: {hmc: temporal_attention_head, eegmmidb: official_downstream_head}
+head_max_epochs: 8
+head_patience: 2
+head_learning_rate: 0.0003
+head_weight_decay: 0.001
+head_gradient_clip: 1.0
+tau_candidates: [2, 5, 10, 20]
+bootstrap_repetitions: 5000
+bootstrap_seed: 20260805
+full_context_gate:
+  minimum_spearman: 0.35
+  minimum_mae_improvement: 0.15
+  require_positive_slope: true
+  require_paired_ci_lower_positive: true
+budget_gate:
+  candidate_budgets: [5, 10, 20]
+  maximum_violation: 0.10
+  maximum_cp_upper: 0.20
+  maximum_worst_seed_violation: 0.20
+  minimum_relative_gain: 0.0
+  minimum_oracle_recovery: 0.20
+  maximum_sentinel_increase: 0.02
