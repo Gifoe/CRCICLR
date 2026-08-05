@@ -105,14 +105,15 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                     correction=split_conformal_upper(np.maximum(np.asarray(cal_true)-np.asarray(cal_pred),0),delta,insufficient=20);global_correction=split_conformal_upper(np.maximum(np.asarray(cal_true)-global_index,0),delta,insufficient=20)
                     for s in [x for x in subjects if roles[x]=="evaluation"]:
                         features=_features(base[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(base[s],raw+correction,repo,alpha,delta,"stage0_budget_eval");rows.append(_evaluate(base[s],features,fitted,columns,correction,global_index,global_correction,true));transcripts.extend(base[s].transcript)
-                    # Random repeats use the frozen temporal-selected transfer estimator; only acquisition and calibration change.
+                    # Random repeats use the exact same frozen estimator and
+                    # one-sided calibration as temporal; only evaluation
+                    # acquisition changes, preventing estimator/acquisition
+                    # confounding.
                     for repeat in range(int(config["random_repeats"])):
-                        random_obs={s:_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat) for s in cal_subjects+[x for x in subjects if roles[x]=="evaluation"]};rp=[];rt=[]
-                        for s in cal_subjects:
-                            features=_features(random_obs[s],prior,tau,alpha);prediction=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(random_obs[s],prediction,repo,alpha,delta,"stage0_random_cal");rp.append(prediction);rt.append(true)
-                        random_q=split_conformal_upper(np.maximum(np.asarray(rt)-np.asarray(rp),0),delta,insufficient=20)
-                        for s in [x for x in subjects if roles[x]=="evaluation"]:
-                            features=_features(random_obs[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(random_obs[s],raw+random_q,repo,alpha,delta,"stage0_random_eval");rows.append(_evaluate(random_obs[s],features,fitted,columns,random_q,global_index,global_correction,true));transcripts.extend(random_obs[s].transcript)
+                        evaluation_subjects=[x for x in subjects if roles[x]=="evaluation"]
+                        random_obs={s:_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat) for s in evaluation_subjects}
+                        for s in evaluation_subjects:
+                            features=_features(random_obs[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(random_obs[s],raw+correction,repo,alpha,delta,"stage0_random_eval");rows.append(_evaluate(random_obs[s],features,fitted,columns,correction,global_index,global_correction,true));transcripts.extend(random_obs[s].transcript)
     frame=pd.DataFrame(rows);tuning_frame=pd.DataFrame(tuning);output=repo/"outputs/budgeted_risk/stage0";atomic_parquet(frame,output/"BUDGET_RESULTS.parquet");atomic_parquet(tuning_frame,output/"BUDGET_TUNING.parquet");budget_transcripts=pd.DataFrame(transcripts);atomic_parquet(budget_transcripts,output/"BUDGET_QUERY_TRANSCRIPTS.parquet");return frame,tuning_frame
 
 
