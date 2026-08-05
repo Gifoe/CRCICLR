@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +28,11 @@ TRANSFER_SPECS=("direct","isotonic","ridge_0.01","ridge_0.1","ridge_1","ridge_10
 class Arrays:
     indices:np.ndarray; probabilities:np.ndarray; embeddings:np.ndarray; labels:np.ndarray
     future_probabilities:np.ndarray; future_labels:np.ndarray; source_hash:str; episode_hash:str
+    inclusion_table:np.ndarray|None=field(default=None,repr=False)
+    risk_entropy:np.ndarray|None=field(default=None,repr=False)
+    context_feature_cache:dict[str,float]|None=field(default=None,repr=False)
+    future_j:int|None=field(default=None,repr=False)
+    future_sizes:np.ndarray|None=field(default=None,repr=False)
 
 
 @dataclass
@@ -52,8 +57,10 @@ def _prior(arrays:dict[str,Arrays],meta:list[str])->np.ndarray:
 
 def _observe(dataset:str,subject:str,seed:int,fold:int,role:str,arrays:Arrays,budget:int,strategy:str,repeat:int)->Observation:
     actual=min(budget,len(arrays.indices));order=acquisition_order(strategy,arrays.probabilities,arrays.embeddings,dataset=dataset,seed=seed,subject_id=subject,repeat=repeat)
-    oracle=QueryOracle(dataset,subject,seed,arrays.indices,arrays.labels,budget=actual,strategy=strategy);controller=BudgetedAccessController(dataset,subject,seed,role);controller.begin_queries();table=inclusion_index_table(arrays.probabilities);values=[]
-    entropy=risk_index_entropy(arrays.probabilities)
+    oracle=QueryOracle(dataset,subject,seed,arrays.indices,arrays.labels,budget=actual,strategy=strategy);controller=BudgetedAccessController(dataset,subject,seed,role);controller.begin_queries()
+    if arrays.inclusion_table is None:arrays.inclusion_table=inclusion_index_table(arrays.probabilities)
+    if arrays.risk_entropy is None:arrays.risk_entropy=risk_index_entropy(arrays.probabilities)
+    table=arrays.inclusion_table;entropy=arrays.risk_entropy;values=[]
     for position in order[:actual]:
         label=oracle.query(int(arrays.indices[position]),predicted_class=int(arrays.probabilities[position].argmax()),risk_index_entropy=float(entropy[position]),kappa_by_label=table[position]);values.append(int(table[position,label]))
     query_hash=oracle.freeze();controller.freeze_queries(query_hash)
@@ -65,7 +72,9 @@ def _local_index(prior:np.ndarray,kappa:np.ndarray,tau:float,alpha:float)->int:
 
 
 def _features(observation:Observation,prior:np.ndarray,tau:float,alpha:float)->dict[str,float]:
-    k=observation.queried_kappa;j=_local_index(prior,k,tau,alpha);base=context_features(observation.arrays.probabilities)
+    k=observation.queried_kappa;j=_local_index(prior,k,tau,alpha)
+    if observation.arrays.context_feature_cache is None:observation.arrays.context_feature_cache=context_features(observation.arrays.probabilities)
+    base=observation.arrays.context_feature_cache
     if len(k):quantiles=np.quantile(k,[.5,.8,.9]);std=float(k.std())
     else:
         mass=np.diff(np.r_[0,prior]);expanded=np.repeat(np.arange(21),np.maximum(np.round(mass*1000).astype(int),0));expanded=expanded if len(expanded) else np.asarray([20]);quantiles=np.quantile(expanded,[.5,.8,.9]);std=float(expanded.std())
@@ -76,11 +85,16 @@ def _open(observation:Observation,prediction:float,repo:Path,alpha:float,delta:f
     target=repo/"outputs/budgeted_risk/risk_decisions"/tag/observation.dataset/f"fold_{observation.fold}"/f"seed_{observation.seed}"/f"b{observation.budget}_{observation.strategy}_r{observation.repeat}_{observation.subject_id.replace(':','_')}.json"
     payload={"dataset":observation.dataset,"subject_id":observation.subject_id,"seed":observation.seed,"role":observation.role,"budget":observation.budget,"strategy":observation.strategy,"alpha":alpha,"delta":delta,"query_hash":observation.query_hash,"source_model_hash":observation.arrays.source_hash,"episode_hash":observation.arrays.episode_hash,"certified_index":int(np.clip(np.ceil(prediction),0,20))}
     observation.controller.freeze_decision(payload,target);labels=observation.controller.open_future(observation.arrays.future_labels,target)
-    return critical_index_from_kappa(inclusion_indices(observation.arrays.future_probabilities,labels),alpha)
+    if observation.arrays.future_j is None:
+        observation.arrays.future_j=critical_index_from_kappa(inclusion_indices(observation.arrays.future_probabilities,labels),alpha)
+        _,observation.arrays.future_sizes,_=TPSFamily().future_curve(observation.arrays.future_probabilities,labels)
+    return int(observation.arrays.future_j)
 
 
 def _evaluate(observation:Observation,features:dict[str,float],fitted:dict[str,Any],columns:list[str],correction:float,global_index:int,global_correction:float,true:int)->dict[str,Any]:
-    x=pd.DataFrame([features])[columns].to_numpy();raw=float(_predict(fitted,x,np.asarray([features["j_local"]]))[0]);cert=int(np.clip(np.ceil(raw+correction),0,20));global_cert=int(np.clip(np.ceil(global_index+global_correction),0,20));_,sizes,_=TPSFamily().future_curve(observation.arrays.future_probabilities,observation.arrays.future_labels);denominator=max(float(sizes[global_cert]-sizes[true]),1e-12)
+    x=pd.DataFrame([features])[columns].to_numpy();raw=float(_predict(fitted,x,np.asarray([features["j_local"]]))[0]);cert=int(np.clip(np.ceil(raw+correction),0,20));global_cert=int(np.clip(np.ceil(global_index+global_correction),0,20));sizes=observation.arrays.future_sizes
+    if sizes is None:raise RuntimeError("Future sizes accessed before a frozen decision")
+    denominator=max(float(sizes[global_cert]-sizes[true]),1e-12)
     return {"dataset":observation.dataset,"subject_id":observation.subject_id,"seed":observation.seed,"outer_fold":observation.fold,"budget":observation.budget,"strategy":observation.strategy,"repeat":observation.repeat,"j_future":true,"raw_prediction":raw,"certified_index":cert,"global_certified_index":global_cert,"violation":cert<true,"global_violation":global_cert<true,"set_size":float(sizes[cert]),"global_set_size":float(sizes[global_cert]),"oracle_set_size":float(sizes[true]),"relative_set_size_gain":float((sizes[global_cert]-sizes[cert])/max(sizes[global_cert],1e-12)),"oracle_gain_recovered":float((sizes[global_cert]-sizes[cert])/denominator),"sentinel":cert==20,"global_sentinel":global_cert==20,"queried_count":observation.budget,"gain_per_label":float((sizes[global_cert]-sizes[cert])/max(observation.budget,1)),"selected_model":fitted["name"]}
 
 
