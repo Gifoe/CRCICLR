@@ -19,7 +19,7 @@ from .access import BudgetedAccessController
 from .acquisition import acquisition_order
 from .inclusion_index import critical_index_from_kappa,inclusion_index_table,inclusion_indices,risk_index_entropy
 from .query_oracle import QueryOracle
-from .stage0 import _fit,_predict,_select_model
+from .stage0 import _choose_candidate,_fit,_predict,_score_candidate
 
 
 TRANSFER_SPECS=("direct","isotonic","ridge_0.01","ridge_0.1","ridge_1","ridge_10","ridge_100","ordinal_0.01","ordinal_0.1","ordinal_1","ordinal_10")
@@ -133,10 +133,12 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                     tau_frames=[]
                     for tau in config["tau_candidates"]:
                         frame=pd.DataFrame([{**_features(base[s],prior,float(tau),alpha),"subject_id":s,"screening_fold":fold_map[s],"j_future":meta_outcome[s]} for s in meta_subjects]);ids={"subject_id","screening_fold","j_future"};columns=sorted(set(frame.columns)-ids);tau_frames.append((float(tau),frame,columns))
+                    jobs=[(tau_index,name) for tau_index in range(len(tau_frames)) for name in TRANSFER_SPECS]
                     with parallel_backend("loky",inner_max_num_threads=1):
-                        selected_scores=Parallel(n_jobs=len(tau_frames))(delayed(_select_model)(frame,columns,TRANSFER_SPECS,index_column="j_local") for _,frame,columns in tau_frames)
+                        score_rows=Parallel(n_jobs=min(12,len(jobs)))(delayed(_score_candidate)(tau_frames[tau_index][1],tau_frames[tau_index][2],name,"j_local") for tau_index,name in jobs)
                     all_scores=[]
-                    for (tau,frame,columns),(selected,scores) in zip(tau_frames,selected_scores,strict=True):
+                    for tau_index,(tau,frame,columns) in enumerate(tau_frames):
+                        scores=pd.DataFrame([score for (job_tau,_),score in zip(jobs,score_rows,strict=True) if job_tau==tau_index]);selected=_choose_candidate(scores)
                         score=scores[scores.candidate==selected].iloc[0];all_scores.append((float(score.mae),-float(score.spearman),float(score.underestimation_rate),tau,selected,columns,frame,scores))
                     best=min(all_scores,key=lambda item:(item[0],item[1],item[2],item[3],item[4]));_,_,_,tau,selected,columns,meta_frame,scores=best;fitted=_fit(selected,meta_frame[columns].to_numpy(),meta_frame.j_future.to_numpy(),meta_frame.j_local.to_numpy())
                     tuning.append({"dataset":dataset,"outer_fold":fold,"seed":seed,"budget":requested_budget,"tau":tau,"selected_model":selected,"inner_mae":best[0]})

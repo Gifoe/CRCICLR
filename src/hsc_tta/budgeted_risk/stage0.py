@@ -83,31 +83,28 @@ def _predict(fitted: dict[str, Any], x: np.ndarray, j_context: np.ndarray) -> np
     return np.clip(np.asarray(result, dtype=float), 0, 20)
 
 
-def _select_model(frame: pd.DataFrame, feature_columns: list[str], specs: tuple[str,...]=MODEL_SPECS, index_column:str="j_context") -> tuple[str, pd.DataFrame]:
-    rows = []
-    for name in specs:
-        true, prediction = [], []
-        for held_out in sorted(frame.screening_fold.unique()):
-            train = frame[frame.screening_fold != held_out]
-            valid = frame[frame.screening_fold == held_out]
-            if train.empty or valid.empty:
-                continue
-            fitted = _fit(name, train[feature_columns].to_numpy(), train.j_future.to_numpy(), train[index_column].to_numpy())
-            prediction.extend(_predict(fitted, valid[feature_columns].to_numpy(), valid[index_column].to_numpy()))
-            true.extend(valid.j_future.to_numpy())
-        y = np.asarray(true, float); p = np.asarray(prediction, float)
-        rows.append({
-            "candidate": name, "mae": float(np.mean(np.abs(y-p))),
-            "spearman": _safe_rho(y, p), "underestimation_rate": float(np.mean(p < y)),
-            "complexity": _model_complexity(name),
-        })
-    scores = pd.DataFrame(rows)
+def _score_candidate(frame:pd.DataFrame,feature_columns:list[str],name:str,index_column:str="j_context")->dict[str,Any]:
+    true,prediction=[],[]
+    for held_out in sorted(frame.screening_fold.unique()):
+        train=frame[frame.screening_fold!=held_out];valid=frame[frame.screening_fold==held_out]
+        if train.empty or valid.empty:continue
+        fitted=_fit(name,train[feature_columns].to_numpy(),train.j_future.to_numpy(),train[index_column].to_numpy());prediction.extend(_predict(fitted,valid[feature_columns].to_numpy(),valid[index_column].to_numpy()));true.extend(valid.j_future.to_numpy())
+    y=np.asarray(true,float);p=np.asarray(prediction,float)
+    return {"candidate":name,"mae":float(np.mean(np.abs(y-p))),"spearman":_safe_rho(y,p),"underestimation_rate":float(np.mean(p<y)),"complexity":_model_complexity(name)}
+
+
+def _choose_candidate(scores:pd.DataFrame)->str:
     eligible = scores[scores.mae <= scores.mae.min() + .05].copy()
     selected = eligible.sort_values(
         ["spearman", "underestimation_rate", "complexity", "candidate"],
         ascending=[False, True, True, True],
     ).iloc[0].candidate
-    return str(selected), scores
+    return str(selected)
+
+
+def _select_model(frame: pd.DataFrame, feature_columns: list[str], specs: tuple[str,...]=MODEL_SPECS, index_column:str="j_context") -> tuple[str, pd.DataFrame]:
+    scores=pd.DataFrame([_score_candidate(frame,feature_columns,name,index_column) for name in specs])
+    return _choose_candidate(scores),scores
 
 
 @dataclass
