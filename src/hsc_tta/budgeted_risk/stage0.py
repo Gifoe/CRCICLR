@@ -184,8 +184,8 @@ def run_full_context(project_root: str | Path, config: dict[str, Any]) -> tuple[
     cache_manifest = pd.read_parquet(repo/"outputs/budgeted_risk/source_cache/STAGE0_CACHE_MANIFEST.parquet")
     alpha = float(config["alpha"]); delta = float(config["delta"])
     results: list[dict[str, Any]] = []; transcripts = []; unlabeled_features = []; selection_rows = []
-    feature_columns: list[str] | None = None
     for dataset in ("hmc", "eegmmidb"):
+        feature_columns: list[str] | None = None
         fold_map = dev[dev.dataset == dataset].set_index("subject_id").screening_fold.astype(int).to_dict()
         subjects = sorted(fold_map)
         for fold in range(5):
