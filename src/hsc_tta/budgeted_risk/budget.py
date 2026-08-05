@@ -118,8 +118,8 @@ def _open_batch(observations:list[Observation],predictions:list[float],repo:Path
     return _cache_future(first.arrays,np.asarray(labels),alpha)
 
 
-def _evaluate(observation:Observation,features:dict[str,float],fitted:dict[str,Any],columns:list[str],correction:float,global_index:int,global_correction:float,true:int)->dict[str,Any]:
-    x=pd.DataFrame([features])[columns].to_numpy();raw=float(_predict(fitted,x,np.asarray([features["j_local"]]))[0]);cert=int(np.clip(np.ceil(raw+correction),0,20));global_cert=int(np.clip(np.ceil(global_index+global_correction),0,20));sizes=observation.arrays.future_sizes
+def _evaluate(observation:Observation,features:dict[str,float],fitted:dict[str,Any],columns:list[str],correction:float,global_index:int,global_correction:float,true:int,raw_prediction:float|None=None)->dict[str,Any]:
+    raw=float(raw_prediction) if raw_prediction is not None else float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);cert=int(np.clip(np.ceil(raw+correction),0,20));global_cert=int(np.clip(np.ceil(global_index+global_correction),0,20));sizes=observation.arrays.future_sizes
     if sizes is None:raise RuntimeError("Future sizes accessed before a frozen decision")
     denominator=max(float(sizes[global_cert]-sizes[true]),1e-12)
     return {"dataset":observation.dataset,"subject_id":observation.subject_id,"seed":observation.seed,"outer_fold":observation.fold,"budget":observation.budget,"strategy":observation.strategy,"repeat":observation.repeat,"j_future":true,"raw_prediction":raw,"certified_index":cert,"global_certified_index":global_cert,"violation":cert<true,"global_violation":global_cert<true,"set_size":float(sizes[cert]),"global_set_size":float(sizes[global_cert]),"oracle_set_size":float(sizes[true]),"relative_set_size_gain":float((sizes[global_cert]-sizes[cert])/max(sizes[global_cert],1e-12)),"oracle_gain_recovered":float((sizes[global_cert]-sizes[cert])/denominator),"sentinel":cert==20,"global_sentinel":global_cert==20,"queried_count":observation.budget,"gain_per_label":float((sizes[global_cert]-sizes[cert])/max(observation.budget,1)),"selected_model":fitted["name"]}
@@ -158,11 +158,12 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                     evaluation_subjects=[s for s in subjects if roles[s]=="evaluation"]
                     for s in evaluation_subjects:
                         features=_features(base[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(base[s],raw+correction,repo,alpha,delta,"stage0_budget_eval");local_rows.append(_evaluate(base[s],features,fitted,columns,correction,global_index,global_correction,true));local_transcripts.extend(base[s].transcript)
-                        observations=[];random_features=[];random_raw=[]
+                        observations=[];random_features=[]
                         for repeat in range(int(config["random_repeats"])):
-                            observation=_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat);current_features=_features(observation,prior,tau,alpha);current_raw=float(_predict(fitted,pd.DataFrame([current_features])[columns].to_numpy(),np.asarray([current_features["j_local"]]))[0]);observations.append(observation);random_features.append(current_features);random_raw.append(current_raw);local_transcripts.extend(observation.transcript)
+                            observation=_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat);current_features=_features(observation,prior,tau,alpha);observations.append(observation);random_features.append(current_features);local_transcripts.extend(observation.transcript)
+                        random_frame=pd.DataFrame(random_features);random_raw=_predict(fitted,random_frame[columns].to_numpy(),random_frame.j_local.to_numpy())
                         true=_open_batch(observations,[value+correction for value in random_raw],repo,alpha,delta)
-                        for observation,current_features in zip(observations,random_features,strict=True):local_rows.append(_evaluate(observation,current_features,fitted,columns,correction,global_index,global_correction,true))
+                        for observation,current_features,current_raw in zip(observations,random_features,random_raw,strict=True):local_rows.append(_evaluate(observation,current_features,fitted,columns,correction,global_index,global_correction,true,float(current_raw)))
                     return local_rows,tune,local_transcripts
 
                 with ThreadPoolExecutor(max_workers=1) as executor:completed=list(executor.map(run_one,(0,1,2,5,10,20,50)))
