@@ -1,0 +1,121 @@
+{
+  "acquisition_experiments_opened": false,
+  "budget_experiments_opened": true,
+  "budget_pass": false,
+  "budget_results": [
+    {
+      "budget": 5,
+      "budget_pass": false,
+      "cp_upper": 0.05540169126655665,
+      "dataset": "eegmmidb",
+      "oracle_gain_recovered": -0.15664189709654536,
+      "paired_gain_ci_high": -0.020545529689608724,
+      "paired_gain_ci_low": -0.13990649460188925,
+      "relative_set_size_gain": -0.0220340965006637,
+      "sentinel_rate_delta": 0.6246153846153846,
+      "violation": 0.033846153846153845,
+      "worst_seed_violation": 0.046153846153846156
+    },
+    {
+      "budget": 10,
+      "budget_pass": false,
+      "cp_upper": 0.05913772556491935,
+      "dataset": "eegmmidb",
+      "oracle_gain_recovered": -0.14125518928002156,
+      "paired_gain_ci_high": -0.023942712550607308,
+      "paired_gain_ci_low": -0.1221140350877193,
+      "relative_set_size_gain": -0.019869718954547533,
+      "sentinel_rate_delta": 0.47384615384615386,
+      "violation": 0.036923076923076927,
+      "worst_seed_violation": 0.06153846153846154
+    },
+    {
+      "budget": 20,
+      "budget_pass": false,
+      "cp_upper": 0.08816841476896,
+      "dataset": "eegmmidb",
+      "oracle_gain_recovered": 0.08991659018860644,
+      "paired_gain_ci_high": 0.12077253711201091,
+      "paired_gain_ci_low": -0.01831423751686903,
+      "relative_set_size_gain": 0.0126481539227354,
+      "sentinel_rate_delta": 0.27692307692307694,
+      "violation": 0.06153846153846154,
+      "worst_seed_violation": 0.09230769230769231
+    },
+    {
+      "budget": 5,
+      "budget_pass": false,
+      "cp_upper": 0.06907708411112207,
+      "dataset": "hmc",
+      "oracle_gain_recovered": 0.07678223454481253,
+      "paired_gain_ci_high": 0.35729583333333276,
+      "paired_gain_ci_low": -0.14108657407407407,
+      "relative_set_size_gain": 0.0301988308304807,
+      "sentinel_rate_delta": 0.09777777777777777,
+      "violation": 0.04888888888888889,
+      "worst_seed_violation": 0.07777777777777778
+    },
+    {
+      "budget": 10,
+      "budget_pass": false,
+      "cp_upper": 0.06907708411112207,
+      "dataset": "hmc",
+      "oracle_gain_recovered": 0.027666976184559863,
+      "paired_gain_ci_high": 0.28808541666666665,
+      "paired_gain_ci_low": -0.2160895833333333,
+      "relative_set_size_gain": 0.010881557932529711,
+      "sentinel_rate_delta": 0.10444444444444442,
+      "violation": 0.04888888888888889,
+      "worst_seed_violation": 0.06666666666666667
+    },
+    {
+      "budget": 20,
+      "budget_pass": false,
+      "cp_upper": 0.06392957554398454,
+      "dataset": "hmc",
+      "oracle_gain_recovered": 0.04705543857813587,
+      "paired_gain_ci_high": 0.3185972222222221,
+      "paired_gain_ci_low": -0.18584745370370367,
+      "relative_set_size_gain": 0.018507135637552314,
+      "sentinel_rate_delta": 0.1311111111111111,
+      "violation": 0.044444444444444446,
+      "worst_seed_violation": 0.06666666666666667
+    }
+  ],
+  "cap_opened": false,
+  "dataset_results": [
+    {
+      "constant_mae": 10.59230769230769,
+      "dataset": "eegmmidb",
+      "full_context_pass": true,
+      "mae": 1.0468255169554463,
+      "n_subjects": 65,
+      "paired_ci_high": 10.344573488353225,
+      "paired_ci_low": 8.692671739827697,
+      "paired_improvement_mean": 9.545482175352245,
+      "predicted_vs_true_slope": 0.8497338810236537,
+      "relative_mae_improvement": 0.9011711567144459,
+      "spearman": 0.6127121318131397,
+      "underestimation_rate": 0.6615384615384615
+    },
+    {
+      "constant_mae": 2.66,
+      "dataset": "hmc",
+      "full_context_pass": true,
+      "mae": 2.2173030791901516,
+      "n_subjects": 90,
+      "paired_ci_high": 0.8508789633716795,
+      "paired_ci_low": 0.04152069254918877,
+      "paired_improvement_mean": 0.44269692080984857,
+      "predicted_vs_true_slope": 0.45598344045992084,
+      "relative_mae_improvement": 0.16642741383828893,
+      "spearman": 0.5921297654226276,
+      "underestimation_rate": 0.5555555555555556
+    }
+  ],
+  "formal_calibration_opened": false,
+  "full_context_pass": true,
+  "internal_final_opened": false,
+  "schema_version": "budgeted-risk-stage0-decision-v1",
+  "verdict": "STAGE0_NO_GO"
+}
