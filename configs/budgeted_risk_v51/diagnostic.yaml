@@ -1,0 +1,45 @@
+schema_version: budgeted-risk-v51-diagnostic-v1
+alpha: 0.10
+delta: 0.10
+datasets: [hmc, eegmmidb]
+budgets: [5, 10, 20, 50]
+primary_strategy: temporal
+secondary_strategy: random
+source_seeds: [0, 1, 2, 3, 4]
+outer_folds: 5
+random_repeats: 20
+bootstrap_repetitions: 5000
+bootstrap_seed: 20260805
+tau_candidates: [0.5, 1.0, 2.0, 5.0, 10.0, 20.0]
+transfer_regularization:
+  ridge_alpha: 10.0
+  ordinal_alpha: 1.0
+schemes:
+  - S1_ORIGINAL_3TRAIN_1CAL
+  - S2_EXACT_2TRAIN_2CAL
+  - S3_EXACT_2TRAIN_2CAL_SCALED
+  - S4_CROSSFIT_POOLED_EXPLORATORY
+protected:
+  formal_calibration_opened: false
+  internal_final_opened: false
+  cap_opened: false
+decision_thresholds:
+  raw_spearman_min: 0.30
+  raw_mae_improvement_min: 0.10
+  raw_gain_min: 0.0
+  raw_gain_ci_low_min: 0.0
+  raw_oracle_recovery_min: 0.10
+  mean_violation_max: 0.10
+  worst_seed_violation_max: 0.20
+  max_seed_cp_upper_max: 0.20
+  calibrated_gain_min: 0.05
+  calibrated_gain_ci_low_min: 0.0
+  calibrated_oracle_recovery_min: 0.20
+  sentinel_delta_max: 0.05
+  sentinel_transition_max: 0.10
+  outlier_driven_fold_rate_max: 0.20
+outlier_criteria:
+  q_drop_indices: 2.0
+  sentinel_drop: 0.10
+  gain_increase: 0.05
+

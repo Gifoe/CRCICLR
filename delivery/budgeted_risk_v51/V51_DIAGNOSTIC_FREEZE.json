@@ -1,0 +1,98 @@
+{
+  "aggregation_rules": [
+    "random repeats within subject",
+    "source seeds within subject",
+    "subject-only paired bootstrap"
+  ],
+  "alpha": 0.1,
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 20260805,
+  "budgets": [
+    5,
+    10,
+    20,
+    50
+  ],
+  "datasets": [
+    "hmc",
+    "eegmmidb"
+  ],
+  "decision_thresholds": {
+    "calibrated_gain_ci_low_min": 0.0,
+    "calibrated_gain_min": 0.05,
+    "calibrated_oracle_recovery_min": 0.2,
+    "max_seed_cp_upper_max": 0.2,
+    "mean_violation_max": 0.1,
+    "outlier_driven_fold_rate_max": 0.2,
+    "raw_gain_ci_low_min": 0.0,
+    "raw_gain_min": 0.0,
+    "raw_mae_improvement_min": 0.1,
+    "raw_oracle_recovery_min": 0.1,
+    "raw_spearman_min": 0.3,
+    "sentinel_delta_max": 0.05,
+    "sentinel_transition_max": 0.1,
+    "worst_seed_violation_max": 0.2
+  },
+  "delta": 0.1,
+  "existing_stage0_result_hash": "3f26e2d3e835f9ef605ab68ec50b52e72c4a4c830f992b873385d8a9c979fefb",
+  "hard_stop": true,
+  "input_hashes": {
+    "delivery/budgeted_risk/stage0/STAGE0_DECISION.json": "be7bcd49dbd3af510b4d0486c40a8c639b1f3e60669b4a0ab3953861c04b52fb",
+    "delivery/budgeted_risk/stage0/STAGE0_METHOD_FREEZE.json": "640941ad0b8aa8249f97b3844681e383941848ac6c73eeaef56cc9821824422c",
+    "outputs/budgeted_risk/RUN_STATE.json": "549b0b6d56923fd5c86efa75d157d491fcfac3d7f72243c614e13ab1f9ae3c5f",
+    "outputs/budgeted_risk/features/UNLABELED_CONTEXT_FEATURES.parquet": "81915a277ebcf82d731070306aa5329e674bfea849b20473cf023617e3d4cd7b",
+    "outputs/budgeted_risk/stage0/BUDGET_QUERY_TRANSCRIPTS.parquet": "a1d73634163a2d3afd1a990e4e01f1aa87d6d219a1dd802e1667d17a0f9909df",
+    "outputs/budgeted_risk/stage0/BUDGET_RESULTS.parquet": "3f26e2d3e835f9ef605ab68ec50b52e72c4a4c830f992b873385d8a9c979fefb",
+    "outputs/budgeted_risk/stage0/BUDGET_TUNING.parquet": "dbbfd1d261818398fccaf3c44efc41db745f6f925e54363a56c4bba856d2ed8e",
+    "outputs/budgeted_risk/stage0/FULL_CONTEXT_MODEL_SELECTION.parquet": "dfd5f8d71f39eb645fb3a1cfc07519a64f9fada1441ca9446d6f18d9156050a3",
+    "outputs/budgeted_risk/stage0/FULL_CONTEXT_RESULTS.parquet": "806cacc772da6aa02e36d870ace884c145281b56b775d91c5a99ad15337ce522"
+  },
+  "method_development_cohort_hash": "70652e2a5156268fd57d7ee203c5305e66b8e7dcd6a5e178b2cd69bacbcd506c",
+  "outer_folds": 5,
+  "outlier_criteria": {
+    "gain_increase": 0.05,
+    "q_drop_indices": 2.0,
+    "sentinel_drop": 0.1
+  },
+  "prediction_candidates": [
+    "direct",
+    "isotonic",
+    "ridge_10",
+    "ordinal_1"
+  ],
+  "primary_strategy": "temporal",
+  "protected": {
+    "cap_opened": false,
+    "formal_calibration_opened": false,
+    "internal_final_opened": false
+  },
+  "random_repeats": 20,
+  "schema_version": "budgeted-risk-v51-diagnostic-v1",
+  "schemes": [
+    "S1_ORIGINAL_3TRAIN_1CAL",
+    "S2_EXACT_2TRAIN_2CAL",
+    "S3_EXACT_2TRAIN_2CAL_SCALED",
+    "S4_CROSSFIT_POOLED_EXPLORATORY"
+  ],
+  "secondary_strategy": "random",
+  "source_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "tau_candidates": [
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0,
+    20.0
+  ],
+  "transfer_regularization": {
+    "ordinal_alpha": 1.0,
+    "ridge_alpha": 10.0
+  },
+  "validity_rule": "seed-wise subject Bernoulli with exact Clopper-Pearson; never n_subjects*seeds"
+}
