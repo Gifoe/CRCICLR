@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import json
 import hashlib
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass,field
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
-from joblib import Parallel,delayed,parallel_backend
 from hsc_tta.contextual_risk.features import context_features
 from hsc_tta.contextual_risk.families import TPSFamily
 from hsc_tta.contextual_risk.io import atomic_parquet
@@ -19,7 +19,7 @@ from .access import BudgetedAccessController
 from .acquisition import acquisition_order
 from .inclusion_index import critical_index_from_kappa,inclusion_index_table,inclusion_indices,risk_index_entropy
 from .query_oracle import QueryOracle
-from .stage0 import _choose_candidate,_fit,_predict,_score_candidate
+from .stage0 import _fit,_predict,_select_model
 
 
 TRANSFER_SPECS=("direct","isotonic","ridge_0.01","ridge_0.1","ridge_1","ridge_10","ridge_100","ordinal_0.01","ordinal_0.1","ordinal_1","ordinal_10")
@@ -120,45 +120,45 @@ def _evaluate(observation:Observation,features:dict[str,float],fitted:dict[str,A
 
 
 def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.DataFrame,pd.DataFrame]:
-    root=Path(project_root);repo=root/"repo";cohorts=pd.read_parquet(repo/"outputs/contextual_risk/cohorts/MASTER_SUBJECT_COHORTS.parquet");dev=cohorts[cohorts.master_cohort=="method_development"];manifest=pd.read_parquet(repo/"outputs/budgeted_risk/source_cache/STAGE0_CACHE_MANIFEST.parquet");alpha=float(config["alpha"]);delta=float(config["delta"]);rows=[];tuning=[];transcripts=[]
+    root=Path(project_root);repo=root/"repo"
+    cohorts=pd.read_parquet(repo/"outputs/contextual_risk/cohorts/MASTER_SUBJECT_COHORTS.parquet");dev=cohorts[cohorts.master_cohort=="method_development"]
+    manifest=pd.read_parquet(repo/"outputs/budgeted_risk/source_cache/STAGE0_CACHE_MANIFEST.parquet")
+    alpha=float(config["alpha"]);delta=float(config["delta"]);rows=[];tuning=[];transcripts=[]
     for dataset in ("hmc","eegmmidb"):
         fold_map=dev[dev.dataset==dataset].set_index("subject_id").screening_fold.astype(int).to_dict();subjects=sorted(fold_map)
         for fold in range(5):
             roles={s:("evaluation" if fold_map[s]==fold else "calibration" if fold_map[s]==(fold+1)%5 else "meta") for s in subjects};meta_subjects=[s for s in subjects if roles[s]=="meta"]
             for seed in range(5):
-                arrays={s:_load(Path(manifest[(manifest.dataset==dataset)&(manifest.fold==fold)&(manifest.seed==seed)&(manifest.subject_id==s)].iloc[0].cache_path)) for s in subjects};prior=_prior(arrays,meta_subjects);global_index=int(np.flatnonzero(prior>=1-alpha)[0]) if np.any(prior>=1-alpha) else 20
-                for requested_budget in (0,1,2,5,10,20,50):
+                arrays={s:_load(Path(manifest[(manifest.dataset==dataset)&(manifest.fold==fold)&(manifest.seed==seed)&(manifest.subject_id==s)].iloc[0].cache_path)) for s in subjects}
+                prior=_prior(arrays,meta_subjects);global_index=int(np.flatnonzero(prior>=1-alpha)[0]) if np.any(prior>=1-alpha) else 20
+
+                def run_one(requested_budget:int)->tuple[list[dict[str,Any]],dict[str,Any],list[dict[str,Any]]]:
+                    local_rows=[];local_transcripts=[]
                     base={s:_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"temporal",0) for s in subjects}
                     meta_outcome={s:_open(base[s],_local_index(prior,base[s].queried_kappa,5,alpha),repo,alpha,delta,"stage0_budget_meta") for s in meta_subjects}
-                    tau_frames=[]
-                    for tau in config["tau_candidates"]:
-                        frame=pd.DataFrame([{**_features(base[s],prior,float(tau),alpha),"subject_id":s,"screening_fold":fold_map[s],"j_future":meta_outcome[s]} for s in meta_subjects]);ids={"subject_id","screening_fold","j_future"};columns=sorted(set(frame.columns)-ids);tau_frames.append((float(tau),frame,columns))
-                    jobs=[(tau_index,name) for tau_index in range(len(tau_frames)) for name in TRANSFER_SPECS]
-                    with parallel_backend("loky",inner_max_num_threads=1):
-                        score_rows=Parallel(n_jobs=min(12,len(jobs)))(delayed(_score_candidate)(tau_frames[tau_index][1],tau_frames[tau_index][2],name,"j_local") for tau_index,name in jobs)
                     all_scores=[]
-                    for tau_index,(tau,frame,columns) in enumerate(tau_frames):
-                        scores=pd.DataFrame([score for (job_tau,_),score in zip(jobs,score_rows,strict=True) if job_tau==tau_index]);selected=_choose_candidate(scores)
-                        score=scores[scores.candidate==selected].iloc[0];all_scores.append((float(score.mae),-float(score.spearman),float(score.underestimation_rate),tau,selected,columns,frame,scores))
-                    best=min(all_scores,key=lambda item:(item[0],item[1],item[2],item[3],item[4]));_,_,_,tau,selected,columns,meta_frame,scores=best;fitted=_fit(selected,meta_frame[columns].to_numpy(),meta_frame.j_future.to_numpy(),meta_frame.j_local.to_numpy())
-                    tuning.append({"dataset":dataset,"outer_fold":fold,"seed":seed,"budget":requested_budget,"tau":tau,"selected_model":selected,"inner_mae":best[0]})
+                    for tau_value in config["tau_candidates"]:
+                        frame=pd.DataFrame([{**_features(base[s],prior,float(tau_value),alpha),"subject_id":s,"screening_fold":fold_map[s],"j_future":meta_outcome[s]} for s in meta_subjects]);columns=sorted(set(frame.columns)-{"subject_id","screening_fold","j_future"})
+                        selected,scores=_select_model(frame,columns,TRANSFER_SPECS,index_column="j_local");score=scores[scores.candidate==selected].iloc[0]
+                        all_scores.append((float(score.mae),-float(score.spearman),float(score.underestimation_rate),float(tau_value),selected,columns,frame))
+                    best=min(all_scores,key=lambda item:(item[0],item[1],item[2],item[3],item[4]));_,_,_,tau,selected,columns,meta_frame=best;fitted=_fit(selected,meta_frame[columns].to_numpy(),meta_frame.j_future.to_numpy(),meta_frame.j_local.to_numpy())
+                    tune={"dataset":dataset,"outer_fold":fold,"seed":seed,"budget":requested_budget,"tau":tau,"selected_model":selected,"inner_mae":best[0]}
                     cal_subjects=[s for s in subjects if roles[s]=="calibration"];cal_pred=[];cal_true=[]
                     for s in cal_subjects:
-                        features=_features(base[s],prior,tau,alpha);prediction=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(base[s],prediction,repo,alpha,delta,"stage0_budget_cal");cal_pred.append(prediction);cal_true.append(true)
+                        features=_features(base[s],prior,tau,alpha);prediction=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);cal_pred.append(prediction);cal_true.append(_open(base[s],prediction,repo,alpha,delta,"stage0_budget_cal"))
                     correction=split_conformal_upper(np.maximum(np.asarray(cal_true)-np.asarray(cal_pred),0),delta,insufficient=20);global_correction=split_conformal_upper(np.maximum(np.asarray(cal_true)-global_index,0),delta,insufficient=20)
-                    for s in [x for x in subjects if roles[x]=="evaluation"]:
-                        features=_features(base[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(base[s],raw+correction,repo,alpha,delta,"stage0_budget_eval");rows.append(_evaluate(base[s],features,fitted,columns,correction,global_index,global_correction,true));transcripts.extend(base[s].transcript)
-                    # Random repeats use the exact same frozen estimator and
-                    # one-sided calibration as temporal; only evaluation
-                    # acquisition changes, preventing estimator/acquisition
-                    # confounding.
-                    evaluation_subjects=[x for x in subjects if roles[x]=="evaluation"]
+                    evaluation_subjects=[s for s in subjects if roles[s]=="evaluation"]
                     for s in evaluation_subjects:
-                        subject_observations=[];subject_features=[];subject_raw=[]
+                        features=_features(base[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(base[s],raw+correction,repo,alpha,delta,"stage0_budget_eval");local_rows.append(_evaluate(base[s],features,fitted,columns,correction,global_index,global_correction,true));local_transcripts.extend(base[s].transcript)
+                        observations=[];random_features=[];random_raw=[]
                         for repeat in range(int(config["random_repeats"])):
-                            observation=_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat);features=_features(observation,prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);subject_observations.append(observation);subject_features.append(features);subject_raw.append(raw);transcripts.extend(observation.transcript)
-                        true=_open_batch(subject_observations,[raw+correction for raw in subject_raw],repo,alpha,delta)
-                        for observation,features in zip(subject_observations,subject_features,strict=True):rows.append(_evaluate(observation,features,fitted,columns,correction,global_index,global_correction,true))
+                            observation=_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat);current_features=_features(observation,prior,tau,alpha);current_raw=float(_predict(fitted,pd.DataFrame([current_features])[columns].to_numpy(),np.asarray([current_features["j_local"]]))[0]);observations.append(observation);random_features.append(current_features);random_raw.append(current_raw);local_transcripts.extend(observation.transcript)
+                        true=_open_batch(observations,[value+correction for value in random_raw],repo,alpha,delta)
+                        for observation,current_features in zip(observations,random_features,strict=True):local_rows.append(_evaluate(observation,current_features,fitted,columns,correction,global_index,global_correction,true))
+                    return local_rows,tune,local_transcripts
+
+                with ThreadPoolExecutor(max_workers=7) as executor:completed=list(executor.map(run_one,(0,1,2,5,10,20,50)))
+                for local_rows,tune,local_transcripts in completed:rows.extend(local_rows);tuning.append(tune);transcripts.extend(local_transcripts)
     frame=pd.DataFrame(rows);tuning_frame=pd.DataFrame(tuning);output=repo/"outputs/budgeted_risk/stage0";atomic_parquet(frame,output/"BUDGET_RESULTS.parquet");atomic_parquet(tuning_frame,output/"BUDGET_TUNING.parquet");budget_transcripts=pd.DataFrame(transcripts);atomic_parquet(budget_transcripts,output/"BUDGET_QUERY_TRANSCRIPTS.parquet");return frame,tuning_frame
 
 
