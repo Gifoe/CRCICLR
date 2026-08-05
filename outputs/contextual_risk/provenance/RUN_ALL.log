@@ -1,0 +1,194 @@
+{
+  "decision": "STOP_CONTEXTUAL_RISK_ALLOCATION",
+  "a": {
+    "decision": "A_NO_GO",
+    "datasets": {
+      "eegmmidb": {
+        "go": false,
+        "n_subjects": 65,
+        "oracle_relative_gain": 0.29166147698828715,
+        "oracle_ci": [
+          0.9222598178137651,
+          1.1697554824561402
+        ],
+        "positive_rate": 0.9846153846153847,
+        "target_reliability_spearman": 0.8588386831987337,
+        "target_reliability_kappa": 0.636351808482956,
+        "predictor_spearman": 0.6637660525568707,
+        "predictor_mae": 1.948674550980854,
+        "constant_mae": 2.606153846153846,
+        "violation_rate": 0.03076923076923077,
+        "clopper_pearson_upper": 0.09370678347465346,
+        "worst_seed_violation": 0.06153846153846154,
+        "realized_relative_gain": 0.09010740014927414,
+        "realized_ci": [
+          0.19372314439946017,
+          0.4223675269905532
+        ],
+        "alpha20_gain": 0.015567661930890226,
+        "gates": {
+          "oracle_gain": true,
+          "oracle_ci": true,
+          "oracle_positive": true,
+          "reliability": true,
+          "predictor_rho": true,
+          "predictor_mae": true,
+          "validity": true,
+          "realized_gain": true,
+          "realized_ci": true,
+          "sentinel": false,
+          "alpha20_direction": true
+        }
+      },
+      "hmc": {
+        "go": false,
+        "n_subjects": 90,
+        "oracle_relative_gain": 0.39430743020958925,
+        "oracle_ci": [
+          1.330786574074074,
+          1.678000694444444
+        ],
+        "positive_rate": 0.9222222222222223,
+        "target_reliability_spearman": 0.5329277487243379,
+        "target_reliability_kappa": 0.3534409031301671,
+        "predictor_spearman": -0.127481832494303,
+        "predictor_mae": 2.7357332828323817,
+        "constant_mae": 2.5133333333333336,
+        "violation_rate": 0.011111111111111112,
+        "clopper_pearson_upper": 0.051625875005761206,
+        "worst_seed_violation": 0.044444444444444446,
+        "realized_relative_gain": -0.13352209356915715,
+        "realized_ci": [
+          -0.5793537037037038,
+          -0.33189606481481476
+        ],
+        "alpha20_gain": -0.18620332789086133,
+        "gates": {
+          "oracle_gain": true,
+          "oracle_ci": true,
+          "oracle_positive": true,
+          "reliability": true,
+          "predictor_rho": false,
+          "predictor_mae": false,
+          "validity": true,
+          "realized_gain": false,
+          "realized_ci": false,
+          "sentinel": false,
+          "alpha20_direction": false
+        }
+      }
+    }
+  },
+  "b": {
+    "decision": "B_NO_GO",
+    "datasets": {
+      "eegmmidb": {
+        "go": false,
+        "n_subjects": 65,
+        "oracle_relative_gain": 0.22740826918578835,
+        "oracle_ci": [
+          0.7217925101214576,
+          0.9151313090418354
+        ],
+        "positive_rate": 0.9846153846153847,
+        "max_nonfallback_win_rate": 0.2676923076923077,
+        "nonfallback_policies_ge_10pct": 3,
+        "selector_accuracy": 0.3938461538461538,
+        "majority_accuracy": 0.27384615384615385,
+        "recovered_oracle_fraction": -0.11039978595254782,
+        "violation_rate": 0.0,
+        "clopper_pearson_upper": 0.04504225812301352,
+        "worst_seed_violation": 0.06153846153846154,
+        "realized_relative_gain": -0.02510582424195041,
+        "realized_ci": [
+          -0.12854055330634273,
+          -0.04705553306342789
+        ],
+        "alpha20_gain": -0.02629272677264611,
+        "gates": {
+          "oracle_gain": true,
+          "oracle_ci": true,
+          "oracle_positive": true,
+          "policy_diversity": true,
+          "selector": false,
+          "validity": true,
+          "realized_gain": false,
+          "realized_ci": false,
+          "sentinel": false,
+          "alpha20_direction": false
+        },
+        "policy_wins": {
+          "TPS|efficient": 0.2676923076923077,
+          "TPS|moderate": 0.16615384615384615,
+          "APS|moderate": 0.1476923076923077,
+          "TPS|conservative": 0.08615384615384615,
+          "APS|efficient": 0.08307692307692308,
+          "APS|conservative": 0.04923076923076923,
+          "RAPS-k1-l0.01|moderate": 0.036923076923076927,
+          "RAPS-k2-l0.01|moderate": 0.036923076923076927,
+          "FULL_SET_FALLBACK": 0.036923076923076927,
+          "RAPS-k1-l0.01|conservative": 0.033846153846153845,
+          "RAPS-k1-l0.01|efficient": 0.03076923076923077,
+          "RAPS-k2-l0.01|conservative": 0.024615384615384615
+        }
+      },
+      "hmc": {
+        "go": false,
+        "n_subjects": 90,
+        "oracle_relative_gain": 0.32164887756212573,
+        "oracle_ci": [
+          1.0543976851851853,
+          1.4327159722222225
+        ],
+        "positive_rate": 0.9,
+        "max_nonfallback_win_rate": 0.2088888888888889,
+        "nonfallback_policies_ge_10pct": 3,
+        "selector_accuracy": 0.21999999999999997,
+        "majority_accuracy": 0.23333333333333334,
+        "recovered_oracle_fraction": -0.21239334338112262,
+        "violation_rate": 0.044444444444444446,
+        "clopper_pearson_upper": 0.09882084611586947,
+        "worst_seed_violation": 0.1,
+        "realized_relative_gain": -0.06831608050020524,
+        "realized_ci": [
+          -0.3210104166666667,
+          -0.13194976851851853
+        ],
+        "alpha20_gain": -0.28527954229969965,
+        "gates": {
+          "oracle_gain": true,
+          "oracle_ci": true,
+          "oracle_positive": true,
+          "policy_diversity": true,
+          "selector": false,
+          "validity": true,
+          "realized_gain": false,
+          "realized_ci": false,
+          "sentinel": false,
+          "alpha20_direction": false
+        },
+        "policy_wins": {
+          "APS|efficient": 0.2088888888888889,
+          "TPS|efficient": 0.18222222222222223,
+          "TPS|moderate": 0.14444444444444443,
+          "APS|moderate": 0.08666666666666667,
+          "TPS|conservative": 0.07777777777777778,
+          "RAPS-k3-l0.01|conservative": 0.07111111111111111,
+          "FULL_SET_FALLBACK": 0.04888888888888889,
+          "RAPS-k1-l0.01|moderate": 0.03333333333333333,
+          "RAPS-k3-l0.10|conservative": 0.03111111111111111,
+          "RAPS-k2-l0.01|conservative": 0.02,
+          "APS|conservative": 0.02,
+          "RAPS-k1-l0.01|efficient": 0.013333333333333334,
+          "RAPS-k2-l0.01|moderate": 0.013333333333333334,
+          "RAPS-k2-l0.05|efficient": 0.013333333333333334,
+          "RAPS-k1-l0.01|conservative": 0.011111111111111112,
+          "RAPS-k3-l0.10|moderate": 0.006666666666666667,
+          "RAPS-k2-l0.01|efficient": 0.006666666666666667,
+          "RAPS-k2-l0.05|conservative": 0.006666666666666667,
+          "RAPS-k3-l0.01|moderate": 0.0044444444444444444
+        }
+      }
+    }
+  }
+}

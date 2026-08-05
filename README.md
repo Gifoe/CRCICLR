@@ -14,3 +14,8 @@ python scripts/run_mock_pipeline.py --config configs/method/hsc_tta.yaml --devic
 
 See `docs/CPU_PIPELINE.md` and `docs/METHOD_SPEC.md` for protocols and statistical assumptions.
 
+## Contextual future-risk screening (V4)
+
+The `v4-contextual-risk-select-and-run` branch evaluates two development-only contextual risk-allocation hypotheses on the frozen CBraMod/source-head outputs: fine critical-index forecasting and coarse TPS/APS/RAPS policy selection. The preregistered two-dataset gate rejected both (`A_NO_GO`, `B_NO_GO`), so the legal terminal state is `STOP_CONTEXTUAL_RISK_ALLOCATION`; formal calibration, internal final evaluation, and CAP were not opened.
+
+See `delivery/contextual_risk/STOP_CONTEXTUAL_RISK_ALLOCATION.md`, `delivery/contextual_risk/REPOSITORY_AND_DATA_AUDIT.md`, and `delivery/contextual_risk/REPRODUCE.md`. Git includes code, reports, manifests, and screening result tables, but excludes raw EEG, token HDF5 data, checkpoints, and per-subject source-cache NPZ files.

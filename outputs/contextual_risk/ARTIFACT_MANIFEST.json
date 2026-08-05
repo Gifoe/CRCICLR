@@ -1,0 +1,373 @@
+{
+  "decision": "STOP_CONTEXTUAL_RISK_ALLOCATION",
+  "excluded": [
+    "data/**",
+    "outputs/contextual_risk/source_cache/**/*.npz",
+    "model checkpoints"
+  ],
+  "exclusion_reason": "raw/derived per-subject data and checkpoints are not Git delivery artifacts",
+  "file_count": 72,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "330a04a649c4b6fe5fd3a6d3eeefbfa7fedcd05f3ec39212f0b71d8e883dbfc9",
+      "size_bytes": 1725
+    },
+    {
+      "path": "configs/contextual_risk/screening.yaml",
+      "sha256": "22a43ee893913006cb3124eabb79fb46cdadde7c2116ae88f096251adf06dbdb",
+      "size_bytes": 477
+    },
+    {
+      "path": "delivery/contextual_risk/ALGORITHM_CONTRACT.md",
+      "sha256": "b6d139ade9a3a6ccfdaca837d335c0821df92b493d7a3a0dfb8627ea63ea92e7",
+      "size_bytes": 346
+    },
+    {
+      "path": "delivery/contextual_risk/BRANCH_SELECTION.json",
+      "sha256": "3e0faebf9e656023f61b77c39214f54d0fb6b59447226c9e36552445a3ce92f2",
+      "size_bytes": 7275
+    },
+    {
+      "path": "delivery/contextual_risk/DATA_PROTOCOL.md",
+      "sha256": "e5db2801c090961ee8a4996e5276992ffa76aaf5996e60adafc942921e00c416",
+      "size_bytes": 330
+    },
+    {
+      "path": "delivery/contextual_risk/LIMITATIONS.md",
+      "sha256": "cbf286ce68cc6bcc9cd8085ada3a5b257b9b6806fd1dc540ae9dc57cc9cb4f51",
+      "size_bytes": 1183
+    },
+    {
+      "path": "delivery/contextual_risk/PROTOCOL_DEVIATIONS.md",
+      "sha256": "876f11400717a536eed06f470f0e88a4de0c7ea2fe288e8cdf34f047acb66afe",
+      "size_bytes": 99
+    },
+    {
+      "path": "delivery/contextual_risk/PROVENANCE.md",
+      "sha256": "707fc4ac1c3fc310ae2de85c5e90af4a8c0267ec932ee191d8ffb518e6a26be6",
+      "size_bytes": 1277
+    },
+    {
+      "path": "delivery/contextual_risk/REPOSITORY_AND_DATA_AUDIT.md",
+      "sha256": "8eae09bf7dd986b4ebcca50542cb63e82eee640842942ab802a2592471e2f6c2",
+      "size_bytes": 3099
+    },
+    {
+      "path": "delivery/contextual_risk/REPRODUCE.md",
+      "sha256": "8c075a37b180608fcea7decade609925ccbad2b589e62d211310746ef3477915",
+      "size_bytes": 968
+    },
+    {
+      "path": "delivery/contextual_risk/RUN_STATE_HISTORY.md",
+      "sha256": "31bcf64f0e7c5d4c987496e4edb5ae54d8301462a7acfaaa92b0076beec185ec",
+      "size_bytes": 123
+    },
+    {
+      "path": "delivery/contextual_risk/SCREENING_METHOD_FREEZE.json",
+      "sha256": "afce4d9a64fa9808ccef87ce437800c87340e983a55a4ea3bfe48f5b212326af",
+      "size_bytes": 871
+    },
+    {
+      "path": "delivery/contextual_risk/STATISTICAL_ISOLATION.md",
+      "sha256": "5c8d8371b19074b6ed0f662749f18921fb757cd076eb4e9b61ed5d4f82d93902",
+      "size_bytes": 297
+    },
+    {
+      "path": "delivery/contextual_risk/STOP_CONTEXTUAL_RISK_ALLOCATION.md",
+      "sha256": "2e9dba0bf69ef6c4d934ad5225a665e5dd0df16b7ad4f870fd2a5339ec437241",
+      "size_bytes": 7644
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_A_GO_NO_GO.md",
+      "sha256": "1da9b57d951b4295fe964e14b92fcce323132e44db5c44e9df4ec90ba78cfbc9",
+      "size_bytes": 2434
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_A_ORACLE_HEADROOM.md",
+      "sha256": "23a12be3b22e4be36bb2ab12bf9d7d21174f10521dc6708dce355c14e5ae43b2",
+      "size_bytes": 2441
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_A_PILOT_VALIDITY.md",
+      "sha256": "f142eedc9ff360e28ab993afecf5f80e3e341e1b020b4a987b946bf6e0d3f42c",
+      "size_bytes": 2440
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_A_PREDICTABILITY.md",
+      "sha256": "28e8f0126d5d6b06307e374e5d41f24108b69a147b0dc4d0502df711cc255543",
+      "size_bytes": 2444
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_A_TARGET_RELIABILITY.md",
+      "sha256": "cfab9d588054f2716c598b46afdeeaf2b26a7fd94f51a4fc65d1578022ee0da1",
+      "size_bytes": 2444
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_B_GO_NO_GO.md",
+      "sha256": "654c54d7a882d748dc7b0339f3d301134968c35148c5b7f4b7019a32670df41e",
+      "size_bytes": 4014
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_B_ORACLE_HEADROOM.md",
+      "sha256": "5808df6fdf8aa6a5a8c506cab8f7342472341e599a009558f005341661a1d67c",
+      "size_bytes": 4021
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_B_PILOT_VALIDITY.md",
+      "sha256": "2a7bbb383fd3071afd32d80dda7a90f66501daaecf29a798cef101c857d4d6a3",
+      "size_bytes": 4020
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_B_POLICY_DIVERSITY.md",
+      "sha256": "106918b00f8367b09ff269b077cb62bae7857d1a1dcea7357f316a40798b46a0",
+      "size_bytes": 4022
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_B_SELECTOR_PERFORMANCE.md",
+      "sha256": "459026f91832f01c899a85308fda9723d9d26d2325a5006833cd46b0523af08e",
+      "size_bytes": 4018
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_COMPARISON.md",
+      "sha256": "aa8dddb37abd278381e7beecea9143eb288b13bae26994ccf4697d0b25db36c9",
+      "size_bytes": 7316
+    },
+    {
+      "path": "delivery/contextual_risk/screening/BRANCH_SELECTION.md",
+      "sha256": "ef6d0e28752b5242171e8ff1805e46b96f0b9b8ea14aaa1280c0c3b141d774ff",
+      "size_bytes": 7308
+    },
+    {
+      "path": "outputs/contextual_risk/BRANCH_SELECTION.json",
+      "sha256": "3e0faebf9e656023f61b77c39214f54d0fb6b59447226c9e36552445a3ce92f2",
+      "size_bytes": 7275
+    },
+    {
+      "path": "outputs/contextual_risk/CONTEXT_FEATURES.parquet",
+      "sha256": "763c27f3cc192d5a5f48cd565dbbaf6b52d5c6f86813dfab4f5b0b940c209515",
+      "size_bytes": 403927
+    },
+    {
+      "path": "outputs/contextual_risk/FAILURES.csv",
+      "sha256": "fa91d824baf3f3086e686f46adb2db33eef6c3a1e456d66f48324e023f1272a4",
+      "size_bytes": 36
+    },
+    {
+      "path": "outputs/contextual_risk/RUN_STATE.json",
+      "sha256": "bc3d351939215c95872ce8cd91f5b46bac28936301487212799005e377190795",
+      "size_bytes": 3090
+    },
+    {
+      "path": "outputs/contextual_risk/SCREENING_A_RESULTS.parquet",
+      "sha256": "3567a082819b020f6e56ed821b96fe30d4876da6593cf0df46350e360dfac303",
+      "size_bytes": 45321
+    },
+    {
+      "path": "outputs/contextual_risk/SCREENING_A_SUMMARY.json",
+      "sha256": "1793f12ad6220b0b8415785721a2dbd3ff4a544b0ff1973e9162afbd0604dc6a",
+      "size_bytes": 2400
+    },
+    {
+      "path": "outputs/contextual_risk/SCREENING_B_RESULTS.parquet",
+      "sha256": "f0e2cc492369d1f5cc5eb729348c7cfe322e58c809ebf7c420c27854cb5935a0",
+      "size_bytes": 38954
+    },
+    {
+      "path": "outputs/contextual_risk/SCREENING_B_SUMMARY.json",
+      "sha256": "85f4a997fadf7027413c89653d12e7bf77d944b7872fbc5825bf31d40a6eb81d",
+      "size_bytes": 3980
+    },
+    {
+      "path": "outputs/contextual_risk/SUBJECT_CRITICAL_INDICES.parquet",
+      "sha256": "0434771dac230b215882da310b98501c73ba57b4bf872fac27e05e91222d7c40",
+      "size_bytes": 10755
+    },
+    {
+      "path": "outputs/contextual_risk/SUBJECT_POLICY_SURFACES.parquet",
+      "sha256": "c7fe9cbf9372211b22105e2e3f6ed42a2fd9c3955b27f37e5d429ca6d93ba195",
+      "size_bytes": 599278
+    },
+    {
+      "path": "outputs/contextual_risk/cohorts/MASTER_SUBJECT_COHORTS.parquet",
+      "sha256": "022830f5787e3ceb98e6508c47fa3cb423d422b72a330d717afc1c49461097cf",
+      "size_bytes": 9577
+    },
+    {
+      "path": "outputs/contextual_risk/episodes/EPISODE_MANIFEST.parquet",
+      "sha256": "807928411da5d86f7c5f840cc4f3622fed67275e304ed4c8deeb9792ca83b0f6",
+      "size_bytes": 135860
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/AUDIT.json",
+      "sha256": "cf3bfc613fef844a57462267ef5d9e4234ccc136b5ed04c4f1bbf11971c4b817",
+      "size_bytes": 482
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/BASELINE_TESTS.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/BASELINE_TESTS.txt",
+      "sha256": "404fe14491a3294a4ac3fb1e2eca4e993c78434a1406f8ff470bd972b9d3bef3",
+      "size_bytes": 709
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/FINAL_TESTS.txt",
+      "sha256": "f9100561346cefd5820635e55d834b1b31c475a67c5688524479d8a70fa45b50",
+      "size_bytes": 789
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/ISOLATION_VALIDATION.json",
+      "sha256": "b4e95e74ee02070347851a903709d698d220192e4bca21e13b5b49b4a66578e3",
+      "size_bytes": 467
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/RUN_ALL.log",
+      "sha256": "2493c6753bf954f5af9c36bc01071508694be368721b8750bb3f3d5d86ca8ae8",
+      "size_bytes": 6828
+    },
+    {
+      "path": "outputs/contextual_risk/provenance/SOURCE_HEAD_SUBJECT_OVERLAP.csv",
+      "sha256": "4919058bcd15753ed3653045bf4459ddb1a6f7e7653a501c35d2d52b2c496828",
+      "size_bytes": 1718
+    },
+    {
+      "path": "outputs/contextual_risk/source_cache/SOURCE_CACHE_MANIFEST.parquet",
+      "sha256": "6f94381cb90099c187283c3b238077c2abd23b415c19ee2baae6e9de0e655f97",
+      "size_bytes": 18252
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "b6d0769a3bdc3742b810d99183002c04362dbb64af1a49ae38d946d5ec922aeb",
+      "size_bytes": 961
+    },
+    {
+      "path": "scripts/contextual_risk/build_episodes.py",
+      "sha256": "556c6692431dbf6bf310b7e2c9e7fea6fbf32ba303e2c6280bdf9cd5428fc103",
+      "size_bytes": 105
+    },
+    {
+      "path": "scripts/contextual_risk/cache_source_predictions.py",
+      "sha256": "556c6692431dbf6bf310b7e2c9e7fea6fbf32ba303e2c6280bdf9cd5428fc103",
+      "size_bytes": 105
+    },
+    {
+      "path": "scripts/contextual_risk/run_all.py",
+      "sha256": "117fd6beb3afaa12acdead5976d0bcd1645b4d55dd4efca1bb6e848033b548ee",
+      "size_bytes": 12709
+    },
+    {
+      "path": "scripts/contextual_risk/run_screening_a.py",
+      "sha256": "556c6692431dbf6bf310b7e2c9e7fea6fbf32ba303e2c6280bdf9cd5428fc103",
+      "size_bytes": 105
+    },
+    {
+      "path": "scripts/contextual_risk/run_screening_b.py",
+      "sha256": "556c6692431dbf6bf310b7e2c9e7fea6fbf32ba303e2c6280bdf9cd5428fc103",
+      "size_bytes": 105
+    },
+    {
+      "path": "scripts/contextual_risk/select_branch.py",
+      "sha256": "556c6692431dbf6bf310b7e2c9e7fea6fbf32ba303e2c6280bdf9cd5428fc103",
+      "size_bytes": 105
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/__init__.py",
+      "sha256": "78f230e48fd479e11b369e5c9cbd2d9e1f33641ff379f44a3ff0a0eee38ec5a7",
+      "size_bytes": 496
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/access.py",
+      "sha256": "07a5d8a358d2d01f195bdb0ec708dffca27fd70b5d745d4dd2e12d0ea36b4699",
+      "size_bytes": 2558
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/cache.py",
+      "sha256": "7d567ce9b414269fc3640f7e5c736b9b67780f9a920835e292af297f26b2c266",
+      "size_bytes": 5441
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/cohorts.py",
+      "sha256": "08ea29f63e696f1c9d0c58da622eeb5f4865de88a460a09b0d0b19f5d9d2b391",
+      "size_bytes": 2140
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/episodes.py",
+      "sha256": "9ade92a0d700dafef7d1bedb87e5db4cb2a8a1beca80240b2acb84d955772fad",
+      "size_bytes": 2788
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/families.py",
+      "sha256": "b9e721bc639553675cb946c17f2ce2589d53f80a306eae7364d3bdd10023d8b6",
+      "size_bytes": 3991
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/features.py",
+      "sha256": "47f516653aec350f2e2232c5dd0341baea9ddd3b7760e2e7b511174bd8c2d15d",
+      "size_bytes": 2575
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/io.py",
+      "sha256": "d54ef33eab6254d09b9ac11f07fa505b99d6732bce8e9b6e8319f6a00283b521",
+      "size_bytes": 1176
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/quantiles.py",
+      "sha256": "fe139f03f026fefd03d90aee857f5130ce6e177175180158eafecc8fef588c0b",
+      "size_bytes": 883
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/screening.py",
+      "sha256": "21800a13ae410c2fa8f4f6c734108d9919d50609f2dddafd49121dc71651de28",
+      "size_bytes": 23850
+    },
+    {
+      "path": "src/hsc_tta/contextual_risk/statistics.py",
+      "sha256": "7fae5c8abd222c15db143bf882e72fae86496d5e55192379633cd9f590e91270",
+      "size_bytes": 794
+    },
+    {
+      "path": "tests/contextual_risk/__init__.py",
+      "sha256": "a86b41ea9caf879f476d11dc6084993dbcffbab8d5e4c504f5a6e10af04163c5",
+      "size_bytes": 45
+    },
+    {
+      "path": "tests/contextual_risk/test_access.py",
+      "sha256": "1ea89a6983c7e364ff84a530a0a9a5b57bc4c90f3b3e4d6eae984c0107ca0645",
+      "size_bytes": 1100
+    },
+    {
+      "path": "tests/contextual_risk/test_cohorts.py",
+      "sha256": "44a1ecfcef9b5e129e3ad2318cb3b6d713891a859316d34c2fa28f8d59555c91",
+      "size_bytes": 712
+    },
+    {
+      "path": "tests/contextual_risk/test_families.py",
+      "sha256": "ea78005e994b4beb31c7bfb6538c6c5af37b290b2fa50d228712c72246a666b3",
+      "size_bytes": 679
+    },
+    {
+      "path": "tests/contextual_risk/test_features.py",
+      "sha256": "752160fa2037cd10f060cd55e1ab51e30c3dd6d73614c14c8e624a481f44e5a3",
+      "size_bytes": 508
+    },
+    {
+      "path": "tests/contextual_risk/test_quantiles.py",
+      "sha256": "483738e3c86a55343c6d4bfcde8dffd0cbeeb32d665a5a23b0bd56f7d81fde6d",
+      "size_bytes": 424
+    },
+    {
+      "path": "tests/contextual_risk/test_screening_access.py",
+      "sha256": "cb11d87915dc1b339484d83190c4936ff37e3b00a28ecfc31adcfa23f97d2ef7",
+      "size_bytes": 1637
+    },
+    {
+      "path": "tests/contextual_risk/test_statistics.py",
+      "sha256": "9791ee25877e687c64d72b30d06ec33acc33218e02e64af064ac055e406972c6",
+      "size_bytes": 349
+    }
+  ],
+  "schema_version": "contextual-risk-artifact-manifest-v1"
+}

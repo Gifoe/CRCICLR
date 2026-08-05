@@ -1,0 +1,83 @@
+# Branch A target reliability
+
+```json
+{
+  "datasets": {
+    "eegmmidb": {
+      "alpha20_gain": 0.015567661930890226,
+      "clopper_pearson_upper": 0.09370678347465346,
+      "constant_mae": 2.606153846153846,
+      "gates": {
+        "alpha20_direction": true,
+        "oracle_ci": true,
+        "oracle_gain": true,
+        "oracle_positive": true,
+        "predictor_mae": true,
+        "predictor_rho": true,
+        "realized_ci": true,
+        "realized_gain": true,
+        "reliability": true,
+        "sentinel": false,
+        "validity": true
+      },
+      "go": false,
+      "n_subjects": 65,
+      "oracle_ci": [
+        0.9222598178137651,
+        1.1697554824561402
+      ],
+      "oracle_relative_gain": 0.29166147698828715,
+      "positive_rate": 0.9846153846153847,
+      "predictor_mae": 1.948674550980854,
+      "predictor_spearman": 0.6637660525568707,
+      "realized_ci": [
+        0.19372314439946017,
+        0.4223675269905532
+      ],
+      "realized_relative_gain": 0.09010740014927414,
+      "target_reliability_kappa": 0.636351808482956,
+      "target_reliability_spearman": 0.8588386831987337,
+      "violation_rate": 0.03076923076923077,
+      "worst_seed_violation": 0.06153846153846154
+    },
+    "hmc": {
+      "alpha20_gain": -0.18620332789086133,
+      "clopper_pearson_upper": 0.051625875005761206,
+      "constant_mae": 2.5133333333333336,
+      "gates": {
+        "alpha20_direction": false,
+        "oracle_ci": true,
+        "oracle_gain": true,
+        "oracle_positive": true,
+        "predictor_mae": false,
+        "predictor_rho": false,
+        "realized_ci": false,
+        "realized_gain": false,
+        "reliability": true,
+        "sentinel": false,
+        "validity": true
+      },
+      "go": false,
+      "n_subjects": 90,
+      "oracle_ci": [
+        1.330786574074074,
+        1.678000694444444
+      ],
+      "oracle_relative_gain": 0.39430743020958925,
+      "positive_rate": 0.9222222222222223,
+      "predictor_mae": 2.7357332828323817,
+      "predictor_spearman": -0.127481832494303,
+      "realized_ci": [
+        -0.5793537037037038,
+        -0.33189606481481476
+      ],
+      "realized_relative_gain": -0.13352209356915715,
+      "target_reliability_kappa": 0.3534409031301671,
+      "target_reliability_spearman": 0.5329277487243379,
+      "violation_rate": 0.011111111111111112,
+      "worst_seed_violation": 0.044444444444444446
+    }
+  },
+  "decision": "A_NO_GO"
+}
+```

@@ -1,0 +1,67 @@
+{
+  "branch_decision": "STOP_CONTEXTUAL_RISK_ALLOCATION",
+  "branch_selection_sha256": "3e0faebf9e656023f61b77c39214f54d0fb6b59447226c9e36552445a3ce92f2",
+  "config_sha256": "22a43ee893913006cb3124eabb79fb46cdadde7c2116ae88f096251adf06dbdb",
+  "episode_manifest_sha256": "807928411da5d86f7c5f840cc4f3622fed67275e304ed4c8deeb9792ca83b0f6",
+  "feature_sha256": "763c27f3cc192d5a5f48cd565dbbaf6b52d5c6f86813dfab4f5b0b940c209515",
+  "git_commit_at_start": "4469a5b3132a51386e8c0b364446147225b07940",
+  "history": [
+    {
+      "config_sha256": "22a43ee893913006cb3124eabb79fb46cdadde7c2116ae88f096251adf06dbdb",
+      "stage": "AUDIT_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:17:56.711327+00:00"
+    },
+    {
+      "master_split_sha256": "022830f5787e3ceb98e6508c47fa3cb423d422b72a330d717afc1c49461097cf",
+      "stage": "MASTER_SPLITS_FROZEN",
+      "timestamp_utc": "2026-08-05T08:17:56.732084+00:00"
+    },
+    {
+      "episode_manifest_sha256": "807928411da5d86f7c5f840cc4f3622fed67275e304ed4c8deeb9792ca83b0f6",
+      "stage": "EPISODES_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:17:57.001219+00:00"
+    },
+    {
+      "source_cache_manifest_sha256": "6f94381cb90099c187283c3b238077c2abd23b415c19ee2baae6e9de0e655f97",
+      "stage": "SOURCE_CACHE_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:17:58.124573+00:00"
+    },
+    {
+      "feature_sha256": "763c27f3cc192d5a5f48cd565dbbaf6b52d5c6f86813dfab4f5b0b940c209515",
+      "screening_freeze_sha256": "afce4d9a64fa9808ccef87ce437800c87340e983a55a4ea3bfe48f5b212326af",
+      "stage": "SCREENING_FROZEN",
+      "timestamp_utc": "2026-08-05T08:20:07.931882+00:00"
+    },
+    {
+      "screening_a_sha256": "3567a082819b020f6e56ed821b96fe30d4876da6593cf0df46350e360dfac303",
+      "stage": "BRANCH_A_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:22:14.565560+00:00"
+    },
+    {
+      "screening_b_sha256": "f0e2cc492369d1f5cc5eb729348c7cfe322e58c809ebf7c420c27854cb5935a0",
+      "stage": "BRANCH_B_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:23:27.990102+00:00"
+    },
+    {
+      "branch_decision": "STOP_CONTEXTUAL_RISK_ALLOCATION",
+      "branch_selection_sha256": "3e0faebf9e656023f61b77c39214f54d0fb6b59447226c9e36552445a3ce92f2",
+      "stage": "BRANCH_SELECTED",
+      "timestamp_utc": "2026-08-05T08:23:27.990834+00:00"
+    },
+    {
+      "stage": "STOP_REPORT_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:23:27.995194+00:00"
+    },
+    {
+      "stage": "DELIVERY_COMPLETE",
+      "timestamp_utc": "2026-08-05T08:23:27.995317+00:00"
+    }
+  ],
+  "master_split_sha256": "022830f5787e3ceb98e6508c47fa3cb423d422b72a330d717afc1c49461097cf",
+  "schema_version": "contextual-risk-run-state-v1",
+  "screening_a_sha256": "3567a082819b020f6e56ed821b96fe30d4876da6593cf0df46350e360dfac303",
+  "screening_b_sha256": "f0e2cc492369d1f5cc5eb729348c7cfe322e58c809ebf7c420c27854cb5935a0",
+  "screening_freeze_sha256": "afce4d9a64fa9808ccef87ce437800c87340e983a55a4ea3bfe48f5b212326af",
+  "source_cache_manifest_sha256": "6f94381cb90099c187283c3b238077c2abd23b415c19ee2baae6e9de0e655f97",
+  "stage": "DELIVERY_COMPLETE"
+}

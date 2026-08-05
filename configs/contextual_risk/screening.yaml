@@ -1,0 +1,14 @@
+schema_version: contextual-risk-screening-v1
+backbone: CBraMod
+datasets: [hmc, eegmmidb]
+external_dataset: cap
+source_head_seeds: [0, 1, 2, 3, 4]
+alpha_primary: 0.10
+alpha_sensitivity: 0.20
+delta_primary: 0.10
+grid: {start: 0.50, stop: 0.99, points: 20, sentinel_index: 20}
+master_split_salt: contextual-risk-master-split-v1-20260805
+screening_fold_salt: contextual-risk-screening-folds-v1
+bootstrap_repetitions: 5000
+bootstrap_seed: 20260805
+historical_untouched_claim: false
