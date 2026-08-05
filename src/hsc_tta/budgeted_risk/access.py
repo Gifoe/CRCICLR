@@ -30,6 +30,12 @@ class BudgetedAccessController:
         self._query_hash = str(query_hash); self.phase = "QUERY_FROZEN"
 
     def freeze_decision(self, payload: dict[str, Any], path: str | Path) -> dict[str, Any]:
+        decision=self.freeze_decision_payload(payload)
+        target=Path(path);target.parent.mkdir(parents=True,exist_ok=True);temporary=target.with_suffix(target.suffix+".part")
+        temporary.write_text(json.dumps(decision,indent=2,sort_keys=True),encoding="utf-8");temporary.replace(target)
+        return decision
+
+    def freeze_decision_payload(self, payload: dict[str, Any]) -> dict[str, Any]:
         if self.phase != "QUERY_FROZEN" or not self._query_hash:
             raise RuntimeError("query transcript must be frozen first")
         required={"dataset","subject_id","seed","role","budget","strategy","alpha","delta","query_hash","source_model_hash","episode_hash","certified_index"}
@@ -37,14 +43,19 @@ class BudgetedAccessController:
         if missing: raise ValueError(f"missing decision fields: {sorted(missing)}")
         if payload["query_hash"] != self._query_hash: raise ValueError("query hash mismatch")
         decision=dict(payload);decision["decision_hash"]=_hash(decision)
-        target=Path(path);target.parent.mkdir(parents=True,exist_ok=True);temporary=target.with_suffix(target.suffix+".part")
-        temporary.write_text(json.dumps(decision,indent=2,sort_keys=True),encoding="utf-8");temporary.replace(target)
         self._decision_hash=decision["decision_hash"];self.phase="RISK_DECISION_FROZEN"
         return decision
+
+    def open_future_payload(self, future: Any, decision: dict[str,Any]) -> Any:
+        if self.phase != "RISK_DECISION_FROZEN" or not self._decision_hash:
+            raise RuntimeError("Future is closed before risk decision freeze")
+        payload=dict(decision);given=payload.pop("decision_hash",None)
+        if given != _hash(payload) or given != self._decision_hash:raise RuntimeError("decision hash validation failed")
+        self.phase="FUTURE_EVALUATION";return future
 
     def open_future(self, future: Any, decision_path: str | Path) -> Any:
         if self.phase != "RISK_DECISION_FROZEN" or not self._decision_hash:
             raise RuntimeError("Future is closed before risk decision freeze")
         payload=json.loads(Path(decision_path).read_text(encoding="utf-8"));given=payload.pop("decision_hash",None)
         if given != _hash(payload) or given != self._decision_hash: raise RuntimeError("decision hash validation failed")
-        self.phase="FUTURE_EVALUATION";return future
+        return self.open_future_payload(future,{**payload,"decision_hash":given})

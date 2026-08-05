@@ -60,6 +60,13 @@ def test_future_opens_only_after_hashed_decision(tmp_path):
     with pytest.raises(RuntimeError,match="hash"):controller.open_future([7],path)
 
 
+def test_in_memory_decision_payload_supports_preopened_batch_validation():
+    controller=BudgetedAccessController("hmc","hmc:1",0,"evaluation");controller.begin_queries();controller.freeze_queries("q")
+    payload={"dataset":"hmc","subject_id":"hmc:1","seed":0,"role":"evaluation","budget":1,"strategy":"random","alpha":.1,"delta":.1,"query_hash":"q","source_model_hash":"m","episode_hash":"e","certified_index":2}
+    frozen=controller.freeze_decision_payload(payload)
+    assert controller.open_future_payload([9],frozen)==[9]
+
+
 def test_run_state_rejects_skips_and_allows_hard_stop(tmp_path):
     state=RunState(tmp_path/"RUN_STATE.json");meta={key:"x" for key in REQUIRED_HASHES}
     state.advance("INITIALIZED",**meta)

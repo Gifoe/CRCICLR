@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from dataclasses import dataclass,field
 from pathlib import Path
 from typing import Any
@@ -81,14 +82,34 @@ def _features(observation:Observation,prior:np.ndarray,tau:float,alpha:float)->d
     return {**base,"j_local":float(j),"budget":float(observation.budget),"local_kappa_q50":float(quantiles[0]),"local_kappa_q80":float(quantiles[1]),"local_kappa_q90":float(quantiles[2]),"local_kappa_std":std}
 
 
+def _decision_payload(observation:Observation,prediction:float,alpha:float,delta:float)->dict[str,Any]:
+    return {"dataset":observation.dataset,"subject_id":observation.subject_id,"seed":observation.seed,"role":observation.role,"budget":observation.budget,"strategy":observation.strategy,"repeat":observation.repeat,"alpha":alpha,"delta":delta,"query_hash":observation.query_hash,"source_model_hash":observation.arrays.source_hash,"episode_hash":observation.arrays.episode_hash,"certified_index":int(np.clip(np.ceil(prediction),0,20))}
+
+
+def _cache_future(arrays:Arrays,labels:np.ndarray,alpha:float)->int:
+    if arrays.future_j is None:
+        arrays.future_j=critical_index_from_kappa(inclusion_indices(arrays.future_probabilities,labels),alpha)
+        _,arrays.future_sizes,_=TPSFamily().future_curve(arrays.future_probabilities,labels)
+    return int(arrays.future_j)
+
+
 def _open(observation:Observation,prediction:float,repo:Path,alpha:float,delta:float,tag:str)->int:
     target=repo/"outputs/budgeted_risk/risk_decisions"/tag/observation.dataset/f"fold_{observation.fold}"/f"seed_{observation.seed}"/f"b{observation.budget}_{observation.strategy}_r{observation.repeat}_{observation.subject_id.replace(':','_')}.json"
-    payload={"dataset":observation.dataset,"subject_id":observation.subject_id,"seed":observation.seed,"role":observation.role,"budget":observation.budget,"strategy":observation.strategy,"alpha":alpha,"delta":delta,"query_hash":observation.query_hash,"source_model_hash":observation.arrays.source_hash,"episode_hash":observation.arrays.episode_hash,"certified_index":int(np.clip(np.ceil(prediction),0,20))}
+    payload=_decision_payload(observation,prediction,alpha,delta)
     observation.controller.freeze_decision(payload,target);labels=observation.controller.open_future(observation.arrays.future_labels,target)
-    if observation.arrays.future_j is None:
-        observation.arrays.future_j=critical_index_from_kappa(inclusion_indices(observation.arrays.future_probabilities,labels),alpha)
-        _,observation.arrays.future_sizes,_=TPSFamily().future_curve(observation.arrays.future_probabilities,labels)
-    return int(observation.arrays.future_j)
+    return _cache_future(observation.arrays,labels,alpha)
+
+
+def _open_batch(observations:list[Observation],predictions:list[float],repo:Path,alpha:float,delta:float)->int:
+    if not observations or len(observations)!=len(predictions):raise ValueError("invalid decision batch")
+    decisions=[observation.controller.freeze_decision_payload(_decision_payload(observation,prediction,alpha,delta)) for observation,prediction in zip(observations,predictions,strict=True)]
+    canonical=json.dumps(decisions,sort_keys=True,separators=(",",":"));payload={"schema_version":"budgeted-risk-decision-batch-v1","decisions":decisions,"batch_hash":hashlib.sha256(canonical.encode()).hexdigest()}
+    first=observations[0];target=repo/"outputs/budgeted_risk/risk_decisions/stage0_random_eval_batch"/first.dataset/f"fold_{first.fold}"/f"seed_{first.seed}"/f"b{first.budget}_{first.subject_id.replace(':','_')}.json";target.parent.mkdir(parents=True,exist_ok=True);temporary=target.with_suffix(".json.part");temporary.write_text(json.dumps(payload,indent=2,sort_keys=True),encoding="utf-8");temporary.replace(target)
+    stored=json.loads(target.read_text(encoding="utf-8"));check=hashlib.sha256(json.dumps(stored["decisions"],sort_keys=True,separators=(",",":")).encode()).hexdigest()
+    if check!=stored["batch_hash"]:raise RuntimeError("decision batch hash validation failed")
+    labels=None
+    for observation,decision in zip(observations,stored["decisions"],strict=True):labels=observation.controller.open_future_payload(observation.arrays.future_labels,decision)
+    return _cache_future(first.arrays,np.asarray(labels),alpha)
 
 
 def _evaluate(observation:Observation,features:dict[str,float],fitted:dict[str,Any],columns:list[str],correction:float,global_index:int,global_correction:float,true:int)->dict[str,Any]:
@@ -129,11 +150,13 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                     # one-sided calibration as temporal; only evaluation
                     # acquisition changes, preventing estimator/acquisition
                     # confounding.
-                    for repeat in range(int(config["random_repeats"])):
-                        evaluation_subjects=[x for x in subjects if roles[x]=="evaluation"]
-                        random_obs={s:_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat) for s in evaluation_subjects}
-                        for s in evaluation_subjects:
-                            features=_features(random_obs[s],prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);true=_open(random_obs[s],raw+correction,repo,alpha,delta,"stage0_random_eval");rows.append(_evaluate(random_obs[s],features,fitted,columns,correction,global_index,global_correction,true));transcripts.extend(random_obs[s].transcript)
+                    evaluation_subjects=[x for x in subjects if roles[x]=="evaluation"]
+                    for s in evaluation_subjects:
+                        subject_observations=[];subject_features=[];subject_raw=[]
+                        for repeat in range(int(config["random_repeats"])):
+                            observation=_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"random",repeat);features=_features(observation,prior,tau,alpha);raw=float(_predict(fitted,pd.DataFrame([features])[columns].to_numpy(),np.asarray([features["j_local"]]))[0]);subject_observations.append(observation);subject_features.append(features);subject_raw.append(raw);transcripts.extend(observation.transcript)
+                        true=_open_batch(subject_observations,[raw+correction for raw in subject_raw],repo,alpha,delta)
+                        for observation,features in zip(subject_observations,subject_features,strict=True):rows.append(_evaluate(observation,features,fitted,columns,correction,global_index,global_correction,true))
     frame=pd.DataFrame(rows);tuning_frame=pd.DataFrame(tuning);output=repo/"outputs/budgeted_risk/stage0";atomic_parquet(frame,output/"BUDGET_RESULTS.parquet");atomic_parquet(tuning_frame,output/"BUDGET_TUNING.parquet");budget_transcripts=pd.DataFrame(transcripts);atomic_parquet(budget_transcripts,output/"BUDGET_QUERY_TRANSCRIPTS.parquet");return frame,tuning_frame
 
 
