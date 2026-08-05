@@ -22,7 +22,9 @@ from .query_oracle import QueryOracle
 from .stage0 import _fit,_predict,_select_model
 
 
-TRANSFER_SPECS=("direct","isotonic","ridge_0.01","ridge_0.1","ridge_1","ridge_10","ridge_100","ordinal_0.01","ordinal_0.1","ordinal_1","ordinal_10")
+# The preregistration names four transfer families, not a second
+# hyperparameter search.  Their regularization strengths are frozen here.
+TRANSFER_SPECS=("direct","isotonic","ridge_10","ordinal_1")
 
 
 @dataclass
@@ -120,6 +122,8 @@ def _evaluate(observation:Observation,features:dict[str,float],fitted:dict[str,A
 
 
 def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.DataFrame,pd.DataFrame]:
+    if config.get("transfer_regularization")!={"ridge_alpha":10.0,"ordinal_alpha":1.0}:
+        raise ValueError("transfer regularization does not match the frozen implementation")
     root=Path(project_root);repo=root/"repo"
     cohorts=pd.read_parquet(repo/"outputs/contextual_risk/cohorts/MASTER_SUBJECT_COHORTS.parquet");dev=cohorts[cohorts.master_cohort=="method_development"]
     manifest=pd.read_parquet(repo/"outputs/budgeted_risk/source_cache/STAGE0_CACHE_MANIFEST.parquet")
@@ -157,7 +161,7 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                         for observation,current_features in zip(observations,random_features,strict=True):local_rows.append(_evaluate(observation,current_features,fitted,columns,correction,global_index,global_correction,true))
                     return local_rows,tune,local_transcripts
 
-                with ThreadPoolExecutor(max_workers=7) as executor:completed=list(executor.map(run_one,(0,1,2,5,10,20,50)))
+                with ThreadPoolExecutor(max_workers=2) as executor:completed=list(executor.map(run_one,(0,1,2,5,10,20,50)))
                 for local_rows,tune,local_transcripts in completed:rows.extend(local_rows);tuning.append(tune);transcripts.extend(local_transcripts)
     frame=pd.DataFrame(rows);tuning_frame=pd.DataFrame(tuning);output=repo/"outputs/budgeted_risk/stage0";atomic_parquet(frame,output/"BUDGET_RESULTS.parquet");atomic_parquet(tuning_frame,output/"BUDGET_TUNING.parquet");budget_transcripts=pd.DataFrame(transcripts);atomic_parquet(budget_transcripts,output/"BUDGET_QUERY_TRANSCRIPTS.parquet");return frame,tuning_frame
 
