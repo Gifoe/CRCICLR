@@ -1,0 +1,22 @@
+schema_version: budgeted-risk-v51-mini-v1
+alpha: 0.10
+delta: 0.10
+budget: 20
+strategy: temporal
+datasets: [hmc, eegmmidb]
+seeds: [0, 1, 2, 3, 4]
+folds: [0, 1, 2, 3, 4]
+schemes: [S2_EXACT_2TRAIN_2CAL, S3_EXACT_2TRAIN_2CAL_SCALED]
+tau_candidates: [2.0, 5.0, 10.0, 20.0]
+candidate_models: [direct, isotonic, ridge_10, ordinal_1]
+bootstrap_repetitions: 5000
+bootstrap_seed: 20260805
+max_workers: 8
+scale_quantile: 0.75
+scale_l2: 0.001
+scale_intercept: 0.25
+protected:
+  formal_calibration_opened: false
+  internal_final_opened: false
+  cap_opened: false
+

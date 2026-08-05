@@ -1,0 +1,68 @@
+{
+  "alpha": 0.1,
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 20260805,
+  "budget": 20,
+  "candidate_models": [
+    "direct",
+    "isotonic",
+    "ridge_10",
+    "ordinal_1"
+  ],
+  "datasets": [
+    "hmc",
+    "eegmmidb"
+  ],
+  "delta": 0.1,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "hard_stop": true,
+  "input_hashes": {
+    "delivery/budgeted_risk_v51/V51_DIAGNOSTIC_FREEZE.json": "15dc72ab1f7f40967d9dd204925089ade5943ae5cbb374bd56e654d7c3f5b006",
+    "delivery/budgeted_risk_v51/V51_PARTIAL_CHECKPOINT.json": "77dc910e36ea75b15eac0737c4352880d523183b100230ad7c27e0c284d1045a",
+    "delivery/budgeted_risk_v51/V51_PAUSED_BY_USER.md": "c772fc04192fd7a25f584e034ff5b2ac057769ea094e90a3f0670a9e93b3a20e",
+    "delivery/budgeted_risk_v51/V51_REPOSITORY_AND_RESULT_AUDIT.md": "73de526590130971426a13aab5900ea985fc76a4786e8aa5ec3ea763de73c8f0",
+    "outputs/budgeted_risk/source_cache/STAGE0_CACHE_MANIFEST.parquet": "e9da172f0926c6d20236e12ac1536bcd8e0aaf182050932659d0c2cbf6b55aa3",
+    "outputs/budgeted_risk_v51/results/CALIBRATION_RESIDUALS_S1.parquet": "c647efd792c6b684f849d64f7165dcedaa5ac8223111d76d2ec4a41242e9c872",
+    "outputs/budgeted_risk_v51/results/RAW_PREDICTOR_RESULTS.parquet": "54f8283e783b382af120efaace4e71997203c25d9f31371be4329e0105a8995e",
+    "outputs/budgeted_risk_v51/results/S1_REPRODUCTION.json": "14c3f3e6b943d7fe9922badf872d0f3479035c1537637c794d2a2b0836832cab",
+    "outputs/budgeted_risk_v51/results/S1_RESULTS.parquet": "54f8283e783b382af120efaace4e71997203c25d9f31371be4329e0105a8995e",
+    "outputs/contextual_risk/cohorts/MASTER_SUBJECT_COHORTS.parquet": "022830f5787e3ceb98e6508c47fa3cb423d422b72a330d717afc1c49461097cf"
+  },
+  "max_workers": 8,
+  "ordinal_fix_commit": "b3c2e25a0bb5b13b09cb48736663b6a16da41c69",
+  "protected": {
+    "cap_opened": false,
+    "formal_calibration_opened": false,
+    "internal_final_opened": false
+  },
+  "scale_intercept": 0.25,
+  "scale_l2": 0.001,
+  "scale_quantile": 0.75,
+  "scale_spread_definition": "local_kappa_std + (local_kappa_q90-local_kappa_q50)",
+  "schema_version": "budgeted-risk-v51-mini-v1",
+  "schemes": [
+    "S2_EXACT_2TRAIN_2CAL",
+    "S3_EXACT_2TRAIN_2CAL_SCALED"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "stage0_run_commit": "ae6c5a039935736d350da6d952463ff1bd83e574",
+  "strategy": "temporal",
+  "tau_candidates": [
+    2.0,
+    5.0,
+    10.0,
+    20.0
+  ]
+}

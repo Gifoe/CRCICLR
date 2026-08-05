@@ -1,0 +1,855 @@
+{
+  "files": [
+    {
+      "bytes": 156,
+      "path": "delivery/budgeted_risk_v51_mini/LIMITATIONS.md",
+      "sha256": "5ca6d2615c54ba8d3628ef1b5c4b1552b33b0a3c7968770242943bbae54d6625"
+    },
+    {
+      "bytes": 1088,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_COMPARISON.md",
+      "sha256": "70fe4d0f95a97df0a3eeeb1ae89d3f6fd20a1b301b7662c34179f18d7fbcda5a"
+    },
+    {
+      "bytes": 304,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_DECISION.json",
+      "sha256": "ff79a0dce4960758d311081bf9c37dd8dfe7f7841cb462afbfd6625b55293ed4"
+    },
+    {
+      "bytes": 1252,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_DECISION.md",
+      "sha256": "fc9279669f3c938abf9c07cb0f645a01d581efcb8ba5f06abd3255e5f897bff8"
+    },
+    {
+      "bytes": 2393,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_FREEZE.json",
+      "sha256": "bd75af96e858e1aeb61491ef3023136c3080683e9a8be6ac9c1050700c0446ab"
+    },
+    {
+      "bytes": 1442,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_INPUT_AUDIT.md",
+      "sha256": "a1fa8017f2e56b1f5fedfab7fa1b093701fab4a11c0c804ae9667d3d7b524114"
+    },
+    {
+      "bytes": 339,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_PROTOCOL.md",
+      "sha256": "d9bcc843d1e3b6a1fc1f5d873fc02ea47874a06419ef94adca1f9a863159400d"
+    },
+    {
+      "bytes": 437,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_Q_DRIVER_ANALYSIS.md",
+      "sha256": "47e301a279eee775d05aadded668f52829c6f68a7b26513938c4945d7ce700d6"
+    },
+    {
+      "bytes": 748,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_S2_REPORT.md",
+      "sha256": "4d9e768d19dc329897248c967d15109e8dabc040ee9f7eb0f69afd31a7bd7176"
+    },
+    {
+      "bytes": 762,
+      "path": "delivery/budgeted_risk_v51_mini/MINI_S3_REPORT.md",
+      "sha256": "b3cf11034a0aa15128c0c851831f1f673c85c0b99aa7facff64fc42220de8028"
+    },
+    {
+      "bytes": 199,
+      "path": "delivery/budgeted_risk_v51_mini/REPRODUCE.md",
+      "sha256": "1bff6a3ac8fb4e69f651106eeca540a1e3086964de54f8a73f1ac05b35d40ace"
+    },
+    {
+      "bytes": 10,
+      "path": "outputs/budgeted_risk_v51_mini/FAILURES.csv",
+      "sha256": "096a68cc79eb256595b1b4b91c754beefccc96750e96274c3915da312cc7cc8b"
+    },
+    {
+      "bytes": 1168,
+      "path": "outputs/budgeted_risk_v51_mini/FINAL_TESTS.txt",
+      "sha256": "733eddb44e8e05a43f4cd9f900fa0443900186b0bd99f2f3d4d3330fd88086c6"
+    },
+    {
+      "bytes": 2460,
+      "path": "outputs/budgeted_risk_v51_mini/MINI_SUMMARY.csv",
+      "sha256": "9458a79716148591af4cd0370ce4740323a973bc0be30724b239f0a9b927e306"
+    },
+    {
+      "bytes": 15379,
+      "path": "outputs/budgeted_risk_v51_mini/Q_DRIVER_RESULTS.parquet",
+      "sha256": "7c08f207ede63c8702a8da2cfd9bf710b4ae16d8f5a55f8ded2dab8fd49bed14"
+    },
+    {
+      "bytes": 2428,
+      "path": "outputs/budgeted_risk_v51_mini/RESULTS_BY_SEED.csv",
+      "sha256": "423008f08376ae9c8e890745122027feb96ed37d75e0062da44a70a14edb93cb"
+    },
+    {
+      "bytes": 71159,
+      "path": "outputs/budgeted_risk_v51_mini/RESULTS_BY_SUBJECT.parquet",
+      "sha256": "5e2520b662fd8bf59d3520ff352848b86697354e1677427ce3d5414d392f3647"
+    },
+    {
+      "bytes": 27823,
+      "path": "outputs/budgeted_risk_v51_mini/RUN_STATE.json",
+      "sha256": "a42cca8cf5fa19b2833b533815b026724b7a8119ba748e93e91789c7f7178ae0"
+    },
+    {
+      "bytes": 89936,
+      "path": "outputs/budgeted_risk_v51_mini/S2_RESULTS.parquet",
+      "sha256": "d4254f0b495277d2092100cc46170a407c7de8af30549929cc0551f3e8a0c6b6"
+    },
+    {
+      "bytes": 96889,
+      "path": "outputs/budgeted_risk_v51_mini/S3_RESULTS.parquet",
+      "sha256": "f555f58506a9080caec6106f33a855ce02b1963a7e95bf4b9b892c7fa856baf0"
+    },
+    {
+      "bytes": 2822,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed0_fold0.json",
+      "sha256": "f28d221cb47be4eff29c5e1e5baf38564d1b90444cdb08d51c69c36a63df60c7"
+    },
+    {
+      "bytes": 2843,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed0_fold1.json",
+      "sha256": "ccb9d45711a06dd8cc96b89605aa4c6cbe6e2345a268729e4cadfc567759a4fc"
+    },
+    {
+      "bytes": 2858,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed0_fold2.json",
+      "sha256": "4367ded46918f46af7e90424213d43f6b070b8929ef2000054828d296475f06f"
+    },
+    {
+      "bytes": 2853,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed0_fold3.json",
+      "sha256": "05f9e9bbdb22d315a40157ca726e11f7ffcc30ee3e411c8e61753815bc048a5d"
+    },
+    {
+      "bytes": 2841,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed0_fold4.json",
+      "sha256": "71bad2bc1ef57543e190fa09e109ba1ab51c389f2935328365baa4e46701e144"
+    },
+    {
+      "bytes": 2843,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed1_fold0.json",
+      "sha256": "65181ee446b6b656438df9981d79a4168668856b375af376e4c297320d7517c5"
+    },
+    {
+      "bytes": 2844,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed1_fold1.json",
+      "sha256": "1c6b037938338f484cac3a6dd9b955d515b79e2f32d10c0921185fa26fe38049"
+    },
+    {
+      "bytes": 2860,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed1_fold2.json",
+      "sha256": "b83d31ada7cefc907ab0a59206354a0d069a00d23ba27ed62f62fe39d6a78bbd"
+    },
+    {
+      "bytes": 2857,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed1_fold3.json",
+      "sha256": "ff2c3a405e9f7666793458dd322eb446f3ee24e1aaca7caa2602a9be6a152f98"
+    },
+    {
+      "bytes": 2841,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed1_fold4.json",
+      "sha256": "e2e5e0d117e7a78f21dcfc372c1acc7b1f16d7a433e1a5e8cc3b53b217ca0a71"
+    },
+    {
+      "bytes": 2825,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed2_fold0.json",
+      "sha256": "5f511c77cc6a624c7f8b267ded303b9bf83fac493d0014bfd87beb0179f7d818"
+    },
+    {
+      "bytes": 2806,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed2_fold1.json",
+      "sha256": "ea2e9c09a31b95097abd1c398f1e6e9c1e22d1d184f0780de49310c554b91ae7"
+    },
+    {
+      "bytes": 2845,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed2_fold2.json",
+      "sha256": "839a489aa2e873ad8d6c9a63a1417d27a5d51d9da84adb825f2188e3c6b881d9"
+    },
+    {
+      "bytes": 2843,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed2_fold3.json",
+      "sha256": "f891c9fcd843897af54e491c54b812ccb88af1caf32729327430eb9e4768c03a"
+    },
+    {
+      "bytes": 2825,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed2_fold4.json",
+      "sha256": "df0d6953dccd962cde773b39ef3722a614e7763b940d29122b49baedff1f7cfc"
+    },
+    {
+      "bytes": 2857,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed3_fold0.json",
+      "sha256": "cbdcf72396cc96aa77f4f89457eabf795072e05320a2bcc7dc4bb67adb33ab0b"
+    },
+    {
+      "bytes": 2821,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed3_fold1.json",
+      "sha256": "f94d5ec42eb4e494b5e4c223d8d0a3b3da12f7bd9e2da23bfda2ce15b6b9a8cd"
+    },
+    {
+      "bytes": 2856,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed3_fold2.json",
+      "sha256": "db82f071f663cdb895b71212dc48082329b28562ad3b084cda4214620956de4d"
+    },
+    {
+      "bytes": 2807,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed3_fold3.json",
+      "sha256": "b15480aa415ea7baf00d261bee2291561f48710111d286314abd80c168d163c3"
+    },
+    {
+      "bytes": 2827,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed3_fold4.json",
+      "sha256": "604e96abee9ed08d50ed459bbb3f47782f4aa5a8cbb572d3157bd49d6c7218c7"
+    },
+    {
+      "bytes": 2839,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed4_fold0.json",
+      "sha256": "f62191ebe51ba68a5758da2df548ea0fe60f3aa3503abe54853cd51fa8fb9720"
+    },
+    {
+      "bytes": 2860,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed4_fold1.json",
+      "sha256": "c2182488cec516a89fa349e5a3ffbdd10d1487fcb015cf634b710fb48b88fa9d"
+    },
+    {
+      "bytes": 2780,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed4_fold2.json",
+      "sha256": "ecf99beb1381f6e10d2255770000cf05091df3470d2bdd6959b92a139c05d1d4"
+    },
+    {
+      "bytes": 2858,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed4_fold3.json",
+      "sha256": "c04da00df80f3766bc247ae54539233dc4f7eba2b1d7ff3f145c52a80f5ce3a0"
+    },
+    {
+      "bytes": 2842,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_eegmmidb_seed4_fold4.json",
+      "sha256": "7050e0a1135a03828b475b628cbd0cff3b78bee0d1a2987417b9a0a7e1e40661"
+    },
+    {
+      "bytes": 2922,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed0_fold0.json",
+      "sha256": "f349c4a4566fa7b547464c11049676864db29848aa939334cab809579fb7ae11"
+    },
+    {
+      "bytes": 2918,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed0_fold1.json",
+      "sha256": "90034052541a6b7333bcbcbf88fce811775402a34d141efeef21572e50b0e50d"
+    },
+    {
+      "bytes": 2919,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed0_fold2.json",
+      "sha256": "2df2062c2672530343bdf4e37818192f11260fa48eee627c585a0907e5d28284"
+    },
+    {
+      "bytes": 2938,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed0_fold3.json",
+      "sha256": "16e512f201d2f92ffcedabda3326c64c01cb54bb2d124a571f3e21b6f9a00e7a"
+    },
+    {
+      "bytes": 2938,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed0_fold4.json",
+      "sha256": "ddaa4057244ee7109e44abe084671603cf0aa6669b95bf236916fe0cf9fa3f07"
+    },
+    {
+      "bytes": 2926,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed1_fold0.json",
+      "sha256": "2bd5a35ccb05880b4a7a180ecab306e4d56a581772d678213f619899448efb68"
+    },
+    {
+      "bytes": 2919,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed1_fold1.json",
+      "sha256": "f9e6172fd02e47b1621e182a2f447c970a54939befbe6e01500ff8a580e1cb8e"
+    },
+    {
+      "bytes": 2923,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed1_fold2.json",
+      "sha256": "426da4ea2d3a5729215b2edb95fc7496b6f037074f83e3b8831c8da7485a8a77"
+    },
+    {
+      "bytes": 2923,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed1_fold3.json",
+      "sha256": "c1a7ff1d9c4d9abc1d1d235d2451212b7a87d331c1e908c0cd73ae31ff871a7a"
+    },
+    {
+      "bytes": 2939,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed1_fold4.json",
+      "sha256": "4ae9bbdcf362e0294e650f9acf79867c774f2572527167de7019843f71c96ab4"
+    },
+    {
+      "bytes": 2941,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed2_fold0.json",
+      "sha256": "9ad0295fd7c2a8b0916b2168e92477556370064d59c822ee9a2a6c927ec85d9f"
+    },
+    {
+      "bytes": 2919,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed2_fold1.json",
+      "sha256": "a97fdbf42ac981cfe0ce4937d4765630ae72b10b38f395cb06ab9f489d64680a"
+    },
+    {
+      "bytes": 2918,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed2_fold2.json",
+      "sha256": "21e2c5a702730059952b8e01d0ab24779a1ba0922b296e48f32e08b833278a3f"
+    },
+    {
+      "bytes": 2922,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed2_fold3.json",
+      "sha256": "deed6222cbd5c683924d2e37a19fc5543aca9f0381345a4b28499d720b44b6b5"
+    },
+    {
+      "bytes": 2935,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed2_fold4.json",
+      "sha256": "4f1b70075c6a1da0612d9a24dee1fd51c0fe8de45b5a4acfac13950e2f20462d"
+    },
+    {
+      "bytes": 2936,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed3_fold0.json",
+      "sha256": "26c4cb74f2d0042a57f2d6f103630cb4e86d1e1f8c879e100911fdb57cfe0327"
+    },
+    {
+      "bytes": 2940,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed3_fold1.json",
+      "sha256": "57d306a29e5cc07b4be61e0fab0ae74ba16c30795f16252ae31b6eb0cfd1f882"
+    },
+    {
+      "bytes": 2919,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed3_fold2.json",
+      "sha256": "0cb2da1bfc767a5560d2abe0293b6b170d05b7604c0ba963db95bf53f75109f2"
+    },
+    {
+      "bytes": 2921,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed3_fold3.json",
+      "sha256": "0e325b9cbf5c88449ba42c95661f2f685fb977c67fa2d66ac7f917b058bfe3fc"
+    },
+    {
+      "bytes": 2921,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed3_fold4.json",
+      "sha256": "dc9c6e10111da96e7bec1f1d4454f4e35f4ad67b4fafb5830d70ac483da38e23"
+    },
+    {
+      "bytes": 2920,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed4_fold0.json",
+      "sha256": "5eb65e209865f1dedc2be4e52578292d71756a3df467d947195df60bd517f743"
+    },
+    {
+      "bytes": 2918,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed4_fold1.json",
+      "sha256": "572d0d4c189be05256af92d81cf7d57ff16949e6bfb9325466ad10785668a43c"
+    },
+    {
+      "bytes": 2921,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed4_fold2.json",
+      "sha256": "211ee453bd1e7bbd789e9fb09fd5fa45bc2865907c6da60d07a71717460a2bf8"
+    },
+    {
+      "bytes": 2922,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed4_fold3.json",
+      "sha256": "659f5d0038aabb1da6aed4abe7938bbd8fcdab3486eb22e614c294bd9cd2af16"
+    },
+    {
+      "bytes": 2924,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_MODEL_hmc_seed4_fold4.json",
+      "sha256": "645e8539d487a11f40a35ac0cba3e8570f6acf18ff452adc5aa1a9e51d30f2ad"
+    },
+    {
+      "bytes": 59417,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed0_fold0.parquet",
+      "sha256": "2bbbc8352e519a13c37c9557cffb6fd349a3eb7aa454ef26600a6243ac97fa5d"
+    },
+    {
+      "bytes": 59280,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed0_fold1.parquet",
+      "sha256": "675cef19a773a9f907753d2077ae0fa88889da1291baa7af32554a7fbc271627"
+    },
+    {
+      "bytes": 59432,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed0_fold2.parquet",
+      "sha256": "8179fd86a40b8e10893524939dfcf3030d18ac2250167966a77c3ed55510579b"
+    },
+    {
+      "bytes": 59359,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed0_fold3.parquet",
+      "sha256": "0a2d1e7ab80f23376212709f6dfbe99e12bbe8d3eb5df26844e3e38c2c5467bc"
+    },
+    {
+      "bytes": 59006,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed0_fold4.parquet",
+      "sha256": "3e5491bdb7c9f2839ff71139098a52683d191540d5090ce1d4c819d9e2723652"
+    },
+    {
+      "bytes": 59467,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed1_fold0.parquet",
+      "sha256": "dc17f77c3af79ad9ba44d9da3ebec6c54703a6a9f8301627a9a73609b33413ac"
+    },
+    {
+      "bytes": 59282,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed1_fold1.parquet",
+      "sha256": "157fa3c96aef4e4bcda8e0777de9fef2af5921d0765358660b88bb123a5a4384"
+    },
+    {
+      "bytes": 58999,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed1_fold2.parquet",
+      "sha256": "8141316f1d6ec9f61872a58411fab63936cf7e5e76dc07f9990d6b5967be14d6"
+    },
+    {
+      "bytes": 59413,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed1_fold3.parquet",
+      "sha256": "4c18301cbcffcddce5f9a227930edaa4ecb800219444ddffea7f0658fef4e471"
+    },
+    {
+      "bytes": 59451,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed1_fold4.parquet",
+      "sha256": "c654c5386930a89f60493420c35f9a83699c93e5973db02451cf09dece8e8a3d"
+    },
+    {
+      "bytes": 58963,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed2_fold0.parquet",
+      "sha256": "b23663b68a043346059fc71252c387837a05c35e0eb974cbeb62f7ed239d7642"
+    },
+    {
+      "bytes": 59404,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed2_fold1.parquet",
+      "sha256": "30a1c7f0fdd7fd912126bfcbafd9ab63983aeed31625959ebb07b8154619baee"
+    },
+    {
+      "bytes": 59408,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed2_fold2.parquet",
+      "sha256": "0e7592d8a81d518c3b1a56e4d89b04acdf177ccdbaa95c43c3d3457d5d2849d0"
+    },
+    {
+      "bytes": 59407,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed2_fold3.parquet",
+      "sha256": "04fe3ea96b5f5dbdb4d1910558235b9bde0faf6128ff594c6f48bb3d9aa9dddc"
+    },
+    {
+      "bytes": 58944,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed2_fold4.parquet",
+      "sha256": "df00289771112793ab4b97fde8234fb4c5336ca71823bc17872185c5585d9cc6"
+    },
+    {
+      "bytes": 59539,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed3_fold0.parquet",
+      "sha256": "c0a9534d84db6684445cf087c9935b7cfa1fe9a295381679da284e3de7b4e4fe"
+    },
+    {
+      "bytes": 59315,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed3_fold1.parquet",
+      "sha256": "a7327f3d4c9833ab5f76795e28cb91e544e80a45d32655d8fe2d6e57462a8a8d"
+    },
+    {
+      "bytes": 59613,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed3_fold2.parquet",
+      "sha256": "6cd4ec1f36ad44f443a10380addfdd6cf072c9b02af4efc1897f634fbfa5b0bd"
+    },
+    {
+      "bytes": 58963,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed3_fold3.parquet",
+      "sha256": "05c8bca960a8df20339461cb2879ccab7d71cc30fc1fc1fe198b9faf063536d1"
+    },
+    {
+      "bytes": 58959,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed3_fold4.parquet",
+      "sha256": "68e4dcdcccf0f926b88e65812cf55b31db2eb096cb6d5082833081183ca4cb81"
+    },
+    {
+      "bytes": 58891,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed4_fold0.parquet",
+      "sha256": "c09119f0d795e36a59960e9a4d0091f67ab85bbc6c27eb8edc53884210efe205"
+    },
+    {
+      "bytes": 59363,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed4_fold1.parquet",
+      "sha256": "2a3f5c7ffbcddeb1a3a9b42e347059c9098d9828d526e341e9ad9c3433a26d3c"
+    },
+    {
+      "bytes": 59380,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed4_fold2.parquet",
+      "sha256": "720f2b7e55d1637cf551e5a223bd5893df0f471c83fe40417a82ed970eae8728"
+    },
+    {
+      "bytes": 59343,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed4_fold3.parquet",
+      "sha256": "22c06ab5d546ce08e5ffad04fea5bfa56be787fb49a5b3b30d2a91eb264a3a67"
+    },
+    {
+      "bytes": 59338,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_eegmmidb_seed4_fold4.parquet",
+      "sha256": "8af9ef4b546b4a2003a6db241c113f32c2b466e0912551144623436f8077b0c5"
+    },
+    {
+      "bytes": 69776,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed0_fold0.parquet",
+      "sha256": "58be1a489d8e78d1a2802731f644d8a5f613f86eaad2e5c726cbc218e579f93c"
+    },
+    {
+      "bytes": 69912,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed0_fold1.parquet",
+      "sha256": "fbcfb5e09710a807341324fab3b7b08b6abb90d08a8dfa683f099c12c7eccdca"
+    },
+    {
+      "bytes": 69909,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed0_fold2.parquet",
+      "sha256": "f51a81539f42d64a2ecc8d3bee025ac0cd95f60f675e167b6c0d66d7186a5cb5"
+    },
+    {
+      "bytes": 69901,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed0_fold3.parquet",
+      "sha256": "72561c4e8315422e698d3e57711e3853926af71ad73fd8b8804a732eb4c62ef0"
+    },
+    {
+      "bytes": 70722,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed0_fold4.parquet",
+      "sha256": "04fcb1abf4c325c797f74ff60abc1e807427c0a3d6337ccd3d7211dc0a42031a"
+    },
+    {
+      "bytes": 69943,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed1_fold0.parquet",
+      "sha256": "27fffd3beec7b0163df32a623a19f44ec195bf18441116bba87596161685ca39"
+    },
+    {
+      "bytes": 70009,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed1_fold1.parquet",
+      "sha256": "000f276e82b9f48fa4d57e5d5f317c8219f796fb33754d7e68837f6d4896ce79"
+    },
+    {
+      "bytes": 69979,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed1_fold2.parquet",
+      "sha256": "370d71aaef0ae62e495b04d75e13126c39a0a8d4a6f93e21d6f4012e72e9235d"
+    },
+    {
+      "bytes": 69918,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed1_fold3.parquet",
+      "sha256": "e974d3f14beb28a9dadbec773f9bc51095258dcdd726677285c5ae3900d340a1"
+    },
+    {
+      "bytes": 70627,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed1_fold4.parquet",
+      "sha256": "a13cc83d9f2e328fafb5ef1db0205a3004b3fba94355eaa28001d60b01788fd3"
+    },
+    {
+      "bytes": 69830,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed2_fold0.parquet",
+      "sha256": "2b19b393a6432d40daaedc8b26675f7c04a74f2ccfd51a6b791b6de80000540b"
+    },
+    {
+      "bytes": 69983,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed2_fold1.parquet",
+      "sha256": "e845c72e868377487f7d741e2b8b6d3102857f865aa1485bf8b1d3e9812a1ec7"
+    },
+    {
+      "bytes": 70077,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed2_fold2.parquet",
+      "sha256": "952dab9363214a64286d41eeb475fe3aeb4b212d8242da64362d5784935a2cfc"
+    },
+    {
+      "bytes": 69751,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed2_fold3.parquet",
+      "sha256": "4f7ddc320879f3f47743bf786c0168c795cc65a5a222bbbdb78fb91014ed3790"
+    },
+    {
+      "bytes": 70596,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed2_fold4.parquet",
+      "sha256": "3ee4145dea11724ec2d5a308ea7ea45b75d82bcfd979f1479e948f8310128b0b"
+    },
+    {
+      "bytes": 70029,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed3_fold0.parquet",
+      "sha256": "9553df6f9a4d812ddd95ef77f2c29f6e1faa9ebcab4891d8fb366d32d359c24d"
+    },
+    {
+      "bytes": 70662,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed3_fold1.parquet",
+      "sha256": "5938b9b18fe3b8c8ed7e809e4ed27c9b05d6acddc731fa00d4ab00ec9ba6a6e6"
+    },
+    {
+      "bytes": 69904,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed3_fold2.parquet",
+      "sha256": "c30d7ed76d8a8d2855567519805d25f7942826d841950d01f0504f4564ccd717"
+    },
+    {
+      "bytes": 69891,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed3_fold3.parquet",
+      "sha256": "8dcceb4377c03f2ff3fccf313ebe2554027b5880f62b047373670d318a31d8e2"
+    },
+    {
+      "bytes": 69897,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed3_fold4.parquet",
+      "sha256": "c01a78552a4a8c440e0e4deca016e4b1258dba9cf83e9223dd36bc9494505635"
+    },
+    {
+      "bytes": 69881,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed4_fold0.parquet",
+      "sha256": "146ce3016da593971fa0d5423444a98c1d3a0e96d678b00158533be4047ba269"
+    },
+    {
+      "bytes": 69868,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed4_fold1.parquet",
+      "sha256": "45afd593555da497734ee8b570de2713ea0312afc32ee5b02e7ea35b73809e30"
+    },
+    {
+      "bytes": 70029,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed4_fold2.parquet",
+      "sha256": "7e5db9e2f393f6c3c9985db6a3f3b19bb07992bca16bbcb9a93d3717b9bbd2ed"
+    },
+    {
+      "bytes": 70017,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed4_fold3.parquet",
+      "sha256": "e2c17da31bfe9a43e9d60eafe3708034a406e2ce0027ce3a9993775abb9e7efa"
+    },
+    {
+      "bytes": 69781,
+      "path": "outputs/budgeted_risk_v51_mini/base_predictions/BASE_PREDICTIONS_hmc_seed4_fold4.parquet",
+      "sha256": "8977091ca4d371755de74fe5447f18e6fa3c746cbd42b9984ab9871f18d9bb94"
+    },
+    {
+      "bytes": 34745,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed0_fold0.parquet",
+      "sha256": "1f6e37b98eea3abf03e8a2864f4ec2751e7754c376b2652c43dd69ff1a74f91c"
+    },
+    {
+      "bytes": 34704,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed0_fold1.parquet",
+      "sha256": "bd8ef7c8840f6ccb7081a4ffd800e266a9695def4b7588f3d8e4f6c8b12895c3"
+    },
+    {
+      "bytes": 34819,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed0_fold2.parquet",
+      "sha256": "a36bd87be24c8fc476a3ba3d75166f88fe1a68c2f875869e7e117eb2a2244944"
+    },
+    {
+      "bytes": 34204,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed0_fold3.parquet",
+      "sha256": "e02fa4a862330078c50ced2c3182a219b98272b397fab879e29eb961af516e88"
+    },
+    {
+      "bytes": 34359,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed0_fold4.parquet",
+      "sha256": "401ff65f9c16e6e32b59c690365db71ec208d50e7cee03aee115a94a0bbf5db2"
+    },
+    {
+      "bytes": 34731,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed1_fold0.parquet",
+      "sha256": "989d6f60338e0de1bdb0dc4c7a65b6ce80f3d9bd78013b47318e21de1d1343e1"
+    },
+    {
+      "bytes": 34677,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed1_fold1.parquet",
+      "sha256": "fbc46aa8d1b11afa29f1c0e3379f958776a975f87b015e388765c778a7fdb86d"
+    },
+    {
+      "bytes": 34269,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed1_fold2.parquet",
+      "sha256": "9ea6ae6404fdea4c1955b0595548928c09843c5ec8efe51e0ebbd4cd3f05f1d2"
+    },
+    {
+      "bytes": 34193,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed1_fold3.parquet",
+      "sha256": "18f6ac9734ae3a436b255a552e1a96c5c2fc0eff1311379071b2675725c9f704"
+    },
+    {
+      "bytes": 34874,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed1_fold4.parquet",
+      "sha256": "e674750b2b0f7ee21415528ae1324345b59eaffef802fdfaf88a000de8227c9b"
+    },
+    {
+      "bytes": 34464,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed2_fold0.parquet",
+      "sha256": "c8b45e01d21af2448c8a3b62cad7d782cce4faf3a02bcd01a69f72459868cdd8"
+    },
+    {
+      "bytes": 34819,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed2_fold1.parquet",
+      "sha256": "114e8592c59f4461c0cbc2b18869e69413364e99055967f6d0e7c2d2fbf23550"
+    },
+    {
+      "bytes": 34801,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed2_fold2.parquet",
+      "sha256": "4fd0149ce7ad5801ca10861dd2c9fe6182264bf983c077ac4af062bb07384968"
+    },
+    {
+      "bytes": 34308,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed2_fold3.parquet",
+      "sha256": "0c9253053ddcb8dd26ea13e2e27549c3c434d852a6cc97c5a796aa1c9c07d1eb"
+    },
+    {
+      "bytes": 34763,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed2_fold4.parquet",
+      "sha256": "8d77e40d063ce9874b1e92d38f9652e99330860af33c785dfd7599c9d520d024"
+    },
+    {
+      "bytes": 34913,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed3_fold0.parquet",
+      "sha256": "8019e34182e84b9e97f147bdb0f9338943dbf5f44402c5a92bb315e124d1829b"
+    },
+    {
+      "bytes": 34745,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed3_fold1.parquet",
+      "sha256": "e989ac0835a130135502c4346407a6578ecec5a122fd3e72be9f6e9b93eee84a"
+    },
+    {
+      "bytes": 34852,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed3_fold2.parquet",
+      "sha256": "bd11003fae6b42f8758d4001f5728cefe3bff0ffa7921ee5cd0719b66a836953"
+    },
+    {
+      "bytes": 33989,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed3_fold3.parquet",
+      "sha256": "9cd5ac39047aeef0498a1a5cbe565cb9c8b7ad5fb080450d40569d7efcf01dec"
+    },
+    {
+      "bytes": 34706,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed3_fold4.parquet",
+      "sha256": "204db36f83118e1e0a4922a1487ff97b9c5a6a0ea62071633e01529cb1bdda98"
+    },
+    {
+      "bytes": 34694,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed4_fold0.parquet",
+      "sha256": "82d387cc8c52880798ac5c8f68e4f7aa3a99dc4c4f0bcc7f34384ce1455e8335"
+    },
+    {
+      "bytes": 34999,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed4_fold1.parquet",
+      "sha256": "69719ea5647b813f93fceba09e55511887cf04d7103aec8a1fe995f2f5ca1cd7"
+    },
+    {
+      "bytes": 34610,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed4_fold2.parquet",
+      "sha256": "37e053c6e672662de399447da38996ebd4577c3e6bc98e2b40375d679f54a772"
+    },
+    {
+      "bytes": 34333,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed4_fold3.parquet",
+      "sha256": "d3812977a9da4bb57adde486567eee0236df66fa7b97d8f4eaa740ac79af42dd"
+    },
+    {
+      "bytes": 34890,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_eegmmidb_seed4_fold4.parquet",
+      "sha256": "4d92229180dd3fb49a3435329948ae4ea68b83cadaa5114b1b48a8d9d1197c59"
+    },
+    {
+      "bytes": 34943,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed0_fold0.parquet",
+      "sha256": "658e7af05d2ec7d2533360453bffb7acde50007b69ee5b436ce9e23f8b6f7f53"
+    },
+    {
+      "bytes": 37607,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed0_fold1.parquet",
+      "sha256": "51c67d94c7dc9830150ff51b8140982ae073777db9574a9cd12947ea0c8160e8"
+    },
+    {
+      "bytes": 35758,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed0_fold2.parquet",
+      "sha256": "c378861e99d6f6d6be1be008abf5ac9556e6bd125de281f9dc56a1540ad16673"
+    },
+    {
+      "bytes": 35580,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed0_fold3.parquet",
+      "sha256": "74cbaa410282523a5a6b1a780042eb914114056430b6bcc9a2f535f244bc57a4"
+    },
+    {
+      "bytes": 36764,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed0_fold4.parquet",
+      "sha256": "111c64f08b66ad0cde3515c57afcc8145025db364027406f2471983547f15464"
+    },
+    {
+      "bytes": 34948,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed1_fold0.parquet",
+      "sha256": "db0704a6db34a5e0bc5906183555e5f30a476d7346be33eb85a831190973a244"
+    },
+    {
+      "bytes": 37599,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed1_fold1.parquet",
+      "sha256": "ce33c9c20317e23a806ab27d69bdfd0718522a75e60d822902f42f4981319aad"
+    },
+    {
+      "bytes": 35548,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed1_fold2.parquet",
+      "sha256": "6d44f6734773f7fd09020a6d3b74cbccee5d0b99cb7c28acdb3068368e35c9d0"
+    },
+    {
+      "bytes": 35621,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed1_fold3.parquet",
+      "sha256": "03dc5e4269620313d45a9441cbe90784df0fcf8c80ea97e662f743723d4e0559"
+    },
+    {
+      "bytes": 36599,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed1_fold4.parquet",
+      "sha256": "02f11499189931b7497c3563fa2e35ef4aec0173e007d1645f81be1c3a6c8aa3"
+    },
+    {
+      "bytes": 35046,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed2_fold0.parquet",
+      "sha256": "33595c6a23dc42bc9435b615c01866c3677a95ce4569120ea9799a69bc0674f4"
+    },
+    {
+      "bytes": 37534,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed2_fold1.parquet",
+      "sha256": "378809c95b4d987937ceae3489fc0226dcae3ce4dff6f09cd685ebdbe776bff8"
+    },
+    {
+      "bytes": 35676,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed2_fold2.parquet",
+      "sha256": "1c3e5cf3f5e5e22f0f3d33195c9d40a001c068f5484e316c93cdf6cf19e1513f"
+    },
+    {
+      "bytes": 35546,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed2_fold3.parquet",
+      "sha256": "275e0764508f70ecb9492f1b340d1393d4eefd78e8bd76fa97083d89a1e7fa99"
+    },
+    {
+      "bytes": 36773,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed2_fold4.parquet",
+      "sha256": "3fa58535f2e36fc89279232a034cb947465db93df2607a24fe5927412e079e0e"
+    },
+    {
+      "bytes": 34860,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed3_fold0.parquet",
+      "sha256": "2b0d8a0e99873da79b492477e4a3c687533f8ba7669df986c37698827b25d993"
+    },
+    {
+      "bytes": 37975,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed3_fold1.parquet",
+      "sha256": "e8efda8d6901118718d3862ceb29903ef61222364948302545da9bc9052ee3b4"
+    },
+    {
+      "bytes": 35740,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed3_fold2.parquet",
+      "sha256": "9016acac9bf912977822b9e90295aab5ccb99e51155feced840a153311d4f0ce"
+    },
+    {
+      "bytes": 35581,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed3_fold3.parquet",
+      "sha256": "f94c7dd797864a1a8951e848f8d840750423a36d584f2230aeafcffc28f41384"
+    },
+    {
+      "bytes": 36374,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed3_fold4.parquet",
+      "sha256": "7a478c25e9e14819dd52295dbad089ed1712b85271e33bbcb8ae01b25a425f21"
+    },
+    {
+      "bytes": 34781,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed4_fold0.parquet",
+      "sha256": "b2b6b9fafff32b21317e7ecfead82e59038deff82d0218c64348f8aec646b837"
+    },
+    {
+      "bytes": 37542,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed4_fold1.parquet",
+      "sha256": "ae77141091c94d7091c6483797050cd88bb7fb6656a8454829ceebf096c7d29f"
+    },
+    {
+      "bytes": 35752,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed4_fold2.parquet",
+      "sha256": "0960df5bf9b5edd4049ac79bea82ba15db5d78c6e6d07a30732788710f103a84"
+    },
+    {
+      "bytes": 35760,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed4_fold3.parquet",
+      "sha256": "45b8ce05ed3605b638add95cd1ed9437ecc15faa820a2877f2e251102278f906"
+    },
+    {
+      "bytes": 36374,
+      "path": "outputs/budgeted_risk_v51_mini/job_results/JOB_RESULTS_hmc_seed4_fold4.parquet",
+      "sha256": "aea43514f4af1985461e2a0e382493f3106c3c3d2e85ee30e29c31f57abaf294"
+    }
+  ],
+  "verdict": "MINI_STOP_FEWSHOT_FUTURE_CRITICAL_INDEX"
+}
