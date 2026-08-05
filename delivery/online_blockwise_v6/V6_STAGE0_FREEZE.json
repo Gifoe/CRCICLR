@@ -1,0 +1,73 @@
+{
+  "K": 20,
+  "alpha": 0.1,
+  "backbone": "frozen CBraMod",
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 20260806,
+  "datasets": [
+    "hmc",
+    "eegmmidb"
+  ],
+  "delta": 0.1,
+  "eegmmidb": {
+    "exclude_non_task_runs": true,
+    "merge_runs": false,
+    "minimum_valid_predictions": 8,
+    "one_original_task_run_per_block": true,
+    "preserve_run_order": true
+  },
+  "hmc": {
+    "block_epochs": 60,
+    "cross_recording_blocks": false,
+    "non_overlapping": true,
+    "tail_min_epochs": 30
+  },
+  "minimum_valid_blocks_per_subject": 4,
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "permutation_repetitions": 50,
+  "permutation_seed": 20260807,
+  "protected": {
+    "cap_opened": false,
+    "formal_calibration_opened": false,
+    "full_method_entered": false,
+    "internal_final_opened": false
+  },
+  "schema_version": "online-blockwise-v6-stage0-v2",
+  "source_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "tps_grid_hash": "d158fadeeb2e35d52f7c641e3974bd88d4a661a14a17b6a1aadc934e6507c0a2",
+  "tps_thresholds": [
+    0.5,
+    0.5257894736842105,
+    0.5515789473684211,
+    0.5773684210526315,
+    0.6031578947368421,
+    0.6289473684210526,
+    0.6547368421052632,
+    0.6805263157894736,
+    0.7063157894736842,
+    0.7321052631578947,
+    0.7578947368421052,
+    0.7836842105263158,
+    0.8094736842105263,
+    0.8352631578947368,
+    0.8610526315789473,
+    0.8868421052631579,
+    0.9126315789473685,
+    0.9384210526315789,
+    0.9642105263157894,
+    0.99,
+    1.0
+  ]
+}

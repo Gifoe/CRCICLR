@@ -1,0 +1,100 @@
+[
+  {
+    "logical_input": "master_cohorts",
+    "resolved_path": "/root/autodl-tmp/hsc_tta_eeg/repo/outputs/contextual_risk/cohorts/MASTER_SUBJECT_COHORTS.parquet",
+    "row_count": 260,
+    "satisfied": true,
+    "schema": [
+      "dataset",
+      "subject_id",
+      "master_cohort",
+      "master_rank",
+      "master_hash_u64",
+      "master_salt",
+      "screening_fold"
+    ],
+    "sha256": "022830f5787e3ceb98e6508c47fa3cb423d422b72a330d717afc1c49461097cf"
+  },
+  {
+    "logical_input": "source_cache_manifest",
+    "resolved_path": "/root/autodl-tmp/hsc_tta_eeg/repo/outputs/budgeted_risk/source_cache/STAGE0_CACHE_MANIFEST.parquet",
+    "row_count": 3875,
+    "satisfied": true,
+    "schema": [
+      "dataset",
+      "fold",
+      "seed",
+      "subject_id",
+      "rotation_role",
+      "cache_path",
+      "status"
+    ],
+    "sha256": "e9da172f0926c6d20236e12ac1536bcd8e0aaf182050932659d0c2cbf6b55aa3"
+  },
+  {
+    "logical_input": "source_model_manifest",
+    "resolved_path": "/root/autodl-tmp/hsc_tta_eeg/repo/outputs/budgeted_risk/source_models/STAGE0_SOURCE_MODEL_MANIFEST.parquet",
+    "row_count": 50,
+    "satisfied": true,
+    "schema": [
+      "architecture",
+      "backbone_frozen",
+      "calibration_overlap",
+      "calibration_subjects",
+      "cap_overlap",
+      "checkpoint_sha256",
+      "dataset",
+      "evaluation_overlap",
+      "evaluation_subjects",
+      "fit_subjects",
+      "fold",
+      "formal_overlap",
+      "internal_final_overlap",
+      "meta_subjects",
+      "model_path",
+      "schema_version",
+      "seed",
+      "state_hash",
+      "token_source",
+      "val_subjects",
+      "validation_balanced_accuracy",
+      "validation_macro_f1"
+    ],
+    "sha256": "4eef244262e47ec09579a764835575cb0b08ae075c641e9f32242798743cb47a"
+  },
+  {
+    "logical_input": "episode_manifest",
+    "resolved_path": "/root/autodl-tmp/hsc_tta_eeg/repo/outputs/budgeted_risk/episodes/EPISODE_MANIFEST.parquet",
+    "row_count": 1795,
+    "satisfied": true,
+    "schema": [
+      "dataset",
+      "seed",
+      "subject_id",
+      "file",
+      "file_sha256",
+      "episode_hash",
+      "n_context",
+      "n_future",
+      "split_unit",
+      "schema_version"
+    ],
+    "sha256": "807928411da5d86f7c5f840cc4f3622fed67275e304ed4c8deeb9792ca83b0f6"
+  },
+  {
+    "logical_input": "embedding_root",
+    "resolved_path": "/root/autodl-tmp/hsc_tta_eeg/data/embeddings_tokens_v2",
+    "row_count": 359,
+    "satisfied": true,
+    "schema": "directory",
+    "sha256": null
+  },
+  {
+    "logical_input": "processed_root",
+    "resolved_path": "/root/autodl-tmp/hsc_tta_eeg/data/processed",
+    "row_count": 363,
+    "satisfied": true,
+    "schema": "directory",
+    "sha256": null
+  }
+]

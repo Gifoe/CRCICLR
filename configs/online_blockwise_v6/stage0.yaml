@@ -1,0 +1,23 @@
+schema_version: online-blockwise-v6-stage0-v2
+backbone: frozen_cbramod
+datasets: [hmc, eegmmidb]
+source_seeds: [0, 1, 2, 3, 4]
+outer_folds: [0, 1, 2, 3, 4]
+alpha: 0.10
+delta: 0.10
+bootstrap_repetitions: 5000
+bootstrap_seed: 20260806
+permutation_repetitions: 50
+permutation_seed: 20260807
+hmc:
+  block_epochs: 60
+  tail_min_epochs: 30
+  non_overlapping: true
+  cross_recording_blocks: false
+eegmmidb:
+  one_original_task_run_per_block: true
+  minimum_valid_predictions: 8
+  merge_runs: false
+  preserve_run_order: true
+  exclude_non_task_runs: true
+minimum_valid_blocks_per_subject: 4
