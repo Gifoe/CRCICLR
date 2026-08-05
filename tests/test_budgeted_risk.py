@@ -10,6 +10,8 @@ from hsc_tta.budgeted_risk.acquisition import acquisition_order,temporal_stratif
 from hsc_tta.budgeted_risk.inclusion_index import critical_index_from_kappa,inclusion_indices,risk_curve_from_kappa
 from hsc_tta.budgeted_risk.query_oracle import QueryOracle
 from hsc_tta.budgeted_risk.run_state import REQUIRED_HASHES,RunState
+from hsc_tta.budgeted_risk.budget import _local_index
+from hsc_tta.budgeted_risk.stage0 import _fit,_predict
 
 
 def test_inclusion_index_and_higher_quantile_are_consistent():
@@ -65,3 +67,17 @@ def test_run_state_rejects_skips_and_allows_hard_stop(tmp_path):
     state.advance("STOPPED_NO_GO",**meta)
     assert state.read()["state"]=="STOPPED_NO_GO"
 
+
+def test_hierarchical_cdf_local_index_moves_with_queries():
+    prior=np.linspace(0,1,21)
+    baseline=_local_index(prior,np.asarray([],int),tau=5,alpha=.1)
+    improved=_local_index(prior,np.zeros(10,int),tau=5,alpha=.1)
+    assert baseline==18
+    assert improved<baseline
+
+
+def test_ordinal_candidate_preserves_ordered_class_scale():
+    x=np.arange(24,dtype=float).reshape(12,2);y=np.repeat([2,7,15],4);j=np.arange(12)
+    model=_fit("ordinal_1",x,y,j);prediction=_predict(model,x,j)
+    assert prediction.shape==(12,)
+    assert np.all((prediction>=2)&(prediction<=15))

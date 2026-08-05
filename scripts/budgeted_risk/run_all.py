@@ -15,6 +15,7 @@ REPO=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(REPO/"src"))
 
 from hsc_tta.budgeted_risk.reporting import build_delivery_manifest,plot_full_context,sha256_paths,write_stage0_reports
+from hsc_tta.budgeted_risk.budget import budget_gate,run_budget_baselines
 from hsc_tta.budgeted_risk.run_state import RunState
 from hsc_tta.budgeted_risk.source_models import build_clean_stage0_models_and_cache
 from hsc_tta.budgeted_risk.stage0 import FEATURE_SCHEMA,full_context_gate,run_full_context
@@ -71,7 +72,17 @@ def main()->int:
     decision={"schema_version":"budgeted-risk-stage0-decision-v1","verdict":"FULL_CONTEXT_GO" if passed else "STAGE0_NO_GO","full_context_pass":passed,"dataset_results":summary.to_dict("records"),"budget_experiments_opened":False,"acquisition_experiments_opened":False,"formal_calibration_opened":False,"internal_final_opened":False,"cap_opened":False}
     write_stage0_reports(repo,summary,passed,decision)
     if passed:
-        print("FULL_CONTEXT_GO: Stage-0B must now run",flush=True);return 2
+        budgets,tuning=run_budget_baselines(root,config);budget_summary,budget_pass=budget_gate(budgets,config);budget_summary.to_csv(out/"stage0/BUDGET_GATE_SUMMARY.csv",index=False)
+        advance("STAGE0_BUDGET_COMPLETE",source_hash=source_hash,output_hash=sha256_file(out/"stage0/BUDGET_RESULTS.parquet"));current="STAGE0_BUDGET_COMPLETE"
+        (stage_delivery/"RANDOM_BUDGET_BASELINE.md").write_text("# Stage-0B fixed-budget baseline\n\n"+budget_summary.to_markdown(index=False,floatfmt=".4f")+f"\n\nDecision: **{'BUDGET_BASELINE_GO' if budget_pass else 'BUDGET_BASELINE_NO_GO'}**.\n",encoding="utf-8")
+        if budget_pass:
+            print("BUDGET_BASELINE_GO: Stage-0C must now run",flush=True);return 3
+        decision.update({"verdict":"STAGE0_NO_GO","budget_experiments_opened":True,"budget_pass":False,"budget_results":budget_summary.to_dict("records")});write_stage0_reports(repo,summary,True,decision)
+        (stage_delivery/"RANDOM_BUDGET_BASELINE.md").write_text("# Stage-0B fixed-budget baseline\n\n"+budget_summary.to_markdown(index=False,floatfmt=".4f")+"\n\nDecision: **BUDGET_BASELINE_NO_GO**.\n",encoding="utf-8")
+        pd.DataFrame([{"stage":"STAGE0B","failure":"BUDGET_BASELINE_NO_GO","action":"hard stop before acquisition experiments"}]).to_csv(out/"FAILURES.csv",index=False)
+        (delivery/"PROVENANCE.md").write_text(f"# Provenance\n\nRun commit: `{commit}`. Config hash: `{config_hash}`. Cohort hash: `{cohort_hash}`. Episode hash: `{episode_hash}`. Source-model aggregate hash: `{source_hash}`.\n",encoding="utf-8")
+        (delivery/"LIMITATIONS.md").write_text("# Limitations\n\nStage-0B failed. Acquisition comparison, formal calibration, internal final evaluation, and CAP transfer were therefore not opened.\n",encoding="utf-8")
+        manifest=build_delivery_manifest(repo);manifest_hash=digest_text(json.dumps(manifest,sort_keys=True));advance("STOPPED_NO_GO",source_hash=source_hash,output_hash=manifest_hash,formal_calibration_opened=False,internal_final_opened=False,cap_opened=False);print(budget_summary.to_string(index=False));print("STAGE0_NO_GO",flush=True);return 0
     pd.DataFrame([{"stage":"STAGE0A","failure":"FULL_CONTEXT_NO_GO","action":"hard stop before budget experiments"}]).to_csv(out/"FAILURES.csv",index=False)
     (delivery/"PROVENANCE.md").write_text(f"# Provenance\n\nRun commit: `{commit}`. Config hash: `{config_hash}`. Cohort hash: `{cohort_hash}`. Episode hash: `{episode_hash}`. Source-model aggregate hash: `{source_hash}`.\n",encoding="utf-8")
     (delivery/"LIMITATIONS.md").write_text("# Limitations\n\nStage-0A failed. Therefore no evidence about budget efficiency, acquisition choice, formal validity, held-out internal performance, or CAP transfer was produced. Any claim about those stages would be unsupported.\n",encoding="utf-8")

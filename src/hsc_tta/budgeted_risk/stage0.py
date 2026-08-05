@@ -7,9 +7,10 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+import mord
 from scipy.stats import spearmanr
 from sklearn.isotonic import IsotonicRegression
-from sklearn.linear_model import LogisticRegression, Ridge
+from sklearn.linear_model import Ridge
 from sklearn.preprocessing import RobustScaler
 
 from hsc_tta.contextual_risk.features import context_features
@@ -59,7 +60,9 @@ def _fit(name: str, x: np.ndarray, y: np.ndarray, j_context: np.ndarray) -> dict
     if name.startswith("ridge"):
         model = Ridge(alpha=strength).fit(transformed, y)
     else:
-        model = LogisticRegression(C=strength, max_iter=2000, solver="lbfgs").fit(transformed, y.astype(int))
+        classes=np.unique(y.astype(int)); encoded=np.searchsorted(classes,y.astype(int))
+        model = mord.LogisticAT(alpha=strength, max_iter=2000).fit(transformed,encoded)
+        return {"name": name, "model": model, "scaler": scaler, "ordinal_classes": classes}
     return {"name": name, "model": model, "scaler": scaler}
 
 
@@ -74,15 +77,15 @@ def _predict(fitted: dict[str, Any], x: np.ndarray, j_context: np.ndarray) -> np
     elif name.startswith("ordinal"):
         model = fitted["model"]
         probability = model.predict_proba(fitted["scaler"].transform(x))
-        result = probability @ model.classes_.astype(float)
+        result = probability @ fitted["ordinal_classes"].astype(float)
     else:
         result = fitted["model"].predict(fitted["scaler"].transform(x))
     return np.clip(np.asarray(result, dtype=float), 0, 20)
 
 
-def _select_model(frame: pd.DataFrame, feature_columns: list[str]) -> tuple[str, pd.DataFrame]:
+def _select_model(frame: pd.DataFrame, feature_columns: list[str], specs: tuple[str,...]=MODEL_SPECS) -> tuple[str, pd.DataFrame]:
     rows = []
-    for name in MODEL_SPECS:
+    for name in specs:
         true, prediction = [], []
         for held_out in sorted(frame.screening_fold.unique()):
             train = frame[frame.screening_fold != held_out]
