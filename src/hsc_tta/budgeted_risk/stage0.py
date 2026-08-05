@@ -83,7 +83,7 @@ def _predict(fitted: dict[str, Any], x: np.ndarray, j_context: np.ndarray) -> np
     return np.clip(np.asarray(result, dtype=float), 0, 20)
 
 
-def _select_model(frame: pd.DataFrame, feature_columns: list[str], specs: tuple[str,...]=MODEL_SPECS) -> tuple[str, pd.DataFrame]:
+def _select_model(frame: pd.DataFrame, feature_columns: list[str], specs: tuple[str,...]=MODEL_SPECS, index_column:str="j_context") -> tuple[str, pd.DataFrame]:
     rows = []
     for name in specs:
         true, prediction = [], []
@@ -92,8 +92,8 @@ def _select_model(frame: pd.DataFrame, feature_columns: list[str], specs: tuple[
             valid = frame[frame.screening_fold == held_out]
             if train.empty or valid.empty:
                 continue
-            fitted = _fit(name, train[feature_columns].to_numpy(), train.j_future.to_numpy(), train.j_context.to_numpy())
-            prediction.extend(_predict(fitted, valid[feature_columns].to_numpy(), valid.j_context.to_numpy()))
+            fitted = _fit(name, train[feature_columns].to_numpy(), train.j_future.to_numpy(), train[index_column].to_numpy())
+            prediction.extend(_predict(fitted, valid[feature_columns].to_numpy(), valid[index_column].to_numpy()))
             true.extend(valid.j_future.to_numpy())
         y = np.asarray(true, float); p = np.asarray(prediction, float)
         rows.append({

@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 
 import numpy as np
+import pandas as pd
 import pytest
 
 from hsc_tta.budgeted_risk.access import BudgetedAccessController
@@ -11,7 +12,7 @@ from hsc_tta.budgeted_risk.inclusion_index import critical_index_from_kappa,incl
 from hsc_tta.budgeted_risk.query_oracle import QueryOracle
 from hsc_tta.budgeted_risk.run_state import REQUIRED_HASHES,RunState
 from hsc_tta.budgeted_risk.budget import _local_index
-from hsc_tta.budgeted_risk.stage0 import _fit,_predict
+from hsc_tta.budgeted_risk.stage0 import _fit,_predict,_select_model
 
 
 def test_inclusion_index_and_higher_quantile_are_consistent():
@@ -81,3 +82,10 @@ def test_ordinal_candidate_preserves_ordered_class_scale():
     model=_fit("ordinal_1",x,y,j);prediction=_predict(model,x,j)
     assert prediction.shape==(12,)
     assert np.all((prediction>=2)&(prediction<=15))
+
+
+def test_model_selection_accepts_budget_local_index_column():
+    frame=pd.DataFrame({"screening_fold":np.tile([0,1,2],4),"j_local":np.arange(12),"feature":np.arange(12),"j_future":np.arange(12)})
+    selected,scores=_select_model(frame,["feature","j_local"],("direct","ridge_1"),index_column="j_local")
+    assert selected in {"direct","ridge_1"}
+    assert len(scores)==2
