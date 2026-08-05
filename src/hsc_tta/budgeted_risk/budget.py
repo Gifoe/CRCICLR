@@ -7,6 +7,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+from joblib import Parallel,delayed,parallel_backend
 from hsc_tta.contextual_risk.features import context_features
 from hsc_tta.contextual_risk.families import TPSFamily
 from hsc_tta.contextual_risk.io import atomic_parquet
@@ -94,9 +95,14 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                 for requested_budget in (0,1,2,5,10,20,50):
                     base={s:_observe(dataset,s,seed,fold,roles[s],arrays[s],min(requested_budget,len(arrays[s].indices)),"temporal",0) for s in subjects}
                     meta_outcome={s:_open(base[s],_local_index(prior,base[s].queried_kappa,5,alpha),repo,alpha,delta,"stage0_budget_meta") for s in meta_subjects}
-                    best=None;all_scores=[]
+                    tau_frames=[]
                     for tau in config["tau_candidates"]:
-                        frame=pd.DataFrame([{**_features(base[s],prior,float(tau),alpha),"subject_id":s,"screening_fold":fold_map[s],"j_future":meta_outcome[s]} for s in meta_subjects]);ids={"subject_id","screening_fold","j_future"};columns=sorted(set(frame.columns)-ids);selected,scores=_select_model(frame,columns,TRANSFER_SPECS,index_column="j_local");score=scores[scores.candidate==selected].iloc[0];all_scores.append((float(score.mae),-float(score.spearman),float(score.underestimation_rate),float(tau),selected,columns,frame,scores))
+                        frame=pd.DataFrame([{**_features(base[s],prior,float(tau),alpha),"subject_id":s,"screening_fold":fold_map[s],"j_future":meta_outcome[s]} for s in meta_subjects]);ids={"subject_id","screening_fold","j_future"};columns=sorted(set(frame.columns)-ids);tau_frames.append((float(tau),frame,columns))
+                    with parallel_backend("loky",inner_max_num_threads=1):
+                        selected_scores=Parallel(n_jobs=len(tau_frames))(delayed(_select_model)(frame,columns,TRANSFER_SPECS,index_column="j_local") for _,frame,columns in tau_frames)
+                    all_scores=[]
+                    for (tau,frame,columns),(selected,scores) in zip(tau_frames,selected_scores,strict=True):
+                        score=scores[scores.candidate==selected].iloc[0];all_scores.append((float(score.mae),-float(score.spearman),float(score.underestimation_rate),tau,selected,columns,frame,scores))
                     best=min(all_scores,key=lambda item:(item[0],item[1],item[2],item[3],item[4]));_,_,_,tau,selected,columns,meta_frame,scores=best;fitted=_fit(selected,meta_frame[columns].to_numpy(),meta_frame.j_future.to_numpy(),meta_frame.j_local.to_numpy())
                     tuning.append({"dataset":dataset,"outer_fold":fold,"seed":seed,"budget":requested_budget,"tau":tau,"selected_model":selected,"inner_mae":best[0]})
                     cal_subjects=[s for s in subjects if roles[s]=="calibration"];cal_pred=[];cal_true=[]
