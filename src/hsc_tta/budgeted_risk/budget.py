@@ -165,7 +165,7 @@ def run_budget_baselines(project_root:str|Path,config:dict[str,Any])->tuple[pd.D
                         for observation,current_features in zip(observations,random_features,strict=True):local_rows.append(_evaluate(observation,current_features,fitted,columns,correction,global_index,global_correction,true))
                     return local_rows,tune,local_transcripts
 
-                with ThreadPoolExecutor(max_workers=2) as executor:completed=list(executor.map(run_one,(0,1,2,5,10,20,50)))
+                with ThreadPoolExecutor(max_workers=1) as executor:completed=list(executor.map(run_one,(0,1,2,5,10,20,50)))
                 for local_rows,tune,local_transcripts in completed:rows.extend(local_rows);tuning.append(tune);transcripts.extend(local_transcripts)
     frame=pd.DataFrame(rows);tuning_frame=pd.DataFrame(tuning);output=repo/"outputs/budgeted_risk/stage0";atomic_parquet(frame,output/"BUDGET_RESULTS.parquet");atomic_parquet(tuning_frame,output/"BUDGET_TUNING.parquet");budget_transcripts=pd.DataFrame(transcripts);atomic_parquet(budget_transcripts,output/"BUDGET_QUERY_TRANSCRIPTS.parquet");return frame,tuning_frame
 
