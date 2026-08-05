@@ -90,8 +90,12 @@ def _decision_payload(observation:Observation,prediction:float,alpha:float,delta
 
 def _cache_future(arrays:Arrays,labels:np.ndarray,alpha:float)->int:
     if arrays.future_j is None:
-        arrays.future_j=critical_index_from_kappa(inclusion_indices(arrays.future_probabilities,labels),alpha)
-        _,arrays.future_sizes,_=TPSFamily().future_curve(arrays.future_probabilities,labels)
+        future_j=critical_index_from_kappa(inclusion_indices(arrays.future_probabilities,labels),alpha)
+        _,future_sizes,_=TPSFamily().future_curve(arrays.future_probabilities,labels)
+        # Publish the readiness flag last so concurrent budget workers never
+        # observe a critical index without its matching size curve.
+        arrays.future_sizes=future_sizes
+        arrays.future_j=future_j
     return int(arrays.future_j)
 
 
