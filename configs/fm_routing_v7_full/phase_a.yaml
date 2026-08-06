@@ -1,0 +1,21 @@
+version: v7-full-phase-a-1.0
+seed: 20260820
+candidate_priority:
+  - cbramod
+  - eegpt
+  - bendr
+  - brant
+  - eeg2rep
+  - neurogpt
+  - biot
+  - labram
+dataset_priority:
+  - hmc
+  - eegmmidb
+  - sleepedffull
+  - bcic2a
+required_common_model_families: 3
+mandatory_anchor: cbramod
+minimum_subject_coverage: 0.95
+minimum_sample_coverage: 0.95
+stop_on_failed_gate: true

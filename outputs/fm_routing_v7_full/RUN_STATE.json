@@ -1,0 +1,139 @@
+{
+  "abstention_developed": false,
+  "backbone_finetuned": false,
+  "candidate_combination_summary": [
+    {
+      "anchor_present": true,
+      "datasets": [
+        "hmc",
+        "eegmmidb"
+      ],
+      "passes": false,
+      "shared_model_count": 1,
+      "shared_models": [
+        "cbramod"
+      ],
+      "task_families": [
+        "sleep staging",
+        "motor imagery/execution"
+      ]
+    },
+    {
+      "anchor_present": false,
+      "datasets": [
+        "hmc",
+        "bcic2a"
+      ],
+      "passes": false,
+      "shared_model_count": 0,
+      "shared_models": [],
+      "task_families": [
+        "sleep staging",
+        "motor imagery"
+      ]
+    },
+    {
+      "anchor_present": false,
+      "datasets": [
+        "sleepedffull",
+        "eegmmidb"
+      ],
+      "passes": false,
+      "shared_model_count": 0,
+      "shared_models": [],
+      "task_families": [
+        "sleep staging",
+        "motor imagery/execution"
+      ]
+    },
+    {
+      "anchor_present": false,
+      "datasets": [
+        "sleepedffull",
+        "bcic2a"
+      ],
+      "passes": false,
+      "shared_model_count": 0,
+      "shared_models": [],
+      "task_families": [
+        "sleep staging",
+        "motor imagery"
+      ]
+    }
+  ],
+  "cap_opened": false,
+  "compatibility_label_values_inspected": false,
+  "compatibility_protocol_hash": "c82564b54b288e648783c5e152a6fa5551433ada570d6a509f74248d0246ef61",
+  "completed_jobs": 1,
+  "completed_stages": [
+    "PREDECESSOR_AUDIT_COMPLETE",
+    "COMPATIBILITY_PROTOCOL_FROZEN",
+    "MODEL_DATASET_COMPATIBILITY_COMPLETE"
+  ],
+  "dataset": null,
+  "elapsed_seconds": 4.312126159667969,
+  "evaluation_leakage": false,
+  "fold": null,
+  "formal_calibration_opened": false,
+  "full_method_developed": false,
+  "gpu_name": "NVIDIA GeForce RTX 5090",
+  "gpu_peak_memory_bytes": 31367168,
+  "gpu_used": true,
+  "internal_final_opened": false,
+  "later_stages_not_run": [
+    "Phase B expert construction and qualification",
+    "Phase C full/transfer Oracle and null controls",
+    "Phase D unlabeled prefix routing",
+    "Phase E common-failure detection and abstention",
+    "Phase F PARES full method",
+    "Phase G formal calibration and internal confirmation",
+    "Phase H external replication",
+    "Phase I theory, ablations, and ICLR readiness"
+  ],
+  "latest_output": "delivery/fm_routing_v7_full/FINAL_DECISION.json",
+  "model": null,
+  "performance_metrics_read_for_selection": false,
+  "phase_a_gate": {
+    "A1": false,
+    "A2": false,
+    "A3": false,
+    "A4": false,
+    "A5": false,
+    "A6": false,
+    "A7": true,
+    "A8": false
+  },
+  "predecessor_hashes": {
+    "delivery/fm_routing_v7/GATE_Q_DECISION.md": "80d38e58f5209d4e550dae1b1e7db7a00d01e4cb791a173311e4d03d42786cf6",
+    "delivery/fm_routing_v7/V7_MODEL_POOL_FREEZE.json": "024a8c8c1791b1a2ed09b2ecc82b62dd99f01db55c376961aff85a6fd51e3e89",
+    "delivery/fm_routing_v7/V7_STAGE0A_DECISION.json": "91472e5d1c3fa9d83b55fddcd28577aab0011e8a15c05918e0e13540336e7820",
+    "delivery/fm_routing_v7_repair/ADAPTER_FIDELITY_AUDIT.md": "0bde7083ec97882ddbf9200472791dd76c0dd01da39938b813c0ea586fecda91",
+    "delivery/fm_routing_v7_repair/V7R_DECISION.json": "38ab1c8f30001f27992c9096a995462054145e54e9629eb7df8b22ec30af9e34",
+    "outputs/fm_routing_v7/RUN_STATE.json": "1a7134b2ac1b3e43b330c67ec836687f6d3455e15133d67f077d2dbc55a9d15d",
+    "outputs/fm_routing_v7/provenance/FINAL_TESTS.txt": "35d5df080633fadb2d0c5d427c182d483925afb8fcf0ad9e8bb9bc3757a4972e",
+    "outputs/fm_routing_v7_repair/RUN_STATE.json": "43c8d7f0768db15233cb5c6306709055e8185a4783f17ec52a6eea90327dc360",
+    "outputs/fm_routing_v7_repair/provenance/FINAL_TESTS.txt": "4fde65794341eccd7dc36b2b2c58bc76422cfe187130ed3e8a1fc8e03baaccb1"
+  },
+  "predecessor_verdicts": {
+    "V7": "V7_STAGE0A_STOP_MODEL_QUALIFICATION_FAILURE",
+    "V7R": "V7R_STOP_ADAPTER_FIDELITY_FAILURE"
+  },
+  "previous_state": "MODEL_DATASET_COMPATIBILITY_COMPLETE",
+  "protected_subjects_opened": false,
+  "reason": "No pre-registered sleep-plus-motor dataset pair supports CBraMod and at least two additional checkpoint-faithful model families. HMC has only CBraMod; SleepEDFFull is absent.",
+  "router_developed": false,
+  "scientific_stop": true,
+  "seed": null,
+  "selected_core": null,
+  "sleepedffull_opened": false,
+  "stage_decision": "STOP",
+  "started_at": "2026-08-06T18:34:28.339961+00:00",
+  "starting_commit": "4cb4ffa8973cbb98de29c6fcfe10cb667da61d42",
+  "state": "STOPPED",
+  "stopping_gate": "Phase A Gate",
+  "technical_block": false,
+  "terminal": true,
+  "total_jobs": 1,
+  "updated_at": "2026-08-06T18:34:32.650107+00:00",
+  "verdict": "V7_STOP_NO_ADMISSIBLE_EXPERT_POOL"
+}

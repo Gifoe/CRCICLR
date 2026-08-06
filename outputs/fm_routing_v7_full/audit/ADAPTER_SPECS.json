@@ -1,0 +1,41 @@
+{
+  "bendr": {
+    "channels": "Deep1010 mapping; bipolar derivations cannot masquerade as electrodes",
+    "sampling_rate_hz": 256
+  },
+  "biot": {
+    "channels": "exact PREST 16 bipolar derivations",
+    "patch": "STFT n_fft=200 hop=100 center=false",
+    "sampling_rate_hz": 200,
+    "unit": "microvolts"
+  },
+  "brant": {
+    "channels": "official release is intracranial; no fabricated scalp mapping"
+  },
+  "cbramod": {
+    "channels": "retain actual labels as generic signal channels",
+    "missing_channels": "none invented",
+    "patch_samples": 200,
+    "sampling_rate_hz": 200,
+    "unit_transform": "volts * 1e4"
+  },
+  "eeg2rep": {
+    "channels": "frozen spatial kernel channel count/order"
+  },
+  "eegpt": {
+    "channels": "official named identity subset only",
+    "patch_samples": 64,
+    "sampling_rate_hz": 256
+  },
+  "labram": {
+    "channels": "official standard_1020 identities",
+    "patch_samples": 200,
+    "sampling_rate_hz": 200,
+    "unit": "microvolts"
+  },
+  "neurogpt": {
+    "channels": "frozen EEGConformer spatial kernel channel count/order"
+  },
+  "performance_driven": false,
+  "selection_basis": "architecture, checkpoint metadata, channel semantics, and forward feasibility only"
+}

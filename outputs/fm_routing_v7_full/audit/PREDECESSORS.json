@@ -1,0 +1,27 @@
+{
+  "exact_verdicts_match": true,
+  "expected_v7_verdict": "V7_STAGE0A_STOP_MODEL_QUALIFICATION_FAILURE",
+  "expected_v7r_verdict": "V7R_STOP_ADAPTER_FIDELITY_FAILURE",
+  "old_v7": {
+    "terminal": true,
+    "verdict": "V7_STAGE0A_STOP_MODEL_QUALIFICATION_FAILURE"
+  },
+  "old_v7r": {
+    "terminal": true,
+    "verdict": "V7R_STOP_ADAPTER_FIDELITY_FAILURE"
+  },
+  "old_v7r_state_terminal": true,
+  "performance_results_used": false,
+  "predecessor_hashes": {
+    "delivery/fm_routing_v7/GATE_Q_DECISION.md": "80d38e58f5209d4e550dae1b1e7db7a00d01e4cb791a173311e4d03d42786cf6",
+    "delivery/fm_routing_v7/V7_MODEL_POOL_FREEZE.json": "024a8c8c1791b1a2ed09b2ecc82b62dd99f01db55c376961aff85a6fd51e3e89",
+    "delivery/fm_routing_v7/V7_STAGE0A_DECISION.json": "91472e5d1c3fa9d83b55fddcd28577aab0011e8a15c05918e0e13540336e7820",
+    "delivery/fm_routing_v7_repair/ADAPTER_FIDELITY_AUDIT.md": "0bde7083ec97882ddbf9200472791dd76c0dd01da39938b813c0ea586fecda91",
+    "delivery/fm_routing_v7_repair/V7R_DECISION.json": "38ab1c8f30001f27992c9096a995462054145e54e9629eb7df8b22ec30af9e34",
+    "outputs/fm_routing_v7/RUN_STATE.json": "1a7134b2ac1b3e43b330c67ec836687f6d3455e15133d67f077d2dbc55a9d15d",
+    "outputs/fm_routing_v7/provenance/FINAL_TESTS.txt": "35d5df080633fadb2d0c5d427c182d483925afb8fcf0ad9e8bb9bc3757a4972e",
+    "outputs/fm_routing_v7_repair/RUN_STATE.json": "43c8d7f0768db15233cb5c6306709055e8185a4783f17ec52a6eea90327dc360",
+    "outputs/fm_routing_v7_repair/provenance/FINAL_TESTS.txt": "4fde65794341eccd7dc36b2b2c58bc76422cfe187130ed3e8a1fc8e03baaccb1"
+  },
+  "read_only_prefixes_enforced": true
+}

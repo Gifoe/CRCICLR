@@ -1,0 +1,76 @@
+{
+  "combinations": [
+    {
+      "anchor_present": true,
+      "datasets": [
+        "hmc",
+        "eegmmidb"
+      ],
+      "passes": false,
+      "shared_model_count": 1,
+      "shared_models": [
+        "cbramod"
+      ],
+      "task_families": [
+        "sleep staging",
+        "motor imagery/execution"
+      ]
+    },
+    {
+      "anchor_present": false,
+      "datasets": [
+        "hmc",
+        "bcic2a"
+      ],
+      "passes": false,
+      "shared_model_count": 0,
+      "shared_models": [],
+      "task_families": [
+        "sleep staging",
+        "motor imagery"
+      ]
+    },
+    {
+      "anchor_present": false,
+      "datasets": [
+        "sleepedffull",
+        "eegmmidb"
+      ],
+      "passes": false,
+      "shared_model_count": 0,
+      "shared_models": [],
+      "task_families": [
+        "sleep staging",
+        "motor imagery/execution"
+      ]
+    },
+    {
+      "anchor_present": false,
+      "datasets": [
+        "sleepedffull",
+        "bcic2a"
+      ],
+      "passes": false,
+      "shared_model_count": 0,
+      "shared_models": [],
+      "task_families": [
+        "sleep staging",
+        "motor imagery"
+      ]
+    }
+  ],
+  "gate": {
+    "A1": false,
+    "A2": false,
+    "A3": false,
+    "A4": false,
+    "A5": false,
+    "A6": false,
+    "A7": true,
+    "A8": false
+  },
+  "passed": false,
+  "protocol_hash": "c82564b54b288e648783c5e152a6fa5551433ada570d6a509f74248d0246ef61",
+  "selected_core": null,
+  "selection_used_performance": false
+}

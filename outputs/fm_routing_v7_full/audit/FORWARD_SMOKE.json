@@ -1,0 +1,127 @@
+{
+  "gpu_name": "NVIDIA GeForce RTX 5090",
+  "gpu_peak_memory_bytes": 31367168,
+  "gpu_used": true,
+  "labels_read": false,
+  "matrix": {
+    "bendr": {
+      "bcic2a": false,
+      "eegmmidb": false,
+      "hmc": false,
+      "sleepedffull": false
+    },
+    "biot": {
+      "bcic2a": false,
+      "eegmmidb": true,
+      "hmc": false,
+      "sleepedffull": false
+    },
+    "brant": {
+      "bcic2a": false,
+      "eegmmidb": false,
+      "hmc": false,
+      "sleepedffull": false
+    },
+    "cbramod": {
+      "bcic2a": true,
+      "eegmmidb": true,
+      "hmc": true,
+      "sleepedffull": false
+    },
+    "eeg2rep": {
+      "bcic2a": false,
+      "eegmmidb": false,
+      "hmc": false,
+      "sleepedffull": false
+    },
+    "eegpt": {
+      "bcic2a": false,
+      "eegmmidb": false,
+      "hmc": false,
+      "sleepedffull": false
+    },
+    "labram": {
+      "bcic2a": false,
+      "eegmmidb": true,
+      "hmc": false,
+      "sleepedffull": false
+    },
+    "neurogpt": {
+      "bcic2a": false,
+      "eegmmidb": false,
+      "hmc": false,
+      "sleepedffull": false
+    }
+  },
+  "performance_read": false,
+  "rows": [
+    {
+      "backbone_frozen": true,
+      "dataset": "hmc",
+      "finite": true,
+      "input_shape": [
+        1,
+        2,
+        30,
+        200
+      ],
+      "model": "cbramod",
+      "output_shape": [
+        1,
+        200
+      ],
+      "passed": true,
+      "repeat_max_abs_error": 0.0
+    },
+    {
+      "backbone_frozen": true,
+      "dataset": "eegmmidb",
+      "finite": true,
+      "input_shape": [
+        1,
+        64,
+        4,
+        200
+      ],
+      "model": "cbramod",
+      "output_shape": [
+        1,
+        200
+      ],
+      "passed": true,
+      "repeat_max_abs_error": 0.0
+    },
+    {
+      "backbone_frozen": true,
+      "dataset": "bcic2a",
+      "finite": true,
+      "input_shape": [
+        1,
+        22,
+        4,
+        200
+      ],
+      "model": "cbramod",
+      "output_shape": [
+        1,
+        200
+      ],
+      "passed": true,
+      "repeat_max_abs_error": 0.0
+    },
+    {
+      "dataset": "eegmmidb",
+      "evidence": "outputs/fm_routing_v7_repair/audit/ADAPTER_FIDELITY.json",
+      "model": "biot",
+      "passed": true,
+      "reused_exact_checkpoint_smoke": true
+    },
+    {
+      "dataset": "eegmmidb",
+      "evidence": "outputs/fm_routing_v7_repair/audit/ADAPTER_FIDELITY.json",
+      "model": "labram",
+      "passed": true,
+      "reused_exact_checkpoint_smoke": true
+    }
+  ]
+}
