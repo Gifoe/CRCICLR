@@ -1,0 +1,3275 @@
+{
+  "files": [
+    {
+      "bytes": 36,
+      "path": "outputs/fm_routing_v7/FAILURES.csv",
+      "sha256": "2ac9bf1574714a92a7acbb8997b06a6fd4f83d32144b982e0406838217376450"
+    },
+    {
+      "bytes": 6834,
+      "path": "outputs/fm_routing_v7/RUN_STATE.json",
+      "sha256": "1a7134b2ac1b3e43b330c67ec836687f6d3455e15133d67f077d2dbc55a9d15d"
+    },
+    {
+      "bytes": 295,
+      "path": "outputs/fm_routing_v7/SCIENTIFIC_STOP.json",
+      "sha256": "1f1629b21596dfa8ca777b05608c3d0c188c062895bab52957544f2e0a010959"
+    },
+    {
+      "bytes": 403,
+      "path": "outputs/fm_routing_v7/audit/ACCESS_AUDIT.json",
+      "sha256": "ec4765e18b7907d585af6fb788c8eb067008fbc5026b2e4f6a8bdba5a431c30c"
+    },
+    {
+      "bytes": 999,
+      "path": "outputs/fm_routing_v7/audit/ADAPTER_SPECS.json",
+      "sha256": "e3597a66215be68488a4f3bf71d5a5efc08b1550971d089b41945ab44108e1cd"
+    },
+    {
+      "bytes": 241,
+      "path": "outputs/fm_routing_v7/audit/CHECKPOINT_HASHES.json",
+      "sha256": "362466504aa09c0df573a750d0728375f6e4b1e9fd3e66fd543b0ce1c35fa4e4"
+    },
+    {
+      "bytes": 3392,
+      "path": "outputs/fm_routing_v7/audit/MODEL_PROVENANCE.json",
+      "sha256": "2c0806d7fe5e6cdedd5f378aa8cfd0f23fcc6bd6dc0e7ea4c2e26b3969ef8d4d"
+    },
+    {
+      "bytes": 454,
+      "path": "outputs/fm_routing_v7/audit/QUALIFICATION_FINALIZATION.json",
+      "sha256": "ccc050bdcf3971a78dc2a763fae1b79026945b8bac18268a0b5abf4e869837cc"
+    },
+    {
+      "bytes": 279,
+      "path": "outputs/fm_routing_v7/audit/RESOLVED_MODEL_PATHS.json",
+      "sha256": "e5dee430c7486747f828b20e2210ae9a6ec7c80d4a6d4d668b2e657cd7e9bc8a"
+    },
+    {
+      "bytes": 1706,
+      "path": "outputs/fm_routing_v7/audit/SMOKE_TEST.json",
+      "sha256": "f2f42c55b1b5044e6f7730b055108cae48dff4e2b25413ff0ec0c63bdff2b7cd"
+    },
+    {
+      "bytes": 825340,
+      "path": "outputs/fm_routing_v7/canonical/CANONICAL_SAMPLE_MANIFEST.parquet",
+      "sha256": "c947f7aa64e4a072d98d03d928682e39842d036c5221e5d20951294499b9d997"
+    },
+    {
+      "bytes": 277,
+      "path": "outputs/fm_routing_v7/canonical/MODEL_SAMPLE_COVERAGE.csv",
+      "sha256": "c14e87da91bd86291ffcd156cdd202743298c98870faa2980be9ad9a39ee9187"
+    },
+    {
+      "bytes": 46281,
+      "path": "outputs/fm_routing_v7/embedding_cache/EMBEDDING_CACHE_MANIFEST.parquet",
+      "sha256": "ee1ea76702ec3c68297314cf911aa5d2eba6d657f0b0700264458aceca0facc9"
+    },
+    {
+      "bytes": 95791,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_007.parquet",
+      "sha256": "e7768aee01d755945f5dc5f20afad9098484b86243f01c85794ba79b210c5c87"
+    },
+    {
+      "bytes": 94712,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_021.parquet",
+      "sha256": "7ca1dfd7bd55ee6cbf1aa5b4348b8ecdd1823949e564092229f6471e0ef1bf56"
+    },
+    {
+      "bytes": 95688,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_023.parquet",
+      "sha256": "c16bf339443c3e01bdbbe3607b4b8bcd68e1a9e9015881b829344f1a8dadd3ed"
+    },
+    {
+      "bytes": 96342,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_024.parquet",
+      "sha256": "181954764e98fc76974535e8007babbe1c7bf6d3b336889108a06f03d6921277"
+    },
+    {
+      "bytes": 95333,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_025.parquet",
+      "sha256": "e1e6bc70daab357de1d5b92723996d8ec77e8359fa5b736cabf50c2ebbf603cf"
+    },
+    {
+      "bytes": 95420,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_033.parquet",
+      "sha256": "b32d7f16427cea4e2cf8d5ec782d9ded4b2b98020b9b35a3d599d830fb1e1d67"
+    },
+    {
+      "bytes": 93502,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_034.parquet",
+      "sha256": "10dfc5c3e5e1522448ad5a0c92c9394a67bb6110f7c9b751b20f443a1f310656"
+    },
+    {
+      "bytes": 94766,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_035.parquet",
+      "sha256": "e5638a017bed18379670e6f9b5d002689b2db63f6bc988759885e0182778dfad"
+    },
+    {
+      "bytes": 95938,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_044.parquet",
+      "sha256": "41424f9b2dba28fc3ea48d0ab67b4a21a753eaee996b5870b4a031fb6952cf2c"
+    },
+    {
+      "bytes": 98424,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_057.parquet",
+      "sha256": "38d33113d0ca65acc544d693f8f2389d73fbd413acf917ffaf2f41dc172fba16"
+    },
+    {
+      "bytes": 94827,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_067.parquet",
+      "sha256": "de8c4abca52a55387b161fa5dd28811585c6466183e68bc8335351d9a1f25cd3"
+    },
+    {
+      "bytes": 95623,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_079.parquet",
+      "sha256": "b465764f3538168b5ff1dc7b6087345ae0292201f4ff9705d3085b169e080e28"
+    },
+    {
+      "bytes": 96345,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_093.parquet",
+      "sha256": "3989161cab42fb35e51aa2993c2617866a9652ae9680a46683ee091d867425a8"
+    },
+    {
+      "bytes": 95004,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_0/eegmmidb_102.parquet",
+      "sha256": "b01f61969a7a2b3ba690b11b5a1829414c0801ece3803c136cd1989067330c5a"
+    },
+    {
+      "bytes": 96426,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_002.parquet",
+      "sha256": "14b2b0380955913ec074dedb96b9045d50e5775f26f57d98b6a7aae5bd3039a0"
+    },
+    {
+      "bytes": 95862,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_004.parquet",
+      "sha256": "cb5c5e127640c3520e3161073fb802d2f0a9f778b190b5c05cf99058ff19b4f7"
+    },
+    {
+      "bytes": 94918,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_005.parquet",
+      "sha256": "632965029b734502abe354a09f3ab29bd57976555318fe4c9adc74e71e6d2a9c"
+    },
+    {
+      "bytes": 96815,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_015.parquet",
+      "sha256": "a7877eb246be79168717ca8a5952d890a7c0f421df3739b3f6e35f70646d6393"
+    },
+    {
+      "bytes": 95118,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_049.parquet",
+      "sha256": "d52a7abce41bf1a5deb8383cec9bdf34b1ff4557e06d32c4a012370c9276c7fb"
+    },
+    {
+      "bytes": 96381,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_059.parquet",
+      "sha256": "946c24fc4e1770b09bffebe02679cae0e9b2ce1d5821e729d67aa1abb2cec615"
+    },
+    {
+      "bytes": 95885,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_061.parquet",
+      "sha256": "b7445fcac53c1a42d77ff641c0f174b915c2435bfe8a1e65844cfa567105bde3"
+    },
+    {
+      "bytes": 95359,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_062.parquet",
+      "sha256": "f47498cd622621a968f223f6379a7e5d5b48ea666fbc108f1e8157df99200616"
+    },
+    {
+      "bytes": 94809,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_069.parquet",
+      "sha256": "1ee9f2415d484af8010ad7ccee797b4c6b131cdfd3d8523185ef3b7642b80e02"
+    },
+    {
+      "bytes": 96373,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_080.parquet",
+      "sha256": "8a1f8ab322c989f213a980cef532b3fc2a4fd8f7246482da3b2da6887727242b"
+    },
+    {
+      "bytes": 94270,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_081.parquet",
+      "sha256": "9811c76cf9e34a9473d1474c2a3c5596ee7a2b77e49648f9646914d3e645d750"
+    },
+    {
+      "bytes": 95937,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_082.parquet",
+      "sha256": "03e59c11d1c3f475f9eb023fdfa522516760bc44bba46e5e66c5e81236a275ec"
+    },
+    {
+      "bytes": 95095,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_085.parquet",
+      "sha256": "affc4da9f792ee7a71d95656dfa17ba7f9d1367e1d217b05315056c5cd63133d"
+    },
+    {
+      "bytes": 112362,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_1/eegmmidb_088.parquet",
+      "sha256": "5a91d69eaf1805a432752ea7c920df88a2bcc5ad5ba6bbe1687747cd1eaf2a84"
+    },
+    {
+      "bytes": 96084,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_010.parquet",
+      "sha256": "d799e74f521a5855e962fe398228150b9c76f4c9f3312485dc95c1f0fb6eb015"
+    },
+    {
+      "bytes": 95381,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_031.parquet",
+      "sha256": "ef0811a464de254891caefa49b6f6289f92d1468f6cd9a3e6d15293a2ae37336"
+    },
+    {
+      "bytes": 96070,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_038.parquet",
+      "sha256": "52c7db028950a47f1d2738439129974535fb8093355b1fef9fdb56db6b4b8655"
+    },
+    {
+      "bytes": 94764,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_040.parquet",
+      "sha256": "c8598ca2fe79a104a78fc34d9c17d1aa52729c7580562b4983c4c61db5779447"
+    },
+    {
+      "bytes": 94267,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_055.parquet",
+      "sha256": "53f1c18927f8ba4f69f8408a191097f03ff86125e148a7218eb07c54cab63fe0"
+    },
+    {
+      "bytes": 95811,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_065.parquet",
+      "sha256": "6ab5f6f0e6f8faf1c16d11f08c46ed9236f80afa28cbdbe130e9f4bf7793f128"
+    },
+    {
+      "bytes": 95946,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_066.parquet",
+      "sha256": "ddc6935148e3bd3d7ada58045acad9369aaae4d16cbd3fbafb0173d1f61c6582"
+    },
+    {
+      "bytes": 95892,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_072.parquet",
+      "sha256": "7b842037456bb96f43296442001a905cc05851f3b107a400c255ad52d841c070"
+    },
+    {
+      "bytes": 95303,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_084.parquet",
+      "sha256": "529ea8484d8136eeef42e5093653ab38eaa8537f556bcbef5f02dfb5b70f50bf"
+    },
+    {
+      "bytes": 97719,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_086.parquet",
+      "sha256": "5d50a532e6002338106f17df0faaf09e46ea9bd5312bdb4b8afe7432b9611593"
+    },
+    {
+      "bytes": 96626,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_087.parquet",
+      "sha256": "68b47612ca7ab60e1984c7909a44ad8f4320469532f83245eac6c0c702533aa2"
+    },
+    {
+      "bytes": 95098,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_103.parquet",
+      "sha256": "f9138ba40fe9815a0e40bee1c95143a92e552d92e4f94af0b9aefb02fd3bf92b"
+    },
+    {
+      "bytes": 95763,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_106.parquet",
+      "sha256": "eb50f7a1f916cf3a5bb40d4bab9ae8cf9e74e5aea52e644a6690a9cfb8b34ec0"
+    },
+    {
+      "bytes": 94383,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_2/eegmmidb_109.parquet",
+      "sha256": "2a635de2ad9d349da698fa6955f48cb73d1c783bc0808610b8398a82922b986e"
+    },
+    {
+      "bytes": 95826,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_018.parquet",
+      "sha256": "f02108aaf7203127203452591984e4dbe25e5e855f1899565f7c5079e0eadee6"
+    },
+    {
+      "bytes": 96195,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_032.parquet",
+      "sha256": "6eeb9bfe31a6e4010b4e70364b71a3179176f8a808ce8d4cc48172e7eca26f9a"
+    },
+    {
+      "bytes": 95819,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_036.parquet",
+      "sha256": "dc50744ecb1e0342656452ae21fb0532fb3a256c3b9c31377d9aa50e8b02f7fc"
+    },
+    {
+      "bytes": 94989,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_041.parquet",
+      "sha256": "f34c79290a942f5bcdfe21f6f48073aebb082ea230c244c3a37dc6867f0b4b45"
+    },
+    {
+      "bytes": 94847,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_047.parquet",
+      "sha256": "df10617869bf312830ec1de1a6e700b2d6c49c831f2ebc33acef68b30424a887"
+    },
+    {
+      "bytes": 94793,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_048.parquet",
+      "sha256": "2062216ea0d42c02a9a99ca0c33ee3fe5eca3452a36a5d6968758ca47cd86aec"
+    },
+    {
+      "bytes": 94304,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_053.parquet",
+      "sha256": "a9231dec5a58f2ac09ac16746b826db1f9abd2c6baf2a53b23cd871173200079"
+    },
+    {
+      "bytes": 96872,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_060.parquet",
+      "sha256": "241630e54aab03169e4d858bcb914e2421d207629638aa8e6d94ea0f071aa2e9"
+    },
+    {
+      "bytes": 94487,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_097.parquet",
+      "sha256": "cd05a6267f7d88dde10953b83cb440623a68ee71b84ee102a664207d44bb4284"
+    },
+    {
+      "bytes": 95339,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_3/eegmmidb_105.parquet",
+      "sha256": "f994cce6fe75dc242fde83e782228ec219d134526c04819f19be09533b93c0fe"
+    },
+    {
+      "bytes": 97403,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_006.parquet",
+      "sha256": "b979a69ac3b7c96ffd6d78845794c30e46dc55b758186e3e5071c7996c21cd09"
+    },
+    {
+      "bytes": 96333,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_019.parquet",
+      "sha256": "a70557e3e6ae5a14728fc34a2729391926071c91bfac92ea9010cfbd992b4dd4"
+    },
+    {
+      "bytes": 95635,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_028.parquet",
+      "sha256": "952198c834775f9325ac56e11d0628570209bf015a8da4072467864d5ed412ce"
+    },
+    {
+      "bytes": 96388,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_029.parquet",
+      "sha256": "a8940180255e3578992cc162c68ae0ff29fe549cb45161ba52bb0024ea3975bc"
+    },
+    {
+      "bytes": 95773,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_043.parquet",
+      "sha256": "0fcf7bdc83406e190ad47148d8ed6467c9fed55161640c11c5c08e2a6f8297ae"
+    },
+    {
+      "bytes": 95342,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_050.parquet",
+      "sha256": "feb9dd4c3d47bddace07ecb10df7f175f18fd8a2e56469b94ea770570d2defc7"
+    },
+    {
+      "bytes": 96217,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_051.parquet",
+      "sha256": "8db5ce10163e599c58ef5e22ebb6621a8b8859b569782ba4cfffd5bbe10ff992"
+    },
+    {
+      "bytes": 95168,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_064.parquet",
+      "sha256": "3ae462c71e98d118896741b84f0118fc877cf16f17a98949ee6d352191c6f0d5"
+    },
+    {
+      "bytes": 94158,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_077.parquet",
+      "sha256": "f200a3fecc70c6088509d98e6476a1285ef8a40ce0e2e74bdb3a2763811ecdd6"
+    },
+    {
+      "bytes": 95609,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_096.parquet",
+      "sha256": "93162117ddcc70b1a8571a1841ed043ccdfa634ec5259e932fccdf389d6870ea"
+    },
+    {
+      "bytes": 81598,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_100.parquet",
+      "sha256": "8f354e4c60372cbabec86e31ab4d59adffcb31e27ee732c718e5554c2e4e4228"
+    },
+    {
+      "bytes": 92948,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_104.parquet",
+      "sha256": "4b1f0c98eba7e509bc4b87895cb8001526e19d667269b722e93bda6c57dc2df6"
+    },
+    {
+      "bytes": 96874,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/biot/fold_4/eegmmidb_108.parquet",
+      "sha256": "c9371bd12564371aa18b8f90a88cf4ee56991ebf6638db25257c5cf55d1815ee"
+    },
+    {
+      "bytes": 75889,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_007.parquet",
+      "sha256": "c924d572dfa7801c46f5851f317dd6b1582b3b917730b64917fbab77ab37026b"
+    },
+    {
+      "bytes": 78347,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_021.parquet",
+      "sha256": "00f14169da3cd90f745b58e716fa709e91a20f5f6167c1b816278bbcb11e7e22"
+    },
+    {
+      "bytes": 72618,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_023.parquet",
+      "sha256": "cff7d8fabd3af8656981f69a501c0ee7c6a129f13509e53df7772b2a589340b1"
+    },
+    {
+      "bytes": 73936,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_024.parquet",
+      "sha256": "3e65a2a898f47b65f649b72afbeddb2d3a92f1387b1d6da1a1a29bc9bed1d016"
+    },
+    {
+      "bytes": 82651,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_025.parquet",
+      "sha256": "618b8ce55af607d38ec7ecd71cfb3b36cea3bdecbf134ca339678ca91f20cf45"
+    },
+    {
+      "bytes": 76696,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_033.parquet",
+      "sha256": "8fb4fb884d807b63a869d8d4ccb3b443e5775a7bb9ab0d8c092e4f4a788f14f3"
+    },
+    {
+      "bytes": 77786,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_034.parquet",
+      "sha256": "e83945d9d296d1e65f9b4ae14841a996faff2ec5d656584ca3d3f3bdbd343737"
+    },
+    {
+      "bytes": 78290,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_035.parquet",
+      "sha256": "4656c2f6d8aa078b0be491432272bc170527ffcb13080b7638edac1d84a92a2f"
+    },
+    {
+      "bytes": 73300,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_044.parquet",
+      "sha256": "6c0bdb959ec55b2344c14eb7b1658d051952d48ef78d6188444d94b79978f4fd"
+    },
+    {
+      "bytes": 76440,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_057.parquet",
+      "sha256": "3b716468605aa22373b5484a61167c2a73f0071a4613fdcfae4ab11ae6c8d70f"
+    },
+    {
+      "bytes": 83492,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_067.parquet",
+      "sha256": "311b2d9709711425dcf27e0958a2dafa4dea54776408f970511d833794f79a46"
+    },
+    {
+      "bytes": 74937,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_079.parquet",
+      "sha256": "e9b10c56a368a33bdbe3e79c43ed4f2efecd55028f2589621852cf12463e1860"
+    },
+    {
+      "bytes": 77527,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_093.parquet",
+      "sha256": "06a723a1b1fedf010154d9a8a8766cf470dbedfd8b4971ef17a62d1d2c15541c"
+    },
+    {
+      "bytes": 82836,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_0/eegmmidb_102.parquet",
+      "sha256": "acf1c8c4628946821ae9d6b2ba874278955a23b2c4abb97654b090ac7cda2002"
+    },
+    {
+      "bytes": 78676,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_002.parquet",
+      "sha256": "eaa06aebee133a3692b9f7eb9ebb80601c6d549ad5dcf1ff62415cc8faacb511"
+    },
+    {
+      "bytes": 78593,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_004.parquet",
+      "sha256": "facd80fb0b97c456580fa2215d9b03caecb8040205e46fb00192842084e37b61"
+    },
+    {
+      "bytes": 78680,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_005.parquet",
+      "sha256": "ab7b2538cac605de510b1f233ae6c0c17100d8fd15cc9576ed3cf471aeee8422"
+    },
+    {
+      "bytes": 75264,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_015.parquet",
+      "sha256": "64c80b7c20160b01efceb092f69cff72b95c5edd1b6c165245f0031c12b498b9"
+    },
+    {
+      "bytes": 74751,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_049.parquet",
+      "sha256": "44c00b77fd3defc60f08a92f9baa9f2c5b31d24d84184525d5911e674bd6fd3c"
+    },
+    {
+      "bytes": 74575,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_059.parquet",
+      "sha256": "cae349d270b2e58a61665c04763f556744ebf849c52d3af43843873ca3822801"
+    },
+    {
+      "bytes": 70879,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_061.parquet",
+      "sha256": "f863251593bd1ac5a1427645154fdee4a3147132b13b03f1e10b768e9ea8f05e"
+    },
+    {
+      "bytes": 76866,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_062.parquet",
+      "sha256": "6b3bb488ac80493a6e21561bf862869867c3d9c85042fcb8195b5ecbc3854b68"
+    },
+    {
+      "bytes": 75572,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_069.parquet",
+      "sha256": "22cfef698b70c6aef6e6a1bb3710e99cb860321be53cc834ad65dbde95ed196b"
+    },
+    {
+      "bytes": 76800,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_080.parquet",
+      "sha256": "060d5a47e00f25ae483c04d39bc3fe268c02e9d97fdc9477c57d5ee2c65584c9"
+    },
+    {
+      "bytes": 78197,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_081.parquet",
+      "sha256": "ff070fcd61a9f8588381c8ec10bdfe6399acd64ef78a5d69deed4d4bc6b32fc0"
+    },
+    {
+      "bytes": 76419,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_082.parquet",
+      "sha256": "fff166b5e55657c867f514a60b957668c38aa5c0b7e98ddba2fc03f8bfd1aff1"
+    },
+    {
+      "bytes": 77518,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_085.parquet",
+      "sha256": "d9e11650ae46515ee077a6b2bef204b68e1b11db3e977d8c15faaadc33c81d96"
+    },
+    {
+      "bytes": 86459,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_1/eegmmidb_088.parquet",
+      "sha256": "6f08f40b27fe13a5cc6aca28c75c92f783a85a2495392ae7e15ebc9bb506d850"
+    },
+    {
+      "bytes": 74654,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_010.parquet",
+      "sha256": "5e04420605815f305ca5ec1f7071b9e0afeb0ae394d972eeae64c9d1b8a1d490"
+    },
+    {
+      "bytes": 75124,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_031.parquet",
+      "sha256": "5255bec2a5c1cfe9a7f8bef534eb73bacd614c6bde31f6c83b96ef3f46729daf"
+    },
+    {
+      "bytes": 76806,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_038.parquet",
+      "sha256": "793cafb2f4c866e6bf969fadc0b571f74954981dc5231fc00e2280b8f57fbda7"
+    },
+    {
+      "bytes": 76825,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_040.parquet",
+      "sha256": "dbf48ef22424a744586ddb2055a4d0c1c180f22d7ca092f508c4c011a01b24a0"
+    },
+    {
+      "bytes": 81703,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_055.parquet",
+      "sha256": "ef8434cbc9aed9ea9f53150576dad8049d67359916512353baa2d655ec8df7a6"
+    },
+    {
+      "bytes": 75487,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_065.parquet",
+      "sha256": "3d2433b8b289cbf8f0e252b43811d4cb649db7f2928bc3dd2c36de77a136d43d"
+    },
+    {
+      "bytes": 75970,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_066.parquet",
+      "sha256": "4b8d6cd698ce7817faea02c22b2e0ab99ac945df3f0d1d44e84455ec90dbba9b"
+    },
+    {
+      "bytes": 82662,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_072.parquet",
+      "sha256": "7bca4053d80c175a969b9eaf100414060a790cfc747c947b75a2e30194e0f67c"
+    },
+    {
+      "bytes": 73537,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_084.parquet",
+      "sha256": "82352889596a097a7495c15559eae7e921c85882d35d425c3907b52afcc5f2e3"
+    },
+    {
+      "bytes": 75739,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_086.parquet",
+      "sha256": "2fdb77335323fd86327bf91f0a338068aaff7e5d3e0f12f5417c145210d6faa8"
+    },
+    {
+      "bytes": 75973,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_087.parquet",
+      "sha256": "a2eabc0f290859d271751160081c8c03afe2c39d2cc762bdbe739bb3da4cbc95"
+    },
+    {
+      "bytes": 74471,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_103.parquet",
+      "sha256": "42fdd786de4ef71688a24cc8cba2265b43f76d65521ea77440ae01ccc042f34c"
+    },
+    {
+      "bytes": 73957,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_106.parquet",
+      "sha256": "e0f401f67fefc12f3e0b9dfe2a853b0cd750b19b9911b929cce8389aa05ba7a7"
+    },
+    {
+      "bytes": 72184,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_2/eegmmidb_109.parquet",
+      "sha256": "95e4e87ea58e0190bf0a5931cd0a874b5a0ded63207d0018a6aec344acad1a69"
+    },
+    {
+      "bytes": 82709,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_018.parquet",
+      "sha256": "f9026915e1ef6d68512e17b3ebc74b835678e9eaa0107a70ed9eee2f3502d29b"
+    },
+    {
+      "bytes": 72788,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_032.parquet",
+      "sha256": "bc253ff6501ab82036ce5fd9608bdd685dfd0bb4ec668ccdba41109759821519"
+    },
+    {
+      "bytes": 74704,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_036.parquet",
+      "sha256": "55d22723d54c17884f407409c1c6ddec93c62c9a1863db8bac4e85c9b4f64845"
+    },
+    {
+      "bytes": 82627,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_041.parquet",
+      "sha256": "076b93da5147fadfb68d2c6944c5f38f59518ac496469d8704f25fb64f657e32"
+    },
+    {
+      "bytes": 82442,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_047.parquet",
+      "sha256": "9ddf6e78e0af75c06c7d78ed24d203424f07b30d5bec16582d8c82feb92a89ce"
+    },
+    {
+      "bytes": 73750,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_048.parquet",
+      "sha256": "2d3b950d302f3e8013c69ad8a7785ced2a6e82a5d25432a268e18a8445096065"
+    },
+    {
+      "bytes": 71383,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_053.parquet",
+      "sha256": "f4455a34ac912804e571c46895cdd8c6809e6dcc9e085e868cad656ee0d5c6d8"
+    },
+    {
+      "bytes": 73402,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_060.parquet",
+      "sha256": "f9f5fb0f70120dc1f10c7e030a7589ea227ed7c7c7db3db84315fa2909e673a6"
+    },
+    {
+      "bytes": 73591,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_097.parquet",
+      "sha256": "e8fba764ad28ef0d0141059858a0ae80af4e4c3660f0ed05418269fa604281fe"
+    },
+    {
+      "bytes": 75942,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_3/eegmmidb_105.parquet",
+      "sha256": "3368c1f92403dc60660d29d21caa71064ffab7a731644b19ddf7c42532de615d"
+    },
+    {
+      "bytes": 82735,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_006.parquet",
+      "sha256": "81308dbf32881c8e4f5411218d320b2d023034de7f33320d2eab14df41feb488"
+    },
+    {
+      "bytes": 75635,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_019.parquet",
+      "sha256": "c4f22a41f2f550e6409362e198ffa91630c6fa30f3424f4378106718969a9572"
+    },
+    {
+      "bytes": 73935,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_028.parquet",
+      "sha256": "146d1d4f47b2361b961d99e9f7b5bf891a845b78b9da4003f6219d7045619422"
+    },
+    {
+      "bytes": 78330,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_029.parquet",
+      "sha256": "a3a1b5906270abbc0e3ac6cf3c6e4f389c745a820397fee7e2d7cabc41ec811c"
+    },
+    {
+      "bytes": 74508,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_043.parquet",
+      "sha256": "762a9de6a693b5948af5523c463c4ef05c3730c6df28fda0b9eb8c661e55f9b4"
+    },
+    {
+      "bytes": 82019,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_050.parquet",
+      "sha256": "965ee25b04115c306ddc3375004318a31ca5ace0a387355099b031213c21136b"
+    },
+    {
+      "bytes": 82363,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_051.parquet",
+      "sha256": "33814732b900da484f5d0228c3ffc0ee54a4686f8c1b4393c6688b4c72b446bf"
+    },
+    {
+      "bytes": 81956,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_064.parquet",
+      "sha256": "e5f39cc26cde73ef7bba6939dc66bf94c0543485c0db8d306d0fa3953a2fa741"
+    },
+    {
+      "bytes": 73796,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_077.parquet",
+      "sha256": "cd28d251f759f950cf4d021af124a2e0eb94a6868b32c1b4fb04a897f4a1b0d3"
+    },
+    {
+      "bytes": 72377,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_096.parquet",
+      "sha256": "9142592573ef904d295d7b181c39eb08bba358a0807798676d5167082fb0e9e7"
+    },
+    {
+      "bytes": 63744,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_100.parquet",
+      "sha256": "97150246c570661a59f8bddcaf987baa569b4df0ce161ad5d166a0c101b2d672"
+    },
+    {
+      "bytes": 75716,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_104.parquet",
+      "sha256": "893d77f77d5488ee84d3f52085e2ee4ba699e2e6e458e48ef3025f90a52cd052"
+    },
+    {
+      "bytes": 73656,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/cbramod/fold_4/eegmmidb_108.parquet",
+      "sha256": "5f244cd5696ac3316108bad5adeb071324015d84eccd05449dfeef174559a308"
+    },
+    {
+      "bytes": 83290,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_007.parquet",
+      "sha256": "08c7be16be67fd4dc78efce4c5ed27db8c8b8eed370f79bc2df25a3332ca61d5"
+    },
+    {
+      "bytes": 82273,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_021.parquet",
+      "sha256": "da3711dc62d55bffd1acd711aeca09561be55ae0e8716235120ef4246f08c23c"
+    },
+    {
+      "bytes": 81816,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_023.parquet",
+      "sha256": "e587015650cfccd64db2674a0f05ceb837764efc11ca719d52cf079a7d46c823"
+    },
+    {
+      "bytes": 82190,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_024.parquet",
+      "sha256": "2ec83f356f11443cba5df280a021be0e8a91678d835226b4075a32b9a54a4bed"
+    },
+    {
+      "bytes": 81593,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_025.parquet",
+      "sha256": "b608ed8ba4dee6af359829b32234a431d346bc6dccba2a07543426cd981a7cf0"
+    },
+    {
+      "bytes": 82285,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_033.parquet",
+      "sha256": "8e479c80384b4d9da12cfb0804ad75c0c41d52f888432119c6489d24ced87dd4"
+    },
+    {
+      "bytes": 82430,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_034.parquet",
+      "sha256": "8b88a9a794772c43c88e3832c6a77c788b6489fab51d36de77f81ca8e55c7e14"
+    },
+    {
+      "bytes": 82830,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_035.parquet",
+      "sha256": "e5df1b2487c969902f5a4dcf97236a24eefba6b208f7ba095a1ceee2c4c2610e"
+    },
+    {
+      "bytes": 82915,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_044.parquet",
+      "sha256": "5d6c4d7697a66ed6b0ee45a4dcef6cb97015fe767a6f3b9b1a9fde2a1799b23e"
+    },
+    {
+      "bytes": 81624,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_057.parquet",
+      "sha256": "e5afcc3a97e396089670dfc3614ba173de96d078881df24bd32577881c7acc0e"
+    },
+    {
+      "bytes": 78445,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_067.parquet",
+      "sha256": "a3616afbde33e701c58a35457d9ab0cfb14f6669b201988c1f471e7d6f219b79"
+    },
+    {
+      "bytes": 82133,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_079.parquet",
+      "sha256": "66ff1073d02760c4c3df763dc78cd839bd4b1a8a4ff25abb505e6de06f9e4a3c"
+    },
+    {
+      "bytes": 82645,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_093.parquet",
+      "sha256": "c8275485b5fee47dbd19c418de788436263b3c9df9dfafbab8730194314a0440"
+    },
+    {
+      "bytes": 82563,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_0/eegmmidb_102.parquet",
+      "sha256": "739ae73fb73b2fa1e6e7fe8861fba7d5fa1568d02f894140611fe3642379851b"
+    },
+    {
+      "bytes": 82108,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_002.parquet",
+      "sha256": "dda4e3eadcfe23d295594c230cb10e5545861525835588e936c27350036c2e90"
+    },
+    {
+      "bytes": 82691,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_004.parquet",
+      "sha256": "15b0ccfb4111edd5e5eaf504f93cc2dee32937435ea7cbecb2f810edc14ac57f"
+    },
+    {
+      "bytes": 81729,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_005.parquet",
+      "sha256": "4e36df385dc4207eef6aeaf038d0500eae4f0e219a5e872025b7476fb9556dc7"
+    },
+    {
+      "bytes": 82190,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_015.parquet",
+      "sha256": "c2b77353c90f3e345f04d8358d37b61b2cc6a6029327ea821a06b903d26c3024"
+    },
+    {
+      "bytes": 78621,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_049.parquet",
+      "sha256": "010c38378a9e25ec4f110c232bf6881d6449b8c7ee7c189a98461c08ddc1d1d3"
+    },
+    {
+      "bytes": 82736,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_059.parquet",
+      "sha256": "5f0627eab015fca32adc419dfc0ecff6ba593116ba6d64ff64de14e0f49ec48f"
+    },
+    {
+      "bytes": 82809,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_061.parquet",
+      "sha256": "a6696a8084744b83ed7cb827c88e38ece8d2059b96ba671e1651d4b817f62b91"
+    },
+    {
+      "bytes": 82753,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_062.parquet",
+      "sha256": "efb9b26b9f85a19800805345e35d3b0712a19a22c199285c99362f62def0cf2c"
+    },
+    {
+      "bytes": 83216,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_069.parquet",
+      "sha256": "bae30492c48ba366a0297f1e7b7de98e28c1ffe0637cc34fad8de4fb08cdbcce"
+    },
+    {
+      "bytes": 83006,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_080.parquet",
+      "sha256": "be28d44a5b14380e9724c9b02982bdb7c8f293c109855726eb71f3158d289036"
+    },
+    {
+      "bytes": 82915,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_081.parquet",
+      "sha256": "dcc0eb4f68c72a3d480b869deb6313eff43bdf11810552995b2dc149c887a653"
+    },
+    {
+      "bytes": 83064,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_082.parquet",
+      "sha256": "efd48bf55905dca3d1fc9748b0bcc7ed31bc384a605d0d65943081dead7cf6ab"
+    },
+    {
+      "bytes": 83519,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_085.parquet",
+      "sha256": "f1a92a4b87280924e7eccbac60fb647d5446cee84547bfec72706ed32f689e22"
+    },
+    {
+      "bytes": 96830,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_1/eegmmidb_088.parquet",
+      "sha256": "570f0ec3a893cf872c538ebe4d99dd30914f326c648602f8486cfa759378fbcd"
+    },
+    {
+      "bytes": 82458,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_010.parquet",
+      "sha256": "4220d718a1304d488a0f057e572d31e739ba24e0ee862d0a7ad4e3cf8ed62066"
+    },
+    {
+      "bytes": 83392,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_031.parquet",
+      "sha256": "bcb45330f50024aa99389e024192c7da0be9359397ef01d8fabd95b4fd0c3159"
+    },
+    {
+      "bytes": 78572,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_038.parquet",
+      "sha256": "b3506d6bb567b84d35dc018b84a82bbf725b7eeb253a7e5318103d353461219c"
+    },
+    {
+      "bytes": 81884,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_040.parquet",
+      "sha256": "9d3455813e0058dd8c590a0f447cbd497bd6069b43ff48744258d52bd614a4eb"
+    },
+    {
+      "bytes": 82873,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_055.parquet",
+      "sha256": "ab9a4f8e6079b5c5559905b844204caeb58e08c49d71cd596c57523556d253e3"
+    },
+    {
+      "bytes": 81853,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_065.parquet",
+      "sha256": "e4d4c1199e7b60dd82cf20cd57b96ae597c4a35977971ee4cd6b4fd8e776acfe"
+    },
+    {
+      "bytes": 82968,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_066.parquet",
+      "sha256": "05c098f44b3721056f6e240b5ed1803c4cb100f7563bc17d1d1abdcbf18970d3"
+    },
+    {
+      "bytes": 82216,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_072.parquet",
+      "sha256": "047a9b231326feb75b1ef41d6808450d646188a1f9d1b7c361ff8456476f53e1"
+    },
+    {
+      "bytes": 82219,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_084.parquet",
+      "sha256": "2667f4ea87a80cda53bc5dba2d63ef43ebdac169e09a1ef485351584c3e86ade"
+    },
+    {
+      "bytes": 82646,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_086.parquet",
+      "sha256": "0a237ea13d85f3d9684da261d19d50c51ce18cb7a60fbc97e1fe4807e8af9f49"
+    },
+    {
+      "bytes": 82035,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_087.parquet",
+      "sha256": "a344ad428e917c2fc6774a17f2047bd46d482766b3f850643044e1fbe334a743"
+    },
+    {
+      "bytes": 82638,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_103.parquet",
+      "sha256": "09f4a5c6f4d4b92e1f71cfbe50f8c9ffef43ad867ec4695ac1f32fc1c79c24cd"
+    },
+    {
+      "bytes": 82258,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_106.parquet",
+      "sha256": "35a5ab5b325210a282ae54cc0ebb921cc3a9825e8f5ba3d0bd2113027b1deadd"
+    },
+    {
+      "bytes": 82619,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_2/eegmmidb_109.parquet",
+      "sha256": "78f5420be7924abc59b9eacf2e3427d333f76c95a7b01b571797023e79e8d1cc"
+    },
+    {
+      "bytes": 82753,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_018.parquet",
+      "sha256": "4d2cbb3c6caffc4c586b16b7f57c7756b5c419d85453af81aa121b65a9ca3fd6"
+    },
+    {
+      "bytes": 82581,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_032.parquet",
+      "sha256": "c914293d82dc5aef94aa2aa50c8a06eeed79eeaa023cec895b236939c85e0aae"
+    },
+    {
+      "bytes": 83079,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_036.parquet",
+      "sha256": "72646fe57b144b0f8cf21d162c44ede5b110f71eca156b786e46dad490a6cddd"
+    },
+    {
+      "bytes": 82467,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_041.parquet",
+      "sha256": "9b07b81adcf972d7e3ba15dac7667852427e63393416e77d88ba9155808ec0cc"
+    },
+    {
+      "bytes": 82862,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_047.parquet",
+      "sha256": "97366c20686f019c66a5356e47ca40dd7461f1cd120a56c56240cc785d3e1b57"
+    },
+    {
+      "bytes": 83092,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_048.parquet",
+      "sha256": "4c5bb89102e83b4412a43254b98a0669cb084fdcf635ae0a3a43a3805b7ffcd2"
+    },
+    {
+      "bytes": 81858,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_053.parquet",
+      "sha256": "2e3016f200690922eef62699d65c0e3834d8280bd429955e6e1d0fd55c9664af"
+    },
+    {
+      "bytes": 78966,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_060.parquet",
+      "sha256": "2d1d83118f032f1ed925c874402e0fe25776f683caedd78dd95c3267efe5e825"
+    },
+    {
+      "bytes": 82931,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_097.parquet",
+      "sha256": "0910f257d4d22bb96bcb2ddf7c1b8fe50b244b33d26eccf0c5762a075ba7490b"
+    },
+    {
+      "bytes": 82837,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_3/eegmmidb_105.parquet",
+      "sha256": "6eb13c2e3eaabf7ba16474f641f4cb7c2bf53ded48754241de09e48e2f85752e"
+    },
+    {
+      "bytes": 81403,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_006.parquet",
+      "sha256": "5d5ce1103ba259c17cf3e4e2cd74f6e7bbd2adb11b616d4211c1892427f031f6"
+    },
+    {
+      "bytes": 78154,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_019.parquet",
+      "sha256": "0ab0f9081e9cf9caf1f782ac41def41a8b18f257fcfff571df2330cd62991630"
+    },
+    {
+      "bytes": 83102,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_028.parquet",
+      "sha256": "1e84809850d32542c4bf97da738404f508159e12f6fc737cc952f3125b17abdd"
+    },
+    {
+      "bytes": 82683,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_029.parquet",
+      "sha256": "ee9f15bc3fee143d01c4bd15393f5ef87cb8a8ba96579ea3247b31dbe16c56bc"
+    },
+    {
+      "bytes": 81871,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_043.parquet",
+      "sha256": "670f047c3d5a4954b1571b9175de6d73fa33f29d285a11c377b0a87ed92638b2"
+    },
+    {
+      "bytes": 82012,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_050.parquet",
+      "sha256": "36d13601a3a1fa1c5065167c64a0b01111946fac311b8be093374d9fd1700584"
+    },
+    {
+      "bytes": 82923,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_051.parquet",
+      "sha256": "e98e124f7b6d623a27d8ac878d6b5adf0bda2bafe9d8f0eeb04e0c3cfac1926c"
+    },
+    {
+      "bytes": 82917,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_064.parquet",
+      "sha256": "8ae260d251a44bec91fdb9afdf49bfcf9637a33f8a99fa0cc9fb6d17d8247595"
+    },
+    {
+      "bytes": 82398,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_077.parquet",
+      "sha256": "fe63ed20eb2e3212e91b2bcc89d635b9b62de266d1811cb3475b788967c0cf7a"
+    },
+    {
+      "bytes": 82774,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_096.parquet",
+      "sha256": "543b89ab27e3750deea29e9ab81d91b35f003d61438616d6dd8b6040e7146c01"
+    },
+    {
+      "bytes": 68269,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_100.parquet",
+      "sha256": "bdf194225d14fcf30cd9c793f78c1bc1061b76ad66f6ad0a606bbe15a3a96b49"
+    },
+    {
+      "bytes": 80252,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_104.parquet",
+      "sha256": "23ec126986b0df2dc2f261570cf25751b9be2c0eabd51da57bf9383d9642685a"
+    },
+    {
+      "bytes": 82086,
+      "path": "outputs/fm_routing_v7/embedding_cache/eegmmidb/labram/fold_4/eegmmidb_108.parquet",
+      "sha256": "9eb31357163ddce0c14aa1f92c0e8119c2896d4ddca7fb580274ce7ac7dabc0c"
+    },
+    {
+      "bytes": 597264,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_028.parquet",
+      "sha256": "1aac211e1a7da3dec5008fffcb753e1a62f1d1e2aedb6b1ae95014e2b21303cd"
+    },
+    {
+      "bytes": 534456,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_040.parquet",
+      "sha256": "19768bec11451dffdc4124ee3de203aa8b10900e51eb7cfe18e7304fbf216fa6"
+    },
+    {
+      "bytes": 735148,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_056.parquet",
+      "sha256": "da979d34fa5142d432c85322e43d1e233ec63d447319820a9070c08805c37082"
+    },
+    {
+      "bytes": 701080,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_071.parquet",
+      "sha256": "e031b285db2e12eef4b892eaf7b67a1905efccfd88a8da2c1e09e415a72d6035"
+    },
+    {
+      "bytes": 696883,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_075.parquet",
+      "sha256": "0b28d2099a1b5d355d4360aebca370c4a1545f35d4d34e42705c6990667c67fc"
+    },
+    {
+      "bytes": 579358,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_108.parquet",
+      "sha256": "acc5ec7d4ca72a3813dc03c96607796a8c5d54f653a6bd7e5b202684c2976c20"
+    },
+    {
+      "bytes": 547236,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_115.parquet",
+      "sha256": "3302dd0abc22e7ccc6c5429bd9858c98d14cbdad0675334aef8a28e096cb5e92"
+    },
+    {
+      "bytes": 699552,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_121.parquet",
+      "sha256": "a45b2415f21fd84dcf340cf7615b4a48a68450d3d10fc294b8012183b5469a28"
+    },
+    {
+      "bytes": 585998,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_142.parquet",
+      "sha256": "3ac58f38c90be762b2d332cd351ac6c55783ba586ef9641f3e6511d6989386d7"
+    },
+    {
+      "bytes": 522327,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_144.parquet",
+      "sha256": "818f4b4252209ed99112d7e21b23009fa7f58086113292628504d9056ce85e9d"
+    },
+    {
+      "bytes": 588319,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_153.parquet",
+      "sha256": "9b37fda7f736623e8527d97ab8f8398ba9b218437a7db3474b889fbdb5b6f96b"
+    },
+    {
+      "bytes": 649350,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_0/hmc_154.parquet",
+      "sha256": "91656b1ec299693e101dfa9ebb1eab63f948efa600e92d62cc8fdd772c00fe16"
+    },
+    {
+      "bytes": 569423,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_001.parquet",
+      "sha256": "b0be11fd0612ce06504adcc086c3f4dc133120d44011465544bbfd46d59ae860"
+    },
+    {
+      "bytes": 667942,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_007.parquet",
+      "sha256": "af3a795193364a75236113d0bd8d670fc2d4d060328b3d755de1422070209645"
+    },
+    {
+      "bytes": 651983,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_013.parquet",
+      "sha256": "bd0e4678ed7748f029c1d28c25a12e21889088190ac7f353d0e914ecf96aa2dd"
+    },
+    {
+      "bytes": 697767,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_016.parquet",
+      "sha256": "023916bcdf95ff0e0853ec53317a8675a5e81446f2b25ec1d2e8d86fe47dd15f"
+    },
+    {
+      "bytes": 550561,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_019.parquet",
+      "sha256": "37d92f33c87e0021c94c050e079a6b73f641d538871dfe67a58ab3007b116d1c"
+    },
+    {
+      "bytes": 576883,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_026.parquet",
+      "sha256": "ddb5a90c22cab4a5f2a82f80e3cf49a5eff946db4aa4d01c87001c419feb0d87"
+    },
+    {
+      "bytes": 526115,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_031.parquet",
+      "sha256": "9075ffcda33e5250bef9920f6f154f446c59dcabbc379fcd737c4e4a949c5329"
+    },
+    {
+      "bytes": 758065,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_032.parquet",
+      "sha256": "804e1318e399259dbe6527e0b344a126ebb909f83f6c845b2c8d771bc7920410"
+    },
+    {
+      "bytes": 586366,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_047.parquet",
+      "sha256": "a45d8868c6d95d11b008cfd2dc4c5c612768eccfd255d81753c70bbf5bbe9aae"
+    },
+    {
+      "bytes": 673518,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_058.parquet",
+      "sha256": "2df894ea2e56a0a7de9dc76ab78c95a1668e49aa6e821ba3d3188c89c1c77653"
+    },
+    {
+      "bytes": 584438,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_061.parquet",
+      "sha256": "ebd4745d93fe6eb8ff58e1917c47f71922e3cec8563562bcb4e1e2d3538af563"
+    },
+    {
+      "bytes": 461769,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_070.parquet",
+      "sha256": "110ee5c661a4242547fd641f173324920ef87081bc7071fac025dbe5b0ea2b25"
+    },
+    {
+      "bytes": 560718,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_077.parquet",
+      "sha256": "1fbfa8099073c8f18702c8cf3733897de17eebe5bcc4b4075d2bb79b649e31c2"
+    },
+    {
+      "bytes": 717552,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_079.parquet",
+      "sha256": "8b2bb4637ae2fecd4383aab4b45ca6b6f343cdf4fcea619406bb4c8ec5fb9379"
+    },
+    {
+      "bytes": 662844,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_085.parquet",
+      "sha256": "3e26653e705972754b98fc4edc869832a0bbefb7eeb80e97ff0266f755000bc4"
+    },
+    {
+      "bytes": 474211,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_086.parquet",
+      "sha256": "07647546fb889d2a46cb8333edd7021ab8f6aca31873d500da9ae590586cad3e"
+    },
+    {
+      "bytes": 542660,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_089.parquet",
+      "sha256": "a3597631edba3bfa7f795d456c6cbb9115da5b1bab67002fad1fd3394bf9299d"
+    },
+    {
+      "bytes": 565724,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_095.parquet",
+      "sha256": "b90c94a0c94913036653e1adec97a8e57e1d36145f187a558acf733a40df10d7"
+    },
+    {
+      "bytes": 681574,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_097.parquet",
+      "sha256": "7867a945d9db2f6fce73c2babf4d7070135380b0ba0827049e96241f0e317a46"
+    },
+    {
+      "bytes": 651477,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_104.parquet",
+      "sha256": "91f7dc1d78ef2623f6193753963076d4acba5dbce8224721866c932de5a7edc0"
+    },
+    {
+      "bytes": 647210,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_118.parquet",
+      "sha256": "d74a7510ebf0b7a6576fbf1f784ec8ebfc7bee28abbcf4a1ef0e875760f0bbc4"
+    },
+    {
+      "bytes": 507799,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_123.parquet",
+      "sha256": "89ef92df998f7f1a45ca305ce3ab5c1d4f9b1bb16da9068d8bce734acde6b0d2"
+    },
+    {
+      "bytes": 668023,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_124.parquet",
+      "sha256": "441ef195f12a4cbf5f346ed4e7ab93723ea0abd28d714f5870bea3949ebe4bd2"
+    },
+    {
+      "bytes": 611182,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_128.parquet",
+      "sha256": "e8aeea96160d4168a8fdbb4bed001d1f0063c580007eacf702d140d18234a483"
+    },
+    {
+      "bytes": 567171,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_129.parquet",
+      "sha256": "a453d91c651e1e2f75d97e84735596c3e5b1a53d499d7189bec858abab24b8d1"
+    },
+    {
+      "bytes": 692129,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_1/hmc_141.parquet",
+      "sha256": "d0b06344184d411a744583b1dfd55d9edf53b27183cfac5b8f11f85f6a6b63d3"
+    },
+    {
+      "bytes": 658934,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_004.parquet",
+      "sha256": "4bf5c88572a3e45906971749cbcb33ea15c25b2502b31c70e5fb6861d1103096"
+    },
+    {
+      "bytes": 726194,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_011.parquet",
+      "sha256": "fcb8de498cdced8cd4dac44a6f2320e2c3b356d0e232d508dab2d010eadd0aac"
+    },
+    {
+      "bytes": 568316,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_024.parquet",
+      "sha256": "dd9b9066d216ad59d5881a2f2c9d874dad061c581e6f61ab9ed9cdc80641ce27"
+    },
+    {
+      "bytes": 584641,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_027.parquet",
+      "sha256": "3668bfc1c00e43d1794cfbfeb31eb3a12e7e1077188708118cdc6b3314148338"
+    },
+    {
+      "bytes": 485989,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_045.parquet",
+      "sha256": "41597a111244f10e6082eb967866824302ed52e829b3600096d24e8484e92c11"
+    },
+    {
+      "bytes": 607963,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_051.parquet",
+      "sha256": "e9d7cd613bada992f70835ec4c9f31d390da55e0b24d6b5f4cc3df6fe9b933de"
+    },
+    {
+      "bytes": 656481,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_052.parquet",
+      "sha256": "f6457de50097b05720ef92cf8978729bd33b4457312bf1bd2c14f135a7b8c73a"
+    },
+    {
+      "bytes": 618120,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_053.parquet",
+      "sha256": "953c71212832cba16e9c5dc818d0c1e6d6bf39b23adfbb8f04e7d1988a320327"
+    },
+    {
+      "bytes": 642571,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_055.parquet",
+      "sha256": "dfbc94ed1df07ccb98ebe5c67eb8f1da529620fa1e707b8aadd54daa27f1dee4"
+    },
+    {
+      "bytes": 788557,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_063.parquet",
+      "sha256": "682c47913284018b2f14c3e84e27e5d8e9342a657ca4b21d53561da235022bb7"
+    },
+    {
+      "bytes": 650988,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_066.parquet",
+      "sha256": "cb8e0aa376f6b74188e62e85fb066bec5985808fc4532250ca3e11ca40a3d6bc"
+    },
+    {
+      "bytes": 700961,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_083.parquet",
+      "sha256": "199fed1e1b72b85eb4888e77dac05256f32d60e1e75072ec7f7dd75986130ed9"
+    },
+    {
+      "bytes": 551761,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_087.parquet",
+      "sha256": "a0bd3f4bf272285376c3604fad3b8281eda3ac843d2ddbc6d8757a80f67261d2"
+    },
+    {
+      "bytes": 462131,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_106.parquet",
+      "sha256": "803fe701ee33a2555cfb0320cee947e082005f5f137e3d6b2dd028d6990cf099"
+    },
+    {
+      "bytes": 423207,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_114.parquet",
+      "sha256": "2f1aebfe4638a0dd819a9daf3d0d3abb51ef64176ff2091cee03a9ea91983e17"
+    },
+    {
+      "bytes": 651789,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_2/hmc_133.parquet",
+      "sha256": "42e57549a26a63af94b1e7a7fde4688e2306b3cdbacd924179f7b7674fb5bdc8"
+    },
+    {
+      "bytes": 630713,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_020.parquet",
+      "sha256": "a4c73835ef33bebedfad8768ec64b7bdaa3528ed2fe28dd20daa7ef137373f01"
+    },
+    {
+      "bytes": 578901,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_034.parquet",
+      "sha256": "dfa35d7702b20f48e98625462679b898c984057df9571afba53dffa1ce8bc7a1"
+    },
+    {
+      "bytes": 536886,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_036.parquet",
+      "sha256": "1f604ec8810d7a372df8d5f1b7f075d5d429687f10e2a985d46a9b6b8ce346c4"
+    },
+    {
+      "bytes": 628659,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_044.parquet",
+      "sha256": "5e82ed91190e1336d2c33cb4f96145ebbb21ac9fef4f80c4b60e3f550b4ffdea"
+    },
+    {
+      "bytes": 797241,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_048.parquet",
+      "sha256": "fc24c9a5456ba19f9fe786dc463ec602212532343df90da58e846eb21a3e0ee0"
+    },
+    {
+      "bytes": 547190,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_049.parquet",
+      "sha256": "c39d2fa3d8893d0ffd0d8328b2ef83ecab9bac727b6368f66c2414435ff5b641"
+    },
+    {
+      "bytes": 665886,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_065.parquet",
+      "sha256": "730d0ae32c084edff83d02ab95cd38278eb55e6185164199f08bb004b28eaa82"
+    },
+    {
+      "bytes": 472086,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_076.parquet",
+      "sha256": "0c43f4c47847a9c1de0a98b890c85f44306700e43d43666e624e384a86c21e8a"
+    },
+    {
+      "bytes": 594822,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_090.parquet",
+      "sha256": "79cba1dc4ee84c94933f27bdbc6cf47952c9978910a83630690dc889cdda0842"
+    },
+    {
+      "bytes": 522734,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_093.parquet",
+      "sha256": "a3ba4fcade217eaf59a224308c7747e00e18a89891fd1cc3bd64db6ba0854b7c"
+    },
+    {
+      "bytes": 602851,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_101.parquet",
+      "sha256": "73da9946aa241b7c5d8d1218ea59d0666406ca872cf7c35a70b8e88fef950e50"
+    },
+    {
+      "bytes": 510763,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_117.parquet",
+      "sha256": "2ba04876c61b7a8b5d7ea06c0fb9d8035bdb165fa3d234a9204fec3b6501f47c"
+    },
+    {
+      "bytes": 555005,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_122.parquet",
+      "sha256": "66c27fcb8975c95a6327d10d7f4d9ee3f66f02f92a1a149a3cb8fa704d236108"
+    },
+    {
+      "bytes": 752488,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_134.parquet",
+      "sha256": "2f2eefcf86ecc253669dfda3881b33c79dffbde6aabe4f92a3a08cbeb54d77c0"
+    },
+    {
+      "bytes": 619561,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_143.parquet",
+      "sha256": "a04bfef2816ce687545f1f41d5a77a05371e1d8216ff117ac2064a0f2a06e36a"
+    },
+    {
+      "bytes": 566020,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_3/hmc_148.parquet",
+      "sha256": "b975f338c844e09d928dc9baec742e0590073303fdf15606c1cbcd9d34c4b134"
+    },
+    {
+      "bytes": 623017,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_003.parquet",
+      "sha256": "c4fbc0d8bed1da967a3975cc8cadafd353838602a971becaa41be1aac86207ed"
+    },
+    {
+      "bytes": 625006,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_005.parquet",
+      "sha256": "04db7392b307e6a11ee781153ea20a5992c15113c8063e3f2f0b5641319aa0da"
+    },
+    {
+      "bytes": 621182,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_021.parquet",
+      "sha256": "ad3e57890eae20e2882fd77dbdfd3580191aeafd21550f6ccb3572e8e0bf7e57"
+    },
+    {
+      "bytes": 532748,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_023.parquet",
+      "sha256": "665a3f154f8af15b06f342a5f0dc61bbc7db237d907f47d1ee22830b7c84b0b2"
+    },
+    {
+      "bytes": 651884,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_043.parquet",
+      "sha256": "23d45c563682c2f5e5e570b6d8dc103a1bcfc0ac2812bc643ad0e5d222457c5f"
+    },
+    {
+      "bytes": 481715,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_046.parquet",
+      "sha256": "bbac5dc5868951d11cf4c8467970aa51bec776cf317a6d896c0fbc842e2d6a90"
+    },
+    {
+      "bytes": 547338,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_059.parquet",
+      "sha256": "392ede36ee1e614cbe65be70dabe86ed1c43d18b068363f3b61bf7a6777f3dd6"
+    },
+    {
+      "bytes": 559802,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_068.parquet",
+      "sha256": "1daccfa5bc37f1ab9460596c4db7643d4f0de1a20987ea402d9366d32e259050"
+    },
+    {
+      "bytes": 691377,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_072.parquet",
+      "sha256": "4816a58f72ab4077bce189fb8be0ffc3e902cc5888ec7ae61e619ac84bc79e68"
+    },
+    {
+      "bytes": 586712,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_080.parquet",
+      "sha256": "43934d68678ac76d633fecbb881a350ba008b2dc3b6363eb35250f7a5c38553e"
+    },
+    {
+      "bytes": 502292,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_082.parquet",
+      "sha256": "64875c60a48fb7db49367863b74f2081c92c885b295ddaf8d201a2d67819a5f2"
+    },
+    {
+      "bytes": 556763,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_099.parquet",
+      "sha256": "b0889b248ffd7cfa047502e3435760d05e65c9022ae3bb6955cad17ec602470a"
+    },
+    {
+      "bytes": 531663,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_116.parquet",
+      "sha256": "18f36e4a2a90fb066ebd57b7c55e3e57b0c012b14fa1232670d19a9dbb2a6122"
+    },
+    {
+      "bytes": 593216,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_119.parquet",
+      "sha256": "4da4c873229cf6dd2faf2f64a8da149eb2197fffd0e0fde71fdc627d24b01a38"
+    },
+    {
+      "bytes": 631668,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_127.parquet",
+      "sha256": "5b47e240502491e85a195ed0bef5e6fe057f4d28b8884d6a554af0a53615e42b"
+    },
+    {
+      "bytes": 660152,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_132.parquet",
+      "sha256": "85afbfaae2504ad80c75334a3d4873adbc98a8da32ce18e90842ab31a49406f6"
+    },
+    {
+      "bytes": 693538,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_137.parquet",
+      "sha256": "a6d4106b848252c47480bbbed4ebeb8625be3aec4b176ab360f291836bc295fb"
+    },
+    {
+      "bytes": 822791,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_140.parquet",
+      "sha256": "f5e7f29a489c0907868d88b802f9b93575323ac832b1ae041b628e2de341a231"
+    },
+    {
+      "bytes": 528225,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_145.parquet",
+      "sha256": "6f0a7ae60dcacb088ba7288d933ac1f2387116f2b8846d98379bdc617b718b25"
+    },
+    {
+      "bytes": 662838,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/biot/fold_4/hmc_146.parquet",
+      "sha256": "31757081cdc8373d28546595a49bc93e0a2ca882018be4938ed57bd3aa3fcfb3"
+    },
+    {
+      "bytes": 490100,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_028.parquet",
+      "sha256": "a87b729a467771861ffbeb46cae8f02ff6e679df6dc18809659febc08cd43b26"
+    },
+    {
+      "bytes": 441959,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_040.parquet",
+      "sha256": "9ad4360d8698648e2d0006cb1c5984b035389fb3a7b124575db4d0432d98ce2c"
+    },
+    {
+      "bytes": 604996,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_056.parquet",
+      "sha256": "bc64612a37932efefb0376df2bb69c8e5f8cccfe15a1ce8d7a7aa433afc67c92"
+    },
+    {
+      "bytes": 573845,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_071.parquet",
+      "sha256": "c920d84b95c8902b60a7679b42ecaede38001065cae360b05c5f6a9fcd9bad8c"
+    },
+    {
+      "bytes": 574423,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_075.parquet",
+      "sha256": "937ecec843c0fb12d6b8e3b11e4236bfa5f10e975a1f209422df11c5c2ee2eaf"
+    },
+    {
+      "bytes": 477967,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_108.parquet",
+      "sha256": "d525634788356a50f6bc64c59e5053063b48e54b6c1b6a6e02626389220e5588"
+    },
+    {
+      "bytes": 462266,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_115.parquet",
+      "sha256": "827af387a63cdb8dbed33f2c4c6fc226bf6e017ca920f6a4bdfc75ef899dc7a0"
+    },
+    {
+      "bytes": 576419,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_121.parquet",
+      "sha256": "03b392923fdb1a969e143d24d0389f5d1b3554a833e54b8b156ce402a27783e5"
+    },
+    {
+      "bytes": 485263,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_142.parquet",
+      "sha256": "6f9c495add443dc5de3deac15ffbd9ebbb352577eb438a3c7222c1a902768e88"
+    },
+    {
+      "bytes": 413193,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_144.parquet",
+      "sha256": "ef593bc8edf37bfb0448bdc3c8312584ad8e2c362b2b4e1a87916c05d2e8aecb"
+    },
+    {
+      "bytes": 485538,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_153.parquet",
+      "sha256": "94f890a567d5f6cbef85337e841573e7cc07a8d74e751e623d75d7852d2c054f"
+    },
+    {
+      "bytes": 534411,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_0/hmc_154.parquet",
+      "sha256": "d7bd0920d6e4b8f234e3cf50e5f81df0fdb401537e5f10aeb6ebc440843fd46b"
+    },
+    {
+      "bytes": 466718,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_001.parquet",
+      "sha256": "e6bf15f54dfceca60e3cb490f1efbad04faded9e784bef927bd4c575c2488239"
+    },
+    {
+      "bytes": 547759,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_007.parquet",
+      "sha256": "99ce188f6a658fb86fe37d248c9470125be790000a22a68a91b665fa02498da0"
+    },
+    {
+      "bytes": 534682,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_013.parquet",
+      "sha256": "696148624fefab3421ba4aa861a456e4a86a7b6b338e04fb5e346530079412d9"
+    },
+    {
+      "bytes": 574014,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_016.parquet",
+      "sha256": "6b5a8fc8ec6ad7259e461936b8c426342fbe8a18b1ea4085cba6778893f76cb4"
+    },
+    {
+      "bytes": 455104,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_019.parquet",
+      "sha256": "c4cbbc4c2e3c750a540cc66b136f5cd12282432e5a7c101aaf26ffd3f27f6800"
+    },
+    {
+      "bytes": 477586,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_026.parquet",
+      "sha256": "2e0aafabe9468bdc112d9abd068c44724c5968bbe1b1f82f73ab47097a936d69"
+    },
+    {
+      "bytes": 431048,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_031.parquet",
+      "sha256": "47a5182591b42a86974405851b1cd8626b3ead31615d915ee8bf78fcaa50c978"
+    },
+    {
+      "bytes": 626780,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_032.parquet",
+      "sha256": "0ca73b53efbb41bf765f49e55fdcd3b1265d14c0e6b737eb7ab2b39f7a1626ff"
+    },
+    {
+      "bytes": 481434,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_047.parquet",
+      "sha256": "d04f48fbbc80a505503a0f5c1a6412240b59237e929ba59888ee4bcce5b0e14c"
+    },
+    {
+      "bytes": 554601,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_058.parquet",
+      "sha256": "7246e8b9e668996b3d4730f91b871a05a3389d6209b9c20b8ab135b6ac2ed60a"
+    },
+    {
+      "bytes": 473043,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_061.parquet",
+      "sha256": "737a18bd007adde6df10290655567d7873c6e8a11fc2bb986843f8fabc588fa1"
+    },
+    {
+      "bytes": 364088,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_070.parquet",
+      "sha256": "418e697f70f98853d7aa3d4eb9e45caa9bf23364eeb7d47ff2960e15eed69418"
+    },
+    {
+      "bytes": 462929,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_077.parquet",
+      "sha256": "974cf5bc9c8b75f1449190cd9590ea2f7d2599d96c234e97c70770c7a62ce0e3"
+    },
+    {
+      "bytes": 585199,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_079.parquet",
+      "sha256": "6db692d7b15f80428a1052f86dfc5908d8b440ef98c7eb6e076b1472586b1c89"
+    },
+    {
+      "bytes": 539963,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_085.parquet",
+      "sha256": "d1b4653dbb416ce00d46318c91ce33c3096f9fbf0ce81cfde7380a8c60a34658"
+    },
+    {
+      "bytes": 374173,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_086.parquet",
+      "sha256": "1e6ca8823e44674f109eeca269e8bc0f556ba7b12afff301c750c18a50fd806e"
+    },
+    {
+      "bytes": 444934,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_089.parquet",
+      "sha256": "ef7003d1dea5d105f4ff9e79433a559faf3828f72d4de9dadbf31558e56e9ddc"
+    },
+    {
+      "bytes": 468659,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_095.parquet",
+      "sha256": "2a67e29b1a2f676124f3e82820651f115d8c2f06bf2c1ba578b1cb14909c84ae"
+    },
+    {
+      "bytes": 555352,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_097.parquet",
+      "sha256": "fa9159bebed366b0c0e9a51ca4c1888644f8f2cd9c92733920ed3835ed268c65"
+    },
+    {
+      "bytes": 537229,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_104.parquet",
+      "sha256": "a56b7175f22e69cfe160cf466f5f5defc8a05d385caf425601f04cc44de1f9a2"
+    },
+    {
+      "bytes": 531918,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_118.parquet",
+      "sha256": "d943a4c8c84fba7561d3ef64ce485134782e31ad3fb42438d5825e0e8ba87f0f"
+    },
+    {
+      "bytes": 395070,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_123.parquet",
+      "sha256": "7aecb3ed4a07c3e88664bf0362f23ef88f06b378b860c691dfdc7e795031d12e"
+    },
+    {
+      "bytes": 549253,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_124.parquet",
+      "sha256": "d86bd8f184501228a25b6df1cd04fa51c954837e487bce5d74b2f868067aa41a"
+    },
+    {
+      "bytes": 500124,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_128.parquet",
+      "sha256": "d5689afd99af302cfcb0d89b92319ad64a052b926d9cf4594c0d7834a0b77ba2"
+    },
+    {
+      "bytes": 466744,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_129.parquet",
+      "sha256": "ed6ee08bfa04d6259771afbaaf49e174d9e0d34a4ea8de76106cb429af3d39cb"
+    },
+    {
+      "bytes": 565364,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_1/hmc_141.parquet",
+      "sha256": "ff848a5a06533edd9e1ff5fdf654b7fc0f3c14e55fcb6a707b782bfe3521edfd"
+    },
+    {
+      "bytes": 538564,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_004.parquet",
+      "sha256": "0fe4997da44baf1c9d47c2652e880808b702e269a2227c271b106e8dc3fdf52d"
+    },
+    {
+      "bytes": 595235,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_011.parquet",
+      "sha256": "c6b3a4e0b95a4a4e5d3c1f91b51382faabad73dd03e8b2001f6fd2579fbfc480"
+    },
+    {
+      "bytes": 468467,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_024.parquet",
+      "sha256": "1cc2d8c3ed6f7b1076445fccd759aeede73e67b1fde2f7b629d778e2a5c98ce8"
+    },
+    {
+      "bytes": 475012,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_027.parquet",
+      "sha256": "9ecd63f8838d9c413ca7b5e7cd623bf74bd16a092b84a63049c17a08ea563385"
+    },
+    {
+      "bytes": 382918,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_045.parquet",
+      "sha256": "062531932bd918c4d2a6d73c331b6b6932777586f5453000fc8d121854dced50"
+    },
+    {
+      "bytes": 501128,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_051.parquet",
+      "sha256": "45ff800f5dd39ce13dd9d25dcf4d193cc2a4fc335838b5932aa8b69d7332d299"
+    },
+    {
+      "bytes": 538569,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_052.parquet",
+      "sha256": "792b46947c54cc0dfe0b35d995bd47bd82e771894ff25c0d60629f5aea73fe67"
+    },
+    {
+      "bytes": 503251,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_053.parquet",
+      "sha256": "4e97c99274cb633b7f2b8f1a7dd3eede17691675f458ff542b1674a7ac9021db"
+    },
+    {
+      "bytes": 528375,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_055.parquet",
+      "sha256": "d5f89dfff65536d46caaca40ec58ff79bcf58a1d06c50bc973e4b09ddfdb5bcd"
+    },
+    {
+      "bytes": 642036,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_063.parquet",
+      "sha256": "24a4afdec8c68f064a1585b6a7661691b9b9e8b01c2c77faa2373e2789e88c93"
+    },
+    {
+      "bytes": 537154,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_066.parquet",
+      "sha256": "ac24b005c022294f1586a73669115f4097ffd47691c3980f2e847e1a0684ced8"
+    },
+    {
+      "bytes": 571226,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_083.parquet",
+      "sha256": "0b036c9d4dbe1c929117cf8b4a4119465e3a57056e730209095553f011de9ff4"
+    },
+    {
+      "bytes": 456354,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_087.parquet",
+      "sha256": "8e276032aef59e11bebb637685bbb27c5d8ed4452d227cbfb3e4f7819e461981"
+    },
+    {
+      "bytes": 363706,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_106.parquet",
+      "sha256": "d52f920920bf977f040d35a73db83b16dfa39a7890d73447c668a31ae1d22f6d"
+    },
+    {
+      "bytes": 333484,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_114.parquet",
+      "sha256": "4dc831e97744a1c63ce30d53d66e2d148af3f9c801690dc757a2c79cb095e568"
+    },
+    {
+      "bytes": 532949,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_2/hmc_133.parquet",
+      "sha256": "994ee8607ce996c76d01e52c68475bcef062514c40a22d06b15db3c6299c70cf"
+    },
+    {
+      "bytes": 525345,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_020.parquet",
+      "sha256": "8b8dead7f3c006db3f90f87d6fef90c7f1273697b42afd92fdc7711934e65635"
+    },
+    {
+      "bytes": 477130,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_034.parquet",
+      "sha256": "93f4cf125dc2b4e85e3d26c082a96b6ecb4b07ccdbc3b1da9abb499931c34120"
+    },
+    {
+      "bytes": 444552,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_036.parquet",
+      "sha256": "d43dfb84730e4285d507ed75f7fe1567fce4f0f92701a7f644aa1e2c583e4858"
+    },
+    {
+      "bytes": 519530,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_044.parquet",
+      "sha256": "5e36c6867c702aef2dcb50b1e50b08c73659c7866fd20027e50db37abf28fb02"
+    },
+    {
+      "bytes": 652120,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_048.parquet",
+      "sha256": "6b452c93dce03df77d98cf587b4ade21de4e5322b3974d36378367b3bb473529"
+    },
+    {
+      "bytes": 446057,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_049.parquet",
+      "sha256": "c6c37e516a794b22f9b62a5bbb6e55dd03d5de8f2074270eb0d748dcbe6c734b"
+    },
+    {
+      "bytes": 546816,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_065.parquet",
+      "sha256": "61f8d021c7f1566a714b7a9a781c4f88b2ea57f2b4eeb86f86758907df9e4a6c"
+    },
+    {
+      "bytes": 370883,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_076.parquet",
+      "sha256": "7d899e064df0cc9e6cf8d20c307d167b3637c5ce05cccc962e0c8c0c7bfcb511"
+    },
+    {
+      "bytes": 489409,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_090.parquet",
+      "sha256": "792a9456417b2a1f005472d7d3c3d8a4f9a9229af39237322c3313ba7c59b23c"
+    },
+    {
+      "bytes": 410314,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_093.parquet",
+      "sha256": "211430d8a61a8cfff86e9f2c7afafabdb3aed98c4b3fb8541bd0377161ab545e"
+    },
+    {
+      "bytes": 495671,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_101.parquet",
+      "sha256": "f955fc1cb533bfee2d726645f0940b47455c03268ee2e6faa31a31a928f8b60b"
+    },
+    {
+      "bytes": 419777,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_117.parquet",
+      "sha256": "b7e930251ee4fdaeb25a34f7ae2fdfaab98937b07f8257c55ed2ba2b9bf19c31"
+    },
+    {
+      "bytes": 436939,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_122.parquet",
+      "sha256": "4735d319d7a2f7624e0c61e72b78493689a5654444354aa1ca51ffad978058d9"
+    },
+    {
+      "bytes": 617204,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_134.parquet",
+      "sha256": "8d62d187a10aad12313a2a92e08d012304fad9d3b53c78a16f2c8276ab12a126"
+    },
+    {
+      "bytes": 506427,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_143.parquet",
+      "sha256": "aba4c3101936b65eaa806f0eab0ec72972fe5445c420d7e07cdb68dca8650fea"
+    },
+    {
+      "bytes": 467873,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_3/hmc_148.parquet",
+      "sha256": "f4ca00f9cb84c9415ee5633c1cc7ae4b5d607874590491bbfb908530cc9b6cb6"
+    },
+    {
+      "bytes": 508750,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_003.parquet",
+      "sha256": "959003e7bad87795a426d4ca7520b97cb7408858fb1c793e1ab7a5668fe0a4d0"
+    },
+    {
+      "bytes": 512183,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_005.parquet",
+      "sha256": "7eb6041c91c8c85e1d69c9118fce8f1c6f1202f3cfbc97ea146e3e6002601ed0"
+    },
+    {
+      "bytes": 510232,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_021.parquet",
+      "sha256": "121e934e107e45e908bba6154c81e88a1e6f7f3d15ca4a2b2bcc216043aa5d17"
+    },
+    {
+      "bytes": 436529,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_023.parquet",
+      "sha256": "843b09f702b3f995972ce917ef121c79089fb64bbad1ae20ee6b4d9842cd7bba"
+    },
+    {
+      "bytes": 534962,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_043.parquet",
+      "sha256": "d743be3851398a5274d161fad32613803ebd054362665d35a834af2aabe960a7"
+    },
+    {
+      "bytes": 377822,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_046.parquet",
+      "sha256": "98a5b6df9857301bc2a2cb800a6b52dfdf91a6acadade00af0f652b9e1c11d32"
+    },
+    {
+      "bytes": 452517,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_059.parquet",
+      "sha256": "01c8caca52a62cab1ac231f33b461c4586d9d355bbb6f92dd3e4e9bf5679177b"
+    },
+    {
+      "bytes": 459963,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_068.parquet",
+      "sha256": "0c230f476b7eaa682e71d554a86f0feb7433bc42418867153776b9ae05d3eb41"
+    },
+    {
+      "bytes": 562953,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_072.parquet",
+      "sha256": "00b92f477840037fb9d7c838c4bc561a3f9d59878f9489fb966c70d415563ea2"
+    },
+    {
+      "bytes": 482724,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_080.parquet",
+      "sha256": "61aea84aab20a3e5ce7cf816c08cf4a969f3b2d8deedd25e206197f8d199dc08"
+    },
+    {
+      "bytes": 395908,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_082.parquet",
+      "sha256": "3ffaa02d6e305867a3224001b0f90f0917f31a6021a2eafcceeb597c0bfe0c62"
+    },
+    {
+      "bytes": 461180,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_099.parquet",
+      "sha256": "bc72c5bdc296ecf6e8015eee3f9f8c17066230f3d2b3efefee09dc84cc586a08"
+    },
+    {
+      "bytes": 418134,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_116.parquet",
+      "sha256": "aecebd77806c6142ea146d4b52a5efdcb18844c0e53a26453932f761ba4b2027"
+    },
+    {
+      "bytes": 468578,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_119.parquet",
+      "sha256": "22153161232cd3f68f0df0e93bbaca8460348961a05bb9eae114e6ec61f5782b"
+    },
+    {
+      "bytes": 514311,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_127.parquet",
+      "sha256": "fce3db58356c1edac30b4f9616443429cfab868bd2839deec18db28d212300ac"
+    },
+    {
+      "bytes": 541147,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_132.parquet",
+      "sha256": "b806954f5fe3a4f306989590acfff5ca03d16314192c5af7ed365247e211461c"
+    },
+    {
+      "bytes": 566964,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_137.parquet",
+      "sha256": "2d87d4d28d3cb78f181c02a0967ff6d99873882fbf4c7dfdef3f904aa46a17c3"
+    },
+    {
+      "bytes": 676512,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_140.parquet",
+      "sha256": "3561db80a12a9a7ac775efdab51661bd2624f17fda00f54ad9a83b36890c1bca"
+    },
+    {
+      "bytes": 435020,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_145.parquet",
+      "sha256": "dd1a9d30ec406b34734dfe5536f471833087f853248c229d1a3b744599959a61"
+    },
+    {
+      "bytes": 542718,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/cbramod/fold_4/hmc_146.parquet",
+      "sha256": "d0c244980d0169049bace725979f624b2e8aa925853f71c8c7855f3570ae84b6"
+    },
+    {
+      "bytes": 487527,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_028.parquet",
+      "sha256": "d53deb49a5f15de0831d98a11c6f053ae5a350817e96ebbd5c9f670eb3128489"
+    },
+    {
+      "bytes": 440750,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_040.parquet",
+      "sha256": "68c3fcd06861778e9777f0989979687022cd18bd00a21c361a81573e83c33b6e"
+    },
+    {
+      "bytes": 607408,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_056.parquet",
+      "sha256": "26d33e48cc2a348563f05ccb13d35ce5f43983599651ba2c000ce50a58dd0920"
+    },
+    {
+      "bytes": 573049,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_071.parquet",
+      "sha256": "ffaf1d473d54e05f1f028a9620ae9f0d0af1763310949804c4bc988402da9bd1"
+    },
+    {
+      "bytes": 574740,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_075.parquet",
+      "sha256": "bc92b67f9817c84b86abb76602bea43a1067518d22a8257ce05caf8ae9ebae6f"
+    },
+    {
+      "bytes": 478819,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_108.parquet",
+      "sha256": "9cdebc58a447cb4b62c20012d5dad4caa4a7c61caa157c8563936b356927ecd9"
+    },
+    {
+      "bytes": 437712,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_115.parquet",
+      "sha256": "1bf11470d9d808a40701dc3c77bf103ca7dffdea80ba43d239ee7d3cf5ea08aa"
+    },
+    {
+      "bytes": 569938,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_121.parquet",
+      "sha256": "d1880e4ad9e6c4cb07cfd059dfe8aac709d066a53ac4e1405b130d821d09b309"
+    },
+    {
+      "bytes": 487395,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_142.parquet",
+      "sha256": "e507e34fd4088e2e3c4388358ccb300468e059dcccf2ea1543914d2b399c7e13"
+    },
+    {
+      "bytes": 414798,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_144.parquet",
+      "sha256": "f27f6de49ddeafbcc49f0cce1a84c4252945481a675f4daf6efbe63e0f29e3f4"
+    },
+    {
+      "bytes": 484978,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_153.parquet",
+      "sha256": "13b69f50220ef533d87e18025a8991cbec422958300cc8997895b7d65dbb0e0c"
+    },
+    {
+      "bytes": 534299,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_0/hmc_154.parquet",
+      "sha256": "b5fc42383ea2c8e35613f2c35f9279db610e1f63fe73efe1f77d1b9c8f7d90b2"
+    },
+    {
+      "bytes": 442278,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_001.parquet",
+      "sha256": "a199c0d8b8795542e3f2719cb5de404379dedcc4eb8fcc8935a5576171f15cc9"
+    },
+    {
+      "bytes": 545816,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_007.parquet",
+      "sha256": "2f1b02eba8c60cd9bd85fad39860e2ba84b4c794f64293327260c8c6d8cb67c8"
+    },
+    {
+      "bytes": 532669,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_013.parquet",
+      "sha256": "f30b1f120da2af9ed0aa46c909daeebf1d45ad6c7e0fcd071cd2f0d3900dc890"
+    },
+    {
+      "bytes": 572710,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_016.parquet",
+      "sha256": "7a13db2f3528884db059a1dead4376add8b2bf5dcb60f63451eab1c9014dd890"
+    },
+    {
+      "bytes": 454275,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_019.parquet",
+      "sha256": "50667e7578ae0219e5852aa4d00a1e186ecc87e17cddb2036e70cac78b360cf9"
+    },
+    {
+      "bytes": 479335,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_026.parquet",
+      "sha256": "f10bd570c853872069f246e508c1bcdddcafdef3568da03e7a6880f0a86a369b"
+    },
+    {
+      "bytes": 406614,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_031.parquet",
+      "sha256": "e010eca731ec6e4c2d7c8c8495dd9c68d66f2dccc3d581ce36646d0c0509bc75"
+    },
+    {
+      "bytes": 616139,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_032.parquet",
+      "sha256": "9ba20e8296ec41dcba6b6683c723e815688dfaa2fb81ec848dc4e87db2243589"
+    },
+    {
+      "bytes": 478143,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_047.parquet",
+      "sha256": "51ccbcdc662f142e58a8f5ec1555868ca55b384ac3224a9962d7eb9248840603"
+    },
+    {
+      "bytes": 553783,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_058.parquet",
+      "sha256": "0364b45c5c9572001a0de4c2ad445e3d669029a0f019e4e56910740e6103b17a"
+    },
+    {
+      "bytes": 465490,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_061.parquet",
+      "sha256": "54b3f92f469d44a9e099bec454e7f484022a6bd640566145724db3763a54ebe5"
+    },
+    {
+      "bytes": 360280,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_070.parquet",
+      "sha256": "c6c245465c3732c7f36c8a7c678dd4d52bf44fb7a230a3c7032db8d179608c7c"
+    },
+    {
+      "bytes": 463241,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_077.parquet",
+      "sha256": "6702534d9427d8697aabe4581987ca864946f3396870aa8a335f832c8cbdc014"
+    },
+    {
+      "bytes": 584444,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_079.parquet",
+      "sha256": "d306861e1432b78dda83a7daafa4167d5a51ec55ece2434469e8558ae1fbc73a"
+    },
+    {
+      "bytes": 535649,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_085.parquet",
+      "sha256": "64de7ef173f0c34550b07f9529ba5769dd2bd3cb25631f05ba9dadcc3a6d96e5"
+    },
+    {
+      "bytes": 370955,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_086.parquet",
+      "sha256": "0a6b3e5b7cb25d8788e8a9c0db6fe9b499af98f9235b0146f9c9a504c7edd8fc"
+    },
+    {
+      "bytes": 420997,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_089.parquet",
+      "sha256": "86b3b9bd85bc014bc2252554b1d5b5be099b2f99c4218aef48db55abadd67c62"
+    },
+    {
+      "bytes": 469737,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_095.parquet",
+      "sha256": "9ef05188cbe8e397edee1eb402d8e0d8025b6da207e371876d9b7fa643b34318"
+    },
+    {
+      "bytes": 553276,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_097.parquet",
+      "sha256": "eac5e51dc001bc321361b285eb99465515ea12cd41a0ce5b98d93a6009b60beb"
+    },
+    {
+      "bytes": 537803,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_104.parquet",
+      "sha256": "095cf0affe2370379803244433b67af7b1ee69c475d0beff07825b85ff807697"
+    },
+    {
+      "bytes": 532301,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_118.parquet",
+      "sha256": "1cb927a2b6c8a48f447bf4cc41c46214e2a9e3e850d7d59bff068bf8119a4611"
+    },
+    {
+      "bytes": 394643,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_123.parquet",
+      "sha256": "72f9a65fdd289673001e5976f93fd301b66d91e4cdc77e80367abaeb70162d8a"
+    },
+    {
+      "bytes": 552354,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_124.parquet",
+      "sha256": "c1171e1713da718be8e261e9d57bb9930778c100d1c15069956509e46735ad84"
+    },
+    {
+      "bytes": 497769,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_128.parquet",
+      "sha256": "8d32b61cff6dd27a34f95ccd6731599bfe3202f2cfa961b7ef9705c9754590ab"
+    },
+    {
+      "bytes": 467281,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_129.parquet",
+      "sha256": "e15061baf1c814104837cebe6989ff44bd83af64f782d5f43d45cf4aa833f94d"
+    },
+    {
+      "bytes": 563151,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_1/hmc_141.parquet",
+      "sha256": "2140260d5ea1878072287eb220affbf82548e8aba5e890a74107e1053ed01b66"
+    },
+    {
+      "bytes": 539302,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_004.parquet",
+      "sha256": "e96b595c81f943b62c64f4aba412f3c6f26c6b25968070999d9cbb72d29a74ed"
+    },
+    {
+      "bytes": 598453,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_011.parquet",
+      "sha256": "1fbc53f5fcf355590e52d52843dca379a05af9ad45eaff3717f42171bafa7544"
+    },
+    {
+      "bytes": 466213,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_024.parquet",
+      "sha256": "e5fa3e4a9279e569a784869f0cd90b0a433fcba52930651a58559afec85a4a72"
+    },
+    {
+      "bytes": 473508,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_027.parquet",
+      "sha256": "1b33854eb4c5dda0dd72fb3868b615db541193468469d090f39e7e233281ab86"
+    },
+    {
+      "bytes": 382003,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_045.parquet",
+      "sha256": "fef20263839ce6cac4c107191c629477d18e8405962e4ab527ef0b8721f3c5a9"
+    },
+    {
+      "bytes": 499054,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_051.parquet",
+      "sha256": "5304877830d56975a21c75a4d6a8474fb75b59e577ab1dc54c4762c2177282b5"
+    },
+    {
+      "bytes": 538011,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_052.parquet",
+      "sha256": "4d5eb81053e2090f9099f3f02be1b7492ea102598a8d5c3c404004a1d85b8390"
+    },
+    {
+      "bytes": 501501,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_053.parquet",
+      "sha256": "896c5ff525e7ed2610cc16b79f08a164f033f29f83546e0b99ad4e34e1ead4ac"
+    },
+    {
+      "bytes": 527266,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_055.parquet",
+      "sha256": "f0b3050dc734b73a54619fb71a2713ecc1430bc82007d6cd06193655c996704f"
+    },
+    {
+      "bytes": 642491,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_063.parquet",
+      "sha256": "840867f4405a2d20334eed1a9d9f143d1bac86ab7b0ebf303c34ee407aea8de2"
+    },
+    {
+      "bytes": 536026,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_066.parquet",
+      "sha256": "f4c78190fcdd7228a1a78f5fa806d33f8d44b7dc4d0b3ac1de332d5f70ceab90"
+    },
+    {
+      "bytes": 570182,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_083.parquet",
+      "sha256": "e6fa5ba7b6cc9c32fbdd40863503bc01b14951e65ce03f3f70864bbca223e17e"
+    },
+    {
+      "bytes": 434089,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_087.parquet",
+      "sha256": "bf4a1158fa9f1a961a829b43471d6d4fbd00257e110852a49411270454e515de"
+    },
+    {
+      "bytes": 363869,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_106.parquet",
+      "sha256": "e868516db479716c7fc325318d4cb93bff8976af91ddcca2b9562b52a7ffb274"
+    },
+    {
+      "bytes": 332913,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_114.parquet",
+      "sha256": "c96cde1a7fbb34af5f3169427ad601dba3ccbd77ac263a0e24396134f83d158d"
+    },
+    {
+      "bytes": 531545,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_2/hmc_133.parquet",
+      "sha256": "9329e1d572cfac063cadcf1fbed6f6124359f950b564b37480e2242e74921499"
+    },
+    {
+      "bytes": 512392,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_020.parquet",
+      "sha256": "b18db32eee2340408c8c6d39ad03b78029f6b818c165fde07ea0134a83b68682"
+    },
+    {
+      "bytes": 477026,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_034.parquet",
+      "sha256": "f97a07f18a15202c6c6df37d2955df08c2e8ef899b1bdc49cccdefffac6db354"
+    },
+    {
+      "bytes": 423014,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_036.parquet",
+      "sha256": "4d9f12e111c24c2c44204d8ca8fd2e3e2bb1757072929563886b76ef2201c377"
+    },
+    {
+      "bytes": 519151,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_044.parquet",
+      "sha256": "c729e1a31efe4e6a4f6e9e95c8e017a54e705d3780afbc09daa4d64ab216a76d"
+    },
+    {
+      "bytes": 651570,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_048.parquet",
+      "sha256": "e1c637d8818df55a41e1f3702db6a155439766bc952103315cde2133f913ccf1"
+    },
+    {
+      "bytes": 441547,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_049.parquet",
+      "sha256": "a8a1f251e9e9a805496499550e35515193b78e8110bf120670aab03f0f9ea051"
+    },
+    {
+      "bytes": 546410,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_065.parquet",
+      "sha256": "14eb5c64323a6e7e0ed1895ff1e620618689b524850ead98181ed51a8b008ee2"
+    },
+    {
+      "bytes": 369154,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_076.parquet",
+      "sha256": "656fc4a3084f4722506f049ac8533cbe852a1488e0a99ccb3c8419441832845b"
+    },
+    {
+      "bytes": 490756,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_090.parquet",
+      "sha256": "192ece3838db219701be965380a27aa4ba75f905dd60f9f369d4111739c866c8"
+    },
+    {
+      "bytes": 409532,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_093.parquet",
+      "sha256": "ff54b00732948973122571f6b1148aebfb121478d8e59c8103d94b83f7f74ad1"
+    },
+    {
+      "bytes": 494719,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_101.parquet",
+      "sha256": "17d03882d82b5fd97490c54049ccbcc6a6e26a64ff09ed2df9587d36f52dc917"
+    },
+    {
+      "bytes": 398736,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_117.parquet",
+      "sha256": "9ba00bb91bd6e4fd98c578b23a307bb9d29939f3ba5000ec03bf3404e4b1f36a"
+    },
+    {
+      "bytes": 459911,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_122.parquet",
+      "sha256": "79448f3b71c059df70249aa731c4e81310bf4de8bbfc69a5c267d8f122c25be9"
+    },
+    {
+      "bytes": 616776,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_134.parquet",
+      "sha256": "3c6ced1968ee03a078ed14a653e78b4ff7125efbf5c7c171407703b0b6d12892"
+    },
+    {
+      "bytes": 504048,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_143.parquet",
+      "sha256": "38251510c6f8bbcebddfae271a83160b459827f534f7cdf1a91690c3bdd443f3"
+    },
+    {
+      "bytes": 444209,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_3/hmc_148.parquet",
+      "sha256": "5d36019319a79d2f00df49188564d430993ce4be50c81d75d816bbe0c35696d4"
+    },
+    {
+      "bytes": 508688,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_003.parquet",
+      "sha256": "7d73180f8c25133a04410338191f70f734e48dbc7566740500d921e4e146d3f1"
+    },
+    {
+      "bytes": 509451,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_005.parquet",
+      "sha256": "f7ea93005c90d7474eed06d60af572527af7bc6cef3933313dce98ddc108c209"
+    },
+    {
+      "bytes": 510407,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_021.parquet",
+      "sha256": "804f3523a633a3d7ed119172cb199942864c7847d619f7857bf5ab1b809a4929"
+    },
+    {
+      "bytes": 433928,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_023.parquet",
+      "sha256": "6bf7c722c1d3476144187b928918e0888e3a0b5ab30a1eb883cdcb5ca466d0e5"
+    },
+    {
+      "bytes": 535584,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_043.parquet",
+      "sha256": "a612984bf952ac8604a88ce74529dec9b8dad4b1e01eebeed219a9dc8a8bfd13"
+    },
+    {
+      "bytes": 377454,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_046.parquet",
+      "sha256": "098fe6799016a57c35e9072c4403ec5ee04a13d3465c5f61ee5128e8b4d874d3"
+    },
+    {
+      "bytes": 430486,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_059.parquet",
+      "sha256": "daf7dc5a90d07a776ef1cd0cd54756f6eaa2f9760832f077d87d338967ecb153"
+    },
+    {
+      "bytes": 458692,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_068.parquet",
+      "sha256": "ca5b19aab14f4fecb2143d45613336f20c3a20bff75fc5adad7a4942987231e4"
+    },
+    {
+      "bytes": 561652,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_072.parquet",
+      "sha256": "1de841d401c6cdd80bd9857e7e3acfb63f97f632819f3e41571791316144aade"
+    },
+    {
+      "bytes": 482826,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_080.parquet",
+      "sha256": "0994a6a4dc4d53f6962d343686addc3df8509bf85c6921d22ee3704c5b5d2037"
+    },
+    {
+      "bytes": 394758,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_082.parquet",
+      "sha256": "605a0cbe878f09d996157820f8744180df942461c5a76f74556458191aa56a8b"
+    },
+    {
+      "bytes": 458883,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_099.parquet",
+      "sha256": "b9ea326383841647656d6cc6ec07771b9e1673661d13275707deeb8fdde1b603"
+    },
+    {
+      "bytes": 418494,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_116.parquet",
+      "sha256": "f3e689beddcdc4cc1987b2f2c0c1817aadb20e959b36c31124fe51a4bbae257b"
+    },
+    {
+      "bytes": 493728,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_119.parquet",
+      "sha256": "a635cf6257d7ab595a208a27c90e0256d61fa642029cd5dafa3ac34e4fbab065"
+    },
+    {
+      "bytes": 513113,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_127.parquet",
+      "sha256": "45f3cc58c2a1764015c775fbcc97f4f41b711a8974bcc5d4599b4fa9971680bc"
+    },
+    {
+      "bytes": 541175,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_132.parquet",
+      "sha256": "9cf85808adc1d5f272872b6b1d227e9b6c1ee660f8524fda5e8818bfb2003c9f"
+    },
+    {
+      "bytes": 565127,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_137.parquet",
+      "sha256": "0edb678d7be52bf01b03b80add2bb958895b346a07eb68c4690bd865395c81de"
+    },
+    {
+      "bytes": 675613,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_140.parquet",
+      "sha256": "6a2b8cb3eb4249e29651d4bb101370ccefd068b8691380dca9fc21d1b903aca7"
+    },
+    {
+      "bytes": 413243,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_145.parquet",
+      "sha256": "2f5cc2edd306004d1c82b9bea3a3860fa4e07174f62f3416c0a286b838164d56"
+    },
+    {
+      "bytes": 540827,
+      "path": "outputs/fm_routing_v7/embedding_cache/hmc/labram/fold_4/hmc_146.parquet",
+      "sha256": "4a4c32a6a88ba44860dd3bf3d8f262876da63a111842a8a11453364ec6d111ab"
+    },
+    {
+      "bytes": 7412,
+      "path": "outputs/fm_routing_v7/probes/PROBE_HYPERPARAMETERS.csv",
+      "sha256": "5ca22ce9916ba457d6c186b78700b12fa27881aeab37c24530d9e5935a5ee706"
+    },
+    {
+      "bytes": 17585,
+      "path": "outputs/fm_routing_v7/probes/PROBE_MODEL_MANIFEST.parquet",
+      "sha256": "773bd7ea17bac89854c3d5a39464c5c50f1a39ff25a68b87be2ce79bf7b91e02"
+    },
+    {
+      "bytes": 153879,
+      "path": "outputs/fm_routing_v7/probes/PROBE_TRAINING_LOGS.parquet",
+      "sha256": "de5612c13f2d6ffe2252e2aa370f13608edb3a2edf4d31975885d3b31b2145c6"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_0/seed_0.pt",
+      "sha256": "a149a1abe6cfed4dd8edc6384536b2e9f27f3f1cfc4e7dd7dd143740e4c69430"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_0/seed_1.pt",
+      "sha256": "25447245f662c5c9dbae04ecf3281055791407a0176adee12b2c0fc84f4d9211"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_0/seed_2.pt",
+      "sha256": "a641fb09d8bc9fc64d7bf7f5cc1a95932878ec94551f424383b468242dfcd8e5"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_0/seed_3.pt",
+      "sha256": "2e7467532b29d41988c7204847f160385a2f09b2b28f24120a10d4f381e0bcb4"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_0/seed_4.pt",
+      "sha256": "a0b07bc1a896fbba88be64ecd9106447855a584e669e31795e09db2e1abca050"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_1/seed_0.pt",
+      "sha256": "aa69862cc7e4d500f1d553f6b2a3f98cf642888aa91b08f38ddc4c7d3b921db1"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_1/seed_1.pt",
+      "sha256": "4b21d8081dd7c2b762cc3ddf6b301e7e922b286d4f9cd5bb36b707bfc33d3494"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_1/seed_2.pt",
+      "sha256": "f227260810341e1c321b45ccf87bedf79fedae59a2633d9c615cbf8255754fd3"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_1/seed_3.pt",
+      "sha256": "a408104fefae36a0aa881966910fa1ecb2ef458041bf6929293539c55403cfe7"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_1/seed_4.pt",
+      "sha256": "214eac83b0934c02abf6803f4c8cd96fa9891c6fa8882b106e6f27eae6c27944"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_2/seed_0.pt",
+      "sha256": "3a70432661fdac9f5d67323670210315a6b829a79bb3ebc70b09f3f19d688c9c"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_2/seed_1.pt",
+      "sha256": "994f4f8431e27d74684fc017aa9689051f563a715648b8e129c64405f232e051"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_2/seed_2.pt",
+      "sha256": "7cf94b736cb27ad4310479e754dc90e05c37e179f9b4980c866c2036e388aadb"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_2/seed_3.pt",
+      "sha256": "25e58dc075d7c1b1b819c3e48d617ee3462c4cf429bbb29abd9eed166f34dba9"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_2/seed_4.pt",
+      "sha256": "8bb0b6e527f39d3cd01486283ef386c1c4d6103a4bf46d578ce19b686b997dac"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_3/seed_0.pt",
+      "sha256": "f63bcb665b0b14f9e584c6260942926c21f6c66f898bbd7c2dd7dd61411f6e8b"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_3/seed_1.pt",
+      "sha256": "e13bf8b5ca52b8f2c2534abc6ee60ab539bbcf0310016706c4f2fd9bb676501c"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_3/seed_2.pt",
+      "sha256": "937ac30c33af87df966fbe9783f2e5ba52cc755372136b5c1f90aa87c71e0fb9"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_3/seed_3.pt",
+      "sha256": "df1cf1e0ea17c6ed51a71985a60f87ee2f29074c4d33fcb6d77f38a2294fb76a"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_3/seed_4.pt",
+      "sha256": "a3ed8b56bebc70e469295c1ed7e80f25d78a6d74c993488484e547a777fbbaca"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_4/seed_0.pt",
+      "sha256": "aec49da4e00c81921f81fd1222be0e60c329ee30f33dfecea0e6f44ba4bf1b7e"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_4/seed_1.pt",
+      "sha256": "3fb71cdfdde07f1d3b8f3278f75b5b6a3658673b2b325fbc7b869c3b87ade960"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_4/seed_2.pt",
+      "sha256": "0b10e077e7df05f6f73a7b22500ae5a8c85b9f7025c84567fced708344bbbf91"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_4/seed_3.pt",
+      "sha256": "cf4ac03c435bb5e0db5c10e2edb42072f4e17c734c127d745b96351263fa0819"
+    },
+    {
+      "bytes": 8275,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/biot/fold_4/seed_4.pt",
+      "sha256": "cace80ddf7a2ced82395d4ce9477ebca20038da4eb13d17b5c124220ecaeac36"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_0/seed_0.pt",
+      "sha256": "d2874a1a3f256c35b3a0ad8a56576925d988fbd28d81991ebd5be51dd67c4d74"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_0/seed_1.pt",
+      "sha256": "5f85a7282969870198ba311bd62adc1646e7d12829bdba25b0783dff3d341a74"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_0/seed_2.pt",
+      "sha256": "cb429731d127b9927a523cf5e357b5e63ad7f7e9f2c1f52836186076458b0d83"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_0/seed_3.pt",
+      "sha256": "e971d5506f03aed0ac5aa2a1ca9abfdb227a646e7cc2fa97c6c7a4b8350263f4"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_0/seed_4.pt",
+      "sha256": "6a83d9d5c8d704e2c8f56920f73f33d5ca991be1fc0acbb6a36d12dff9fbfda4"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_1/seed_0.pt",
+      "sha256": "bf656e7a3f22f941a26cc411177f00e45049e4041baddd70b93e354a78ad01ad"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_1/seed_1.pt",
+      "sha256": "54f2a1d0157ac14cde99b99ed196de3971c881acb42c533387b9634f2ee0ce6d"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_1/seed_2.pt",
+      "sha256": "19b222216b44c9fd4fc4ad960befe563bfd2f5d0a26bcd212a802baf16a743dc"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_1/seed_3.pt",
+      "sha256": "cafcd3dabac8ea0256f3dded31c3f043f818414e09b8a70f06979b98da84954f"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_1/seed_4.pt",
+      "sha256": "4ac6fe1ecedd339b15c2e682f1d2f3fc8ad765372b2b679ceff734c0cbbfe0e0"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_2/seed_0.pt",
+      "sha256": "861c087b77c24bdfa14ff2662a5e7b1f942bc078ecd526f6d1981ae9d65e03cf"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_2/seed_1.pt",
+      "sha256": "738dca9c8caf88a9a1e9f88ba795fb469c64fc17ca3491e06712aeb40a14683e"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_2/seed_2.pt",
+      "sha256": "72cce84d7c0a3ac63fa8c11b8b0565a5117849ee8d5624cb39069928fab5e298"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_2/seed_3.pt",
+      "sha256": "d620fde8ae032d3b0e84f0d306a1698c2bbaeba9f631d882a5611536c7b5fd8a"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_2/seed_4.pt",
+      "sha256": "0cd6ff4f07ce2fc4076e1ce7add8308d06ec2de9dce546af28735440532c05f9"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_3/seed_0.pt",
+      "sha256": "2389223361ff5d313f397266f17498e8694a3e95ac5e7d5fbcb6c00a5f7b2342"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_3/seed_1.pt",
+      "sha256": "d8947a325400f8d69120df5115a32fc6af0e58d727d5472aa217d7b7df80a044"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_3/seed_2.pt",
+      "sha256": "94033b6da224068ea70d41d0a1b89ab9656a3c88ac64179f07b4443e106c67c6"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_3/seed_3.pt",
+      "sha256": "469d6901ce3da08ca70e8686bf94610aaa6a6627ef3cf354b92efe342953baa4"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_3/seed_4.pt",
+      "sha256": "afc55de075fe0285802599c55b782801435e3f6fb3be347b86496fab2ae0e9ab"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_4/seed_0.pt",
+      "sha256": "899bb01a1400f0f6e5ef04311221abac4139e9037fe86877914d697e885d8dee"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_4/seed_1.pt",
+      "sha256": "665313fe72c9ab3c5662bb329c5058761573c16288cd2931b05122ec614c1e8c"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_4/seed_2.pt",
+      "sha256": "e7b5bc20f9f5e88734acca3e97807c6001a142a5a08bedd4930fc7b3dd261628"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_4/seed_3.pt",
+      "sha256": "8e7160a2c915af3913a2b1d5b283d5029b5f4299ca5451921cc2a173015f7b0d"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/cbramod/fold_4/seed_4.pt",
+      "sha256": "f0626cd73edc87973a8fb4a80a6bd874d730348195669776403fff969b7575d5"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_0/seed_0.pt",
+      "sha256": "0722f597d79e2411cee269fc24ff0e4a16d3ca04db15f8e5ec2aba1c6e41c98c"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_0/seed_1.pt",
+      "sha256": "8209841fb3b912c90350e2c9aae729defb361d2f0b942ac8ff451f7be0e90d78"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_0/seed_2.pt",
+      "sha256": "cc0e3e0040992016978021b90b1bb1039af73438992d618c8439a21565b2c358"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_0/seed_3.pt",
+      "sha256": "ad1b0c5b1d0c779bbd60bed4ff0b1633b37de8a3bcf91efd1076ee9a7d54f5a3"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_0/seed_4.pt",
+      "sha256": "893e21d80b77deaec7bc4d724824a4f82a413f7df2fb9386e66192cf77dc484a"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_1/seed_0.pt",
+      "sha256": "e34c4ccdd36d3b67751042b91cafc39fc7c4f3b0405251c08895f441b4f553f2"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_1/seed_1.pt",
+      "sha256": "0bc66906a5abae2ecf8b7459aa3b1fcfd3f79db63ee211b66ebb294ad2762730"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_1/seed_2.pt",
+      "sha256": "be22eb4ae569a076705e93034032be628be2ff765530de673a1cdfe24eefe153"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_1/seed_3.pt",
+      "sha256": "a2384ddba970927c1531b4fac30188f7934dd67b35fbd13c09c1c1980f12c802"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_1/seed_4.pt",
+      "sha256": "4c029f49a428cd4281c8b383b94f125cdd58ef8fd17175e3225bf329768a5ed1"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_2/seed_0.pt",
+      "sha256": "185b2c0e7c80364f8ab9b9db45d2d83aef5b10c6d68179f6ff709a19c934d576"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_2/seed_1.pt",
+      "sha256": "42bfce4bdda70e73052387c6ace600eba618c7f31005677ec17e9c031ea6b6a3"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_2/seed_2.pt",
+      "sha256": "20111b9c9c1e261602f06952f74fcec475aeb85cf2600fcd0dda6a69796956b7"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_2/seed_3.pt",
+      "sha256": "0039f49b166ce3c5940e5990618a1a603b159cd70e356e44bc7240ea4c092558"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_2/seed_4.pt",
+      "sha256": "d5b36dfa7c0270edafe870046028e5442cfd81d6e23cf6d9a98e8e478f2c8986"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_3/seed_0.pt",
+      "sha256": "a95d29027a57faf41ff75f25c767225d569f835c2e44dfc809ab2e517bcafe9d"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_3/seed_1.pt",
+      "sha256": "8d427fda95a54425bd8071dc4f124fb711955fe8a9ae9cffe504ae7e1877fd57"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_3/seed_2.pt",
+      "sha256": "e013454b4da4d2f723d3c7c4a7b1acf680e0fcd741aad0d4ae128b063efadd7e"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_3/seed_3.pt",
+      "sha256": "53161efff093dea4547dc1e1001e9475528778d2634f3bfdd77a4da695009e5f"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_3/seed_4.pt",
+      "sha256": "d5ec90ba1f5490f7e19e37c2a066279fbbed8341658f74f88bd50423083bf594"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_4/seed_0.pt",
+      "sha256": "9e55a36d66554f8d66b1516d6ca1983cad146f58de09ef87439e704a2ab6efc2"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_4/seed_1.pt",
+      "sha256": "2d07b58925f3b622456caf187d1133be84bb767511d82885af29d069a8bf0112"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_4/seed_2.pt",
+      "sha256": "fe22a6e686187e9dceb713db37d3477e41f8a48c53d1892bf0d510e19788b71d"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_4/seed_3.pt",
+      "sha256": "59f4a3724a0437f0d90f3a4e4584c112bff05f046a49378dc45e1be8bae28675"
+    },
+    {
+      "bytes": 6995,
+      "path": "outputs/fm_routing_v7/probes/models/eegmmidb/labram/fold_4/seed_4.pt",
+      "sha256": "6f7a2ba9f791fdf75c279aab222a32ca984684f337544786b044aaca7c7e3c03"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_0/seed_0.pt",
+      "sha256": "35653da6dd2c9b843587d28777f803a97780b8d03e238456a0ac9ff4881b5dd9"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_0/seed_1.pt",
+      "sha256": "442bd4f84f992699f609935aa919296a546b65a0c714ae3269f615c279500d82"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_0/seed_2.pt",
+      "sha256": "b14bab977ae0fc9b552144b31998d7f1aeaec2ce7aa21d686eb0f4266ce7b9d8"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_0/seed_3.pt",
+      "sha256": "a192f80fc9e0a49fc6d4a5b2147c55953417e1045141a5bfd1c33b2604b4e281"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_0/seed_4.pt",
+      "sha256": "30afc89498bb115df1c4ec7931024ec2982bc2f5a0020a9e20a8e2cbf9a8e9dd"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_1/seed_0.pt",
+      "sha256": "0c9fb2cb3463cfa078b3330f3f66dfe013525777c0bffdca673cc3467c83f6e0"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_1/seed_1.pt",
+      "sha256": "e77a59151f863c7df576e4cb4af86f109a70332843ba0be2c3878689e7ffc0a5"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_1/seed_2.pt",
+      "sha256": "53d4a5ab8af5a43133c43184315125eeffab8f40c14e725d6340245b179cc6d9"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_1/seed_3.pt",
+      "sha256": "ad2601f66bef46816f569145465b4a4fc128b347a840015996720b8cc6c61b44"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_1/seed_4.pt",
+      "sha256": "dd60294fa4c489ac715bf2ad4d7b1cc90625161ed8edf8883e46166255ed7d91"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_2/seed_0.pt",
+      "sha256": "4255aa0c43289890ffd5c6c82e1c698223db7d9ce2288812bfb293cf41d787c4"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_2/seed_1.pt",
+      "sha256": "81d64539f0b2eaa643d43c170a5da099c5dd753d867fab673b77382550c46f36"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_2/seed_2.pt",
+      "sha256": "225df1d29dba94df98380ad3d8de3dcd72650b29fc4bb439f0e1e018ca4042f4"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_2/seed_3.pt",
+      "sha256": "bd8d90bfc4ec3b4eabc20ca42d6f00444c3d3a8389c7ee50a844161306c11aa7"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_2/seed_4.pt",
+      "sha256": "0b77fc5eec1954c13ba69367d4844105425b2b5f2687124c9da228827bd51106"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_3/seed_0.pt",
+      "sha256": "89e87ed5945fbcf2a77682f0f7924ff6d16a0ed8511c04404153a184109b5f02"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_3/seed_1.pt",
+      "sha256": "7f9b8e4c663c87d98e836011a5d73774bbd6482c04008ad621411c6260d13804"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_3/seed_2.pt",
+      "sha256": "e5362a70b07f73a40c25d5572ca2e3017c469c8dc0a87215ffdb6478dded3571"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_3/seed_3.pt",
+      "sha256": "c1efbae48c3ac16730abadd03c99fd995f061dc06465e47144bfe4909dca65d8"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_3/seed_4.pt",
+      "sha256": "1bf51904810fa131ae96f696b0ea0fd02d87eac068a75bfbff36c6b622a6a6d1"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_4/seed_0.pt",
+      "sha256": "f1bb4494b66ef21c693abb33c14887a22737bc8283fbd28b2d478fdd6ecc8fc4"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_4/seed_1.pt",
+      "sha256": "b30ca041eab34e156b05a5c633a10b3dbf3d488f0303ba3801685a086aca6ec6"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_4/seed_2.pt",
+      "sha256": "eb3eca08c0d9073c5f7c9ff426d60fa9d58bab28066b1571e62a517799af3f86"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_4/seed_3.pt",
+      "sha256": "46616eca6dfd76c3d5a30193d58b6958be12c1ac53815bacd739e385205c708e"
+    },
+    {
+      "bytes": 9299,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/biot/fold_4/seed_4.pt",
+      "sha256": "5e23e0827f64ca277b76ab4fffe4dcb9b8a3c786b0f04e8a93f4a27442a5fce0"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_0/seed_0.pt",
+      "sha256": "7d2211f64b64862f2e0d14ec7b4ce5bfd5d1ed9257f0d3940f2aa849cabd63da"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_0/seed_1.pt",
+      "sha256": "6276c593199d4794277c5e17efe703cc665a2c416539708ca14710f16b647623"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_0/seed_2.pt",
+      "sha256": "0fe458d34f5c70682202a6e781289aabc25820b2ae216b87b8af56a841bde65f"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_0/seed_3.pt",
+      "sha256": "57242126f7421e2dfc372f85cad330b605e5bdfea6ab5bf360e59eeb9b84d083"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_0/seed_4.pt",
+      "sha256": "31a6b1a33793e604d12efec9253d665df389762ebb74eefabddfd88161b370c6"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_1/seed_0.pt",
+      "sha256": "fd218def8d0cb714bd6399239b3d02e197debe3cebe4397fbadf5d5ecf41e821"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_1/seed_1.pt",
+      "sha256": "3d917b481a03920b0cb7ca00f18a61c409184e6e0de0e8bb462ab92088a5d96e"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_1/seed_2.pt",
+      "sha256": "8f8e7cae98a55f10ea458114d81dfab1bfbc0366a24021dbc8ea0b3274ad8463"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_1/seed_3.pt",
+      "sha256": "3649159b036fd0ad97bbd26df3aaeed19cc596af1b29ffa9b1897ec72164b257"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_1/seed_4.pt",
+      "sha256": "6d7bf85312d4b79cf42b304ec8c159451f8880d28825ee1fc086a3e38b68e493"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_2/seed_0.pt",
+      "sha256": "c231966cbf6050bcb62f5b207ac5044fed2fa23921858f255dea2c93cc8d2d95"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_2/seed_1.pt",
+      "sha256": "8e3c894a4f4162f4839f55d832b63b26cca19327a95f9901b58eee3bc01ec7ee"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_2/seed_2.pt",
+      "sha256": "af7c88337922dc0d720d2f2550267d26cf16b378b0702bd567296019b34dc41a"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_2/seed_3.pt",
+      "sha256": "18d813e4bb59619c3839b646dff3d200bea7725de63234fa250aef353edaf901"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_2/seed_4.pt",
+      "sha256": "01136be3c76ace25a7a049c41d3e7b268d9d87cc46f348bee4bb7c23840c9c97"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_3/seed_0.pt",
+      "sha256": "86aca09f251c1e0f5195fed7dfdfe43ecef93ff0087d1cf12117752fd3242270"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_3/seed_1.pt",
+      "sha256": "2cdbbce8b8de4ef26d16c01bfae3d846babaaa82590a14e093e06d90334efe9f"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_3/seed_2.pt",
+      "sha256": "9aa5f100c135a3a9f56ee55d93982573111f081cbfc776b8f2b0d8b0a5987a8e"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_3/seed_3.pt",
+      "sha256": "6e91b3eeca65b9c921cb94541c14e8f9a8b8c1b723370849fefb0d5f17a49b85"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_3/seed_4.pt",
+      "sha256": "d5e7d271bd1bab1230bf557ed387dcdf44591853675d20b1b8db3a9a9bcd975f"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_4/seed_0.pt",
+      "sha256": "a9e47cf9b70186c78b6aa5fa221ec6d0a2c51a447e5eeb7332b61d98b60d0810"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_4/seed_1.pt",
+      "sha256": "a4ecaf874d021c9fe79caf90e34488756b001661a146a4245ef1f5c8615c0b17"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_4/seed_2.pt",
+      "sha256": "093191f07be47dd1174bcd2ba09df214c38789d34e7a783b171e6a39b4ebb5d5"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_4/seed_3.pt",
+      "sha256": "eb621932c0b637e5ead3d625f26e63b62e0a7d1744a8ffa5f4c369e57a3b0c26"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/cbramod/fold_4/seed_4.pt",
+      "sha256": "1ef20cc73b52855ba455d58a5c4c1293be4947199989b7677206280b06e31d62"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_0/seed_0.pt",
+      "sha256": "1f3f9299107eeeb32416358e5e636ce7afb23609bb1e6b9f02239a9979bb4101"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_0/seed_1.pt",
+      "sha256": "50874ff26f5144da15d2afe6596859c4b224e0175f838283f862907eb2382f8c"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_0/seed_2.pt",
+      "sha256": "9f92e99aceb11574a58c5cd65dfad54801d17b8929859c5f5d964ff6096a465e"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_0/seed_3.pt",
+      "sha256": "c835887367047d12b909c41451d27282495a70210168ce033a29155dfeffbf7f"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_0/seed_4.pt",
+      "sha256": "8791dc1bc76df87a54b943caaf89432b1e4786d20318e3ecff82a6b30f32beea"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_1/seed_0.pt",
+      "sha256": "c991ab3960a821182b5f6b10e4dba29e001a9b654f000fd14da4263143778844"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_1/seed_1.pt",
+      "sha256": "0be3bcb3031562d36fce594c84352e5844b1cb548c8bb50b87f7f4f903080915"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_1/seed_2.pt",
+      "sha256": "94e81c92061b2571c592a9f6fd5579e4a3296cdb42c4dc2af285a67bde5ad189"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_1/seed_3.pt",
+      "sha256": "12cf8f428ccaab32351eaaa91445609833b7f3ad68886fc09b391f865e1fa3c1"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_1/seed_4.pt",
+      "sha256": "52d3d1b40addf7007849a34e8b8e6b8adeed27b87a48d7c81a298b10bff764b4"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_2/seed_0.pt",
+      "sha256": "dc149489dbfe98400a0790dc74524b1091632995dcf67bd4b224757e0efbc2bd"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_2/seed_1.pt",
+      "sha256": "cc8ada14cdd522e65e735f1628432ad222e73af5cb76dafcaedb1120f67215a6"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_2/seed_2.pt",
+      "sha256": "66782d24e182b5d7d9949f23f7bae4177a138878a88d40bc36b300adcea51ce8"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_2/seed_3.pt",
+      "sha256": "bddbb5e8750255d11e2ea2b7aa81eecf2c2c5bba2bb18db590eeb8550eb74072"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_2/seed_4.pt",
+      "sha256": "d7bc454f6ba8cb00b44edccc796a37dcf1a500dcf475240cdbf3259bc00c4f60"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_3/seed_0.pt",
+      "sha256": "1aaf7543e6991620b9dc99debf38f9a974484e9e1f3818e7349b3912b11a584c"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_3/seed_1.pt",
+      "sha256": "67f40107c4bfea1f66200ea13304f7d82ca6651142447dc2759f020550d455bb"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_3/seed_2.pt",
+      "sha256": "043fb60d5aaa379d9fada182c7e146f605b643ab078c653a8c2ff128b6991a46"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_3/seed_3.pt",
+      "sha256": "cd0d97b20c12f1aae1c1388d9968cb7d940ef6e080665d96baae4f112efb7a5f"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_3/seed_4.pt",
+      "sha256": "aa3cdcd41dcaccddb8ca64b96b870745aad3fa75b97c78029fe13fa4b9ff8819"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_4/seed_0.pt",
+      "sha256": "282abd38ac8505ffe52d9bed5bee51260eb45b15ac0f518d7e276c6eb71f50a2"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_4/seed_1.pt",
+      "sha256": "3fb8cb88a50b49252a678de3e82a7ca3e48b17d88c6c72329b13b99f5faaf552"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_4/seed_2.pt",
+      "sha256": "a121b70245bcf92b262008673e988a32670ee84088fc1d6c30683e66a91feba2"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_4/seed_3.pt",
+      "sha256": "2694d9aba2ba9ec52e008864b4739f4fb55f18af032066659acbe6dd78a74bfe"
+    },
+    {
+      "bytes": 7827,
+      "path": "outputs/fm_routing_v7/probes/models/hmc/labram/fold_4/seed_4.pt",
+      "sha256": "c2dfde951ae5baef3dd62d78f6df4217c3d7332ff3ca9bba389464ae0de8bf2f"
+    },
+    {
+      "bytes": 182,
+      "path": "outputs/fm_routing_v7/provenance/ENVIRONMENT.txt",
+      "sha256": "6f8bdfd8ef65abf3f006288871491a3314a363f3359064c210952bd703d40b62"
+    },
+    {
+      "bytes": 1168,
+      "path": "outputs/fm_routing_v7/provenance/FINAL_TESTS.txt",
+      "sha256": "35d5df080633fadb2d0c5d427c182d483925afb8fcf0ad9e8bb9bc3757a4972e"
+    },
+    {
+      "bytes": 538,
+      "path": "outputs/fm_routing_v7/provenance/HASHES.json",
+      "sha256": "43ca79e21f1b6390787b664f65a37012c4c66b03c95d5456b9b04f7fcfc5e92b"
+    },
+    {
+      "bytes": 124,
+      "path": "outputs/fm_routing_v7/results/GATE_SUMMARY.csv",
+      "sha256": "8c0c0a7479a717d6161add0112f498fd8b69a6bd961935c2ef96bfc0926f425e"
+    },
+    {
+      "bytes": 29741,
+      "path": "outputs/fm_routing_v7/results/MODEL_METRICS_BY_FOLD_SEED.csv",
+      "sha256": "01d636e80e822a58ffdadc638c0e0fe209a18b5dd761ed8baeacf957d6185e45"
+    },
+    {
+      "bytes": 6364,
+      "path": "outputs/fm_routing_v7/results/MODEL_METRICS_BY_SEED.csv",
+      "sha256": "2fdf01ea67fae927f0ecdd8197925229505e20306efaba2ab3d30c076d039fa0"
+    },
+    {
+      "bytes": 179333,
+      "path": "outputs/fm_routing_v7/results/MODEL_METRICS_BY_SUBJECT.parquet",
+      "sha256": "f3fb8c9c8390eb8cfd194eb177d8daecba93be725a71cb4c16d862f89472590d"
+    },
+    {
+      "bytes": 1029,
+      "path": "outputs/fm_routing_v7/results/MODEL_QUALIFICATION_GATE.csv",
+      "sha256": "b9ff34318886bf88cbca6e05943ff8790bc9472fe8595db50065ae759491f2df"
+    },
+    {
+      "bytes": 45150541,
+      "path": "outputs/fm_routing_v7/results/OOF_PREDICTIONS.parquet",
+      "sha256": "81f8fb30a10daee3951139f87a7497e6156d9c4f95d9ca54e25bd67876641d33"
+    },
+    {
+      "bytes": 275,
+      "path": "delivery/fm_routing_v7/CANONICAL_SAMPLE_AUDIT.md",
+      "sha256": "06724fba18f330d7df941cc52b95a02408f045797b2ca5e632c950eb9943c94b"
+    },
+    {
+      "bytes": 2127,
+      "path": "delivery/fm_routing_v7/GATE_Q_DECISION.md",
+      "sha256": "80d38e58f5209d4e550dae1b1e7db7a00d01e4cb791a173311e4d03d42786cf6"
+    },
+    {
+      "bytes": 1138,
+      "path": "delivery/fm_routing_v7/INPUT_ADAPTER_AUDIT.md",
+      "sha256": "cc0caa2dab3fb6d1f39f922aa5153e419eb72aee36f8dd2c43208fd9bff86232"
+    },
+    {
+      "bytes": 193,
+      "path": "delivery/fm_routing_v7/LIMITATIONS.md",
+      "sha256": "b8fcb62de3dfb6091086355f6ee2374b3dffb9a0f54db0413df73b1a458c98ab"
+    },
+    {
+      "bytes": 1727,
+      "path": "delivery/fm_routing_v7/MODEL_PRETRAINING_PROVENANCE.md",
+      "sha256": "be9a5d44e95c1812bf80799263a6c290a8a69f19e97e6f0927014db17a95af78"
+    },
+    {
+      "bytes": 2110,
+      "path": "delivery/fm_routing_v7/MODEL_QUALIFICATION_REPORT.md",
+      "sha256": "2a32efa3268170eb132ef4ee09227c5f706e74e3f0c804d19cce24188e7dd07d"
+    },
+    {
+      "bytes": 246,
+      "path": "delivery/fm_routing_v7/REPRODUCE.md",
+      "sha256": "01b89380452d1552fdb2ed7ffb391f3778c392d61a4a7d142ebc0cb04c7ccf7d"
+    },
+    {
+      "bytes": 283,
+      "path": "delivery/fm_routing_v7/STANDARDIZED_PROBE_PROTOCOL.md",
+      "sha256": "25983439a8dd1d4ec307c7eec55fde230499fa07d0160412ab633e4375f87d12"
+    },
+    {
+      "bytes": 422,
+      "path": "delivery/fm_routing_v7/V6_LINE_CLOSURE_REFERENCE.md",
+      "sha256": "9ca30fd4d811e9d37e691e49b233a2d400b1b1aaf99911ee168b0b62f7dfc500"
+    },
+    {
+      "bytes": 1091,
+      "path": "delivery/fm_routing_v7/V7_MODEL_POOL_FREEZE.json",
+      "sha256": "024a8c8c1791b1a2ed09b2ecc82b62dd99f01db55c376961aff85a6fd51e3e89"
+    },
+    {
+      "bytes": 689,
+      "path": "delivery/fm_routing_v7/V7_STAGE0A_DECISION.json",
+      "sha256": "91472e5d1c3fa9d83b55fddcd28577aab0011e8a15c05918e0e13540336e7820"
+    },
+    {
+      "bytes": 726,
+      "path": "delivery/fm_routing_v7/V7_STAGE0A_DECISION.md",
+      "sha256": "6aa151e13823fd753b7d7542d8655d1529717edf7c0b43cc3716e4f25ea1c96d"
+    },
+    {
+      "bytes": 649,
+      "path": "delivery/fm_routing_v7/V7_STAGE0A_FREEZE.json",
+      "sha256": "106c5e84f2011087208af748e1f797b04c3b4daf155c495fe13da85bfd92f88e"
+    },
+    {
+      "bytes": 686,
+      "path": "delivery/fm_routing_v7/V7_STAGE0A_PROTOCOL.md",
+      "sha256": "ab7f0a03b1750ab8ba685e4d20fdba61499f4b2670a3a0242493384cbdd1f226"
+    }
+  ],
+  "generated_at": "2026-08-06T16:13:11.455508+00:00"
+}

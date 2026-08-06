@@ -1,0 +1,224 @@
+{"state": "V6_LINE_CLOSED", "verdict": null, "completed_jobs": 0, "elapsed_seconds": 0.18, "gpu_memory": 0}
+{"state": "MODEL_CANDIDATE_AUDIT_COMPLETE", "verdict": null, "completed_jobs": 0, "elapsed_seconds": 0.38, "gpu_memory": 0}
+{"state": "MODEL_POOL_FROZEN", "verdict": null, "completed_jobs": 0, "elapsed_seconds": 0.38, "gpu_memory": 0}
+{"state": "PROTOCOL_FROZEN", "verdict": null, "completed_jobs": 0, "elapsed_seconds": 0.38, "gpu_memory": 0}
+{"state": "CANONICAL_SAMPLE_AUDIT_COMPLETE", "verdict": null, "completed_jobs": 0, "elapsed_seconds": 2.4, "gpu_memory": 0}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/torch/functional.py:730: UserWarning: A window was not provided. A rectangular window will be applied,which is known to cause spectral leakage. Other windows such as torch.hann_window or torch.hamming_window are recommended to reduce spectral leakage.To suppress this warning and use a rectangular window, explicitly set `window=torch.ones(n_fft, device=<device>)`. (Triggered internally at /pytorch/aten/src/ATen/native/SpectralOps.cpp:836.)
+  return _VF.stft(  # type: ignore[attr-defined]
+{"state": "ADAPTER_SMOKE_TEST_COMPLETE", "verdict": null, "completed_jobs": 0, "elapsed_seconds": 4.67, "gpu_memory": 8552448}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "cbramod", "fold": 0, "completed_jobs": 1, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "cbramod", "fold": 1, "completed_jobs": 2, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "cbramod", "fold": 2, "completed_jobs": 3, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "cbramod", "fold": 3, "completed_jobs": 4, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "cbramod", "fold": 4, "completed_jobs": 5, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "labram", "fold": 0, "completed_jobs": 6, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "labram", "fold": 1, "completed_jobs": 7, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "labram", "fold": 2, "completed_jobs": 8, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "labram", "fold": 3, "completed_jobs": 9, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "labram", "fold": 4, "completed_jobs": 10, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "biot", "fold": 0, "completed_jobs": 11, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "biot", "fold": 1, "completed_jobs": 12, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "biot", "fold": 2, "completed_jobs": 13, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "biot", "fold": 3, "completed_jobs": 14, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "hmc", "model": "biot", "fold": 4, "completed_jobs": 15, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "cbramod", "fold": 0, "completed_jobs": 16, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "cbramod", "fold": 1, "completed_jobs": 17, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "cbramod", "fold": 2, "completed_jobs": 18, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "cbramod", "fold": 3, "completed_jobs": 19, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "cbramod", "fold": 4, "completed_jobs": 20, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "labram", "fold": 0, "completed_jobs": 21, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "labram", "fold": 1, "completed_jobs": 22, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "labram", "fold": 2, "completed_jobs": 23, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "labram", "fold": 3, "completed_jobs": 24, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "labram", "fold": 4, "completed_jobs": 25, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "biot", "fold": 0, "completed_jobs": 26, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "biot", "fold": 1, "completed_jobs": 27, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "biot", "fold": 2, "completed_jobs": 28, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "biot", "fold": 3, "completed_jobs": 29, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE", "dataset": "eegmmidb", "model": "biot", "fold": 4, "completed_jobs": 30, "total_jobs": 30, "gpu_memory": 8519680}
+{"state": "EMBEDDING_CACHE_COMPLETE", "verdict": null, "completed_jobs": 30, "elapsed_seconds": 143.65, "gpu_memory": 8519680}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 0, "seed": 0, "completed_jobs": 31}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 0, "seed": 1, "completed_jobs": 32}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 0, "seed": 2, "completed_jobs": 33}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 0, "seed": 3, "completed_jobs": 34}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 0, "seed": 4, "completed_jobs": 35}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 1, "seed": 0, "completed_jobs": 36}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 1, "seed": 1, "completed_jobs": 37}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 1, "seed": 2, "completed_jobs": 38}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 1, "seed": 3, "completed_jobs": 39}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 1, "seed": 4, "completed_jobs": 40}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 2, "seed": 0, "completed_jobs": 41}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 2, "seed": 1, "completed_jobs": 42}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 2, "seed": 2, "completed_jobs": 43}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 2, "seed": 3, "completed_jobs": 44}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 2, "seed": 4, "completed_jobs": 45}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 3, "seed": 0, "completed_jobs": 46}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 3, "seed": 1, "completed_jobs": 47}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 3, "seed": 2, "completed_jobs": 48}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 3, "seed": 3, "completed_jobs": 49}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 3, "seed": 4, "completed_jobs": 50}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 4, "seed": 0, "completed_jobs": 51}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 4, "seed": 1, "completed_jobs": 52}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 4, "seed": 2, "completed_jobs": 53}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 4, "seed": 3, "completed_jobs": 54}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "cbramod", "fold": 4, "seed": 4, "completed_jobs": 55}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 0, "seed": 0, "completed_jobs": 56}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 0, "seed": 1, "completed_jobs": 57}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 0, "seed": 2, "completed_jobs": 58}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 0, "seed": 3, "completed_jobs": 59}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 0, "seed": 4, "completed_jobs": 60}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 1, "seed": 0, "completed_jobs": 61}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 1, "seed": 1, "completed_jobs": 62}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 1, "seed": 2, "completed_jobs": 63}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 1, "seed": 3, "completed_jobs": 64}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 1, "seed": 4, "completed_jobs": 65}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 2, "seed": 0, "completed_jobs": 66}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 2, "seed": 1, "completed_jobs": 67}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 2, "seed": 2, "completed_jobs": 68}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 2, "seed": 3, "completed_jobs": 69}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 2, "seed": 4, "completed_jobs": 70}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 3, "seed": 0, "completed_jobs": 71}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 3, "seed": 1, "completed_jobs": 72}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 3, "seed": 2, "completed_jobs": 73}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 3, "seed": 3, "completed_jobs": 74}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 3, "seed": 4, "completed_jobs": 75}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 4, "seed": 0, "completed_jobs": 76}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 4, "seed": 1, "completed_jobs": 77}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 4, "seed": 2, "completed_jobs": 78}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 4, "seed": 3, "completed_jobs": 79}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "labram", "fold": 4, "seed": 4, "completed_jobs": 80}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 0, "seed": 0, "completed_jobs": 81}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 0, "seed": 1, "completed_jobs": 82}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 0, "seed": 2, "completed_jobs": 83}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 0, "seed": 3, "completed_jobs": 84}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 0, "seed": 4, "completed_jobs": 85}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 1, "seed": 0, "completed_jobs": 86}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 1, "seed": 1, "completed_jobs": 87}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 1, "seed": 2, "completed_jobs": 88}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 1, "seed": 3, "completed_jobs": 89}
+/root/miniconda3/envs/hsc_gpu/lib/python3.11/site-packages/sklearn/metrics/_classification.py:2939: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 1, "seed": 4, "completed_jobs": 90}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 2, "seed": 0, "completed_jobs": 91}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 2, "seed": 1, "completed_jobs": 92}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 2, "seed": 2, "completed_jobs": 93}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 2, "seed": 3, "completed_jobs": 94}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 2, "seed": 4, "completed_jobs": 95}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 3, "seed": 0, "completed_jobs": 96}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 3, "seed": 1, "completed_jobs": 97}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 3, "seed": 2, "completed_jobs": 98}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 3, "seed": 3, "completed_jobs": 99}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 3, "seed": 4, "completed_jobs": 100}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 4, "seed": 0, "completed_jobs": 101}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 4, "seed": 1, "completed_jobs": 102}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 4, "seed": 2, "completed_jobs": 103}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 4, "seed": 3, "completed_jobs": 104}
+{"state": "STANDARDIZED_PROBES", "dataset": "hmc", "model": "biot", "fold": 4, "seed": 4, "completed_jobs": 105}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 0, "seed": 0, "completed_jobs": 106}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 0, "seed": 1, "completed_jobs": 107}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 0, "seed": 2, "completed_jobs": 108}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 0, "seed": 3, "completed_jobs": 109}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 0, "seed": 4, "completed_jobs": 110}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 1, "seed": 0, "completed_jobs": 111}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 1, "seed": 1, "completed_jobs": 112}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 1, "seed": 2, "completed_jobs": 113}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 1, "seed": 3, "completed_jobs": 114}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 1, "seed": 4, "completed_jobs": 115}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 2, "seed": 0, "completed_jobs": 116}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 2, "seed": 1, "completed_jobs": 117}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 2, "seed": 2, "completed_jobs": 118}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 2, "seed": 3, "completed_jobs": 119}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 2, "seed": 4, "completed_jobs": 120}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 3, "seed": 0, "completed_jobs": 121}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 3, "seed": 1, "completed_jobs": 122}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 3, "seed": 2, "completed_jobs": 123}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 3, "seed": 3, "completed_jobs": 124}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 3, "seed": 4, "completed_jobs": 125}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 4, "seed": 0, "completed_jobs": 126}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 4, "seed": 1, "completed_jobs": 127}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 4, "seed": 2, "completed_jobs": 128}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 4, "seed": 3, "completed_jobs": 129}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "cbramod", "fold": 4, "seed": 4, "completed_jobs": 130}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 0, "seed": 0, "completed_jobs": 131}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 0, "seed": 1, "completed_jobs": 132}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 0, "seed": 2, "completed_jobs": 133}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 0, "seed": 3, "completed_jobs": 134}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 0, "seed": 4, "completed_jobs": 135}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 1, "seed": 0, "completed_jobs": 136}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 1, "seed": 1, "completed_jobs": 137}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 1, "seed": 2, "completed_jobs": 138}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 1, "seed": 3, "completed_jobs": 139}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 1, "seed": 4, "completed_jobs": 140}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 2, "seed": 0, "completed_jobs": 141}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 2, "seed": 1, "completed_jobs": 142}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 2, "seed": 2, "completed_jobs": 143}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 2, "seed": 3, "completed_jobs": 144}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 2, "seed": 4, "completed_jobs": 145}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 3, "seed": 0, "completed_jobs": 146}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 3, "seed": 1, "completed_jobs": 147}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 3, "seed": 2, "completed_jobs": 148}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 3, "seed": 3, "completed_jobs": 149}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 3, "seed": 4, "completed_jobs": 150}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 4, "seed": 0, "completed_jobs": 151}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 4, "seed": 1, "completed_jobs": 152}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 4, "seed": 2, "completed_jobs": 153}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 4, "seed": 3, "completed_jobs": 154}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "labram", "fold": 4, "seed": 4, "completed_jobs": 155}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 0, "seed": 0, "completed_jobs": 156}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 0, "seed": 1, "completed_jobs": 157}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 0, "seed": 2, "completed_jobs": 158}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 0, "seed": 3, "completed_jobs": 159}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 0, "seed": 4, "completed_jobs": 160}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 1, "seed": 0, "completed_jobs": 161}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 1, "seed": 1, "completed_jobs": 162}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 1, "seed": 2, "completed_jobs": 163}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 1, "seed": 3, "completed_jobs": 164}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 1, "seed": 4, "completed_jobs": 165}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 2, "seed": 0, "completed_jobs": 166}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 2, "seed": 1, "completed_jobs": 167}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 2, "seed": 2, "completed_jobs": 168}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 2, "seed": 3, "completed_jobs": 169}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 2, "seed": 4, "completed_jobs": 170}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 3, "seed": 0, "completed_jobs": 171}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 3, "seed": 1, "completed_jobs": 172}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 3, "seed": 2, "completed_jobs": 173}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 3, "seed": 3, "completed_jobs": 174}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 3, "seed": 4, "completed_jobs": 175}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 4, "seed": 0, "completed_jobs": 176}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 4, "seed": 1, "completed_jobs": 177}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 4, "seed": 2, "completed_jobs": 178}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 4, "seed": 3, "completed_jobs": 179}
+{"state": "STANDARDIZED_PROBES", "dataset": "eegmmidb", "model": "biot", "fold": 4, "seed": 4, "completed_jobs": 180}
+{"state": "STANDARDIZED_PROBES_COMPLETE", "verdict": null, "completed_jobs": 180, "elapsed_seconds": 248.65, "gpu_memory": 17039360}
+{"state": "MODEL_QUALIFICATION_COMPLETE", "verdict": null, "completed_jobs": 180, "elapsed_seconds": 248.83, "gpu_memory": 17039360}
+{"state": "STOPPED", "verdict": "V7_STAGE0A_STOP_MODEL_QUALIFICATION_FAILURE", "completed_jobs": 180, "elapsed_seconds": 248.99, "gpu_memory": 17039360}

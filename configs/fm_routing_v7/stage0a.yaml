@@ -1,0 +1,24 @@
+datasets: [hmc, eegmmidb]
+models: [cbramod, labram, biot]
+outer_folds: [0, 1, 2, 3, 4]
+head_seeds: [0, 1, 2, 3, 4]
+bootstrap:
+  repetitions: 5000
+  seed: 20260810
+subject_shuffle_null:
+  repetitions: 500
+  seed: 20260811
+probe:
+  learning_rate: [0.0001, 0.0003, 0.001]
+  weight_decay: [0.0, 0.0001]
+  max_epochs: 30
+  early_stopping_patience: 5
+protected:
+  formal_calibration_opened: false
+  internal_final_opened: false
+  cap_opened: false
+  sleep_edf_opened: false
+  bcic2a_opened: false
+  router_developed: false
+  abstention_developed: false
+  full_method_entered: false

@@ -1,0 +1,86 @@
+{
+  "candidate_audit": [
+    {
+      "model": "LaBraM",
+      "reason": "official MIT code and checkpoint load locally",
+      "status": "selected"
+    },
+    {
+      "model": "EEGPT",
+      "reason": "official Figshare checkpoint endpoint returned HTTP 403 in current environment before performance computation",
+      "status": "not_accessible"
+    },
+    {
+      "model": "BIOT",
+      "reason": "official MIT code and PREST checkpoint load locally",
+      "status": "selected"
+    },
+    {
+      "model": "BENDR",
+      "reason": "three-family pool already complete",
+      "status": "not_reached"
+    }
+  ],
+  "candidate_priority": [
+    "LaBraM",
+    "EEGPT",
+    "BIOT",
+    "BENDR"
+  ],
+  "models": {
+    "biot": {
+      "admissible": true,
+      "checkpoint": "/root/autodl-tmp/hsc_tta_eeg/external/BIOT/pretrained-models/EEG-PREST-16-channels.ckpt",
+      "checkpoint_sha256": "40f55f5d23e83796495616c8145c8336fcff2b901c42e8ba5115223081c2ad70",
+      "code_commit": "d138e32634e52ae9fa6ec98ac9c4087b14ca869a",
+      "explicit_eegmmidb": false,
+      "explicit_hmc": false,
+      "family": "frequency-patch linear-attention transformer",
+      "frozen_encoder_parameters": 3186192,
+      "license": "MIT",
+      "official_code": "https://github.com/ycq091044/BIOT",
+      "parameters_in_checkpoint": 3442192,
+      "pretraining_data": "5 million unlabeled PREST resting EEG samples",
+      "pretraining_exposure_unknown": false,
+      "pretraining_objective": "unsupervised contrastive pretraining",
+      "task_labels_used": false,
+      "unsupervised_pretraining_overlap": false
+    },
+    "cbramod": {
+      "admissible": true,
+      "checkpoint": "/root/autodl-tmp/hsc_tta_eeg/checkpoints/cbramod/pretrained_weights.pth",
+      "checkpoint_sha256": "0792cb808c14e6b7a2bb2ce1dff379bc47bc54c49a779825bdfeb33bf8157178",
+      "code_commit": "0ff6be918985689e7df679bc731ffb70e6c6224f",
+      "explicit_eegmmidb": false,
+      "explicit_hmc": false,
+      "family": "criss-cross transformer",
+      "frozen_encoder_parameters": 4924000,
+      "license": "MIT",
+      "official_code": "https://github.com/wangf3014/CBraMod",
+      "parameters_in_checkpoint": 4924000,
+      "pretraining_data": "TUEG, approximately 9,000 hours",
+      "pretraining_exposure_unknown": false,
+      "pretraining_objective": "masked EEG reconstruction",
+      "task_labels_used": false,
+      "unsupervised_pretraining_overlap": false
+    },
+    "labram": {
+      "admissible": true,
+      "checkpoint": "/root/autodl-tmp/hsc_tta_eeg/external/LaBraM/checkpoints/labram-base.pth",
+      "checkpoint_sha256": "7c50583826afac76c4ab18f43d958df40496c8229accc09ed6a227c9bb57c37c",
+      "code_commit": "c431221e6cfd23dbfa9950e0180682fb322b0548",
+      "explicit_eegmmidb": false,
+      "explicit_hmc": false,
+      "family": "neural-tokenizer transformer",
+      "frozen_encoder_parameters": 5819936,
+      "license": "MIT",
+      "official_code": "https://github.com/935963004/LaBraM",
+      "parameters_in_checkpoint": 7466728,
+      "pretraining_data": "about 2,500 hours across around 20 datasets; complete corpus list not verified from checkpoint metadata",
+      "pretraining_exposure_unknown": true,
+      "pretraining_objective": "vector-quantized neural spectrum prediction and masked neural-code prediction",
+      "task_labels_used": false,
+      "unsupervised_pretraining_overlap": false
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "backbones_frozen": true,
+  "datasets": [
+    "hmc",
+    "eegmmidb"
+  ],
+  "head_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "primary_unit": "subject",
+  "probe": {
+    "early_stopping_patience": 5,
+    "family": "LayerNorm+Linear",
+    "learning_rate": [
+      0.0001,
+      0.0003,
+      0.001
+    ],
+    "loss": "class-weighted cross entropy",
+    "max_epochs": 30,
+    "weight_decay": [
+      0.0,
+      0.0001
+    ]
+  },
+  "subject_bootstrap": {
+    "repetitions": 5000,
+    "seed": 20260810
+  },
+  "subject_shuffle_null": {
+    "repetitions": 500,
+    "seed": 20260811
+  }
+}

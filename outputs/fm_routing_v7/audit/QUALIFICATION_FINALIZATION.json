@@ -1,0 +1,10 @@
+{
+  "changes": [
+    "inferred EEGMMIDB chance from its four frozen labels instead of a hard-coded class count",
+    "computed dataset balanced accuracy from full OOF predictions per head seed instead of averaging fold scores",
+    "checked predicted-class coverage and minimum per-seed nonconstant-subject coverage"
+  ],
+  "status": "corrected_without_new_scientific_jobs",
+  "timestamp": "2026-08-06T16:12:30.189596+00:00",
+  "verdict_changed": false
+}

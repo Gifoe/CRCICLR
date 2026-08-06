@@ -1,0 +1,50 @@
+{
+  "biot": {
+    "eegmmidb_montages": [
+      "FP1-F7",
+      "F7-T7",
+      "T7-P7",
+      "P7-O1",
+      "FP2-F8",
+      "F8-T8",
+      "T8-P8",
+      "P8-O2",
+      "FP1-F3",
+      "F3-C3",
+      "C3-P3",
+      "P3-O1",
+      "FP2-F4",
+      "F4-C4",
+      "C4-P4",
+      "P4-O2"
+    ],
+    "embedding_dim": 256,
+    "hmc_channel_tokens": [
+      10,
+      14
+    ],
+    "hmc_channels": [
+      "C3-M2",
+      "C4-M1"
+    ],
+    "hop_length": 100,
+    "n_fft": 200,
+    "pooling": "official sequence mean",
+    "sampling_rate": 200,
+    "unit": "microvolts"
+  },
+  "cbramod": {
+    "embedding_dim": 200,
+    "pooling": "mean over valid channel-patch tokens",
+    "source": "existing audited token cache"
+  },
+  "labram": {
+    "channel_mapping": "normalized 10-20 names",
+    "eegmmidb_window_seconds": 3.2,
+    "embedding_dim": 200,
+    "hmc_pooling": "mean of three deterministic subwindow embeddings",
+    "hmc_subwindows_seconds": 10,
+    "sampling_rate": 200,
+    "unit": "microvolts"
+  }
+}
