@@ -1,0 +1,24 @@
+experiment: v7_0b_expert_qualification_repair
+post_hoc_development: true
+datasets: [hmc, eegmmidb]
+models: [cbramod, labram, biot]
+outer_folds: [0, 1, 2, 3, 4]
+seeds: [0, 1, 2, 3, 4]
+bootstrap:
+  repetitions: 5000
+  seed: 20260812
+subject_shuffle_null:
+  repetitions: 500
+  seed: 20260813
+readout_families: [GLOBAL_LOGREG, TOKEN_ATTENTION_POOL]
+head_parameter_cap: 100000
+protected_flags:
+  formal_calibration_opened: false
+  internal_final_opened: false
+  cap_opened: false
+  sleep_edf_opened: false
+  bcic2a_opened: false
+  router_developed: false
+  abstention_developed: false
+  scout_developed: false
+  full_method_entered: false

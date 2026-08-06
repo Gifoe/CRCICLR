@@ -1,0 +1,71 @@
+{
+  "abstention_developed": false,
+  "adapter_fidelity_passed": false,
+  "adapter_gate": {
+    "F1": false,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true,
+    "F7": true
+  },
+  "adapter_hashes": {
+    "biot": "448491ba89b4e308cf7e370cb52e72c74330892d9cd5604a8027799beaeca487",
+    "cbramod": "1375d71db138fe2b9ed5908779af2bfa4195d4d4c2c1f46020d1e1593b53bca7",
+    "labram": "086bdc187ec4a2743d5dea4cd22b071e1b1a7cb2ea060571d2c09a919db3db03"
+  },
+  "bcic2a_opened": false,
+  "canonical_hash": "c947f7aa64e4a072d98d03d928682e39842d036c5221e5d20951294499b9d997",
+  "cap_opened": false,
+  "checkpoint_hashes": {
+    "biot": "40f55f5d23e83796495616c8145c8336fcff2b901c42e8ba5115223081c2ad70",
+    "cbramod": "0792cb808c14e6b7a2bb2ce1dff379bc47bc54c49a779825bdfeb33bf8157178",
+    "labram": "7c50583826afac76c4ab18f43d958df40496c8229accc09ed6a227c9bb57c37c"
+  },
+  "completed_jobs": [],
+  "elapsed_seconds": 3.943072557449341,
+  "failed_jobs": [],
+  "formal_calibration_opened": false,
+  "freeze_hash": "60c467f48825d782e1d7e732daffaf1cfa1c61e3fa55b7fdd1e19febe3e3b68a",
+  "full_method_entered": false,
+  "gpu_name": "NVIDIA GeForce RTX 5090",
+  "gpu_peak_memory_bytes": 64539648,
+  "gpu_used": true,
+  "internal_final_opened": false,
+  "later_stages_not_run": [
+    "full structured feature cache",
+    "CBraMod anchor verification",
+    "repaired heads H0/H1",
+    "Expert Qualification Gate R",
+    "best fixed",
+    "full subject oracle",
+    "split-half transfer oracle",
+    "subject-shuffle null",
+    "same-backbone null",
+    "error complementarity",
+    "Oracle Gate A",
+    "unlabeled routing screen"
+  ],
+  "predecessor_hashes": {
+    "delivery/fm_routing_v7/GATE_Q_DECISION.md": "80d38e58f5209d4e550dae1b1e7db7a00d01e4cb791a173311e4d03d42786cf6",
+    "delivery/fm_routing_v7/INPUT_ADAPTER_AUDIT.md": "cc0caa2dab3fb6d1f39f922aa5153e419eb72aee36f8dd2c43208fd9bff86232",
+    "delivery/fm_routing_v7/MODEL_QUALIFICATION_REPORT.md": "2a32efa3268170eb132ef4ee09227c5f706e74e3f0c804d19cce24188e7dd07d",
+    "delivery/fm_routing_v7/V7_MODEL_POOL_FREEZE.json": "024a8c8c1791b1a2ed09b2ecc82b62dd99f01db55c376961aff85a6fd51e3e89",
+    "outputs/fm_routing_v7/provenance/FINAL_TESTS.txt": "35d5df080633fadb2d0c5d427c182d483925afb8fcf0ad9e8bb9bc3757a4972e",
+    "outputs/fm_routing_v7/results/MODEL_METRICS_BY_SEED.csv": "2fdf01ea67fae927f0ecdd8197925229505e20306efaba2ab3d30c076d039fa0",
+    "outputs/online_blockwise_v6/results/BACKBONE_GATE.csv": "6534ba48b146fab35a7286ae5de6f042eab898875148da43c6c8892858d5f3cf"
+  },
+  "predecessor_verdict": "V7_STAGE0A_STOP_MODEL_QUALIFICATION_FAILURE",
+  "previous_state": "DELIVERY_COMPLETE",
+  "router_developed": false,
+  "scout_developed": false,
+  "sleep_edf_opened": false,
+  "started_at": "2026-08-06T17:12:31.579196+00:00",
+  "starting_commit": "86b6ea46c8b5a3497e68472d75f490520503637d",
+  "state": "STOPPED",
+  "stopping_gate": "Adapter Fidelity Gate F",
+  "terminal": true,
+  "updated_at": "2026-08-06T17:12:35.370462+00:00",
+  "verdict": "V7R_STOP_ADAPTER_FIDELITY_FAILURE"
+}

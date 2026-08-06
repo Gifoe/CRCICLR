@@ -1,0 +1,90 @@
+[
+  {
+    "dataset": "hmc",
+    "finite": true,
+    "identity_recoverable": true,
+    "mask_valid": true,
+    "model": "cbramod",
+    "repeat_max_abs_error": 0.0,
+    "source_structured_shape": [
+      1,
+      30,
+      200
+    ],
+    "token_shape": [
+      1,
+      30,
+      200
+    ]
+  },
+  {
+    "dataset": "eegmmidb",
+    "finite": true,
+    "identity_recoverable": true,
+    "mask_valid": true,
+    "model": "cbramod",
+    "repeat_max_abs_error": 0.0,
+    "source_structured_shape": [
+      64,
+      4,
+      200
+    ],
+    "token_shape": [
+      1,
+      256,
+      200
+    ]
+  },
+  {
+    "dataset": "hmc",
+    "finite": true,
+    "identity_recoverable": true,
+    "mask_valid": true,
+    "model": "labram",
+    "repeat_max_abs_error": 0.0,
+    "token_shape": [
+      1,
+      60,
+      200
+    ]
+  },
+  {
+    "dataset": "eegmmidb",
+    "finite": true,
+    "identity_recoverable": true,
+    "mask_valid": true,
+    "model": "labram",
+    "repeat_max_abs_error": 0.0,
+    "token_shape": [
+      1,
+      256,
+      200
+    ]
+  },
+  {
+    "dataset": "hmc",
+    "finite": true,
+    "identity_recoverable": true,
+    "mask_valid": true,
+    "model": "biot",
+    "repeat_max_abs_error": 0.0,
+    "token_shape": [
+      1,
+      118,
+      256
+    ]
+  },
+  {
+    "dataset": "eegmmidb",
+    "finite": true,
+    "identity_recoverable": true,
+    "mask_valid": true,
+    "model": "biot",
+    "repeat_max_abs_error": 0.0,
+    "token_shape": [
+      1,
+      112,
+      256
+    ]
+  }
+]
