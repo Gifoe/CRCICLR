@@ -12,8 +12,10 @@ from torch.utils.data import Dataset
 class EEGWindowDataset(Dataset):
     """In-memory subject cache; all baselines consume the exact same arrays."""
 
-    def __init__(self, paths: Iterable[str | Path]):
+    def __init__(self, paths: Iterable[str | Path], include_runs: Iterable[int] | None = None):
+        allowed_runs = None if include_runs is None else {int(value) for value in include_runs}
         signals, labels, subjects, recordings = [], [], [], []
+        run_ids = []
         self.channel_names: list[str] | None = None
         self.sampling_rate: float | None = None
         for path_like in sorted(map(Path, paths)):
@@ -26,15 +28,22 @@ class EEGWindowDataset(Dataset):
                     raise ValueError("channel order differs across cached subjects")
                 current = np.asarray(handle["signal"][:], dtype=np.float32)
                 current_labels = np.asarray(handle["label"][:], dtype=np.int64)
+                current_runs = np.asarray(handle["run_id"][:], dtype=np.int64)
+                if allowed_runs is not None:
+                    mask = np.isin(current_runs, sorted(allowed_runs))
+                    current, current_labels, current_runs = current[mask], current_labels[mask], current_runs[mask]
                 signals.append(current); labels.append(current_labels)
                 subjects.extend([path_like.stem] * len(current_labels))
-                recordings.extend([value.decode() if isinstance(value, bytes) else str(value) for value in handle["recording_id"][:]])
+                recording_values = [value.decode() if isinstance(value, bytes) else str(value) for value in handle["recording_id"][:]]
+                recordings.extend(np.asarray(recording_values, dtype=object)[mask if allowed_runs is not None else slice(None)].tolist())
+                run_ids.extend(current_runs.tolist())
         if not signals:
             raise ValueError("empty EEG dataset")
         self.signal = np.concatenate(signals)
         self.label = np.concatenate(labels)
         self.subjects = np.asarray(subjects)
         self.recordings = np.asarray(recordings)
+        self.run_ids = np.asarray(run_ids, dtype=np.int64)
 
     def __len__(self) -> int:
         return len(self.label)

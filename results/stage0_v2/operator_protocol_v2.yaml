@@ -1,0 +1,40 @@
+schema_version: moa-eeg-stage0-v2
+matched_operator: source_car64
+source_observation: Y0 = C64 @ Yraw; Yt = A_t @ Y0; B_t = A_t @ C64 @ Psi
+train_validation_test_operator_ids:
+  train:
+  - subset_car_train_anterior
+  - local_average_train
+  - laplacian_train
+  - weighted_reference_train
+  - sparse_subset_train
+  - bipolar_train
+  validation:
+  - subset_car_validation_central
+  - local_average_validation
+  - laplacian_validation
+  - weighted_reference_validation
+  - sparse_subset_validation
+  - bipolar_validation
+  test:
+  - subset_car_test_posterior
+  - local_average_test
+  - laplacian_test
+  - weighted_reference_test
+  - sparse_subset_test
+  - bipolar_test
+  - polarity_diagnostic
+gate_a_primary_excludes:
+- polarity
+gate_a:
+  overall_mean_drop_pp: 2.0
+  minimum_family_mean_drop_pp: 1.5
+  minimum_families: 2
+gate_b:
+  gain_pp: 1.5
+  comparison: B6 vs strongest of B2-B5, overall and composite-only
+seeds:
+- 0
+- 1
+- 2
+isruc: DATA_NOT_LOCALLY_VERIFIED

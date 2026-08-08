@@ -1,0 +1,27 @@
+{
+  "train": [
+    "subset_car_train_anterior",
+    "local_average_train",
+    "laplacian_train",
+    "weighted_reference_train",
+    "sparse_subset_train",
+    "bipolar_train"
+  ],
+  "validation": [
+    "subset_car_validation_central",
+    "local_average_validation",
+    "laplacian_validation",
+    "weighted_reference_validation",
+    "sparse_subset_validation",
+    "bipolar_validation"
+  ],
+  "test": [
+    "subset_car_test_posterior",
+    "local_average_test",
+    "laplacian_test",
+    "weighted_reference_test",
+    "sparse_subset_test",
+    "bipolar_test",
+    "polarity_diagnostic"
+  ]
+}
