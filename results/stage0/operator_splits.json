@@ -1,0 +1,23 @@
+{
+  "train": [
+    "dense32_a",
+    "dense32_b",
+    "sparse16_a",
+    "bipolar_train"
+  ],
+  "validation": [
+    "sparse16_b",
+    "bipolar_validation"
+  ],
+  "test": [
+    "sparse12_heldout",
+    "sparse8_heldout",
+    "sparse4_heldout",
+    "bipolar_heldout_topology",
+    "bipolar_heldout_topology_2",
+    "bipolar_heldout_topology_3",
+    "polarity_heldout",
+    "polarity_heldout_2",
+    "rereference_car8_heldout"
+  ]
+}

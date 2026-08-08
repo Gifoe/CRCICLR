@@ -1,0 +1,18 @@
+{
+  "dataset": "EEGMMIDB",
+  "official_dataset_version": "1.0.0",
+  "edf_channel_labels_are_electrode_names_only": true,
+  "edf_reference_field_present": false,
+  "exact_acquisition_reference": "UNRESOLVED",
+  "prohibited_assumptions": [
+    "M1",
+    "M2",
+    "average mastoid",
+    "absolute scalp potential"
+  ],
+  "working_transformation": "CAR64",
+  "working_transformation_condition": "all 64 amplifier channels share a common acquisition reference",
+  "evidence_status": "BORDERLINE: same-system literature supports a common right-ear reference, but the PhysioNet EDF metadata does not encode it",
+  "scientific_restriction": "EEGMMIDB results are controlled supporting evidence, not the clean explicit-reference replication",
+  "isruc_status": "official public download attempted; clean replication remains required"
+}
