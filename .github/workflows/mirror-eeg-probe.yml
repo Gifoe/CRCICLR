@@ -27,7 +27,7 @@ jobs:
             exit 1
           fi
           echo "MIRROR_RUN_ID=$RUN_ID"
-          gh run view "$RUN_ID" --json status,conclusion,jobs,url
+          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --json status,conclusion,jobs,url
           echo "MIRROR_LOG_TAIL_BEGIN"
-          gh run view "$RUN_ID" --log 2>&1 | tail -n 300 || true
+          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log 2>&1 | tail -n 300 || true
           echo "MIRROR_LOG_TAIL_END"
