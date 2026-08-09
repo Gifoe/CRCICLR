@@ -1,0 +1,52 @@
+name: Monitor PERSIST-EEG mirror
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Inspect latest PERSIST-EEG run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          GH_API_URL: ${{ github.api_url }}
+        run: |
+          set -euo pipefail
+          response="$(curl --fail-with-body --retry 3 --retry-all-errors \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            "${GH_API_URL}/repos/${GH_REPO}/actions/runs?per_page=100")"
+          run="$(printf '%s' "${response}" | jq -c '
+            [.workflow_runs[]
+             | select(.name == "Mirror PERSIST-EEG to Hugging Face")]
+            | sort_by(.created_at)
+            | last // empty
+          ')"
+          if [ -z "${run}" ]; then
+            echo "No PERSIST-EEG mirror run found." >> "${GITHUB_STEP_SUMMARY}"
+            exit 0
+          fi
+          {
+            echo "## PERSIST-EEG monitor"
+            echo
+            echo "| field | value |"
+            echo "|---|---|"
+            echo "| run | [#$(printf '%s' "${run}" | jq -r '.run_number')]($(printf '%s' "${run}" | jq -r '.html_url')) |"
+            echo "| status | $(printf '%s' "${run}" | jq -r '.status') |"
+            echo "| conclusion | $(printf '%s' "${run}" | jq -r '.conclusion // "pending"') |"
+            echo "| started | $(printf '%s' "${run}" | jq -r '.run_started_at // .created_at') |"
+          } >> "${GITHUB_STEP_SUMMARY}"
+          conclusion="$(printf '%s' "${run}" | jq -r '.conclusion // empty')"
+          if [ "${conclusion}" = "failure" ] || [ "${conclusion}" = "cancelled" ] || [ "${conclusion}" = "timed_out" ]; then
+            echo "Latest mirror run requires inspection: ${conclusion}" >&2
+            exit 1
+          fi
