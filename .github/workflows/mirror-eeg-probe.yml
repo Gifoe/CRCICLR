@@ -1,0 +1,33 @@
+name: Probe PERSIST-EEG mirror
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect latest mirror run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          RUNS=$(gh api --method GET \
+            "/repos/${GITHUB_REPOSITORY}/actions/workflows/mirror-eeg-to-hf.yml/runs" \
+            -f event=push -f per_page=10)
+          echo "$RUNS" | jq '{runs: [.workflow_runs[] | {id, status, conclusion, head_sha, created_at, updated_at, html_url}]}'
+          RUN_ID=$(echo "$RUNS" | jq -r '.workflow_runs[0].id // empty')
+          if [[ -z "$RUN_ID" ]]; then
+            echo "MIRROR_RUN_NOT_FOUND"
+            exit 1
+          fi
+          echo "MIRROR_RUN_ID=$RUN_ID"
+          gh run view "$RUN_ID" --json status,conclusion,jobs,url
+          echo "MIRROR_LOG_TAIL_BEGIN"
+          gh run view "$RUN_ID" --log 2>&1 | tail -n 300 || true
+          echo "MIRROR_LOG_TAIL_END"
