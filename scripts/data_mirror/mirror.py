@@ -10,6 +10,7 @@ import os
 import random
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import time
@@ -365,20 +366,29 @@ def plan() -> None:
 
 
 def smoke() -> None:
-    hub = OIDCHub()
-    info = hub.api().repo_info(repo_id=HF_REPO, repo_type=REPO_TYPE, files_metadata=False)
-    if not bool(getattr(info, "private", False)):
-        raise RuntimeError("destination dataset repository is not private")
     with tempfile.TemporaryDirectory(prefix="persist-oidc-") as temp:
         root = Path(temp)
         sample = root / "oidc_test.txt"
         sample.write_text("PERSIST-EEG Trusted Publisher test\n")
         local_sha = sha256_file(sample)
-        hub.upload(sample, "metadata/oidc_test.txt", "PERSIST-EEG OIDC smoke test")
-        readback = hub.download("metadata/oidc_test.txt", root / "readback")
+        cli_env = os.environ.copy()
+        cli_env["HF_OIDC_RESOURCE"] = f"datasets/{HF_REPO}"
+        subprocess.run([
+            "hf", "upload", HF_REPO, str(sample), "metadata/oidc_test.txt",
+            "--repo-type", "dataset", "--commit-message", "PERSIST-EEG OIDC smoke test",
+        ], check=True, env=cli_env)
+        subprocess.run([
+            "hf", "download", HF_REPO, "metadata/oidc_test.txt", "--repo-type", "dataset",
+            "--local-dir", str(root / "readback"), "--force-download",
+        ], check=True, env=cli_env)
+        readback = root / "readback" / "metadata/oidc_test.txt"
         remote_sha = sha256_file(readback)
         if local_sha != remote_sha:
             raise RuntimeError("OIDC smoke-test checksum mismatch")
+    hub = OIDCHub()
+    info = hub.api().repo_info(repo_id=HF_REPO, repo_type=REPO_TYPE, files_metadata=False)
+    if not bool(getattr(info, "private", False)):
+        raise RuntimeError("destination dataset repository is not private")
     print("OIDC_TEST_SUCCESS", flush=True)
 
 
