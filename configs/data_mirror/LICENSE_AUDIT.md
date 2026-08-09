@@ -6,7 +6,7 @@ Audit date: 2026-08-10
 
 Dataset: OpenBMI Motor Imagery / ERP-P300 / SSVEP  
 Official source: NEMAR (`nm000338`, `nm000323`, `nm000273`)  
-Version: v1.0.1  
+Version: MI/ERP v1.0.1; SSVEP v1.0.2  
 License: GigaDB dataset 100542 is released under the CC0 public-domain waiver. The actual NEMAR BIDS distribution may carry additional distribution metadata; its published license/provenance files are mirrored unmodified with each distribution and are not replaced by a repository-wide license.  
 Redistribution permitted: Yes, for the CC0 GigaDB source. The mirror preserves all NEMAR distribution notices when a NEMAR derivative is selected.  
 Attribution requirements: CC0 does not require attribution, but this public mirror retains attribution to Lee et al., GigaDB DOI `10.5524/100542`, paper DOI `10.1093/gigascience/giz002`, and the applicable NEMAR dataset/DOI.  
