@@ -2,4 +2,4 @@
 
 This branch exists only to trigger the read-only Actions status probe.
 
-Probe attempt: 2
+Probe attempt: 3 — OIDC transfer fix commit 3d4362e
