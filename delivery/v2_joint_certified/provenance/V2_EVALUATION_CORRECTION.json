@@ -1,0 +1,21 @@
+{
+  "after_sha256": {
+    "DEV_RESULTS_BY_FOLD.csv": "8099426fe767ae70869c475c17a7aed27e5ad22feaedd8cedc6ee6142e99932d",
+    "DEV_RESULTS_BY_SEED.csv": "5dc3732f1e6a81ce8c3f345bee78c98b607971145df8d4311ea2a8af5828f41e",
+    "DEV_RESULTS_SUMMARY.csv": "f1d5c7cb23605741a4fa59b4577977f924b33f67245e60b3b82737f1e9c4d18d",
+    "DEV_RESULTS_WITH_CI.csv": "cba0007d6287e40e6a7d3d92e2e83dc7cee88223eb8e30371d9de1e9f8260eca"
+  },
+  "before_sha256": {
+    "DEV_RESULTS_BY_FOLD.csv": "a0223487853424a700bfdb21f9cbb11f7c8542340a202e66f379b91ff1a18724",
+    "DEV_RESULTS_BY_SEED.csv": "ca643a5d6d32393879ab388626435b394f15c156c2bf0e7db773105aa1719b26",
+    "DEV_RESULTS_SUMMARY.csv": "dcc68fb35274fb552d2e1965c0103b12d126a8ddc8c64c6656564e37a4d136da",
+    "DEV_RESULTS_WITH_CI.csv": "3d07b46c0a46b64351556efb4e48126c4bc22870e04a6ae06df481c5c6de623f"
+  },
+  "counterfactual_parquet_sha256": "a7319097ccbf38d5deb8ca9626add90f52eba7c9a6fb464753469c3ae434f686",
+  "created_utc": "2026-08-03T15:54:22.882870+00:00",
+  "decision_parquet_sha256": "0e33ab8ad0ad2f375b6330cb251ff184c51a9877ffb4c67ae3b412bc54817807",
+  "method_freeze_sha256": "c1319056b21ff986d5a9bbc0a25ec354f11cd6a6dc2e66ab7c2dd556f5acb3ff",
+  "method_or_decisions_changed": false,
+  "reason": "risk, set size, and singleton metrics must be evaluated at the frozen certified index, not the oracle true critical index",
+  "type": "post_freeze_evaluation_only_correction"
+}

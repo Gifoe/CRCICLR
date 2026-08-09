@@ -1,0 +1,18 @@
+method: ProbeCert-V3
+datasets: [hmc, eegmmidb]
+external_site: cap
+seeds: [0, 1, 2, 3, 4]
+alphas: [0.10, 0.20]
+epsilon: 0.01
+epsilon_sensitivity: [0.00, 0.01, 0.02]
+delta: 0.10
+lambda_grid:
+  nontrivial_start: 0.50
+  nontrivial_stop: 0.99
+  nontrivial_count: 20
+  sentinel: 1.0
+probe_blocks: 3
+minimum_probe_block: 5
+bootstrap_repetitions: 2000
+device: cuda
+batch_size: 128

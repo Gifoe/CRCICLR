@@ -1,0 +1,21 @@
+{
+  "code_commit": "eecd4d58bae6766af2398494abff84a04d74d974",
+  "config_hash": "4be3c78b0c87ee284ee770ea982372c2263cf0d9aaa12d183de5307fd21a0d91",
+  "created_utc": "2026-08-04T17:02:13.636522+00:00",
+  "decision": "NO-GO",
+  "method": "ProbeCert-V3",
+  "oracle_gate": {
+    "criteria": {
+      "non_no_tta_action_benefits_at_least_0.10": true,
+      "not_single_seed_driven": true,
+      "positive_subject_rate_at_least_0.20": true,
+      "some_primary_dataset_relative_ci_lower_gt_zero": true
+    },
+    "go": true
+  },
+  "reasons": [
+    "paired subject-bootstrap set-size CI does not remain above zero",
+    "Probe-policy intervention rate is zero on at least one primary task",
+    "positive utility is not replicated across seeds"
+  ]
+}
