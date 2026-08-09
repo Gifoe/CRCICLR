@@ -410,13 +410,22 @@ def smoke() -> None:
             raise RuntimeError("OIDC smoke-test checksum mismatch")
     hub = OIDCHub()
     info = hub.api().repo_info(repo_id=HF_REPO, repo_type=REPO_TYPE, files_metadata=False)
-    if not bool(getattr(info, "private", False)):
-        raise RuntimeError("destination dataset repository is not private")
+    if bool(getattr(info, "private", False)):
+        raise RuntimeError("destination dataset repository must remain public")
     print("OIDC_TEST_SUCCESS", flush=True)
+
+
+def require_public_repository(hub: OIDCHub) -> None:
+    """Fail closed if the explicitly public mirror was made private."""
+    info = hub.api().repo_info(repo_id=HF_REPO, repo_type=REPO_TYPE, files_metadata=False)
+    if bool(getattr(info, "private", False)):
+        raise RuntimeError("destination dataset repository is private; public mirror policy requires public visibility")
+    log("public_repository_verified", repo_id=HF_REPO)
 
 
 def bootstrap() -> None:
     hub = OIDCHub()
+    require_public_repository(hub)
     with tempfile.TemporaryDirectory(prefix="persist-bootstrap-") as temp:
         root = Path(temp)
         uploads: list[tuple[Path, str]] = []
@@ -572,6 +581,77 @@ def is_openbmi_signal(path: str) -> bool:
     return bids_signal or gigadb_signal
 
 
+def probe() -> None:
+    """Transfer one 0.5–2 GB OpenBMI signal before opening the full matrix."""
+    hub = OIDCHub()
+    require_public_repository(hub)
+    dataset = "openbmi-mi"
+    chunk = "01-09"
+    state_remote = f"metadata/state/{dataset}/{chunk}.json"
+    chunk_manifest_remote = f"metadata/manifests/chunks/{dataset}-{chunk}.csv"
+    report_remote = "metadata/probes/openbmi-end-to-end.json"
+    with tempfile.TemporaryDirectory(prefix="persist-openbmi-probe-") as temp:
+        root = Path(temp)
+        source_rows = read_csv(remote_manifest(hub, dataset, root / "source"))
+        signals = [
+            row for row in source_rows
+            if row.get("subject_id", "").isdigit()
+            and 1 <= int(row["subject_id"]) <= 9
+            and is_openbmi_signal(row.get("original_relative_path", ""))
+        ]
+        if not signals:
+            raise RuntimeError("no OpenBMI signal found in the authoritative source manifest")
+        preferred = [row for row in signals if 500_000_000 <= int(row.get("size_bytes") or 0) <= 2_000_000_000]
+        row = min(preferred, key=lambda candidate: abs(int(candidate["size_bytes"]) - 1_000_000_000)) if preferred else max(signals, key=lambda candidate: int(candidate.get("size_bytes") or 0))
+        state = read_remote_state(hub, state_remote, root)
+        state.update({"dataset": dataset, "chunk": chunk, "updated_at": now()})
+        state.setdefault("files", {})
+        local = root / "staging" / Path(row["original_relative_path"]).name
+        seconds, mbps = source_download(row["original_url"], local, int(row["size_bytes"]))
+        actual_size = local.stat().st_size
+        actual_sha = sha256_file(local)
+        validate_download(row, local, actual_sha)
+        hub.upload(local, row["hf_path"], "OpenBMI end-to-end transfer gate")
+        remote = hub.remote_info(row["hf_path"])
+        if int(getattr(remote, "size", -1)) != actual_size:
+            raise RuntimeError("OpenBMI probe remote size verification failed")
+        readback = hub.download(row["hf_path"], root / "readback")
+        remote_sha = sha256_file(readback)
+        if remote_sha != actual_sha:
+            raise RuntimeError("OpenBMI probe remote SHA256 mismatch")
+        row.update({
+            "size_bytes": actual_size, "sha256": actual_sha, "download_status": "complete",
+            "upload_status": "complete", "remote_verified": "true",
+        })
+        state["files"][row["hf_path"]] = {
+            "source_url": row["original_url"], "hf_path": row["hf_path"],
+            "size_bytes": actual_size, "sha256": actual_sha, "downloaded": True,
+            "uploaded": True, "remote_verified": True, "retry_count": 0,
+            "download_seconds": round(seconds, 3), "download_MBps": round(mbps, 3),
+            "readback_sha256": remote_sha, "last_update": now(),
+        }
+        state["updated_at"] = now()
+        report = {
+            "dataset": dataset, "chunk": chunk, "source": row["original_url"],
+            "hf_path": row["hf_path"], "size_bytes": actual_size,
+            "download_seconds": round(seconds, 3), "download_MBps": round(mbps, 3),
+            "sha256_local": actual_sha, "sha256_remote": remote_sha,
+            "preferred_0_5_to_2GB": bool(preferred),
+            "remote_verified": True, "completed_at": now(),
+        }
+        state_path = root / "control" / state_remote
+        manifest_path = root / "control" / chunk_manifest_remote
+        report_path = root / "control" / report_remote
+        atomic_json(state_path, state)
+        write_csv(manifest_path, [row])
+        atomic_json(report_path, report)
+        upload_control(hub, root / "control", [
+            (state_path, state_remote), (manifest_path, chunk_manifest_remote), (report_path, report_remote),
+        ], "Record OpenBMI end-to-end transfer gate")
+        log("openbmi_end_to_end_success", hf_path=row["hf_path"], size=actual_size, download_MBps=round(mbps, 3))
+        print("OPENBMI_END_TO_END_TRANSFER_SUCCESS", flush=True)
+
+
 def download_optional(hub: OIDCHub, remote: str, root: Path) -> Path | None:
     try:
         return hub.download(remote, root)
@@ -582,6 +662,7 @@ def download_optional(hub: OIDCHub, remote: str, root: Path) -> Path | None:
 def finalize() -> None:
     strict = os.environ.get("STRICT_COMPLETE", "false").lower() == "true"
     hub = OIDCHub()
+    require_public_repository(hub)
     chunks = {
         "openbmi-mi": ["01-09", "10-18", "19-27", "28-36", "37-45", "46-54"],
         "openbmi-erp": ["01-09", "10-18", "19-27", "28-36", "37-45", "46-54"],
@@ -650,7 +731,7 @@ def finalize() -> None:
             "# PERSIST-EEG data mirror report\n\n"
             f"Generated: {now()}\n\n"
             "## Environment\n\nGitHub-hosted Ubuntu runner; streaming per-file staging; GitHub Actions OIDC.\n\n"
-            f"## Hugging Face\n\nRepository: `{HF_REPO}`; private: true; OIDC verified.\n\n"
+            f"## Hugging Face\n\nRepository: `{HF_REPO}`; public: true; GitHub Actions OIDC verified.\n\n"
             f"## OpenBMI\n\nComplete participants: {open_complete}/54. Sources: NEMAR v1.0.1 MI/ERP/SSVEP.\n\n"
             f"## EEGMMIDB\n\nComplete participants: {eeg_complete}/109. Source: PhysioNet v1.0.0.\n\n"
             f"## Integrity\n\nFiles uploaded and remotely present: {progress['overall']['files_completed']}. "
@@ -698,7 +779,7 @@ def verify_samples(hub: OIDCHub, rows: dict[str, list[dict[str, str]]], root: Pa
     return {"verified_at": now(), "samples": len(results), "failures": failures, "results": results}
 
 
-COMMANDS = {"plan": plan, "smoke": smoke, "bootstrap": bootstrap, "transfer": transfer, "finalize": finalize}
+COMMANDS = {"plan": plan, "smoke": smoke, "bootstrap": bootstrap, "probe": probe, "transfer": transfer, "finalize": finalize}
 
 
 def main() -> None:
