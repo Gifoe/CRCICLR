@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import base64
 import hashlib
 import json
 import os
@@ -183,6 +184,27 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(8 * 1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def print_oidc_claims() -> None:
+    req_url = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_URL")
+    req_bearer = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_TOKEN")
+    if not req_url or not req_bearer:
+        raise RuntimeError("GitHub Actions OIDC environment is unavailable")
+    sep = "&" if "?" in req_url else "?"
+    response = HTTP.get(
+        req_url + sep + "audience=https%3A%2F%2Fhuggingface.co",
+        headers={"Authorization": f"bearer {req_bearer}"}, timeout=30,
+    )
+    response.raise_for_status()
+    encoded = response.json()["value"].split(".")[1]
+    encoded += "=" * (-len(encoded) % 4)
+    claims = json.loads(base64.urlsafe_b64decode(encoded))
+    allowed = (
+        "iss", "aud", "repository", "repository_owner", "ref", "ref_type",
+        "workflow", "workflow_ref", "job_workflow_ref", "event_name", "environment", "sha",
+    )
+    print("OIDC_CLAIMS=" + json.dumps({key: claims.get(key) for key in allowed if key in claims}, sort_keys=True), flush=True)
 
 
 def http_json(url: str) -> Any:
@@ -366,6 +388,7 @@ def plan() -> None:
 
 
 def smoke() -> None:
+    print_oidc_claims()
     with tempfile.TemporaryDirectory(prefix="persist-oidc-") as temp:
         root = Path(temp)
         sample = root / "oidc_test.txt"
