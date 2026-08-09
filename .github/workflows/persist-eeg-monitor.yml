@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
+  actions: write
   contents: read
 
 jobs:
@@ -14,17 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Inspect latest PERSIST-EEG run
+      - name: Inspect and resume latest PERSIST-EEG run
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           GH_API_URL: ${{ github.api_url }}
+          RETRY_COOLDOWN_SECONDS: "1800"
+          MAX_RUN_ATTEMPTS: "8"
         run: |
           set -euo pipefail
-          response="$(curl --fail-with-body --retry 3 --retry-all-errors \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            "${GH_API_URL}/repos/${GH_REPO}/actions/runs?per_page=100")"
+          api_headers=(
+            -H "Accept: application/vnd.github+json"
+            -H "Authorization: Bearer ${GH_TOKEN}"
+            -H "X-GitHub-Api-Version: 2022-11-28"
+          )
+          response="$(curl --fail-with-body --retry 3 --retry-all-errors             "${api_headers[@]}"             "${GH_API_URL}/repos/${GH_REPO}/actions/runs?per_page=100")"
           run="$(printf '%s' "${response}" | jq -c '
             [.workflow_runs[]
              | select(.name == "Mirror PERSIST-EEG to Hugging Face")]
@@ -35,18 +39,67 @@ jobs:
             echo "No PERSIST-EEG mirror run found." >> "${GITHUB_STEP_SUMMARY}"
             exit 0
           fi
+
+          run_id="$(printf '%s' "${run}" | jq -r '.id')"
+          run_number="$(printf '%s' "${run}" | jq -r '.run_number')"
+          run_attempt="$(printf '%s' "${run}" | jq -r '.run_attempt // 1')"
+          status="$(printf '%s' "${run}" | jq -r '.status')"
+          conclusion="$(printf '%s' "${run}" | jq -r '.conclusion // empty')"
+          updated_at="$(printf '%s' "${run}" | jq -r '.updated_at')"
+
           {
             echo "## PERSIST-EEG monitor"
             echo
             echo "| field | value |"
             echo "|---|---|"
-            echo "| run | [#$(printf '%s' "${run}" | jq -r '.run_number')]($(printf '%s' "${run}" | jq -r '.html_url')) |"
-            echo "| status | $(printf '%s' "${run}" | jq -r '.status') |"
-            echo "| conclusion | $(printf '%s' "${run}" | jq -r '.conclusion // "pending"') |"
+            echo "| run | [#${run_number}]($(printf '%s' "${run}" | jq -r '.html_url')) |"
+            echo "| attempt | ${run_attempt}/${MAX_RUN_ATTEMPTS} |"
+            echo "| status | ${status} |"
+            echo "| conclusion | ${conclusion:-pending} |"
             echo "| started | $(printf '%s' "${run}" | jq -r '.run_started_at // .created_at') |"
+            echo "| updated | ${updated_at} |"
           } >> "${GITHUB_STEP_SUMMARY}"
-          conclusion="$(printf '%s' "${run}" | jq -r '.conclusion // empty')"
-          if [ "${conclusion}" = "failure" ] || [ "${conclusion}" = "cancelled" ] || [ "${conclusion}" = "timed_out" ]; then
-            echo "Latest mirror run requires inspection: ${conclusion}" >&2
+
+          if [ "${status}" != "completed" ]; then
+            echo "Mirror is still active; no retry action taken." >> "${GITHUB_STEP_SUMMARY}"
+            exit 0
+          fi
+          if [ "${conclusion}" != "failure" ] && [ "${conclusion}" != "timed_out" ]; then
+            echo "No retryable failed run detected." >> "${GITHUB_STEP_SUMMARY}"
+            exit 0
+          fi
+          if [ "${run_attempt}" -ge "${MAX_RUN_ATTEMPTS}" ]; then
+            echo "Retry ceiling reached; manual inspection required." >&2
             exit 1
           fi
+
+          now_epoch="$(date -u +%s)"
+          updated_epoch="$(date -u -d "${updated_at}" +%s)"
+          age_seconds="$((now_epoch - updated_epoch))"
+          if [ "${age_seconds}" -lt "${RETRY_COOLDOWN_SECONDS}" ]; then
+            remaining="$((RETRY_COOLDOWN_SECONDS - age_seconds))"
+            echo "Cooling down after API failure; retry eligible in ${remaining}s." >> "${GITHUB_STEP_SUMMARY}"
+            exit 0
+          fi
+
+          jobs="$(curl --fail-with-body --retry 3 --retry-all-errors             "${api_headers[@]}"             "${GH_API_URL}/repos/${GH_REPO}/actions/runs/${run_id}/jobs?filter=latest&per_page=100")"
+          failed_transfer_jobs="$(printf '%s' "${jobs}" | jq -c '
+            [.jobs[]
+             | select(.name | startswith("transfer ("))
+             | select(.conclusion == "failure" or .conclusion == "timed_out")
+             | {id, name, conclusion}]
+          ')"
+          failed_count="$(printf '%s' "${failed_transfer_jobs}" | jq 'length')"
+          if [ "${failed_count}" -eq 0 ]; then
+            echo "Run failed, but no failed transfer chunk was found; manual inspection required." >&2
+            exit 1
+          fi
+
+          {
+            echo
+            echo "### Failed chunks queued for resumable retry"
+            printf '%s' "${failed_transfer_jobs}" | jq -r '.[] | "- \(.name): \(.conclusion)"'
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+          curl --fail-with-body --retry 3 --retry-all-errors             -X POST "${api_headers[@]}"             "${GH_API_URL}/repos/${GH_REPO}/actions/runs/${run_id}/rerun-failed-jobs"
+          echo "Requested failed-job rerun after cooldown. Verified files will be skipped from persistent HF state." >> "${GITHUB_STEP_SUMMARY}"
