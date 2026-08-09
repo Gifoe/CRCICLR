@@ -63,81 +63,45 @@ def retry(fn, label: str, attempts: int = 5):
 
 
 class OIDCHub:
-    """Refreshable in-memory HF repo token obtained only from GitHub Actions OIDC."""
+    """HF Hub access with native CLI OIDC writes and anonymous public reads."""
 
     def __init__(self) -> None:
-        self._api: HfApi | None = None
-        self._expires_at = 0.0
+        self._api = HfApi(token=False)
 
-    def api(self, force: bool = False) -> HfApi:
-        if force or self._api is None or time.monotonic() >= self._expires_at:
-            self._api = HfApi(token=self._exchange())
-            self._expires_at = time.monotonic() + 45 * 60
+    def api(self) -> HfApi:
+        """Return an unauthenticated client; the destination repository is public."""
         return self._api
 
-    def _exchange(self) -> str:
-        req_url = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_URL")
-        req_bearer = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_TOKEN")
-        if not req_url or not req_bearer:
-            raise RuntimeError("GitHub Actions OIDC environment is unavailable")
-        sep = "&" if "?" in req_url else "?"
-        oidc = retry(
-            lambda: HTTP.get(
-                req_url + sep + "audience=https%3A%2F%2Fhuggingface.co",
-                headers={"Authorization": f"bearer {req_bearer}"},
-                timeout=30,
-            ),
-            "github-oidc-id-token",
-        )
-        oidc.raise_for_status()
-        subject_token = oidc.json()["value"]
-        configured = os.environ.get("HF_OIDC_RESOURCE", HF_REPO).strip("/")
-        candidates = [configured]
-        if not configured.startswith("datasets/"):
-            candidates.append(f"datasets/{configured}")
-        request_ids: list[str] = []
-        for resource in candidates:
-            response = HTTP.post(
-                "https://huggingface.co/oauth/token",
-                json={
-                    "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
-                    "subject_token_type": "urn:ietf:params:oauth:token-type:id_token",
-                    "subject_token": subject_token,
-                    "resource": resource,
-                },
-                timeout=30,
-            )
-            if response.ok:
-                access = response.json()["access_token"]
-                log("oidc_exchange_success", resource=resource)
-                return access
-            request_ids.append(response.headers.get("x-request-id", "unknown"))
-        raise RuntimeError("HF OIDC exchange rejected all dataset resource forms; request_ids=" + ",".join(request_ids))
+    def upload(self, local: Path, remote: str, message: str) -> tuple[float, float]:
+        """Upload with the same native OIDC path proven by the smoke test."""
+        size = local.stat().st_size
+        cli_env = os.environ.copy()
+        cli_env["HF_OIDC_RESOURCE"] = f"datasets/{HF_REPO}"
+        started = time.monotonic()
 
-    def upload(self, local: Path, remote: str, message: str) -> None:
         def action():
-            return self.api().upload_file(
-                path_or_fileobj=str(local),
-                path_in_repo=remote,
-                repo_id=HF_REPO,
-                repo_type=REPO_TYPE,
-                commit_message=message,
-            )
-        try:
-            retry(action, f"upload:{remote}", attempts=4)
-        except RuntimeError:
-            self.api(force=True)
-            retry(action, f"upload-refreshed:{remote}", attempts=3)
+            return subprocess.run([
+                "hf", "upload", HF_REPO, str(local), remote,
+                "--repo-type", REPO_TYPE, "--commit-message", message,
+            ], check=True, env=cli_env)
+
+        retry(action, f"hf-cli-upload:{remote}", attempts=4)
+        seconds = max(time.monotonic() - started, 0.001)
+        mbps = size / 1_000_000 / seconds
+        log(
+            "hf_cli_upload_complete",
+            hf_path=remote,
+            size=size,
+            upload_seconds=round(seconds, 3),
+            upload_MBps=round(mbps, 3),
+        )
+        return seconds, mbps
 
     def remote_info(self, remote: str):
         def action():
             infos = self.api().get_paths_info(HF_REPO, [remote], repo_type=REPO_TYPE, expand=True)
             return infos[0] if infos else None
-        try:
-            return retry(action, f"remote-info:{remote}", attempts=3)
-        except RuntimeError:
-            self.api(force=True)
-            return retry(action, f"remote-info-refreshed:{remote}", attempts=3)
+        return retry(action, f"remote-info:{remote}", attempts=4)
 
     def download(self, remote: str, target_dir: Path) -> Path:
         def action():
@@ -145,15 +109,11 @@ class OIDCHub:
                 repo_id=HF_REPO,
                 filename=remote,
                 repo_type=REPO_TYPE,
-                token=self.api().token,
+                token=False,
                 local_dir=str(target_dir),
                 force_download=True,
             ))
-        try:
-            return retry(action, f"download-hf:{remote}", attempts=3)
-        except RuntimeError:
-            self.api(force=True)
-            return retry(action, f"download-hf-refreshed:{remote}", attempts=3)
+        return retry(action, f"download-hf:{remote}", attempts=3)
 
 
 def atomic_json(path: Path, obj: Any) -> None:
@@ -533,11 +493,17 @@ def transfer() -> None:
             validate_download(row, local, actual_sha)
             remote = hub.remote_info(key)
             remote_size = int(getattr(remote, "size", -1)) if remote else -1
-            if remote_size != actual_size:
-                hub.upload(local, key, f"Mirror {dataset} {chunk}: {row['filename']}")
+            upload_seconds = 0.0
+            upload_mbps = 0.0
+            if remote is None or remote_size != actual_size:
+                upload_seconds, upload_mbps = hub.upload(
+                    local, key, f"Mirror {dataset} {chunk}: {row['filename']}"
+                )
                 remote = hub.remote_info(key)
                 remote_size = int(getattr(remote, "size", -1)) if remote else -1
-            if remote_size != actual_size:
+            if remote is None:
+                raise RuntimeError(f"remote path verification failed for {key}")
+            if remote_size >= 0 and remote_size != actual_size:
                 raise RuntimeError(f"remote size verification failed for {key}: {remote_size} != {actual_size}")
             row.update({
                 "size_bytes": actual_size, "sha256": actual_sha, "download_status": "complete",
@@ -548,6 +514,7 @@ def transfer() -> None:
                 "sha256": actual_sha, "downloaded": True, "uploaded": True,
                 "remote_verified": True, "retry_count": int(old.get("retry_count", 0)),
                 "download_seconds": round(seconds, 3), "download_MBps": round(mbps, 3),
+                "upload_seconds": round(upload_seconds, 3), "upload_MBps": round(upload_mbps, 3),
                 "last_update": now(),
             }
             state["updated_at"] = now()
@@ -567,7 +534,12 @@ def transfer() -> None:
             xet_cache = Path(os.environ.get("HF_XET_CACHE", "/tmp/persist-hf-xet"))
             shutil.rmtree(xet_cache, ignore_errors=True)
             xet_cache.mkdir(parents=True, exist_ok=True)
-            log("file_complete", dataset=dataset, chunk=chunk, index=index, total=len(selected), hf_path=key, size=actual_size, download_MBps=round(mbps, 3))
+            log(
+                "file_complete", dataset=dataset, chunk=chunk, index=index,
+                total=len(selected), hf_path=key, size=actual_size,
+                download_MBps=round(mbps, 3), upload_MBps=round(upload_mbps, 3),
+                remote_reported_size=remote_size,
+            )
         atomic_json(state_path, state)
         write_csv(manifest_path, rows_by_hf.values())
         upload_control(hub, root / "control", [(state_path, state_remote), (manifest_path, chunk_manifest_remote)], f"Complete {dataset} {chunk}")
@@ -611,9 +583,12 @@ def probe() -> None:
         actual_size = local.stat().st_size
         actual_sha = sha256_file(local)
         validate_download(row, local, actual_sha)
-        hub.upload(local, row["hf_path"], "OpenBMI end-to-end transfer gate")
+        upload_seconds, upload_mbps = hub.upload(local, row["hf_path"], "OpenBMI end-to-end transfer gate")
         remote = hub.remote_info(row["hf_path"])
-        if int(getattr(remote, "size", -1)) != actual_size:
+        remote_size = int(getattr(remote, "size", -1)) if remote else -1
+        if remote is None:
+            raise RuntimeError("OpenBMI probe remote path verification failed")
+        if remote_size >= 0 and remote_size != actual_size:
             raise RuntimeError("OpenBMI probe remote size verification failed")
         readback = hub.download(row["hf_path"], root / "readback")
         remote_sha = sha256_file(readback)
@@ -628,6 +603,7 @@ def probe() -> None:
             "size_bytes": actual_size, "sha256": actual_sha, "downloaded": True,
             "uploaded": True, "remote_verified": True, "retry_count": 0,
             "download_seconds": round(seconds, 3), "download_MBps": round(mbps, 3),
+            "upload_seconds": round(upload_seconds, 3), "upload_MBps": round(upload_mbps, 3),
             "readback_sha256": remote_sha, "last_update": now(),
         }
         state["updated_at"] = now()
@@ -635,6 +611,7 @@ def probe() -> None:
             "dataset": dataset, "chunk": chunk, "source": row["original_url"],
             "hf_path": row["hf_path"], "size_bytes": actual_size,
             "download_seconds": round(seconds, 3), "download_MBps": round(mbps, 3),
+            "upload_seconds": round(upload_seconds, 3), "upload_MBps": round(upload_mbps, 3),
             "sha256_local": actual_sha, "sha256_remote": remote_sha,
             "preferred_0_5_to_2GB": bool(preferred),
             "remote_verified": True, "completed_at": now(),
@@ -648,7 +625,10 @@ def probe() -> None:
         upload_control(hub, root / "control", [
             (state_path, state_remote), (manifest_path, chunk_manifest_remote), (report_path, report_remote),
         ], "Record OpenBMI end-to-end transfer gate")
-        log("openbmi_end_to_end_success", hf_path=row["hf_path"], size=actual_size, download_MBps=round(mbps, 3))
+        log(
+            "openbmi_end_to_end_success", hf_path=row["hf_path"], size=actual_size,
+            download_MBps=round(mbps, 3), upload_MBps=round(upload_mbps, 3),
+        )
         print("OPENBMI_END_TO_END_TRANSFER_SUCCESS", flush=True)
 
 
