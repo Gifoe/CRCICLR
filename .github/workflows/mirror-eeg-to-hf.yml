@@ -1,0 +1,117 @@
+name: Mirror PERSIST-EEG to Hugging Face
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/mirror-eeg-to-hf.yml"
+      - "scripts/data_mirror/**"
+      - "configs/data_mirror/**"
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: Dataset to mirror
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - openbmi-mi
+          - openbmi-erp
+          - openbmi-ssvep
+          - eegmmidb
+      chunk:
+        description: Optional inclusive subject range (for example 01-09 or 001-020)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: persist-eeg-mirror-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  HF_OIDC_RESOURCE: gifoe/persistent
+  HF_XET_HIGH_PERFORMANCE: "1"
+  HF_HOME: /tmp/persist-hf-home
+  HF_XET_CACHE: /tmp/persist-hf-xet
+  HF_REPO_ID: gifoe/persistent
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      strict: ${{ steps.plan.outputs.strict }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: plan
+        env:
+          REQUESTED_DATASET: ${{ github.event.inputs.dataset || 'all' }}
+          REQUESTED_CHUNK: ${{ github.event.inputs.chunk || '' }}
+        run: python scripts/data_mirror/plan.py >> "$GITHUB_OUTPUT"
+
+  bootstrap:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install transfer dependencies
+        run: |
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+      - name: OIDC smoke test and private-repository verification
+        run: python scripts/data_mirror/mirror.py smoke
+      - name: License gate and source manifests
+        run: python scripts/data_mirror/mirror.py bootstrap
+
+  transfer:
+    needs: [plan, bootstrap]
+    if: ${{ needs.plan.outputs.matrix != '{"include":[]}' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install transfer dependencies
+        run: |
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+      - name: Mirror resumable chunk
+        env:
+          MIRROR_DATASET: ${{ matrix.dataset }}
+          MIRROR_CHUNK: ${{ matrix.chunk }}
+        run: python scripts/data_mirror/mirror.py transfer
+
+  finalize:
+    needs: [plan, bootstrap, transfer]
+    if: ${{ always() && needs.bootstrap.result == 'success' && (needs.transfer.result == 'success' || needs.plan.outputs.matrix == '{"include":[]}') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install verification dependencies
+        run: |
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+      - name: Aggregate progress and verify completeness
+        env:
+          STRICT_COMPLETE: ${{ needs.plan.outputs.strict }}
+        run: python scripts/data_mirror/mirror.py finalize
