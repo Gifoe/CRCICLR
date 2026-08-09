@@ -25,9 +25,9 @@ Retrieval date: 2026-08-10 (initial workflow launch; per-file timestamps are in 
 ## OpenBMI SSVEP
 
 - Source: NEMAR published BIDS distribution
-- Dataset ID/version: `nm000273` / `v1.0.1`
-- Upstream manifest: `https://data.nemar.org/nm000273/v1.0.1/manifest.json`
-- NEMAR DOI: `10.82901/nemar.nm000273`
+- Dataset ID/version: `nm000273` / `v1.0.2`
+- Upstream manifest: `https://data.nemar.org/nm000273/v1.0.2/manifest.json`
+- NEMAR DOI: `10.82901/nemar.nm000273.v1.0.2`
 - Original DOI: `10.5524/100542`
 - Derivative status: published NEMAR BIDS distribution derived from the GigaDB OpenBMI release; not represented as untouched GigaDB raw.
 - Known format/processing: NEMAR-published BIDS organisation/format conversion. Any additional upstream processing is retained in the mirrored NEMAR sidecars and README files; this mirror performs none.
