@@ -31,7 +31,7 @@ permissions:
 
 concurrency:
   group: persist-eeg-mirror-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   HF_OIDC_RESOURCE: gifoe/persistent
@@ -65,16 +65,44 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - name: Install transfer dependencies
+      - id: bootstrap_exec
+        name: License gate and source manifests
+        continue-on-error: true
         run: |
+          set -o pipefail
+          {
           python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
-      - name: OIDC smoke test and private-repository verification
-        run: python scripts/data_mirror/mirror.py smoke
-      - name: License gate and source manifests
-        run: python scripts/data_mirror/mirror.py bootstrap
+          python scripts/data_mirror/mirror.py bootstrap
+          } 2>&1 | tee /tmp/bootstrap.log
+      - name: Enforce bootstrap result
+        if: ${{ steps.bootstrap_exec.outcome != 'success' }}
+        run: exit 1
+
+  probe:
+    needs: bootstrap
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - id: probe_exec
+        name: OpenBMI end-to-end transfer gate
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py probe
+          } 2>&1 | tee /tmp/probe.log
+      - name: Enforce probe result
+        if: ${{ steps.probe_exec.outcome != 'success' }}
+        run: exit 1
 
   transfer:
-    needs: [plan, bootstrap]
+    needs: [plan, bootstrap, probe]
     if: ${{ needs.plan.outputs.matrix != '{"include":[]}' }}
     runs-on: ubuntu-latest
     timeout-minutes: 340
@@ -88,18 +116,25 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - name: Install transfer dependencies
-        run: |
-          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
-      - name: Mirror resumable chunk
+      - id: transfer_exec
+        name: Mirror resumable chunk
+        continue-on-error: true
         env:
           MIRROR_DATASET: ${{ matrix.dataset }}
           MIRROR_CHUNK: ${{ matrix.chunk }}
-        run: python scripts/data_mirror/mirror.py transfer
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py transfer
+          } 2>&1 | tee /tmp/transfer.log
+      - name: Enforce chunk result
+        if: ${{ steps.transfer_exec.outcome != 'success' }}
+        run: exit 1
 
   finalize:
-    needs: [plan, bootstrap, transfer]
-    if: ${{ always() && needs.bootstrap.result == 'success' && (needs.transfer.result == 'success' || needs.plan.outputs.matrix == '{"include":[]}') }}
+    needs: [plan, bootstrap, probe, transfer]
+    if: ${{ always() && needs.bootstrap.result == 'success' && needs.probe.result == 'success' && (needs.transfer.result == 'success' || needs.plan.outputs.matrix == '{"include":[]}') }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
@@ -108,10 +143,17 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - name: Install verification dependencies
-        run: |
-          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
-      - name: Aggregate progress and verify completeness
+      - id: finalize_exec
+        name: Aggregate progress and verify completeness
+        continue-on-error: true
         env:
           STRICT_COMPLETE: ${{ needs.plan.outputs.strict }}
-        run: python scripts/data_mirror/mirror.py finalize
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py finalize
+          } 2>&1 | tee /tmp/finalize.log
+      - name: Enforce finalization result
+        if: ${{ steps.finalize_exec.outcome != 'success' }}
+        run: exit 1
