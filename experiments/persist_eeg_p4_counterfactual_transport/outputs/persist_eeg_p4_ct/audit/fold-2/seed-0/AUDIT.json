@@ -1,0 +1,69 @@
+{
+  "mi_protected_harm_BA": 0.0702366472483622,
+  "mi_nuisance_harm_BA": 0.0,
+  "mi_harm_difference_BA": 0.0702366472483622,
+  "validation_harm": {
+    "mi": {
+      "protected": 0.0702366472483622,
+      "nuisance": 0.0,
+      "random_mean": 0.042573138723513246
+    },
+    "erp": {
+      "protected": 0.0,
+      "nuisance": 0.0038022813688213253,
+      "random_mean": 0.010771690985488606
+    },
+    "ssvep": {
+      "protected": 0.0,
+      "nuisance": 0.0,
+      "random_mean": 0.03853295277867599
+    }
+  },
+  "assignments": {
+    "mi": {
+      "protected": [
+        1
+      ],
+      "nuisance": [],
+      "uncertain": [
+        0
+      ],
+      "thresholds": {
+        "meaningful_strength": 0.2,
+        "protect_LCB_proxy": 0.01,
+        "null_delta": 0.005
+      }
+    },
+    "erp": {
+      "protected": [],
+      "nuisance": [
+        0
+      ],
+      "uncertain": [
+        1
+      ],
+      "thresholds": {
+        "meaningful_strength": 0.2,
+        "protect_LCB_proxy": 0.01,
+        "null_delta": 0.005
+      }
+    },
+    "ssvep": {
+      "protected": [],
+      "nuisance": [],
+      "uncertain": [
+        0,
+        1
+      ],
+      "thresholds": {
+        "meaningful_strength": 0.2,
+        "protect_LCB_proxy": 0.01,
+        "null_delta": 0.005
+      }
+    }
+  },
+  "random_draws_per_block": 100,
+  "residual_preserving_verified": true,
+  "probe_refit_after_intervention": true,
+  "outer_test_used": false
+}

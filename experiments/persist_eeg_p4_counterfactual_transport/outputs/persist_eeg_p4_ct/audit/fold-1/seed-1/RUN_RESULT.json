@@ -1,0 +1,140 @@
+{
+  "fold": 1,
+  "seed": 1,
+  "audit": {
+    "mi_protected_harm_BA": 0.08199999999999996,
+    "mi_nuisance_harm_BA": 0.0,
+    "mi_harm_difference_BA": 0.08199999999999996,
+    "validation_harm": {
+      "mi": {
+        "protected": 0.08199999999999996,
+        "nuisance": 0.0,
+        "random_mean": 0.032446666666666645
+      },
+      "erp": {
+        "protected": 0.0,
+        "nuisance": 0.0,
+        "random_mean": -0.0009947528932333482
+      },
+      "ssvep": {
+        "protected": 0.0,
+        "nuisance": 0.0,
+        "random_mean": 0.034387842806495914
+      }
+    },
+    "assignments": {
+      "mi": {
+        "protected": [
+          1
+        ],
+        "nuisance": [],
+        "uncertain": [
+          0
+        ],
+        "thresholds": {
+          "meaningful_strength": 0.2,
+          "protect_LCB_proxy": 0.01,
+          "null_delta": 0.005
+        }
+      },
+      "erp": {
+        "protected": [],
+        "nuisance": [
+          0,
+          1
+        ],
+        "uncertain": [],
+        "thresholds": {
+          "meaningful_strength": 0.2,
+          "protect_LCB_proxy": 0.01,
+          "null_delta": 0.005
+        }
+      },
+      "ssvep": {
+        "protected": [],
+        "nuisance": [],
+        "uncertain": [
+          0,
+          1
+        ],
+        "thresholds": {
+          "meaningful_strength": 0.2,
+          "protect_LCB_proxy": 0.01,
+          "null_delta": 0.005
+        }
+      }
+    },
+    "random_draws_per_block": 100,
+    "residual_preserving_verified": true,
+    "probe_refit_after_intervention": true,
+    "outer_test_used": false
+  },
+  "spectrum": {
+    "nominal_embedding_dimension": 128,
+    "numerical_rank": 28,
+    "whitening_rank": 20,
+    "condition_number": 216.0392476060693,
+    "whitening_error_max_abs": 5.329070518200751e-15,
+    "rho": [
+      0.684833690054035,
+      0.5556855406480677,
+      0.459586718147084,
+      0.4136182383204038,
+      0.35685749329368716,
+      0.2872031633445418,
+      0.250070640431177,
+      0.21405703208052435,
+      0.17206454383089342,
+      0.16469693516832343,
+      0.12181874441776476,
+      0.10360255439737187,
+      0.07915318122782937,
+      0.0705498478499113,
+      0.0576387280781011,
+      0.043390065371406675,
+      0.030264990622384885,
+      0.025655136121869315,
+      0.018693973279766365,
+      -0.00107496785946828
+    ],
+    "positive_rho_count": 19,
+    "pair_counts": {
+      "mi": 68,
+      "erp": 68,
+      "ssvep": 136
+    },
+    "block_rule": "train-only eigengap clustering with max block size 4",
+    "blocks": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    ],
+    "finite": true
+  },
+  "historical_checkpoint": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-1/best.pt",
+  "outer_test_used": false,
+  "elapsed_seconds": 11.367798566818237
+}

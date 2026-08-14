@@ -1,0 +1,30 @@
+{
+  "version": "CT-AUDIT",
+  "failure": "corrected audit did not satisfy protected/nuisance separation in all six development runs and Gate B",
+  "evidence": {
+    "run_differences": [
+      0.0,
+      0.0,
+      0.04452595495309697,
+      0.08199999999999996,
+      0.0702366472483622,
+      0.07951908973732169
+    ],
+    "runs_ge_0p02": 4,
+    "mi_separation": [
+      false,
+      false,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "modification": "residual-preserving intervention; 100 matched random draws; cross-fitted refit probes",
+  "scientific_reason": "stop before counterfactual training when corrected utility separation is not stable",
+  "data_used": [
+    "TRAIN",
+    "VALIDATION"
+  ],
+  "outer_test_used": false
+}
