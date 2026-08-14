@@ -1,0 +1,82 @@
+{
+  "status": "P4_CT_AUDIT_V2_PASS",
+  "gate": {
+    "A_mean_difference_ge_0p02": true,
+    "B_at_least_5_of_6_direction_positive": true,
+    "C_hierarchical_bootstrap_lcb_gt_zero": true,
+    "D_protected_above_random_null": true,
+    "E_nuisance_near_or_below_random": true
+  },
+  "mean_mi_difference_BA": 0.15974940576760627,
+  "run_level_bootstrap": {
+    "draws": 10000,
+    "ci95": [
+      0.13930328537894301,
+      0.1793907686263956
+    ],
+    "sign_probability": 1.0
+  },
+  "runs": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "protected_harm_BA": 0.18995740323280308,
+      "nuisance_harm_BA": 0.006053505521934843,
+      "random_harm_BA": 0.004690622311034596,
+      "difference_BA": 0.18390389771086824,
+      "protected_gt_nuisance": true,
+      "outer_test_used": false
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "protected_harm_BA": 0.19059544574418708,
+      "nuisance_harm_BA": -0.004627333002619083,
+      "random_harm_BA": 0.0015781739237116332,
+      "difference_BA": 0.19522277874680616,
+      "protected_gt_nuisance": true,
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "protected_harm_BA": 0.13492468431054994,
+      "nuisance_harm_BA": 0.0013244467990165543,
+      "random_harm_BA": 0.007741080428587423,
+      "difference_BA": 0.13360023751153338,
+      "protected_gt_nuisance": true,
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "protected_harm_BA": 0.15714793741109534,
+      "nuisance_harm_BA": -0.0004089615931721635,
+      "random_harm_BA": 0.017544274537695616,
+      "difference_BA": 0.1575568990042675,
+      "protected_gt_nuisance": true,
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "protected_harm_BA": 0.17127872349882223,
+      "nuisance_harm_BA": 0.005915818480821455,
+      "random_harm_BA": 0.008924307747011051,
+      "difference_BA": 0.16536290501800077,
+      "protected_gt_nuisance": true,
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "protected_harm_BA": 0.12216525270052137,
+      "nuisance_harm_BA": -0.0006844639136401875,
+      "random_harm_BA": 0.011831216532381417,
+      "difference_BA": 0.12284971661416155,
+      "protected_gt_nuisance": true,
+      "outer_test_used": false
+    }
+  ],
+  "outer_test_used": false
+}

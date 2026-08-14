@@ -1,0 +1,216 @@
+{
+  "nominal_embedding_dimension": 128,
+  "numerical_rank": 27,
+  "whitening_rank": 20,
+  "whitening_error_max_abs": 3.885780586188048e-15,
+  "rho": [
+    0.7567979391033706,
+    0.5995159386685669,
+    0.4077240587372613,
+    0.35674831606526547,
+    0.3133397309846299,
+    0.2619256423188186,
+    0.23557068010238844,
+    0.2001559650789694,
+    0.16374298386329353,
+    0.14173889092988168,
+    0.11822718598669964,
+    0.11349866636878157,
+    0.09507833557470367,
+    0.08210900756744224,
+    0.07549112373828727,
+    0.04291796947281054,
+    0.023201615001264508,
+    0.02015078322314987,
+    0.0064683085606044395,
+    -0.009543647688165168
+  ],
+  "blocks": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2,
+      3,
+      4,
+      5
+    ],
+    [
+      6,
+      7,
+      8,
+      9
+    ],
+    [
+      10,
+      11,
+      12,
+      13
+    ],
+    [
+      14,
+      15,
+      16,
+      17
+    ],
+    [
+      18,
+      19
+    ]
+  ],
+  "block_metadata": {
+    "construction": "train-only eigengap clustering followed by max-size-4 split",
+    "eigengap_threshold": 0.09404681977272816,
+    "block_dimensions": [
+      1,
+      1,
+      4,
+      4,
+      4,
+      4,
+      2
+    ],
+    "eigenvalue_ranges": [
+      [
+        0.7567979391033706,
+        0.7567979391033706
+      ],
+      [
+        0.5995159386685669,
+        0.5995159386685669
+      ],
+      [
+        0.4077240587372613,
+        0.2619256423188186
+      ],
+      [
+        0.23557068010238844,
+        0.14173889092988168
+      ],
+      [
+        0.11822718598669964,
+        0.08210900756744224
+      ],
+      [
+        0.07549112373828727,
+        0.02015078322314987
+      ],
+      [
+        0.0064683085606044395,
+        -0.009543647688165168
+      ]
+    ],
+    "no_validation_block_selection": true
+  },
+  "persistence_support": [
+    {
+      "block": 0,
+      "rho_G": 0.7567979391033706,
+      "null_mean": -0.00030372386405220467,
+      "null_p95": 0.234123626437454,
+      "persistence_supported": true,
+      "dimensions": 1,
+      "eigenvalue_range": [
+        0.7567979391033706,
+        0.7567979391033706
+      ],
+      "principal_angle_stability_mean_rad": 1.446744203118583,
+      "principal_angle_stability_p95_rad": 1.5584667893917192
+    },
+    {
+      "block": 1,
+      "rho_G": 0.5995159386685669,
+      "null_mean": -0.000746168507470777,
+      "null_p95": 0.19779812577856426,
+      "persistence_supported": true,
+      "dimensions": 1,
+      "eigenvalue_range": [
+        0.5995159386685669,
+        0.5995159386685669
+      ],
+      "principal_angle_stability_mean_rad": 1.416844594094674,
+      "principal_angle_stability_p95_rad": 1.5496389743459502
+    },
+    {
+      "block": 2,
+      "rho_G": 0.33493443702649384,
+      "null_mean": -0.0016515958893836677,
+      "null_p95": 0.0731760434476616,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.4077240587372613,
+        0.2619256423188186
+      ],
+      "principal_angle_stability_mean_rad": 1.5010902828660664,
+      "principal_angle_stability_p95_rad": 1.5619339242947183
+    },
+    {
+      "block": 3,
+      "rho_G": 0.18530212999363327,
+      "null_mean": -0.0019644661135633777,
+      "null_p95": 0.04781581467957584,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.23557068010238844,
+        0.14173889092988168
+      ],
+      "principal_angle_stability_mean_rad": 1.5079631054634435,
+      "principal_angle_stability_p95_rad": 1.565104768715728
+    },
+    {
+      "block": 4,
+      "rho_G": 0.10222829887440679,
+      "null_mean": -0.0011778965534476288,
+      "null_p95": 0.04002660149732669,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.11822718598669964,
+        0.08210900756744224
+      ],
+      "principal_angle_stability_mean_rad": 1.4845603848909799,
+      "principal_angle_stability_p95_rad": 1.5668187058859717
+    },
+    {
+      "block": 5,
+      "rho_G": 0.04044037285887805,
+      "null_mean": -0.00060039310617933,
+      "null_p95": 0.02592677079478778,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.07549112373828727,
+        0.02015078322314987
+      ],
+      "principal_angle_stability_mean_rad": 1.377998737624446,
+      "principal_angle_stability_p95_rad": 1.5583677144145762
+    },
+    {
+      "block": 6,
+      "rho_G": -0.0015376695637803642,
+      "null_mean": -0.0016793126471865716,
+      "null_p95": 0.02812333595087075,
+      "persistence_supported": false,
+      "dimensions": 2,
+      "eigenvalue_range": [
+        0.0064683085606044395,
+        -0.009543647688165168
+      ],
+      "principal_angle_stability_mean_rad": 0.7740994257646429,
+      "principal_angle_stability_p95_rad": 1.3269471626947105
+    }
+  ],
+  "pair_counts": {
+    "mi": 68,
+    "erp": 68,
+    "ssvep": 136
+  },
+  "null_permutations": 200,
+  "bootstrap_subspace_draws": 50,
+  "finite": true
+}

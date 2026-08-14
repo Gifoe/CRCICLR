@@ -1,0 +1,67 @@
+{
+  "version": "Audit-V2",
+  "failure": null,
+  "evidence": {
+    "gate": {
+      "A_mean_difference_ge_0p02": true,
+      "B_at_least_5_of_6_direction_positive": true,
+      "C_hierarchical_bootstrap_lcb_gt_zero": true,
+      "D_protected_above_random_null": true,
+      "E_nuisance_near_or_below_random": true
+    },
+    "mean_difference": 0.15974940576760627,
+    "run_direction": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "modification": "eigengap max-size-4 blocks; TRAIN persistence null; five repeated cross-fitted splits; subject bootstrap",
+  "why_it_addresses_failure": "removes V1 forced block merging, arbitrary rho normalization, single split, and summary-only bootstrap",
+  "data_used": [
+    "TRAIN",
+    "VALIDATION"
+  ],
+  "outer_test_used": false,
+  "development_versions": [
+    {
+      "version": "CT_V0",
+      "failure": "near-zero clean development gain",
+      "evidence": {
+        "mean_delta_macro_BA": 0.0001498061068991,
+        "positive_runs": 4
+      },
+      "modification": "frozen historical encoder; complete clean + soft worst-case CE + KL consistency",
+      "why_it_addresses_failure": "first complete CT objective",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    },
+    {
+      "version": "CT_V1",
+      "failure": "CT-V1 clean development gate not met",
+      "evidence": {
+        "mean_delta_macro_BA": 0.00026177659738746417,
+        "positive_runs": 4,
+        "task_mean_delta_BA": {
+          "mi": -0.000550611568587267,
+          "erp": 0.0011099698647156764,
+          "ssvep": 0.0002259714960338536
+        }
+      },
+      "modification": "K=4; 1.5x empirical nuisance transport amplitude; lambda_CT=0.60; lambda_cons=0.05",
+      "why_it_addresses_failure": "increased counterfactual coverage and worst-case pressure",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    }
+  ],
+  "final_decision": "P4_CT_NOT_SUPPORTED"
+}

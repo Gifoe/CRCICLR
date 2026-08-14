@@ -1,0 +1,101 @@
+{
+  "fold": 2,
+  "seed": 1,
+  "version": "CT_V1",
+  "control": {
+    "task_BA": {
+      "mi": 0.7512480088747298,
+      "erp": 0.6271849445785569,
+      "ssvep": 0.911464082672599
+    },
+    "macro_BA": 0.7632990120419619,
+    "best_epoch": 0,
+    "epochs_run": 6,
+    "ct": false,
+    "amplitude": 1.0,
+    "loss": {
+      "lambda_CT": 0.0,
+      "lambda_cons": 0.0,
+      "tau": 0.5,
+      "K": 0
+    }
+  },
+  "ct": {
+    "task_BA": {
+      "mi": 0.7479128740471044,
+      "erp": 0.6271849445785569,
+      "ssvep": 0.9121343239594624
+    },
+    "macro_BA": 0.7624107141950413,
+    "best_epoch": 0,
+    "epochs_run": 6,
+    "ct": true,
+    "amplitude": 1.5,
+    "loss": {
+      "lambda_CT": 0.6,
+      "lambda_cons": 0.05,
+      "tau": 0.5,
+      "K": 4
+    }
+  },
+  "delta_macro_BA": -0.0008882978469206826,
+  "train_subjects": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "13",
+    "15",
+    "19",
+    "2",
+    "20",
+    "21",
+    "23",
+    "24",
+    "27",
+    "28",
+    "3",
+    "31",
+    "32",
+    "33",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "45",
+    "46",
+    "47",
+    "48",
+    "50",
+    "53",
+    "8"
+  ],
+  "validation_subjects": [
+    "14",
+    "16",
+    "17",
+    "25",
+    "30",
+    "49",
+    "5",
+    "6",
+    "9"
+  ],
+  "outer_test_used": false,
+  "historical_checkpoint": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-1/best.pt",
+  "method_config": {
+    "frozen_encoder": true,
+    "loss": {
+      "lambda_CT": 0.6,
+      "lambda_cons": 0.05,
+      "tau": 0.5,
+      "K": 4
+    },
+    "transport_amplitude": 1.5
+  }
+}

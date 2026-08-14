@@ -1,0 +1,25 @@
+{
+  "status": "P4_CT_NOT_SUPPORTED",
+  "audit_v2": "P4_CT_AUDIT_V2_PASS",
+  "development": {
+    "status": "P4_CT_NOT_SUPPORTED",
+    "version": "CT_V1",
+    "mean_delta_macro_BA": 0.00026177659738746417,
+    "positive_runs": 4,
+    "task_mean_delta_BA": {
+      "mi": -0.000550611568587267,
+      "erp": 0.0011099698647156764,
+      "ssvep": 0.0002259714960338536
+    },
+    "gates": {
+      "clean_macro_ge_0p003": false,
+      "at_least_4_of_6_positive": true,
+      "task_ge_0p005": false,
+      "protection_gate": false,
+      "counterfactual_robustness_gate": false
+    },
+    "reason": "CT-V0 and CT-V1 failed the prospective clean development gate; no method lock",
+    "outer_test_used": false
+  },
+  "outer_test_used": false
+}

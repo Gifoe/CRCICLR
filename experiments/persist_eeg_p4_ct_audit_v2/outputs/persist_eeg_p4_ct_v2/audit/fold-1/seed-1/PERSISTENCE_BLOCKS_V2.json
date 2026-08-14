@@ -1,0 +1,195 @@
+{
+  "nominal_embedding_dimension": 128,
+  "numerical_rank": 28,
+  "whitening_rank": 20,
+  "whitening_error_max_abs": 2.9976021664879227e-15,
+  "rho": [
+    0.6871414427936289,
+    0.5767616360053164,
+    0.46167347903184747,
+    0.42393328112830414,
+    0.3508150272328403,
+    0.28599224391300526,
+    0.23433405129193757,
+    0.2143590921440749,
+    0.17945392234921567,
+    0.15158310543407078,
+    0.11797790298557752,
+    0.09726305435351901,
+    0.0781368637923615,
+    0.0725363224695363,
+    0.05797325678927081,
+    0.048413459601058875,
+    0.038404769545964904,
+    0.0229995797953245,
+    -0.006030038853794794,
+    -0.029194402936992624
+  ],
+  "blocks": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3,
+      4,
+      5
+    ],
+    [
+      6,
+      7,
+      8,
+      9
+    ],
+    [
+      10,
+      11,
+      12,
+      13
+    ],
+    [
+      14,
+      15,
+      16,
+      17
+    ],
+    [
+      18,
+      19
+    ]
+  ],
+  "block_metadata": {
+    "construction": "train-only eigengap clustering followed by max-size-4 split",
+    "eigengap_threshold": 0.11148326766057959,
+    "block_dimensions": [
+      2,
+      4,
+      4,
+      4,
+      4,
+      2
+    ],
+    "eigenvalue_ranges": [
+      [
+        0.6871414427936289,
+        0.5767616360053164
+      ],
+      [
+        0.46167347903184747,
+        0.28599224391300526
+      ],
+      [
+        0.23433405129193757,
+        0.15158310543407078
+      ],
+      [
+        0.11797790298557752,
+        0.0725363224695363
+      ],
+      [
+        0.05797325678927081,
+        0.0229995797953245
+      ],
+      [
+        -0.006030038853794794,
+        -0.029194402936992624
+      ]
+    ],
+    "no_validation_block_selection": true
+  },
+  "persistence_support": [
+    {
+      "block": 0,
+      "rho_G": 0.6319515393994726,
+      "null_mean": 0.002343563403561934,
+      "null_p95": 0.1722064437645269,
+      "persistence_supported": true,
+      "dimensions": 2,
+      "eigenvalue_range": [
+        0.6871414427936289,
+        0.5767616360053164
+      ],
+      "principal_angle_stability_mean_rad": 1.5158931714235198,
+      "principal_angle_stability_p95_rad": 1.5622202733073511
+    },
+    {
+      "block": 1,
+      "rho_G": 0.3806035078264993,
+      "null_mean": 0.005109605380110556,
+      "null_p95": 0.110998674561875,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.46167347903184747,
+        0.28599224391300526
+      ],
+      "principal_angle_stability_mean_rad": 1.5030609159410389,
+      "principal_angle_stability_p95_rad": 1.5628556573731314
+    },
+    {
+      "block": 2,
+      "rho_G": 0.19493254280482475,
+      "null_mean": -0.00010475603433260746,
+      "null_p95": 0.05753644878272158,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.23433405129193757,
+        0.15158310543407078
+      ],
+      "principal_angle_stability_mean_rad": 1.5179062181983216,
+      "principal_angle_stability_p95_rad": 1.5637662485373303
+    },
+    {
+      "block": 3,
+      "rho_G": 0.09147853590024858,
+      "null_mean": 0.0001670435221416556,
+      "null_p95": 0.03913204670143806,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.11797790298557752,
+        0.0725363224695363
+      ],
+      "principal_angle_stability_mean_rad": 1.5034818583083895,
+      "principal_angle_stability_p95_rad": 1.5669855158318884
+    },
+    {
+      "block": 4,
+      "rho_G": 0.04194776643290477,
+      "null_mean": 0.00010546011752588325,
+      "null_p95": 0.02581568559101855,
+      "persistence_supported": true,
+      "dimensions": 4,
+      "eigenvalue_range": [
+        0.05797325678927081,
+        0.0229995797953245
+      ],
+      "principal_angle_stability_mean_rad": 1.4427249510677351,
+      "principal_angle_stability_p95_rad": 1.5594336677799252
+    },
+    {
+      "block": 5,
+      "rho_G": -0.01761222089539371,
+      "null_mean": -0.00011956779814846552,
+      "null_p95": 0.03694580806072896,
+      "persistence_supported": false,
+      "dimensions": 2,
+      "eigenvalue_range": [
+        -0.006030038853794794,
+        -0.029194402936992624
+      ],
+      "principal_angle_stability_mean_rad": 0.8360102437367088,
+      "principal_angle_stability_p95_rad": 1.3720206679241929
+    }
+  ],
+  "pair_counts": {
+    "mi": 68,
+    "erp": 68,
+    "ssvep": 136
+  },
+  "null_permutations": 200,
+  "bootstrap_subspace_draws": 50,
+  "finite": true
+}
