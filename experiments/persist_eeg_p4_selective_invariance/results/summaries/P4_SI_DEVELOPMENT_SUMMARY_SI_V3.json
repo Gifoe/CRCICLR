@@ -1,0 +1,208 @@
+{
+  "version": "SI_V3",
+  "runs": 6,
+  "per_task": {},
+  "checks": {
+    "gate_A_mean_task_delta_at_least_minus_1pp": true,
+    "gate_A_no_task_catastrophic_in_two_or_more_runs": true,
+    "gate_B_MI_relevance_mean_at_least_0_005": true,
+    "gate_B_MI_relevance_positive_in_at_least_4_of_6": true,
+    "gate_B_MI_protected_harm_exceeds_random_mean": true,
+    "gate_C_macro_nuisance_reduction_mean_at_least_0_02": false,
+    "gate_C_macro_nuisance_reduction_positive_in_at_least_4_of_6": true,
+    "gate_D_MI_protected_retention_mean_at_least_0_50": true,
+    "gate_D_MI_protected_retention_positive_in_at_least_4_of_6": true
+  },
+  "metrics": {
+    "delta_BA_mi": {
+      "mean": 0.0009259259259259411,
+      "std": 0.010272020409451207,
+      "min": -0.015555555555555656,
+      "max": 0.01388888888888895
+    },
+    "verifier_delta_AUROC_mi": {
+      "mean": -0.0016235853909464433,
+      "std": 0.03230402695786974,
+      "min": -0.048418209876543106,
+      "max": 0.05160108024691368
+    },
+    "protected_harm_mi": {
+      "mean": 0.08825231481481483,
+      "std": 0.03788410325009401,
+      "min": 0.02777777777777779,
+      "max": 0.13368055555555547
+    },
+    "nuisance_harm_mi": {
+      "mean": 0.01533564814814812,
+      "std": 0.016448832036350856,
+      "min": -0.00868055555555558,
+      "max": 0.03472222222222221
+    },
+    "random_harm_mi": {
+      "mean": 0.032986111111111126,
+      "std": 0.025134668153963653,
+      "min": 0.0017361111111111605,
+      "max": 0.0659722222222221
+    },
+    "protected_minus_nuisance_mi": {
+      "mean": 0.0729166666666667,
+      "std": 0.04232694432686326,
+      "min": -0.00694444444444442,
+      "max": 0.11631944444444442
+    },
+    "protected_harm_before_mi": {
+      "mean": 0.0876736111111111,
+      "std": 0.02881630672343377,
+      "min": 0.06423611111111105,
+      "max": 0.13194444444444453
+    },
+    "protected_harm_retention_mi": {
+      "mean": 1.0189739288557618,
+      "std": 0.42505755398500644,
+      "min": 0.43243243243243307,
+      "max": 1.5750000000000006
+    },
+    "delta_BA_erp": {
+      "mean": 0.007951739618406265,
+      "std": 0.00949976993157853,
+      "min": -0.0026430976430975583,
+      "max": 0.019545454545454533
+    },
+    "verifier_delta_AUROC_erp": {
+      "mean": -0.028034979423868272,
+      "std": 0.02800304884264671,
+      "min": -0.054012345679012363,
+      "max": 0.011959876543209846
+    },
+    "protected_harm_erp": {
+      "mean": 0.013020833333333315,
+      "std": 0.011965320097300568,
+      "min": -0.0017361111111111605,
+      "max": 0.03298611111111116
+    },
+    "nuisance_harm_erp": {
+      "mean": 0.00347222222222221,
+      "std": 0.01035863464595577,
+      "min": -0.01041666666666663,
+      "max": 0.02083333333333337
+    },
+    "random_harm_erp": {
+      "mean": 0.017361111111111122,
+      "std": 0.022556085790155125,
+      "min": -0.0,
+      "max": 0.06076388888888884
+    },
+    "protected_minus_nuisance_erp": {
+      "mean": 0.009548611111111105,
+      "std": 0.01339170887199785,
+      "min": -0.00520833333333337,
+      "max": 0.02604166666666674
+    },
+    "protected_harm_before_erp": {
+      "mean": 0.013310185185185211,
+      "std": 0.014552988712036972,
+      "min": -0.00694444444444442,
+      "max": 0.03298611111111116
+    },
+    "protected_harm_retention_erp": {
+      "mean": 0.5333333333333338,
+      "std": 0.6341741643652025,
+      "min": -0.14285714285714546,
+      "max": 1.1428571428571481
+    },
+    "delta_BA_ssvep": {
+      "mean": -0.0007407407407407826,
+      "std": 0.007154957416914537,
+      "min": -0.01388888888888895,
+      "max": 0.007777777777777772
+    },
+    "verifier_delta_AUROC_ssvep": {
+      "mean": 8.037551440317111e-06,
+      "std": 0.04422437348977663,
+      "min": -0.03196132330246915,
+      "max": 0.0581597222222221
+    },
+    "protected_harm_ssvep": {
+      "mean": 0.03906249999999998,
+      "std": 0.018446946471027067,
+      "min": 0.02256944444444442,
+      "max": 0.06857638888888884
+    },
+    "nuisance_harm_ssvep": {
+      "mean": 0.01142939814814814,
+      "std": 0.008224416018175402,
+      "min": 0.00347222222222221,
+      "max": 0.02256944444444442
+    },
+    "random_harm_ssvep": {
+      "mean": 0.06568287037037031,
+      "std": 0.027459475495644193,
+      "min": 0.03298611111111105,
+      "max": 0.10763888888888884
+    },
+    "protected_minus_nuisance_ssvep": {
+      "mean": 0.027633101851851843,
+      "std": 0.017485807967027815,
+      "min": 0.006076388888888951,
+      "max": 0.05121527777777779
+    },
+    "protected_harm_before_ssvep": {
+      "mean": 0.04253472222222221,
+      "std": 0.010197343858047476,
+      "min": 0.02864583333333337,
+      "max": 0.05729166666666663
+    },
+    "protected_harm_retention_ssvep": {
+      "mean": 0.8957490921776632,
+      "std": 0.2617037317097324,
+      "min": 0.6326530612244914,
+      "max": 1.2115384615384628
+    },
+    "delta_BA_macro": {
+      "mean": 0.0027123082678638076,
+      "std": 0.002742877643833978,
+      "min": 0.0002356902356902557,
+      "max": 0.007452300785634081
+    },
+    "verifier_delta_AUROC_macro": {
+      "mean": -0.009883509087791434,
+      "std": 0.0283181178756206,
+      "min": -0.0444436406893004,
+      "max": 0.03689236111111105
+    },
+    "protected_minus_nuisance_MI": {
+      "mean": 0.0729166666666667,
+      "std": 0.04232694432686326,
+      "min": -0.00694444444444442,
+      "max": 0.11631944444444442
+    }
+  },
+  "decision": "P4_SELECTIVE_INVARIANCE_NOT_SUPPORTED",
+  "mean_task_delta": {
+    "mi": 0.0009259259259259411,
+    "erp": 0.007951739618406265,
+    "ssvep": -0.0007407407407407826
+  },
+  "catastrophic_run_counts_below_minus_3pp": {
+    "mi": 0,
+    "erp": 0,
+    "ssvep": 0
+  },
+  "task_relevance": {
+    "mi": {
+      "mean_protected_minus_nuisance": 0.0729166666666667,
+      "positive_runs": 5
+    },
+    "erp": {
+      "mean_protected_minus_nuisance": 0.009548611111111105,
+      "positive_runs": 3
+    },
+    "ssvep": {
+      "mean_protected_minus_nuisance": 0.027633101851851843,
+      "positive_runs": 6
+    }
+  },
+  "gate_A_to_D_pass": false,
+  "outer_test_used": false,
+  "development_subject_role_limitation": "fold-local held-out subjects only; roles overlap across folds before formal lock"
+}

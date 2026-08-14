@@ -1,0 +1,909 @@
+{
+  "status": "DEVELOPMENT_RUN_COMPLETE",
+  "version": "SI_V1",
+  "fold": 2,
+  "seed": 0,
+  "method_config": {
+    "version": "SI_V1",
+    "embedding_dim": 128,
+    "batch_size": 128,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.001,
+    "max_epochs": 12,
+    "patience": 5,
+    "adversary_warmup_epochs": 2,
+    "adversary_ramp_epochs": 4,
+    "lambda_inv": 0.1,
+    "gradient_clip": 5.0,
+    "covariance_shrinkage": 0.001,
+    "whitening_epsilon_relative": 0.0001,
+    "whitening_rank": 20,
+    "statistics_update_interval": 4,
+    "diagnostic_per_group": 16,
+    "intervention_rank": 8,
+    "pairs_per_subject_event": 8,
+    "mi_adversary_scale": 0.6,
+    "erp_adversary_scale": 1.0,
+    "ssvep_adversary_scale": 1.4
+  },
+  "data_used": [
+    "TRAIN",
+    "VALIDATION"
+  ],
+  "outer_test_used": false,
+  "outer_test_subjects_hash_only": "bc7a89c91673426bf0b3749c1e6587ee3f50ec0f465d9a9285bb1142f1ed1067",
+  "train_subject_ids": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "13",
+    "15",
+    "19",
+    "2",
+    "20",
+    "21",
+    "23",
+    "24",
+    "27",
+    "28",
+    "3",
+    "31",
+    "32",
+    "33",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "45",
+    "46",
+    "47",
+    "48",
+    "50",
+    "53",
+    "8"
+  ],
+  "validation_subject_ids": [
+    "14",
+    "16",
+    "17",
+    "25",
+    "30",
+    "49",
+    "5",
+    "6",
+    "9"
+  ],
+  "best_checkpoint": "outputs/persist_eeg_p4_selective_invariance/development/SI_V1/fold-2/seed-0/best.pt",
+  "best_checkpoint_sha256": "c87ef1195ec5cc1508f30d2833f73766373b4a22533b5bfac878539f402088ca",
+  "best_epoch": 10,
+  "task_performance": {
+    "historical_reference": {
+      "mi": 0.7511111111111111,
+      "erp": 0.6445286195286195,
+      "ssvep": 0.9277777777777778
+    },
+    "historical_replay": {
+      "mi": 0.7511111111111111,
+      "erp": 0.6445454545454545,
+      "ssvep": 0.9277777777777778
+    },
+    "historical_replay_error": {
+      "mi": 0.0,
+      "erp": 1.6835016835026195e-05,
+      "ssvep": 0.0
+    },
+    "after": {
+      "mi": 0.755,
+      "erp": 0.6412962962962963,
+      "ssvep": 0.9277777777777778
+    },
+    "delta": {
+      "mi": 0.0038888888888889417,
+      "erp": -0.0032491582491582793,
+      "ssvep": 0.0
+    },
+    "macro_before": 0.7744781144781144,
+    "macro_after": 0.7746913580246915,
+    "macro_delta": 0.00021324354657703548
+  },
+  "persistence_spectrum": {
+    "initial": {
+      "fit_population": "frozen fold train_subjects only",
+      "samples": 8704,
+      "cross_session_centroid_pairs": 272,
+      "pair_composition": {
+        "mi": 68,
+        "erp": 68,
+        "ssvep": 136
+      },
+      "condition_control": "within paradigm/event and session centering before cross-session covariance",
+      "covariance_shrinkage": 0.001,
+      "whitening_epsilon": 0.0004116216993323451,
+      "whitening_type": "truncated shrinkage ZCA in measured active embedding subspace",
+      "nominal_embedding_dimension": 128,
+      "raw_numerical_rank_at_threshold": 26,
+      "numerical_whitening_rank": 20,
+      "active_eigenvalue_threshold": 0.020242697857978626,
+      "regularized_condition_number": 273.8360965394636,
+      "raw_covariance_eigenvalues": [
+        1.5743970064344878e-15,
+        2.254358378404828e-15,
+        2.4932860388967053e-15,
+        2.7097044537124597e-15,
+        3.0874190352345376e-15,
+        3.2743859042641e-15,
+        3.523201199707221e-15,
+        3.6860049090306125e-15,
+        3.873625422129389e-15,
+        3.94774683715667e-15,
+        3.955596298376693e-15,
+        4.010853250489712e-15,
+        4.340459706008787e-15,
+        4.3531274623900745e-15,
+        4.360979749250057e-15,
+        4.3698692625531825e-15,
+        4.6100715949524444e-15,
+        4.63177582959068e-15,
+        4.6328129983911615e-15,
+        4.673204876551828e-15,
+        4.865590846920649e-15,
+        4.914756280914014e-15,
+        5.136455349132177e-15,
+        5.2048571273476134e-15,
+        5.2142798540887726e-15,
+        5.443057552586545e-15,
+        5.483989268118381e-15,
+        5.680682467020395e-15,
+        5.746779733646758e-15,
+        5.7529581151189995e-15,
+        5.833341003596524e-15,
+        5.931459844015631e-15,
+        6.1103961725704575e-15,
+        6.3341857134569404e-15,
+        6.477046806727078e-15,
+        6.514341867812757e-15,
+        6.582075254048761e-15,
+        6.585821227906099e-15,
+        6.857535123753746e-15,
+        6.874990978433162e-15,
+        6.929545929211139e-15,
+        6.943608784205337e-15,
+        7.118607749533347e-15,
+        7.26490498564042e-15,
+        7.293652677743211e-15,
+        7.297606749255888e-15,
+        7.537252324979509e-15,
+        7.620470981085866e-15,
+        7.66568560047254e-15,
+        7.814379420338829e-15,
+        7.840837940211316e-15,
+        7.989316327493615e-15,
+        8.028763464618137e-15,
+        8.068881356966669e-15,
+        8.305398146681387e-15,
+        8.433664401713606e-15,
+        8.466819798985092e-15,
+        8.629168047205468e-15,
+        8.686886684487734e-15,
+        8.754990290117092e-15,
+        8.903445124778684e-15,
+        9.253034806892252e-15,
+        9.385235596616498e-15,
+        9.404633935266511e-15,
+        9.621332724927335e-15,
+        9.80186000345319e-15,
+        1.0051374963455426e-14,
+        1.0123960417611787e-14,
+        1.0449001488634274e-14,
+        1.0716102592038327e-14,
+        1.0798778735467569e-14,
+        1.0934100583289831e-14,
+        1.1234562899712208e-14,
+        1.1376620398910865e-14,
+        1.1728717415865989e-14,
+        1.1926890575505762e-14,
+        1.2063404852161047e-14,
+        1.2269680051903922e-14,
+        1.2430628907485576e-14,
+        1.2746798856244965e-14,
+        1.3233163161090295e-14,
+        1.3240668288561908e-14,
+        1.3345870900105826e-14,
+        1.3854280393703951e-14,
+        1.4277186545312964e-14,
+        1.43407971028449e-14,
+        1.5426802162027933e-14,
+        1.6717431268290356e-14,
+        1.6720258573620846e-14,
+        1.7802518171518374e-14,
+        1.826736197161693e-14,
+        2.0925329175984885e-14,
+        2.1416462194181067e-14,
+        2.2761528199991725e-14,
+        3.1842400882374575e-14,
+        0.00530290498143266,
+        0.00650945030323339,
+        0.008978463632291567,
+        0.009700215138839386,
+        0.012978108218904308,
+        0.013521729026073792,
+        0.019581932045968475,
+        0.023684948591034247,
+        0.03360469525413092,
+        0.036355254920663584,
+        0.04198131217973266,
+        0.046877682577653186,
+        0.053170911774378965,
+        0.06981738837889796,
+        0.07903601852289406,
+        0.0942740219879281,
+        0.10749507816983074,
+        0.1239817277421404,
+        0.15343280527261904,
+        0.1986175148211838,
+        0.28823154025550357,
+        0.3111739971157568,
+        0.5157646247211425,
+        0.8076886434722935,
+        1.0929239925513223,
+        1.6124453743827203,
+        2.622687698722452,
+        5.1942472366929575,
+        7.154003405195017,
+        11.933401418284532,
+        12.20038556501679,
+        17.52203395718442,
+        20.242697857978627
+      ],
+      "regularized_active_eigenvalues": [
+        0.07386378798384252,
+        0.08307319949769462,
+        0.09829596495926363,
+        0.11150380008498437,
+        0.1279739630077217,
+        0.1573955894606699,
+        0.20253511429968607,
+        0.2920595257085715,
+        0.3149790401119644,
+        0.5193650770897448,
+        0.8109971718221447,
+        1.0959472855520946,
+        1.6149491460016612,
+        2.624181228017053,
+        5.193169206449588,
+        7.150965618783146,
+        11.92558423385957,
+        12.192301396445096,
+        17.50862814022056,
+        20.226571377113974
+      ],
+      "whitened_variance_mean": 0.9853236501672775,
+      "whitened_variance_std": 0.01788556830334736,
+      "whitened_covariance_identity_max_abs": 0.05478191296971746,
+      "rho": [
+        0.8011651694551007,
+        0.6205114794903481,
+        0.45778914321640146,
+        0.39110181720992265,
+        0.3210998060128924,
+        0.27301597425757884,
+        0.24849141508496117,
+        0.2354999323068578,
+        0.1661427968092805,
+        0.15050767091968145,
+        0.13029145289163624,
+        0.11951413122120856,
+        0.11392504220147542,
+        0.08593476552876257,
+        0.06464498966738157,
+        0.04648046172699358,
+        0.039810359725011533,
+        0.033145132060960945,
+        0.017939754721415225,
+        0.009399842908236679
+      ],
+      "positive_rho_count": 20,
+      "persistence_raw_PCA_normalized_overlap_rank": 8,
+      "persistence_raw_PCA_normalized_overlap": 0.7014731866097604,
+      "direction_alignment_to_previous": {
+        "matched_cosine_mean": 1.0,
+        "matched_cosine_min": 1.0
+      },
+      "orthonormality_error_max_abs": 2.7755575615628914e-15,
+      "finite": true,
+      "task_profiles": {
+        "mi": {
+          "protected_fraction_of_persistence_mass": 0.47421115496986016,
+          "nuisance_fraction_of_persistence_mass": 0.5257888450301401,
+          "mean_relevance": 0.4999999999999999
+        },
+        "erp": {
+          "protected_fraction_of_persistence_mass": 0.5619059125785599,
+          "nuisance_fraction_of_persistence_mass": 0.43809408742144035,
+          "mean_relevance": 0.5
+        },
+        "ssvep": {
+          "protected_fraction_of_persistence_mass": 0.31517727444998966,
+          "nuisance_fraction_of_persistence_mass": 0.6848227255500104,
+          "mean_relevance": 0.4999999999999999
+        }
+      }
+    },
+    "selected_checkpoint": {
+      "fit_population": "frozen fold train_subjects only",
+      "samples": 8704,
+      "cross_session_centroid_pairs": 272,
+      "pair_composition": {
+        "mi": 68,
+        "erp": 68,
+        "ssvep": 136
+      },
+      "condition_control": "within paradigm/event and session centering before cross-session covariance",
+      "covariance_shrinkage": 0.001,
+      "whitening_epsilon": 0.0003714184271854012,
+      "whitening_type": "truncated shrinkage ZCA in measured active embedding subspace",
+      "nominal_embedding_dimension": 128,
+      "raw_numerical_rank_at_threshold": 27,
+      "numerical_whitening_rank": 20,
+      "active_eigenvalue_threshold": 0.0181341528957742,
+      "regularized_condition_number": 335.3321815349034,
+      "raw_covariance_eigenvalues": [
+        2.407618665947984e-15,
+        2.7778581388890528e-15,
+        3.082288103155285e-15,
+        3.1122998406466065e-15,
+        3.4402327336229563e-15,
+        3.560736400000631e-15,
+        3.8230584819492435e-15,
+        3.855018914337914e-15,
+        4.047127653845731e-15,
+        4.084501343464626e-15,
+        4.105341292111778e-15,
+        4.140447739154748e-15,
+        4.219112395900097e-15,
+        4.280494214289804e-15,
+        4.4644055115417114e-15,
+        4.649381735902842e-15,
+        4.76120897629354e-15,
+        4.820741164214216e-15,
+        4.836081765209753e-15,
+        5.0613878371272324e-15,
+        5.206969550644164e-15,
+        5.36613917930399e-15,
+        5.515294860322545e-15,
+        5.557211560763882e-15,
+        5.606683050142901e-15,
+        5.709948790897793e-15,
+        5.824462913618616e-15,
+        5.861683186157515e-15,
+        5.8905562100154505e-15,
+        5.937783859430622e-15,
+        5.948279937508705e-15,
+        6.1157543422736415e-15,
+        6.173318366219895e-15,
+        6.506393364751047e-15,
+        6.5349737502291916e-15,
+        6.562406891299847e-15,
+        6.652927199517008e-15,
+        6.6878434786638065e-15,
+        6.867261397353794e-15,
+        6.97120970299277e-15,
+        7.053826472826266e-15,
+        7.118783891347766e-15,
+        7.15533241854726e-15,
+        7.31280005860587e-15,
+        7.346030665618677e-15,
+        7.411729098549289e-15,
+        7.44523282990835e-15,
+        7.634018853275687e-15,
+        7.713351351835284e-15,
+        7.915871119374693e-15,
+        8.018098567154042e-15,
+        8.022209442679121e-15,
+        8.16464330215663e-15,
+        8.228622737168627e-15,
+        8.556019487715021e-15,
+        8.560317011820988e-15,
+        8.638759005215255e-15,
+        8.69144040648526e-15,
+        8.77899454942158e-15,
+        8.885777094493191e-15,
+        9.176109949348191e-15,
+        9.308994642237115e-15,
+        9.526379448417493e-15,
+        9.661019728812833e-15,
+        9.700640774149237e-15,
+        1.0106101426608244e-14,
+        1.0176539749742101e-14,
+        1.0228418653473451e-14,
+        1.0447922467282771e-14,
+        1.0604713622782329e-14,
+        1.0780741393551046e-14,
+        1.0808674620215192e-14,
+        1.1124298907326672e-14,
+        1.1300922374563277e-14,
+        1.1338889539424954e-14,
+        1.1507729508967769e-14,
+        1.170371492598583e-14,
+        1.1897225409952308e-14,
+        1.19018649905467e-14,
+        1.2569514603268346e-14,
+        1.2751619295658575e-14,
+        1.3094861711490066e-14,
+        1.3808266893270666e-14,
+        1.4053367948961681e-14,
+        1.4080629543281824e-14,
+        1.5396212078752798e-14,
+        1.6402004400937864e-14,
+        1.6640036560083372e-14,
+        1.7932883189457414e-14,
+        1.879415944397733e-14,
+        1.9758320045778635e-14,
+        2.0828031734731664e-14,
+        2.1821632314265434e-14,
+        2.6500086783156255e-14,
+        2.8018814661122356e-14,
+        0.006084427037647225,
+        0.007476812990903049,
+        0.01002224489685403,
+        0.010871225010058874,
+        0.01328453790931734,
+        0.015641640286097044,
+        0.020120367403771787,
+        0.023555833651513793,
+        0.02461002129031997,
+        0.03212444740348545,
+        0.035129942182669904,
+        0.041839845472915665,
+        0.04918948798875161,
+        0.0503713615373355,
+        0.05447442085845192,
+        0.07266949333010929,
+        0.09796433538652571,
+        0.11999873715134332,
+        0.1492236679934713,
+        0.17019254495968358,
+        0.21138106679622054,
+        0.2460911172495862,
+        0.3537014230080227,
+        0.5696784121207614,
+        0.8250756874734069,
+        1.5016208263737651,
+        2.080866153763061,
+        4.629320570650689,
+        6.868938018724721,
+        11.30576778156332,
+        13.02081927682639,
+        13.821377645539169,
+        18.134152895774196
+      ],
+      "regularized_active_eigenvalues": [
+        0.05403517444765218,
+        0.058134130709447486,
+        0.07631100810863319,
+        0.10158055532299319,
+        0.12359292268604598,
+        0.15278862859733186,
+        0.17373653668657793,
+        0.21488387000127834,
+        0.24955921040419066,
+        0.3570619058568687,
+        0.5728229179804947,
+        0.8279647960577875,
+        1.5038333898192453,
+        2.082499471881152,
+        4.628405434351893,
+        6.865783264977851,
+        11.29817619805361,
+        13.011512641821417,
+        13.811270452165482,
+        18.119732927150274
+      ],
+      "whitened_variance_mean": 0.9832920070278796,
+      "whitened_variance_std": 0.021122150013595086,
+      "whitened_covariance_identity_max_abs": 0.06780422100545191,
+      "rho": [
+        0.1387258020856167,
+        0.5364251915872359,
+        0.3736207423816685,
+        0.22111833263205125,
+        0.20074723563735217,
+        0.17329576607492986,
+        0.07386052684022264,
+        0.2416001573698251,
+        0.022921495921290298,
+        0.03845545582276661,
+        0.1650859370666067,
+        -0.013503985748060887,
+        0.773834049820623,
+        0.043371900711640606,
+        0.2836683527119379,
+        0.10626716701926496,
+        0.033352942467227635,
+        0.026151168177292322,
+        0.08637080461433164,
+        0.31393163598905466
+      ],
+      "positive_rho_count": 19,
+      "persistence_raw_PCA_normalized_overlap_rank": 8,
+      "persistence_raw_PCA_normalized_overlap": 0.7228093533817748,
+      "direction_alignment_to_previous": {
+        "matched_cosine_mean": 0.5022712149448237,
+        "matched_cosine_min": 0.2555525707970673
+      },
+      "orthonormality_error_max_abs": 1.3322676295501878e-15,
+      "finite": true,
+      "task_profiles": {
+        "mi": {
+          "protected_fraction_of_persistence_mass": 0.5022534403799038,
+          "nuisance_fraction_of_persistence_mass": 0.4977465596200961,
+          "mean_relevance": 0.4999999999999999
+        },
+        "erp": {
+          "protected_fraction_of_persistence_mass": 0.5527827167970508,
+          "nuisance_fraction_of_persistence_mass": 0.447217283202949,
+          "mean_relevance": 0.49999999999999983
+        },
+        "ssvep": {
+          "protected_fraction_of_persistence_mass": 0.27858743972077865,
+          "nuisance_fraction_of_persistence_mass": 0.7214125602792213,
+          "mean_relevance": 0.4999999999999999
+        }
+      }
+    }
+  },
+  "profiles": {
+    "mi": {
+      "protected_fraction_of_persistence_mass": 0.5022534403799038,
+      "nuisance_fraction_of_persistence_mass": 0.4977465596200961,
+      "mean_relevance": 0.4999999999999999
+    },
+    "erp": {
+      "protected_fraction_of_persistence_mass": 0.5527827167970508,
+      "nuisance_fraction_of_persistence_mass": 0.447217283202949,
+      "mean_relevance": 0.49999999999999983
+    },
+    "ssvep": {
+      "protected_fraction_of_persistence_mass": 0.27858743972077865,
+      "nuisance_fraction_of_persistence_mass": 0.7214125602792213,
+      "mean_relevance": 0.4999999999999999
+    }
+  },
+  "nuisance_subject_verification": {
+    "definition": "independent pair verifier evaluated in the fixed initial nuisance coordinate system",
+    "before": {
+      "per_task": {
+        "mi": {
+          "auroc": 0.7462866512345678,
+          "train_pairs": 1088,
+          "validation_pairs": 288,
+          "verifier": "independent fixed-C logistic pair verifier",
+          "pair_composition": "session-0 anchor to session-1 positive/negative; paradigm/event matched"
+        },
+        "erp": {
+          "auroc": 0.6704282407407407,
+          "train_pairs": 1088,
+          "validation_pairs": 288,
+          "verifier": "independent fixed-C logistic pair verifier",
+          "pair_composition": "session-0 anchor to session-1 positive/negative; paradigm/event matched"
+        },
+        "ssvep": {
+          "auroc": 0.794849537037037,
+          "train_pairs": 2176,
+          "validation_pairs": 576,
+          "verifier": "independent fixed-C logistic pair verifier",
+          "pair_composition": "session-0 anchor to session-1 positive/negative; paradigm/event matched"
+        }
+      },
+      "macro_AUROC": 0.7371881430041153
+    },
+    "after": {
+      "per_task": {
+        "mi": {
+          "auroc": 0.6403356481481481,
+          "train_pairs": 1088,
+          "validation_pairs": 288,
+          "verifier": "independent fixed-C logistic pair verifier",
+          "pair_composition": "session-0 anchor to session-1 positive/negative; paradigm/event matched"
+        },
+        "erp": {
+          "auroc": 0.6577932098765433,
+          "train_pairs": 1088,
+          "validation_pairs": 288,
+          "verifier": "independent fixed-C logistic pair verifier",
+          "pair_composition": "session-0 anchor to session-1 positive/negative; paradigm/event matched"
+        },
+        "ssvep": {
+          "auroc": 0.7336636766975309,
+          "train_pairs": 2176,
+          "validation_pairs": 576,
+          "verifier": "independent fixed-C logistic pair verifier",
+          "pair_composition": "session-0 anchor to session-1 positive/negative; paradigm/event matched"
+        }
+      },
+      "macro_AUROC": 0.6772641782407408
+    },
+    "after_minus_before_AUROC": {
+      "mi": -0.10595100308641969,
+      "erp": -0.012635030864197372,
+      "ssvep": -0.061185860339506126,
+      "macro": -0.05992396476337447
+    }
+  },
+  "intervention": {
+    "before": {
+      "probe": "independent fixed-C logistic event probe refit after every intervention",
+      "raw_BA": {
+        "mi": 0.7690972222222222,
+        "erp": 0.6614583333333334,
+        "ssvep": 0.9166666666666666
+      },
+      "per_task": {
+        "mi": {
+          "rank": 6,
+          "indices": {
+            "protected": [
+              0,
+              1,
+              4,
+              5,
+              7,
+              8
+            ],
+            "nuisance": [
+              2,
+              3,
+              6,
+              11,
+              12,
+              13
+            ],
+            "random": [
+              9,
+              10,
+              14,
+              15,
+              17,
+              19
+            ]
+          },
+          "BA": {
+            "protected": 0.7239583333333333,
+            "nuisance": 0.7586805555555556,
+            "random": 0.6753472222222222
+          },
+          "delta_BA": {
+            "protected": -0.04513888888888895,
+            "nuisance": -0.01041666666666663,
+            "random": -0.09375
+          },
+          "protected_drop_minus_nuisance_drop": 0.03472222222222232
+        },
+        "erp": {
+          "rank": 6,
+          "indices": {
+            "protected": [
+              0,
+              1,
+              3,
+              5,
+              7,
+              10
+            ],
+            "nuisance": [
+              2,
+              4,
+              6,
+              9,
+              11,
+              12
+            ],
+            "random": [
+              8,
+              13,
+              16,
+              17,
+              18,
+              19
+            ]
+          },
+          "BA": {
+            "protected": 0.6284722222222222,
+            "nuisance": 0.6684027777777777,
+            "random": 0.6111111111111112
+          },
+          "delta_BA": {
+            "protected": -0.03298611111111116,
+            "nuisance": 0.006944444444444309,
+            "random": -0.05034722222222221
+          },
+          "protected_drop_minus_nuisance_drop": 0.03993055555555547
+        },
+        "ssvep": {
+          "rank": 6,
+          "indices": {
+            "protected": [
+              0,
+              2,
+              3,
+              6,
+              12,
+              13
+            ],
+            "nuisance": [
+              1,
+              4,
+              5,
+              7,
+              8,
+              10
+            ],
+            "random": [
+              9,
+              14,
+              15,
+              16,
+              17,
+              18
+            ]
+          },
+          "BA": {
+            "protected": 0.8741319444444444,
+            "nuisance": 0.9149305555555556,
+            "random": 0.7473958333333334
+          },
+          "delta_BA": {
+            "protected": -0.04253472222222221,
+            "nuisance": -0.0017361111111110494,
+            "random": -0.16927083333333326
+          },
+          "protected_drop_minus_nuisance_drop": 0.04079861111111116
+        }
+      }
+    },
+    "after": {
+      "probe": "independent fixed-C logistic event probe refit after every intervention",
+      "raw_BA": {
+        "mi": 0.7777777777777778,
+        "erp": 0.65625,
+        "ssvep": 0.9114583333333334
+      },
+      "per_task": {
+        "mi": {
+          "rank": 6,
+          "indices": {
+            "protected": [
+              1,
+              2,
+              3,
+              7,
+              12,
+              14
+            ],
+            "nuisance": [
+              0,
+              4,
+              5,
+              10,
+              18,
+              19
+            ],
+            "random": [
+              6,
+              9,
+              11,
+              13,
+              15,
+              17
+            ]
+          },
+          "BA": {
+            "protected": 0.7291666666666667,
+            "nuisance": 0.7638888888888888,
+            "random": 0.7256944444444444
+          },
+          "delta_BA": {
+            "protected": -0.04861111111111105,
+            "nuisance": -0.01388888888888895,
+            "random": -0.05208333333333337
+          },
+          "protected_drop_minus_nuisance_drop": 0.0347222222222221
+        },
+        "erp": {
+          "rank": 6,
+          "indices": {
+            "protected": [
+              1,
+              2,
+              5,
+              7,
+              12,
+              19
+            ],
+            "nuisance": [
+              0,
+              3,
+              4,
+              10,
+              14,
+              18
+            ],
+            "random": [
+              6,
+              8,
+              11,
+              15,
+              16,
+              17
+            ]
+          },
+          "BA": {
+            "protected": 0.6475694444444444,
+            "nuisance": 0.6545138888888888,
+            "random": 0.6354166666666667
+          },
+          "delta_BA": {
+            "protected": -0.00868055555555558,
+            "nuisance": -0.0017361111111111605,
+            "random": -0.02083333333333326
+          },
+          "protected_drop_minus_nuisance_drop": 0.00694444444444442
+        },
+        "ssvep": {
+          "rank": 6,
+          "indices": {
+            "protected": [
+              0,
+              2,
+              3,
+              4,
+              10,
+              18
+            ],
+            "nuisance": [
+              1,
+              5,
+              7,
+              12,
+              14,
+              19
+            ],
+            "random": [
+              8,
+              9,
+              13,
+              15,
+              16,
+              17
+            ]
+          },
+          "BA": {
+            "protected": 0.8940972222222222,
+            "nuisance": 0.9036458333333334,
+            "random": 0.7708333333333334
+          },
+          "delta_BA": {
+            "protected": -0.01736111111111116,
+            "nuisance": -0.0078125,
+            "random": -0.140625
+          },
+          "protected_drop_minus_nuisance_drop": 0.00954861111111116
+        }
+      }
+    }
+  },
+  "sanity": {
+    "no_nan_inf": true,
+    "same_diagnostic_samples_before_after": true,
+    "negative_pair_session_composition_matched": true,
+    "task_head_uses_full_h": true,
+    "persistence_basis_trainable": false,
+    "global_subject_adversary_used": false
+  }
+}

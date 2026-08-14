@@ -1,0 +1,75 @@
+{
+  "method": "PERSIST-SI Selective Persistence Invariance",
+  "protocol_version": 1,
+  "development_panel": {
+    "folds": [
+      0,
+      1,
+      2
+    ],
+    "seeds": [
+      0,
+      1
+    ],
+    "runs_per_version": 6
+  },
+  "frozen_principles": [
+    "persistence from repeated-measure statistics",
+    "explicit task-relevant versus task-irrelevant persistence",
+    "invariance acts only on task-irrelevant persistence"
+  ],
+  "initial_version": {
+    "version": "SI_V0",
+    "embedding_dim": 128,
+    "batch_size": 128,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.001,
+    "max_epochs": 12,
+    "patience": 5,
+    "adversary_warmup_epochs": 2,
+    "adversary_ramp_epochs": 4,
+    "lambda_inv": 0.1,
+    "gradient_clip": 5.0,
+    "covariance_shrinkage": 0.001,
+    "whitening_epsilon_relative": 0.0001,
+    "whitening_rank": 20,
+    "statistics_update_interval": 4,
+    "diagnostic_per_group": 16,
+    "intervention_rank": 8,
+    "pairs_per_subject_event": 8,
+    "mi_adversary_scale": 1.0,
+    "erp_adversary_scale": 1.0,
+    "ssvep_adversary_scale": 1.0,
+    "task_conditioned_spectrum": false,
+    "task_conditioned_directions": false
+  },
+  "spectrum": {
+    "whitening": "fold-train-only rank-20 truncated ZCA over the measured active EEGNet subspace, with fixed shrinkage and relative eigenvalue floor; rank frozen before development performance was observed",
+    "relation": "same subject, same paradigm/event, different session; condition/session means removed",
+    "estimator": "symmetric cross-session covariance of balanced group centroids",
+    "update": "stop-gradient periodic estimation with direction matching",
+    "basis_trainable": false
+  },
+  "relevance": "subject/event-balanced Fisher gradient in whitened persistence coordinates; within-task rank normalization",
+  "nuisance_mask": "positive normalized persistence strength times one minus normalized relevance",
+  "task_head_input": "full unpartitioned h",
+  "adversary_input": "task-specific soft nuisance persistence coordinates only; spectrally constrained adversary prevents scale compensation",
+  "gates_preregistered": {
+    "task_warning": "each task mean delta must be >= -0.01; no run/task delta below -0.03",
+    "relevance_validity": "MI protected-drop minus nuisance-drop mean >= 0.005 and positive in at least 4/6 runs",
+    "selective_suppression": "macro nuisance verifier AUROC mean reduction >= 0.02 and reduction in at least 4/6 runs",
+    "protection": "MI protected erase drop after training retains at least 50% of pretraining drop, when pretraining drop >= 0.005",
+    "strong_signal": "MI mean validation improvement >= 0.01",
+    "viable_signal": "MI mean validation improvement >= 0.005 and nonnegative in at least 4/6 runs"
+  },
+  "outer_test_policy": {
+    "before_lock": "FORBIDDEN",
+    "development_entry_rejects_after_test_marker": true,
+    "formal_runs": "NOT AUTHORIZED unless a locked-method artifact is created from aggregate development gates"
+  },
+  "old_p4_immutable": [
+    "p4_persist_pb.py",
+    "outputs/persist_eeg_p3closure_p4/p4/P4_FINAL_REPORT.json",
+    "outputs/persist_eeg_p3closure_p4/p4/P4_ADAPTATION_LOG.json"
+  ]
+}
