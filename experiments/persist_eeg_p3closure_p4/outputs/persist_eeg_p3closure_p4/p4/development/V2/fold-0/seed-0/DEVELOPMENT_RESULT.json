@@ -1,0 +1,198 @@
+{
+  "status": "DEVELOPMENT_GATES_FAIL",
+  "version": "V2",
+  "fold": 0,
+  "seed": 0,
+  "data_used": [
+    "TRAIN",
+    "VALIDATION"
+  ],
+  "held_out_test_used": false,
+  "method_config": {
+    "version": "V2",
+    "rank": 8,
+    "embedding_dim": 128,
+    "readout": "residual",
+    "lambda_p": 0.35,
+    "lambda_order": 0.2,
+    "lambda_budget": 0.005,
+    "contrastive_temperature": 0.1,
+    "order_margin": 0.1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "batch_size": 64,
+    "max_epochs": 70,
+    "patience": 12,
+    "gradient_clip": 5.0,
+    "task_warmup_epochs": 5,
+    "persistence_ramp_epochs": 5,
+    "budget_start_epoch": 10,
+    "budget_ramp_epochs": 5
+  },
+  "checkpoint": "outputs/persist_eeg_p3closure_p4/p4/development/V2/fold-0/seed-0/best.pt",
+  "checkpoint_sha256": "7eda07fe3b7f0c448eb355b8aba2196e1507b0b8b45777b2f46dd56698dbecd6",
+  "best_epoch": 48,
+  "validation": {
+    "macro_BA": 0.7622446689113356,
+    "task_BA": {
+      "mi": 0.7327777777777778,
+      "erp": 0.6022895622895623,
+      "ssvep": 0.9516666666666667
+    },
+    "zero_persistence_macro_BA": 0.7547586980920314,
+    "zero_persistence_task_BA": {
+      "mi": 0.7155555555555555,
+      "erp": 0.5942760942760943,
+      "ssvep": 0.9544444444444444
+    },
+    "historical_EEGNet_reference": {
+      "mi": 0.7622222222222222,
+      "erp": 0.6308754208754208,
+      "ssvep": 0.9516666666666667
+    },
+    "PERSIST_minus_historical_reference": {
+      "mi": -0.029444444444444495,
+      "erp": -0.028585858585858492,
+      "ssvep": 0.0
+    },
+    "reference_warning": "NOT A FORMAL BASELINE COMPARISON"
+  },
+  "semantic": {
+    "per_task": {
+      "mi": {
+        "zp": {
+          "auroc": 0.7560763888888888,
+          "selected_c": 1.0,
+          "train_pairs": 1088,
+          "evaluation_pairs": 288
+        },
+        "hf": {
+          "auroc": 0.7669753086419753,
+          "selected_c": 1.0,
+          "train_pairs": 1088,
+          "evaluation_pairs": 288
+        },
+        "gap_zp_minus_hf": -0.010898919753086433
+      },
+      "erp": {
+        "zp": {
+          "auroc": 0.7826967592592593,
+          "selected_c": 1.0,
+          "train_pairs": 1088,
+          "evaluation_pairs": 288
+        },
+        "hf": {
+          "auroc": 0.658275462962963,
+          "selected_c": 1.0,
+          "train_pairs": 1088,
+          "evaluation_pairs": 288
+        },
+        "gap_zp_minus_hf": 0.12442129629629628
+      },
+      "ssvep": {
+        "zp": {
+          "auroc": 0.820408950617284,
+          "selected_c": 1.0,
+          "train_pairs": 2176,
+          "evaluation_pairs": 576
+        },
+        "hf": {
+          "auroc": 0.8593026620370371,
+          "selected_c": 1.0,
+          "train_pairs": 2176,
+          "evaluation_pairs": 576
+        },
+        "gap_zp_minus_hf": -0.03889371141975306
+      }
+    },
+    "zp_macro_AUROC": 0.7863940329218106,
+    "hf_macro_AUROC": 0.7615178112139919,
+    "macro_gap_zp_minus_hf": 0.02487622170781878
+  },
+  "gates": {
+    "mi": {
+      "values": [
+        0.4769921898841858,
+        0.41773197054862976,
+        0.43280547857284546,
+        0.415338933467865,
+        0.4798548221588135,
+        0.4443620443344116,
+        0.4472031593322754,
+        0.44645828008651733
+      ],
+      "mean": 0.4450933635234833,
+      "l1_budget": 3.560746908187866,
+      "effective_active_dimensions_gt_0_5": 0,
+      "learned_minus_zero_BA": 0.01722222222222225
+    },
+    "erp": {
+      "values": [
+        0.26060089468955994,
+        0.3092885911464691,
+        0.465364933013916,
+        0.3807939887046814,
+        0.4612261652946472,
+        0.4547083079814911,
+        0.43063703179359436,
+        0.4356752932071686
+      ],
+      "mean": 0.39978688955307007,
+      "l1_budget": 3.1982951164245605,
+      "effective_active_dimensions_gt_0_5": 0,
+      "learned_minus_zero_BA": 0.008013468013468028
+    },
+    "ssvep": {
+      "values": [
+        0.45393386483192444,
+        0.45383843779563904,
+        0.4893438220024109,
+        0.4715540409088135,
+        0.4476417601108551,
+        0.47190454602241516,
+        0.4331592917442322,
+        0.44416284561157227
+      ],
+      "mean": 0.4581923484802246,
+      "l1_budget": 3.665538787841797,
+      "effective_active_dimensions_gt_0_5": 0,
+      "learned_minus_zero_BA": -0.002777777777777768
+    }
+  },
+  "geometry": {
+    "orthogonality_error_max_abs": 1.8632580145450106e-07,
+    "reconstruction_relative_error_max": 2.921081582854488e-08,
+    "reconstruction_relative_error_mean": 2.2298988516502913e-08,
+    "hp_hf_cosine_abs_max": 1.601862761327677e-07,
+    "captured_energy_ratio": 0.25449290069047026,
+    "finite": true
+  },
+  "checks": {
+    "semantic_gap_at_least_0_05": false,
+    "no_task_worse_than_historical_reference_by_over_1pp": false,
+    "noncollapsed_budgets": true,
+    "task_dependent_budget_range_at_least_0_03": true,
+    "MI_uses_persistence": true,
+    "geometry_valid": true
+  },
+  "scaler_audit": {
+    "mean_path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/channel_mean.npy",
+    "std_path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/channel_std.npy",
+    "mean_sha256": "e10e0ce926a0a975d3dc0879932bee13073b3d344786663982b2f4488a205de7",
+    "std_sha256": "a8e48ae6f317040b7c6767fee3d21ae012fb01291ed83486554685251825f897",
+    "fit_population": "frozen fold train_subjects only (reused from P2)"
+  },
+  "outer_test_subject_ids_committed_but_not_loaded": [
+    "13",
+    "14",
+    "19",
+    "2",
+    "32",
+    "33",
+    "36",
+    "40",
+    "47",
+    "50",
+    "53"
+  ]
+}

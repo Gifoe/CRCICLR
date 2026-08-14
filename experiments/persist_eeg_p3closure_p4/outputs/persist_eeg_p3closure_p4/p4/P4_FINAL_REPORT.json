@@ -1,0 +1,982 @@
+{
+  "status": "P4_MAIN_METHOD_NOT_SUPPORTED",
+  "development_decision": "P4_MAIN_METHOD_NOT_YET_SUPPORTED",
+  "p3_status": "P3_CLOSED_AND_FROZEN",
+  "p4_core_method_abandoned": false,
+  "method_lock": "REFUSED",
+  "formal_outer_test": "NOT_RUN",
+  "test_driven_tuning_used": false,
+  "versions": {
+    "V0": {
+      "status": "DEVELOPMENT_GATES_FAIL",
+      "method_config": {
+        "version": "V0",
+        "rank": 8,
+        "embedding_dim": 128,
+        "readout": "concat",
+        "lambda_p": 0.2,
+        "lambda_order": 0.1,
+        "lambda_budget": 0.01,
+        "contrastive_temperature": 0.1,
+        "order_margin": 0.1,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "batch_size": 64,
+        "max_epochs": 70,
+        "patience": 12,
+        "gradient_clip": 5.0,
+        "task_warmup_epochs": 0,
+        "persistence_ramp_epochs": 0,
+        "budget_start_epoch": 0,
+        "budget_ramp_epochs": 0
+      },
+      "validation": {
+        "macro_BA": 0.772884399551066,
+        "task_BA": {
+          "mi": 0.7333333333333333,
+          "erp": 0.638097643097643,
+          "ssvep": 0.9472222222222222
+        },
+        "zero_persistence_macro_BA": 0.7753086419753087,
+        "zero_persistence_task_BA": {
+          "mi": 0.7327777777777778,
+          "erp": 0.6414814814814815,
+          "ssvep": 0.9516666666666667
+        },
+        "historical_EEGNet_reference": {
+          "mi": 0.7622222222222222,
+          "erp": 0.6308754208754208,
+          "ssvep": 0.9516666666666667
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": -0.028888888888888964,
+          "erp": 0.007222222222222241,
+          "ssvep": -0.004444444444444473
+        },
+        "reference_warning": "NOT A FORMAL BASELINE COMPARISON"
+      },
+      "semantic": {
+        "per_task": {
+          "mi": {
+            "zp": {
+              "auroc": 0.8370949074074074,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.8006365740740741,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.03645833333333337
+          },
+          "erp": {
+            "zp": {
+              "auroc": 0.7597897376543209,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.648485725308642,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.11130401234567888
+          },
+          "ssvep": {
+            "zp": {
+              "auroc": 0.8080753279320987,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "hf": {
+              "auroc": 0.7552806712962963,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "gap_zp_minus_hf": 0.052794656635802406
+          }
+        },
+        "zp_macro_AUROC": 0.8016533243312756,
+        "hf_macro_AUROC": 0.7348009902263374,
+        "macro_gap_zp_minus_hf": 0.06685233410493818
+      },
+      "gates": {
+        "mi": {
+          "values": [
+            0.18352584540843964,
+            0.21176601946353912,
+            0.20170217752456665,
+            0.22210003435611725,
+            0.1691005378961563,
+            0.1691853106021881,
+            0.11787386983633041,
+            0.07227413356304169
+          ],
+          "mean": 0.16844099760055542,
+          "l1_budget": 1.3475279808044434,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": 0.0005555555555555314
+        },
+        "erp": {
+          "values": [
+            0.24904997646808624,
+            0.2468113899230957,
+            0.1889069825410843,
+            0.18744318187236786,
+            0.2690904140472412,
+            0.2391507923603058,
+            0.19067656993865967,
+            0.16819992661476135
+          ],
+          "mean": 0.21741615235805511,
+          "l1_budget": 1.739329218864441,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": -0.003383838383838489
+        },
+        "ssvep": {
+          "values": [
+            0.3130990266799927,
+            0.33425822854042053,
+            0.40799224376678467,
+            0.27084916830062866,
+            0.299979031085968,
+            0.31364983320236206,
+            0.3140643537044525,
+            0.2565889358520508
+          ],
+          "mean": 0.3138101100921631,
+          "l1_budget": 2.5104808807373047,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": -0.004444444444444473
+        }
+      },
+      "geometry": {
+        "orthogonality_error_max_abs": 1.7281462749707543e-07,
+        "reconstruction_relative_error_max": 2.993748374963262e-08,
+        "reconstruction_relative_error_mean": 2.3760035135210123e-08,
+        "hp_hf_cosine_abs_max": 1.6259273401819132e-07,
+        "captured_energy_ratio": 0.1736336310013744,
+        "finite": true
+      },
+      "checks": {
+        "semantic_gap_at_least_0_05": true,
+        "no_task_worse_than_historical_reference_by_over_1pp": false,
+        "noncollapsed_budgets": true,
+        "task_dependent_budget_range_at_least_0_03": true,
+        "MI_uses_persistence": false,
+        "geometry_valid": true
+      }
+    },
+    "V1": {
+      "status": "DEVELOPMENT_GATES_FAIL",
+      "method_config": {
+        "version": "V1",
+        "rank": 8,
+        "embedding_dim": 128,
+        "readout": "concat",
+        "lambda_p": 0.35,
+        "lambda_order": 0.2,
+        "lambda_budget": 0.005,
+        "contrastive_temperature": 0.1,
+        "order_margin": 0.1,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "batch_size": 64,
+        "max_epochs": 70,
+        "patience": 12,
+        "gradient_clip": 5.0,
+        "task_warmup_epochs": 5,
+        "persistence_ramp_epochs": 5,
+        "budget_start_epoch": 10,
+        "budget_ramp_epochs": 5
+      },
+      "validation": {
+        "macro_BA": 0.7746071829405162,
+        "task_BA": {
+          "mi": 0.7472222222222222,
+          "erp": 0.6288215488215488,
+          "ssvep": 0.9477777777777778
+        },
+        "zero_persistence_macro_BA": 0.7761840628507296,
+        "zero_persistence_task_BA": {
+          "mi": 0.7455555555555555,
+          "erp": 0.6335521885521885,
+          "ssvep": 0.9494444444444444
+        },
+        "historical_EEGNet_reference": {
+          "mi": 0.7622222222222222,
+          "erp": 0.6308754208754208,
+          "ssvep": 0.9516666666666667
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": -0.015000000000000013,
+          "erp": -0.0020538720538719746,
+          "ssvep": -0.0038888888888888307
+        },
+        "reference_warning": "NOT A FORMAL BASELINE COMPARISON"
+      },
+      "semantic": {
+        "per_task": {
+          "mi": {
+            "zp": {
+              "auroc": 0.8168402777777778,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.7778742283950617,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.038966049382716084
+          },
+          "erp": {
+            "zp": {
+              "auroc": 0.773582175925926,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.7289255401234568,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.04465663580246926
+          },
+          "ssvep": {
+            "zp": {
+              "auroc": 0.7977189429012346,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "hf": {
+              "auroc": 0.7417414158950617,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "gap_zp_minus_hf": 0.05597752700617287
+          }
+        },
+        "zp_macro_AUROC": 0.7960471322016461,
+        "hf_macro_AUROC": 0.7495137281378601,
+        "macro_gap_zp_minus_hf": 0.04653340406378603
+      },
+      "gates": {
+        "mi": {
+          "values": [
+            0.45593026280403137,
+            0.4458908140659332,
+            0.3083665072917938,
+            0.42807573080062866,
+            0.43395546078681946,
+            0.416145920753479,
+            0.35057735443115234,
+            0.3418917953968048
+          ],
+          "mean": 0.39760422706604004,
+          "l1_budget": 3.1808338165283203,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": 0.0016666666666667052
+        },
+        "erp": {
+          "values": [
+            0.3214814364910126,
+            0.3851499855518341,
+            0.36650770902633667,
+            0.41435006260871887,
+            0.41925913095474243,
+            0.41151079535484314,
+            0.3193126320838928,
+            0.3836921751499176
+          ],
+          "mean": 0.3776579797267914,
+          "l1_budget": 3.021263837814331,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": -0.004730639730639696
+        },
+        "ssvep": {
+          "values": [
+            0.4779830873012543,
+            0.5154221653938293,
+            0.48769524693489075,
+            0.48366475105285645,
+            0.5078662633895874,
+            0.4973677098751068,
+            0.45600956678390503,
+            0.4881274104118347
+          ],
+          "mean": 0.4892670214176178,
+          "l1_budget": 3.9141361713409424,
+          "effective_active_dimensions_gt_0_5": 2,
+          "learned_minus_zero_BA": -0.0016666666666665941
+        }
+      },
+      "geometry": {
+        "orthogonality_error_max_abs": 2.0671211697909087e-07,
+        "reconstruction_relative_error_max": 2.9493570068644034e-08,
+        "reconstruction_relative_error_mean": 2.2032843806607038e-08,
+        "hp_hf_cosine_abs_max": 1.9671214540883773e-07,
+        "captured_energy_ratio": 0.2747398301049944,
+        "finite": true
+      },
+      "checks": {
+        "semantic_gap_at_least_0_05": false,
+        "no_task_worse_than_historical_reference_by_over_1pp": false,
+        "noncollapsed_budgets": true,
+        "task_dependent_budget_range_at_least_0_03": true,
+        "MI_uses_persistence": false,
+        "geometry_valid": true
+      }
+    },
+    "V2": {
+      "status": "DEVELOPMENT_GATES_FAIL",
+      "method_config": {
+        "version": "V2",
+        "rank": 8,
+        "embedding_dim": 128,
+        "readout": "residual",
+        "lambda_p": 0.35,
+        "lambda_order": 0.2,
+        "lambda_budget": 0.005,
+        "contrastive_temperature": 0.1,
+        "order_margin": 0.1,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "batch_size": 64,
+        "max_epochs": 70,
+        "patience": 12,
+        "gradient_clip": 5.0,
+        "task_warmup_epochs": 5,
+        "persistence_ramp_epochs": 5,
+        "budget_start_epoch": 10,
+        "budget_ramp_epochs": 5
+      },
+      "validation": {
+        "macro_BA": 0.7622446689113356,
+        "task_BA": {
+          "mi": 0.7327777777777778,
+          "erp": 0.6022895622895623,
+          "ssvep": 0.9516666666666667
+        },
+        "zero_persistence_macro_BA": 0.7547586980920314,
+        "zero_persistence_task_BA": {
+          "mi": 0.7155555555555555,
+          "erp": 0.5942760942760943,
+          "ssvep": 0.9544444444444444
+        },
+        "historical_EEGNet_reference": {
+          "mi": 0.7622222222222222,
+          "erp": 0.6308754208754208,
+          "ssvep": 0.9516666666666667
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": -0.029444444444444495,
+          "erp": -0.028585858585858492,
+          "ssvep": 0.0
+        },
+        "reference_warning": "NOT A FORMAL BASELINE COMPARISON"
+      },
+      "semantic": {
+        "per_task": {
+          "mi": {
+            "zp": {
+              "auroc": 0.7560763888888888,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.7669753086419753,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": -0.010898919753086433
+          },
+          "erp": {
+            "zp": {
+              "auroc": 0.7826967592592593,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.658275462962963,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.12442129629629628
+          },
+          "ssvep": {
+            "zp": {
+              "auroc": 0.820408950617284,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "hf": {
+              "auroc": 0.8593026620370371,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "gap_zp_minus_hf": -0.03889371141975306
+          }
+        },
+        "zp_macro_AUROC": 0.7863940329218106,
+        "hf_macro_AUROC": 0.7615178112139919,
+        "macro_gap_zp_minus_hf": 0.02487622170781878
+      },
+      "gates": {
+        "mi": {
+          "values": [
+            0.4769921898841858,
+            0.41773197054862976,
+            0.43280547857284546,
+            0.415338933467865,
+            0.4798548221588135,
+            0.4443620443344116,
+            0.4472031593322754,
+            0.44645828008651733
+          ],
+          "mean": 0.4450933635234833,
+          "l1_budget": 3.560746908187866,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": 0.01722222222222225
+        },
+        "erp": {
+          "values": [
+            0.26060089468955994,
+            0.3092885911464691,
+            0.465364933013916,
+            0.3807939887046814,
+            0.4612261652946472,
+            0.4547083079814911,
+            0.43063703179359436,
+            0.4356752932071686
+          ],
+          "mean": 0.39978688955307007,
+          "l1_budget": 3.1982951164245605,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": 0.008013468013468028
+        },
+        "ssvep": {
+          "values": [
+            0.45393386483192444,
+            0.45383843779563904,
+            0.4893438220024109,
+            0.4715540409088135,
+            0.4476417601108551,
+            0.47190454602241516,
+            0.4331592917442322,
+            0.44416284561157227
+          ],
+          "mean": 0.4581923484802246,
+          "l1_budget": 3.665538787841797,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": -0.002777777777777768
+        }
+      },
+      "geometry": {
+        "orthogonality_error_max_abs": 1.8632580145450106e-07,
+        "reconstruction_relative_error_max": 2.921081582854488e-08,
+        "reconstruction_relative_error_mean": 2.2298988516502913e-08,
+        "hp_hf_cosine_abs_max": 1.601862761327677e-07,
+        "captured_energy_ratio": 0.25449290069047026,
+        "finite": true
+      },
+      "checks": {
+        "semantic_gap_at_least_0_05": false,
+        "no_task_worse_than_historical_reference_by_over_1pp": false,
+        "noncollapsed_budgets": true,
+        "task_dependent_budget_range_at_least_0_03": true,
+        "MI_uses_persistence": true,
+        "geometry_valid": true
+      }
+    },
+    "V3": {
+      "status": "DEVELOPMENT_GATES_FAIL",
+      "method_config": {
+        "version": "V3",
+        "rank": 4,
+        "embedding_dim": 128,
+        "readout": "residual",
+        "lambda_p": 0.5,
+        "lambda_order": 0.25,
+        "lambda_budget": 0.0025,
+        "contrastive_temperature": 0.1,
+        "order_margin": 0.1,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "batch_size": 64,
+        "max_epochs": 70,
+        "patience": 12,
+        "gradient_clip": 5.0,
+        "task_warmup_epochs": 5,
+        "persistence_ramp_epochs": 8,
+        "budget_start_epoch": 13,
+        "budget_ramp_epochs": 8
+      },
+      "validation": {
+        "macro_BA": 0.7753367003367003,
+        "task_BA": {
+          "mi": 0.7755555555555556,
+          "erp": 0.6337878787878788,
+          "ssvep": 0.9166666666666667
+        },
+        "zero_persistence_macro_BA": 0.7712794612794612,
+        "zero_persistence_task_BA": {
+          "mi": 0.7588888888888888,
+          "erp": 0.6277272727272727,
+          "ssvep": 0.9272222222222222
+        },
+        "historical_EEGNet_reference": {
+          "mi": 0.7622222222222222,
+          "erp": 0.6308754208754208,
+          "ssvep": 0.9516666666666667
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": 0.013333333333333308,
+          "erp": 0.0029124579124579775,
+          "ssvep": -0.03499999999999992
+        },
+        "reference_warning": "NOT A FORMAL BASELINE COMPARISON"
+      },
+      "semantic": {
+        "per_task": {
+          "mi": {
+            "zp": {
+              "auroc": 0.7796585648148148,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.7534722222222222,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.02618634259259256
+          },
+          "erp": {
+            "zp": {
+              "auroc": 0.8191068672839505,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "hf": {
+              "auroc": 0.7465277777777778,
+              "selected_c": 1.0,
+              "train_pairs": 1088,
+              "evaluation_pairs": 288
+            },
+            "gap_zp_minus_hf": 0.07257908950617276
+          },
+          "ssvep": {
+            "zp": {
+              "auroc": 0.7764998070987653,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "hf": {
+              "auroc": 0.8232783564814815,
+              "selected_c": 1.0,
+              "train_pairs": 2176,
+              "evaluation_pairs": 576
+            },
+            "gap_zp_minus_hf": -0.046778549382716195
+          }
+        },
+        "zp_macro_AUROC": 0.7917550797325102,
+        "hf_macro_AUROC": 0.7744261188271605,
+        "macro_gap_zp_minus_hf": 0.017328960905349744
+      },
+      "gates": {
+        "mi": {
+          "values": [
+            0.10420741140842438,
+            0.4605025351047516,
+            0.47477468848228455,
+            0.17086674273014069
+          ],
+          "mean": 0.3025878667831421,
+          "l1_budget": 1.2103514671325684,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": 0.01666666666666672
+        },
+        "erp": {
+          "values": [
+            0.4462074041366577,
+            0.4358747899532318,
+            0.4603240191936493,
+            0.21434663236141205
+          ],
+          "mean": 0.3891882300376892,
+          "l1_budget": 1.5567529201507568,
+          "effective_active_dimensions_gt_0_5": 0,
+          "learned_minus_zero_BA": 0.0060606060606061
+        },
+        "ssvep": {
+          "values": [
+            0.46881312131881714,
+            0.5186412930488586,
+            0.47190776467323303,
+            0.48873406648635864
+          ],
+          "mean": 0.48702406883239746,
+          "l1_budget": 1.9480962753295898,
+          "effective_active_dimensions_gt_0_5": 1,
+          "learned_minus_zero_BA": -0.01055555555555543
+        }
+      },
+      "geometry": {
+        "orthogonality_error_max_abs": 1.6084314569120295e-07,
+        "reconstruction_relative_error_max": 2.9000468236064087e-08,
+        "reconstruction_relative_error_mean": 2.1820709909944e-08,
+        "hp_hf_cosine_abs_max": 2.2546048252909557e-07,
+        "captured_energy_ratio": 0.2893725591820375,
+        "finite": true
+      },
+      "checks": {
+        "semantic_gap_at_least_0_05": false,
+        "no_task_worse_than_historical_reference_by_over_1pp": false,
+        "noncollapsed_budgets": true,
+        "task_dependent_budget_range_at_least_0_03": true,
+        "MI_uses_persistence": true,
+        "geometry_valid": true
+      }
+    }
+  },
+  "required_answers": {
+    "A_real_persistence_subspace": {
+      "answer": "NOT_STABLY_SUPPORTED",
+      "evidence": {
+        "V0": {
+          "Persist_zP": 0.8016533243312756,
+          "Persist_hF": 0.7348009902263374,
+          "gap": 0.06685233410493818
+        },
+        "V1": {
+          "Persist_zP": 0.7960471322016461,
+          "Persist_hF": 0.7495137281378601,
+          "gap": 0.04653340406378603
+        },
+        "V2": {
+          "Persist_zP": 0.7863940329218106,
+          "Persist_hF": 0.7615178112139919,
+          "gap": 0.02487622170781878
+        },
+        "V3": {
+          "Persist_zP": 0.7917550797325102,
+          "Persist_hF": 0.7744261188271605,
+          "gap": 0.017328960905349744
+        }
+      },
+      "interpretation": "Only V0 exceeded the 0.05 macro heuristic; later versions that improved branch use did not preserve the semantic ordering."
+    },
+    "B_orthogonal_decomposition": {
+      "answer": "SUPPORTED_AS_ENGINEERING_INVARIANT",
+      "evidence": {
+        "V0": {
+          "orthogonality_error_max_abs": 1.7281462749707543e-07,
+          "reconstruction_relative_error_max": 2.993748374963262e-08,
+          "reconstruction_relative_error_mean": 2.3760035135210123e-08,
+          "hp_hf_cosine_abs_max": 1.6259273401819132e-07,
+          "captured_energy_ratio": 0.1736336310013744,
+          "finite": true
+        },
+        "V1": {
+          "orthogonality_error_max_abs": 2.0671211697909087e-07,
+          "reconstruction_relative_error_max": 2.9493570068644034e-08,
+          "reconstruction_relative_error_mean": 2.2032843806607038e-08,
+          "hp_hf_cosine_abs_max": 1.9671214540883773e-07,
+          "captured_energy_ratio": 0.2747398301049944,
+          "finite": true
+        },
+        "V2": {
+          "orthogonality_error_max_abs": 1.8632580145450106e-07,
+          "reconstruction_relative_error_max": 2.921081582854488e-08,
+          "reconstruction_relative_error_mean": 2.2298988516502913e-08,
+          "hp_hf_cosine_abs_max": 1.601862761327677e-07,
+          "captured_energy_ratio": 0.25449290069047026,
+          "finite": true
+        },
+        "V3": {
+          "orthogonality_error_max_abs": 1.6084314569120295e-07,
+          "reconstruction_relative_error_max": 2.9000468236064087e-08,
+          "reconstruction_relative_error_mean": 2.1820709909944e-08,
+          "hp_hf_cosine_abs_max": 2.2546048252909557e-07,
+          "captured_energy_ratio": 0.2893725591820375,
+          "finite": true
+        }
+      }
+    },
+    "C_task_specific_budgets": {
+      "answer": "NUMERIC_DIFFERENCES_EXIST_BUT_SCIENTIFIC_INTERPRETATION_NOT_SUPPORTED",
+      "evidence": {
+        "V0": {
+          "mi": {
+            "mean": 0.16844099760055542,
+            "active_dimensions": 0
+          },
+          "erp": {
+            "mean": 0.21741615235805511,
+            "active_dimensions": 0
+          },
+          "ssvep": {
+            "mean": 0.3138101100921631,
+            "active_dimensions": 0
+          }
+        },
+        "V1": {
+          "mi": {
+            "mean": 0.39760422706604004,
+            "active_dimensions": 0
+          },
+          "erp": {
+            "mean": 0.3776579797267914,
+            "active_dimensions": 0
+          },
+          "ssvep": {
+            "mean": 0.4892670214176178,
+            "active_dimensions": 2
+          }
+        },
+        "V2": {
+          "mi": {
+            "mean": 0.4450933635234833,
+            "active_dimensions": 0
+          },
+          "erp": {
+            "mean": 0.39978688955307007,
+            "active_dimensions": 0
+          },
+          "ssvep": {
+            "mean": 0.4581923484802246,
+            "active_dimensions": 0
+          }
+        },
+        "V3": {
+          "mi": {
+            "mean": 0.3025878667831421,
+            "active_dimensions": 0
+          },
+          "erp": {
+            "mean": 0.3891882300376892,
+            "active_dimensions": 0
+          },
+          "ssvep": {
+            "mean": 0.48702406883239746,
+            "active_dimensions": 1
+          }
+        }
+      },
+      "warning": "SSVEP had the largest mean gate in every version while MI had stronger P2 erasure utility. Gate magnitude did not recover the expected utility structure and was never supervised to do so."
+    },
+    "D_task_decoding": {
+      "answer": "NO_CANDIDATE_MET_THE_NO_GREATER_THAN_1PP_PER_TASK_WARNING",
+      "evidence": {
+        "V0": {
+          "mi": -0.028888888888888964,
+          "erp": 0.007222222222222241,
+          "ssvep": -0.004444444444444473
+        },
+        "V1": {
+          "mi": -0.015000000000000013,
+          "erp": -0.0020538720538719746,
+          "ssvep": -0.0038888888888888307
+        },
+        "V2": {
+          "mi": -0.029444444444444495,
+          "erp": -0.028585858585858492,
+          "ssvep": 0.0
+        },
+        "V3": {
+          "mi": 0.013333333333333308,
+          "erp": 0.0029124579124579775,
+          "ssvep": -0.03499999999999992
+        }
+      },
+      "warning": "These are development validation comparisons to a historical EEGNet reference, NOT A FORMAL BASELINE COMPARISON."
+    },
+    "E_modifications": [
+      {
+        "version": "V0",
+        "to_version": "V1",
+        "category": "OPTIMIZATION",
+        "problem": "Auxiliary and budget objectives act before task representation stabilizes; MI validation performance drops and its persistent path has negligible utility.",
+        "change": "Add 5-epoch task-only warmup, ramp persistence/order losses over 5 epochs, delay budget to epoch 10 and halve lambda_B; modestly strengthen matched persistence and ordering losses.",
+        "reason": "V0 passed the macro semantic gap and exact-geometry checks, so the core decomposition is retained. The observed failures are performance interaction and ineffective MI usage, not absence of persistence semantics.",
+        "evidence": {
+          "development_status": "DEVELOPMENT_GATES_FAIL",
+          "failed_checks": [
+            "no_task_worse_than_historical_reference_by_over_1pp",
+            "MI_uses_persistence"
+          ],
+          "validation_task_BA": {
+            "mi": 0.7333333333333333,
+            "erp": 0.638097643097643,
+            "ssvep": 0.9472222222222222
+          },
+          "PERSIST_minus_historical_reference": {
+            "mi": -0.028888888888888964,
+            "erp": 0.007222222222222241,
+            "ssvep": -0.004444444444444473
+          },
+          "semantic_macro_gap": 0.06685233410493818,
+          "MI_learned_minus_zero_BA": 0.0005555555555555314,
+          "gate_means": {
+            "mi": 0.16844099760055542,
+            "erp": 0.21741615235805511,
+            "ssvep": 0.3138101100921631
+          }
+        },
+        "data_used": [
+          "TRAIN",
+          "VALIDATION"
+        ],
+        "held_out_test_used": false
+      },
+      {
+        "version": "V1",
+        "to_version": "V2",
+        "category": "METHOD",
+        "problem": "The concatenation readout allows the persistent contribution to be weak or scale-confounded despite a valid semantic subspace.",
+        "change": "Use the prompt-authorized residual readout C_F(h_F) + C_P(g_t * z_P) while retaining the exact projector, pair relation, losses, rank, and curriculum.",
+        "reason": "This directly addresses persistent-path bypass after optimization/curriculum has already been tested.",
+        "evidence": {
+          "development_status": "DEVELOPMENT_GATES_FAIL",
+          "failed_checks": [
+            "semantic_gap_at_least_0_05",
+            "no_task_worse_than_historical_reference_by_over_1pp",
+            "MI_uses_persistence"
+          ],
+          "validation_task_BA": {
+            "mi": 0.7472222222222222,
+            "erp": 0.6288215488215488,
+            "ssvep": 0.9477777777777778
+          },
+          "PERSIST_minus_historical_reference": {
+            "mi": -0.015000000000000013,
+            "erp": -0.0020538720538719746,
+            "ssvep": -0.0038888888888888307
+          },
+          "semantic_macro_gap": 0.04653340406378603,
+          "MI_learned_minus_zero_BA": 0.0016666666666667052,
+          "gate_means": {
+            "mi": 0.39760422706604004,
+            "erp": 0.3776579797267914,
+            "ssvep": 0.4892670214176178
+          }
+        },
+        "data_used": [
+          "TRAIN",
+          "VALIDATION"
+        ],
+        "held_out_test_used": false
+      },
+      {
+        "version": "V2",
+        "to_version": "V3",
+        "category": "REPRESENTATION",
+        "problem": "A rank-8 residual persistent branch remains unstable or semantically diffuse.",
+        "change": "Reduce maximum rank from 8 to 4, strengthen persistence/order losses, and lengthen their ramp while weakening budget pressure.",
+        "reason": "P2/P3 estimated U_L ranks near 4-5; rank reduction is attempted only after optimization and readout failures.",
+        "evidence": {
+          "development_status": "DEVELOPMENT_GATES_FAIL",
+          "failed_checks": [
+            "semantic_gap_at_least_0_05",
+            "no_task_worse_than_historical_reference_by_over_1pp"
+          ],
+          "validation_task_BA": {
+            "mi": 0.7327777777777778,
+            "erp": 0.6022895622895623,
+            "ssvep": 0.9516666666666667
+          },
+          "PERSIST_minus_historical_reference": {
+            "mi": -0.029444444444444495,
+            "erp": -0.028585858585858492,
+            "ssvep": 0.0
+          },
+          "semantic_macro_gap": 0.02487622170781878,
+          "MI_learned_minus_zero_BA": 0.01722222222222225,
+          "gate_means": {
+            "mi": 0.4450933635234833,
+            "erp": 0.39978688955307007,
+            "ssvep": 0.4581923484802246
+          }
+        },
+        "data_used": [
+          "TRAIN",
+          "VALIDATION"
+        ],
+        "held_out_test_used": false
+      }
+    ],
+    "F_test_driven_tuning": "NO; OUTER_TEST_WAS_NEVER_ACCESSED"
+  },
+  "failure_analysis": [
+    "V0 organized persistence but the MI persistent branch was bypassed and MI BA fell.",
+    "V1 curriculum improved optimization but still failed semantic, MI-use, and per-task performance gates.",
+    "V2 residual readout made MI use persistence, but semantic ordering weakened and MI/ERP performance fell.",
+    "V3 rank reduction improved MI/ERP, but SSVEP fell by 3.5pp and SSVEP persistence ordering reversed.",
+    "Simple L1 gate magnitude is scale-sensitive and did not behave as a validated minimum-sufficient persistence measure."
+  ],
+  "development_checks": {
+    "V0": {
+      "semantic_gap_at_least_0_05": true,
+      "no_task_worse_than_historical_reference_by_over_1pp": false,
+      "noncollapsed_budgets": true,
+      "task_dependent_budget_range_at_least_0_03": true,
+      "MI_uses_persistence": false,
+      "geometry_valid": true
+    },
+    "V1": {
+      "semantic_gap_at_least_0_05": false,
+      "no_task_worse_than_historical_reference_by_over_1pp": false,
+      "noncollapsed_budgets": true,
+      "task_dependent_budget_range_at_least_0_03": true,
+      "MI_uses_persistence": false,
+      "geometry_valid": true
+    },
+    "V2": {
+      "semantic_gap_at_least_0_05": false,
+      "no_task_worse_than_historical_reference_by_over_1pp": false,
+      "noncollapsed_budgets": true,
+      "task_dependent_budget_range_at_least_0_03": true,
+      "MI_uses_persistence": true,
+      "geometry_valid": true
+    },
+    "V3": {
+      "semantic_gap_at_least_0_05": false,
+      "no_task_worse_than_historical_reference_by_over_1pp": false,
+      "noncollapsed_budgets": true,
+      "task_dependent_budget_range_at_least_0_03": true,
+      "MI_uses_persistence": true,
+      "geometry_valid": true
+    }
+  },
+  "external_dataset": {
+    "candidate": "EEGMMIDB run-level persistence",
+    "status": "NOT_RUN",
+    "reason": "The OpenBMI method did not meet the prerequisite viable development state."
+  },
+  "next": "STOP. A new protocol is required before more method search, formal baselines, ablations, or outer-test evaluation."
+}

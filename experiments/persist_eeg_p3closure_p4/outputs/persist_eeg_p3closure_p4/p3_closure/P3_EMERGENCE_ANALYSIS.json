@@ -1,0 +1,399 @@
+{
+  "definition": "fold means within each seed; deltas are best minus epoch0",
+  "test_data_used_for_adaptation": false,
+  "records": [
+    {
+      "seed": 0,
+      "task": "mi",
+      "epoch0": {
+        "task_BA": 0.549490909090909,
+        "long_AUROC": 0.6484774079125775,
+        "utility": 0.008163636363636373
+      },
+      "best": {
+        "task_BA": 0.758390909090909,
+        "long_AUROC": 0.8087908310062628,
+        "utility": -0.05583636363636364
+      },
+      "delta_task_BA": 0.20889999999999997,
+      "delta_long_AUROC": 0.16031342309368535,
+      "delta_utility": -0.06400000000000002
+    },
+    {
+      "seed": 0,
+      "task": "erp",
+      "epoch0": {
+        "task_BA": 0.5596549357315963,
+        "long_AUROC": 0.5260056747562629,
+        "utility": 0.006846623479295033
+      },
+      "best": {
+        "task_BA": 0.6529002255903809,
+        "long_AUROC": 0.7089572057802814,
+        "utility": -0.0017273064235315161
+      },
+      "delta_task_BA": 0.09324528985878455,
+      "delta_long_AUROC": 0.1829515310240185,
+      "delta_utility": -0.008573929902826549
+    },
+    {
+      "seed": 0,
+      "task": "ssvep",
+      "epoch0": {
+        "task_BA": 0.29967272727272726,
+        "long_AUROC": 0.5907820379083807,
+        "utility": 0.007400000000000018
+      },
+      "best": {
+        "task_BA": 0.9356818181818183,
+        "long_AUROC": 0.7674030378357438,
+        "utility": -0.0046909090909091015
+      },
+      "delta_task_BA": 0.636009090909091,
+      "delta_long_AUROC": 0.17662099992736313,
+      "delta_utility": -0.01209090909090912
+    },
+    {
+      "seed": 1,
+      "task": "mi",
+      "epoch0": {
+        "task_BA": 0.5610363636363637,
+        "long_AUROC": 0.6453543539756585,
+        "utility": 0.0015090909090908823
+      },
+      "best": {
+        "task_BA": 0.7534,
+        "long_AUROC": 0.8027239253777119,
+        "utility": -0.03309090909090906
+      },
+      "delta_task_BA": 0.1923636363636363,
+      "delta_long_AUROC": 0.15736957140205332,
+      "delta_utility": -0.03459999999999994
+    },
+    {
+      "seed": 1,
+      "task": "erp",
+      "epoch0": {
+        "task_BA": 0.5588624290737391,
+        "long_AUROC": 0.5261253076978951,
+        "utility": 0.010048983742845397
+      },
+      "best": {
+        "task_BA": 0.6473676589759509,
+        "long_AUROC": 0.7089613995512656,
+        "utility": -0.003443205684467765
+      },
+      "delta_task_BA": 0.08850522990221188,
+      "delta_long_AUROC": 0.18283609185337046,
+      "delta_utility": -0.013492189427313162
+    },
+    {
+      "seed": 1,
+      "task": "ssvep",
+      "epoch0": {
+        "task_BA": 0.2849,
+        "long_AUROC": 0.6039183077221074,
+        "utility": 0.0019272727272727497
+      },
+      "best": {
+        "task_BA": 0.9328818181818181,
+        "long_AUROC": 0.7751657977143595,
+        "utility": -0.01008181818181817
+      },
+      "delta_task_BA": 0.6479818181818182,
+      "delta_long_AUROC": 0.17124748999225203,
+      "delta_utility": -0.012009090909090919
+    },
+    {
+      "seed": 2,
+      "task": "mi",
+      "epoch0": {
+        "task_BA": 0.5604272727272728,
+        "long_AUROC": 0.6696638920051007,
+        "utility": 0.004654545454545444
+      },
+      "best": {
+        "task_BA": 0.7630363636363636,
+        "long_AUROC": 0.7967082812096462,
+        "utility": -0.059072727272727256
+      },
+      "delta_task_BA": 0.20260909090909085,
+      "delta_long_AUROC": 0.12704438920454553,
+      "delta_utility": -0.0637272727272727
+    },
+    {
+      "seed": 2,
+      "task": "erp",
+      "epoch0": {
+        "task_BA": 0.5495754958757373,
+        "long_AUROC": 0.5221182992478047,
+        "utility": 0.0056254345811801885
+      },
+      "best": {
+        "task_BA": 0.6540672734573583,
+        "long_AUROC": 0.7018235145758006,
+        "utility": -0.0026259262809340987
+      },
+      "delta_task_BA": 0.10449177758162098,
+      "delta_long_AUROC": 0.17970521532799588,
+      "delta_utility": -0.008251360862114287
+    },
+    {
+      "seed": 2,
+      "task": "ssvep",
+      "epoch0": {
+        "task_BA": 0.2783090909090909,
+        "long_AUROC": 0.6295941525293776,
+        "utility": -9.090909090913035e-05
+      },
+      "best": {
+        "task_BA": 0.9354818181818182,
+        "long_AUROC": 0.7709929542226239,
+        "utility": -0.007654545454545469
+      },
+      "delta_task_BA": 0.6571727272727272,
+      "delta_long_AUROC": 0.14139880169324637,
+      "delta_utility": -0.007563636363636339
+    },
+    {
+      "seed": 3,
+      "task": "mi",
+      "epoch0": {
+        "task_BA": 0.5816545454545455,
+        "long_AUROC": 0.687660254108019,
+        "utility": 0.00459999999999996
+      },
+      "best": {
+        "task_BA": 0.7613454545454545,
+        "long_AUROC": 0.792275687225594,
+        "utility": -0.03941818181818184
+      },
+      "delta_task_BA": 0.179690909090909,
+      "delta_long_AUROC": 0.10461543311757504,
+      "delta_utility": -0.0440181818181818
+    },
+    {
+      "seed": 3,
+      "task": "erp",
+      "epoch0": {
+        "task_BA": 0.5639820505342186,
+        "long_AUROC": 0.5218904726643208,
+        "utility": 0.004494390172470997
+      },
+      "best": {
+        "task_BA": 0.6555719757778542,
+        "long_AUROC": 0.7032995938387784,
+        "utility": -0.0022680364119950893
+      },
+      "delta_task_BA": 0.09158992524363563,
+      "delta_long_AUROC": 0.18140912117445762,
+      "delta_utility": -0.006762426584466086
+    },
+    {
+      "seed": 3,
+      "task": "ssvep",
+      "epoch0": {
+        "task_BA": 0.28806363636363636,
+        "long_AUROC": 0.6108105660430656,
+        "utility": 0.009245454545454557
+      },
+      "best": {
+        "task_BA": 0.9358545454545455,
+        "long_AUROC": 0.7626719355307335,
+        "utility": -0.01599090909090912
+      },
+      "delta_task_BA": 0.6477909090909091,
+      "delta_long_AUROC": 0.15186136948766793,
+      "delta_utility": -0.02523636363636368
+    },
+    {
+      "seed": 4,
+      "task": "mi",
+      "epoch0": {
+        "task_BA": 0.5819,
+        "long_AUROC": 0.6418663108132102,
+        "utility": 0.0020727272727272704
+      },
+      "best": {
+        "task_BA": 0.7525272727272727,
+        "long_AUROC": 0.7977080612813146,
+        "utility": -0.046509090909090965
+      },
+      "delta_task_BA": 0.17062727272727274,
+      "delta_long_AUROC": 0.15584175046810433,
+      "delta_utility": -0.04858181818181823
+    },
+    {
+      "seed": 4,
+      "task": "erp",
+      "epoch0": {
+        "task_BA": 0.5436826435428368,
+        "long_AUROC": 0.5104225317584581,
+        "utility": 0.005866130334548458
+      },
+      "best": {
+        "task_BA": 0.6501317012049525,
+        "long_AUROC": 0.7007809120367381,
+        "utility": -0.004937537510804257
+      },
+      "delta_task_BA": 0.10644905766211565,
+      "delta_long_AUROC": 0.19035838027828,
+      "delta_utility": -0.010803667845352714
+    },
+    {
+      "seed": 4,
+      "task": "ssvep",
+      "epoch0": {
+        "task_BA": 0.2787181818181818,
+        "long_AUROC": 0.6069413689227143,
+        "utility": 0.021227272727272706
+      },
+      "best": {
+        "task_BA": 0.9365454545454546,
+        "long_AUROC": 0.7777823990750904,
+        "utility": -0.014645454545454517
+      },
+      "delta_task_BA": 0.6578272727272727,
+      "delta_long_AUROC": 0.17084103015237606,
+      "delta_utility": -0.03587272727272722
+    }
+  ],
+  "persistence_strength_vs_utility": {
+    "status": "EXPLORATORY_ONLY",
+    "unit": "seed x prelocked checkpoint role after fold averaging",
+    "roles": [
+      "best",
+      "early",
+      "epoch0",
+      "middle"
+    ],
+    "within_seed": [
+      {
+        "seed": 0,
+        "task": "mi",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.7999999999999999,
+        "p_value": 0.2000000000000001
+      },
+      {
+        "seed": 1,
+        "task": "mi",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.19999999999999998,
+        "p_value": 0.8
+      },
+      {
+        "seed": 2,
+        "task": "mi",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.19999999999999998,
+        "p_value": 0.8
+      },
+      {
+        "seed": 3,
+        "task": "mi",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.7999999999999999,
+        "p_value": 0.2000000000000001
+      },
+      {
+        "seed": 4,
+        "task": "mi",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.19999999999999998,
+        "p_value": 0.8
+      },
+      {
+        "seed": 0,
+        "task": "erp",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.39999999999999997,
+        "p_value": 0.6000000000000001
+      },
+      {
+        "seed": 1,
+        "task": "erp",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.7999999999999999,
+        "p_value": 0.2000000000000001
+      },
+      {
+        "seed": 2,
+        "task": "erp",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.39999999999999997,
+        "p_value": 0.6000000000000001
+      },
+      {
+        "seed": 3,
+        "task": "erp",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.7999999999999999,
+        "p_value": 0.2000000000000001
+      },
+      {
+        "seed": 4,
+        "task": "erp",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.39999999999999997,
+        "p_value": 0.6000000000000001
+      },
+      {
+        "seed": 0,
+        "task": "ssvep",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.39999999999999997,
+        "p_value": 0.6000000000000001
+      },
+      {
+        "seed": 1,
+        "task": "ssvep",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -1.0,
+        "p_value": 0.0
+      },
+      {
+        "seed": 2,
+        "task": "ssvep",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.7999999999999999,
+        "p_value": 0.2000000000000001
+      },
+      {
+        "seed": 3,
+        "task": "ssvep",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.39999999999999997,
+        "p_value": 0.6000000000000001
+      },
+      {
+        "seed": 4,
+        "task": "ssvep",
+        "n_checkpoint_roles": 4,
+        "spearman_rho": -0.19999999999999998,
+        "p_value": 0.8
+      }
+    ],
+    "seed_demeaned_pooled": [
+      {
+        "task": "mi",
+        "n_seed_role_points": 20,
+        "spearman_rho": -0.4496240601503759,
+        "p_value": 0.046701909388062866
+      },
+      {
+        "task": "erp",
+        "n_seed_role_points": 20,
+        "spearman_rho": -0.544360902255639,
+        "p_value": 0.013082608661519588
+      },
+      {
+        "task": "ssvep",
+        "n_seed_role_points": 20,
+        "spearman_rho": -0.6616541353383457,
+        "p_value": 0.0014862222546038802
+      }
+    ],
+    "warning": "Four checkpoint roles per seed provide low power; this is not confirmatory evidence."
+  }
+}

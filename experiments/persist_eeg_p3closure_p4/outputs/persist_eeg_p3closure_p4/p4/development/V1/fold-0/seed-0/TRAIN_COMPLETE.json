@@ -1,0 +1,21 @@
+{
+  "status": "TRAIN_COMPLETE",
+  "version": "V1",
+  "fold": 0,
+  "seed": 0,
+  "best_epoch": 27,
+  "best_validation_macro_BA": 0.7746071829405162,
+  "best_checkpoint": "outputs/persist_eeg_p3closure_p4/p4/development/V1/fold-0/seed-0/best.pt",
+  "best_checkpoint_sha256": "7537a73607ec43ff46f94cb0079973951f0ad20b7f05d69f6d4607c2e13b4aed",
+  "epochs_completed": 40,
+  "minimum_full_coverage_epochs": 20,
+  "steps_per_epoch": 107,
+  "outer_test_used": false,
+  "scaler_audit": {
+    "mean_path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/channel_mean.npy",
+    "std_path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/channel_std.npy",
+    "mean_sha256": "e10e0ce926a0a975d3dc0879932bee13073b3d344786663982b2f4488a205de7",
+    "std_sha256": "a8e48ae6f317040b7c6767fee3d21ae012fb01291ed83486554685251825f897",
+    "fit_population": "frozen fold train_subjects only (reused from P2)"
+  }
+}

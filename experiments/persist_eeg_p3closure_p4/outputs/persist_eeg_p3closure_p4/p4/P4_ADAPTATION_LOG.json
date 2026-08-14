@@ -1,0 +1,118 @@
+{
+  "protocol": "maximum four major versions V0-V3; TRAIN/VALIDATION only",
+  "held_out_test_used": false,
+  "entries": [
+    {
+      "version": "V0",
+      "to_version": "V1",
+      "category": "OPTIMIZATION",
+      "problem": "Auxiliary and budget objectives act before task representation stabilizes; MI validation performance drops and its persistent path has negligible utility.",
+      "change": "Add 5-epoch task-only warmup, ramp persistence/order losses over 5 epochs, delay budget to epoch 10 and halve lambda_B; modestly strengthen matched persistence and ordering losses.",
+      "reason": "V0 passed the macro semantic gap and exact-geometry checks, so the core decomposition is retained. The observed failures are performance interaction and ineffective MI usage, not absence of persistence semantics.",
+      "evidence": {
+        "development_status": "DEVELOPMENT_GATES_FAIL",
+        "failed_checks": [
+          "no_task_worse_than_historical_reference_by_over_1pp",
+          "MI_uses_persistence"
+        ],
+        "validation_task_BA": {
+          "mi": 0.7333333333333333,
+          "erp": 0.638097643097643,
+          "ssvep": 0.9472222222222222
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": -0.028888888888888964,
+          "erp": 0.007222222222222241,
+          "ssvep": -0.004444444444444473
+        },
+        "semantic_macro_gap": 0.06685233410493818,
+        "MI_learned_minus_zero_BA": 0.0005555555555555314,
+        "gate_means": {
+          "mi": 0.16844099760055542,
+          "erp": 0.21741615235805511,
+          "ssvep": 0.3138101100921631
+        }
+      },
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "held_out_test_used": false
+    },
+    {
+      "version": "V1",
+      "to_version": "V2",
+      "category": "METHOD",
+      "problem": "The concatenation readout allows the persistent contribution to be weak or scale-confounded despite a valid semantic subspace.",
+      "change": "Use the prompt-authorized residual readout C_F(h_F) + C_P(g_t * z_P) while retaining the exact projector, pair relation, losses, rank, and curriculum.",
+      "reason": "This directly addresses persistent-path bypass after optimization/curriculum has already been tested.",
+      "evidence": {
+        "development_status": "DEVELOPMENT_GATES_FAIL",
+        "failed_checks": [
+          "semantic_gap_at_least_0_05",
+          "no_task_worse_than_historical_reference_by_over_1pp",
+          "MI_uses_persistence"
+        ],
+        "validation_task_BA": {
+          "mi": 0.7472222222222222,
+          "erp": 0.6288215488215488,
+          "ssvep": 0.9477777777777778
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": -0.015000000000000013,
+          "erp": -0.0020538720538719746,
+          "ssvep": -0.0038888888888888307
+        },
+        "semantic_macro_gap": 0.04653340406378603,
+        "MI_learned_minus_zero_BA": 0.0016666666666667052,
+        "gate_means": {
+          "mi": 0.39760422706604004,
+          "erp": 0.3776579797267914,
+          "ssvep": 0.4892670214176178
+        }
+      },
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "held_out_test_used": false
+    },
+    {
+      "version": "V2",
+      "to_version": "V3",
+      "category": "REPRESENTATION",
+      "problem": "A rank-8 residual persistent branch remains unstable or semantically diffuse.",
+      "change": "Reduce maximum rank from 8 to 4, strengthen persistence/order losses, and lengthen their ramp while weakening budget pressure.",
+      "reason": "P2/P3 estimated U_L ranks near 4-5; rank reduction is attempted only after optimization and readout failures.",
+      "evidence": {
+        "development_status": "DEVELOPMENT_GATES_FAIL",
+        "failed_checks": [
+          "semantic_gap_at_least_0_05",
+          "no_task_worse_than_historical_reference_by_over_1pp"
+        ],
+        "validation_task_BA": {
+          "mi": 0.7327777777777778,
+          "erp": 0.6022895622895623,
+          "ssvep": 0.9516666666666667
+        },
+        "PERSIST_minus_historical_reference": {
+          "mi": -0.029444444444444495,
+          "erp": -0.028585858585858492,
+          "ssvep": 0.0
+        },
+        "semantic_macro_gap": 0.02487622170781878,
+        "MI_learned_minus_zero_BA": 0.01722222222222225,
+        "gate_means": {
+          "mi": 0.4450933635234833,
+          "erp": 0.39978688955307007,
+          "ssvep": 0.4581923484802246
+        }
+      },
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "held_out_test_used": false
+    }
+  ]
+}

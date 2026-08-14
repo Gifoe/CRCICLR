@@ -1,0 +1,98 @@
+{
+  "status": "P3_CLOSED_AND_FROZEN",
+  "p2_status": "P2_PASS_MULTI_SEED_PERSISTENCE_UTILITY",
+  "selective_compression": "NOT_SUPPORTED",
+  "long_medium_independence": "NOT_SUPPORTED",
+  "MEDIUM_AS_INDEPENDENT_CORE_SCALE": "NOT_SUPPORTED",
+  "task_relevant_persistence_emergence": "EXPLORATORY_SUPPORT",
+  "formal_p4_representation": "PERSISTENT_PLUS_COMPLEMENTARY_FAST",
+  "forbidden_formalization": "zL_plus_zM_plus_zF",
+  "p3_checkpoint_runs": 171,
+  "headline": {
+    "MI_epoch0_to_best_BA": {
+      "mean": 0.19022222222222224,
+      "median": 0.19038888888888889,
+      "ci95": [
+        0.1727773148148148,
+        0.2074453703703703
+      ],
+      "p_two_sided": 0.0,
+      "probability_negative": 0.0,
+      "resamples": 10000
+    },
+    "SSVEP_epoch0_to_best_BA": {
+      "mean": 0.6495,
+      "median": 0.6495,
+      "ci95": [
+        0.6344074074074074,
+        0.6639814814814814
+      ],
+      "p_two_sided": 0.0,
+      "probability_negative": 0.0,
+      "resamples": 10000
+    },
+    "Long_epoch0_to_best_AUROC": {
+      "mean": 0.1557005328896605,
+      "median": 0.1556962001470872,
+      "ci95": [
+        0.14057923116801696,
+        0.17081971345124422
+      ],
+      "p_two_sided": 0.0,
+      "probability_negative": 0.0,
+      "resamples": 10000
+    },
+    "best_Long_AUROC": 0.7584030357507964,
+    "mean_UL_rank": {
+      "epoch0": 2.8,
+      "best": 4.88
+    },
+    "compression_negative_seeds": 0,
+    "UL_PCA_geometry_summary": {
+      "normalized_overlap_UL_PCA": {
+        "mean": 0.7451122322246497,
+        "std": 0.06321216229193881,
+        "min": 0.6517595268531906,
+        "max": 0.9017712793860803
+      },
+      "UL_captured_variance_ratio": {
+        "mean": 0.6791941728889087,
+        "std": 0.04650931410317506,
+        "min": 0.6047072253661036,
+        "max": 0.8027190601756742
+      },
+      "PCA_captured_variance_ratio": {
+        "mean": 0.7677489464402959,
+        "std": 0.043708026817834464,
+        "min": 0.6800648310341997,
+        "max": 0.8563647191320537
+      },
+      "UL_orthonormality_error": {
+        "mean": 1.2671849685882974e-08,
+        "std": 5.625558121922271e-09,
+        "min": 6.8946466313946075e-09,
+        "max": 2.5602205244723564e-08
+      },
+      "PCA_orthonormality_error": {
+        "mean": 1.6786572132332366e-15,
+        "std": 8.03998750447379e-16,
+        "min": 6.661338147750939e-16,
+        "max": 3.774758283725532e-15
+      },
+      "mean_principal_angles_degrees": [
+        5.670692883770467,
+        12.087590264293292,
+        22.56027605559789,
+        36.98208239718527
+      ],
+      "random_same_rank_mean_captured_variance": 0.038012653580527384
+    }
+  },
+  "interpretation": [
+    "Long persistence increased rather than compressed during training; the selective-compression hypothesis failed.",
+    "Medium persistence is weak and geometrically redundant with Long persistence, so it is not an independent core scale.",
+    "The P4 implication is a two-part decomposition: an explicitly persistent low-rank subspace plus its orthogonal complementary/fast component.",
+    "Trajectory relations are exploratory and may not be used as confirmatory evidence or to tune P4 on outer-test subjects."
+  ],
+  "test_driven_adaptation": false
+}
