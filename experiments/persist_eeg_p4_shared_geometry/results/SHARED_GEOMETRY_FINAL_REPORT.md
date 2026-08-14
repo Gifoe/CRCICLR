@@ -1,0 +1,1 @@
+# Shared Geometry Audit\n\nStatus: `PERSIST_USE_MECHANISM_NOT_SUPPORTED`\n\nMI LOSO prototype transfer exceeded random, but MI class-RDM Spearman is undefined for a binary task (one pairwise distance). Gate A/C are therefore not credited. SSVEP protected RDM consistency was below random. No PERSIST-USE method was designed or trained. Outer-test used: `false`.\n

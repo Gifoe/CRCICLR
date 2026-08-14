@@ -1,0 +1,11 @@
+{
+  "issue": "MI has two classes, so vectorized class RDM contains one distance and Spearman correlation is undefined; initial metric returned zero by design.",
+  "evidence": "All MI RDM and cross-session RDM values are undefined, while MI LOSO prototype transfer is positive.",
+  "change": "Preserve the conservative gate: do not credit RDM gates using an invalid scalar Spearman surrogate; report LOSO separately.",
+  "scientific_impact": "Prevents classification transfer from being misreported as shared geometry.",
+  "data_used": [
+    "TRAIN",
+    "DEVELOPMENT_VALIDATION"
+  ],
+  "outer_test_used": false
+}
