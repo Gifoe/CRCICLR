@@ -1,0 +1,37 @@
+{
+  "pass": false,
+  "rows": [
+    {
+      "task": "mi",
+      "recomputed_protected_union_gain_BA": -0.10590277777777779,
+      "signed_v3_saved_gain_BA": -0.118923611111111,
+      "absolute_difference": 0.013020833333333204,
+      "tolerance": 1e-08,
+      "pass": false,
+      "n_train": 4352,
+      "n_validation": 1152
+    },
+    {
+      "task": "erp",
+      "recomputed_protected_union_gain_BA": -0.06336805555555558,
+      "signed_v3_saved_gain_BA": -0.1024305555555555,
+      "absolute_difference": 0.03906249999999992,
+      "tolerance": 1e-08,
+      "pass": false,
+      "n_train": 4352,
+      "n_validation": 1152
+    },
+    {
+      "task": "ssvep",
+      "recomputed_protected_union_gain_BA": -0.10999999999999988,
+      "signed_v3_saved_gain_BA": -0.1099999999999998,
+      "absolute_difference": 6.938893903907228e-17,
+      "tolerance": 1e-08,
+      "pass": true,
+      "n_train": 6800,
+      "n_validation": 1800
+    }
+  ],
+  "tolerance": 1e-08,
+  "note": "Signed-V3 replay uses its historical sampling function; old artifact did not persist sampled indices."
+}

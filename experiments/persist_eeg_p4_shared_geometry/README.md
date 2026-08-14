@@ -22,3 +22,18 @@ cross-session differences are below the matched random control.
 JSON/CSV reports are retained as provenance and must not be interpreted as a
 fully compliant pass of the audit. In particular, Gate D and the geometry-
 utility link require a corrected rerun before any method design.
+
+## V1.1 strict repair
+
+`code/shared_geometry_v1_1.py` is the strict repair specified by the V1.1
+prompt. It reconstructs the full-TRAIN Signed-V3 spectrum before using frozen
+Protected ids, performs a genuine LOSO design, uses binary-compatible MI
+contrast metrics, and stops at Phase 0B if the frozen Signed-V3 validation
+effect cannot be reproduced.
+
+The V1.1 run stopped with `SHARED_GEOMETRY_BASIS_RECONSTRUCTION_FAIL` on
+fold 0/seed 0. The saved Signed-V3 artifact did not persist its sampled
+indices and its historical sampler used Python's process-dependent `hash()`;
+the replay differed for MI/ERP (SSVEP matched). Therefore no V1.1 geometry,
+transfer, Gate D, or Gate E result is reported, and no method training was
+started.
