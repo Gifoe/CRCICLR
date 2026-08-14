@@ -1,0 +1,33 @@
+{
+  "status": "P4_IGA_NOT_SUPPORTED",
+  "audit_v2_1": "P4_INTERVENTION_GUIDED_ADAPTATION_AUDIT_V2_1_PASS",
+  "versions": [
+    {
+      "version": "IGA-V0",
+      "observed_failure": "matched-control development gate failed before initialization correction",
+      "mean_delta_macro_BA": -0.0013882473808648303,
+      "positive_runs": 2,
+      "note": "superseded because control and IGA initializations were not identical"
+    },
+    {
+      "version": "IGA-V1",
+      "parent": "IGA-V0",
+      "modification": "lambda_N 0.10 to 0.01; lambda_P 0.10 to 0.20; identical adapter/head initialization for control and IGA",
+      "mean_delta_macro_BA": 3.52734617961777e-05,
+      "positive_runs": 1,
+      "task_mean_delta_BA": {
+        "mi": 0.00010964912280701326,
+        "erp": 0.0,
+        "ssvep": -3.828737418350621e-06
+      },
+      "gate": {
+        "mean_macro_ge_0.003": false,
+        "positive_runs_ge_4": false,
+        "task_ge_0.005": false,
+        "mi_degradation_ge_-0.005": true
+      }
+    }
+  ],
+  "reason": "Correct matched-control comparison shows no stable improvement; stop method development without IGA-V2/V3 or outer-test.",
+  "outer_test_used": false
+}

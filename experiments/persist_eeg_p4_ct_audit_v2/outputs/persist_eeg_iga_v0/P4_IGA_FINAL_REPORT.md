@@ -1,0 +1,1 @@
+# PERSIST-IGA\n\nAudit V2.1: `P4_INTERVENTION_GUIDED_ADAPTATION_AUDIT_V2_1_PASS`\n\nFinal decision: `P4_IGA_NOT_SUPPORTED`\n\nMatched IGA-V1 mean macro BA delta: `+0.000035`. Positive runs: `1/6`. The method did not meet the prospective viability gate. Outer-test was not accessed.\n

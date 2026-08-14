@@ -1,0 +1,95 @@
+{
+  "status": "P4_INTERVENTION_GUIDED_ADAPTATION_AUDIT_V2_1_PASS",
+  "gate": {
+    "mean_positive": true,
+    "at_least_5_of_6": true,
+    "hierarchical_ci_lcb_gt_zero": true,
+    "protected_gt_same_rank_random": true,
+    "nuisance_near_below_same_rank_random": true
+  },
+  "mean_mi_difference": 0.08324266972631185,
+  "positive_runs": 6,
+  "hierarchical_bootstrap": {
+    "draws": 10000,
+    "ci95": [
+      0.06157920666441539,
+      0.09943214849663885
+    ],
+    "sign_probability": 1.0
+  },
+  "runs": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "difference": 0.09633696247359924,
+      "mi_harm": {
+        "protected": 0.09633696247359924,
+        "nuisance": 0.0,
+        "random_same_total_rank": 0.018417466096813426,
+        "random_block_same_rank": 0.0021822131829527715
+      },
+      "outer_test_used": false
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "difference": 0.031780576403002136,
+      "mi_harm": {
+        "protected": 0.031780576403002136,
+        "nuisance": 0.0,
+        "random_same_total_rank": 0.018323278552111518,
+        "random_block_same_rank": 0.0047434297205464415
+      },
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "difference": 0.08147392262030684,
+      "mi_harm": {
+        "protected": 0.08147392262030684,
+        "nuisance": 0.0,
+        "random_same_total_rank": 0.024749599554843613,
+        "random_block_same_rank": -0.002887596244615602
+      },
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "difference": 0.11093527738264586,
+      "mi_harm": {
+        "protected": 0.11093527738264586,
+        "nuisance": 0.0,
+        "random_same_total_rank": 0.050775426742532076,
+        "random_block_same_rank": 0.014537339971550583
+      },
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "difference": 0.09520423129916888,
+      "mi_harm": {
+        "protected": 0.09520423129916888,
+        "nuisance": 0.0,
+        "random_same_total_rank": 0.055748566602960174,
+        "random_block_same_rank": 0.005147206542513065
+      },
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "difference": 0.08372504817914816,
+      "mi_harm": {
+        "protected": 0.08372504817914816,
+        "nuisance": 0.0,
+        "random_same_total_rank": 0.02805443354833205,
+        "random_block_same_rank": 0.009512910589456768
+      },
+      "outer_test_used": false
+    }
+  ],
+  "outer_test_used": false
+}

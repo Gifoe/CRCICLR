@@ -1,0 +1,137 @@
+{
+  "version": "IGA-V1",
+  "parent": "IGA-V0",
+  "observed_failure": "IGA-V0 mean macro BA gain -0.001388 and only 2/6 positive; MI harm was dominant in several runs",
+  "modification": "lambda_N 0.10 -> 0.01 and protected anchor 0.10 -> 0.20",
+  "runs": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "control": {
+        "mi": 0.742294891943593,
+        "erp": 0.5000992063492063,
+        "ssvep": 0.9114384489144989
+      },
+      "iga": {
+        "mi": 0.742294891943593,
+        "erp": 0.5000992063492063,
+        "ssvep": 0.9114384489144989
+      },
+      "delta_task": {
+        "mi": 0.0,
+        "erp": 0.0,
+        "ssvep": 0.0
+      },
+      "delta_macro_BA": 0.0,
+      "outer_test_used": false
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "control": {
+        "mi": 0.6855147141188331,
+        "erp": 0.5022332506203474,
+        "ssvep": 0.9054698771275208
+      },
+      "iga": {
+        "mi": 0.6855147141188331,
+        "erp": 0.5022332506203474,
+        "ssvep": 0.9067795046036424
+      },
+      "delta_task": {
+        "mi": 0.0,
+        "erp": 0.0,
+        "ssvep": 0.001309627476121622
+      },
+      "delta_macro_BA": 0.00043654249204039264,
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "control": {
+        "mi": 0.6627265115137982,
+        "erp": 0.49839141285065697,
+        "ssvep": 0.7175770422660432
+      },
+      "iga": {
+        "mi": 0.6627265115137982,
+        "erp": 0.49839141285065697,
+        "ssvep": 0.7169293738722609
+      },
+      "delta_task": {
+        "mi": 0.0,
+        "erp": 0.0,
+        "ssvep": -0.0006476683937823857
+      },
+      "delta_macro_BA": -0.00021588946459416558,
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "control": {
+        "mi": 0.6568278805120911,
+        "erp": 0.5021465128714384,
+        "ssvep": 0.9154559458048557
+      },
+      "iga": {
+        "mi": 0.6574857752489331,
+        "erp": 0.5021465128714384,
+        "ssvep": 0.9147710142980063
+      },
+      "delta_task": {
+        "mi": 0.0006578947368420796,
+        "erp": 0.0,
+        "ssvep": -0.00068493150684934
+      },
+      "delta_macro_BA": -9.012256669160834e-06,
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "control": {
+        "mi": 0.7506822525445576,
+        "erp": 0.498003123189854,
+        "ssvep": 0.7582901731262903
+      },
+      "iga": {
+        "mi": 0.7506822525445576,
+        "erp": 0.498003123189854,
+        "ssvep": 0.7582901731262903
+      },
+      "delta_task": {
+        "mi": 0.0,
+        "erp": 0.0,
+        "ssvep": 0.0
+      },
+      "delta_macro_BA": 0.0,
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "control": {
+        "mi": 0.6489517924065396,
+        "erp": 0.5,
+        "ssvep": 0.8709399270858619
+      },
+      "iga": {
+        "mi": 0.6489517924065396,
+        "erp": 0.5,
+        "ssvep": 0.8709399270858619
+      },
+      "delta_task": {
+        "mi": 0.0,
+        "erp": 0.0,
+        "ssvep": 0.0
+      },
+      "delta_macro_BA": 0.0,
+      "outer_test_used": false
+    }
+  ],
+  "mean_delta_macro_BA": 3.5273461796177706e-05,
+  "positive_runs": 1,
+  "outer_test_used": false
+}
