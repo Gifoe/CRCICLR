@@ -1,0 +1,1285 @@
+{
+  "fold": 1,
+  "seed": 1,
+  "rows": [
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 0,
+      "dimensions": 1,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": -0.0002665049259179711,
+      "u_abs_CI95": [
+        -0.0010498037588570213,
+        0.0004970070498040509
+      ],
+      "u_abs_sign_probability": 0.254,
+      "u_spec_mean": -0.005928480199773644,
+      "u_spec_CI95": [
+        -0.007057167166942321,
+        -0.004885473709060481
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.0013346354166666667,
+      "same_rank_random_BA_change": -0.008010986328125,
+      "u_abs_bootstrap": {
+        "mean": -0.0002665049259179711,
+        "ci95": [
+          -0.0010498037588570213,
+          0.0004970070498040509
+        ],
+        "sign_probability": 0.254,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.005928480199773644,
+        "ci95": [
+          -0.007057167166942321,
+          -0.004885473709060481
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 1,
+      "dimensions": 1,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": -0.0008235957666049296,
+      "u_abs_CI95": [
+        -0.0015678914725701628,
+        -8.406985451485513e-05
+      ],
+      "u_abs_sign_probability": 0.0141,
+      "u_spec_mean": -0.007253105771606974,
+      "u_spec_CI95": [
+        -0.008532372646725333,
+        -0.006008710618983728
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.001652018229166667,
+      "same_rank_random_BA_change": -0.009174194335937498,
+      "u_abs_bootstrap": {
+        "mean": -0.0008235957666049296,
+        "ci95": [
+          -0.0015678914725701628,
+          -8.406985451485513e-05
+        ],
+        "sign_probability": 0.0141,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.007253105771606974,
+        "ci95": [
+          -0.008532372646725333,
+          -0.006008710618983728
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 2,
+      "dimensions": 3,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.001005041319711605,
+      "u_abs_CI95": [
+        -0.001555289388446744,
+        0.0036475457152735716
+      ],
+      "u_abs_sign_probability": 0.7704,
+      "u_spec_mean": -0.01790256425926562,
+      "u_spec_CI95": [
+        -0.021902336099729542,
+        -0.014301885388454328
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.0018513997395833335,
+      "same_rank_random_BA_change": -0.026770792643229166,
+      "u_abs_bootstrap": {
+        "mean": 0.001005041319711605,
+        "ci95": [
+          -0.001555289388446744,
+          0.0036475457152735716
+        ],
+        "sign_probability": 0.7704,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.01790256425926562,
+        "ci95": [
+          -0.021902336099729542,
+          -0.014301885388454328
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 3,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.014604055811647481,
+      "u_abs_CI95": [
+        0.00922566135717343,
+        0.02017661028106555
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": -0.0107617286333906,
+      "u_spec_CI95": [
+        -0.01436582890334067,
+        -0.007036059971818938
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": -0.023856608072916667,
+      "same_rank_random_BA_change": -0.03587459309895833,
+      "u_abs_bootstrap": {
+        "mean": 0.014604055811647481,
+        "ci95": [
+          0.00922566135717343,
+          0.02017661028106555
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.0107617286333906,
+        "ci95": [
+          -0.01436582890334067,
+          -0.007036059971818938
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 4,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.08135591997968789,
+      "u_abs_CI95": [
+        0.058017055020533434,
+        0.10773202073513014
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": 0.07047537237672169,
+      "u_spec_CI95": [
+        0.047874967041340005,
+        0.0961387447395241
+      ],
+      "u_spec_sign_probability": 1.0,
+      "raw_BA_change": -0.10794270833333333,
+      "same_rank_random_BA_change": -0.014742716471354167,
+      "u_abs_bootstrap": {
+        "mean": 0.08135591997968789,
+        "ci95": [
+          0.058017055020533434,
+          0.10773202073513014
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": 0.07047537237672169,
+        "ci95": [
+          0.047874967041340005,
+          0.0961387447395241
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 5,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.022150418374857695,
+      "u_abs_CI95": [
+        0.018372339375003544,
+        0.025966800916668975
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": -0.001755616161118306,
+      "u_spec_CI95": [
+        -0.010012775434758052,
+        0.005620099305246189
+      ],
+      "u_spec_sign_probability": 0.3332,
+      "raw_BA_change": -0.0343017578125,
+      "same_rank_random_BA_change": -0.0343363037109375,
+      "u_abs_bootstrap": {
+        "mean": 0.022150418374857695,
+        "ci95": [
+          0.018372339375003544,
+          0.025966800916668975
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.001755616161118306,
+        "ci95": [
+          -0.010012775434758052,
+          0.005620099305246189
+        ],
+        "sign_probability": 0.3332,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "block": 6,
+      "dimensions": 3,
+      "persistence_supported": false,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.00959961995662648,
+      "u_abs_CI95": [
+        0.007236889401936306,
+        0.011998132188507062
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": -0.009333015782733909,
+      "u_spec_CI95": [
+        -0.01462100663726715,
+        -0.0043413765181588015
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": -0.011804199218749999,
+      "same_rank_random_BA_change": -0.027118570963541665,
+      "u_abs_bootstrap": {
+        "mean": 0.00959961995662648,
+        "ci95": [
+          0.007236889401936306,
+          0.011998132188507062
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.009333015782733909,
+        "ci95": [
+          -0.01462100663726715,
+          -0.0043413765181588015
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 0,
+      "dimensions": 1,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.00032911385441256524,
+      "u_abs_CI95": [
+        -0.000447867073031291,
+        0.0010784913476613494
+      ],
+      "u_abs_sign_probability": 0.8042,
+      "u_spec_mean": -0.0014342356156077127,
+      "u_spec_CI95": [
+        -0.002201381828397989,
+        -0.0007135153124938708
+      ],
+      "u_spec_sign_probability": 0.0001,
+      "raw_BA_change": -0.0006347656249999999,
+      "same_rank_random_BA_change": -0.002058634440104167,
+      "u_abs_bootstrap": {
+        "mean": 0.00032911385441256524,
+        "ci95": [
+          -0.000447867073031291,
+          0.0010784913476613494
+        ],
+        "sign_probability": 0.8042,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.0014342356156077127,
+        "ci95": [
+          -0.002201381828397989,
+          -0.0007135153124938708
+        ],
+        "sign_probability": 0.0001,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 1,
+      "dimensions": 1,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": -0.000258592961540106,
+      "u_abs_CI95": [
+        -0.000468568751630868,
+        -5.8597918077806386e-05
+      ],
+      "u_abs_sign_probability": 0.0046,
+      "u_spec_mean": -0.0018294071362718284,
+      "u_spec_CI95": [
+        -0.0021851287707272235,
+        -0.0014847144623937741
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.0017252604166666666,
+      "same_rank_random_BA_change": -0.0020154215494791665,
+      "u_abs_bootstrap": {
+        "mean": -0.000258592961540106,
+        "ci95": [
+          -0.000468568751630868,
+          -5.8597918077806386e-05
+        ],
+        "sign_probability": 0.0046,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.0018294071362718284,
+        "ci95": [
+          -0.0021851287707272235,
+          -0.0014847144623937741
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 2,
+      "dimensions": 3,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": -0.00033514504920594847,
+      "u_abs_CI95": [
+        -0.00114736661824934,
+        0.00041808772248285315
+      ],
+      "u_abs_sign_probability": 0.2023,
+      "u_spec_mean": -0.006405640534041683,
+      "u_spec_CI95": [
+        -0.007494016848677571,
+        -0.005307525804596017
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.0009562174479166667,
+      "same_rank_random_BA_change": -0.010396931966145833,
+      "u_abs_bootstrap": {
+        "mean": -0.00033514504920594847,
+        "ci95": [
+          -0.00114736661824934,
+          0.00041808772248285315
+        ],
+        "sign_probability": 0.2023,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.006405640534041683,
+        "ci95": [
+          -0.007494016848677571,
+          -0.005307525804596017
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 3,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.00035633855888607044,
+      "u_abs_CI95": [
+        -0.0006318787070222996,
+        0.001374046795583387
+      ],
+      "u_abs_sign_probability": 0.7535,
+      "u_spec_mean": -0.00794752014333743,
+      "u_spec_CI95": [
+        -0.009581083753541025,
+        -0.006325623143140689
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": -0.0005452473958333333,
+      "same_rank_random_BA_change": -0.015830810546875,
+      "u_abs_bootstrap": {
+        "mean": 0.00035633855888607044,
+        "ci95": [
+          -0.0006318787070222996,
+          0.001374046795583387
+        ],
+        "sign_probability": 0.7535,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.00794752014333743,
+        "ci95": [
+          -0.009581083753541025,
+          -0.006325623143140689
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 4,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": -7.872102372354702e-06,
+      "u_abs_CI95": [
+        -0.0012286111572474513,
+        0.0011801605729645241
+      ],
+      "u_abs_sign_probability": 0.4947,
+      "u_spec_mean": -0.008465289108959958,
+      "u_spec_CI95": [
+        -0.009981844205434397,
+        -0.0069037657534390924
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.004300944010416667,
+      "same_rank_random_BA_change": -0.016703450520833336,
+      "u_abs_bootstrap": {
+        "mean": -7.872102372354702e-06,
+        "ci95": [
+          -0.0012286111572474513,
+          0.0011801605729645241
+        ],
+        "sign_probability": 0.4947,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.008465289108959958,
+        "ci95": [
+          -0.009981844205434397,
+          -0.0069037657534390924
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 5,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.020429079608339284,
+      "u_abs_CI95": [
+        0.0171417170147741,
+        0.02410683674822244
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": 0.016837072508477942,
+      "u_spec_CI95": [
+        0.013727851554444637,
+        0.020271773380554182
+      ],
+      "u_spec_sign_probability": 1.0,
+      "raw_BA_change": -0.049572753906249996,
+      "same_rank_random_BA_change": -0.0038405354817708337,
+      "u_abs_bootstrap": {
+        "mean": 0.020429079608339284,
+        "ci95": [
+          0.0171417170147741,
+          0.02410683674822244
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": 0.016837072508477942,
+        "ci95": [
+          0.013727851554444637,
+          0.020271773380554182
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "block": 6,
+      "dimensions": 3,
+      "persistence_supported": false,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.013285048773334383,
+      "u_abs_CI95": [
+        0.010347473375794641,
+        0.016274662032536292
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": 0.009926619227581208,
+      "u_spec_CI95": [
+        0.007080785992770763,
+        0.012816179376053772
+      ],
+      "u_spec_sign_probability": 1.0,
+      "raw_BA_change": -0.019051106770833333,
+      "same_rank_random_BA_change": -0.005323079427083334,
+      "u_abs_bootstrap": {
+        "mean": 0.013285048773334383,
+        "ci95": [
+          0.010347473375794641,
+          0.016274662032536292
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": 0.009926619227581208,
+        "ci95": [
+          0.007080785992770763,
+          0.012816179376053772
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 0,
+      "dimensions": 1,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 5.640929444339711e-05,
+      "u_abs_CI95": [
+        -0.0005095227338595997,
+        0.000601653442670707
+      ],
+      "u_abs_sign_probability": 0.5719,
+      "u_spec_mean": -0.0032198614890484303,
+      "u_spec_CI95": [
+        -0.003679822160217756,
+        -0.0027558287098076186
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.0008020833333333333,
+      "same_rank_random_BA_change": -0.003295494791666668,
+      "u_abs_bootstrap": {
+        "mean": 5.640929444339711e-05,
+        "ci95": [
+          -0.0005095227338595997,
+          0.000601653442670707
+        ],
+        "sign_probability": 0.5719,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.0032198614890484303,
+        "ci95": [
+          -0.003679822160217756,
+          -0.0027558287098076186
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 1,
+      "dimensions": 1,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": -4.548855217844543e-05,
+      "u_abs_CI95": [
+        -0.0012688648021326196,
+        0.0012244158392717172
+      ],
+      "u_abs_sign_probability": 0.4702,
+      "u_spec_mean": -0.002982162780588947,
+      "u_spec_CI95": [
+        -0.004460709075760161,
+        -0.0014789724273349834
+      ],
+      "u_spec_sign_probability": 0.0002,
+      "raw_BA_change": -9.63541666666674e-05,
+      "same_rank_random_BA_change": -0.002658671875000001,
+      "u_abs_bootstrap": {
+        "mean": -4.548855217844543e-05,
+        "ci95": [
+          -0.0012688648021326196,
+          0.0012244158392717172
+        ],
+        "sign_probability": 0.4702,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.002982162780588947,
+        "ci95": [
+          -0.004460709075760161,
+          -0.0014789724273349834
+        ],
+        "sign_probability": 0.0002,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 2,
+      "dimensions": 3,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.0003877885023433276,
+      "u_abs_CI95": [
+        -0.0007095671481263114,
+        0.0014668269218945256
+      ],
+      "u_abs_sign_probability": 0.762,
+      "u_spec_mean": -0.01203844403064582,
+      "u_spec_CI95": [
+        -0.01372980624952202,
+        -0.010445954057568142
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.00010677083333333415,
+      "same_rank_random_BA_change": -0.011636067708333338,
+      "u_abs_bootstrap": {
+        "mean": 0.0003877885023433276,
+        "ci95": [
+          -0.0007095671481263114,
+          0.0014668269218945256
+        ],
+        "sign_probability": 0.762,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.01203844403064582,
+        "ci95": [
+          -0.01372980624952202,
+          -0.010445954057568142
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 3,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.04516302295412841,
+      "u_abs_CI95": [
+        0.03914497835214349,
+        0.05102881605709336
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": 0.03591821564513975,
+      "u_spec_CI95": [
+        0.0290703629101139,
+        0.04267974832288308
+      ],
+      "u_spec_sign_probability": 1.0,
+      "raw_BA_change": -0.04379947916666667,
+      "same_rank_random_BA_change": -0.007857968750000003,
+      "u_abs_bootstrap": {
+        "mean": 0.04516302295412841,
+        "ci95": [
+          0.03914497835214349,
+          0.05102881605709336
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": 0.03591821564513975,
+        "ci95": [
+          0.0290703629101139,
+          0.04267974832288308
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 4,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.04634705039787694,
+      "u_abs_CI95": [
+        0.038590291373984606,
+        0.05415859255550782
+      ],
+      "u_abs_sign_probability": 1.0,
+      "u_spec_mean": 0.03655839523601251,
+      "u_spec_CI95": [
+        0.027785592829377204,
+        0.04531925502543361
+      ],
+      "u_spec_sign_probability": 1.0,
+      "raw_BA_change": -0.03915104166666667,
+      "same_rank_random_BA_change": -0.009617395833333337,
+      "u_abs_bootstrap": {
+        "mean": 0.04634705039787694,
+        "ci95": [
+          0.038590291373984606,
+          0.05415859255550782
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": 0.03655839523601251,
+        "ci95": [
+          0.027785592829377204,
+          0.04531925502543361
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 5,
+      "dimensions": 4,
+      "persistence_supported": true,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.0019348244590366177,
+      "u_abs_CI95": [
+        -4.441447114670291e-06,
+        0.003803443397699961
+      ],
+      "u_abs_sign_probability": 0.9749,
+      "u_spec_mean": -0.015981197636164225,
+      "u_spec_CI95": [
+        -0.018536906233495073,
+        -0.013554548231250244
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": 0.0008593750000000009,
+      "same_rank_random_BA_change": -0.01703606770833334,
+      "u_abs_bootstrap": {
+        "mean": 0.0019348244590366177,
+        "ci95": [
+          -4.441447114670291e-06,
+          0.003803443397699961
+        ],
+        "sign_probability": 0.9749,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.015981197636164225,
+        "ci95": [
+          -0.018536906233495073,
+          -0.013554548231250244
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "block": 6,
+      "dimensions": 3,
+      "persistence_supported": false,
+      "n_unique_subjects": 32,
+      "n_split_observations": 85,
+      "bootstrap_hierarchy": "aggregate_unique_subject_across_inner_splits_then_subject_bootstrap",
+      "u_abs_mean": 0.0014764558129141082,
+      "u_abs_CI95": [
+        1.539942416929992e-05,
+        0.0028375136160525122
+      ],
+      "u_abs_sign_probability": 0.9761,
+      "u_spec_mean": -0.010292751129906859,
+      "u_spec_CI95": [
+        -0.011717868534750257,
+        -0.008977817517156452
+      ],
+      "u_spec_sign_probability": 0.0,
+      "raw_BA_change": -0.002385416666666668,
+      "same_rank_random_BA_change": -0.011251354166666672,
+      "u_abs_bootstrap": {
+        "mean": 0.0014764558129141082,
+        "ci95": [
+          1.539942416929992e-05,
+          0.0028375136160525122
+        ],
+        "sign_probability": 0.9761,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "u_spec_bootstrap": {
+        "mean": -0.010292751129906859,
+        "ci95": [
+          -0.011717868534750257,
+          -0.008977817517156452
+        ],
+        "sign_probability": 0.0,
+        "draws": 10000,
+        "n_unique_subjects": 32
+      },
+      "random_interventions": 100
+    }
+  ],
+  "assignments": {
+    "mi": {
+      "protected": [
+        4
+      ],
+      "harmful": [
+        1
+      ],
+      "neutral": [
+        0,
+        1,
+        2
+      ],
+      "uncertain": [
+        3,
+        5,
+        6
+      ]
+    },
+    "erp": {
+      "protected": [
+        5
+      ],
+      "harmful": [
+        1
+      ],
+      "neutral": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "uncertain": [
+        6
+      ]
+    },
+    "ssvep": {
+      "protected": [
+        3,
+        4
+      ],
+      "harmful": [],
+      "neutral": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "uncertain": [
+        6
+      ]
+    }
+  },
+  "validation": [
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "protected",
+      "block": 4,
+      "validation_gain_BA": -0.09461805555555569,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "harmful",
+      "block": 1,
+      "validation_gain_BA": -0.0017361111111111605,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "neutral",
+      "block": 0,
+      "validation_gain_BA": -0.0008680555555556912,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "neutral",
+      "block": 1,
+      "validation_gain_BA": -0.0017361111111111605,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "neutral",
+      "block": 2,
+      "validation_gain_BA": 0.0078125,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "protected_union",
+      "block": "union",
+      "validation_gain_BA": -0.09461805555555569,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "harmful_union",
+      "block": "union",
+      "validation_gain_BA": -0.0017361111111111605,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "same_total",
+      "block": "random",
+      "validation_gain_BA": -0.006154513888888946,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "mi",
+      "kind": "same_block",
+      "block": "random",
+      "validation_gain_BA": -0.006154513888888946,
+      "raw_BA": 0.6927083333333334
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "protected",
+      "block": 5,
+      "validation_gain_BA": -0.0355902777777779,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "harmful",
+      "block": 1,
+      "validation_gain_BA": -1.1102230246251565e-16,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "neutral",
+      "block": 0,
+      "validation_gain_BA": -0.0078125,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "neutral",
+      "block": 1,
+      "validation_gain_BA": -1.1102230246251565e-16,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "neutral",
+      "block": 2,
+      "validation_gain_BA": 0.005208333333333259,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "neutral",
+      "block": 3,
+      "validation_gain_BA": -0.006944444444444531,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "neutral",
+      "block": 4,
+      "validation_gain_BA": 0.01041666666666663,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "protected_union",
+      "block": "union",
+      "validation_gain_BA": -0.0355902777777779,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "harmful_union",
+      "block": "union",
+      "validation_gain_BA": -1.1102230246251565e-16,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "same_total",
+      "block": "random",
+      "validation_gain_BA": -0.005911458333333408,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "erp",
+      "kind": "same_block",
+      "block": "random",
+      "validation_gain_BA": -0.005911458333333408,
+      "raw_BA": 0.6197916666666667
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "protected",
+      "block": 3,
+      "validation_gain_BA": -0.023333333333333428,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "protected",
+      "block": 4,
+      "validation_gain_BA": -0.02666666666666684,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "neutral",
+      "block": 0,
+      "validation_gain_BA": -0.0011111111111111738,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "neutral",
+      "block": 1,
+      "validation_gain_BA": 0.0,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "neutral",
+      "block": 2,
+      "validation_gain_BA": -0.0038888888888889417,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "neutral",
+      "block": 5,
+      "validation_gain_BA": -0.006111111111111178,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "protected_union",
+      "block": "union",
+      "validation_gain_BA": -0.07444444444444454,
+      "raw_BA": 0.9577777777777778
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "task": "ssvep",
+      "kind": "same_block",
+      "block": "random",
+      "validation_gain_BA": -0.0035666666666667136,
+      "raw_BA": 0.9577777777777778
+    }
+  ],
+  "audit_sampling": {
+    "per_subject_session_event_cap": 32,
+    "deterministic": true
+  },
+  "outer_test_used": false
+}

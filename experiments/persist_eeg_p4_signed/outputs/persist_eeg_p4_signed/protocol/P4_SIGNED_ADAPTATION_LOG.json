@@ -1,0 +1,13 @@
+{
+  "version": "Signed-Audit-V3",
+  "parent": "Audit-V2.1",
+  "observed_failure": "V2.1 negative calibrated utility was not sufficient to establish harmful persistence",
+  "modification": "separate absolute CE utility from matched-rank specificity; signed train-only assignment; deterministic ERP sampling; validation sign-transfer audit",
+  "scientific_reason": "harmful requires negative absolute and negative specific utility with train-only confidence, then positive validation transfer",
+  "data_used": [
+    "TRAIN",
+    "VALIDATION"
+  ],
+  "outer_test_used": false,
+  "final_decision": "P4_SIGNED_PERSISTENCE_HAS_NO_ACTIONABLE_HEADROOM"
+}

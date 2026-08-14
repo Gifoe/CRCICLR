@@ -1,0 +1,221 @@
+{
+  "status": "P4_SIGNED_PERSISTENCE_HAS_NO_ACTIONABLE_HEADROOM",
+  "baseline_reproduction": "P4_SIGNED_BASELINE_REPRO_PASS",
+  "audit_v3": {
+    "status": "P4_SIGNED_PERSISTENCE_HAS_NO_ACTIONABLE_HEADROOM",
+    "decisions": {
+      "mi": {
+        "harmful_identified_ge4": false,
+        "positive_union_ge4": false,
+        "mean_gain_ge005": false,
+        "bootstrap_lcb_gt0": false,
+        "exceeds_random": true,
+        "protected_erasure_harmful": true,
+        "mean_gain": -0.0002893518518518601,
+        "bootstrap_ci95": [
+          -0.0008680555555555802,
+          0.0
+        ]
+      },
+      "erp": {
+        "harmful_identified_ge4": false,
+        "positive_union_ge4": false,
+        "mean_gain_ge005": false,
+        "bootstrap_lcb_gt0": false,
+        "exceeds_random": true,
+        "protected_erasure_harmful": true,
+        "mean_gain": 0.00014467592592591153,
+        "bootstrap_ci95": [
+          -5.551115123125783e-17,
+          0.0004340277777777901
+        ]
+      },
+      "ssvep": {
+        "harmful_identified_ge4": false,
+        "positive_union_ge4": false,
+        "mean_gain_ge005": false,
+        "bootstrap_lcb_gt0": false,
+        "exceeds_random": true,
+        "protected_erasure_harmful": true,
+        "mean_gain": -0.0002777777777777842,
+        "bootstrap_ci95": [
+          -0.0008333333333333526,
+          0.0
+        ]
+      }
+    },
+    "task_go": {
+      "mi": false,
+      "erp": false,
+      "ssvep": false
+    },
+    "rows": [
+      {
+        "fold": 0,
+        "seed": 0,
+        "task": "mi",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.11892361111111105,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 0,
+        "seed": 0,
+        "task": "erp",
+        "harmful_blocks": 1,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.10243055555555558,
+        "same_total_random_gain": -0.01079861111111111
+      },
+      {
+        "fold": 0,
+        "seed": 0,
+        "task": "ssvep",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.10999999999999988,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 0,
+        "seed": 1,
+        "task": "mi",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.11979166666666674,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 0,
+        "seed": 1,
+        "task": "erp",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.0546875,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 0,
+        "seed": 1,
+        "task": "ssvep",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.03777777777777769,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 1,
+        "seed": 0,
+        "task": "mi",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.05381944444444453,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 1,
+        "seed": 0,
+        "task": "erp",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.05729166666666674,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 1,
+        "seed": 0,
+        "task": "ssvep",
+        "harmful_blocks": 1,
+        "harmful_union_gain": -0.0016666666666667052,
+        "protected_union_loss": 0.08277777777777784,
+        "same_total_random_gain": -0.004938888888888941
+      },
+      {
+        "fold": 1,
+        "seed": 1,
+        "task": "mi",
+        "harmful_blocks": 1,
+        "harmful_union_gain": -0.0017361111111111605,
+        "protected_union_loss": 0.09461805555555569,
+        "same_total_random_gain": -0.006154513888888946
+      },
+      {
+        "fold": 1,
+        "seed": 1,
+        "task": "erp",
+        "harmful_blocks": 1,
+        "harmful_union_gain": -1.1102230246251565e-16,
+        "protected_union_loss": 0.0355902777777779,
+        "same_total_random_gain": -0.005911458333333408
+      },
+      {
+        "fold": 1,
+        "seed": 1,
+        "task": "ssvep",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.07444444444444454,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 2,
+        "seed": 0,
+        "task": "mi",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.14322916666666663,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 2,
+        "seed": 0,
+        "task": "erp",
+        "harmful_blocks": 1,
+        "harmful_union_gain": 0.0008680555555555802,
+        "protected_union_loss": 0.07118055555555558,
+        "same_total_random_gain": 0.002387152777777736
+      },
+      {
+        "fold": 2,
+        "seed": 0,
+        "task": "ssvep",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.028888888888888964,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 2,
+        "seed": 1,
+        "task": "mi",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.10763888888888895,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 2,
+        "seed": 1,
+        "task": "erp",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.0,
+        "same_total_random_gain": 0.0
+      },
+      {
+        "fold": 2,
+        "seed": 1,
+        "task": "ssvep",
+        "harmful_blocks": 0,
+        "harmful_union_gain": 0.0,
+        "protected_union_loss": 0.050555555555555576,
+        "same_total_random_gain": 0.0
+      }
+    ],
+    "outer_test_used": false
+  },
+  "method_training_started": false,
+  "outer_test_used": false,
+  "reason": "No task met all six prospective actionable-headroom criteria; no SIG-V0/V1/V2 training authorized."
+}

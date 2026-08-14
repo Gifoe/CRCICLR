@@ -1,0 +1,13 @@
+{
+  "inner_splits": 5,
+  "random_draws": 100,
+  "bootstrap_draws": 10000,
+  "epsilon_neutral": 0.005,
+  "full_128D_ridge": true,
+  "erp_sampling": {
+    "per_subject_session_event_cap": 32,
+    "deterministic": true,
+    "same_for_control_and_method": true
+  },
+  "outer_test_used": false
+}

@@ -1,0 +1,143 @@
+{
+  "runs": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "historical_checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-0\\seed-0\\best.pt",
+      "metrics": {
+        "mi": {
+          "BA": 0.7622222222222222,
+          "n": 1800
+        },
+        "erp": {
+          "BA": 0.6308754208754208,
+          "n": 35640
+        },
+        "ssvep": {
+          "BA": 0.9516666666666667,
+          "n": 1800
+        }
+      },
+      "erp_not_collapsed": true,
+      "mi_scale_valid": true,
+      "ssvep_scale_valid": true
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "historical_checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-0\\seed-1\\best.pt",
+      "metrics": {
+        "mi": {
+          "BA": 0.7622222222222222,
+          "n": 1800
+        },
+        "erp": {
+          "BA": 0.6296127946127946,
+          "n": 35640
+        },
+        "ssvep": {
+          "BA": 0.9516666666666668,
+          "n": 1800
+        }
+      },
+      "erp_not_collapsed": true,
+      "mi_scale_valid": true,
+      "ssvep_scale_valid": true
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "historical_checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-1\\seed-0\\best.pt",
+      "metrics": {
+        "mi": {
+          "BA": 0.6922222222222223,
+          "n": 1800
+        },
+        "erp": {
+          "BA": 0.6346464646464647,
+          "n": 35640
+        },
+        "ssvep": {
+          "BA": 0.9461111111111111,
+          "n": 1800
+        }
+      },
+      "erp_not_collapsed": true,
+      "mi_scale_valid": true,
+      "ssvep_scale_valid": true
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "historical_checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-1\\seed-1\\best.pt",
+      "metrics": {
+        "mi": {
+          "BA": 0.6927777777777777,
+          "n": 1800
+        },
+        "erp": {
+          "BA": 0.6166666666666667,
+          "n": 35640
+        },
+        "ssvep": {
+          "BA": 0.9561111111111111,
+          "n": 1800
+        }
+      },
+      "erp_not_collapsed": true,
+      "mi_scale_valid": true,
+      "ssvep_scale_valid": true
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "historical_checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-2\\seed-0\\best.pt",
+      "metrics": {
+        "mi": {
+          "BA": 0.7511111111111111,
+          "n": 1800
+        },
+        "erp": {
+          "BA": 0.6445454545454545,
+          "n": 35640
+        },
+        "ssvep": {
+          "BA": 0.9277777777777778,
+          "n": 1800
+        }
+      },
+      "erp_not_collapsed": true,
+      "mi_scale_valid": true,
+      "ssvep_scale_valid": true
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "historical_checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-2\\seed-1\\best.pt",
+      "metrics": {
+        "mi": {
+          "BA": 0.755,
+          "n": 1800
+        },
+        "erp": {
+          "BA": 0.6278787878787879,
+          "n": 35640
+        },
+        "ssvep": {
+          "BA": 0.9100000000000001,
+          "n": 1800
+        }
+      },
+      "erp_not_collapsed": true,
+      "mi_scale_valid": true,
+      "ssvep_scale_valid": true
+    }
+  ],
+  "outer_test_used": false,
+  "status": "P4_SIGNED_BASELINE_REPRO_PASS",
+  "criteria": {
+    "erp_not_collapsed_all": true,
+    "mi_scale_all": true,
+    "ssvep_scale_all": true
+  }
+}

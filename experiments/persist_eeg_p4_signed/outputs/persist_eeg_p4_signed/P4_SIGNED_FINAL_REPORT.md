@@ -1,0 +1,1 @@
+# PERSIST-SIG\n\nBaseline reproduction: `P4_SIGNED_BASELINE_REPRO_PASS`\n\nSigned Audit V3 decision: `P4_SIGNED_PERSISTENCE_HAS_NO_ACTIONABLE_HEADROOM`\n\nNo SIG-V0/V1/V2 method training was started. Outer-test was not accessed.\n
