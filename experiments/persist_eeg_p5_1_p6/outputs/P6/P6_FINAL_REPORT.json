@@ -1,0 +1,56 @@
+{
+  "status": "PERSISTENCE_GEOMETRY_HAS_NO_DECISION_FUSION_HEADROOM",
+  "primary": {
+    "mean_protected_fusion_delta_BA": -0.0010185185185185113,
+    "positive_runs": 0,
+    "n_runs": 6,
+    "hierarchical_subject_run_bootstrap": {
+      "mean": -0.0010209907407407396,
+      "ci95": [
+        -0.0036111111111111122,
+        0.0
+      ],
+      "sign_probability": 0.0097,
+      "draws": 10000,
+      "n_runs": 6,
+      "n_subject_values": 54
+    },
+    "random_mean_delta_BA": -0.0004657407407407405,
+    "protected_beats_random_runs": 3,
+    "control_mean_delta_BA": {
+      "same_rank_random": -0.0004657407407407405,
+      "protected_uniform": -0.0010185185185185113,
+      "shuffled_weights": -0.0010185185185185113,
+      "all_persistence_supported": 0.0,
+      "full_canonical": 0.0
+    },
+    "protected_beats_control": {
+      "same_rank_random": false,
+      "protected_uniform": false,
+      "shuffled_weights": false,
+      "all_persistence_supported": false,
+      "full_canonical": false
+    },
+    "mean_complementarity": {
+      "BA_base": 0.7429629629629629,
+      "BA_geometry_only": 0.6840740740740742,
+      "base_wrong_geometry_right": 110.33333333333333,
+      "base_right_geometry_wrong": 216.33333333333334,
+      "prediction_disagreement_rate": 0.1814814814814815,
+      "oracle_union_BA": 0.8042592592592591,
+      "oracle_gain_over_base": 0.06129629629629627
+    }
+  },
+  "gates": {
+    "mean_delta_ge_0.005": false,
+    "positive_runs_ge_4": false,
+    "ci_lower_gt_0": false,
+    "catastrophic_runs_le_1": true,
+    "protected_beats_random": false,
+    "protected_beats_relevant_controls": false,
+    "genuine_complementarity": true,
+    "no_target_centering_or_adaptation": true
+  },
+  "outer_test_used": false,
+  "interpretation": "Frozen Protected geometry was tested as a scalar readout; no representation alignment or target adaptation was used."
+}

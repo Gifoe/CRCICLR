@@ -1,0 +1,260 @@
+{
+  "status": "PERSISTENCE_GEOMETRY_HAS_NO_DECISION_FUSION_HEADROOM",
+  "p5": {
+    "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+    "implementation_id": "p5_1_nested_train_only_v1_p6_readout_v1",
+    "versions": {
+      "V0": {
+        "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+        "version": "V0",
+        "primary": {
+          "mean_delta_BA": -0.0009259259259259226,
+          "positive_runs": 2,
+          "n_runs": 6,
+          "hierarchical_subject_run_bootstrap": {
+            "mean": -0.0009326944444444407,
+            "ci95": [
+              -0.0029629629629629533,
+              0.0008333333333333317
+            ],
+            "sign_probability": 0.1698,
+            "draws": 10000,
+            "n_runs": 6,
+            "n_subject_values": 54
+          },
+          "geometry_delta": {
+            "alignment_same": 0.008184313187720596,
+            "alignment_cross": 0.008167224763720135,
+            "geometry_margin": 0.004499159080700736
+          },
+          "random_intervention": {
+            "method_protected_drop": 0.12953703703703706,
+            "method_random_drop": 0.05507407407407409
+          }
+        },
+        "rules": {
+          "viable": {
+            "mean_delta_ge_0.005": false,
+            "positive_runs_ge_4": false,
+            "ci_lower_gt_0": false,
+            "catastrophic_runs_le_1": true,
+            "geometry_support": true,
+            "random_not_same": true
+          }
+        },
+        "outer_test_used": false,
+        "selection_scope": "TRAIN-only five-fold subject-disjoint nested CV; development validation evaluated once after selection"
+      },
+      "V1": {
+        "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+        "version": "V1",
+        "primary": {
+          "mean_delta_BA": -0.0006481481481481755,
+          "positive_runs": 3,
+          "n_runs": 6,
+          "hierarchical_subject_run_bootstrap": {
+            "mean": -0.0006505277777777813,
+            "ci95": [
+              -0.0025925925925925773,
+              0.0009259259259259131
+            ],
+            "sign_probability": 0.2319,
+            "draws": 10000,
+            "n_runs": 6,
+            "n_subject_values": 54
+          },
+          "geometry_delta": {
+            "alignment_same": 0.007933629452492355,
+            "alignment_cross": 0.007915975991636515,
+            "geometry_margin": 0.004356728452775206
+          },
+          "random_intervention": {
+            "method_protected_drop": 0.12953703703703703,
+            "method_random_drop": 0.04573148148148152
+          }
+        },
+        "rules": {
+          "viable": {
+            "mean_delta_ge_0.005": false,
+            "positive_runs_ge_4": false,
+            "ci_lower_gt_0": false,
+            "catastrophic_runs_le_1": true,
+            "geometry_support": true,
+            "random_not_same": true
+          }
+        },
+        "outer_test_used": false,
+        "selection_scope": "TRAIN-only five-fold subject-disjoint nested CV; development validation evaluated once after selection"
+      },
+      "V2": {
+        "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+        "version": "V2",
+        "primary": {
+          "mean_delta_BA": -0.0018518518518518638,
+          "positive_runs": 0,
+          "n_runs": 6,
+          "hierarchical_subject_run_bootstrap": {
+            "mean": -0.0018507314814814738,
+            "ci95": [
+              -0.004351851851851833,
+              -9.259259259258889e-05
+            ],
+            "sign_probability": 0.0176,
+            "draws": 10000,
+            "n_runs": 6,
+            "n_subject_values": 54
+          },
+          "geometry_delta": {
+            "alignment_same": 0.003084976846973101,
+            "alignment_cross": 0.003058925805682381,
+            "geometry_margin": 0.0014644721005525746
+          },
+          "random_intervention": {
+            "method_protected_drop": 0.12990740740740736,
+            "method_random_drop": 0.04979629629629623
+          }
+        },
+        "rules": {
+          "viable": {
+            "mean_delta_ge_0.005": false,
+            "positive_runs_ge_4": false,
+            "ci_lower_gt_0": false,
+            "catastrophic_runs_le_1": true,
+            "geometry_support": true,
+            "random_not_same": true
+          }
+        },
+        "outer_test_used": false,
+        "selection_scope": "TRAIN-only five-fold subject-disjoint nested CV; development validation evaluated once after selection"
+      }
+    },
+    "v3": {
+      "status": "NOT_AUTHORIZED_FIXED_RULE",
+      "version": "V3",
+      "authorized": false,
+      "reason": "P5.1 V2 did not satisfy the original V3 rule.",
+      "evidence": {
+        "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+        "version": "V2",
+        "primary": {
+          "mean_delta_BA": -0.0018518518518518638,
+          "positive_runs": 0,
+          "n_runs": 6,
+          "hierarchical_subject_run_bootstrap": {
+            "mean": -0.0018507314814814738,
+            "ci95": [
+              -0.004351851851851833,
+              -9.259259259258889e-05
+            ],
+            "sign_probability": 0.0176,
+            "draws": 10000,
+            "n_runs": 6,
+            "n_subject_values": 54
+          },
+          "geometry_delta": {
+            "alignment_same": 0.003084976846973101,
+            "alignment_cross": 0.003058925805682381,
+            "geometry_margin": 0.0014644721005525746
+          },
+          "random_intervention": {
+            "method_protected_drop": 0.12990740740740736,
+            "method_random_drop": 0.04979629629629623
+          }
+        },
+        "rules": {
+          "viable": {
+            "mean_delta_ge_0.005": false,
+            "positive_runs_ge_4": false,
+            "ci_lower_gt_0": false,
+            "catastrophic_runs_le_1": true,
+            "geometry_support": true,
+            "random_not_same": true
+          }
+        },
+        "outer_test_used": false,
+        "selection_scope": "TRAIN-only five-fold subject-disjoint nested CV; development validation evaluated once after selection"
+      },
+      "outer_test_used": false
+    },
+    "outer_test_used": false,
+    "p5_1_protocol": "TRAIN-only 5-fold subject-disjoint nested CV; development validation evaluated once after frozen selection",
+    "p6_authorized": true
+  },
+  "p6": {
+    "status": "PERSISTENCE_GEOMETRY_HAS_NO_DECISION_FUSION_HEADROOM",
+    "primary": {
+      "mean_protected_fusion_delta_BA": -0.0010185185185185113,
+      "positive_runs": 0,
+      "n_runs": 6,
+      "hierarchical_subject_run_bootstrap": {
+        "mean": -0.0010209907407407396,
+        "ci95": [
+          -0.0036111111111111122,
+          0.0
+        ],
+        "sign_probability": 0.0097,
+        "draws": 10000,
+        "n_runs": 6,
+        "n_subject_values": 54
+      },
+      "random_mean_delta_BA": -0.0004657407407407405,
+      "protected_beats_random_runs": 3,
+      "control_mean_delta_BA": {
+        "same_rank_random": -0.0004657407407407405,
+        "protected_uniform": -0.0010185185185185113,
+        "shuffled_weights": -0.0010185185185185113,
+        "all_persistence_supported": 0.0,
+        "full_canonical": 0.0
+      },
+      "protected_beats_control": {
+        "same_rank_random": false,
+        "protected_uniform": false,
+        "shuffled_weights": false,
+        "all_persistence_supported": false,
+        "full_canonical": false
+      },
+      "mean_complementarity": {
+        "BA_base": 0.7429629629629629,
+        "BA_geometry_only": 0.6840740740740742,
+        "base_wrong_geometry_right": 110.33333333333333,
+        "base_right_geometry_wrong": 216.33333333333334,
+        "prediction_disagreement_rate": 0.1814814814814815,
+        "oracle_union_BA": 0.8042592592592591,
+        "oracle_gain_over_base": 0.06129629629629627
+      }
+    },
+    "gates": {
+      "mean_delta_ge_0.005": false,
+      "positive_runs_ge_4": false,
+      "ci_lower_gt_0": false,
+      "catastrophic_runs_le_1": true,
+      "protected_beats_random": false,
+      "protected_beats_relevant_controls": false,
+      "genuine_complementarity": true,
+      "no_target_centering_or_adaptation": true
+    },
+    "outer_test_used": false,
+    "interpretation": "Frozen Protected geometry was tested as a scalar readout; no representation alignment or target adaptation was used."
+  },
+  "answers": {
+    "1_train_only_tuning_rescued_icg": false,
+    "1_best_p5_1_version": "V1",
+    "1_best_p5_1_mean_delta_BA": -0.0006481481481481755,
+    "2_v3_authorized": false,
+    "3_geometry_alignment_improved_decoding": false,
+    "4_protected_geometry_complementary": true,
+    "5_train_only_fusion_improved_BA": false,
+    "5_mean_fusion_delta_BA": -0.0010185185185185113,
+    "6_control_mean_deltas": {
+      "same_rank_random": -0.0004657407407407074,
+      "protected_uniform": -0.0010185185185185,
+      "shuffled_weights": -0.0010185185185185,
+      "all_persistence": 0.0,
+      "full_canonical": 0.0
+    },
+    "6_controls_explain_gain": true,
+    "7_terminal_label": "PERSISTENCE_GEOMETRY_HAS_NO_DECISION_FUSION_HEADROOM"
+  },
+  "outer_test_used": false,
+  "implementation_id": "p5_1_nested_train_only_v1_p6_readout_v1"
+}

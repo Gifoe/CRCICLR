@@ -1,0 +1,52 @@
+{
+  "implementation_id": "p5_1_nested_train_only_v1_p6_readout_v1",
+  "primary_task": "MI",
+  "outer_test_used": false,
+  "p5_1": {
+    "versions": [
+      "V0",
+      "V1",
+      "V2"
+    ],
+    "inner_subject_folds": 5,
+    "stage1_lambda_geometry": [
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "stage2_lambda_drift": [
+      0.01,
+      0.1
+    ],
+    "stage2_learning_rate": [
+      0.0001,
+      0.0003
+    ],
+    "bottleneck": 8,
+    "max_serious_configurations": 12,
+    "selection_data": "outer TRAIN subjects only",
+    "development_validation": "evaluated once after configuration and duration freeze"
+  },
+  "p6": {
+    "alpha_grid": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "random_same_rank_draws": 100,
+    "representation_modified": false,
+    "target_centering_or_adaptation": false,
+    "controls": [
+      "same_rank_random",
+      "all_persistence_supported",
+      "full_canonical_linear",
+      "shuffled_protected_weights",
+      "protected_uniform"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "checks": {
+    "all_json_parse": true,
+    "all_json_outer_test_flags_false": true,
+    "all_csv_outer_test_flags_false": true,
+    "candidate_summary_count_216": true,
+    "inner_result_count_1080": true,
+    "selected_config_count_18": true,
+    "twelve_candidates_per_run": true,
+    "stage1_4_stage2_8_per_run": true,
+    "five_inner_folds_per_candidate": true,
+    "selected_configs_are_stage2": true,
+    "authorized_hyperparameter_grid_only": true,
+    "inner_splits_subject_disjoint_and_shared_across_versions": true,
+    "matched_method_control_epoch_duration": true,
+    "outer_retrain_complete_18": true,
+    "final_outer_test_false": true,
+    "p5_not_viable": true,
+    "v3_explicitly_not_authorized": true,
+    "terminal_label_matches_failure": true,
+    "p6_run_count_6": true,
+    "random_same_rank_draw_count_600": true,
+    "p6_base_exactly_reproduces_selected_matched_control": true,
+    "all_selected_alphas_from_fixed_grid": true,
+    "all_mandatory_readout_variants_present": true
+  },
+  "details": {
+    "json_files": 124,
+    "outer_flag_failures": [],
+    "csv_outer_flag_failures": [],
+    "p5_run_delta_BA": {
+      "V0": [
+        0.0005555555555555314,
+        0.0,
+        0.0005555555555555314,
+        -0.002777777777777768,
+        -0.002777777777777768,
+        -0.0011111111111110628
+      ],
+      "V1": [
+        0.0005555555555555314,
+        0.0005555555555554204,
+        0.0005555555555555314,
+        -0.002777777777777768,
+        -0.0016666666666667052,
+        -0.0011111111111110628
+      ],
+      "V2": [
+        0.0,
+        -0.0011111111111110628,
+        -0.0005555555555555314,
+        0.0,
+        -0.002777777777777879,
+        -0.00666666666666671
+      ]
+    }
+  },
+  "failures": [],
+  "outer_test_used": false
+}

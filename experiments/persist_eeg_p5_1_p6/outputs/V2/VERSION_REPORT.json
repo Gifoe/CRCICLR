@@ -1,0 +1,41 @@
+{
+  "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+  "version": "V2",
+  "primary": {
+    "mean_delta_BA": -0.0018518518518518638,
+    "positive_runs": 0,
+    "n_runs": 6,
+    "hierarchical_subject_run_bootstrap": {
+      "mean": -0.0018507314814814738,
+      "ci95": [
+        -0.004351851851851833,
+        -9.259259259258889e-05
+      ],
+      "sign_probability": 0.0176,
+      "draws": 10000,
+      "n_runs": 6,
+      "n_subject_values": 54
+    },
+    "geometry_delta": {
+      "alignment_same": 0.003084976846973101,
+      "alignment_cross": 0.003058925805682381,
+      "geometry_margin": 0.0014644721005525746
+    },
+    "random_intervention": {
+      "method_protected_drop": 0.12990740740740736,
+      "method_random_drop": 0.04979629629629623
+    }
+  },
+  "rules": {
+    "viable": {
+      "mean_delta_ge_0.005": false,
+      "positive_runs_ge_4": false,
+      "ci_lower_gt_0": false,
+      "catastrophic_runs_le_1": true,
+      "geometry_support": true,
+      "random_not_same": true
+    }
+  },
+  "outer_test_used": false,
+  "selection_scope": "TRAIN-only five-fold subject-disjoint nested CV; development validation evaluated once after selection"
+}
