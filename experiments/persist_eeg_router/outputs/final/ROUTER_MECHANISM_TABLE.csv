@@ -1,0 +1,6 @@
+action,standalone_delta_BA,oracle_headroom,rescue_prevalence,harm_prevalence,diagnostic
+amplify,-0.014901960784313698,0.028946078431372497,0.028946078431372497,0.04384803921568622,KEEP plus action oracle (labels used only for diagnosis)
+erase,-0.173406862745098,0.0710294117647058,0.07102941176470583,0.24443627450980387,KEEP plus action oracle (labels used only for diagnosis)
+geometry,-0.05612745098039212,0.04740196078431367,0.04740196078431368,0.10352941176470583,KEEP plus action oracle (labels used only for diagnosis)
+best diagnostic Router,-0.00017156862745097237,,,,amplify / shallow_mlp; AUROC=0.963634
+selected R0,-0.00046568627450981667,,0.002034313725490196,0.0025,rescues=83; harms=102

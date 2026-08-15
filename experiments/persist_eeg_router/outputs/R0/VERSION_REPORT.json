@@ -1,0 +1,71 @@
+{
+  "status": "PERSIST_ROUTER_NO_ROUTEABLE_HEADROOM",
+  "version": "R0",
+  "implementation_id": "persist_router_audit_v1_subject_crossfit",
+  "selected_config": {
+    "config": "r0__lc0.1__w8__lr0.0003",
+    "lambda_cons": 0.1,
+    "width": 8,
+    "learning_rate": 0.0003,
+    "epochs": 120,
+    "mean_delta_BA": -0.00046568627450984296,
+    "positive_runs": 1,
+    "mean_router_BA": 0.8263725490196077,
+    "mean_base_BA": 0.8268382352941176,
+    "mean_router_NLL": 0.3864159832398097,
+    "mean_router_Brier": 0.24494503438472748,
+    "total_net_rescues": -19,
+    "mean_action_rate": 0.4087745098039215,
+    "mean_a": 1.0425880551338196,
+    "mean_positive_router_folds": 1.1666666666666667,
+    "n_runs": 6,
+    "raw_best_mean_delta_BA": 7.352941176467602e-05,
+    "selection_rule": "within 0.002 of best: smaller width, better NLL, lower action rate"
+  },
+  "primary": {
+    "mean_delta_BA": -0.00046568627450984296,
+    "positive_runs": 1,
+    "mean_router_BA": 0.8263725490196077,
+    "mean_base_BA": 0.8268382352941176,
+    "total_net_rescues": -19,
+    "mean_action_rate": 0.4087745098039215,
+    "mean_subject_delta_BA": -0.00046568627450980056
+  },
+  "controls": [
+    {
+      "variant": "counterfactual_only",
+      "mean_delta_BA": -0.0001225490196078242,
+      "positive_runs": 2,
+      "total_net_rescues": -5,
+      "n_runs": 6
+    },
+    {
+      "variant": "entropy_only",
+      "mean_delta_BA": -0.00014705882352940755,
+      "positive_runs": 2,
+      "total_net_rescues": -6,
+      "n_runs": 6
+    },
+    {
+      "variant": "geometry_only",
+      "mean_delta_BA": -0.0004901960784313708,
+      "positive_runs": 1,
+      "total_net_rescues": -20,
+      "n_runs": 6
+    },
+    {
+      "variant": "random_subspace",
+      "draws": 10,
+      "mean_delta_BA": 1.2254901960787977e-05,
+      "q95_delta_BA": 0.000563725490196094,
+      "max_delta_BA": 0.0005637254901961023
+    }
+  ],
+  "beats_entropy_and_random_controls": false,
+  "progression": "STOP",
+  "progression_rule": "R0 >=0.005 with >=4/6 and control superiority -> lock; 0.002..0.005 with routeability -> R1; otherwise stop",
+  "development_validation_evaluated": false,
+  "eegmmidb_accessed": false,
+  "outer_test_used": false,
+  "elapsed_seconds": 128.59936118125916
+}

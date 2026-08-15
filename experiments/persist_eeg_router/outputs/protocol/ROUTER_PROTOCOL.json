@@ -1,0 +1,47 @@
+{
+  "implementation_id": "persist_router_audit_v1_subject_crossfit",
+  "primary": {
+    "dataset": "OpenBMI",
+    "task": "MI",
+    "backbone": "EEGNet"
+  },
+  "outer_runs": {
+    "folds": [
+      0,
+      1,
+      2
+    ],
+    "seeds": [
+      0,
+      1
+    ]
+  },
+  "router_cv": {
+    "folds": 5,
+    "split_unit": "subject",
+    "cross_fit_base": true,
+    "base": "frozen P5.1 V2 matched-control family and selected per-run hyperparameters",
+    "base_epoch_rule": "P5.1 selected median_pair_epoch + 1, clipped by frozen median_epoch",
+    "normalization": "fit on Router-fold training subjects only",
+    "geometry_prototypes": "fit on Router-fold training subjects only"
+  },
+  "actions": {
+    "KEEP": "l_full",
+    "ERASE": "l_minusP from exact residual-preserving Signed-V3.1 Protected erasure",
+    "AMPLIFY": "l_minusP + 2*(l_full-l_minusP)",
+    "PROTECTED_GEOMETRY": "linear logistic head on q_P"
+  },
+  "random_control": {
+    "diagnostic_draws": 100,
+    "router_draws": 10,
+    "same_rank": true
+  },
+  "forbidden": {
+    "development_validation_for_selection": true,
+    "outer_test_access": true,
+    "target_centering": true,
+    "target_adaptation": true,
+    "subject_id_feature": true
+  },
+  "outer_test_used": false
+}

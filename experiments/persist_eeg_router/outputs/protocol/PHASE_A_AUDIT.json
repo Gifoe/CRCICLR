@@ -1,0 +1,113 @@
+{
+  "status": "PHASE_A_VERIFIED",
+  "reference_commit": "41b156aded19937e6890401f5fbacee8ee8fc1f0",
+  "implementation_id": "persist_router_audit_v1_subject_crossfit",
+  "primary": {
+    "dataset": "OpenBMI",
+    "task": "MI",
+    "backbone": "EEGNet"
+  },
+  "manifest": {
+    "rows": 10800,
+    "subjects": 54,
+    "sha256": "29e336c1a2cbee01360027f0033f5e40c37117b16d3b6281d8fd3bc02bd78d7f"
+  },
+  "matched_base": {
+    "version": "P5.1 V2 control",
+    "selection_rule": "frozen P6_BASE_VERSION_SELECTION.json",
+    "runs": [
+      {
+        "fold": 0,
+        "seed": 0,
+        "lambda_drift": 0.1,
+        "learning_rate": 0.0003,
+        "bottleneck": 8,
+        "epochs": 1,
+        "candidate": "V2__lg0.3__ld0.1__lr0.0003__b8"
+      },
+      {
+        "fold": 0,
+        "seed": 1,
+        "lambda_drift": 0.01,
+        "learning_rate": 0.0001,
+        "bottleneck": 8,
+        "epochs": 4,
+        "candidate": "V2__lg0.3__ld0.01__lr0.0001__b8"
+      },
+      {
+        "fold": 1,
+        "seed": 0,
+        "lambda_drift": 0.01,
+        "learning_rate": 0.0003,
+        "bottleneck": 8,
+        "epochs": 1,
+        "candidate": "V2__lg0.1__ld0.01__lr0.0003__b8"
+      },
+      {
+        "fold": 1,
+        "seed": 1,
+        "lambda_drift": 0.01,
+        "learning_rate": 0.0001,
+        "bottleneck": 8,
+        "epochs": 5,
+        "candidate": "V2__lg0.03__ld0.01__lr0.0001__b8"
+      },
+      {
+        "fold": 2,
+        "seed": 0,
+        "lambda_drift": 0.01,
+        "learning_rate": 0.0001,
+        "bottleneck": 8,
+        "epochs": 3,
+        "candidate": "V2__lg0.03__ld0.01__lr0.0001__b8"
+      },
+      {
+        "fold": 2,
+        "seed": 1,
+        "lambda_drift": 0.1,
+        "learning_rate": 0.0003,
+        "bottleneck": 8,
+        "epochs": 4,
+        "candidate": "V2__lg0.03__ld0.1__lr0.0003__b8"
+      }
+    ]
+  },
+  "canonical_signed_v3_1": true,
+  "development_validation_arrays_or_labels_loaded": false,
+  "outer_test_subject_ids_loaded": false,
+  "outer_test_samples_loaded": false,
+  "outer_test_labels_loaded": false,
+  "outer_test_used": false,
+  "required_artifacts_sha256": {
+    "experiments/persist_eeg_p5_icg/code/p5_icg.py": "e423dfde980b37132beac9e264ceb4fc3b855712f5c1c849c57c1b87c3e1e57a",
+    "experiments/persist_eeg_p5_1_p6/code/p5_1_p6.py": "8ebb236eb674c388550e03185d04aef526429861d2f261814142bed33ec46ba3",
+    "experiments/persist_eeg_p5_1_p6/outputs/P5_1_SELECTED_CONFIGS.csv": "f56f771413403be05f63928dead37603facb98ce20208f51e2fa319f351dc244",
+    "experiments/persist_eeg_p5_1_p6/outputs/protocol/P6_BASE_VERSION_SELECTION.json": "90d8fc67b00e2284508a7ceae04d687061d7816aa1b9681b7982df814ba89888",
+    "outputs/persist_eeg_stage0/manifests/openbmi_trials.parquet": "29e336c1a2cbee01360027f0033f5e40c37117b16d3b6281d8fd3bc02bd78d7f",
+    "delivery/persist_eeg_stage0/SPLIT_FREEZE.json": "8f12709c53494c205eb3d1a314cdff02f77d70fdebfc0820ac8b122c3c1ae065",
+    "experiments/persist_eeg_p5_icg/outputs/cache/fold-0/seed-0/h0.npy": "057f6c38f0eead194b68f9876df2dd92947af57f3bef978b76f76265a2d9618f",
+    "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-0/seed-0/best_control.pt": "e5593a0d4cfd536ac43feac80e5683d5ec14aab9b5083d727fb176aadacb1621",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-0/spectrum/PERSISTENCE_SPECTRUM.npz": "129567f93cc5b2c17f6142ddfb0dadd09342cf596195a6828e4104dea1a540e2",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-0/SIGNED_ASSIGNMENTS_V3_1.json": "972f240140beb74f957e5468f0976d16661574540b6c5c9bc080d38b513529eb",
+    "experiments/persist_eeg_p5_icg/outputs/cache/fold-0/seed-1/h0.npy": "2a88f95bd26e541d2d673289710448ec4bcaec384dbb97aa0e76c39f869f3f15",
+    "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-0/seed-1/best_control.pt": "2b5d066eca0252cf338efc6198dc23e21281d5b47458a04167a108653735488b",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-1/spectrum/PERSISTENCE_SPECTRUM.npz": "db87a4f0193d3417fec2baa8b1cc276d078dc5b76eb0c2fcb740189613cd1d18",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-1/SIGNED_ASSIGNMENTS_V3_1.json": "c2f97fc6f2921f31280abb0682452d49d5160166bfa3e45b6813df07e49a6e2a",
+    "experiments/persist_eeg_p5_icg/outputs/cache/fold-1/seed-0/h0.npy": "55a6492b9364804337a2c9cabfd330f68cb0100911a1e5e88cafdb66b85e2b6d",
+    "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-1/seed-0/best_control.pt": "5a5e79050c517f273044e326d6a5e2f2fd4945b1f7450a657a46a3a629e7cb73",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-0/spectrum/PERSISTENCE_SPECTRUM.npz": "37c689014d2052739ee7beb12e4f809f11fa2cdb53f88c0bcd075c5e5bdc6e83",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-0/SIGNED_ASSIGNMENTS_V3_1.json": "fb6f8c3f908873684557d8fed30352bf748b751eb08bb2eacda0aebbe044ed65",
+    "experiments/persist_eeg_p5_icg/outputs/cache/fold-1/seed-1/h0.npy": "65a4ae1c6b1f440b21815d7142d121125bf3d63cb3225551543205d4b851ece5",
+    "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-1/seed-1/best_control.pt": "8acfef1615c0c731be1911367b2576ed55bcf3bdf92ecf80e462463801117ce8",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-1/spectrum/PERSISTENCE_SPECTRUM.npz": "8dc5490a0f9b111c516ad25b8e603de3869e34d43314e5f005ebb98362daca47",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-1/SIGNED_ASSIGNMENTS_V3_1.json": "cec582542be2f9eb8c7e2fc2d9012f700b14d1cb7687a24445b63befd7723028",
+    "experiments/persist_eeg_p5_icg/outputs/cache/fold-2/seed-0/h0.npy": "7218a40516f0ea8a4a1eb15c0d4552c83fe1153d943a17d5afb33816e38e9137",
+    "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-2/seed-0/best_control.pt": "6cd727a2bfa14b3d0df985b926fb730c18cceee5e5203b0b0975e04f74b2a648",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-0/spectrum/PERSISTENCE_SPECTRUM.npz": "021ea98a0c849126e217504acf3189461d766a57a6b58edb02010fff7352d8d8",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-0/SIGNED_ASSIGNMENTS_V3_1.json": "c8585c8583261e1a15462a6a5b15079bddcd366512ab6a0dffb0d92fd251c17e",
+    "experiments/persist_eeg_p5_icg/outputs/cache/fold-2/seed-1/h0.npy": "e1fad9a64b81b269d50398740c9a4cf89bfd992b6c6f3f67bfbc92ad7206205f",
+    "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-2/seed-1/best_control.pt": "b1627e3ae8b75885bdd5173ad39dccf98da70e478d6b84edb941dbf00049f5dc",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-1/spectrum/PERSISTENCE_SPECTRUM.npz": "d96b1f574dc40e045d2a865ad1401c64e4ea15d5eb487ea2171b090529554ec6",
+    "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-1/SIGNED_ASSIGNMENTS_V3_1.json": "d64909054962567566e842462bc48e7863945f51c75e210c1d5124cc6317b8af"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "R0": {
+    "attempted": true,
+    "status": "PERSIST_ROUTER_NO_ROUTEABLE_HEADROOM",
+    "outer_test_used": false
+  },
+  "R1": {
+    "authorized": false,
+    "reason": "R0 mean and raw-best Delta BA < +0.002",
+    "outer_test_used": false
+  },
+  "R2": {
+    "authorized": false,
+    "reason": "R0 failed; no scalar-insufficiency progression evidence",
+    "outer_test_used": false
+  },
+  "R3": {
+    "authorized": false,
+    "reason": "R0 failed before block-wise progression gate",
+    "outer_test_used": false
+  }
+}

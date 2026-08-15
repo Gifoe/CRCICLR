@@ -1,0 +1,9 @@
+method,evaluation_phase,balanced_accuracy,delta_BA_vs_matched_base,positive_runs,NLL,Brier,rescue_count,harm_count,note
+Historical EEGNet,not recomputed in Router TRAIN OOF,,,,,,,,Frozen provenance baseline; a subject-cross-fitted historical-head estimate was not a legal matched-base substitute.
+Matched continued training (P5.1 V2 control),OpenBMI outer-TRAIN subject-disjoint OOF,0.8268382352941176,0.0,,0.3871040493249893,0.24531227846940354,0.0,0.0,Primary matched strong base.
+P6 constant-alpha Protected fusion,not mixed with Router TRAIN OOF,,,,,,,,Frozen prior result: mean development Delta BA -0.001019; not reused for Router selection.
+Entropy/confidence-only R0,OpenBMI outer-TRAIN subject-disjoint OOF,0.8266911764705882,-0.00014705882352938332,2.0,0.3864876677592595,0.24495998769998548,72.0,78.0,Selected R0 hyperparameters; no control-specific tuning.
+Random same-rank subspace R0,OpenBMI outer-TRAIN subject-disjoint OOF,0.8268504901960784,1.2254901960799973e-05,,0.38683269967635475,0.24515954578916233,875.0,870.0,10 fixed draws pooled
+Protected geometry-only R0,OpenBMI outer-TRAIN subject-disjoint OOF,0.8263480392156862,-0.00049019607843135,1.0,0.38643359144528705,0.2449315935373306,59.0,79.0,Selected R0 hyperparameters; no control-specific tuning.
+Counterfactual-only R0,OpenBMI outer-TRAIN subject-disjoint OOF,0.8267156862745098,-0.00012254901960779998,2.0,0.38647035757700604,0.24493949363629022,69.0,74.0,Selected R0 hyperparameters; no control-specific tuning.
+PERSIST-Router R0,OpenBMI outer-TRAIN subject-disjoint OOF,0.8263725490196077,-0.00046568627450981667,1.0,0.3864159832398097,0.24494503438472745,83.0,102.0,Hard-stop result; no lock and no development-validation evaluation.

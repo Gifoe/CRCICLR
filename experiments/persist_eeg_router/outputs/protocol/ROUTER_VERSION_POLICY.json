@@ -1,0 +1,16 @@
+{
+  "allowed_versions": [
+    "R0",
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "R4_or_later_allowed": false,
+  "hard_early_stop": {
+    "headroom": "best realistic single-action oracle headroom < 0.005 or rescue prevalence negligible",
+    "routeability": "AUROC <= 0.55, no stable entropy/random superiority, and deployable gain <= 0.002"
+  },
+  "development_validation_evaluations_after_lock": 1,
+  "eegmmidb_requires_openbmi_viable": true,
+  "outer_test_used": false
+}
