@@ -1,0 +1,46 @@
+{
+  "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+  "version": "V0",
+  "primary": {
+    "mean_delta_BA": -0.001481481481481454,
+    "positive_runs": 1,
+    "n_runs": 6,
+    "hierarchical_subject_run_bootstrap": {
+      "mean": -0.0015036018518518532,
+      "ci95": [
+        -0.006759259259259249,
+        0.0033333333333333327
+      ],
+      "sign_probability": 0.2816,
+      "draws": 10000,
+      "n_runs": 6,
+      "n_subject_values": 54
+    },
+    "geometry_delta": {
+      "alignment_same": 0.038822576144917166,
+      "alignment_cross": 0.03878821061786127,
+      "geometry_margin": 0.023143634096615854
+    },
+    "random_intervention": {
+      "method_protected_drop": 0.13398148148148148,
+      "method_random_drop": 0.05525925925925931
+    }
+  },
+  "rules": {
+    "viable": {
+      "mean_delta_ge_0.005": false,
+      "positive_runs_ge_4": false,
+      "ci_lower_gt_0": false,
+      "catastrophic_runs_le_1": true,
+      "geometry_support": true,
+      "random_not_same": true
+    },
+    "strong": {
+      "mean_delta_ge_0.010": false,
+      "positive_runs_ge_5": false,
+      "ci_lower_gt_0": false
+    }
+  },
+  "outer_test_used": false,
+  "method_training_scope": "frozen E0 feature-level canonical adapter and historical MI head initialized from checkpoint"
+}

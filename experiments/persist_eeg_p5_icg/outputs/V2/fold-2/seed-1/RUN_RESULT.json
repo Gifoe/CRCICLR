@@ -1,0 +1,95 @@
+{
+  "status": "RUN_COMPLETE",
+  "implementation_id": "p5_icg_repro_v4_shared_streams_exact_weights",
+  "version": "V2",
+  "fold": 2,
+  "seed": 1,
+  "outer_test_used": false,
+  "historical_strict_inductive_BA": 0.755,
+  "method_strict_inductive_BA": 0.7555555555555555,
+  "control_strict_inductive_BA": 0.7583333333333333,
+  "delta_BA": -0.002777777777777768,
+  "method_best_epoch": 1,
+  "control_best_epoch": 9,
+  "historical_head_zero_shot_BA": 0.7544444444444445,
+  "geometry_method": {
+    "alignment_same": 0.7134609165497952,
+    "alignment_cross": 0.7191203377313085,
+    "geometry_margin": 0.1460884879860613
+  },
+  "geometry_control": {
+    "alignment_same": 0.7111929196657406,
+    "alignment_cross": 0.7168658743095067,
+    "geometry_margin": 0.14494765467113918
+  },
+  "geometry_delta": {
+    "alignment_same": 0.002267996884054546,
+    "alignment_cross": 0.0022544634218018,
+    "geometry_margin": 0.001140833314922124
+  },
+  "drift_method": {
+    "shared_geometry_drift": 0.026323947583296103,
+    "individual_protected_residual_drift": 6.004918127453047e-10,
+    "nonprotected_drift": 0.0,
+    "protected_q_drift_rms": 0.016376936808228493
+  },
+  "drift_control": {
+    "shared_geometry_drift": 0.03298407590673782,
+    "individual_protected_residual_drift": 8.340697707971892e-10,
+    "nonprotected_drift": 0.0,
+    "protected_q_drift_rms": 0.022795256227254868
+  },
+  "intervention_method": {
+    "raw_BA": 0.7555555555555555,
+    "protected_ablation_BA": 0.5905555555555555,
+    "protected_drop": 0.16500000000000004,
+    "random_ablation_BA_mean": 0.695861111111111,
+    "random_ablation_BA_std": 0.028620804722491004,
+    "random_drop_mean": 0.059694444444444494,
+    "n_random_subspaces": 20,
+    "protected_rank": 8
+  },
+  "intervention_control": {
+    "raw_BA": 0.7583333333333333,
+    "protected_ablation_BA": 0.5955555555555556,
+    "protected_drop": 0.1627777777777777,
+    "random_ablation_BA_mean": 0.6833888888888889,
+    "random_ablation_BA_std": 0.03974568071882113,
+    "random_drop_mean": 0.07494444444444437,
+    "n_random_subspaces": 20,
+    "protected_rank": 8
+  },
+  "n_validation_subjects": 9,
+  "n_train_subjects": 34,
+  "sampler": {
+    "subjects_per_batch": 6,
+    "trials_per_class": 4,
+    "steps_per_epoch": 71,
+    "seed_rule": "sha256(p5|implementation|fold|seed) shared across versions, plus sha256(sampler|epoch|run_seed)"
+  },
+  "config": {
+    "version": "V2",
+    "lambda_geometry": 0.3,
+    "lambda_drift": 0.1,
+    "bottleneck": 8,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "max_epochs": 24,
+    "subjects_per_batch": 6,
+    "trials_per_class": 4,
+    "gradient_clip": 2.0
+  },
+  "canonical_spectrum_sha256": "d96b1f574dc40e045d2a865ad1401c64e4ea15d5eb487ea2171b090529554ec6",
+  "protected_blocks": [
+    5,
+    6
+  ],
+  "protected_weights": {
+    "5": 0.32127537211633983,
+    "6": 1.6787246278836603
+  },
+  "checkpoint_paths": {
+    "method": "V2/fold-2/seed-1/best_method.pt",
+    "control": "V2/fold-2/seed-1/best_control.pt"
+  }
+}

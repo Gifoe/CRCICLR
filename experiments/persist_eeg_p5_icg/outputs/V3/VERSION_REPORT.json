@@ -1,0 +1,57 @@
+{
+  "status": "NOT_AUTHORIZED_FIXED_RULE",
+  "version": "V3",
+  "reason": "V3 was not authorized: V2 did not simultaneously have positive mean Delta_BA and at least 4/6 positive runs.",
+  "evidence": {
+    "authorized": false,
+    "evidence": {
+      "status": "PERSIST_ICG_REPRESENTATION_ONLY",
+      "version": "V2",
+      "primary": {
+        "mean_delta_BA": -0.0009259259259259226,
+        "positive_runs": 2,
+        "n_runs": 6,
+        "hierarchical_subject_run_bootstrap": {
+          "mean": -0.0009451481481481388,
+          "ci95": [
+            -0.00462962962962962,
+            0.002037037037037039
+          ],
+          "sign_probability": 0.3115,
+          "draws": 10000,
+          "n_runs": 6,
+          "n_subject_values": 54
+        },
+        "geometry_delta": {
+          "alignment_same": 0.01820334323026514,
+          "alignment_cross": 0.018087557361771683,
+          "geometry_margin": 0.0186805866693181
+        },
+        "random_intervention": {
+          "method_protected_drop": 0.13722222222222222,
+          "method_random_drop": 0.049347222222222265
+        }
+      },
+      "rules": {
+        "viable": {
+          "mean_delta_ge_0.005": false,
+          "positive_runs_ge_4": false,
+          "ci_lower_gt_0": false,
+          "catastrophic_runs_le_1": true,
+          "geometry_support": true,
+          "random_not_same": true
+        },
+        "strong": {
+          "mean_delta_ge_0.010": false,
+          "positive_runs_ge_5": false,
+          "ci_lower_gt_0": false
+        }
+      },
+      "outer_test_used": false,
+      "method_training_scope": "frozen E0 feature-level canonical adapter and historical MI head initialized from checkpoint"
+    },
+    "rule": "V2 mean > 0, >=4/6 positive, active geometry, and failure of STRONG",
+    "outer_test_used": false
+  },
+  "outer_test_used": false
+}

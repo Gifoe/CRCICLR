@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "timestamp": "2026-08-15T09:51:39Z",
+      "version": "V0",
+      "issue": "P5 method development start",
+      "evidence": "V3.1 and Shared Geometry V1.2 canonical artifacts verified",
+      "change": "feature-level frozen-E0 canonical adapter trainer",
+      "reason": "exactly implements predeclared V0 without introducing global invariance",
+      "scientific_impact": "no change to utility, Protected assignment, primary task, or evaluation gates",
+      "data_used": [
+        "TRAIN",
+        "DEVELOPMENT_VALIDATION"
+      ],
+      "validation_used": "checkpoint selection only",
+      "outer_test_used": false
+    },
+    {
+      "timestamp": "2026-08-15T13:56:18Z",
+      "version": "ENGINEERING",
+      "issue": "reproducibility and causal-isolation repair",
+      "evidence": "The pre-repair runner did not call seed_all and included version names in the per-run RNG/sampler keys.",
+      "change": "Fixed deterministic fold/seed streams shared across V0/V1, added resumable implementation IDs, and copied read-only memmaps before tensor conversion.",
+      "reason": "Make V0 versus V1 a same-initialisation/same-batch comparison without changing the scientific premise or thresholds.",
+      "scientific_impact": "No change to Signed-V3.1 utility, Protected assignment, task, loss definitions, or evaluation gates; prior outputs are retained but invalidated by implementation_id.",
+      "data_used": [
+        "TRAIN",
+        "DEVELOPMENT_VALIDATION"
+      ],
+      "validation_used": "checkpoint selection only",
+      "outer_test_used": false
+    },
+    {
+      "timestamp": "2026-08-15T14:10:04Z",
+      "version": "V2",
+      "issue": "fixed progression rule authorized V2",
+      "evidence": "At least one prior version had positive aggregate geometry alignment support, satisfying P5 section 14 rule 3.",
+      "change": "Ran predeclared V2 selective global-direction adapter with individual residual preservation.",
+      "reason": "The transition was authorized before inspecting V2 accuracy.",
+      "scientific_impact": "V2 is a predeclared scientific version; no post-result threshold or objective change.",
+      "data_used": [
+        "TRAIN",
+        "DEVELOPMENT_VALIDATION"
+      ],
+      "validation_used": "checkpoint selection only",
+      "outer_test_used": false
+    },
+    {
+      "timestamp": "2026-08-15T14:10:04Z",
+      "version": "V3",
+      "issue": "fixed progression rule did not authorize V3",
+      "evidence": "V2 mean Delta_BA=-0.000925926; positive runs=2/6; geometry_active=True.",
+      "change": "Stopped before V3 and materialized an explicit NOT_AUTHORIZED_FIXED_RULE record.",
+      "reason": "P5 section 14 requires all V2 conditions before V3; the observed V2 result fails the accuracy conditions.",
+      "scientific_impact": "No further scientific version or outer-test access.",
+      "data_used": [
+        "TRAIN",
+        "DEVELOPMENT_VALIDATION"
+      ],
+      "validation_used": "checkpoint selection only",
+      "outer_test_used": false
+    }
+  ]
+}

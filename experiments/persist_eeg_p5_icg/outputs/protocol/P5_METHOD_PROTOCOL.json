@@ -1,0 +1,37 @@
+{
+  "method": "PERSIST-ICG",
+  "implementation_id": "p5_icg_repro_v4_shared_streams_exact_weights",
+  "primary_task": "MI",
+  "folds": [
+    0,
+    1,
+    2
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "outer_test_used": false,
+  "canonical_source": "Signed Audit V3.1 persisted spectrum and assignments",
+  "strict_inductive": {
+    "validation_subject_centering": false,
+    "target_labels_at_inference": false,
+    "target_subject_adaptation": false
+  },
+  "v0": "uniform Protected canonical residual adapter",
+  "v1": "same adapter with frozen c_b=min(LCB95(u_abs),LCB95(u_spec)) positive-part weights normalized within Protected blocks",
+  "v2": "global Protected geometry direction scalar adapter preserving individual residual",
+  "v3": "not implemented unless fixed progression rule authorizes it",
+  "fixed_config": {
+    "version": "V0",
+    "lambda_geometry": 0.3,
+    "lambda_drift": 0.1,
+    "bottleneck": 8,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "max_epochs": 24,
+    "subjects_per_batch": 6,
+    "trials_per_class": 4,
+    "gradient_clip": 2.0
+  }
+}
