@@ -1,0 +1,10 @@
+{
+  "inner_splits": 5,
+  "random_draws": 100,
+  "bootstrap_draws": 10000,
+  "epsilon_neutral": 0.005,
+  "per_group": 32,
+  "full_train_spectrum": true,
+  "stable_seed": "sha256(fold|seed|task|subject|session|event|inner_split|purpose)",
+  "outer_test_used": false
+}

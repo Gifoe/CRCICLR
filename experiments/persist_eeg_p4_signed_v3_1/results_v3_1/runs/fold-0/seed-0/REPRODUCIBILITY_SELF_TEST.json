@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "fold": 0,
+  "seed": 0,
+  "checks": [
+    {
+      "kind": "protected_union_validation",
+      "task": "mi",
+      "observed": -0.1328125,
+      "saved": -0.1328125,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "protected_union_validation",
+      "task": "erp",
+      "observed": -0.10243055555555547,
+      "saved": -0.10243055555555547,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "protected_union_validation",
+      "task": "ssvep",
+      "observed": -0.10999999999999988,
+      "saved": -0.10999999999999988,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "block_utility_replay",
+      "task": "mi",
+      "block": 0,
+      "recomputed_u_spec_mean": -0.004603848431804385,
+      "saved_u_spec_mean": -0.004603848431804385,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "block_utility_replay",
+      "task": "mi",
+      "block": 1,
+      "recomputed_u_spec_mean": -0.006368223467512387,
+      "saved_u_spec_mean": -0.006368223467512387,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "block_utility_replay",
+      "task": "mi",
+      "block": 2,
+      "recomputed_u_spec_mean": -0.012871998918581231,
+      "saved_u_spec_mean": -0.012871998918581231,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "block_utility_replay",
+      "task": "mi",
+      "block": 3,
+      "recomputed_u_spec_mean": -0.024756751223990875,
+      "saved_u_spec_mean": -0.024756751223990875,
+      "abs_diff": 0.0,
+      "pass": true
+    },
+    {
+      "kind": "block_utility_replay",
+      "task": "mi",
+      "block": 4,
+      "recomputed_u_spec_mean": -0.023984079267762384,
+      "saved_u_spec_mean": -0.023984079267762384,
+      "abs_diff": 0.0,
+      "pass": true
+    }
+  ],
+  "outer_test_used": false
+}
