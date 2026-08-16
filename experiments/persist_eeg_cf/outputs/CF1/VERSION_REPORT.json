@@ -1,0 +1,22 @@
+{
+  "status": "PERSIST_CF_NOT_SUPPORTED",
+  "family": "CF1-HARD",
+  "authorization_evidence": {
+    "cf0_mean_robust_delta_ba": 0.0002708333333333387,
+    "matched_mean_worst_offset_damage_ba": -0.007547619047619066,
+    "donor_candidate_pool": 4
+  },
+  "mean_natural_delta_ba_vs_matched": -3.174603174603459e-05,
+  "positive_natural_inner_folds": 14,
+  "mean_robust_delta_ba_vs_matched": 0.0004110449735449976,
+  "positive_robust_inner_folds": 17,
+  "mean_natural_delta_vs_cf0": -0.0005277777777777714,
+  "mean_robust_delta_vs_cf0": 0.00014021164021165894,
+  "mean_clean_delta_vs_duplicate": -7.936507936508278e-05,
+  "mean_robust_delta_vs_random": 0.0002394179894180337,
+  "mean_robust_delta_vs_full": 0.000324404761904773,
+  "mechanism_specific_against_random_and_full": true,
+  "development_validation_used": false,
+  "outer_test_used": false,
+  "stop_rule": "stop when best TRAIN-CV natural gain < +0.002 and robustness gain < +0.010"
+}

@@ -1,0 +1,12 @@
+{
+  "rule": "per-sample Gaussian direction projected into the same Protected G_perp block and rescaled to the empirical projected donor-offset norm",
+  "seed_rule": "shared SHA256 augmentation stream plus numpy PCG64",
+  "matched": [
+    "block rank",
+    "per-block norm",
+    "p_cf",
+    "optimizer steps",
+    "loss weights"
+  ],
+  "outer_test_used": false
+}

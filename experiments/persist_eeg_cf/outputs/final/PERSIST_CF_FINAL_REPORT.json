@@ -1,0 +1,179 @@
+{
+  "status": "PERSIST_CF_NOT_SUPPORTED",
+  "implementation_id": "persist_cf_v1_train_local_blockwise",
+  "primary": {
+    "dataset": "OpenBMI",
+    "task": "MI",
+    "backbone": "EEGNet"
+  },
+  "structural_audit": {
+    "status": "PERSIST_CF_AUDIT_PASS_READY_FOR_CF0",
+    "phase_a": "PHASE_A_VERIFIED",
+    "phase_b": "PHASE_B_UNIT_TESTS_PASS",
+    "headroom_pass_all_runs": true,
+    "counterfactual_validity_pass_all_runs": true,
+    "mean_rho_offset": 0.8147377471129099,
+    "min_rho_offset": 0.7391634583473206,
+    "mean_donor_distance_decrease": 0.28104360898335773,
+    "max_relative_geometry_projection_error": 1.0925511872983407e-07,
+    "development_validation_used": false,
+    "outer_test_used": false,
+    "decision_rule": {
+      "rho_offset_min": 0.05,
+      "median_delta_perp_norm_min": 1e-06,
+      "invariant_relative_max": 1e-06
+    }
+  },
+  "cf0": {
+    "mean_natural_delta_ba": 0.0004960317460317369,
+    "mean_robust_delta_ba": 0.0002708333333333387,
+    "status": "PERSIST_CF_CF0_WEAK_SIGNAL"
+  },
+  "cf1_hard": {
+    "status": "PERSIST_CF_NOT_SUPPORTED",
+    "family": "CF1-HARD",
+    "authorization_evidence": {
+      "cf0_mean_robust_delta_ba": 0.0002708333333333387,
+      "matched_mean_worst_offset_damage_ba": -0.007547619047619066,
+      "donor_candidate_pool": 4
+    },
+    "mean_natural_delta_ba_vs_matched": -3.174603174603459e-05,
+    "positive_natural_inner_folds": 14,
+    "mean_robust_delta_ba_vs_matched": 0.0004110449735449976,
+    "positive_robust_inner_folds": 17,
+    "mean_natural_delta_vs_cf0": -0.0005277777777777714,
+    "mean_robust_delta_vs_cf0": 0.00014021164021165894,
+    "mean_clean_delta_vs_duplicate": -7.936507936508278e-05,
+    "mean_robust_delta_vs_random": 0.0002394179894180337,
+    "mean_robust_delta_vs_full": 0.000324404761904773,
+    "mechanism_specific_against_random_and_full": true,
+    "development_validation_used": false,
+    "outer_test_used": false,
+    "stop_rule": "stop when best TRAIN-CV natural gain < +0.002 and robustness gain < +0.010"
+  },
+  "final_train_only_methods": [
+    {
+      "method": "Historical EEGNet",
+      "key": "historical",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.821170634920635,
+      "delta_ba_vs_matched": -0.005480158730158502,
+      "ci95_subject_run": "[-0.014632965686274509, 0.0006862745098039133]",
+      "positive_inner_folds": 10,
+      "macro_f1": 0.8202069213674128,
+      "nll": 0.4029485852475757,
+      "robust_ba": 0.819765873015873,
+      "delta_robust_ba_vs_matched": -0.006102513227513207,
+      "geometry_preservation_error": 0.0,
+      "offset_sensitivity": 0.00024930990178254753
+    },
+    {
+      "method": "Matched continued-training base",
+      "key": "base",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.8266507936507935,
+      "delta_ba_vs_matched": 0.0,
+      "ci95_subject_run": "[0.0, 0.0]",
+      "positive_inner_folds": 0,
+      "macro_f1": 0.8263955259360717,
+      "nll": 0.3864227080294154,
+      "robust_ba": 0.8258683862433862,
+      "delta_robust_ba_vs_matched": 0.0,
+      "geometry_preservation_error": 0.0,
+      "offset_sensitivity": 0.00032694245440568863
+    },
+    {
+      "method": "Duplicate-clean control",
+      "key": "duplicate",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.8266984126984127,
+      "delta_ba_vs_matched": 4.761904761918512e-05,
+      "ci95_subject_run": "[0.0, 0.00014705882352941517]",
+      "positive_inner_folds": 2,
+      "macro_f1": 0.8264433161481257,
+      "nll": 0.386397161728552,
+      "robust_ba": 0.8258835978835978,
+      "delta_robust_ba_vs_matched": 1.5211640211565403e-05,
+      "geometry_preservation_error": 0.0,
+      "offset_sensitivity": 0.00032709269917193906
+    },
+    {
+      "method": "Generic/full Protected subject swap",
+      "key": "full",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.8269801587301587,
+      "delta_ba_vs_matched": 0.000329365079365207,
+      "ci95_subject_run": "[-0.00031862745098038486, 0.0010294117647058872]",
+      "positive_inner_folds": 13,
+      "macro_f1": 0.826730986050031,
+      "nll": 0.3869054100698462,
+      "robust_ba": 0.8259550264550264,
+      "delta_robust_ba_vs_matched": 8.664021164017655e-05,
+      "geometry_preservation_error": 0.28000913145441825,
+      "offset_sensitivity": 0.0003140126712115437
+    },
+    {
+      "method": "Random same-norm G_perp augmentation",
+      "key": "random",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.8266785714285714,
+      "delta_ba_vs_matched": 2.7777777777848733e-05,
+      "ci95_subject_run": "[-0.0003676470588235303, 0.00039215686274509943]",
+      "positive_inner_folds": 5,
+      "macro_f1": 0.8264235833910536,
+      "nll": 0.38647871540087303,
+      "robust_ba": 0.8260400132275131,
+      "delta_robust_ba_vs_matched": 0.00017162698412687138,
+      "geometry_preservation_error": 2.6719836152029647e-08,
+      "offset_sensitivity": 0.0002973839825337014
+    },
+    {
+      "method": "PERSIST-CF (CF0 selected)",
+      "key": "cf",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.8271468253968254,
+      "delta_ba_vs_matched": 0.0004960317460318553,
+      "ci95_subject_run": "[-4.3105407034836366e-18, 0.001078431372549015]",
+      "positive_inner_folds": 11,
+      "macro_f1": 0.8268975656731026,
+      "nll": 0.38649884030612175,
+      "robust_ba": 0.8261392195767195,
+      "delta_robust_ba_vs_matched": 0.00027083333333333126,
+      "geometry_preservation_error": 1.6692105535136704e-08,
+      "offset_sensitivity": 0.0002890310921108048
+    },
+    {
+      "method": "PERSIST-CF CF1-HARD",
+      "key": "hard",
+      "evaluation_scope": "OpenBMI outer-TRAIN five-fold subject-disjoint inner CV",
+      "balanced_accuracy": 0.8266190476190476,
+      "delta_ba_vs_matched": -3.1746031745938375e-05,
+      "ci95_subject_run": "[-0.001764705882352933, 0.0014215686274509814]",
+      "positive_inner_folds": 14,
+      "macro_f1": 0.8263506322147832,
+      "nll": 0.3875285396494833,
+      "robust_ba": 0.8262794312169313,
+      "delta_robust_ba_vs_matched": 0.00041104497354504943,
+      "geometry_preservation_error": 1.5879196627388598e-08,
+      "offset_sensitivity": 0.00015440102525130411
+    }
+  ],
+  "success_gates": {
+    "natural_required_mean_delta": 0.005,
+    "robustness_required_mean_delta": 0.02,
+    "minimum_signal_to_continue_natural": 0.002,
+    "minimum_signal_to_continue_robustness": 0.01,
+    "passed": false
+  },
+  "refinement_families_run": [
+    "CF1-HARD"
+  ],
+  "second_refinement_run": false,
+  "second_refinement_reason": "No specific correctable failure remained: hard donors produced only +0.000411 robust Delta BA and reduced clean performance relative to CF0.",
+  "lock_created": false,
+  "development_validation_evaluated": false,
+  "outer_test_evaluated": false,
+  "conditional_openbmi_erp_ssvep_run": false,
+  "conditional_eegmmidb_run": false,
+  "claim": "The frozen decomposition has real geometric headroom, but it does not provide sufficient train-time augmentation leverage for improved EEGNet/OpenBMI generalization under the tested protocol."
+}

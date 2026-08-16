@@ -1,0 +1,13 @@
+{
+  "implementation_id": "persist_cf_v1_train_local_blockwise",
+  "coordinate_transform": "Signed-V3.1 q=(h-mean)@whitener@directions",
+  "inverse_linear": "delta_h=(delta_q@directions.T)@dewhitener",
+  "representation_location": "frozen historical h0 before P5.1 V2 adapter/head",
+  "subject_center": "equal mean over subject x session x class cell means",
+  "geometry": "blockwise normalized TRAIN-subject/session binary class-contrast consensus",
+  "projector": "one rank-1 projector per frozen Protected block",
+  "inner_cv": "deterministic five-fold subject-disjoint",
+  "primary_comparator": "matched P5.1 V2 continued-training control",
+  "development_validation_used_before_lock": false,
+  "outer_test_used": false
+}

@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "phase": "A-D",
+      "decision": "PERSIST_CF_AUDIT_PASS_READY_FOR_CF0",
+      "evidence": "TRAIN-only structural and validity audits"
+    },
+    {
+      "phase": "E-F",
+      "decision": "PERSIST_CF_CF0_WEAK_SIGNAL",
+      "evidence": {
+        "mean_natural_delta_ba": 0.0004960317460317369,
+        "mean_robust_delta_ba": 0.0002708333333333387,
+        "mechanism_specific": true
+      }
+    },
+    {
+      "phase": "F",
+      "family": "CF1-HARD",
+      "decision": "PERSIST_CF_NOT_SUPPORTED",
+      "authorization_evidence": {
+        "cf0_mean_robust_delta_ba": 0.0002708333333333387,
+        "matched_mean_worst_offset_damage_ba": -0.007547619047619066,
+        "donor_candidate_pool": 4
+      }
+    },
+    {
+      "phase": "I",
+      "decision": "PERSIST_CF_NOT_SUPPORTED",
+      "action": "stopped before method lock and development evaluation"
+    },
+    {
+      "phase": "I",
+      "decision": "PERSIST_CF_NOT_SUPPORTED",
+      "action": "stopped before method lock and development evaluation"
+    }
+  ],
+  "development_validation_used": false,
+  "outer_test_used": false
+}

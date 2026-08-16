@@ -1,0 +1,18 @@
+{
+  "status": "PERSIST_CF_AUDIT_PASS_READY_FOR_CF0",
+  "phase_a": "PHASE_A_VERIFIED",
+  "phase_b": "PHASE_B_UNIT_TESTS_PASS",
+  "headroom_pass_all_runs": true,
+  "counterfactual_validity_pass_all_runs": true,
+  "mean_rho_offset": 0.8147377471129099,
+  "min_rho_offset": 0.7391634583473206,
+  "mean_donor_distance_decrease": 0.28104360898335773,
+  "max_relative_geometry_projection_error": 1.0925511872983407e-07,
+  "development_validation_used": false,
+  "outer_test_used": false,
+  "decision_rule": {
+    "rho_offset_min": 0.05,
+    "median_delta_perp_norm_min": 1e-06,
+    "invariant_relative_max": 1e-06
+  }
+}

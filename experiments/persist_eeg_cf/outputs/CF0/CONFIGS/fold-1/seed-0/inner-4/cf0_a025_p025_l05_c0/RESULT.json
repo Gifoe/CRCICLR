@@ -1,0 +1,67 @@
+{
+  "implementation_id": "persist_cf_v1_train_local_blockwise",
+  "fold": 1,
+  "seed": 0,
+  "inner_fold": 4,
+  "mode": "cf",
+  "config": "cf0_a025_p025_l05_c0",
+  "clean_balanced_accuracy": 0.8458333333333333,
+  "clean_accuracy": 0.8458333333333333,
+  "clean_macro_f1": 0.845596474035517,
+  "clean_nll": 0.34631204968699253,
+  "clean_brier": 0.10968701077228706,
+  "clean_ece": 0.028984531345449743,
+  "robust_ba": 0.8440277777777778,
+  "delta_ba_under_shift": -0.0018055555555555047,
+  "worst_quartile_ba": 0.84,
+  "worst_shift_ba": 0.8391666666666666,
+  "robust_nll": 0.3470487488237852,
+  "prediction_js_sensitivity": 0.0002194746828361098,
+  "epochs": 1,
+  "optimizer_steps": 59,
+  "elapsed_seconds": 0.2880260944366455,
+  "n_augmented": 1426,
+  "mean_applied_shift_norm": 0.2054469986684192,
+  "mean_geometry_projection_error": 5.439983344264617e-09,
+  "max_geometry_projection_error": 3.7184268109058394e-08,
+  "alpha": 0.25,
+  "p_cf": 0.25,
+  "lambda_cf": 0.5,
+  "lambda_cons": 0.0,
+  "scale_policy": "constant",
+  "donor_policy": "uniform",
+  "development_validation_used": false,
+  "outer_test_used": false,
+  "subject_rows": [
+    {
+      "subject": "14",
+      "balanced_accuracy": 0.785,
+      "n": 200
+    },
+    {
+      "subject": "2",
+      "balanced_accuracy": 0.78,
+      "n": 200
+    },
+    {
+      "subject": "28",
+      "balanced_accuracy": 0.975,
+      "n": 200
+    },
+    {
+      "subject": "34",
+      "balanced_accuracy": 0.69,
+      "n": 200
+    },
+    {
+      "subject": "36",
+      "balanced_accuracy": 0.975,
+      "n": 200
+    },
+    {
+      "subject": "9",
+      "balanced_accuracy": 0.8700000000000001,
+      "n": 200
+    }
+  ]
+}

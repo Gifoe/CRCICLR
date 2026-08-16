@@ -1,0 +1,19 @@
+{
+  "CF0_max_serious_configs_per_run": 12,
+  "max_refinement_families": 2,
+  "authorized_refinements": [
+    "CF1-SCALE",
+    "CF1-HARD",
+    "CF1-BLOCK-JOINT",
+    "CF1-LOSS"
+  ],
+  "forbidden": [
+    "GRL",
+    "global suppression",
+    "PB/SI/old CT",
+    "ICG continuation",
+    "Router",
+    "TTA",
+    "target centering"
+  ]
+}
