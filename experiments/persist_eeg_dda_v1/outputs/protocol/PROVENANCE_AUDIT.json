@@ -1,0 +1,885 @@
+{
+  "status": "DDA_PROVENANCE_AUDIT_PASS",
+  "implementation_id": "persist_dda_v1_confirmatory_20260817",
+  "reference_parent_commit": "39c35b43f4a5112e1a774190f4ec444e36719b15",
+  "runtime_git_commit": null,
+  "code_sha256": "44c743662076d73101844237a886122941fd755406bc71e2f0f6b1e58d54573c",
+  "artifacts": [
+    {
+      "kind": "OpenBMI trial manifest",
+      "path": "outputs/persist_eeg_stage0/manifests/openbmi_trials.parquet",
+      "sha256": "29e336c1a2cbee01360027f0033f5e40c37117b16d3b6281d8fd3bc02bd78d7f",
+      "bytes": 3799659,
+      "split": "all rows indexed; only outer-TRAIN selected",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "split freeze",
+      "path": "delivery/persist_eeg_stage0/SPLIT_FREEZE.json",
+      "sha256": "8f12709c53494c205eb3d1a314cdff02f77d70fdebfc0820ac8b122c3c1ae065",
+      "bytes": 28020,
+      "split": "frozen subject split",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "historical EEGNet checkpoint",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/best.pt",
+      "sha256": "b10f0b4f0aa31f07525723c1e508665710304e8a7a3fd2bce6aa016149f7dafd",
+      "bytes": 52003,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/channel_mean.npy",
+      "sha256": "e10e0ce926a0a975d3dc0879932bee13073b3d344786663982b2f4488a205de7",
+      "bytes": 376,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-0/channel_std.npy",
+      "sha256": "a8e48ae6f317040b7c6767fee3d21ae012fb01291ed83486554685251825f897",
+      "bytes": 376,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 spectrum",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-0/spectrum/PERSISTENCE_SPECTRUM.npz",
+      "sha256": "129567f93cc5b2c17f6142ddfb0dadd09342cf596195a6828e4104dea1a540e2",
+      "bytes": 25870,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 assignment",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-0/SIGNED_ASSIGNMENTS_V3_1.json",
+      "sha256": "972f240140beb74f957e5468f0976d16661574540b6c5c9bc080d38b513529eb",
+      "bytes": 594,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 utility",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-0/SIGNED_UTILITY_V3_1.csv",
+      "sha256": "33cd663967c62017297f6895d900feb5f90b6b354da3a0ced8ba88d7acb41609",
+      "bytes": 12952,
+      "split": "fold-0 inner subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "frozen h0 cache",
+      "path": "experiments/persist_eeg_p5_icg/outputs/cache/fold-0/seed-0/h0.npy",
+      "sha256": "057f6c38f0eead194b68f9876df2dd92947af57f3bef978b76f76265a2d9618f",
+      "bytes": 5529728,
+      "split": "manifest-aligned; selection by outer-TRAIN only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 V2 matched-control checkpoint",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-0/seed-0/best_control.pt",
+      "sha256": "e5593a0d4cfd536ac43feac80e5683d5ec14aab9b5083d727fb176aadacb1621",
+      "bytes": 17364,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "historical EEGNet checkpoint",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-1/best.pt",
+      "sha256": "0bda493f6e4943a5c46847459be1f2b0f50fb735dda7da272b17d23fc23eb39f",
+      "bytes": 52003,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-1/channel_mean.npy",
+      "sha256": "e10e0ce926a0a975d3dc0879932bee13073b3d344786663982b2f4488a205de7",
+      "bytes": 376,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-0/seed-1/channel_std.npy",
+      "sha256": "a8e48ae6f317040b7c6767fee3d21ae012fb01291ed83486554685251825f897",
+      "bytes": 376,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 spectrum",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-1/spectrum/PERSISTENCE_SPECTRUM.npz",
+      "sha256": "db87a4f0193d3417fec2baa8b1cc276d078dc5b76eb0c2fcb740189613cd1d18",
+      "bytes": 25777,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 assignment",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-1/SIGNED_ASSIGNMENTS_V3_1.json",
+      "sha256": "c2f97fc6f2921f31280abb0682452d49d5160166bfa3e45b6813df07e49a6e2a",
+      "bytes": 564,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 utility",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-0/seed-1/SIGNED_UTILITY_V3_1.csv",
+      "sha256": "42268b7fcd6384c24254b60cb5883f2a235aa056ff252f4696d09fff5f42e13c",
+      "bytes": 12892,
+      "split": "fold-0 inner subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "frozen h0 cache",
+      "path": "experiments/persist_eeg_p5_icg/outputs/cache/fold-0/seed-1/h0.npy",
+      "sha256": "2a88f95bd26e541d2d673289710448ec4bcaec384dbb97aa0e76c39f869f3f15",
+      "bytes": 5529728,
+      "split": "manifest-aligned; selection by outer-TRAIN only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 V2 matched-control checkpoint",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-0/seed-1/best_control.pt",
+      "sha256": "2b5d066eca0252cf338efc6198dc23e21281d5b47458a04167a108653735488b",
+      "bytes": 18973,
+      "split": "fold-0 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "historical EEGNet checkpoint",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-0/best.pt",
+      "sha256": "4324cf3295ca74e4a35e42cdcb15b2817694786f0f87c321f82b16959c0306b7",
+      "bytes": 52003,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-0/channel_mean.npy",
+      "sha256": "6b0c595a34ebede8705157adb50d286595cbff0a62c58e2ef3ffa1614528283f",
+      "bytes": 376,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-0/channel_std.npy",
+      "sha256": "4a38dbaa7e212d5698decf98eda8623b5e733c27994b657faa19e487f912ec00",
+      "bytes": 376,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 spectrum",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-0/spectrum/PERSISTENCE_SPECTRUM.npz",
+      "sha256": "37c689014d2052739ee7beb12e4f809f11fa2cdb53f88c0bcd075c5e5bdc6e83",
+      "bytes": 25903,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 assignment",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-0/SIGNED_ASSIGNMENTS_V3_1.json",
+      "sha256": "fb6f8c3f908873684557d8fed30352bf748b751eb08bb2eacda0aebbe044ed65",
+      "bytes": 574,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 utility",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-0/SIGNED_UTILITY_V3_1.csv",
+      "sha256": "91cf1897de73221d8a63c0a65edf991942af290f5563fa8031328ceb87aaf489",
+      "bytes": 12915,
+      "split": "fold-1 inner subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "frozen h0 cache",
+      "path": "experiments/persist_eeg_p5_icg/outputs/cache/fold-1/seed-0/h0.npy",
+      "sha256": "55a6492b9364804337a2c9cabfd330f68cb0100911a1e5e88cafdb66b85e2b6d",
+      "bytes": 5529728,
+      "split": "manifest-aligned; selection by outer-TRAIN only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 V2 matched-control checkpoint",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-1/seed-0/best_control.pt",
+      "sha256": "5a5e79050c517f273044e326d6a5e2f2fd4945b1f7450a657a46a3a629e7cb73",
+      "bytes": 18973,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "historical EEGNet checkpoint",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-1/best.pt",
+      "sha256": "a1d3dbfec0e680a66f18d9442e4044cb22031778a7c14bcfd9634cf84974d476",
+      "bytes": 52003,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-1/channel_mean.npy",
+      "sha256": "6b0c595a34ebede8705157adb50d286595cbff0a62c58e2ef3ffa1614528283f",
+      "bytes": 376,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-1/seed-1/channel_std.npy",
+      "sha256": "4a38dbaa7e212d5698decf98eda8623b5e733c27994b657faa19e487f912ec00",
+      "bytes": 376,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 spectrum",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-1/spectrum/PERSISTENCE_SPECTRUM.npz",
+      "sha256": "8dc5490a0f9b111c516ad25b8e603de3869e34d43314e5f005ebb98362daca47",
+      "bytes": 25778,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 assignment",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-1/SIGNED_ASSIGNMENTS_V3_1.json",
+      "sha256": "cec582542be2f9eb8c7e2fc2d9012f700b14d1cb7687a24445b63befd7723028",
+      "bytes": 579,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 utility",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-1/seed-1/SIGNED_UTILITY_V3_1.csv",
+      "sha256": "137dd709940d3ddae3735dd6f72c19e15f632e9d2d093edea202a19bff7fc481",
+      "bytes": 12950,
+      "split": "fold-1 inner subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "frozen h0 cache",
+      "path": "experiments/persist_eeg_p5_icg/outputs/cache/fold-1/seed-1/h0.npy",
+      "sha256": "65a4ae1c6b1f440b21815d7142d121125bf3d63cb3225551543205d4b851ece5",
+      "bytes": 5529728,
+      "split": "manifest-aligned; selection by outer-TRAIN only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 V2 matched-control checkpoint",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-1/seed-1/best_control.pt",
+      "sha256": "8acfef1615c0c731be1911367b2576ed55bcf3bdf92ecf80e462463801117ce8",
+      "bytes": 17364,
+      "split": "fold-1 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "historical EEGNet checkpoint",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-0/best.pt",
+      "sha256": "41b65684a87af12be4cce6ef9ab4b8f469c1f1530520841a463d5621c9264049",
+      "bytes": 52003,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-0/channel_mean.npy",
+      "sha256": "9c3c59f1bd419c0f3ee76074cf76bf4d4f02c4cec5fe3577c7c3d103e839614b",
+      "bytes": 376,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-0/channel_std.npy",
+      "sha256": "aad7e994c6764a5ea17730734d7907d214b40dfdaf5a95a22df1e0cb928abc30",
+      "bytes": 376,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 spectrum",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-0/spectrum/PERSISTENCE_SPECTRUM.npz",
+      "sha256": "021ea98a0c849126e217504acf3189461d766a57a6b58edb02010fff7352d8d8",
+      "bytes": 25786,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 assignment",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-0/SIGNED_ASSIGNMENTS_V3_1.json",
+      "sha256": "c8585c8583261e1a15462a6a5b15079bddcd366512ab6a0dffb0d92fd251c17e",
+      "bytes": 559,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 utility",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-0/SIGNED_UTILITY_V3_1.csv",
+      "sha256": "616c4c62985c32f5e6dcce63d0a890feab3726ee0558326e70b627c38289962c",
+      "bytes": 12983,
+      "split": "fold-2 inner subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "frozen h0 cache",
+      "path": "experiments/persist_eeg_p5_icg/outputs/cache/fold-2/seed-0/h0.npy",
+      "sha256": "7218a40516f0ea8a4a1eb15c0d4552c83fe1153d943a17d5afb33816e38e9137",
+      "bytes": 5529728,
+      "split": "manifest-aligned; selection by outer-TRAIN only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 V2 matched-control checkpoint",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-2/seed-0/best_control.pt",
+      "sha256": "6cd727a2bfa14b3d0df985b926fb730c18cceee5e5203b0b0975e04f74b2a648",
+      "bytes": 19037,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "historical EEGNet checkpoint",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-1/best.pt",
+      "sha256": "63ca207e6955ba642730bd886d8697672e93e8ebf4ca9eea57e0c427fb332a93",
+      "bytes": 52003,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-1/channel_mean.npy",
+      "sha256": "9c3c59f1bd419c0f3ee76074cf76bf4d4f02c4cec5fe3577c7c3d103e839614b",
+      "bytes": 376,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "channel normalization",
+      "path": "outputs/persist_eeg_p2p3/backbone/checkpoints/eegnet/fold-2/seed-1/channel_std.npy",
+      "sha256": "aad7e994c6764a5ea17730734d7907d214b40dfdaf5a95a22df1e0cb928abc30",
+      "bytes": 376,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 spectrum",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-1/spectrum/PERSISTENCE_SPECTRUM.npz",
+      "sha256": "d96b1f574dc40e045d2a865ad1401c64e4ea15d5eb487ea2171b090529554ec6",
+      "bytes": 26003,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 assignment",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-1/SIGNED_ASSIGNMENTS_V3_1.json",
+      "sha256": "d64909054962567566e842462bc48e7863945f51c75e210c1d5124cc6317b8af",
+      "bytes": 589,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "Signed V3.1 utility",
+      "path": "outputs/persist_eeg_p4_signed_v3_1/runs/fold-2/seed-1/SIGNED_UTILITY_V3_1.csv",
+      "sha256": "30fa46d48096672b70626e357fdf17491edf35fad87df41db799fbd94d330d21",
+      "bytes": 14830,
+      "split": "fold-2 inner subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "frozen h0 cache",
+      "path": "experiments/persist_eeg_p5_icg/outputs/cache/fold-2/seed-1/h0.npy",
+      "sha256": "e1fad9a64b81b269d50398740c9a4cf89bfd992b6c6f3f67bfbc92ad7206205f",
+      "bytes": 5529728,
+      "split": "manifest-aligned; selection by outer-TRAIN only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 V2 matched-control checkpoint",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/V2/fold-2/seed-1/best_control.pt",
+      "sha256": "b1627e3ae8b75885bdd5173ad39dccf98da70e478d6b84edb941dbf00049f5dc",
+      "bytes": 19037,
+      "split": "fold-2 TRAIN",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P5.1 selected configs",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/P5_1_SELECTED_CONFIGS.csv",
+      "sha256": "f56f771413403be05f63928dead37603facb98ce20208f51e2fa319f351dc244",
+      "bytes": 3250,
+      "split": "nested outer-TRAIN subject CV",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "P6 base-version lock",
+      "path": "experiments/persist_eeg_p5_1_p6/outputs/protocol/P6_BASE_VERSION_SELECTION.json",
+      "sha256": "90d8fc67b00e2284508a7ceae04d687061d7816aa1b9681b7982df814ba89888",
+      "bytes": 267,
+      "split": "TRAIN-only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "PERSIST-CF stress-bank freeze",
+      "path": "experiments/persist_eeg_cf/outputs/protocol/STRESS_BANK_FREEZE.json",
+      "sha256": "eeb4df1f04b0438505966f205a4228e0ae5b1ef896541d52a5385f008629a234",
+      "bytes": 282639,
+      "split": "inner-TRAIN donors",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    },
+    {
+      "kind": "PERSIST-CF final report",
+      "path": "experiments/persist_eeg_cf/outputs/final/PERSIST_CF_FINAL_REPORT.json",
+      "sha256": "27072fd01ce8ea036d1385d452c8815de11096e4b5a5e3d38ab794d1739b4265",
+      "bytes": 7577,
+      "split": "TRAIN-only",
+      "train_only_construction": true,
+      "classifier_frozen": true,
+      "test_subject_information": false,
+      "regeneration_required": false
+    }
+  ],
+  "splits": [
+    {
+      "fold": 0,
+      "train_subjects": [
+        "4",
+        "5",
+        "7",
+        "8",
+        "9",
+        "11",
+        "12",
+        "15",
+        "16",
+        "18",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "29",
+        "30",
+        "31",
+        "34",
+        "35",
+        "37",
+        "38",
+        "39",
+        "41",
+        "42",
+        "43",
+        "44",
+        "46",
+        "49",
+        "51",
+        "52"
+      ],
+      "development_validation_subjects": [
+        "1",
+        "3",
+        "6",
+        "10",
+        "17",
+        "28",
+        "45",
+        "48",
+        "54"
+      ],
+      "n_manifest_subjects": 54,
+      "n_outer_test_subjects_locked_not_loaded": 11
+    },
+    {
+      "fold": 1,
+      "train_subjects": [
+        "2",
+        "4",
+        "8",
+        "9",
+        "12",
+        "13",
+        "14",
+        "15",
+        "18",
+        "20",
+        "21",
+        "23",
+        "24",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "36",
+        "37",
+        "39",
+        "41",
+        "44",
+        "46",
+        "47",
+        "49",
+        "51",
+        "52",
+        "53",
+        "54"
+      ],
+      "development_validation_subjects": [
+        "3",
+        "7",
+        "11",
+        "17",
+        "19",
+        "22",
+        "38",
+        "40",
+        "50"
+      ],
+      "n_manifest_subjects": 54,
+      "n_outer_test_subjects_locked_not_loaded": 11
+    },
+    {
+      "fold": 2,
+      "train_subjects": [
+        "1",
+        "2",
+        "3",
+        "8",
+        "10",
+        "11",
+        "12",
+        "13",
+        "15",
+        "19",
+        "20",
+        "21",
+        "23",
+        "24",
+        "27",
+        "28",
+        "31",
+        "32",
+        "33",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "45",
+        "46",
+        "47",
+        "48",
+        "50",
+        "53"
+      ],
+      "development_validation_subjects": [
+        "5",
+        "6",
+        "9",
+        "14",
+        "16",
+        "17",
+        "25",
+        "30",
+        "49"
+      ],
+      "n_manifest_subjects": 54,
+      "n_outer_test_subjects_locked_not_loaded": 11
+    }
+  ],
+  "frozen_mi_assignments": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "protected": [
+        5
+      ],
+      "harmful": [],
+      "neutral": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "uncertain": [
+        3,
+        4
+      ]
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "protected": [
+        5,
+        6
+      ],
+      "harmful": [],
+      "neutral": [
+        0,
+        1,
+        2
+      ],
+      "uncertain": [
+        3,
+        4
+      ]
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "protected": [
+        4,
+        6
+      ],
+      "harmful": [],
+      "neutral": [
+        0,
+        1,
+        2
+      ],
+      "uncertain": [
+        3,
+        5
+      ]
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "protected": [
+        4
+      ],
+      "harmful": [
+        1
+      ],
+      "neutral": [
+        0,
+        1,
+        2
+      ],
+      "uncertain": [
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "protected": [
+        5,
+        6
+      ],
+      "harmful": [],
+      "neutral": [
+        0,
+        1,
+        2
+      ],
+      "uncertain": [
+        3,
+        4
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "protected": [
+        5,
+        6
+      ],
+      "harmful": [],
+      "neutral": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "uncertain": [
+        4,
+        7
+      ]
+    }
+  ],
+  "checks": {
+    "manifest_rows": 10800,
+    "manifest_subjects": 54,
+    "all_h0_shapes_10800x128": true,
+    "all_assignments_frozen": true,
+    "cf_banks": 30,
+    "development_validation_loaded": false,
+    "outer_test_loaded": false,
+    "backbone_retraining_required": false
+  },
+  "known_limitation": "Canonical discovery and Signed-V3.1 assignment predate DDA and use the full outer-TRAIN split; DDA cross-fitting separates classifier fit, decision measurement, and consequence measurement but does not rediscover the canonical basis."
+}

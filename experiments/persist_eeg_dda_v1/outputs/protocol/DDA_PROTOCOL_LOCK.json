@@ -1,0 +1,60 @@
+{
+  "implementation_id": "persist_dda_v1_confirmatory_20260817",
+  "scientific_scope": "OpenBMI MI TRAIN-only decision-dependence audit",
+  "frozen_classifier": "P5.1 V2 matched continued-training control",
+  "canonical_assignment": "Signed V3.1; no reassignment permitted",
+  "primary_finite_metric": "subject-mean RMS centered-logit displacement under finite erasure/offset",
+  "primary_local_metric": "centered-logit Jacobian energy per canonical dimension",
+  "primary_probability_metric": "total variation",
+  "statistical_units": {
+    "dda_a": "held subject; hierarchically aggregated within run",
+    "dda_b": "run x frozen Protected block after subject aggregation",
+    "dda_c": "run x audit-fold x block; outcome and decision subjects disjoint"
+  },
+  "controls": {
+    "dda_a": "100 exact-norm random offsets in the same TRAIN-derived blockwise G-perp admissible space",
+    "dda_b": "100 same-rank random subspaces with per-sample representation-displacement norm matching, plus same-rank non-PROTECTED blocks"
+  },
+  "dda_a_gate": {
+    "representation_q_movement_relative_lower_onesided_95_min": 0.05,
+    "equivalence_logit_rms_over_train_margin_upper_onesided_95_max": 0.1,
+    "equivalence_flip_rate_upper_onesided_95_max": 0.01,
+    "equivalence_total_variation_upper_onesided_95_max": 0.01,
+    "alternative_matched_random_logit_ratio_upper_onesided_95_max": 0.5,
+    "rule": "representation movement AND (all three absolute equivalence tests OR matched-random ratio test)"
+  },
+  "dda_b_gate": {
+    "jacobian_ratio_bootstrap_lower_95_min": 1.0,
+    "finite_logit_ratio_bootstrap_lower_95_min": 1.0,
+    "minimum_positive_runs_of_6": 4,
+    "minimum_protected_gt_matched_nonprotected_runs_of_6": 4,
+    "minimum_directionally_concordant_runs_of_6": 4
+  },
+  "dda_c_gate": {
+    "model": "ridge(alpha=1) with train-fold standardization",
+    "baseline": [
+      "persistence_strength",
+      "geometry_strength",
+      "rank"
+    ],
+    "incremental_feature": "decision_logit_rms",
+    "target": "held-subject mean signed CE consequence of block erasure",
+    "loro_relative_rmse_improvement_min": 0.05,
+    "minimum_improved_runs_of_6": 4,
+    "run_cluster_bootstrap_improvement_lower_95_min": 0.0,
+    "permutation_p_max": 0.05,
+    "minimum_positive_coefficients_of_6": 5
+  },
+  "crossfit": {
+    "dda_a": "original frozen CF 5-fold train/held banks",
+    "dda_bc": "for k=0..4: decision=k, outcome=(k+1)%5, model-fit=remaining 3 subject folds"
+  },
+  "outer_test_used": false,
+  "development_validation_used": false,
+  "agdi_training_authorized_before_results": false,
+  "frozen_before_any_dda_result": true,
+  "provenance_audit_sha256": "91a45989244f9ad5cc64d5eb40acefc80490cf225d25932db73c2c4e4f523643",
+  "source_code_sha256": "44c743662076d73101844237a886122941fd755406bc71e2f0f6b1e58d54573c",
+  "created_utc_unix": 1786907635,
+  "implementation_repaired_before_any_dda_result": true
+}

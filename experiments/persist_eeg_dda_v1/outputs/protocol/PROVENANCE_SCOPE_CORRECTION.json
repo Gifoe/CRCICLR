@@ -1,0 +1,22 @@
+{
+  "status": "PROVENANCE_SCOPE_WORDING_CORRECTED",
+  "original_file_preserved": "protocol/PROVENANCE_AUDIT.json",
+  "inaccurate_original_wording": [
+    "outer_test_loaded=false",
+    "test_subject_information=false for the full-row manifest/h0 container"
+  ],
+  "container_scope": {
+    "all_54_subject_manifest_loaded_to_memory": true,
+    "all_54_subject_aligned_h0_loaded_by_inherited_router_api": true,
+    "event_label_column_present_in_manifest_container": true
+  },
+  "computational_use_scope": {
+    "development_validation_positions_indexed": false,
+    "outer_test_positions_indexed": false,
+    "development_validation_or_outer_labels_used": false,
+    "development_validation_or_outer_representations_used": false,
+    "all_model_fit_decision_measurement_outcome_measurement_and_gates_restricted_to_frozen_outer_train_subjects": true
+  },
+  "scientific_effect": "No inferential leakage was found, but the inherited all-row container API does not satisfy a literal never-materialize-metadata interpretation of the lock.",
+  "result_or_gate_changed": false
+}

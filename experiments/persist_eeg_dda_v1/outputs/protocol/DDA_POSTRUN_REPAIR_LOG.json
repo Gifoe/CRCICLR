@@ -1,0 +1,26 @@
+{
+  "scientific_gates_changed": false,
+  "result_selection_changed": false,
+  "locked_source_sha256": "44c743662076d73101844237a886122941fd755406bc71e2f0f6b1e58d54573c",
+  "final_source_sha256": "5b75e64549bba5f6ec90e1b8c9782ccc76dc09faa08b2b035f8be9114837e0e7",
+  "events": [
+    {
+      "phase": "DDA-A post-write reporting",
+      "repair": "renamed a local clean-logits variable that shadowed the JSON clean function",
+      "numerical_results_affected": false
+    },
+    {
+      "phase": "DDA-C permutation",
+      "repair": "replaced repeated pandas/Arrow operations with algebraically equivalent NumPy arrays after the server native warnings state failed",
+      "crossfit_cells_recomputed": false,
+      "numerical_results_affected": false
+    },
+    {
+      "phase": "terminal labeling",
+      "repair": "use chain-incomplete stop code when DDA-C passes but another mandatory DDA gate fails",
+      "gate_outcomes_affected": false
+    }
+  ],
+  "dda_a_result_sha256": "852fd4cf8755f5dec5f124e272420095a11e3f89b15c6a14932983b8dad461c4",
+  "dda_bc_cells_sha256": "e12c26216d8eebb9e17275dced6039a470d5eedd04dd82440b26752dcd570b18"
+}

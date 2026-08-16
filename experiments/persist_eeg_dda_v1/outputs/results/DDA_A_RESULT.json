@@ -1,0 +1,68 @@
+{
+  "status": "DDA_A_FAIL",
+  "passed": false,
+  "n_subject_run_rows": 204,
+  "n_random_subject_rows": 20400,
+  "bootstrap": {
+    "q_movement_relative": {
+      "mean": 0.22760351703447454,
+      "ci90_onesided_equivalent": [
+        0.19548420373204292,
+        0.26661442519695155
+      ],
+      "ci95_twosided": [
+        0.19154940761224024,
+        0.2747002639935589
+      ]
+    },
+    "logit_rms_over_train_margin": {
+      "mean": 0.055001194094970764,
+      "ci90_onesided_equivalent": [
+        0.036493518072358525,
+        0.07454349550536164
+      ],
+      "ci95_twosided": [
+        0.03352276286360786,
+        0.07894245948219682
+      ]
+    },
+    "flip_rate": {
+      "mean": 0.01772467320261438,
+      "ci90_onesided_equivalent": [
+        0.011676572712418301,
+        0.023872753267973855
+      ],
+      "ci95_twosided": [
+        0.010777624591503268,
+        0.025212775735294114
+      ]
+    },
+    "total_variation": {
+      "mean": 0.01308270477877746,
+      "ci90_onesided_equivalent": [
+        0.008494790232477921,
+        0.01789600731584123
+      ],
+      "ci95_twosided": [
+        0.00786776473883095,
+        0.018895095330839703
+      ]
+    },
+    "logit_ratio_to_random": {
+      "mean": 1.0098034587223887,
+      "ci90_onesided_equivalent": [
+        0.9169056594667697,
+        1.1040903320940192
+      ],
+      "ci95_twosided": [
+        0.8981544178786592,
+        1.120926360796757
+      ]
+    }
+  },
+  "movement_nontrivial": true,
+  "absolute_equivalence": false,
+  "significantly_below_matched_random": false,
+  "equivalence_test": "TOST-equivalent one-sided 95% upper bounds; nonsignificance is not used as evidence of null",
+  "outer_test_used": false
+}
