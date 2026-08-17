@@ -142,6 +142,7 @@ def main() -> int:
         "protocol_or_gate_changed": False,
         "changes": [
             "Corrected REPRODUCIBILITY commands from the prospectively suggested workers=4 to the actually completed workers=0 runtime after a Windows torch worker-spawn deadlock.",
+            "Canonicalized the cache materialization hash in development-scope order; the pre-repair and post-repair subject sets are identical and contain no outer subject.",
             "Added deterministic figures generated only from already frozen compact result tables.",
         ],
     }
