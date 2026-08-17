@@ -1,0 +1,13 @@
+{
+  "repair_id": "NUMPY_BALANCED_ACCURACY_20260817",
+  "trigger": "Windows access violation in narwhals called by sklearn.metrics.balanced_accuracy_score after thousands of repeated run/control evaluations",
+  "failure_stage": "first confirmatory audit attempt",
+  "result_artifacts_written_before_failure": false,
+  "gate_or_threshold_seen": false,
+  "scientific_protocol_changed": false,
+  "data_changed": false,
+  "blocks_or_controls_changed": false,
+  "repair": "Replace sklearn balanced_accuracy_score with the algebraically identical mean of per-class recall over classes present in y_true",
+  "verification": "the replacement definition is explicit in source and is used uniformly for baseline, candidate, and all matched-random controls",
+  "rerun_policy": "rerun the same frozen audit once"
+}

@@ -1,0 +1,71 @@
+{
+  "terminal_state": "EXTERNAL_AUDIT_NO_ACTIONABLE_HARMFUL",
+  "scientific_conclusion": "NO_REAL_ACTIONABLE_HARMFUL_CASE",
+  "actionable_harmful_blocks": [],
+  "agdi_training_authorized": false,
+  "next_action": "STOP_AGDI_NO_ACTIONABLE_TARGET",
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "outer_test_used": false,
+  "dataset_scope": "EEGMMIDB repeated-run MI; not multisession/site/device",
+  "confirmatory_subjects": 15,
+  "random_draws": 100,
+  "bootstrap_draws": 10000,
+  "multiplicity": "Holm within gate family across four blocks",
+  "limitations": [
+    "the selected task head is weak: validation context subject-mean BA is 0.346 and confirmatory future-run baseline BA is about 0.286 versus 0.25 chance",
+    "confirmatory inference uses 15 subjects and therefore has wide confidence intervals",
+    "EEGMMIDB supplies repeated runs, not independent sessions, sites, or devices",
+    "official records include sampling-rate and trial-count anomalies handled prospectively by the recorded data amendment",
+    "failure to detect an actionable block under this audit is not proof that no such block exists under a stronger frozen representation"
+  ],
+  "assignments": [
+    {
+      "block": "P01_04",
+      "rank": 4,
+      "H1": false,
+      "H2": true,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "all_H1_H5": false,
+      "assignment": "UNCERTAIN",
+      "action": "NO_OP"
+    },
+    {
+      "block": "P05_08",
+      "rank": 4,
+      "H1": false,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": true,
+      "all_H1_H5": false,
+      "assignment": "UNCERTAIN",
+      "action": "NO_OP"
+    },
+    {
+      "block": "P09_16",
+      "rank": 8,
+      "H1": false,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "all_H1_H5": false,
+      "assignment": "UNCERTAIN",
+      "action": "NO_OP"
+    },
+    {
+      "block": "P17_32",
+      "rank": 16,
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "all_H1_H5": false,
+      "assignment": "UNCERTAIN",
+      "action": "NO_OP"
+    }
+  ]
+}

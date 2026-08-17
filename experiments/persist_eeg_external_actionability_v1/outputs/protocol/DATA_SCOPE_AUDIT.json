@@ -1,0 +1,922 @@
+{
+  "status": "DATA_SCOPE_PASS",
+  "loader": "explicit subject/run path construction; no recursive raw-root enumeration",
+  "sealed_split_opened_by_runtime": false,
+  "outer_manifest_rows_materialized": false,
+  "outer_event_labels_materialized": false,
+  "outer_signals_materialized": false,
+  "outer_embeddings_materialized": false,
+  "outer_subjects_in_cache": false,
+  "allowed_subject_count": 90,
+  "materialized_subject_count": 90,
+  "materialized_subjects_hash": "b6d492996b9c63dc3688d157996f7df832b48c3b18465cf011c5f88d4318f496",
+  "source_edf_open_count": 540,
+  "expected_source_edf_open_count": 540,
+  "feature_cache_files": 90,
+  "subjects": [
+    {
+      "subject": "S001",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S001.npz",
+      "cache_sha256": "d4d1232d912e65a734968b450392453587975c943ab03522360efed6508a1182",
+      "status": "resumed"
+    },
+    {
+      "subject": "S002",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S002.npz",
+      "cache_sha256": "b464faeccc84705259a0bac36445d8c38b20fedf07468de949726d30f1fc4fdd",
+      "status": "resumed"
+    },
+    {
+      "subject": "S003",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S003.npz",
+      "cache_sha256": "bcc943384f4f33c48923b4110c3bc10ea7818650b111d145daacccef071701f5",
+      "status": "resumed"
+    },
+    {
+      "subject": "S004",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S004.npz",
+      "cache_sha256": "388c339a34b737ebce70fa06a6f33c8c41ac87a02d6d9ab74135755109f9ba5f",
+      "status": "resumed"
+    },
+    {
+      "subject": "S005",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S005.npz",
+      "cache_sha256": "e57227e750ade8a144ca5f1a5f024d32e0a137e770d4ab569f46616bc6fd8533",
+      "status": "resumed"
+    },
+    {
+      "subject": "S006",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S006.npz",
+      "cache_sha256": "62d12dd31ed58707dd9e8cedbbb19ed05a7a0975f30fb311e76b149807ced59d",
+      "status": "resumed"
+    },
+    {
+      "subject": "S007",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S007.npz",
+      "cache_sha256": "e99449a23831fb9f4df0bf9ba11d876b332bd291d3c38a90cbd370cacd1a44a0",
+      "status": "resumed"
+    },
+    {
+      "subject": "S009",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S009.npz",
+      "cache_sha256": "3e38fb3c74148984add17d7820c0c1711466f85a9014a57d191f1f9a848b9c55",
+      "status": "resumed"
+    },
+    {
+      "subject": "S010",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S010.npz",
+      "cache_sha256": "71b9cfea8972a924fa26661153a9f6bb1ead846e2eb2bf13cf7476238fc613f4",
+      "status": "resumed"
+    },
+    {
+      "subject": "S011",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S011.npz",
+      "cache_sha256": "e274c71ccd8fc11f0aa5bc0dc79d96eb38ec7206199509c59d11a58d7e606a90",
+      "status": "resumed"
+    },
+    {
+      "subject": "S013",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S013.npz",
+      "cache_sha256": "954241997a3af17b1f4963afd90a5e24284fe0afb971af6ef64d26f0eafaf8db",
+      "status": "resumed"
+    },
+    {
+      "subject": "S014",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S014.npz",
+      "cache_sha256": "801cf2b2ad4274a3b4f9677e7347f23c3fe3d066a42f52406f1f155beb93a602",
+      "status": "resumed"
+    },
+    {
+      "subject": "S015",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S015.npz",
+      "cache_sha256": "655eb2256d2564a085dd568a88616e9b367cc4368ac54d8a13b08b2aadc154a1",
+      "status": "resumed"
+    },
+    {
+      "subject": "S016",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S016.npz",
+      "cache_sha256": "1fc5a2aa383599e19cb185fc4a57e5d9a4155cb5bea4b51555096e810db4b572",
+      "status": "resumed"
+    },
+    {
+      "subject": "S017",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S017.npz",
+      "cache_sha256": "f71d3409737a9fbdd5a5b55c9093f28a0a062298cadf3b5a4433065d2ce8fe7c",
+      "status": "resumed"
+    },
+    {
+      "subject": "S018",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S018.npz",
+      "cache_sha256": "a66262ffa25381969b7eaa7912f1bc117e0377591820626867cea96b10011976",
+      "status": "resumed"
+    },
+    {
+      "subject": "S019",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S019.npz",
+      "cache_sha256": "f2e9bb0cc78320a767adeeaac2ecb871827eeb7a84bcd17589983b1ce04fd3ea",
+      "status": "resumed"
+    },
+    {
+      "subject": "S020",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S020.npz",
+      "cache_sha256": "194c58f92cd537fb07123a9db90a630d78027d1378143d7f212a5255b5b2dd1a",
+      "status": "resumed"
+    },
+    {
+      "subject": "S024",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S024.npz",
+      "cache_sha256": "f56178f11631c62c95888ba5cf8b0a56facb7a9cf81332f1e3d063c2c8074ee0",
+      "status": "resumed"
+    },
+    {
+      "subject": "S025",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S025.npz",
+      "cache_sha256": "bfbeae0b65747c9aed8414fd8c835d89e2455f8883301a7f9d875fe3e629b56c",
+      "status": "resumed"
+    },
+    {
+      "subject": "S026",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S026.npz",
+      "cache_sha256": "1e083ab9d91cd41bc3bf5e4ba3d83b9034a59edf4bd7f049f9e62b16df86c1f0",
+      "status": "resumed"
+    },
+    {
+      "subject": "S027",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S027.npz",
+      "cache_sha256": "e700ddc0a13aee6a3fb0aece68707b781c3b0ff8dc13e0bb5a8b024383c7d8ad",
+      "status": "resumed"
+    },
+    {
+      "subject": "S028",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S028.npz",
+      "cache_sha256": "06642180f9cbde90e0ed3af19f6923665767c5bb6be447b8b6264e45e994d1f0",
+      "status": "resumed"
+    },
+    {
+      "subject": "S029",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S029.npz",
+      "cache_sha256": "852ce2d2c0eba7408a253014e159d80179d0d7870a64e6bd71f862d96dc0a14a",
+      "status": "resumed"
+    },
+    {
+      "subject": "S030",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S030.npz",
+      "cache_sha256": "efec90b70cd28ff895ec8d21d2efd914e4dde6ad43d61500f64af80e6ff17b7e",
+      "status": "resumed"
+    },
+    {
+      "subject": "S031",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S031.npz",
+      "cache_sha256": "e3be61beeef77804484e0c4c690938b786eeecb869e8d949470d944575b52a32",
+      "status": "resumed"
+    },
+    {
+      "subject": "S033",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S033.npz",
+      "cache_sha256": "55aca9540b97c39bc392db496e15285340543b2fbcca6158c251f333adc5e67d",
+      "status": "resumed"
+    },
+    {
+      "subject": "S034",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S034.npz",
+      "cache_sha256": "e37369a9ab53114bef957ebd886c57d4c0236f368e1f8f4ff6304b1f2c6c644f",
+      "status": "resumed"
+    },
+    {
+      "subject": "S035",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S035.npz",
+      "cache_sha256": "0909f4d75a0a1438c1840047a204024f22bf86081a5855bff889f643b65a47f8",
+      "status": "resumed"
+    },
+    {
+      "subject": "S036",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S036.npz",
+      "cache_sha256": "33ebfad3027ab92255ed88c146a46af725bdb208a958ee0dba7d0c59c356013a",
+      "status": "resumed"
+    },
+    {
+      "subject": "S037",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S037.npz",
+      "cache_sha256": "426b7133f1f48ab296f3dbf7b5263c401e5cc747191719c26b3c36de258713e6",
+      "status": "resumed"
+    },
+    {
+      "subject": "S039",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S039.npz",
+      "cache_sha256": "10e10cfcdcd145e51ab54d6357cb953baa2a0cc89f1d0ab67db0ac51343c5e11",
+      "status": "resumed"
+    },
+    {
+      "subject": "S040",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S040.npz",
+      "cache_sha256": "8d5ec292a2fa3781f5c5f5b429ea65e7e6414d63577aec18d9bf38180266a3f9",
+      "status": "resumed"
+    },
+    {
+      "subject": "S042",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S042.npz",
+      "cache_sha256": "c64fcd7058c672d0b636ab99b46cf3d2b9be7fc2d906398ade0ea5050b5e5e3d",
+      "status": "resumed"
+    },
+    {
+      "subject": "S043",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S043.npz",
+      "cache_sha256": "582640957c4d61904ffbe1eb6d60243c6b55d860a6bf3da79f2579d6b94223be",
+      "status": "resumed"
+    },
+    {
+      "subject": "S044",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S044.npz",
+      "cache_sha256": "47f94ae706923d976b2b2449c432bd788100794fced85f9fb366e2a4b4273f0f",
+      "status": "resumed"
+    },
+    {
+      "subject": "S047",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S047.npz",
+      "cache_sha256": "efd7ad7bc7dec1fe001067102a5b8baea3e80128a84fcb75dfd9b09637957f8c",
+      "status": "resumed"
+    },
+    {
+      "subject": "S048",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S048.npz",
+      "cache_sha256": "923cca9a1d6daba1b1a700a9f7d4961b22d6ee93e35b7c86150e712eb9e2b232",
+      "status": "resumed"
+    },
+    {
+      "subject": "S049",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S049.npz",
+      "cache_sha256": "07909e1c1e58ce1bb2c3adb8082dcebe040e17a45c2adde3dcec2208887b2f44",
+      "status": "resumed"
+    },
+    {
+      "subject": "S050",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S050.npz",
+      "cache_sha256": "d8d3dac814c419e9d8a98815e1a4a8e5948489e6f65c908e920fb22888d15e14",
+      "status": "resumed"
+    },
+    {
+      "subject": "S051",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S051.npz",
+      "cache_sha256": "b679d22dd3b5ab634d85c92a80607a0a0dd9623ea62e8579679210ec40af2a55",
+      "status": "resumed"
+    },
+    {
+      "subject": "S052",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S052.npz",
+      "cache_sha256": "bc5c4ad2d8e5658f80579967a5173eef5e52299049d628093d7c07892d194d3e",
+      "status": "resumed"
+    },
+    {
+      "subject": "S053",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S053.npz",
+      "cache_sha256": "613c3e0a8e48a4c774abce74a7f5de66226d840465ac66748260c1d41a0052ca",
+      "status": "resumed"
+    },
+    {
+      "subject": "S054",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S054.npz",
+      "cache_sha256": "ea78c9ac1e712ebecb4570b0f1f1f3906f594869f908cd5b9a93e8e65c1c2728",
+      "status": "resumed"
+    },
+    {
+      "subject": "S055",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S055.npz",
+      "cache_sha256": "98497576e37a761427fab96b3121c7bd8429f66a604f70657e46d9a19d9929fb",
+      "status": "resumed"
+    },
+    {
+      "subject": "S056",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S056.npz",
+      "cache_sha256": "35b4ef4e02145c6b092b3217aac9cac13512b34d61eae483972d9cdbbf86850b",
+      "status": "resumed"
+    },
+    {
+      "subject": "S057",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S057.npz",
+      "cache_sha256": "31f614dc8742cafcf32828d3a29b2ef75c67d99e0965a046dd8b832880e90395",
+      "status": "resumed"
+    },
+    {
+      "subject": "S058",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S058.npz",
+      "cache_sha256": "ceb3fa6e326befbc882d7e1c144f262180650a28bfac7fabba5f4e51e2cac7bd",
+      "status": "resumed"
+    },
+    {
+      "subject": "S059",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S059.npz",
+      "cache_sha256": "ba7b58ef213a74b03ea5f22956609c6a848a3f0567d1a52215ffc350472b8884",
+      "status": "resumed"
+    },
+    {
+      "subject": "S060",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S060.npz",
+      "cache_sha256": "0c6374336a860d23a8560139a35ecc3c82c5bc8c7d06cf848a3d8284eee3d2e3",
+      "status": "resumed"
+    },
+    {
+      "subject": "S062",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S062.npz",
+      "cache_sha256": "27a1b6be67cf69c043b9dd575648bab5c4e135e40ea5e38af9711ed8afd811fb",
+      "status": "resumed"
+    },
+    {
+      "subject": "S064",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S064.npz",
+      "cache_sha256": "d5f7887b4fe21e6ea6dfc759c161c7a7ec5e3dfa9fdfca4637b8b20c7ac621cc",
+      "status": "resumed"
+    },
+    {
+      "subject": "S065",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S065.npz",
+      "cache_sha256": "69780937e01bb0846273c3055aec35a5cbcd2ddd1c0c17a011b18be77491f3d7",
+      "status": "resumed"
+    },
+    {
+      "subject": "S066",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S066.npz",
+      "cache_sha256": "c2e6925f9108caedc57b2a4a464efeffeb7b7baed0bc0624db53d69491d03315",
+      "status": "resumed"
+    },
+    {
+      "subject": "S067",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S067.npz",
+      "cache_sha256": "ecfbffd99577a2240a77bc21f5a1411605f1d6d1f373f71a6cc9fc5cffb5f045",
+      "status": "resumed"
+    },
+    {
+      "subject": "S068",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S068.npz",
+      "cache_sha256": "5854992786af65569417d857226ccc81622d303044e5ea6bb723dfb190a438fa",
+      "status": "resumed"
+    },
+    {
+      "subject": "S069",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S069.npz",
+      "cache_sha256": "ac13f114f260a7309b0a29628ef220d70bbb00090b2005d97fec61ac709cc7ec",
+      "status": "resumed"
+    },
+    {
+      "subject": "S070",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S070.npz",
+      "cache_sha256": "cd50c4fb60f91f640e5e7447071d474dd25acbb6d3edd48d9998ce1d1ceacc7b",
+      "status": "resumed"
+    },
+    {
+      "subject": "S072",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S072.npz",
+      "cache_sha256": "731bc80f8d99932f90be0319ddefc3700b8dde7ec71b5dc3ef4a2c886f243292",
+      "status": "resumed"
+    },
+    {
+      "subject": "S073",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S073.npz",
+      "cache_sha256": "f61435c5618710faa870c056aa3131f6f489d231b2114ac50339711097d5cded",
+      "status": "resumed"
+    },
+    {
+      "subject": "S074",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S074.npz",
+      "cache_sha256": "bec0a6ec91eac9bc941c829edad1d1cc27c14ec19b6f9282755cf77ae2dd6964",
+      "status": "resumed"
+    },
+    {
+      "subject": "S075",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S075.npz",
+      "cache_sha256": "633df3b1bf0677bbe6928eebdcdabb9faaac6315e9961f990140f690b74dd196",
+      "status": "resumed"
+    },
+    {
+      "subject": "S076",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S076.npz",
+      "cache_sha256": "b4c586c4ec201f74bcd7bc7597b9c892e5b15002b59ed4f0ac0ebbf582e400a1",
+      "status": "resumed"
+    },
+    {
+      "subject": "S077",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S077.npz",
+      "cache_sha256": "d4bfbe614886ae801322f371cf91145931baf6e0df2bc28df84b4e1f69276c41",
+      "status": "resumed"
+    },
+    {
+      "subject": "S078",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S078.npz",
+      "cache_sha256": "738fc11a21033113c9194306f92954734558b21484ccf67967fe4cf95422c530",
+      "status": "resumed"
+    },
+    {
+      "subject": "S079",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S079.npz",
+      "cache_sha256": "c1f418d723de9655c2ec814a66e7ebdf41a03484bb7a52855d3bdc96e5745658",
+      "status": "resumed"
+    },
+    {
+      "subject": "S080",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S080.npz",
+      "cache_sha256": "8b319e75440543e752539b78f2f49d9d2c6af9414c36c4a4cd0ce474a4cdc762",
+      "status": "resumed"
+    },
+    {
+      "subject": "S081",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S081.npz",
+      "cache_sha256": "02ddf80ab134c0ff74f8edbbe6142004202511f474c4d7f77cad1c2c164792d3",
+      "status": "resumed"
+    },
+    {
+      "subject": "S082",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S082.npz",
+      "cache_sha256": "896016d31383948bf63d73d79fae648b56683f8333075637ffbbd4e63627db72",
+      "status": "resumed"
+    },
+    {
+      "subject": "S083",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S083.npz",
+      "cache_sha256": "049b9feadd9e9b25dae27712a60461f17958b3f276cb4be2a70e850d97ec8b14",
+      "status": "resumed"
+    },
+    {
+      "subject": "S084",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S084.npz",
+      "cache_sha256": "e67cda8acae661370cc21dc230d8d57f5e7da7a0031627c3053b30b271889a42",
+      "status": "resumed"
+    },
+    {
+      "subject": "S085",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S085.npz",
+      "cache_sha256": "8042b188110f89fefba420e9bfeecd22b53a076cf9b4bbd76f372e73382c2a45",
+      "status": "resumed"
+    },
+    {
+      "subject": "S086",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S086.npz",
+      "cache_sha256": "edf1feb33aa60f195a8677cd8c74257a45f3d5e55ec8a035e8246e539185f34b",
+      "status": "resumed"
+    },
+    {
+      "subject": "S087",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S087.npz",
+      "cache_sha256": "2f98e2c5c9a7021279d97641c783456925804c84817f15e32c779cd780825f80",
+      "status": "resumed"
+    },
+    {
+      "subject": "S088",
+      "n_trials": 114,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "source_sampling_rates_hz": [
+        128.0
+      ],
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S088.npz",
+      "cache_sha256": "1a7a0eedc5e713065dc5daa7b7639a0555368729a626a1a742b86c973ac98de5"
+    },
+    {
+      "subject": "S089",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S089.npz",
+      "cache_sha256": "e188cc59ea82d58ca952d14f92c83b61c4856906220017167feb45c27998beda",
+      "status": "resumed"
+    },
+    {
+      "subject": "S093",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S093.npz",
+      "cache_sha256": "b3f498f30e9b9ce5b17d525f1e48752c76c31e5a584136548e7830113e65d376",
+      "status": "resumed"
+    },
+    {
+      "subject": "S095",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S095.npz",
+      "cache_sha256": "a0aaad92bb126ca7fd91bc46b00c641cfe2b78399830a61f1a1e198702076701",
+      "status": "resumed"
+    },
+    {
+      "subject": "S096",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S096.npz",
+      "cache_sha256": "fddf6452e5cc886e1b5f75d1000f7193643468ae67e8bd81c49047e1c66d0a33",
+      "status": "resumed"
+    },
+    {
+      "subject": "S097",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S097.npz",
+      "cache_sha256": "57ee1a02f16c8da4509958d1c3065ebf272479159deb7e9988fd19354a4d6749",
+      "status": "resumed"
+    },
+    {
+      "subject": "S098",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S098.npz",
+      "cache_sha256": "c15b42d0965119c869d4ec64305f4025b81ff82ef36fe4e079835ee81f320d00",
+      "status": "resumed"
+    },
+    {
+      "subject": "S099",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S099.npz",
+      "cache_sha256": "f039ab07e6f4efb944b184054ab7c0c7cce728f91b101e35789323ddf7f2b13e",
+      "status": "resumed"
+    },
+    {
+      "subject": "S100",
+      "n_trials": 72,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "source_sampling_rates_hz": [
+        128.0
+      ],
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S100.npz",
+      "cache_sha256": "a25f1d367e9ff5d1509b458abfd10859f24724a5646a8942764fd862cc5bea8d"
+    },
+    {
+      "subject": "S101",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S101.npz",
+      "cache_sha256": "dce03cd98b5fe84e1e2dd2f13427a51c0967f98c16af73d0be7561bc1cfeb81a",
+      "status": "resumed"
+    },
+    {
+      "subject": "S102",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S102.npz",
+      "cache_sha256": "9da74a51ec64b90e38a6de9cdedbd2e0e6ad109e9273a4c37dd7f91cbc0e9b09",
+      "status": "resumed"
+    },
+    {
+      "subject": "S104",
+      "n_trials": 87,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S104.npz",
+      "cache_sha256": "2def913f4550c4ae7f896e1bb6474c13126db192aca515ff8499f82455a1e21f",
+      "status": "resumed"
+    },
+    {
+      "subject": "S105",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S105.npz",
+      "cache_sha256": "c5ce76aa0d78dafff6c9c8b0959a7b4e984179f620a353d948d697f82808805b",
+      "status": "resumed"
+    },
+    {
+      "subject": "S106",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S106.npz",
+      "cache_sha256": "ae49dff86cb4116790f55e13eb7daab54df8f3ada3d4c0c4d5f61aba32d0512e",
+      "status": "resumed"
+    },
+    {
+      "subject": "S107",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S107.npz",
+      "cache_sha256": "c9be5bdca796ac2de07011394930e06f9054b3d683c2d03cf54636f241fd0723",
+      "status": "resumed"
+    },
+    {
+      "subject": "S109",
+      "n_trials": 90,
+      "n_runs": 6,
+      "n_channels": 64,
+      "feature_dim": 768,
+      "cache_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_external_actionability_v1\\outputs\\cache\\eegmmidb_features\\S109.npz",
+      "cache_sha256": "209a2c66e96a8a6c9de13a0ece818e87994f37928ae08eae99f591c2f9a748c5",
+      "status": "resumed"
+    }
+  ]
+}

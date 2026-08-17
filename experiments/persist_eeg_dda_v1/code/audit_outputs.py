@@ -94,7 +94,11 @@ def main() -> None:
             "relative_rmse_improvement": improvement, "permutation_p": permutation_p,
         },
         "core_sha256": {str(path.relative_to(ROOT)).replace("\\", "/"): sha256(path) for path in core},
-        "materialized_file_count_before_audit": sum(1 for path in ROOT.rglob("*") if path.is_file()),
+        # Exclude this audit's own target so rerunning is idempotent.
+        "materialized_file_count_before_audit": sum(
+            1 for path in ROOT.rglob("*")
+            if path.is_file() and path.name != "OUTPUT_INTEGRITY_AUDIT.json"
+        ),
     }
     target = ROOT / "OUTPUT_INTEGRITY_AUDIT.json"
     target.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")

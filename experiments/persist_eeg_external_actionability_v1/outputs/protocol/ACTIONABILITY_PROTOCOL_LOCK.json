@@ -1,0 +1,130 @@
+{
+  "implementation_id": "persist_external_actionability_v1_20260817",
+  "reference_commit": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "code_commit_at_freeze": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "seed": 20260817,
+  "frozen_before_external_outcomes": true,
+  "frozen_at_utc": "2026-08-17T05:44:58.855006+00:00",
+  "dataset": "EEGMMIDB",
+  "representation": {
+    "input": "per-trial 64-channel absolute and relative log-bandpower",
+    "bands_hz": [
+      [
+        4,
+        8
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        30,
+        40
+      ]
+    ],
+    "feature_dim": 768,
+    "encoder": "MLP 768-256-128 GELU with linear four-class head",
+    "training_subjects": "task_head_fit only",
+    "early_stopping_subjects": "task_head_validation only",
+    "training_runs": [
+      4,
+      6
+    ],
+    "hyperparameter_grid": {
+      "learning_rate": [
+        0.0003,
+        0.001
+      ],
+      "weight_decay": [
+        0.0001,
+        0.001
+      ],
+      "max_epochs": 80,
+      "patience": 10,
+      "batch_size": 256
+    },
+    "selection_metric": "mean subject balanced accuracy on task_head_validation context runs",
+    "one_seed_only": true
+  },
+  "block_discovery": {
+    "subjects": "block_discovery only",
+    "method": "eigendecomposition of symmetrized cross-run subject-centroid covariance after discovery-run mean centering",
+    "target_labels_used_for_centering": false,
+    "candidate_blocks": [
+      {
+        "block": "P01_04",
+        "components": [
+          1,
+          4
+        ],
+        "rank": 4
+      },
+      {
+        "block": "P05_08",
+        "components": [
+          5,
+          8
+        ],
+        "rank": 4
+      },
+      {
+        "block": "P09_16",
+        "components": [
+          9,
+          16
+        ],
+        "rank": 8
+      },
+      {
+        "block": "P17_32",
+        "components": [
+          17,
+          32
+        ],
+        "rank": 16
+      }
+    ],
+    "candidate_count": 4
+  },
+  "controls": {
+    "random_draws": 100,
+    "construction": "same-rank Haar subspace; per-sample intervention displacement norm exactly matched to candidate block",
+    "random_seed_stream_frozen": true
+  },
+  "inference": {
+    "bootstrap_draws": 10000,
+    "confidence_level": 0.95,
+    "permutation": "subject-level sign flip; exact when feasible",
+    "multiplicity": "Holm correction separately across four blocks for H1, H2, H3-finite, and H4"
+  },
+  "signed_utility_convention": {
+    "u_abs": "CE_erase - CE_raw",
+    "u_spec": "u_abs - mean(CE_random - CE_raw)",
+    "candidate_harmful_direction": "negative",
+    "protected_direction": "positive"
+  },
+  "gates": {
+    "H1": "Holm-adjusted one-sided p<0.05 and LCB95 of candidate-minus-matched-random same-subject cross-run distance advantage >0",
+    "H2": "Holm-adjusted one-sided p<0.05 and UCB95(u_spec)<0",
+    "H3": "LCB95(local candidate/random)>1 AND Holm-adjusted one-sided p<0.05 AND LCB95(finite candidate/random)>1",
+    "H4": "Holm-adjusted one-sided p<0.05, LCB95(delta_BA_specific)>0, and mean delta_BA_specific>=0.005",
+    "H5": "all leave-one-subject-out means >0, all leave-one-future-run-out means >0, and >=60% subjects have nonnegative delta_BA_specific",
+    "actionable_harmful": "H1 AND H2 AND H3 AND H4 AND H5"
+  },
+  "agdi_authorization": "at least one real block passes H1-H5",
+  "no_target_terminal_state": "EXTERNAL_AUDIT_NO_ACTIONABLE_HARMFUL",
+  "no_target_action": "STOP_AGDI_NO_ACTIONABLE_TARGET",
+  "outer_test_state": "OUTER_TEST_LOCKED"
+}

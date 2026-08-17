@@ -1,0 +1,37 @@
+{
+  "implementation_id": "persist_external_actionability_v1_20260817",
+  "reference_commit": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "code_commit_at_freeze": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "seed": 20260817,
+  "frozen_before_external_outcomes": true,
+  "frozen_at_utc": "2026-08-17T05:44:58.855006+00:00",
+  "authorization_rule": "DDA_B_PASS AND DDA_C_PASS => EXTERNAL_ACTIONABILITY_AUDIT_AUTHORIZED",
+  "dda_frozen_terminal_state": "DDA_PARTIAL_MECHANISM_ONLY",
+  "dda_a": {
+    "status": "DDA_A_FAIL",
+    "permanent_falsification": true,
+    "external_audit_veto": false,
+    "must_not_be_rerun_to_change_status": true
+  },
+  "dda_b": "DDA_B_PASS",
+  "dda_c": "DDA_C_PASS",
+  "agdi_training_authorized_before_external_audit": false,
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "analysis_order": [
+    "data_scope_audit",
+    "feature_extraction",
+    "task_head_fit",
+    "block_discovery",
+    "persistence",
+    "signed_utility",
+    "decision_dependence",
+    "accuracy_actionability",
+    "multiplicity_correction",
+    "stability",
+    "block_assignment",
+    "terminal_decision"
+  ],
+  "supporting_cf_analysis_is_not_an_authorization_gate": true,
+  "statistical_unit": "subject; run is a clustered repeated measure",
+  "trial_level_inference_forbidden": true
+}

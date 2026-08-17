@@ -1,0 +1,32 @@
+{
+  "reference_commit": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "final_code_commit_before_commit": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "seed": 20260817,
+  "python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "dataset_tree_sha256": "abe1a89fd50175ccc8eb429bdb75364fffff6a7a2f4fe2ad557a835f781e1a90",
+  "dataset_target_edf_count": 654,
+  "model_checkpoint": "experiments/persist_eeg_external_actionability_v1/outputs/model/eegmmidb_feature_net.pt",
+  "model_checkpoint_sha256": "e89b47f53d7248dee8c90b79b6656eea5dd59ae30179260baa02c0e230ad1b7a",
+  "persistent_basis_sha256": "e962f15738554e6483d73d7ae0e343b13c31f8f4b6e4e23abb0e0f5212666690",
+  "split_role_hashes": {
+    "task_head_train": "85bf24ebc6c34d4fe37e5212dde9e4156f03bf12a2b5f5205e6daae5df3de229",
+    "block_discovery": "d17e326f50c4d440693d004faf350640e7d661062b91e9ce33b7b181d900e5dd",
+    "confirmatory_calibration": "d2ea91817480fcef8c25ce8a4c293c15f937e009d1bee1b42c78cec29941e1f8",
+    "outer_test": "8fef8cb532371771b31618e5397c94c81a457bafedc42cb8c2a68ff6fe25ec3c",
+    "task_head_fit": "c0ceaa31858a4a48bf4e769ff03f79aafb8f6d64a83b75b518b2fd9b2b908c7d",
+    "task_head_validation": "92e64f532f97bcbbabaaa05ae79303f4c546eefceeef67570a00774e68ab19f8"
+  },
+  "exact_commands": [
+    "E:/Anaconda/python.exe experiments/persist_eeg_external_actionability_v1/code/extract_features.py inventory --raw-root D:/nips-temp/TotalP/P1/eegmmidb --workers 16",
+    "E:/Anaconda/python.exe experiments/persist_eeg_external_actionability_v1/code/extract_features.py extract --raw-root D:/nips-temp/TotalP/P1/eegmmidb --workers 8 --resume",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/external_actionability_v1.py train --device cuda",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/external_actionability_v1.py embed --device cuda",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/external_actionability_v1.py discover --device cpu",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/external_actionability_v1.py audit --device cpu",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/cf_rescue_harm.py --device cuda",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/external_actionability_v1.py report --device cpu",
+    "D:/nips-temp/TotalP/P2/.conda/gpu-baseline-v1/python.exe experiments/persist_eeg_external_actionability_v1/code/audit_outputs.py"
+  ],
+  "outer_test_used": false
+}

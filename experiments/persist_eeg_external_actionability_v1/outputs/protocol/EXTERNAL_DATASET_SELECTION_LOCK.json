@@ -1,0 +1,78 @@
+{
+  "implementation_id": "persist_external_actionability_v1_20260817",
+  "reference_commit": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "code_commit_at_freeze": "1eca3976d62d38fb4291e217ca06add484babd41",
+  "seed": 20260817,
+  "frozen_before_external_outcomes": true,
+  "frozen_at_utc": "2026-08-17T05:44:58.855006+00:00",
+  "selected_dataset": "EEGMMIDB",
+  "selection_basis": "metadata, provenance, availability, and compute only; no external performance outcome inspected",
+  "official_release": "PhysioNet EEG Motor Movement/Imagery Dataset v1.0.0",
+  "official_url": "https://physionet.org/content/eegmmidb/1.0.0/",
+  "license": "ODC-By 1.0",
+  "raw_root_expected": "D:/nips-temp/TotalP/P1/eegmmidb",
+  "subjects": 109,
+  "channels": 64,
+  "sampling_rate_hz": 160,
+  "target_runs": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14
+  ],
+  "context_runs": [
+    4,
+    6
+  ],
+  "future_runs": [
+    8,
+    10,
+    12,
+    14
+  ],
+  "classes": {
+    "0": "left_fist_imagery",
+    "1": "right_fist_imagery",
+    "2": "both_fists_imagery",
+    "3": "both_feet_imagery"
+  },
+  "expected_target_edf_count": 654,
+  "persistent_nuisance": "subject-specific structure repeated across separately acquired task runs",
+  "replication_scope": "repeated-run motor-imagery acquisition/task-condition shift",
+  "explicit_limitations": [
+    "EEGMMIDB has repeated runs, not documented independent sessions",
+    "EEGMMIDB is single-site and single-device for this audit",
+    "context/future runs repeat two motor-imagery paradigms; this is not a multisite, multidevice, or true multisession replication",
+    "the EEGMMIDB encoder is trained within dataset and is not the OpenBMI frozen encoder"
+  ],
+  "candidate_registry": [
+    {
+      "dataset": "EEGMMIDB",
+      "available": true,
+      "selected": true,
+      "reason": "109 subjects, repeated MI runs, clear labels, audited license, complete raw local copy, feasible on one GPU"
+    },
+    {
+      "dataset": "OpenBMI",
+      "available": true,
+      "selected": false,
+      "reason": "internal discovery dataset, therefore not an external replication"
+    },
+    {
+      "dataset": "HMC sleep staging",
+      "available": false,
+      "selected": false,
+      "reason": "not locally materialized and changes task/paradigm more radically than the pre-specified repeated-run MI question"
+    },
+    {
+      "dataset": "CAP sleep staging",
+      "available": false,
+      "selected": false,
+      "reason": "not locally materialized; introducing it would require a new download and a different task protocol"
+    }
+  ],
+  "selection_is_single_dataset": true,
+  "performance_based_dataset_selection": false
+}

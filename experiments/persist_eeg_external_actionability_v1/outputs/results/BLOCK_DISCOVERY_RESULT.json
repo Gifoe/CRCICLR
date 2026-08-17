@@ -1,0 +1,69 @@
+{
+  "status": "PERSISTENT_BLOCKS_DISCOVERED_TRAIN_ONLY",
+  "basis_path": "experiments/persist_eeg_external_actionability_v1/outputs/model/eegmmidb_persistent_basis.npz",
+  "basis_sha256": "e962f15738554e6483d73d7ae0e343b13c31f8f4b6e4e23abb0e0f5212666690",
+  "discovery_subject_count": 30,
+  "run_pairs": [
+    [
+      4,
+      8
+    ],
+    [
+      4,
+      12
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      6,
+      14
+    ],
+    [
+      8,
+      12
+    ],
+    [
+      10,
+      14
+    ]
+  ],
+  "target_labels_used_for_centering": false,
+  "orthogonality_error": 1.1024261492202115e-06,
+  "blocks": [
+    {
+      "block": "P01_04",
+      "start_component_1based": 1,
+      "end_component_1based": 4,
+      "rank": 4,
+      "eigenvalue_sum": 19.41937510838359,
+      "minimum_eigenvalue": 2.1279509959618403
+    },
+    {
+      "block": "P05_08",
+      "start_component_1based": 5,
+      "end_component_1based": 8,
+      "rank": 4,
+      "eigenvalue_sum": 3.118098930342515,
+      "minimum_eigenvalue": 0.2726753221834463
+    },
+    {
+      "block": "P09_16",
+      "start_component_1based": 9,
+      "end_component_1based": 16,
+      "rank": 8,
+      "eigenvalue_sum": 0.9239274049660476,
+      "minimum_eigenvalue": 0.04544313296505138
+    },
+    {
+      "block": "P17_32",
+      "start_component_1based": 17,
+      "end_component_1based": 32,
+      "rank": 16,
+      "eigenvalue_sum": 0.22782454114721157,
+      "minimum_eigenvalue": 0.0016992252033503328
+    }
+  ],
+  "outer_test_used": false
+}

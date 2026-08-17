@@ -1,0 +1,55 @@
+{
+  "status": "TASK_HEAD_FROZEN",
+  "checkpoint": "experiments/persist_eeg_external_actionability_v1/outputs/model/eegmmidb_feature_net.pt",
+  "checkpoint_sha256": "e89b47f53d7248dee8c90b79b6656eea5dd59ae30179260baa02c0e230ad1b7a",
+  "model_state_sha256": "8fcb602484aec88a68fd8b0456b09531d77e7ef714bb672bfb2383b4c8825e77",
+  "selected": {
+    "candidate": 1,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "best_epoch": 23,
+    "validation_subject_mean_BA": 0.34630102040816324,
+    "validation_CE": 1.5439093112945557
+  },
+  "all_candidates": [
+    {
+      "candidate": 0,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0001,
+      "best_epoch": 19,
+      "validation_subject_mean_BA": 0.33418367346938777,
+      "validation_CE": 1.5077459812164307
+    },
+    {
+      "candidate": 1,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.001,
+      "best_epoch": 23,
+      "validation_subject_mean_BA": 0.34630102040816324,
+      "validation_CE": 1.5439093112945557
+    },
+    {
+      "candidate": 2,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "best_epoch": 4,
+      "validation_subject_mean_BA": 0.3227040816326531,
+      "validation_CE": 1.3826903104782104
+    },
+    {
+      "candidate": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.001,
+      "best_epoch": 15,
+      "validation_subject_mean_BA": 0.3463010204081632,
+      "validation_CE": 1.9922733306884766
+    }
+  ],
+  "fit_subject_count": 38,
+  "validation_subject_count": 7,
+  "training_runs": [
+    4,
+    6
+  ],
+  "outer_test_used": false
+}

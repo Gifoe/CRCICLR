@@ -1,0 +1,15 @@
+{
+  "amendment_id": "EEGMMIDB_VARIABLE_SAMPLING_RATE_20260817",
+  "timing": "after cryptographic inventory and during signal preflight; before any task-head fit, external prediction, block discovery, utility, decision-dependence, or actionability outcome",
+  "trigger": "Official EEGMMIDB S088R04.edf reports 128 Hz although repository metadata described the dataset as uniformly 160 Hz",
+  "frozen_scientific_question_changed": false,
+  "dataset_selection_changed": false,
+  "subject_split_changed": false,
+  "gates_changed": false,
+  "candidate_blocks_changed": false,
+  "repair": "Accept only the two observed official rates, 128 or 160 Hz, and compute the pre-registered 4-40 Hz Welch bandpower features in physical Hz at each EDF's native rate",
+  "reason": "Welch frequencies are defined in Hz from each EDF sampling-rate header; forced exclusion would create an unjustified post-selection and forced 160-Hz metadata would be false",
+  "fail_closed_rule": "Any source sampling rate outside {128,160} remains a hard preprocessing failure",
+  "performance_outcome_seen": false,
+  "outer_test_signal_opened": false
+}
