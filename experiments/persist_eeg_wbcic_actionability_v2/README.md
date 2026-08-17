@@ -19,9 +19,9 @@ Run from the repository root on the WBCIC machine:
 ```powershell
 E:\Anaconda\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\protocol.py prepare --raw-root D:\nips-temp\TotalP\P2\nm000348_v1.0.4_bids --header-workers 4
 E:\Anaconda\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\cache.py build --raw-root D:\nips-temp\TotalP\P2\nm000348_v1.0.4_bids --workers 4 --batch-size 4
-D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\pipeline.py competence --device cuda --workers 4
-D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\pipeline.py audit --device cuda --workers 4
-D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\pipeline.py agdi --device cuda --workers 4
+D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\pipeline.py competence --device cuda --workers 0
+D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\pipeline.py audit --device cuda --workers 0
+D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg_wbcic_actionability_v2\code\pipeline.py agdi --device cuda --workers 0
 ```
 
 If and only if AGDI passes development selection and creates `FINAL_OUTER_EVALUATION_LOCK.json`, run the one-time outer command:
@@ -31,6 +31,8 @@ D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe experiments\persist_eeg
 ```
 
 The development runtime never opens the sealed outer split. Outer preprocessing materializes only S3 and is impossible before the final lock.
+
+On the executed Windows/torch 2.11 environment, GPU `DataLoader` workers are fixed to zero because spawning the fourth worker deadlocked between folds. This is a delivery/runtime setting only; the epoch cache itself is built with four CPU processes.
 
 ## Stop rules
 

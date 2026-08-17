@@ -1331,9 +1331,14 @@ def reproduce() -> dict[str, Any]:
         "commands": [
             "python code/protocol.py prepare --raw-root <WBCIC_BIDS_ROOT>",
             "python code/cache.py build --raw-root <WBCIC_BIDS_ROOT> --workers 4",
-            "python code/pipeline.py competence --device cuda --workers 4",
-            "python code/pipeline.py audit --device cuda --workers 4",
-            "python code/pipeline.py agdi --device cuda --workers 4",
+            "python code/pipeline.py competence --device cuda --workers 0",
+            "python code/pipeline.py audit --device cuda --workers 0",
+            "python code/pipeline.py agdi --device cuda --workers 0",
+        ],
+        "runtime_notes": [
+            "Epoch-cache preprocessing used four CPU processes.",
+            "GPU training used DataLoader workers=0 because torch 2.11 on Windows deadlocked while spawning the fourth worker between folds; this changes input delivery only, not data, model, optimizer, seed, epochs, or gates.",
+            "Competence resumed from content-hashed completed fold checkpoints after the worker deadlock; incomplete folds had no checkpoint and were retrained from their deterministic seed.",
         ],
         "outer_test_used": json.loads((OUT / "FINAL_DECISION.json").read_text(encoding="utf-8")).get("outer_test_used") if (OUT / "FINAL_DECISION.json").exists() else False,
     }
