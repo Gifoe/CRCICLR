@@ -10,6 +10,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+import scipy
 import torch
 
 from common import (
@@ -212,6 +213,11 @@ def main() -> None:
     for backbone in ("EEGNet", *BACKBONES):
         rows = [row for row in master_rows if row["Backbone"] == backbone]
         competence = bool(rows[0]["Competence"])
+        if backbone == "EEGNet":
+            audit_payload = json.loads((REFERENCE_OUT / "FINAL_DECISION.json").read_text(encoding="utf-8"))
+        else:
+            audit_path = RESULTS / f"BACKBONE_{backbone.upper()}_AUDIT_RESULT.json"
+            audit_payload = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.is_file() else {}
         backbone_rows.append(
             {
                 "Backbone": backbone,
@@ -220,6 +226,7 @@ def main() -> None:
                 "Task_BA_CI_L": rows[0]["Task_BA_CI_L"],
                 "Task_BA_CI_U": rows[0]["Task_BA_CI_U"],
                 "Representation_dimension": rows[0]["Representation_dimension"],
+                "Audit_baseline_BA": audit_payload.get("baseline_mean_subject_BA"),
                 "Persistent_blocks": sum(bool(row.get("H1", False)) for row in rows),
                 "Protected_blocks": sum(bool(row.get("Protected", False)) for row in rows),
                 "Harmful_utility_blocks": sum(bool(row.get("H1", False) and row.get("H2", False)) for row in rows),
@@ -293,6 +300,13 @@ def main() -> None:
 
 def write_reports(final: dict[str, Any], backbone_rows: list[dict[str, Any]], block_rows: list[dict[str, Any]]) -> None:
     table = pd.DataFrame(backbone_rows).to_markdown(index=False)
+    competent = [row["Backbone"] for row in backbone_rows if row["Competence"]]
+    incompetent = [row["Backbone"] for row in backbone_rows if not row["Competence"]]
+    weak_audit = [
+        row["Backbone"]
+        for row in backbone_rows
+        if row["Competence"] and row.get("Audit_baseline_BA") is not None and float(row["Audit_baseline_BA"]) < 0.60
+    ]
     compact = pd.DataFrame(block_rows)[
         ["Backbone", "Block", "H1", "H2", "H3", "H4", "H5", "Protected", "Globally_qualified_actionable", "Action"]
     ].to_markdown(index=False)
@@ -309,6 +323,10 @@ four fixed rank blocks. The family-wise test uses all 16 slots, including
 incompetent-backbone slots as p=1. The ten outer WBCIC subjects remain sealed
 and unused. EEGNet was not rerun or reinterpreted.
 
+Competent representations: `{', '.join(competent)}`. Competence failures:
+`{', '.join(incompetent) if incompetent else 'none'}`. A failed backbone does
+not contribute H1--H5 evidence.
+
 ## Backbone summary
 
 {table}
@@ -321,6 +339,13 @@ and unused. EEGNet was not rerun or reinterpreted.
 
 - A competence failure is not evidence that persistent nuisance is absent; it
   means that representation cannot support an interpretable PERSIST audit.
+- The spectral FBCNet family failed near chance, so the closure contains no
+  competent filter-bank audit. This weakens inductive-bias coverage and must
+  not be described as five competent backbones.
+- `{', '.join(weak_audit) if weak_audit else 'No competent backbone'}` had a
+  cross-fitted audit baseline below 0.60 after restricting training to the
+  three model-fit folds; its block-level audit is correspondingly weaker than
+  its task-search competence result.
 - A negative H4/H5 result is evidence against safe removability under this
   frozen intervention, not proof that the block contains no subject signal.
 - The study tests four pre-registered blocks in five representation families;
@@ -356,16 +381,44 @@ def reproducibility(final: dict[str, Any]) -> None:
         RESULTS / "MASTER_BLOCK_RESULTS.csv",
         RESULTS / "MASTER_ACTION_MATRIX.csv",
     ]
+    reference_files = {
+        "development_scope": REFERENCE_OUT / "protocol" / "DEVELOPMENT_SCOPE_LOCK.json",
+        "cache_scope": REFERENCE_OUT / "protocol" / "CACHE_SCOPE_AUDIT.json",
+        "cache_inventory": REFERENCE_OUT / "protocol" / "CACHE_INVENTORY.csv",
+        "preprocessing": REFERENCE_OUT / "protocol" / "PREPROCESSING_PROTOCOL_LOCK.json",
+        "raw_data": REFERENCE_OUT / "protocol" / "WBCIC_RAW_DATA_LOCK.json",
+    }
+    checkpoint_hashes: dict[str, str] = {}
+    elapsed: dict[str, dict[str, float | None]] = {}
+    for backbone in BACKBONES:
+        competence_path = RESULTS / f"BACKBONE_{backbone.upper()}_COMPETENCE_RESULT.json"
+        audit_path = RESULTS / f"BACKBONE_{backbone.upper()}_AUDIT_RESULT.json"
+        competence_payload = json.loads(competence_path.read_text(encoding="utf-8"))
+        audit_payload = json.loads(audit_path.read_text(encoding="utf-8"))
+        for item in competence_payload.get("checkpoints", []):
+            checkpoint_hashes[str(item["checkpoint"])] = str(item["checkpoint_sha256"])
+        for item in audit_payload.get("checkpoints", []):
+            checkpoint_hashes[str(item["checkpoint"])] = str(item["checkpoint_sha256"])
+        elapsed[backbone] = {
+            "task_search_seconds": competence_payload.get("elapsed_seconds"),
+            "audit_seconds": audit_payload.get("elapsed_seconds"),
+        }
     payload = {
         "git_sha": git_commit(),
         "python": sys.version,
         "platform": platform.platform(),
         "torch": torch.__version__,
+        "numpy": np.__version__,
+        "pandas": pd.__version__,
+        "scipy": scipy.__version__,
         "cuda_runtime": torch.version.cuda,
         "cuda_available_at_finalize": torch.cuda.is_available(),
         "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
         "reference_scope_hash": "dae8e7ec00cbcf6dcc8c5b25829f2148fd0b5fdf162f75a0cddc18b096af7db4",
+        "reference_artifact_sha256": {name: sha256_file(path) for name, path in reference_files.items()},
         "reference_EEGNet_commit": "61e4157817bc9c04f50471fb9dd6b865d74e21e4",
+        "checkpoint_sha256": checkpoint_hashes,
+        "elapsed_seconds_by_backbone": elapsed,
         "artifact_sha256": {str(path.relative_to(REPO_ROOT)).replace("\\", "/"): sha256_file(path) for path in files},
         "commands": [
             "python code/freeze_protocol.py",

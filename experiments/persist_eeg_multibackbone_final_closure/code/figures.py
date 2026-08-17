@@ -65,16 +65,26 @@ def gate_matrix(blocks: pd.DataFrame) -> None:
     for backbone in ORDER:
         for block in BLOCKS:
             row = frame.loc[(backbone, block)]
-            values.append([float(bool(row[value])) for value in gates])
+            values.append(
+                [-1.0] * len(gates)
+                if not bool(row["Competence"])
+                else [float(bool(row[value])) for value in gates]
+            )
             labels.append(f"{backbone} · {block}")
     fig, ax = plt.subplots(figsize=(6.2, 10))
-    image = ax.imshow(values, cmap=matplotlib.colors.ListedColormap(["#eeeeee", "#2e7d67"]), vmin=0, vmax=1, aspect="auto")
+    ax.imshow(
+        values,
+        cmap=matplotlib.colors.ListedColormap(["#9e9e9e", "#eeeeee", "#2e7d67"]),
+        norm=matplotlib.colors.BoundaryNorm([-1.5, -0.5, 0.5, 1.5], 3),
+        aspect="auto",
+    )
     ax.set_xticks(range(len(gates)), gates)
     ax.set_yticks(range(len(labels)), labels, fontsize=8)
     ax.set_title("Prospective gate matrix")
     for i, row in enumerate(values):
         for j, value in enumerate(row):
-            ax.text(j, i, "PASS" if value else "—", ha="center", va="center", fontsize=7, color="white" if value else "#777")
+            label = "N/A" if value < 0 else ("PASS" if value else "—")
+            ax.text(j, i, label, ha="center", va="center", fontsize=7, color="white" if value != 0 else "#777")
     save(fig, "figure3_cross_backbone_gate_matrix")
 
 
