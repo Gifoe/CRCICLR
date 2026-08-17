@@ -1,0 +1,68 @@
+{
+  "actionability_based_reselection_forbidden": true,
+  "architecture": "EEGNet",
+  "competence_checkpoint_set": [
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/competence/EEGNET_STABLE_fold-0.pt",
+      "checkpoint_sha256": "8e6545211e28ced3ca73b711b7be329298e69ffceb02a9d96eed3325e8f2966f",
+      "config": "EEGNET_STABLE",
+      "fold": 0,
+      "model_state_sha256": "94d9f5c72e55375f02874799842a7ed54f0c03130e650240053e78edbe3d6de0",
+      "train_subjects_hash": "d9ace922ce2d4c25663e5df59111e79412cb0953d37b39f9764433d79c060ef0"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/competence/EEGNET_STABLE_fold-1.pt",
+      "checkpoint_sha256": "3788d881a813b3553462a3358702e49652e0f58a112c77dbfb41b4c3db273d28",
+      "config": "EEGNET_STABLE",
+      "fold": 1,
+      "model_state_sha256": "fb502b229a61de8a890c8ff565718eadcf8157217d71b4af164a8c36560300a0",
+      "train_subjects_hash": "b6eadd38851f9661bb7d5f61af3dfcec56a9dc5dee8299e7f9152a95374a3a89"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/competence/EEGNET_STABLE_fold-2.pt",
+      "checkpoint_sha256": "d27e6bb83fc069144000d6912da2774c7bb9c6402bf8acda4775297f483bbb76",
+      "config": "EEGNET_STABLE",
+      "fold": 2,
+      "model_state_sha256": "9f1909ddea2b3bee34bfb81f9c0aabf9112a012b3c194b2288e36af385d80788",
+      "train_subjects_hash": "797ae9a5547b5311346c6de4a0d5fed308ed5297e32ba5f4f51409806d632d2d"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/competence/EEGNET_STABLE_fold-3.pt",
+      "checkpoint_sha256": "8ead10365e25211d92d78c425ba45539844c2f75e630556fe6244c778094ee12",
+      "config": "EEGNET_STABLE",
+      "fold": 3,
+      "model_state_sha256": "dc37107579b9eb5a54e571474cd0469c283d5fedb2eb6edc79bc07849381f9fd",
+      "train_subjects_hash": "2737ec56430bf36fcb094914fe14b5f06546216770d560a4b69fade3528e3f40"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/competence/EEGNET_STABLE_fold-4.pt",
+      "checkpoint_sha256": "e301886d9838c15b749cbddbe963097028dbd6de025a536d6f01f3de084bdc92",
+      "config": "EEGNET_STABLE",
+      "fold": 4,
+      "model_state_sha256": "30ccaa270f3caf208f476b018ea36c0740f6cb14e9153faaf80a9d3f0d38c063",
+      "train_subjects_hash": "d8fe7eed6b414b7675907e31184e82ad58ce0cd7f647fb36ff323793e92787bf"
+    }
+  ],
+  "config": {
+    "batch_size": 64,
+    "dropout": 0.25,
+    "epochs": 40,
+    "id": "EEGNET_STABLE",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0005
+  },
+  "git_commit": "47523e8e96a03755da2c404b626309b25a92c827",
+  "implementation_id": "persist_eeg_wbcic_eegnet_actionability_v2_20260817",
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "selection_is_task_only": true,
+  "selection_metrics": {
+    "competence_gate_pass": true,
+    "config": "EEGNET_STABLE",
+    "fraction_subject_BA_gt_0p5": 0.975609756097561,
+    "mean_subject_BA": 0.794354982754373,
+    "subject_bootstrap_CI95_L": 0.748780487804878,
+    "subject_bootstrap_CI95_U": 0.8382740668883961,
+    "subject_count": 41
+  },
+  "status": "REPRESENTATION_FROZEN"
+}

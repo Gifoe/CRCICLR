@@ -1,0 +1,44 @@
+{
+  "basis_frozen_before_outcome_aggregation": true,
+  "candidate_blocks": [
+    {
+      "block": "P01_04",
+      "end": 4,
+      "rank": 4,
+      "start": 0
+    },
+    {
+      "block": "P05_08",
+      "end": 8,
+      "rank": 4,
+      "start": 4
+    },
+    {
+      "block": "P09_16",
+      "end": 16,
+      "rank": 8,
+      "start": 8
+    },
+    {
+      "block": "P17_32",
+      "end": 32,
+      "rank": 16,
+      "start": 16
+    }
+  ],
+  "centering": "discovery-subject session means only",
+  "code_commit_at_freeze": "47523e8e96a03755da2c404b626309b25a92c827",
+  "code_tree_sha256": "a3114765b50e9dbeceb3dff293edc1535090147210a627685620e24c6064697c",
+  "embedding_dim": 32,
+  "frozen_at_utc": "2026-08-17T13:02:06.939597+00:00",
+  "frozen_before_task_or_actionability_outcomes": true,
+  "implementation_id": "persist_eeg_wbcic_eegnet_actionability_v2_20260817",
+  "method": "fold-specific eigendecomposition of symmetrized S1/S2 cross-session subject-centroid covariance",
+  "outcome_S3_labels_used": false,
+  "protocol_seed": "PERSIST-EEG-WBCIC-EEGNET-V2-20260817",
+  "reference_commits": [
+    "1eca3976d62d38fb4291e217ca06add484babd41",
+    "78f010644e86639d44a844558ab37bd865815082"
+  ],
+  "same_rank_controls": 100
+}

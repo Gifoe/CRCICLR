@@ -1,0 +1,42 @@
+{
+  "CAR": "pre-registered secondary robustness only; cannot replace primary after H1-H5",
+  "amplitude_transform": "microvolts / 20, clipped to [-12.5,12.5]; no cross-subject statistics",
+  "bandpass_hz": [
+    0.5,
+    40.0
+  ],
+  "channel_policy": "subtract Pz from each of the other 58 EEG channels, then drop Pz; EOG/ECG excluded",
+  "channels_out": 58,
+  "code_commit_at_freeze": "47523e8e96a03755da2c404b626309b25a92c827",
+  "code_tree_sha256": "a3114765b50e9dbeceb3dff293edc1535090147210a627685620e24c6064697c",
+  "cue_shortcut_diagnostic": [
+    "early imagery [0,2] s",
+    "late imagery [2,4] s"
+  ],
+  "epoch_seconds_from_event": [
+    0.0,
+    4.0
+  ],
+  "event_mapping": {
+    "left_hand": 0,
+    "right_hand": 1
+  },
+  "event_tsv_onset_semantics": "the four-second BIDS event already marks the imagery interval corresponding to trial-relative [1.5,5.5] s; no additional 1.5 s shift",
+  "filter": "zero-phase fourth-order Butterworth SOS on an eight-second event-centered window",
+  "filter_margin_seconds": 2.0,
+  "frozen_at_utc": "2026-08-17T13:02:06.939597+00:00",
+  "frozen_before_actionability": true,
+  "frozen_before_task_or_actionability_outcomes": true,
+  "implementation_id": "persist_eeg_wbcic_eegnet_actionability_v2_20260817",
+  "input_sampling_rate_hz": 1000,
+  "line_noise": "50 Hz is above the frozen 40 Hz low-pass; a redundant notch is intentionally not applied",
+  "output_sampling_rate_hz": 250,
+  "primary_reference": "Pz",
+  "protocol_seed": "PERSIST-EEG-WBCIC-EEGNET-V2-20260817",
+  "reference_commits": [
+    "1eca3976d62d38fb4291e217ca06add484babd41",
+    "78f010644e86639d44a844558ab37bd865815082"
+  ],
+  "resampling": "scipy.signal.resample_poly up=1 down=4 after anti-alias band-pass",
+  "task": "2C left/right motor imagery"
+}

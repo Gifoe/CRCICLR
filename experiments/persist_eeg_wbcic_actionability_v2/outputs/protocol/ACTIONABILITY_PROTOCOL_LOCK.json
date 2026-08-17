@@ -1,0 +1,42 @@
+{
+  "agdi_alpha_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "bootstrap_draws": 10000,
+  "code_commit_at_freeze": "47523e8e96a03755da2c404b626309b25a92c827",
+  "code_tree_sha256": "a3114765b50e9dbeceb3dff293edc1535090147210a627685620e24c6064697c",
+  "confidence_level": 0.95,
+  "cross_fitting": "five folds: outcome F_k; discovery/decision F_(k+1); model-fit remaining three",
+  "finite_intervention": "project raw embedding h through the candidate projector; logits use W(I-P)h+b, exactly matching the authorized AGDI alpha=1 intervention",
+  "frozen_at_utc": "2026-08-17T13:02:06.939597+00:00",
+  "frozen_before_task_or_actionability_outcomes": true,
+  "gates": {
+    "H1": "LCB95 persistence-specific>0 and Holm one-sided p<0.05",
+    "H2": "UCB95 u_spec<0 and Holm one-sided p<0.05",
+    "H3": "local random-control LCB>1 and p<0.05; finite-ratio LCB>1 and Holm p<0.05",
+    "H4": "LCB95 delta-BA-specific>0, mean>=0.005, Holm p<0.05",
+    "H5": "all leave-one-fold-out means>0, all leave-one-subject-out means>0, >=60% nonnegative subjects",
+    "actionable_harmful": "H1 AND H2 AND H3 AND H4 AND H5",
+    "competence": "mean subject BA>=0.60 AND LCB95>0.55 AND >=70% subjects BA>0.5"
+  },
+  "implementation_id": "persist_eeg_wbcic_eegnet_actionability_v2_20260817",
+  "multiplicity": "Holm separately across four primary blocks for H1,H2,H3-finite,H4 and protected-utility",
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "protocol_seed": "PERSIST-EEG-WBCIC-EEGNET-V2-20260817",
+  "random_draws": 100,
+  "reference_commits": [
+    "1eca3976d62d38fb4291e217ca06add484babd41",
+    "78f010644e86639d44a844558ab37bd865815082"
+  ],
+  "signed_utility": {
+    "harmful": "negative",
+    "protected": "positive",
+    "u_abs": "CE_erase-CE_raw",
+    "u_spec": "u_abs-mean(CE_random-CE_raw)"
+  },
+  "statistical_unit": "subject"
+}

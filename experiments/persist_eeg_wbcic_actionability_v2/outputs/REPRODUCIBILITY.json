@@ -1,0 +1,28 @@
+{
+  "commands": [
+    "python code/protocol.py prepare --raw-root <WBCIC_BIDS_ROOT>",
+    "python code/cache.py build --raw-root <WBCIC_BIDS_ROOT> --workers 4",
+    "python code/pipeline.py competence --device cuda --workers 0",
+    "python code/pipeline.py audit --device cuda --workers 0",
+    "python code/pipeline.py agdi --device cuda --workers 0"
+  ],
+  "cuda_version": "12.8",
+  "git_commit": "9b89f5a0ff78e34e3248b0a69e20d565cdfb3cc1",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "implementation_id": "persist_eeg_wbcic_eegnet_actionability_v2_20260817",
+  "outer_test_used": false,
+  "packages": {
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "torch": "2.11.0+cu128"
+  },
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "runtime_notes": [
+    "Epoch-cache preprocessing used four CPU processes.",
+    "GPU training used DataLoader workers=0 because torch 2.11 on Windows deadlocked while spawning the fourth worker between folds; this changes input delivery only, not data, model, optimizer, seed, epochs, or gates.",
+    "Competence resumed from content-hashed completed fold checkpoints after the worker deadlock; incomplete folds had no checkpoint and were retrained from their deterministic seed."
+  ],
+  "seed": 20260817,
+  "torch_cuda_available": true
+}

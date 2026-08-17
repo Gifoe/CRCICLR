@@ -1,0 +1,114 @@
+{
+  "actionable_harmful_blocks": [],
+  "agdi_training_authorized": false,
+  "assignments": [
+    {
+      "H1": true,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "action": "PRESERVE",
+      "all_H1_H5": false,
+      "assignment": "PROTECTED",
+      "block": "P01_04",
+      "protected_utility_gate": true,
+      "rank": 4
+    },
+    {
+      "H1": true,
+      "H2": true,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "all_H1_H5": false,
+      "assignment": "DECISION-NULL / WEAKLY ACTIVE",
+      "block": "P05_08",
+      "protected_utility_gate": false,
+      "rank": 4
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "all_H1_H5": false,
+      "assignment": "UNCERTAIN",
+      "block": "P09_16",
+      "protected_utility_gate": false,
+      "rank": 8
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "all_H1_H5": false,
+      "assignment": "UNCERTAIN",
+      "block": "P17_32",
+      "protected_utility_gate": false,
+      "rank": 16
+    }
+  ],
+  "baseline_mean_subject_BA": 0.7818930155210644,
+  "bootstrap_draws": 10000,
+  "cross_fitting": "five subject-disjoint audit folds",
+  "development_subjects": 41,
+  "elapsed_seconds": 841.3873634338379,
+  "fold_checkpoints": [
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/audit/EEGNet_fold-0.pt",
+      "checkpoint_sha256": "ccca55205417d7c1ef360384c3bb5ab02be595c7fb13eaaf1960f196778c9d62",
+      "fold": 0,
+      "model_fit_subjects_hash": "a097f8037d7e60e4845c19c1b599708393e1abe171ca13eb9b972f90d9d32fa6",
+      "model_state_sha256": "65e0e11aa6c2e715845eb22ba829874793973a001ed34548f220f65e416d9e63"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/audit/EEGNet_fold-1.pt",
+      "checkpoint_sha256": "7e2d7eed69345eea4cf817d0436d22c99113e0e1d06f302dbea864e45f68f6a6",
+      "fold": 1,
+      "model_fit_subjects_hash": "26b6e0d14a210f494ced480f7c8ba022839cdacf1aa20875f0294f8c0afb00c2",
+      "model_state_sha256": "20045afdc3ef3c077abda96c2bc88af763890128c0c9c4ad2d2102fc2f378a34"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/audit/EEGNet_fold-2.pt",
+      "checkpoint_sha256": "57840f6a15724fcf17bb962459deecfc51f15896ec138cc6e8c272262bf11444",
+      "fold": 2,
+      "model_fit_subjects_hash": "f1a7e595bc3798e016014886def08b83b05b62e624f83eb07fc72d94033829ed",
+      "model_state_sha256": "646f8a13c2e230a758fdf48fb5e1c898b269d75203268b215d9d9f64083d2305"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/audit/EEGNet_fold-3.pt",
+      "checkpoint_sha256": "d2f126e59cf5d97d1dd6a9bd64a00ee7a04a254616519c4ab5215ee32263519a",
+      "fold": 3,
+      "model_fit_subjects_hash": "e23be72eebc0b9d0752b5736a7e796a3bb2b88c31853b8240661ef0db4e95d99",
+      "model_state_sha256": "1c93b0b295c64744390baad19f675a1fb26de0765d139561ead7542fe8c55f65"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_wbcic_actionability_v2/outputs/model/audit/EEGNet_fold-4.pt",
+      "checkpoint_sha256": "d16170546e556f075572493b4ace3bd8790e10372a907d6394b476e28a58972b",
+      "fold": 4,
+      "model_fit_subjects_hash": "cdf663c91ae226d4847bca706e18d057470d0f0a11ba968cc2f44d112e76c932",
+      "model_state_sha256": "d69046b741eb1e57684197edba34793e8fb19863a9cb843165521bec230f50d7"
+    }
+  ],
+  "limitations": [
+    "Each fold-specific cross-session basis is estimated from only 8-9 discovery subjects; components beyond the empirical positive cross-covariance rank are therefore weakly identified and must pass H1 rather than being presumed persistent.",
+    "The primary protocol has one future session (S3); H5 uses leave-one-subject and leave-one-audit-fold stability, not a second independent future-session outcome."
+  ],
+  "multiplicity": "Holm within each frozen four-block family",
+  "next_action": "STOP_AGDI_NO_ACTIONABLE_TARGET",
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "outer_test_used": false,
+  "protected_blocks": [
+    "P01_04"
+  ],
+  "random_draws": 100,
+  "scientific_conclusion": "No prospectively tested WBCIC block passed all H1-H5.",
+  "terminal_state": "WBCIC_AUDIT_NO_ACTIONABLE_HARMFUL"
+}
