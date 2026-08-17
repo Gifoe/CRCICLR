@@ -54,8 +54,20 @@ class FBCNet(nn.Module):
             spectrum = torch.fft.rfft(x.float(), dim=-1)
             weight = self.spatial_weight.float()
             weight = weight / weight.norm(dim=-1, keepdim=True).clamp_min(1e-6)
-            spatial = torch.einsum("bcf,kmc->bkmf", spectrum, weight.to(spectrum.dtype))
-            spatial = spatial * self.frequency_masks[:, None, :]
+            # The nine supports are disjoint and occupy only 144 of 501 FFT
+            # bins. Contract each support separately instead of multiplying
+            # all band weights across all frequencies and masking afterwards;
+            # this is algebraically identical and about an order faster.
+            spatial = spectrum.new_zeros(
+                (len(x), len(self.bands), self.spatial_filters, spectrum.shape[-1])
+            )
+            for band in range(len(self.bands)):
+                support = self.frequency_masks[band].bool()
+                spatial[:, band, :, support] = torch.einsum(
+                    "bcf,mc->bmf",
+                    spectrum[:, :, support],
+                    weight[band].to(spectrum.dtype),
+                )
             signal = torch.fft.irfft(spatial, n=INPUT_SAMPLES, dim=-1)
         value = signal.reshape(len(x), -1, INPUT_SAMPLES)
         value = self.dropout(value * torch.sigmoid(self.bn(value)))
