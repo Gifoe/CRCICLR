@@ -1,0 +1,43 @@
+{
+  "H1": "LCB95 persistence-specific advantage >0 and one-sided p<0.05",
+  "H2": "UCB95 u_spec<0 and one-sided harmful p<0.05",
+  "H3": "exact binary Haar local LCB>1 and p<0.05; finite LCB>1 and p<0.05",
+  "H4": "LCB95 delta_BA_specific>0, mean>=0.005, one-sided p<0.05",
+  "H5": "all LOFO means>0; all LOSO means>0; >=60% subjects nonnegative",
+  "blocks": [
+    {
+      "end": 4,
+      "name": "P01_04",
+      "start": 0
+    },
+    {
+      "end": 8,
+      "name": "P05_08",
+      "start": 4
+    },
+    {
+      "end": 16,
+      "name": "P09_16",
+      "start": 8
+    },
+    {
+      "end": 32,
+      "name": "P17_32",
+      "start": 16
+    }
+  ],
+  "bootstrap_draws": 10000,
+  "cache": "read-only persist_eeg_wbcic_actionability_v2 development epoch cache",
+  "cross_fitting": "five folds: outcome F_k; discovery F_(k+1); model-fit remaining three",
+  "frozen_at_utc": "2026-08-17T19:45:34.8781405Z",
+  "outer_materialization_forbidden": true,
+  "persistence_basis": "fold-specific symmetrized S1/S2 cross-session subject-centroid covariance",
+  "preprocessing": "immutable frozen 58x1000 Pz-subtracted 0.5-40Hz cache",
+  "protected": "H1+H3 and LCB95(u_spec)>0 with one-sided protected p<0.05",
+  "random_controls": 100,
+  "reference_commit": "61e4157817bc9c04f50471fb9dd6b865d74e21e4",
+  "scope": "same 41 WBCIC development subjects; ten outer subjects sealed",
+  "session_protocol": "S1+S2 -> S3",
+  "statistical_unit": "subject",
+  "status": "MULTIBACKBONE_PROTOCOL_FROZEN_PRE_OUTCOME"
+}

@@ -1,0 +1,67 @@
+{
+  "PERSIST_metrics_forbidden_during_selection": true,
+  "backbone": "FBCNet",
+  "configs": [
+    {
+      "batch_size": 128,
+      "epochs": 30,
+      "gradient_clip": 1.0,
+      "id": "FBC_S8_LR1E3",
+      "label_smoothing": 0.0,
+      "learning_rate": 0.001,
+      "model": {
+        "dropout": 0.25,
+        "spatial_filters": 8,
+        "windows": 4
+      },
+      "weight_decay": 0.0001
+    },
+    {
+      "batch_size": 128,
+      "epochs": 40,
+      "gradient_clip": 1.0,
+      "id": "FBC_S8_STABLE",
+      "label_smoothing": 0.0,
+      "learning_rate": 0.0003,
+      "model": {
+        "dropout": 0.5,
+        "spatial_filters": 8,
+        "windows": 4
+      },
+      "weight_decay": 0.0005
+    },
+    {
+      "batch_size": 96,
+      "epochs": 35,
+      "gradient_clip": 1.0,
+      "id": "FBC_S16_STABLE",
+      "label_smoothing": 0.0,
+      "learning_rate": 0.0003,
+      "model": {
+        "dropout": 0.35,
+        "spatial_filters": 16,
+        "windows": 4
+      },
+      "weight_decay": 0.0005
+    }
+  ],
+  "finite_budget": 3,
+  "folds": 5,
+  "frozen_at_utc": "2026-08-17T19:45:34.8781405Z",
+  "maximum_budget": 6,
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "primary_selection_metric": "mean subject balanced accuracy",
+  "secondary_reporting": [
+    "median subject BA",
+    "macro-F1",
+    "worst-20%-subject BA",
+    "NLL"
+  ],
+  "status": "TASK_ONLY_SEARCH_FROZEN_PRE_OUTCOME",
+  "tie_break": [
+    "lower mean subject NLL",
+    "lexicographic config id"
+  ],
+  "train": "all non-outcome development subjects S1+S2",
+  "validation": "development unseen-subject S3"
+}

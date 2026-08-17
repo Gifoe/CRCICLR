@@ -1,0 +1,154 @@
+{
+  "architecture_inventory": {
+    "DeepConvNet": [
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "DEEP_F25_LR1E3",
+        "native_representation_dim": 200,
+        "parameter_count": 300552
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "DEEP_F25_STABLE",
+        "native_representation_dim": 200,
+        "parameter_count": 300552
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "DEEP_F32_STABLE",
+        "native_representation_dim": 256,
+        "parameter_count": 491778
+      }
+    ],
+    "EEGConformer": [
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "CONF_D40_BASE",
+        "native_representation_dim": 40,
+        "parameter_count": 154802
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "CONF_D64_BASE",
+        "native_representation_dim": 64,
+        "parameter_count": 246650
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "CONF_D64_CONSERVATIVE",
+        "native_representation_dim": 64,
+        "parameter_count": 246650
+      }
+    ],
+    "FBCNet": [
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "FBC_S8_LR1E3",
+        "native_representation_dim": 288,
+        "parameter_count": 4898
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "FBC_S8_STABLE",
+        "native_representation_dim": 288,
+        "parameter_count": 4898
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "FBC_S16_STABLE",
+        "native_representation_dim": 576,
+        "parameter_count": 9794
+      }
+    ],
+    "TeCh": [
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "TECH_D64_BASE",
+        "native_representation_dim": 64,
+        "parameter_count": 264066
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "TECH_D64_JITTER",
+        "native_representation_dim": 64,
+        "parameter_count": 264066
+      },
+      {
+        "classifier_head": "single nn.Linear(native_representation_dim, 2)",
+        "config": "TECH_D128_BASE",
+        "native_representation_dim": 128,
+        "parameter_count": 649698
+      }
+    ]
+  },
+  "competence_gate": {
+    "bootstrap_LCB95_strictly_greater_than": 0.55,
+    "fraction_subject_BA_gt_0p5_min": 0.7,
+    "mean_subject_BA_min": 0.6
+  },
+  "conditional_replication_seeds": [
+    20260823,
+    20260829
+  ],
+  "exact_roster": [
+    "EEGNet",
+    "FBCNet",
+    "EEGConformer",
+    "DeepConvNet",
+    "TeCh"
+  ],
+  "frozen_at_utc": "2026-08-17T19:45:34.8781405Z",
+  "frozen_reference_commit": "61e4157817bc9c04f50471fb9dd6b865d74e21e4",
+  "git_sha_at_lock": "61e4157817bc9c04f50471fb9dd6b865d74e21e4",
+  "implementation_id": "persist_eeg_multibackbone_final_closure_20260818",
+  "new_prospective_backbones": [
+    "FBCNet",
+    "EEGConformer",
+    "DeepConvNet",
+    "TeCh"
+  ],
+  "no_sixth_backbone": true,
+  "pre_outcome_implementation_commit": "7baec3e17104703be65a1b6eb7e4ccd71ac3420e",
+  "primary_seed": 20260817,
+  "provenance": {
+    "DeepConvNet": {
+      "implementation": "independent architecture-family reimplementation",
+      "license": "BSD-3-Clause (Braindecode)",
+      "source": "Schirrmeister et al. 2017; Braindecode Deep4Net/Deep4Net successor",
+      "upstream_commit_audited": "eb3ddee6b72b07ff7457f9273cff179400b925c5"
+    },
+    "EEGConformer": {
+      "implementation": "independent compact paper-level reimplementation; no upstream source vendored",
+      "license": "GPL-3.0 with separate commercial-use notice",
+      "source": "https://github.com/eeyhsong/EEG-Conformer and public paper",
+      "upstream_commit_audited": "9ae149ba62487ceae723277d13adac27837113d2"
+    },
+    "EEGNet": {
+      "commit": "61e4157817bc9c04f50471fb9dd6b865d74e21e4",
+      "license": "repository license",
+      "source": "CRCICLR persist_eeg_wbcic_actionability_v2",
+      "status": "frozen_read_only_reference"
+    },
+    "FBCNet": {
+      "implementation": "adapted reimplementation; deterministic internal 4-Hz FFT filter bank preserves frozen cache",
+      "license": "MIT",
+      "source": "https://github.com/ravikiran-mane/FBCNet",
+      "upstream_commit_audited": "de1bbdd8a54cb1e466830e3d47070e0e56761a37"
+    },
+    "TeCh": {
+      "implementation": "clean-room faithful reimplementation from public architecture; no upstream source vendored",
+      "license": "NO REPOSITORY-WIDE LICENSE FOUND",
+      "source": "https://github.com/Levi-Ackman/TeCh and ICLR 2026 paper",
+      "upstream_commit_audited": "9a378cc546a5d97c871eff282148175b3c7cd75b"
+    }
+  },
+  "replacement_policy": "no replacement after any new H1-H5; hard pre-outcome implementation block must be recorded",
+  "representation_rule": "native penultimate vector immediately before frozen final linear head; dimension >=32",
+  "status": "BACKBONE_ROSTER_FROZEN_PRE_OUTCOME",
+  "task_only_config_count": {
+    "DeepConvNet": 3,
+    "EEGConformer": 3,
+    "FBCNet": 3,
+    "TeCh": 3
+  }
+}

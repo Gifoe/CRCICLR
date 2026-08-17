@@ -1,0 +1,25 @@
+{
+  "AGDI_authorization_requires_seed_replication": true,
+  "alpha": 0.05,
+  "candidate_p_joint": "max(p_H1,p_H2_harmful,p_H3_local_exact,p_H3_finite,p_H4)",
+  "component_effect_and_CI_gates_also_required": true,
+  "conditional_replication_seeds": [
+    20260823,
+    20260829
+  ],
+  "family_definition": "all four pre-registered blocks for every competent new backbone; incompetent backbone/block slots remain in the 16-slot family with p_joint=1",
+  "frozen_at_utc": "2026-08-17T19:45:34.8781405Z",
+  "global_procedure": "Holm FWER correction across exactly 16 p_joint values",
+  "local_test": "exact per-fold Haar Beta(rank/2,(d-rank)/2) null, convolved across five folds with frozen 2^20 scrambled-Sobol integration; avoids 100-draw resolution failure",
+  "maximum_family": 16,
+  "positive_target_requires": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "global_Holm"
+  ],
+  "status": "MULTIBACKBONE_MULTIPLICITY_FROZEN_PRE_OUTCOME",
+  "within_backbone_component_holm": "reported as diagnostic continuity only; global 16-candidate Holm is confirmatory"
+}

@@ -24,6 +24,7 @@ from models import build_model, count_parameters
 
 FROZEN_AT = "2026-08-17T19:45:34.8781405Z"
 REFERENCE_COMMIT = "61e4157817bc9c04f50471fb9dd6b865d74e21e4"
+PRE_OUTCOME_IMPLEMENTATION_COMMIT = "7baec3e17104703be65a1b6eb7e4ccd71ac3420e"
 
 CONFIGS: dict[str, list[dict[str, Any]]] = {
     "FBCNet": [
@@ -215,7 +216,8 @@ def main() -> None:
         "status": "BACKBONE_ROSTER_FROZEN_PRE_OUTCOME",
         "implementation_id": IMPLEMENTATION_ID,
         "frozen_at_utc": FROZEN_AT,
-        "git_sha_at_lock": git_commit(),
+        "git_sha_at_lock": REFERENCE_COMMIT,
+        "pre_outcome_implementation_commit": PRE_OUTCOME_IMPLEMENTATION_COMMIT,
         "frozen_reference_commit": REFERENCE_COMMIT,
         "exact_roster": ["EEGNet", *BACKBONES],
         "new_prospective_backbones": list(BACKBONES),

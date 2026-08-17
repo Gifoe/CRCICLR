@@ -1,0 +1,73 @@
+{
+  "PERSIST_metrics_forbidden_during_selection": true,
+  "backbone": "EEGConformer",
+  "configs": [
+    {
+      "batch_size": 64,
+      "epochs": 35,
+      "gradient_clip": 1.0,
+      "id": "CONF_D40_BASE",
+      "label_smoothing": 0.0,
+      "learning_rate": 0.0003,
+      "model": {
+        "d_model": 40,
+        "depth": 3,
+        "dropout": 0.25,
+        "heads": 4,
+        "temporal_kernel": 25
+      },
+      "weight_decay": 0.0005
+    },
+    {
+      "batch_size": 64,
+      "epochs": 35,
+      "gradient_clip": 1.0,
+      "id": "CONF_D64_BASE",
+      "label_smoothing": 0.0,
+      "learning_rate": 0.0003,
+      "model": {
+        "d_model": 64,
+        "depth": 3,
+        "dropout": 0.35,
+        "heads": 4,
+        "temporal_kernel": 25
+      },
+      "weight_decay": 0.0005
+    },
+    {
+      "batch_size": 64,
+      "epochs": 40,
+      "gradient_clip": 1.0,
+      "id": "CONF_D64_CONSERVATIVE",
+      "label_smoothing": 0.02,
+      "learning_rate": 0.0001,
+      "model": {
+        "d_model": 64,
+        "depth": 3,
+        "dropout": 0.25,
+        "heads": 4,
+        "temporal_kernel": 25
+      },
+      "weight_decay": 0.001
+    }
+  ],
+  "finite_budget": 3,
+  "folds": 5,
+  "frozen_at_utc": "2026-08-17T19:45:34.8781405Z",
+  "maximum_budget": 6,
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "primary_selection_metric": "mean subject balanced accuracy",
+  "secondary_reporting": [
+    "median subject BA",
+    "macro-F1",
+    "worst-20%-subject BA",
+    "NLL"
+  ],
+  "status": "TASK_ONLY_SEARCH_FROZEN_PRE_OUTCOME",
+  "tie_break": [
+    "lower mean subject NLL",
+    "lexicographic config id"
+  ],
+  "train": "all non-outcome development subjects S1+S2",
+  "validation": "development unseen-subject S3"
+}

@@ -2,8 +2,10 @@
 
 Audit date: 2026-08-18 (pre-outcome)
 
-Upstream repository: `Levi-Ackman/TeCh`  
-Audited commit: `9a378cc546a5d97c871eff282148175b3c7cd75b`  
+Upstream repository: `Levi-Ackman/TeCh`
+
+Audited commit: `9a378cc546a5d97c871eff282148175b3c7cd75b`
+
 Paper: Yu et al., *Decentralized Attention Fails Centralized Signals:
 Rethinking Transformers for Medical Time Series*, ICLR 2026,
 OpenReview `oZJFY2BQt2`.
