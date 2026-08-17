@@ -1,0 +1,142 @@
+{
+  "assignments": [
+    {
+      "H1": true,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "DECISION-ACTIVE NON-ACTIONABLE",
+      "backbone": "EEGConformer",
+      "block": "P01_04",
+      "p_H1_raw": 9.99990000099999e-06,
+      "p_H2_raw": 0.025699743002569973,
+      "p_H3_finite_raw": 9.99990000099999e-06,
+      "p_H3_local_raw": 9.536734069124156e-07,
+      "p_H4_raw": 1.0,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 4
+    },
+    {
+      "H1": true,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "DECISION-NULL / WEAKLY ACTIVE",
+      "backbone": "EEGConformer",
+      "block": "P05_08",
+      "p_H1_raw": 0.01086989130108699,
+      "p_H2_raw": 0.4876451235487645,
+      "p_H3_finite_raw": 0.999990000099999,
+      "p_H3_local_raw": 0.9730873364569317,
+      "p_H4_raw": 0.36141638583614166,
+      "p_joint_raw": 0.999990000099999,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 4
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "EEGConformer",
+      "block": "P09_16",
+      "p_H1_raw": 1.0,
+      "p_H2_raw": 0.998440015599844,
+      "p_H3_finite_raw": 1.0,
+      "p_H3_local_raw": 0.9999980926531862,
+      "p_H4_raw": 0.3269467305326947,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 8
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "EEGConformer",
+      "block": "P17_32",
+      "p_H1_raw": 1.0,
+      "p_H2_raw": 1.0,
+      "p_H3_finite_raw": 1.0,
+      "p_H3_local_raw": 1.0,
+      "p_H4_raw": 0.8413815861841382,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 16
+    }
+  ],
+  "backbone": "EEGConformer",
+  "baseline_mean_subject_BA": 0.5694159583641291,
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/audit/fold-0.pt",
+      "checkpoint_sha256": "a6a524d2b6725dbc4c8b886e9fca9673196fc8f665e5e4e814c256aab6497ba2",
+      "fold": 0,
+      "model_fit_subjects_hash": "a097f8037d7e60e4845c19c1b599708393e1abe171ca13eb9b972f90d9d32fa6",
+      "model_state_sha256": "6ee8c7b75ad2b2985ef59edb3a51acbfe404ca0f9351379bd4e92df96132c1d0"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/audit/fold-1.pt",
+      "checkpoint_sha256": "84fc9c45d76144200a6628dcda3677a463f00d759b8b1897aaea38f5e7d075cb",
+      "fold": 1,
+      "model_fit_subjects_hash": "26b6e0d14a210f494ced480f7c8ba022839cdacf1aa20875f0294f8c0afb00c2",
+      "model_state_sha256": "0d66954b5838dbcfd0660a2398aa19c18edbf17effdd3bb82f53e36e25430c54"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/audit/fold-2.pt",
+      "checkpoint_sha256": "ce621b9594ea24bb34d4e5f7043b40e86031e50e54f92ba14c455bec6cbe0c5f",
+      "fold": 2,
+      "model_fit_subjects_hash": "f1a7e595bc3798e016014886def08b83b05b62e624f83eb07fc72d94033829ed",
+      "model_state_sha256": "f29d7249bc2a21ebee5a28de2c6142edd43571d589a64826adb3e9f25a2c5971"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/audit/fold-3.pt",
+      "checkpoint_sha256": "b51352ee4fc9934d5e4298ea7326e50305b3980d76423c55b715c69db4a5e7d0",
+      "fold": 3,
+      "model_fit_subjects_hash": "e23be72eebc0b9d0752b5736a7e796a3bb2b88c31853b8240661ef0db4e95d99",
+      "model_state_sha256": "fa712e3918d8e0c8e2e1b3bd482f5b60007b0fa5b88911bc7d6b7e751932eb52"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/audit/fold-4.pt",
+      "checkpoint_sha256": "ad0109329fd841170eda2d3d945a65153016ce46f58facea2f70f5d149532799",
+      "fold": 4,
+      "model_fit_subjects_hash": "cdf663c91ae226d4847bca706e18d057470d0f0a11ba968cc2f44d112e76c932",
+      "model_state_sha256": "52dab976978124ab77529860f329fd717ba68b336a8f5aad067a15306a3fb96e"
+    }
+  ],
+  "competence": {
+    "backbone": "EEGConformer",
+    "competence_gate_pass": true,
+    "config": "CONF_D64_BASE",
+    "fraction_subject_BA_gt_0p5": 0.8780487804878049,
+    "mean_subject_BA": 0.6096743348115299,
+    "mean_subject_NLL": 0.7431175425199081,
+    "mean_subject_macro_F1": 0.5940785771575331,
+    "median_subject_BA": 0.605,
+    "subject_bootstrap_CI95_L": 0.5790243902439024,
+    "subject_bootstrap_CI95_U": 0.6421555917405765,
+    "subject_count": 41,
+    "worst20_subject_BA": 0.4888888888888888
+  },
+  "elapsed_seconds": 1085.856656074524,
+  "outer_test_used": false,
+  "preliminary_H1_H5_blocks": [],
+  "protected_blocks": [],
+  "terminal_state": "BACKBONE_EEGCONFORMER_AUDIT_COMPLETE_AWAIT_GLOBAL_MULTIPLICITY"
+}

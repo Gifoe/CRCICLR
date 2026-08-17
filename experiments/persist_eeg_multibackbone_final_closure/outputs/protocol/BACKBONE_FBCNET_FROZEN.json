@@ -1,0 +1,90 @@
+{
+  "actionability_based_reselection_forbidden": true,
+  "backbone": "FBCNet",
+  "classifier_head": "single frozen linear layer",
+  "competence_checkpoint_set": [
+    {
+      "backbone": "FBCNet",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/FBCNet/competence/FBC_S8_LR1E3_fold-0.pt",
+      "checkpoint_sha256": "31fad0c390b1bdb5f3739b1203f908a732030087a90df22ca6684ecb867f34fc",
+      "config": "FBC_S8_LR1E3",
+      "fold": 0,
+      "model_state_sha256": "48a6c9ee3c9e8f1caba1f154114c3b5850fdbceab28814f1ab6585e625867f6c",
+      "representation_dim": 288,
+      "train_subjects_hash": "d9ace922ce2d4c25663e5df59111e79412cb0953d37b39f9764433d79c060ef0"
+    },
+    {
+      "backbone": "FBCNet",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/FBCNet/competence/FBC_S8_LR1E3_fold-1.pt",
+      "checkpoint_sha256": "d242a51351e0b26759813f7d339aa4832c225cfbc8239cfbb3f223a5378b9530",
+      "config": "FBC_S8_LR1E3",
+      "fold": 1,
+      "model_state_sha256": "990b2ce0a53b2785ceb4ad39c36ab9b4be5a5c3c63902ea3e6b7345bede54615",
+      "representation_dim": 288,
+      "train_subjects_hash": "b6eadd38851f9661bb7d5f61af3dfcec56a9dc5dee8299e7f9152a95374a3a89"
+    },
+    {
+      "backbone": "FBCNet",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/FBCNet/competence/FBC_S8_LR1E3_fold-2.pt",
+      "checkpoint_sha256": "969d400656c05b947145318de0a2316715bfaa5139e3b11fb748ea7131a46143",
+      "config": "FBC_S8_LR1E3",
+      "fold": 2,
+      "model_state_sha256": "bff7930eeb49f4ff7c9118f19f3ea9ed49038056f465058ac4e6e1bc171ef327",
+      "representation_dim": 288,
+      "train_subjects_hash": "797ae9a5547b5311346c6de4a0d5fed308ed5297e32ba5f4f51409806d632d2d"
+    },
+    {
+      "backbone": "FBCNet",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/FBCNet/competence/FBC_S8_LR1E3_fold-3.pt",
+      "checkpoint_sha256": "66c1c59ad1f4117e7bf5301653da20ef19443b1f8bc6d9b2e4f95f233e07a717",
+      "config": "FBC_S8_LR1E3",
+      "fold": 3,
+      "model_state_sha256": "18f5be7bd1a18e5c43c46f94ae4f1137d8c81906710735522198d94468be11a7",
+      "representation_dim": 288,
+      "train_subjects_hash": "2737ec56430bf36fcb094914fe14b5f06546216770d560a4b69fade3528e3f40"
+    },
+    {
+      "backbone": "FBCNet",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/FBCNet/competence/FBC_S8_LR1E3_fold-4.pt",
+      "checkpoint_sha256": "a456aca2bbade683b626210167d6d82af5680782b33e57b5d1d5ce68fd3a1c5a",
+      "config": "FBC_S8_LR1E3",
+      "fold": 4,
+      "model_state_sha256": "eb8e06122629b80e6b064013f35d2c88d327086718b28ec3bf6ae847d067d5de",
+      "representation_dim": 288,
+      "train_subjects_hash": "d8fe7eed6b414b7675907e31184e82ad58ce0cd7f647fb36ff323793e92787bf"
+    }
+  ],
+  "competence_gate_pass": false,
+  "config": {
+    "batch_size": 128,
+    "epochs": 30,
+    "gradient_clip": 1.0,
+    "id": "FBC_S8_LR1E3",
+    "label_smoothing": 0.0,
+    "learning_rate": 0.001,
+    "model": {
+      "dropout": 0.25,
+      "spatial_filters": 8,
+      "windows": 4
+    },
+    "weight_decay": 0.0001
+  },
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "representation_layer": "forward_features output immediately before .head",
+  "selection_is_task_only": true,
+  "selection_metrics": {
+    "backbone": "FBCNet",
+    "competence_gate_pass": false,
+    "config": "FBC_S8_LR1E3",
+    "fraction_subject_BA_gt_0p5": 0.2926829268292683,
+    "mean_subject_BA": 0.5037817196353782,
+    "mean_subject_NLL": 0.6932501021481894,
+    "mean_subject_macro_F1": 0.3681234133944816,
+    "median_subject_BA": 0.5,
+    "subject_bootstrap_CI95_L": 0.4987817196353782,
+    "subject_bootstrap_CI95_U": 0.5095134269524514,
+    "subject_count": 41,
+    "worst20_subject_BA": 0.48777777777777775
+  },
+  "status": "BACKBONE_COMPETENCE_FAIL_FROZEN"
+}

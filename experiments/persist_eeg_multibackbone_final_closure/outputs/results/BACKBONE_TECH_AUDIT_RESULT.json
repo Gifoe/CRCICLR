@@ -1,0 +1,144 @@
+{
+  "assignments": [
+    {
+      "H1": true,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "action": "PRESERVE",
+      "assignment": "PROTECTED",
+      "backbone": "TeCh",
+      "block": "P01_04",
+      "p_H1_raw": 0.007999920000799993,
+      "p_H2_raw": 1.0,
+      "p_H3_finite_raw": 9.99990000099999e-06,
+      "p_H3_local_raw": 9.536734069124156e-07,
+      "p_H4_raw": 1.0,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": true,
+      "rank": 4
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": true,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "TeCh",
+      "block": "P05_08",
+      "p_H1_raw": 0.05075949240507595,
+      "p_H2_raw": 0.07892921070789292,
+      "p_H3_finite_raw": 1.0,
+      "p_H3_local_raw": 0.9668531733959451,
+      "p_H4_raw": 0.051849481505184945,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 4
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "TeCh",
+      "block": "P09_16",
+      "p_H1_raw": 1.0,
+      "p_H2_raw": 0.6009639903600964,
+      "p_H3_finite_raw": 1.0,
+      "p_H3_local_raw": 1.0,
+      "p_H4_raw": 0.5709642903570964,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 8
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "TeCh",
+      "block": "P17_32",
+      "p_H1_raw": 1.0,
+      "p_H2_raw": 0.4418355816441836,
+      "p_H3_finite_raw": 1.0,
+      "p_H3_local_raw": 1.0,
+      "p_H4_raw": 0.6659033409665903,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 16
+    }
+  ],
+  "backbone": "TeCh",
+  "baseline_mean_subject_BA": 0.6835425905395418,
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/audit/fold-0.pt",
+      "checkpoint_sha256": "0e2f94c5ac414e76b5f288c40e5e7dcbcc24508e2383b6a91bbdcfeb4721e20b",
+      "fold": 0,
+      "model_fit_subjects_hash": "a097f8037d7e60e4845c19c1b599708393e1abe171ca13eb9b972f90d9d32fa6",
+      "model_state_sha256": "76868b27332ff9d9558c4d8b5436d7dc63a0d93466fb27f039f51978d4b3c903"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/audit/fold-1.pt",
+      "checkpoint_sha256": "804769bbceca4fcacef9487807c27e9621fbc64c36055c5defee2d579624c3c8",
+      "fold": 1,
+      "model_fit_subjects_hash": "26b6e0d14a210f494ced480f7c8ba022839cdacf1aa20875f0294f8c0afb00c2",
+      "model_state_sha256": "e349412cf8993a6f108090452bafcdc85fe185a88c70da35be7899289713f315"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/audit/fold-2.pt",
+      "checkpoint_sha256": "e62cf4e2e7ebcc038de344309e63c8b3e0930702dd04ef2f6df5a1956623dc41",
+      "fold": 2,
+      "model_fit_subjects_hash": "f1a7e595bc3798e016014886def08b83b05b62e624f83eb07fc72d94033829ed",
+      "model_state_sha256": "3a63915a923d5d3cad64f921e0ad87c2d8c25147016f9f3926d0e7f5a824af08"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/audit/fold-3.pt",
+      "checkpoint_sha256": "1dbe2fd404c45b66da2b8a0b379f3edc21a7f9f17868c1fa5dfe3b9451595aa7",
+      "fold": 3,
+      "model_fit_subjects_hash": "e23be72eebc0b9d0752b5736a7e796a3bb2b88c31853b8240661ef0db4e95d99",
+      "model_state_sha256": "79ca67905faf46bda0423ea3b8037f05b4cf326af78f1ac3647474bccc37f07e"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/audit/fold-4.pt",
+      "checkpoint_sha256": "9991b3f55c6ba55e95f68af5102a298dfebaab4f9cc6b0590c92cf4fe669138e",
+      "fold": 4,
+      "model_fit_subjects_hash": "cdf663c91ae226d4847bca706e18d057470d0f0a11ba968cc2f44d112e76c932",
+      "model_state_sha256": "6b4dc67acbec7d2f65a7d901c9f94c98f29515995a9fd1358af932ef7c5ac083"
+    }
+  ],
+  "competence": {
+    "backbone": "TeCh",
+    "competence_gate_pass": true,
+    "config": "TECH_D64_BASE",
+    "fraction_subject_BA_gt_0p5": 0.9024390243902439,
+    "mean_subject_BA": 0.7129656319290465,
+    "mean_subject_NLL": 0.5554952016988126,
+    "mean_subject_macro_F1": 0.7107980034459079,
+    "median_subject_BA": 0.7250000000000001,
+    "subject_bootstrap_CI95_L": 0.6683693181818181,
+    "subject_bootstrap_CI95_U": 0.7572736973392461,
+    "subject_count": 41,
+    "worst20_subject_BA": 0.5027777777777778
+  },
+  "elapsed_seconds": 1098.1372826099396,
+  "outer_test_used": false,
+  "preliminary_H1_H5_blocks": [],
+  "protected_blocks": [
+    "P01_04"
+  ],
+  "terminal_state": "BACKBONE_TECH_AUDIT_COMPLETE_AWAIT_GLOBAL_MULTIPLICITY"
+}

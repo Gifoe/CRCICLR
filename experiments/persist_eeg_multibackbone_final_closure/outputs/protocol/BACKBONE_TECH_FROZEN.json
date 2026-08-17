@@ -1,0 +1,93 @@
+{
+  "actionability_based_reselection_forbidden": true,
+  "backbone": "TeCh",
+  "classifier_head": "single frozen linear layer",
+  "competence_checkpoint_set": [
+    {
+      "backbone": "TeCh",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/competence/TECH_D64_BASE_fold-0.pt",
+      "checkpoint_sha256": "1e8aaf72dbd1ac1f37fadd5359a7316410a4f2dfda81ebc8d50613a59c6eec7d",
+      "config": "TECH_D64_BASE",
+      "fold": 0,
+      "model_state_sha256": "e388c53493786fbf5a4fb7511a1041a65fff1a6f59e0e6f6e3a0f7d36edc7b79",
+      "representation_dim": 64,
+      "train_subjects_hash": "d9ace922ce2d4c25663e5df59111e79412cb0953d37b39f9764433d79c060ef0"
+    },
+    {
+      "backbone": "TeCh",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/competence/TECH_D64_BASE_fold-1.pt",
+      "checkpoint_sha256": "a43e5deb494f6357ff7b4c29a8f9431142acbe899a76b8910a91d74184f1b322",
+      "config": "TECH_D64_BASE",
+      "fold": 1,
+      "model_state_sha256": "3c77fec1b64a2a91303534276ec22bb25084468cf456f8d1ad9083e93577e8b0",
+      "representation_dim": 64,
+      "train_subjects_hash": "b6eadd38851f9661bb7d5f61af3dfcec56a9dc5dee8299e7f9152a95374a3a89"
+    },
+    {
+      "backbone": "TeCh",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/competence/TECH_D64_BASE_fold-2.pt",
+      "checkpoint_sha256": "ac59b7802cce0e012c0ccc11c6bc5b86147d61d0bdefb6b2cfe61e400427e417",
+      "config": "TECH_D64_BASE",
+      "fold": 2,
+      "model_state_sha256": "1b491a79cbc7bfecdb4ce12933eddb55bc5e5a79aac3ca95b1da5770662c856c",
+      "representation_dim": 64,
+      "train_subjects_hash": "797ae9a5547b5311346c6de4a0d5fed308ed5297e32ba5f4f51409806d632d2d"
+    },
+    {
+      "backbone": "TeCh",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/competence/TECH_D64_BASE_fold-3.pt",
+      "checkpoint_sha256": "e96a46c480c42841543c68d68dcb073113ca043e16d49141f0a72f583d5938b3",
+      "config": "TECH_D64_BASE",
+      "fold": 3,
+      "model_state_sha256": "477ab03310ad9146f9b214e5cb97f74e92216876e56ea817e1e654c051d7f99a",
+      "representation_dim": 64,
+      "train_subjects_hash": "2737ec56430bf36fcb094914fe14b5f06546216770d560a4b69fade3528e3f40"
+    },
+    {
+      "backbone": "TeCh",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/TeCh/competence/TECH_D64_BASE_fold-4.pt",
+      "checkpoint_sha256": "82ec0e4623cf91caa31ede32e413a15531918937ee96dbbaf38f4e6d0f2f49a0",
+      "config": "TECH_D64_BASE",
+      "fold": 4,
+      "model_state_sha256": "43353511680d8af75c2de5c593dae90683786ec818ee340e9e7cdc1ae891109c",
+      "representation_dim": 64,
+      "train_subjects_hash": "d8fe7eed6b414b7675907e31184e82ad58ce0cd7f647fb36ff323793e92787bf"
+    }
+  ],
+  "competence_gate_pass": true,
+  "config": {
+    "batch_size": 64,
+    "epochs": 35,
+    "gradient_clip": 1.0,
+    "id": "TECH_D64_BASE",
+    "label_smoothing": 0.0,
+    "learning_rate": 0.0003,
+    "model": {
+      "channel_depth": 2,
+      "d_model": 64,
+      "dropout": 0.2,
+      "patch_len": 20,
+      "temporal_depth": 2,
+      "train_jitter": 0.0
+    },
+    "weight_decay": 0.0005
+  },
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "representation_layer": "forward_features output immediately before .head",
+  "selection_is_task_only": true,
+  "selection_metrics": {
+    "backbone": "TeCh",
+    "competence_gate_pass": true,
+    "config": "TECH_D64_BASE",
+    "fraction_subject_BA_gt_0p5": 0.9024390243902439,
+    "mean_subject_BA": 0.7129656319290465,
+    "mean_subject_NLL": 0.5554952016988126,
+    "mean_subject_macro_F1": 0.7107980034459079,
+    "median_subject_BA": 0.7250000000000001,
+    "subject_bootstrap_CI95_L": 0.6683693181818181,
+    "subject_bootstrap_CI95_U": 0.7572736973392461,
+    "subject_count": 41,
+    "worst20_subject_BA": 0.5027777777777778
+  },
+  "status": "BACKBONE_REPRESENTATION_FROZEN"
+}

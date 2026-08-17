@@ -1,0 +1,144 @@
+{
+  "assignments": [
+    {
+      "H1": true,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "action": "PRESERVE",
+      "assignment": "PROTECTED",
+      "backbone": "DeepConvNet",
+      "block": "P01_04",
+      "p_H1_raw": 9.99990000099999e-06,
+      "p_H2_raw": 1.0,
+      "p_H3_finite_raw": 9.99990000099999e-06,
+      "p_H3_local_raw": 9.536734069124156e-07,
+      "p_H4_raw": 0.999780002199978,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": true,
+      "rank": 4
+    },
+    {
+      "H1": true,
+      "H2": false,
+      "H3": true,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "DECISION-ACTIVE NON-ACTIONABLE",
+      "backbone": "DeepConvNet",
+      "block": "P05_08",
+      "p_H1_raw": 9.99990000099999e-06,
+      "p_H2_raw": 0.6098339016609834,
+      "p_H3_finite_raw": 9.99990000099999e-06,
+      "p_H3_local_raw": 9.536734069124156e-07,
+      "p_H4_raw": 0.1079189208107919,
+      "p_joint_raw": 0.6098339016609834,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 4
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "DeepConvNet",
+      "block": "P09_16",
+      "p_H1_raw": 1.0,
+      "p_H2_raw": 0.996050039499605,
+      "p_H3_finite_raw": 1.0,
+      "p_H3_local_raw": 0.9979352970740346,
+      "p_H4_raw": 0.998070019299807,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 8
+    },
+    {
+      "H1": false,
+      "H2": false,
+      "H3": false,
+      "H4": false,
+      "H5": false,
+      "action": "NO_OP",
+      "assignment": "UNCERTAIN",
+      "backbone": "DeepConvNet",
+      "block": "P17_32",
+      "p_H1_raw": 1.0,
+      "p_H2_raw": 0.8366916330836691,
+      "p_H3_finite_raw": 0.998830011699883,
+      "p_H3_local_raw": 0.9572019985179915,
+      "p_H4_raw": 0.9569304306956931,
+      "p_joint_raw": 1.0,
+      "preliminary_all_H1_H5": false,
+      "protected_utility_gate": false,
+      "rank": 16
+    }
+  ],
+  "backbone": "DeepConvNet",
+  "baseline_mean_subject_BA": 0.7380794222714955,
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/DeepConvNet/audit/fold-0.pt",
+      "checkpoint_sha256": "9fe5dde1bef3d1fc64304f0d21d110782453d09c329b652ac605f02326e1a27f",
+      "fold": 0,
+      "model_fit_subjects_hash": "a097f8037d7e60e4845c19c1b599708393e1abe171ca13eb9b972f90d9d32fa6",
+      "model_state_sha256": "7ccda46abd98580e0edbb8d5a33bf31e1d77afdd82c7c2052b48e729d68284ca"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/DeepConvNet/audit/fold-1.pt",
+      "checkpoint_sha256": "39a690f82185fffcbaf89fbc65f73da0c42d64d0a522f58d1dddf4200ea8e422",
+      "fold": 1,
+      "model_fit_subjects_hash": "26b6e0d14a210f494ced480f7c8ba022839cdacf1aa20875f0294f8c0afb00c2",
+      "model_state_sha256": "79e8874c8a16c1ef00bcba0d96b3df72daa9b087458730f70d43cdb743345950"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/DeepConvNet/audit/fold-2.pt",
+      "checkpoint_sha256": "53ba46d6bdb98b5d134159061b4d26c29d8fa40997d4ee3e8c76e602e280dacc",
+      "fold": 2,
+      "model_fit_subjects_hash": "f1a7e595bc3798e016014886def08b83b05b62e624f83eb07fc72d94033829ed",
+      "model_state_sha256": "65d308c7f463946dfb98c8fe43fffe6cb6bb348a02fc41d3fb67b3824de6f8f8"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/DeepConvNet/audit/fold-3.pt",
+      "checkpoint_sha256": "689f2b1acbd7e45d44141b68c635ce382c0de43a3f6afa0a69cdd617fbc51383",
+      "fold": 3,
+      "model_fit_subjects_hash": "e23be72eebc0b9d0752b5736a7e796a3bb2b88c31853b8240661ef0db4e95d99",
+      "model_state_sha256": "33e128ef3b352c7e81afe38d0945fa28c654b99bc91b7a81ba6742c6211dc2cf"
+    },
+    {
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/DeepConvNet/audit/fold-4.pt",
+      "checkpoint_sha256": "b6447c699aaeb927a486ff2c8a239714ae95c5e1540eebadcc8f4806f155760c",
+      "fold": 4,
+      "model_fit_subjects_hash": "cdf663c91ae226d4847bca706e18d057470d0f0a11ba968cc2f44d112e76c932",
+      "model_state_sha256": "ef188d3518749c5d9f2df98b9d3fca4641ec8f88b3a61a1aebaa22da0ce9d4ea"
+    }
+  ],
+  "competence": {
+    "backbone": "DeepConvNet",
+    "competence_gate_pass": true,
+    "config": "DEEP_F32_STABLE",
+    "fraction_subject_BA_gt_0p5": 0.975609756097561,
+    "mean_subject_BA": 0.7688403855629465,
+    "mean_subject_NLL": 0.433187018890514,
+    "mean_subject_macro_F1": 0.7647870540759423,
+    "median_subject_BA": 0.7949999999999999,
+    "subject_bootstrap_CI95_L": 0.7214618632976103,
+    "subject_bootstrap_CI95_U": 0.8133540781288493,
+    "subject_count": 41,
+    "worst20_subject_BA": 0.5533333333333333
+  },
+  "elapsed_seconds": 1108.1198489665985,
+  "outer_test_used": false,
+  "preliminary_H1_H5_blocks": [],
+  "protected_blocks": [
+    "P01_04"
+  ],
+  "terminal_state": "BACKBONE_DEEPCONVNET_AUDIT_COMPLETE_AWAIT_GLOBAL_MULTIPLICITY"
+}

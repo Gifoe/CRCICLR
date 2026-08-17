@@ -1,0 +1,92 @@
+{
+  "actionability_based_reselection_forbidden": true,
+  "backbone": "EEGConformer",
+  "classifier_head": "single frozen linear layer",
+  "competence_checkpoint_set": [
+    {
+      "backbone": "EEGConformer",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/competence/CONF_D64_BASE_fold-0.pt",
+      "checkpoint_sha256": "41aae925a774d5e7e0e85b974a633e39e7e9a799e0dfac9d6d3eb9520235a70e",
+      "config": "CONF_D64_BASE",
+      "fold": 0,
+      "model_state_sha256": "8e7ce628e777b8c0fb18a56fe20fa6ceaf7f66920f877e901bd5b5a7bfafc469",
+      "representation_dim": 64,
+      "train_subjects_hash": "d9ace922ce2d4c25663e5df59111e79412cb0953d37b39f9764433d79c060ef0"
+    },
+    {
+      "backbone": "EEGConformer",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/competence/CONF_D64_BASE_fold-1.pt",
+      "checkpoint_sha256": "354b163963813dc92abf767f48308ece58a2b81702dd5884db53e6e8940c74e0",
+      "config": "CONF_D64_BASE",
+      "fold": 1,
+      "model_state_sha256": "5b0603f2cde06cc1f26c56d6d17307e79e08ed51a2864f4f7a0f4799db8a2af4",
+      "representation_dim": 64,
+      "train_subjects_hash": "b6eadd38851f9661bb7d5f61af3dfcec56a9dc5dee8299e7f9152a95374a3a89"
+    },
+    {
+      "backbone": "EEGConformer",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/competence/CONF_D64_BASE_fold-2.pt",
+      "checkpoint_sha256": "08f3bc2cce43a64196f4bfd04518563424e7da8fb285b53b80339b552532c105",
+      "config": "CONF_D64_BASE",
+      "fold": 2,
+      "model_state_sha256": "c4318cd96b64264a8069c05b0997a9a5902f92372e4006e56f3e6a8f30959c77",
+      "representation_dim": 64,
+      "train_subjects_hash": "797ae9a5547b5311346c6de4a0d5fed308ed5297e32ba5f4f51409806d632d2d"
+    },
+    {
+      "backbone": "EEGConformer",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/competence/CONF_D64_BASE_fold-3.pt",
+      "checkpoint_sha256": "095f7955ca48c13a94452e3ffeab0ee12184d56a9b2d4fd1ad3241c110e61584",
+      "config": "CONF_D64_BASE",
+      "fold": 3,
+      "model_state_sha256": "462053cac1318f7cef9595134a63bdd98d685d8b78e426d939b318722e9e7869",
+      "representation_dim": 64,
+      "train_subjects_hash": "2737ec56430bf36fcb094914fe14b5f06546216770d560a4b69fade3528e3f40"
+    },
+    {
+      "backbone": "EEGConformer",
+      "checkpoint": "experiments/persist_eeg_multibackbone_final_closure/outputs/model/EEGConformer/competence/CONF_D64_BASE_fold-4.pt",
+      "checkpoint_sha256": "a5c4345b9a2859f5faf56251718fcef2b885a8b9e45a9f3f17ab6e1b6a087e86",
+      "config": "CONF_D64_BASE",
+      "fold": 4,
+      "model_state_sha256": "5613901c0dec56e01dde2b69b12a886d135c056d2e6deae95600a5d20dc80e02",
+      "representation_dim": 64,
+      "train_subjects_hash": "d8fe7eed6b414b7675907e31184e82ad58ce0cd7f647fb36ff323793e92787bf"
+    }
+  ],
+  "competence_gate_pass": true,
+  "config": {
+    "batch_size": 64,
+    "epochs": 35,
+    "gradient_clip": 1.0,
+    "id": "CONF_D64_BASE",
+    "label_smoothing": 0.0,
+    "learning_rate": 0.0003,
+    "model": {
+      "d_model": 64,
+      "depth": 3,
+      "dropout": 0.35,
+      "heads": 4,
+      "temporal_kernel": 25
+    },
+    "weight_decay": 0.0005
+  },
+  "outer_test_state": "OUTER_TEST_LOCKED",
+  "representation_layer": "forward_features output immediately before .head",
+  "selection_is_task_only": true,
+  "selection_metrics": {
+    "backbone": "EEGConformer",
+    "competence_gate_pass": true,
+    "config": "CONF_D64_BASE",
+    "fraction_subject_BA_gt_0p5": 0.8780487804878049,
+    "mean_subject_BA": 0.6096743348115299,
+    "mean_subject_NLL": 0.7431175425199081,
+    "mean_subject_macro_F1": 0.5940785771575331,
+    "median_subject_BA": 0.605,
+    "subject_bootstrap_CI95_L": 0.5790243902439024,
+    "subject_bootstrap_CI95_U": 0.6421555917405765,
+    "subject_count": 41,
+    "worst20_subject_BA": 0.4888888888888888
+  },
+  "status": "BACKBONE_REPRESENTATION_FROZEN"
+}
