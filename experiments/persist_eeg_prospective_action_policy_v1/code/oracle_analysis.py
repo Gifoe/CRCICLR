@@ -181,7 +181,7 @@ def _block_summary(frame: pd.DataFrame) -> dict[str, Any]:
 
 
 def _weighted_router_contributions(frame: pd.DataFrame) -> pd.DataFrame:
-    rows: list[dict[str, Any]] = []
+    parts: list[pd.DataFrame] = []
     for (fold, seed, subject), group in frame.groupby(["fold_id", "seed_id", "subject_id"], sort=True):
         y = group.outcome_label.to_numpy(dtype=int)
         noop_correct = group.pred_noop.to_numpy(dtype=int) == y
@@ -194,18 +194,19 @@ def _weighted_router_contributions(frame: pd.DataFrame) -> pd.DataFrame:
             rescue_action[take] = action.upper()
         counts = pd.Series(y).value_counts().to_dict()
         weights = np.asarray([0.5 / counts[int(value)] for value in y], dtype=float)
-        for index, (_, item) in enumerate(group.iterrows()):
-            rows.append(
+        parts.append(
+            pd.DataFrame(
                 {
-                    "fold_id": fold,
-                    "seed_id": seed,
-                    "subject_id": subject,
-                    "manifest_index": int(item.manifest_index),
-                    "action": rescue_action[index],
-                    "oracle_contribution": float(weights[index] if any_rescue[index] else 0.0),
+                    "fold_id": np.full(len(group), fold, dtype=int),
+                    "seed_id": np.full(len(group), seed, dtype=int),
+                    "subject_id": np.full(len(group), str(subject), dtype=object),
+                    "manifest_index": group.manifest_index.to_numpy(dtype=int),
+                    "action": rescue_action,
+                    "oracle_contribution": np.where(any_rescue, weights, 0.0),
                 }
             )
-    return pd.DataFrame(rows)
+        )
+    return pd.concat(parts, ignore_index=True)
 
 
 def concentration_analysis(data: pd.DataFrame, summaries: dict[str, dict[str, Any]]) -> dict[str, Any]:
