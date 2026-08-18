@@ -193,7 +193,10 @@ def _merge_router_frames(root: Path) -> pd.DataFrame:
     for name in ("base", "counter", "geometry"):
         extra = [column for column in frames[name].columns if column not in ID_COLUMNS]
         merged = pd.concat([merged, frames[name][extra]], axis=1)
-    if len(merged) != 40800 or merged.subject.astype(str).nunique() != 54:
+    # Each of six runs has 34 outer-TRAIN subjects. The union of the three
+    # frozen TRAIN partitions contains 52 subjects; the 54-subject manifest is
+    # provenance scope, not Router modelling scope.
+    if len(merged) != 40800 or merged.subject.astype(str).nunique() != 52:
         raise RuntimeError(f"Unexpected Router cache scope: rows={len(merged)}, subjects={merged.subject.nunique()}")
     return merged
 
