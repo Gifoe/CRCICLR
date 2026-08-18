@@ -1,0 +1,170 @@
+{
+  "version": "prospective_action_policy_v1",
+  "row_layout": "wide action outcomes; one row per real decision unit, never one pseudo-independent row per action",
+  "families": {
+    "openbmi_sample_router": {
+      "source_root": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full",
+      "rows": 40800,
+      "subjects": 52,
+      "runs": 6,
+      "actions": [
+        "NO_OP",
+        "ERASE",
+        "AMPLIFY",
+        "GEOMETRY"
+      ],
+      "decision_unit": "individual trial; validation grouped by subject across all repeated runs",
+      "feature_columns": [
+        "f_router_p_full_max",
+        "f_router_entropy_full",
+        "f_router_top2_margin_full",
+        "f_router_nll_proxy_full",
+        "f_router_delta_p_l2",
+        "f_router_margin_change_full_erase",
+        "f_router_entropy_change_full_erase",
+        "f_router_kl_full_erase",
+        "f_router_js_full_erase",
+        "f_router_agreement_full_erase",
+        "f_router_probability_shift_l1",
+        "f_router_margin_geo",
+        "f_router_entropy_geo",
+        "f_router_agreement_base_geo",
+        "f_router_confidence_diff_base_geo",
+        "f_router_js_base_geo",
+        "f_router_protected_slot0_present",
+        "f_router_protected_slot0_projection",
+        "f_router_protected_slot0_signed_midpoint_distance",
+        "f_router_protected_slot0_prototype_distance_difference",
+        "f_router_protected_slot0_geometry_margin",
+        "f_router_protected_slot0_weighted_geometry_score",
+        "f_router_protected_slot0_contribution_norm",
+        "f_router_protected_slot1_present",
+        "f_router_protected_slot1_projection",
+        "f_router_protected_slot1_signed_midpoint_distance",
+        "f_router_protected_slot1_prototype_distance_difference",
+        "f_router_protected_slot1_geometry_margin",
+        "f_router_protected_slot1_weighted_geometry_score",
+        "f_router_protected_slot1_contribution_norm"
+      ]
+    },
+    "openbmi_dda_block": {
+      "rows": 215,
+      "runs": 6,
+      "actions": [
+        "NO_OP",
+        "SUPPRESS_BLOCK"
+      ],
+      "decision_unit": "run x audit fold x block; outcome subjects are disjoint from feature/decision subjects",
+      "same_cell_u_excluded": true,
+      "same_run_u_excluded_for_leave_run_out": true,
+      "same_outer_fold_u_excluded_for_leave_outer_fold_out": true,
+      "validation": [
+        "leave-one-run-out",
+        "leave-one-outer-fold-out"
+      ]
+    },
+    "wbcic_development_block": {
+      "rows": 80,
+      "backbones": [
+        "EEGNet",
+        "EEGConformer",
+        "DeepConvNet",
+        "TeCh"
+      ],
+      "excluded_backbones": [
+        "FBCNet: REPRESENTATION_COMPETENCE_FAIL"
+      ],
+      "actions": [
+        "NO_OP",
+        "SUPPRESS_BLOCK"
+      ],
+      "decision_unit": "competent backbone x development subject fold x fixed persistence block",
+      "same_fold_u_excluded": true,
+      "validation": [
+        "leave-one-fold-out with cross-fold U",
+        "leave-one-backbone-out with cross-backbone U"
+      ],
+      "OUTER_TEST_USED": false
+    }
+  },
+  "feature_columns": [
+    "f_router_p_full_max",
+    "f_router_entropy_full",
+    "f_router_top2_margin_full",
+    "f_router_nll_proxy_full",
+    "f_router_delta_p_l2",
+    "f_router_margin_change_full_erase",
+    "f_router_entropy_change_full_erase",
+    "f_router_kl_full_erase",
+    "f_router_js_full_erase",
+    "f_router_agreement_full_erase",
+    "f_router_probability_shift_l1",
+    "f_router_margin_geo",
+    "f_router_entropy_geo",
+    "f_router_agreement_base_geo",
+    "f_router_confidence_diff_base_geo",
+    "f_router_js_base_geo",
+    "f_router_protected_slot0_present",
+    "f_router_protected_slot0_projection",
+    "f_router_protected_slot0_signed_midpoint_distance",
+    "f_router_protected_slot0_prototype_distance_difference",
+    "f_router_protected_slot0_geometry_margin",
+    "f_router_protected_slot0_weighted_geometry_score",
+    "f_router_protected_slot0_contribution_norm",
+    "f_router_protected_slot1_present",
+    "f_router_protected_slot1_projection",
+    "f_router_protected_slot1_signed_midpoint_distance",
+    "f_router_protected_slot1_prototype_distance_difference",
+    "f_router_protected_slot1_geometry_margin",
+    "f_router_protected_slot1_weighted_geometry_score",
+    "f_router_protected_slot1_contribution_norm",
+    "f_persistence_strength",
+    "f_geometry_strength",
+    "f_rank",
+    "f_jacobian_ratio",
+    "f_decision_logit_ratio",
+    "f_decision_margin",
+    "f_decision_flip",
+    "f_decision_tv",
+    "f_u_crossrun",
+    "f_u_crossrun_sd",
+    "f_u_crossouterfold",
+    "f_u_crossouterfold_sd",
+    "f_task_BA",
+    "f_baseline_BA",
+    "f_persistence_sd",
+    "f_u_crossfold",
+    "f_u_crossfold_sd",
+    "f_u_crossbackbone",
+    "f_u_crossbackbone_sd",
+    "f_eigenvalue_sum",
+    "f_minimum_eigenvalue",
+    "f_effective_positive_rank",
+    "f_cross_covariance_condition",
+    "f_centroid_correlation",
+    "f_principal_angle_mean",
+    "f_principal_angle_max"
+  ],
+  "target_columns": [
+    "effect_erase",
+    "effect_amplify",
+    "effect_geometry",
+    "effect_suppress",
+    "effect_suppress_ce",
+    "effect_suppress_raw"
+  ],
+  "forbidden_model_columns": [
+    "outcome_label",
+    "pred_noop",
+    "pred_erase",
+    "pred_amplify",
+    "pred_geometry",
+    "effect_erase",
+    "effect_amplify",
+    "effect_geometry",
+    "effect_suppress",
+    "effect_suppress_ce",
+    "effect_suppress_raw"
+  ],
+  "OUTER_TEST_USED": false
+}

@@ -1,0 +1,6 @@
+family_id,validation_scheme,method,evaluation_groups,mean_delta_BA,delta_BA_group_bootstrap_CI_L,delta_BA_group_bootstrap_CI_U,positive_group_fraction,largest_positive_group_share,mean_action_rate,unsafe_intervention_rate,positive_intervention_precision,mean_recovered_headroom,worst_group_delta_BA,outer_test_used,lambda,tau,bootstrap_models
+openbmi_dda_block,leave_one_outer_fold_out,RiskAwarePERSIST,3,-3.401360544e-06,-1.020408163e-05,0,0,,0.01873015873,0.2222222222,0,-0.008849557522,-1.020408163e-05,False,1.645,0.005,12
+openbmi_dda_block,leave_one_run_out,RiskAwarePERSIST,6,0,0,0,0,,0,0,0,0,0,False,1.645,0.005,12
+openbmi_sample_router,leave_one_subject_group_out,RiskAwarePERSIST,5,0,0,0,0,,0.3474738095,0,0,0,0,False,1.645,0.005,12
+wbcic_development_block,leave_one_backbone_out,RiskAwarePERSIST,4,0,0,0,0,,0,0,0,0,0,False,1.645,0.005,12
+wbcic_development_block,leave_one_fold_out,RiskAwarePERSIST,5,-2.115885417e-05,-5.23828125e-05,0,0,,0.025,0.4,0,-0.02955287467,-7.805989583e-05,False,1.645,0.005,12

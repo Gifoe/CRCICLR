@@ -1,0 +1,671 @@
+{
+  "terminal_state": "STOP_ACTIONABILITY_NOT_PREDICTABLE",
+  "experiment_type": "exploratory development-only policy study",
+  "structural_oracle_headroom": true,
+  "oracle": {
+    "openbmi_sample_router": {
+      "family_id": "openbmi_sample_router",
+      "decision_units": 40800,
+      "independent_subjects": 52,
+      "runs": 6,
+      "oracle_action_gain": 0.11870098039215686,
+      "best_nontrivial_fixed_action": "AMPLIFY",
+      "best_nontrivial_fixed_action_gain": -0.014901960784313724,
+      "best_fixed_including_noop_gain": 0.0,
+      "selection_value": 0.11870098039215686,
+      "oracle_gain_by_run": {
+        "fold-0_seed-0": 0.10691176470588233,
+        "fold-0_seed-1": 0.10970588235294117,
+        "fold-1_seed-0": 0.11161764705882353,
+        "fold-1_seed-1": 0.1277941176470588,
+        "fold-2_seed-0": 0.13308823529411762,
+        "fold-2_seed-1": 0.12308823529411764
+      },
+      "fixed_gain_by_action": {
+        "AMPLIFY": -0.014901960784313724,
+        "GEOMETRY": -0.05612745098039215,
+        "ERASE": -0.17340686274509803
+      },
+      "pair_oracle_gain_by_action": {
+        "ERASE": 0.07102941176470588,
+        "GEOMETRY": 0.047401960784313725,
+        "AMPLIFY": 0.028946078431372545
+      }
+    },
+    "openbmi_dda_block": {
+      "family_id": "openbmi_dda_block",
+      "decision_units": 215,
+      "oracle_action_gain": 0.0006328903654484964,
+      "best_nontrivial_fixed_action": "SUPPRESS_BLOCK",
+      "best_nontrivial_fixed_action_gain": -0.03155537098560352,
+      "best_fixed_including_noop_gain": 0.0,
+      "selection_value": 0.0006328903654484964,
+      "positive_fraction": 0.16279069767441862,
+      "practical_positive_fraction": 0.03255813953488372,
+      "harm_fraction": 0.813953488372093
+    },
+    "wbcic_development_block": {
+      "family_id": "wbcic_development_block",
+      "decision_units": 80,
+      "oracle_action_gain": 0.0016142108585858552,
+      "best_nontrivial_fixed_action": "SUPPRESS_BLOCK",
+      "best_nontrivial_fixed_action_gain": -0.01802325737847222,
+      "best_fixed_including_noop_gain": 0.0,
+      "selection_value": 0.0016142108585858552,
+      "positive_fraction": 0.325,
+      "practical_positive_fraction": 0.0875,
+      "harm_fraction": 0.675
+    }
+  },
+  "concentration": {
+    "top_fraction_contribution": {
+      "top_1pct_units": 0.08424530249845137,
+      "top_5pct_units": 0.4212265124922569,
+      "top_10pct_units": 0.8424530249845138,
+      "top_20pct_units": 1.0000000000000002
+    },
+    "rescue_unit_fraction": 0.11870098039215686,
+    "subjects_with_rescue_fraction": 1.0,
+    "largest_subject_share": 0.05988023952095809,
+    "largest_run_share": 0.18686764402230022,
+    "subject_shares": {
+      "41": 0.05988023952095809,
+      "46": 0.04356803634111089,
+      "24": 0.04150320049556062,
+      "13": 0.03799297955812514,
+      "12": 0.03696056163535,
+      "34": 0.03675407805079497,
+      "11": 0.03365682428246955,
+      "38": 0.03303737352880447,
+      "4": 0.029940119760479045,
+      "31": 0.02890770183770391,
+      "42": 0.028288251084038825,
+      "53": 0.027255833161263687,
+      "15": 0.026842865992153627,
+      "8": 0.0266363824075986,
+      "52": 0.02642989882304357,
+      "2": 0.02581044806937849,
+      "20": 0.02560396448482346,
+      "39": 0.025397480900268433,
+      "27": 0.02436506297749329,
+      "51": 0.021474292793722902,
+      "49": 0.021474292793722902,
+      "30": 0.020028907701837708,
+      "26": 0.020028907701837708,
+      "23": 0.01982242411728268,
+      "43": 0.019202973363617596,
+      "50": 0.018170555440842454,
+      "54": 0.017344621102622342,
+      "48": 0.01693165393351229,
+      "9": 0.014247367334296927,
+      "47": 0.014247367334296927,
+      "22": 0.013834400165186871,
+      "40": 0.013421432996076814,
+      "10": 0.013008465826966758,
+      "18": 0.01280198224241173,
+      "14": 0.012389015073301674,
+      "1": 0.011976047904191617,
+      "29": 0.01094362998141648,
+      "19": 0.010117695643196367,
+      "7": 0.008672310551311171,
+      "32": 0.008672310551311171,
+      "25": 0.008259343382201117,
+      "45": 0.00784637621309106,
+      "3": 0.005988023952095809,
+      "44": 0.005781540367540782,
+      "37": 0.005781540367540782,
+      "5": 0.005575056782985754,
+      "16": 0.005368573198430726,
+      "35": 0.00495560602932067,
+      "28": 0.0037167045219905024,
+      "21": 0.0033037373528804464,
+      "33": 0.0033037373528804464,
+      "36": 0.002477803014660335
+    }
+  },
+  "policy_candidate": {
+    "status": "NO_POLICY_CANDIDATE",
+    "best_risk_policy": {
+      "family_id": "openbmi_dda_block",
+      "validation_scheme": "leave_one_run_out",
+      "method": "RiskAwarePERSIST",
+      "evaluation_groups": 6,
+      "mean_delta_BA": 0.0,
+      "delta_BA_group_bootstrap_CI_L": 0.0,
+      "delta_BA_group_bootstrap_CI_U": 0.0,
+      "positive_group_fraction": 0.0,
+      "largest_positive_group_share": null,
+      "mean_action_rate": 0.0,
+      "unsafe_intervention_rate": 0.0,
+      "positive_intervention_precision": 0.0,
+      "mean_recovered_headroom": 0.0,
+      "worst_group_delta_BA": 0.0,
+      "outer_test_used": false,
+      "lambda": 1.645,
+      "tau": 0.005,
+      "bootstrap_models": 12
+    },
+    "comparison_gates": {
+      "best_fixed_gain": 0.0,
+      "historical_router_gain": null,
+      "ridge_unsafe_intervention_rate": 0.6104166666666666,
+      "beats_best_fixed": false,
+      "beats_historical_router": true,
+      "safer_than_nonconservative_ridge": true
+    },
+    "fixed_policy": {
+      "lambda": 1.645,
+      "tau": 0.005,
+      "bootstrap_models": 12
+    },
+    "outer_test_authorized": false,
+    "OUTER_TEST_USED": false
+  },
+  "decision_dependence_increment": {
+    "dda_leave_run": {
+      "status": "ESTIMATED",
+      "baseline": "P+U",
+      "augmented": "P+U+D",
+      "R2_baseline": 0.2460425923,
+      "R2_augmented": 0.7562932619,
+      "delta_R2": 0.5102506696,
+      "RMSE_baseline": 0.03931601221,
+      "RMSE_augmented": 0.02235269146
+    },
+    "wbcic_leave_fold": {
+      "status": "ESTIMATED",
+      "baseline": "P+U",
+      "augmented": "P+U+D",
+      "R2_baseline": 0.225965354,
+      "R2_augmented": 0.4661799708,
+      "delta_R2": 0.2402146168,
+      "RMSE_baseline": 0.04026357592,
+      "RMSE_augmented": 0.03343717479
+    }
+  },
+  "geometry_increment": {
+    "dda_leave_run": {
+      "status": "ESTIMATED",
+      "baseline": "P+U+D",
+      "augmented": "P+U+D+geometry",
+      "R2_baseline": 0.7562932619,
+      "R2_augmented": 0.7549340129,
+      "delta_R2": -0.0013592490000000623,
+      "RMSE_baseline": 0.02235269146,
+      "RMSE_augmented": 0.02241493969
+    },
+    "wbcic_leave_fold": {
+      "status": "ESTIMATED",
+      "baseline": "P+U+D",
+      "augmented": "P+U+D+geometry",
+      "R2_baseline": 0.4661799708,
+      "R2_augmented": 0.2647818427,
+      "delta_R2": -0.20139812810000002,
+      "RMSE_baseline": 0.03343717479,
+      "RMSE_augmented": 0.03924101707
+    }
+  },
+  "top_legal_feature_associations": {
+    "openbmi_sample_router": [
+      {
+        "family_id": "openbmi_sample_router",
+        "action": "erase",
+        "feature": "f_router_probability_shift_l1",
+        "n_grouped_units": 52,
+        "pearson_r": -0.6186729091,
+        "pearson_p": 1.017777436e-06,
+        "spearman_r": -0.5490254782,
+        "spearman_p": 2.502255851e-05,
+        "spearman_group_bootstrap_CI_L": -0.7021998213,
+        "spearman_group_bootstrap_CI_U": -0.3015322085,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.5490254782
+      },
+      {
+        "family_id": "openbmi_sample_router",
+        "action": "amplify",
+        "feature": "f_router_agreement_full_erase",
+        "n_grouped_units": 52,
+        "pearson_r": 0.4693647012,
+        "pearson_p": 0.0004478211101,
+        "spearman_r": 0.4917889576,
+        "spearman_p": 0.0002133644348,
+        "spearman_group_bootstrap_CI_L": 0.2428984813,
+        "spearman_group_bootstrap_CI_U": 0.6767836312,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.4917889576
+      },
+      {
+        "family_id": "openbmi_sample_router",
+        "action": "geometry",
+        "feature": "f_router_agreement_full_erase",
+        "n_grouped_units": 52,
+        "pearson_r": 0.4375711603,
+        "pearson_p": 0.001179022351,
+        "spearman_r": 0.4646892057,
+        "spearman_p": 0.0005194039302,
+        "spearman_group_bootstrap_CI_L": 0.2384058465,
+        "spearman_group_bootstrap_CI_U": 0.6232629015,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.4646892057
+      },
+      {
+        "family_id": "openbmi_sample_router",
+        "action": "geometry",
+        "feature": "f_router_agreement_base_geo",
+        "n_grouped_units": 52,
+        "pearson_r": 0.4798429813,
+        "pearson_p": 0.0003187113322,
+        "spearman_r": 0.455337542,
+        "spearman_p": 0.0006943849829,
+        "spearman_group_bootstrap_CI_L": 0.1716974943,
+        "spearman_group_bootstrap_CI_U": 0.6511669067,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.455337542
+      },
+      {
+        "family_id": "openbmi_sample_router",
+        "action": "geometry",
+        "feature": "f_router_margin_change_full_erase",
+        "n_grouped_units": 52,
+        "pearson_r": 0.4262526693,
+        "pearson_p": 0.001628092965,
+        "spearman_r": 0.4504708873,
+        "spearman_p": 0.0008050407392,
+        "spearman_group_bootstrap_CI_L": 0.2352410057,
+        "spearman_group_bootstrap_CI_U": 0.6833759851,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.4504708873
+      }
+    ],
+    "openbmi_dda_block": [
+      {
+        "family_id": "openbmi_dda_block",
+        "action": "suppress",
+        "feature": "f_decision_flip",
+        "n_grouped_units": 43,
+        "pearson_r": -0.9602079316,
+        "pearson_p": 2.498658686e-24,
+        "spearman_r": -0.9527333132,
+        "spearman_p": 7.933568393e-23,
+        "spearman_group_bootstrap_CI_L": -0.9707938181,
+        "spearman_group_bootstrap_CI_U": -0.9303701107,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.9527333132
+      },
+      {
+        "family_id": "openbmi_dda_block",
+        "action": "suppress",
+        "feature": "f_decision_margin",
+        "n_grouped_units": 43,
+        "pearson_r": -0.9379442471,
+        "pearson_p": 1.8275995690000003e-20,
+        "spearman_r": -0.9522802779,
+        "spearman_p": 9.605615161e-23,
+        "spearman_group_bootstrap_CI_L": -0.9690617493,
+        "spearman_group_bootstrap_CI_U": -0.9198193111,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.9522802779
+      },
+      {
+        "family_id": "openbmi_dda_block",
+        "action": "suppress",
+        "feature": "f_decision_tv",
+        "n_grouped_units": 43,
+        "pearson_r": -0.9582739777,
+        "pearson_p": 6.490306498e-24,
+        "spearman_r": -0.950166113,
+        "spearman_p": 2.28952531e-22,
+        "spearman_group_bootstrap_CI_L": -0.967444673,
+        "spearman_group_bootstrap_CI_U": -0.908563557,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.950166113
+      },
+      {
+        "family_id": "openbmi_dda_block",
+        "action": "suppress",
+        "feature": "f_decision_logit_ratio",
+        "n_grouped_units": 43,
+        "pearson_r": -0.8121619254,
+        "pearson_p": 3.835209503e-11,
+        "spearman_r": -0.9275143461,
+        "spearman_p": 3.995509621e-19,
+        "spearman_group_bootstrap_CI_L": -0.9574206349,
+        "spearman_group_bootstrap_CI_U": -0.884456385,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.9275143461
+      },
+      {
+        "family_id": "openbmi_dda_block",
+        "action": "suppress",
+        "feature": "f_geometry_strength",
+        "n_grouped_units": 43,
+        "pearson_r": -0.7770115132,
+        "pearson_p": 9.005514123e-10,
+        "spearman_r": -0.8810027182,
+        "spearman_p": 6.5848787e-15,
+        "spearman_group_bootstrap_CI_L": -0.9162072841,
+        "spearman_group_bootstrap_CI_U": -0.8411943565,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.8810027182
+      }
+    ],
+    "wbcic_development_block": [
+      {
+        "family_id": "wbcic_development_block",
+        "action": "suppress",
+        "feature": "f_decision_tv",
+        "n_grouped_units": 80,
+        "pearson_r": -0.8317924896,
+        "pearson_p": 1.236643998e-21,
+        "spearman_r": -0.5096343179,
+        "spearman_p": 1.377864838e-06,
+        "spearman_group_bootstrap_CI_L": -0.6235572863,
+        "spearman_group_bootstrap_CI_U": -0.3986961823,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.5096343179
+      },
+      {
+        "family_id": "wbcic_development_block",
+        "action": "suppress",
+        "feature": "f_decision_flip",
+        "n_grouped_units": 80,
+        "pearson_r": -0.837520819,
+        "pearson_p": 3.5924711530000003e-22,
+        "spearman_r": -0.50109885,
+        "spearman_p": 2.198734395e-06,
+        "spearman_group_bootstrap_CI_L": -0.6082547726,
+        "spearman_group_bootstrap_CI_U": -0.4041076285,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.50109885
+      },
+      {
+        "family_id": "wbcic_development_block",
+        "action": "suppress",
+        "feature": "f_decision_logit_ratio",
+        "n_grouped_units": 80,
+        "pearson_r": -0.6396503845,
+        "pearson_p": 1.692675114e-10,
+        "spearman_r": -0.488045007,
+        "spearman_p": 4.387096761e-06,
+        "spearman_group_bootstrap_CI_L": -0.5237701745,
+        "spearman_group_bootstrap_CI_U": -0.4245614858,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.488045007
+      },
+      {
+        "family_id": "wbcic_development_block",
+        "action": "suppress",
+        "feature": "f_decision_margin",
+        "n_grouped_units": 80,
+        "pearson_r": -0.6282721145,
+        "pearson_p": 4.41080602e-10,
+        "spearman_r": -0.4750351617,
+        "spearman_p": 8.49474495e-06,
+        "spearman_group_bootstrap_CI_L": -0.6101604057,
+        "spearman_group_bootstrap_CI_U": -0.3321217522,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.4750351617
+      },
+      {
+        "family_id": "wbcic_development_block",
+        "action": "suppress",
+        "feature": "f_u_crossfold_sd",
+        "n_grouped_units": 80,
+        "pearson_r": -0.5291276038,
+        "pearson_p": 4.512985464e-07,
+        "spearman_r": -0.417440225,
+        "spearman_p": 0.0001169754178,
+        "spearman_group_bootstrap_CI_L": -0.6427465516,
+        "spearman_group_bootstrap_CI_U": -0.2098386037,
+        "grouped_permutation_p": 0.003322259136,
+        "abs_spearman": 0.417440225
+      }
+    ]
+  },
+  "primary_policy_comparisons": {
+    "openbmi_sample_router": {
+      "AlwaysSuppress": {
+        "mean_delta_BA": -0.1731059524,
+        "LCB95": -0.1871869048,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.2440857143,
+        "recovered_headroom": -1.477231
+      },
+      "BestFixedTrain": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "ElasticNetEffect": {
+        "mean_delta_BA": -7.380952381e-05,
+        "LCB95": -0.0001238095238,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 8.766096659e-05,
+        "recovered_headroom": -0.0006396086487
+      },
+      "M0_NO_OP": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "Oracle": {
+        "mean_delta_BA": 0.1186071429,
+        "LCB95": 0.1083714286,
+        "positive_group_fraction": 1.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 1.0
+      },
+      "P_only_gate": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "P_plus_U_gate": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "P_plus_U_plus_D_gate": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "RidgeEffect": {
+        "mean_delta_BA": -9.880952381e-05,
+        "LCB95": -0.000175,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0001187777217,
+        "recovered_headroom": -0.0008718966859
+      },
+      "RiskAwarePERSIST": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "SmallHGBEffect": {
+        "mean_delta_BA": -0.0004702380952,
+        "LCB95": -0.001096428571,
+        "positive_group_fraction": 0.2,
+        "unsafe_intervention_rate": 0.02942005461,
+        "recovered_headroom": -0.003563246804
+      }
+    },
+    "openbmi_dda_block": {
+      "AlwaysSuppress": {
+        "mean_delta_BA": -0.03150134637,
+        "LCB95": -0.03399943311,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.8148809524,
+        "recovered_headroom": -68.09713516
+      },
+      "BestFixedTrain": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "ElasticNetEffect": {
+        "mean_delta_BA": -4.520975057e-05,
+        "LCB95": -0.0001921768707,
+        "positive_group_fraction": 0.3333333333,
+        "unsafe_intervention_rate": 0.6209325397,
+        "recovered_headroom": -0.2193143603
+      },
+      "M0_NO_OP": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "Oracle": {
+        "mean_delta_BA": 0.0006322278912,
+        "LCB95": 0.0003969671202,
+        "positive_group_fraction": 1.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 1.0
+      },
+      "P_only_gate": {
+        "mean_delta_BA": -0.03150134637,
+        "LCB95": -0.03402981505,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.8148809524,
+        "recovered_headroom": -68.09713516
+      },
+      "P_plus_U_gate": {
+        "mean_delta_BA": -0.006799178005,
+        "LCB95": -0.01443424036,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.6866666667,
+        "recovered_headroom": -9.94939953
+      },
+      "P_plus_U_plus_D_gate": {
+        "mean_delta_BA": -0.003774376417,
+        "LCB95": -0.01028911565,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.3333333333,
+        "recovered_headroom": -4.458095238
+      },
+      "RidgeEffect": {
+        "mean_delta_BA": -0.0002152777778,
+        "LCB95": -0.0003887471655,
+        "positive_group_fraction": 0.1666666667,
+        "unsafe_intervention_rate": 0.6104166667,
+        "recovered_headroom": -0.4262368167
+      },
+      "RiskAwarePERSIST": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "SmallHGBEffect": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      }
+    },
+    "wbcic_development_block": {
+      "AlwaysSuppress": {
+        "mean_delta_BA": -0.01802325738,
+        "LCB95": -0.02190049913,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.675,
+        "recovered_headroom": -15.1359199
+      },
+      "BestFixedTrain": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "ElasticNetEffect": {
+        "mean_delta_BA": -0.001769236111,
+        "LCB95": -0.004065755208,
+        "positive_group_fraction": 0.4,
+        "unsafe_intervention_rate": 0.5151515152,
+        "recovered_headroom": -1.061024557
+      },
+      "M0_NO_OP": {
+        "mean_delta_BA": 0.0,
+        "LCB95": 0.0,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 0.0
+      },
+      "Oracle": {
+        "mean_delta_BA": 0.001614210859,
+        "LCB95": 0.001063074495,
+        "positive_group_fraction": 1.0,
+        "unsafe_intervention_rate": 0.0,
+        "recovered_headroom": 1.0
+      },
+      "P_only_gate": {
+        "mean_delta_BA": -0.01494291252,
+        "LCB95": -0.01814205354,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.6964285714,
+        "recovered_headroom": -13.08984067
+      },
+      "P_plus_U_gate": {
+        "mean_delta_BA": -0.002495392401,
+        "LCB95": -0.003925326507,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.6866666667,
+        "recovered_headroom": -2.539874155
+      },
+      "P_plus_U_plus_D_gate": {
+        "mean_delta_BA": -0.002828171066,
+        "LCB95": -0.004114704171,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.9333333333,
+        "recovered_headroom": -2.779216259
+      },
+      "RidgeEffect": {
+        "mean_delta_BA": -0.001331171086,
+        "LCB95": -0.003857290088,
+        "positive_group_fraction": 0.4,
+        "unsafe_intervention_rate": 0.6109090909,
+        "recovered_headroom": -0.5974666194
+      },
+      "RiskAwarePERSIST": {
+        "mean_delta_BA": -2.115885417e-05,
+        "LCB95": -5.23828125e-05,
+        "positive_group_fraction": 0.0,
+        "unsafe_intervention_rate": 0.4,
+        "recovered_headroom": -0.02955287467
+      },
+      "SmallHGBEffect": {
+        "mean_delta_BA": 0.0001498421717,
+        "LCB95": -0.0005188297033,
+        "positive_group_fraction": 0.6,
+        "unsafe_intervention_rate": 0.5864285714,
+        "recovered_headroom": -0.006114181676
+      }
+    }
+  },
+  "leave_one_dataset_out": {
+    "status": "NOT_ESTIMABLE",
+    "reason": "The compatible OpenBMI sample, OpenBMI block, and WBCIC block policies have different decision units and action semantics; pooling them would be invalid."
+  },
+  "outer_test_authorized": false,
+  "OUTER_TEST_USED": false
+}

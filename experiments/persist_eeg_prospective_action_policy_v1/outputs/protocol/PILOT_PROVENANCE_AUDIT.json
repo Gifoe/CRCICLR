@@ -1,0 +1,193 @@
+{
+  "status": "PILOT_PROVENANCE_AUDIT_PASS",
+  "OUTER_TEST_USED": false,
+  "outer_subject_ids_loaded": false,
+  "outer_samples_materialized": false,
+  "pooling_rule": "Incompatible sample, block, subject, fold, and configuration units remain separate families.",
+  "pilots": [
+    {
+      "id": "signed_utility_v3_1",
+      "artifact": "experiments/persist_eeg_p4_signed_v3_1/results_v3_1/SIGNED_V3_1_FINAL_REPORT.json",
+      "decision_unit": "run x persistence block",
+      "actions": [
+        "KEEP",
+        "ERASE_BLOCK"
+      ],
+      "outcome": "signed CE utility",
+      "pre_action_features": [
+        "persistence rank/effect",
+        "matched random control"
+      ],
+      "future_outcome_quantities": [
+        "signed_u_abs",
+        "signed_u_spec"
+      ],
+      "model_use": "audit only; direct U is not reused on its own outcome group",
+      "artifact_sha256": "8200c6f9579c19df60daa9d2f144069280dcabb3e11870bfaa006335deb4cb25",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "shared_geometry_v1_2",
+      "artifact": "experiments/persist_eeg_p4_shared_geometry/results_v1_2/SHARED_GEOMETRY_FINAL_REPORT.json",
+      "decision_unit": "run x paradigm x block",
+      "actions": [
+        "diagnostic only"
+      ],
+      "outcome": "cross-paradigm geometry/utility",
+      "pre_action_features": [
+        "geometry strength",
+        "principal/contrast geometry"
+      ],
+      "future_outcome_quantities": [
+        "utility measured on validation roles"
+      ],
+      "model_use": "provenance and feature semantics only",
+      "artifact_sha256": "897e61378d89b09d4854b6390ae143a8c1b3d647a3c8d467811dfc7d2546cfa6",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "p5_p6",
+      "artifact": "experiments/persist_eeg_p5_1_p6/outputs/P5_1_P6_FINAL_REPORT.json",
+      "decision_unit": "run and subject for strict-inductive fusion",
+      "actions": [
+        "BASE",
+        "PROTECTED_FUSION",
+        "ALL_PERSISTENCE",
+        "RANDOM"
+      ],
+      "outcome": "subject-balanced BA",
+      "pre_action_features": [
+        "frozen signed assignments",
+        "task-only configuration"
+      ],
+      "future_outcome_quantities": [
+        "subject delta BA"
+      ],
+      "model_use": "oracle/action history audit; incompatible with sample router",
+      "artifact_sha256": "e205b684bee9159e0ac3aceaad97a8e06389ac39681419bf36744588b3b00ade",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "historical_router",
+      "artifact": "experiments/persist_eeg_router/outputs/final/PERSIST_ROUTER_FINAL_REPORT.json",
+      "decision_unit": "individual OpenBMI trial",
+      "actions": [
+        "KEEP",
+        "ERASE",
+        "AMPLIFY",
+        "GEOMETRY"
+      ],
+      "outcome": "subject-balanced BA from trial decisions",
+      "pre_action_features": [
+        "label-free confidence",
+        "counterfactual logit response",
+        "protected geometry"
+      ],
+      "future_outcome_quantities": [
+        "rescue/harm",
+        "realised correctness effect"
+      ],
+      "model_use": "sample-family modelling with subject-grouped validation",
+      "artifact_sha256": "5ae62203a2af9a894fda7fa3ad4de640ac919b14be0ae67f6311b85e72d88da3",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "persist_cf",
+      "artifact": "experiments/persist_eeg_cf/outputs/final/PERSIST_CF_FINAL_REPORT.json",
+      "decision_unit": "run/configuration; nested subject folds",
+      "actions": [
+        "BASE",
+        "CF",
+        "DUPLICATE",
+        "FULL",
+        "HISTORICAL",
+        "RANDOM"
+      ],
+      "outcome": "BA/NLL by configuration",
+      "pre_action_features": [
+        "frozen configuration and TRAIN-only estimates"
+      ],
+      "future_outcome_quantities": [
+        "configuration result"
+      ],
+      "model_use": "audit only; configuration-level unit incompatible with trial/block units",
+      "artifact_sha256": "27072fd01ce8ea036d1385d452c8815de11096e4b5a5e3d38ab794d1739b4265",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "dda_v1",
+      "artifact": "experiments/persist_eeg_dda_v1/outputs/DDA_FINAL_REPORT.json",
+      "decision_unit": "run x audit fold x persistence block",
+      "actions": [
+        "NO_OP",
+        "SUPPRESS_BLOCK"
+      ],
+      "outcome": "held-out outcome-role CE and BA change",
+      "pre_action_features": [
+        "persistence",
+        "decision dependence",
+        "geometry"
+      ],
+      "future_outcome_quantities": [
+        "outcome_ce_effect",
+        "outcome_ba_change",
+        "same-cell signed U"
+      ],
+      "model_use": "block-family modelling; same-cell U excluded and cross-fitted U constructed",
+      "artifact_sha256": "54aff953e3f98c738783bd09590c71e48911cecf0c9726bf96b761595333bf38",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "wbcic_eegnet",
+      "artifact": "experiments/persist_eeg_wbcic_actionability_v2/outputs/FINAL_DECISION.json",
+      "decision_unit": "backbone x cross-fit fold x persistence block",
+      "actions": [
+        "NO_OP",
+        "SUPPRESS_BLOCK"
+      ],
+      "outcome": "development-only S3 subject-balanced delta BA",
+      "pre_action_features": [
+        "S1/S2 persistence",
+        "label-free decision response",
+        "basis geometry"
+      ],
+      "future_outcome_quantities": [
+        "S3 signed utility",
+        "S3 delta BA"
+      ],
+      "model_use": "WBCIC development block family; cross-fitted U only",
+      "artifact_sha256": "b54ea1c5c305df8acb615b9c0476d0816884ab743f6e6e22d5f630e5be147fe6",
+      "outer_true_paths": [],
+      "eligible": true
+    },
+    {
+      "id": "wbcic_multibackbone",
+      "artifact": "experiments/persist_eeg_multibackbone_final_closure/outputs/FINAL_DECISION.json",
+      "decision_unit": "backbone x cross-fit fold x persistence block",
+      "actions": [
+        "NO_OP",
+        "SUPPRESS_BLOCK"
+      ],
+      "outcome": "development-only S3 subject-balanced delta BA",
+      "pre_action_features": [
+        "S1/S2 persistence",
+        "label-free decision response",
+        "basis geometry"
+      ],
+      "future_outcome_quantities": [
+        "S3 signed utility",
+        "S3 delta BA"
+      ],
+      "model_use": "competent WBCIC backbones only; FBCNet excluded after competence failure",
+      "artifact_sha256": "d01441219b46cd0224e9ced3eee24e006838a92f4fb85c9c94f0fdedbbc6623c",
+      "outer_true_paths": [],
+      "eligible": true
+    }
+  ]
+}

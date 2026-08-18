@@ -1,0 +1,38 @@
+{
+  "status": "NO_POLICY_CANDIDATE",
+  "best_risk_policy": {
+    "family_id": "openbmi_dda_block",
+    "validation_scheme": "leave_one_run_out",
+    "method": "RiskAwarePERSIST",
+    "evaluation_groups": 6,
+    "mean_delta_BA": 0.0,
+    "delta_BA_group_bootstrap_CI_L": 0.0,
+    "delta_BA_group_bootstrap_CI_U": 0.0,
+    "positive_group_fraction": 0.0,
+    "largest_positive_group_share": null,
+    "mean_action_rate": 0.0,
+    "unsafe_intervention_rate": 0.0,
+    "positive_intervention_precision": 0.0,
+    "mean_recovered_headroom": 0.0,
+    "worst_group_delta_BA": 0.0,
+    "outer_test_used": false,
+    "lambda": 1.645,
+    "tau": 0.005,
+    "bootstrap_models": 12
+  },
+  "comparison_gates": {
+    "best_fixed_gain": 0.0,
+    "historical_router_gain": null,
+    "ridge_unsafe_intervention_rate": 0.6104166666666666,
+    "beats_best_fixed": false,
+    "beats_historical_router": true,
+    "safer_than_nonconservative_ridge": true
+  },
+  "fixed_policy": {
+    "lambda": 1.645,
+    "tau": 0.005,
+    "bootstrap_models": 12
+  },
+  "outer_test_authorized": false,
+  "OUTER_TEST_USED": false
+}
