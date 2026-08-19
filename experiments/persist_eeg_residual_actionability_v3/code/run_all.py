@@ -63,6 +63,14 @@ REQUIRED_POLICY_AUDIT_RESULTS = (
     "RESIDUAL_LEARNABILITY_PREDICTIONS.csv",
     "OOF_POLICY_PREDICTIONS.csv",
 )
+REQUIRED_POLICY_FIGURES = (
+    "POLICY_DELTA_BA_CI.png",
+    "POLICY_DELTA_BA_CI.pdf",
+    "FOLD_DELTA_BA_HEATMAP.png",
+    "FOLD_DELTA_BA_HEATMAP.pdf",
+    "CONDITIONAL_RESCUE_LEARNABILITY.png",
+    "CONDITIONAL_RESCUE_LEARNABILITY.pdf",
+)
 
 
 def _pp(value: float) -> str:
@@ -298,6 +306,7 @@ def _validate_outputs(final_required: bool) -> None:
                         PROTOCOL / "GROUPED_NESTED_CV.json",
                         PROTOCOL / "LEGAL_FEATURE_SCHEMA.json",
                         *[RESULTS / name for name in REQUIRED_POLICY_AUDIT_RESULTS],
+                        *[FIGURES / name for name in REQUIRED_POLICY_FIGURES],
                     ]
                 )
     missing = [str(path) for path in required if not path.exists() or path.stat().st_size == 0]
@@ -416,8 +425,10 @@ def main() -> None:
         return
     if state == "STRUCTURAL_ACTION_RESIDUAL_EXISTS":
         from policy import run_residual_policy_research
+        from figures import write_figures
 
         final = run_residual_policy_research(trials=trials, audit=audit, cache_root=cache_root)
+        write_figures()
         _write_reproducibility(cache_root)
         _validate_outputs(final_required=True)
         print(
