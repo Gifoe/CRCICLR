@@ -1,0 +1,55 @@
+{
+  "status": "FINAL_DEVELOPMENT_RESEARCH_MODEL_FROZEN",
+  "terminal_state": "GENERIC_DYNAMIC_ENSEMBLE_WINS",
+  "selected_discovery_model": "A1_DYNAMIC_KEEP_FINAL / M1_MASKED_POOL_SHRUNK_THR",
+  "architecture": {
+    "name": "Masked positive logit pool",
+    "inputs": "six frozen KEEP binary margins, availability mask, legal session indicator",
+    "pool": "exp(theta_j) positive weights normalized over available experts",
+    "output": "learned global positive scale times pooled logit plus bias",
+    "action_experts": "excluded by final evidence",
+    "PERSIST_features": "excluded from selected performance model"
+  },
+  "training_protocol": {
+    "outer_validation": "five subject-disjoint folds",
+    "inner_calibration": "one disjoint subject fold per outer fold",
+    "fit_subjects": "remaining subject folds",
+    "loss": "binary cross-entropy plus L2 on log-weights",
+    "l2_grid": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "learn_scale": true,
+    "session_specific_weights": false,
+    "threshold_grid": [
+      0.475,
+      0.5,
+      0.525
+    ],
+    "selection_tiebreak": [
+      "mean subject Delta BA",
+      "worst-subject Delta BA",
+      "lower harm rate",
+      "higher rescue precision",
+      "lower switch rate"
+    ],
+    "seed": 20260819
+  },
+  "mean_openbmi_expert_weights": {
+    "fold-0_seed-0": 0.22114145233583477,
+    "fold-0_seed-1": 0.20222217459580416,
+    "fold-1_seed-0": 0.19778768183780632,
+    "fold-1_seed-1": 0.11682259172684362,
+    "fold-2_seed-0": 0.1102909600882658,
+    "fold-2_seed-1": 0.1517351394154453
+  },
+  "benchmark_adaptation": {
+    "OpenBMI": "selected constrained pool; exploratory only",
+    "WBCIC_development": "best observed model is raw L2 linear stacking; CI crosses zero and it is not authorized for outer evaluation"
+  },
+  "outer_evaluation_authorized": false,
+  "outer_block_reason": "direct transfer is negative and WBCIC adapted gain has a subject-bootstrap CI crossing zero",
+  "outer_subject_ids_loaded": false,
+  "OUTER_TEST_USED": false
+}

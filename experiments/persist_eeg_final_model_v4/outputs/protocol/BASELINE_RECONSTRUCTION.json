@@ -1,0 +1,201 @@
+{
+  "status": "BASELINE_RECONSTRUCTION_PASS",
+  "starting_commit": "ee9e280e350073f4cc30f8e3cad8c27cd1347bec",
+  "B_STRONG": "B6_ALL_RUN_LOGIT_MEAN",
+  "B_STRONG_mean_subject_BA": 0.8464423076923075,
+  "single_KEEP_reference": "B0_TARGET_KEEP (historical V2.1 reference)",
+  "unique_trials": 10400,
+  "subjects": 52,
+  "sessions": [
+    "1",
+    "2"
+  ],
+  "keep_expert_slots": 6,
+  "action_families": [
+    "AMPLIFY",
+    "GEOMETRY",
+    "ERASE"
+  ],
+  "KEEP_only_oracle_BA": 0.9230769230769231,
+  "KEEP_only_oracle_delta_BA": 0.07663461538461558,
+  "global_ACTION_oracle_BA": 0.932403846153846,
+  "global_ACTION_oracle_delta_BA": 0.08596153846153842,
+  "complete_KEEP_ACTION_oracle_BA": 0.9534615384615386,
+  "complete_KEEP_ACTION_oracle_delta_BA": 0.10701923076923103,
+  "V3_prospective_reconstruction": [
+    {
+      "method_id": "M0_B6_KEEP_ENSEMBLE",
+      "mean_subject_BA": 0.8464423076923075,
+      "mean_subject_delta_BA_vs_B6": 0.0
+    },
+    {
+      "method_id": "M1_ENSEMBLE_CONFIDENCE_RULE",
+      "mean_subject_BA": 0.8457692307692307,
+      "mean_subject_delta_BA_vs_B6": -0.0006730769230769
+    },
+    {
+      "method_id": "M2_ENSEMBLE_DISAGREEMENT_RULE",
+      "mean_subject_BA": 0.8453846153846154,
+      "mean_subject_delta_BA_vs_B6": -0.0010576923076923
+    },
+    {
+      "method_id": "M3_ACTION_MOVEMENT_LOGISTIC",
+      "mean_subject_BA": 0.8452884615384615,
+      "mean_subject_delta_BA_vs_B6": -0.0011538461538461
+    },
+    {
+      "method_id": "M4_FULL_LEGAL_LOGISTIC",
+      "mean_subject_BA": 0.8453846153846154,
+      "mean_subject_delta_BA_vs_B6": -0.0010576923076923
+    },
+    {
+      "method_id": "M5_HIST_GRADIENT_BOOSTING",
+      "mean_subject_BA": 0.846153846153846,
+      "mean_subject_delta_BA_vs_B6": -0.0002884615384615
+    },
+    {
+      "method_id": "I006_CONDITIONAL_ACTION_LOGISTIC",
+      "mean_subject_BA": 0.8449038461538462,
+      "mean_subject_delta_BA_vs_B6": -0.0015384615384615
+    },
+    {
+      "method_id": "I007_CONDITIONAL_ACTION_HGB",
+      "mean_subject_BA": 0.8457692307692307,
+      "mean_subject_delta_BA_vs_B6": -0.0006730769230769
+    }
+  ],
+  "checks": [
+    {
+      "check": "openbmi_cache_sha256:OOF_BASE_LOGITS.parquet",
+      "passed": true,
+      "expected": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+      "actual": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "openbmi_cache_sha256:OOF_COUNTERFACTUAL_LOGITS.parquet",
+      "passed": true,
+      "expected": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+      "actual": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "openbmi_cache_sha256:OOF_GEOMETRY_FEATURES.parquet",
+      "passed": true,
+      "expected": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+      "actual": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "openbmi_cache_sha256:OOF_ROUTER_FEATURES.parquet",
+      "passed": true,
+      "expected": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+      "actual": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "openbmi_unique_trials",
+      "passed": true,
+      "expected": 10400,
+      "actual": 10400,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "openbmi_subjects",
+      "passed": true,
+      "expected": 52,
+      "actual": 52,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "openbmi_manifest_identity_sha256",
+      "passed": true,
+      "expected": "ef8d7a018a6cd35085c3acaa2167fcb0698df0af0149793aab767ca9f8a753ad",
+      "actual": "ef8d7a018a6cd35085c3acaa2167fcb0698df0af0149793aab767ca9f8a753ad",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "B6_unique_margin_max_abs_difference",
+      "passed": true,
+      "expected": 0.0,
+      "actual": 3.5762786865234375e-07,
+      "absolute_difference": 3.5762786865234375e-07
+    },
+    {
+      "check": "B6_unique_prediction_exact",
+      "passed": true,
+      "expected": true,
+      "actual": true,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "B6_mean_subject_BA",
+      "passed": true,
+      "expected": 0.8464423076923075,
+      "actual": 0.8464423076923075,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "KEEP_only_oracle_mean_subject_BA",
+      "passed": true,
+      "expected": 0.9230769230769231,
+      "actual": 0.9230769230769231,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "KEEP_plus_global_ACTION_oracle_mean_subject_BA",
+      "passed": true,
+      "expected": 0.932403846153846,
+      "actual": 0.932403846153846,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "complete_KEEP_plus_ACTION_oracle_mean_subject_BA",
+      "passed": true,
+      "expected": 0.9534615384615385,
+      "actual": 0.9534615384615386,
+      "absolute_difference": 1.1102230246251565e-16
+    },
+    {
+      "check": "V3_prospective_table_sha256",
+      "passed": true,
+      "expected": "922ba4dbb455df16bcc751e7319e5cdbf53b577c034e29ed6ecb1af813cc333c",
+      "actual": "922ba4dbb455df16bcc751e7319e5cdbf53b577c034e29ed6ecb1af813cc333c",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "V3_prospective_method_roster",
+      "passed": true,
+      "expected": [
+        "I006_CONDITIONAL_ACTION_LOGISTIC",
+        "I007_CONDITIONAL_ACTION_HGB",
+        "M0_B6_KEEP_ENSEMBLE",
+        "M1_ENSEMBLE_CONFIDENCE_RULE",
+        "M2_ENSEMBLE_DISAGREEMENT_RULE",
+        "M3_ACTION_MOVEMENT_LOGISTIC",
+        "M4_FULL_LEGAL_LOGISTIC",
+        "M5_HIST_GRADIENT_BOOSTING"
+      ],
+      "actual": [
+        "I006_CONDITIONAL_ACTION_LOGISTIC",
+        "I007_CONDITIONAL_ACTION_HGB",
+        "M0_B6_KEEP_ENSEMBLE",
+        "M1_ENSEMBLE_CONFIDENCE_RULE",
+        "M2_ENSEMBLE_DISAGREEMENT_RULE",
+        "M3_ACTION_MOVEMENT_LOGISTIC",
+        "M4_FULL_LEGAL_LOGISTIC",
+        "M5_HIST_GRADIENT_BOOSTING"
+      ],
+      "absolute_difference": 0.0
+    }
+  ],
+  "source_cache_sha256": {
+    "OOF_BASE_LOGITS.parquet": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+    "OOF_COUNTERFACTUAL_LOGITS.parquet": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+    "OOF_GEOMETRY_FEATURES.parquet": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+    "OOF_ROUTER_FEATURES.parquet": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd"
+  },
+  "historical_artifacts_modified": false,
+  "historical_csv_margin_tolerance": 5e-07,
+  "OUTER_TEST_USED": false
+}

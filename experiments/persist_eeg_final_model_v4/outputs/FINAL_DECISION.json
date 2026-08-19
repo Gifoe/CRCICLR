@@ -1,0 +1,34 @@
+{
+  "terminal_state": "GENERIC_DYNAMIC_ENSEMBLE_WINS",
+  "selected_discovery_model": "A1_DYNAMIC_KEEP_FINAL / M1_MASKED_POOL_SHRUNK_THR",
+  "OpenBMI": {
+    "role": "exploratory_discovery",
+    "BA": 0.8509615384615383,
+    "Delta_BA_vs_B_STRONG": 0.0045192307692307,
+    "CI95": [
+      0.0020192307692307,
+      0.0072115384615384
+    ],
+    "positive_folds": "5/5",
+    "strong_candidate": true
+  },
+  "WBCIC_development": {
+    "B_STRONG": "W0_B_STRONG_PROBABILITY_MEAN",
+    "direct_transfer_Delta_BA": -0.0016983863020448,
+    "best_adapted_method": "W1_RAW_LINEAR",
+    "best_adapted_BA": 0.8067887718649914,
+    "best_adapted_Delta_BA": 0.0031630327666913,
+    "best_adapted_CI95": [
+      -0.0018369672333086,
+      0.0081733955407735
+    ],
+    "strong_candidate": false
+  },
+  "ACTION_adds_gain": false,
+  "PERSIST_adds_gain": false,
+  "PERSIST_improves_safety": false,
+  "READY_FOR_OUTER_FREEZE": false,
+  "outer_evaluation_authorized": false,
+  "outer_subject_ids_loaded": false,
+  "OUTER_TEST_USED": false
+}

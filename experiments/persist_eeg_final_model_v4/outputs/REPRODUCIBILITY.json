@@ -1,0 +1,31 @@
+{
+  "status": "V4_FINAL_REPRODUCIBILITY_COMPLETE",
+  "branch": "codex/persist-eeg-final-model-v4",
+  "working_commit_before_V4_commit": "ee9e280e350073f4cc30f8e3cad8c27cd1347bec",
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.18363-SP0",
+  "numpy": "2.4.4",
+  "pandas": "3.0.5",
+  "scikit_learn": "1.9.0",
+  "torch": "2.11.0+cu128",
+  "matplotlib": "3.11.1",
+  "seed": 20260819,
+  "bootstrap_repetitions": 10000,
+  "commands": [
+    "python code/reconstruct.py",
+    "python code/run_search.py --stage initial",
+    "python code/run_keep_refine.py",
+    "python code/run_keep_dynamic.py",
+    "python code/build_wbcic_experts.py --device cuda --workers 0",
+    "python code/audit_wbcic_static.py",
+    "python code/run_wbcic_transfer.py",
+    "python code/run_wbcic_keep_search.py",
+    "python code/run_wbcic_linear_refine.py",
+    "python code/run_final_ablations.py",
+    "python code/run_final.py"
+  ],
+  "final_hash_file_sha256": "cca28738a9ef5da43ba5acfceee584447a2b11468dd9e0fabfc277114f0dc0bd",
+  "outer_split_lock_opened": false,
+  "outer_subject_ids_loaded": false,
+  "OUTER_TEST_USED": false
+}

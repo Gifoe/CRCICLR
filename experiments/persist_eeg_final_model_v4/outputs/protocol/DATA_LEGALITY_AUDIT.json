@@ -1,0 +1,36 @@
+{
+  "status": "DATA_LEGALITY_AUDIT_PASS",
+  "openbmi": {
+    "role": "discovery_architecture_sandbox",
+    "historical_development_subjects": 52,
+    "cache_root": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_router\\outputs\\cache",
+    "confirmatory": false
+  },
+  "wbcic": {
+    "role": "authorized_development_only",
+    "allowed_subject_count": 41,
+    "allowed_subjects_hash": "dae8e7ec00cbcf6dcc8c5b25829f2148fd0b5fdf162f75a0cddc18b096af7db4",
+    "outer_subject_count_hash_only": "038ed438db95247c59541fb893ac0b11cc4e5af8fb73c70919a001633f6345f9",
+    "outer_subject_ids_loaded": false,
+    "raw_root_enumerated": false,
+    "development_cache_root": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_WBCIC_EEGNET\\experiments\\persist_eeg_wbcic_actionability_v2\\outputs\\cache\\wbcic_epochs"
+  },
+  "explicit_read_denylist": [
+    "**/OUTER_SPLIT_LOCK.json",
+    "**/code/outer.py at runtime",
+    "**/wbcic_outer_S3/**",
+    "**/*OUTER_RESULT*",
+    "raw paths for any subject not in DEVELOPMENT_SCOPE_LOCK.json"
+  ],
+  "checks": {
+    "openbmi_cache_files_exact": true,
+    "wbcic_development_scope_count_41": true,
+    "wbcic_scope_omits_outer_ids": true,
+    "wbcic_runtime_outer_lock_denylisted": true,
+    "wbcic_cache_scope_pass": true,
+    "wbcic_materialized_equals_allowed_development": true,
+    "wbcic_outer_materialized_false": true,
+    "historical_outer_flag_false": true
+  },
+  "OUTER_TEST_USED": false
+}

@@ -1,0 +1,9 @@
+stage,evidence,diagnosis,next_hypothesis,OUTER_TEST_USED
+initial,"M1 linear Delta=0.002404, LCB=-0.000577",KEEP stacking has weak positive signal but is not robust,"separate threshold calibration, raw run weighting, and summary effects",False
+initial,M2 linear Delta=-0.000481; M2 HGB Delta=-0.004327,unrestricted action logits increase cross-subject error,do not add actions until a conservative correctness/eligibility model exists,False
+initial,M3 linear minus M2 linear=-0.000192,flat PERSIST concatenation adds no initial performance value,test PERSIST as prior/constraint after a viable action selector exists,False
+keep_dynamic,"best=M1_MASKED_POOL_SHRUNK_THR, Delta=0.004519, CI_L=0.002019",dynamic KEEP aggregation evaluated with threshold shrinkage and set gating,transfer the winning family to WBCIC-dev before any further OpenBMI adaptation,False
+final_wbcic_transfer,direct masked-pool Delta=-0.001698,architecture-specific transfer failed after correcting B_STRONG to probability mean,do not open outer; benchmark-adapted generic stacking remains exploratory,False
+final_wbcic_search,"raw linear Delta=+0.003163, CI95=[-0.001837,+0.008173]",positive signal lacks subject-level precision and is sensitive to calibration threshold,stop tuning to limit development overfit,False
+final_action,"A2-A1=-0.004519, CI95 fully below zero",ACTION information destroys the constrained KEEP gain,exclude ACTION from the selected final discovery model,False
+final_persist,"A3-A2=-0.000865, CI95=[-0.002981,+0.001250]",PERSIST adds neither raw gain nor safety in the matched ladder,"retain PERSIST as diagnostic science, not a performance claim",False
