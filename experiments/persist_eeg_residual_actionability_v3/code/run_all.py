@@ -242,6 +242,7 @@ WBCIC outer remains unauthorized.
 """,
         encoding="utf-8",
     )
+    _normalize_text_outputs()
     _write_reproducibility(cache_root)
     return final
 
@@ -277,6 +278,16 @@ def _write_reproducibility(cache_root: Path) -> None:
         "OUTER_TEST_USED": False,
     }
     write_json(OUTPUTS / "REPRODUCIBILITY.json", payload)
+
+
+def _normalize_text_outputs() -> None:
+    """Make committed server artifacts byte-stable across Windows and Linux."""
+    for path in OUTPUTS.rglob("*"):
+        if path.is_file() and path.suffix.lower() in (".csv", ".json", ".md"):
+            content = path.read_bytes()
+            normalized = content.replace(b"\r\n", b"\n")
+            if normalized != content:
+                path.write_bytes(normalized)
 
 
 def _validate_outputs(final_required: bool) -> None:
@@ -429,6 +440,7 @@ def main() -> None:
 
         final = run_residual_policy_research(trials=trials, audit=audit, cache_root=cache_root)
         write_figures()
+        _normalize_text_outputs()
         _write_reproducibility(cache_root)
         _validate_outputs(final_required=True)
         print(
