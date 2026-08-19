@@ -1,0 +1,34 @@
+{
+  "status": "STRONG_CANDIDATE_FOUND",
+  "oracle": {
+    "mean_subject_delta_BA": 0.12470833333333334,
+    "bootstrap_CI95_L": 0.10640442708333332,
+    "bootstrap_CI95_U": 0.14436484375000003,
+    "median_subject_delta_BA": 0.11895833333333333,
+    "worst_subject_delta_BA": 0.015000000000000013,
+    "positive_subject_fraction": 1.0,
+    "nonnegative_subject_fraction": 1.0,
+    "mean_run_subject_delta_BA": 0.12272151898734178,
+    "positive_run_fraction": 1.0,
+    "nonnegative_run_fraction": 1.0,
+    "worst_run_delta_BA": 0.10826923076923077,
+    "action_rate": 0.12272151898734177,
+    "unsafe_intervention_rate": 0.0,
+    "rescue_precision": 1.0,
+    "mean_effect_when_intervene": 1.0,
+    "recovered_oracle_headroom": NaN,
+    "subjects": 40,
+    "runs": 6,
+    "OUTER_TEST_USED": false
+  },
+  "selected_candidates_for_freeze": [
+    "I003_CROSS_RUN_FULL",
+    "I003_CROSS_RUN_PROTECTED_SAFE"
+  ],
+  "strong_candidate_gate": true,
+  "reason": "Legal leave-target-run consensus crossed every predeclared strong-candidate gate; exploration stops without further tuning.",
+  "deployment_assumption": "All historical frozen run experts must be available at inference; no label or outcome is used.",
+  "split_assignment_hash": "f033c6ce4b6c79dcbba60581423b812ed32a921595c740396aac62163edac944",
+  "DEVELOPMENT_HOLDOUT_OPENED": false,
+  "OUTER_TEST_USED": false
+}

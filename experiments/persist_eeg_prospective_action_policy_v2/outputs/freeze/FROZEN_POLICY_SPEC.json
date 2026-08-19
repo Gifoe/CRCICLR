@@ -1,0 +1,60 @@
+{
+  "status": "POLICY_FROZEN_BEFORE_DEVELOPMENT_HOLDOUT",
+  "experiment": "persist_eeg_prospective_action_policy_v2",
+  "seed": 20260819,
+  "split_assignment_hash": "f033c6ce4b6c79dcbba60581423b812ed32a921595c740396aac62163edac944",
+  "exploration_decision_sha256": "c8a131d2ff0b71d6649d81bdab6117a95457251367d19d061001bb34d0f3c839",
+  "exploration_results_sha256": "28b68b91033d6bca23fd6df3d2ae7ea52631f7960f5bf35dd0224af9df357cf5",
+  "code_sha256": {
+    "common.py": "87fbd7c4189ac8707d3114a6fd9b0d91a9e51839cf32adfd42639f7b0fe8dfa2",
+    "data.py": "4428f80fd8a3302a0d8b8d32628d17f578975efe23269f3b8ffaff40236cd522",
+    "evaluate_holdout.py": "be176dd86b2e28b328b357e38a0a1427066093ae8daf43296aaaab93c0695ff4",
+    "explore.py": "475f9ca4f99d5b60c29a70490892faeb7b95f86336de9cb9428bf11ce9093e5d",
+    "freeze.py": "20f48f84c5c45c25b032ff22b6fcc93e6d63e8e918957bd789e084e1cfbea9c1",
+    "metrics.py": "286b768404a4128d3737e553de6ad78c3e34961ad62c8da14201955cdbdb098f",
+    "policies.py": "dccfac8c394ae863fcdb324f7a5707315dc62c14f6324861a79482a1a51e4ee4",
+    "run_all.py": "08b73c19569a1d99fee36b6e1d1826f641ffbac64e3458fc2ed85b766630e78e"
+  },
+  "candidate_policies": [
+    {
+      "policy_id": "I003_CROSS_RUN_FULL",
+      "feature_rule": "majority class from all available frozen runs except the target run for the same manifest sample",
+      "intervention_rule": "intervene iff leave-target-run majority disagrees with target KEEP prediction",
+      "action_priority": [
+        "AMPLIFY",
+        "GEOMETRY",
+        "ERASE"
+      ],
+      "default_action": "KEEP",
+      "threshold": 0.5,
+      "calibration": "none; deterministic odd-vote majority",
+      "checkpoint": null,
+      "protected_constraint": "ERASE remains a disclosed protected-space risk and is separately ablated"
+    },
+    {
+      "policy_id": "I003_CROSS_RUN_PROTECTED_SAFE",
+      "feature_rule": "majority class from all available frozen runs except the target run for the same manifest sample",
+      "intervention_rule": "intervene iff leave-target-run majority disagrees with target KEEP prediction",
+      "action_priority": [
+        "AMPLIFY",
+        "GEOMETRY"
+      ],
+      "default_action": "KEEP",
+      "threshold": 0.5,
+      "calibration": "none; deterministic odd-vote majority",
+      "checkpoint": null,
+      "protected_constraint": "full ERASE is forbidden"
+    }
+  ],
+  "training": "none for frozen consensus policies",
+  "model_capacity": "deterministic finite rule",
+  "action_semantics": "select an existing historical intervention whose binary prediction equals the other-run majority",
+  "inference_requirement": "at least two historical frozen run predictions for the same manifest sample; target run is excluded from its own vote",
+  "holdout_openings_allowed": 1,
+  "holdout_openings_completed": 0,
+  "post_holdout_retuning_allowed": false,
+  "outer_test_authorized": false,
+  "DEVELOPMENT_HOLDOUT_OPENED": false,
+  "OUTER_TEST_USED": false,
+  "policy_lock_hash": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4"
+}

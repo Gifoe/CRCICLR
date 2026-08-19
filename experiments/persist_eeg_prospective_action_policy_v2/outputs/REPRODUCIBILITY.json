@@ -1,0 +1,62 @@
+{
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.18363-SP0",
+  "packages": {
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.9.0",
+    "matplotlib": "3.11.1"
+  },
+  "commands": [
+    "python experiments/persist_eeg_prospective_action_policy_v2/code/run_all.py --phase explore",
+    "python experiments/persist_eeg_prospective_action_policy_v2/code/run_all.py --phase freeze",
+    "python experiments/persist_eeg_prospective_action_policy_v2/code/run_all.py --phase holdout"
+  ],
+  "policy_lock_hash": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+  "source_sha256": {
+    "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_router\\outputs\\cache\\OOF_ROUTER_FEATURES.parquet": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+    "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_router\\outputs\\cache\\OOF_BASE_LOGITS.parquet": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+    "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_router\\outputs\\cache\\OOF_COUNTERFACTUAL_LOGITS.parquet": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+    "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_router\\outputs\\cache\\OOF_GEOMETRY_FEATURES.parquet": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d"
+  },
+  "output_sha256": {
+    "outputs/exploration/EXPLORATION_ACTION_RESULTS.csv": "943797964f9b3be32603896fd3db3a06b743bec11ac9992f1b26ef357b3c70a3",
+    "outputs/exploration/EXPLORATION_DECISION.json": "c8a131d2ff0b71d6649d81bdab6117a95457251367d19d061001bb34d0f3c839",
+    "outputs/exploration/EXPLORATION_POLICY_RESULTS.csv": "28b68b91033d6bca23fd6df3d2ae7ea52631f7960f5bf35dd0224af9df357cf5",
+    "outputs/exploration/EXPLORATION_RUN_RESULTS.csv": "5bdde1f602c75ef1fe8794bdc1aa1e18cf1c4451c0eea9bf6b0127c2c5b3fef8",
+    "outputs/exploration/EXPLORATION_SUBJECT_RESULTS.csv": "699962f0365ee36b0eed2acbdd048cf0f892a18d09b063690708726c69a8002e",
+    "outputs/exploration/LEGAL_FEATURE_SCHEMA.json": "e732fe535de218fca5f3b0987edd609cd3856c2f7e6db646f1416e798ab8a20a",
+    "outputs/exploration/PARETO_FRONTIER.csv": "43ec6c144dadf3d5a3218f334ae992ca2a6a4be3c6769514e60f659e30ca2805",
+    "outputs/figures/exploration_pareto.pdf": "08713c00c7c5d6c104d2543659e2bcf957871bf36f5ec42ebf4bde4765f9d0d5",
+    "outputs/figures/exploration_pareto.png": "e6dabc65bfb438f06ec304f972ef37667536648b48b1f15388bd779ea0c74896",
+    "outputs/figures/exploration_policy_gain.pdf": "4ed7b211a04fdd531ac914e82a27c53900b02de3c2a9db4b2747d05e64066b47",
+    "outputs/figures/exploration_policy_gain.png": "d2cc5dc620d6bb50295a52f060f6a48178bb8ab7971df272a6bd4e455db2ecd3",
+    "outputs/figures/exploration_run_robustness.pdf": "d85c830c5a70cf122501b1e272a3b9f57ed43f89a6fe7cc036aec993f651c66a",
+    "outputs/figures/exploration_run_robustness.png": "00bd42544e0432bd67e49d8273bed6b35f31faf0c184cd938cf2501b6885e9a4",
+    "outputs/figures/holdout_policy_gain.pdf": "6e0f126d03f4d2509837dd05cc579787f8fedee44ffaed18da147018f3aaf207",
+    "outputs/figures/holdout_policy_gain.png": "2513c947b9021369153bde76ed2b2eee76360bc81c600902cc551a985dd9770b",
+    "outputs/figures/holdout_run_robustness.pdf": "535f855b596bd099b1db2b2fd0813ddd2fbff89dc4e4cad9af290eef119c68e4",
+    "outputs/figures/holdout_run_robustness.png": "077bf7fa57d67dea713f6fd271b5ac4df60a75d90e9ea2644ec93dfcdc104020",
+    "outputs/FINAL_DECISION.json": "9c6cb0719c64e8763daeededf274167b436af0685072b3e0c009f82be8b92869",
+    "outputs/freeze/FROZEN_POLICY_LOCK.md": "69d534ba1d6a695a76f1457c460f84d882f87f486cd3a66918f96b4fea88edd2",
+    "outputs/freeze/FROZEN_POLICY_SPEC.json": "1f06a88ebaf0cce2c6d8b6967e29a63d470c3b2969bff304a893ff37b7510f81",
+    "outputs/freeze/HOLDOUT_OPEN_AUTHORIZATION.json": "0d5020ab63c5cc16c991fb04c09ccaece429167c6acd0ff7de70b179d34f76e6",
+    "outputs/holdout/DEVELOPMENT_HOLDOUT_ACTION_RESULTS.csv": "dce9843daee0ff9950743107090ab15810dc40cc8380fbc00c9d860a34f2df7c",
+    "outputs/holdout/DEVELOPMENT_HOLDOUT_POLICY_RESULTS.csv": "212be5513324f9544bdcdf63f167434f19430faa722549edc2cfd4fb04b38650",
+    "outputs/holdout/DEVELOPMENT_HOLDOUT_RUN_RESULTS.csv": "38ea99d53370ea896d38a7e19ee581cffac27ce5abc5028090fe5922e764ba74",
+    "outputs/holdout/DEVELOPMENT_HOLDOUT_SUBJECT_RESULTS.csv": "8959512fcb5aabee4e4c52473b381dff40ef8e8883514c500b158dab592c2b11",
+    "outputs/next_stage/NEXT_INDEPENDENT_EXPERIMENT.md": "bb8ba916a1efec76d300eeeca6a37eb9578fb626ecfe307d697ef0fe537ce6ae",
+    "outputs/protocol/AUTONOMOUS_RESEARCH_SPLIT.json": "0a7aad8ab47876022d2f876ed481fbee256831e61c52873897b85202f306675e",
+    "outputs/protocol/AUTONOMOUS_RESEARCH_SPLIT.md": "6dbae3e5e3f1bcedae58b26751ae544c7798014a4def914e47fc04080bfeef7c",
+    "outputs/protocol/HOLDOUT_AND_OUTER_ISOLATION_AUDIT.json": "17712f163cc661ca276b46df82160aabf3f2994f154193c7d7f18adf6fbb6cfe",
+    "outputs/research_log/AUTONOMOUS_RESEARCH_SUMMARY.md": "05aa209f34d6386c73637a64ec6f8a5decd9d7d8e48edd007ee8e383e23076a7",
+    "outputs/research_log/ITERATION_001.md": "f4fa697b5de8a722a628e48bb1323ee4495f3d20d4e14e94cb2226d77d32cd5b",
+    "outputs/research_log/ITERATION_002.md": "e80c52a45aff6eb5156059b8ed895cb52383e469ce866cb898dd4434bb62b076",
+    "outputs/research_log/ITERATION_003.md": "4f1629316a27f360751d1cc15abcae282a6242855118967826c12e8b22267a8c",
+    "outputs/research_log/ITERATION_SUMMARY.csv": "22b6e4cd1900bdf1440c35082fff2a07e921398511c79dd3ead04ce6a4d5be2c",
+    "outputs/SCIENTIFIC_REPORT.md": "6222a86a797f77d47509987687d83aced6bd4b87e80bea74ddb8731d449b03b3"
+  },
+  "holdout_openings": 1,
+  "OUTER_TEST_USED": false
+}
