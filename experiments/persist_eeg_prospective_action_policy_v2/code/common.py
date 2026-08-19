@@ -90,9 +90,17 @@ def markdown_table(frame: pd.DataFrame) -> str:
 
 
 def require_false_outer(frame: pd.DataFrame, source: str) -> None:
-    suspicious = [column for column in frame.columns if "outer" in column.lower()]
+    # `router_fold` contains the character sequence "outer" but is an inner
+    # router cross-fit identifier. Match explicit sealed-outer semantics only.
+    suspicious = [
+        column
+        for column in frame.columns
+        if any(
+            token in column.lower()
+            for token in ("outer_test", "outer_subject", "outer_used", "wbcic_outer", "sealed_outer")
+        )
+    ]
     for column in suspicious:
         values = frame[column].dropna()
         if values.astype(str).str.lower().isin(("true", "1", "yes")).any():
             raise RuntimeError(f"Outer-test dependency in {source}:{column}")
-

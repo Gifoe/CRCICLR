@@ -103,3 +103,12 @@ def test_strong_gate_requires_nonzero_safe_gain() -> None:
     bad = dict(good, action_rate=0.0)
     assert not policies.meets_strong_candidate(bad)
 
+
+def test_outer_audit_does_not_confuse_router_fold() -> None:
+    common.require_false_outer(pd.DataFrame({"router_fold": [0, 1]}), "synthetic")
+    try:
+        common.require_false_outer(pd.DataFrame({"outer_test_used": [False, True]}), "synthetic")
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("True outer-test marker was not rejected")
