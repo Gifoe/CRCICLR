@@ -1,0 +1,31 @@
+{
+  "state": "STRUCTURAL_ACTION_RESIDUAL_EXISTS",
+  "strongest_action_oracle": "ORACLE_ACTION_FULL_GLOBAL",
+  "strongest_menu": "FULL_GLOBAL",
+  "strongest_action_oracle_delta_BA_vs_B6": 0.08596153846153842,
+  "strongest_action_oracle_CI95": [
+    0.07124999999999998,
+    0.10144230769230768
+  ],
+  "keep_only_oracle_delta_BA_vs_B6": 0.07663461538461537,
+  "action_oracle_minus_keep_only_delta_BA": 0.009326923076923052,
+  "combined_keep_plus_action_minus_keep_only_delta_BA": 0.030384615384615385,
+  "positive_subjects": 51,
+  "positive_subject_fraction": 0.9807692307692307,
+  "positive_sessions": 2,
+  "top20_subject_gain_concentration": 0.42617449664429535,
+  "dominant_unique_action_rescue_fraction": 0.6930379746835443,
+  "dominant_unique_run_rescue_fraction": 0.0,
+  "state_C_checks": {
+    "strongest_action_oracle_delta_BA": true,
+    "action_minus_keep_only_delta_BA": true,
+    "combined_minus_keep_only_delta_BA": true,
+    "positive_subjects": true,
+    "positive_subject_fraction": true,
+    "positive_sessions": true,
+    "dominant_unique_action_fraction": true,
+    "dominant_unique_run_fraction": true
+  },
+  "phase_8_plus_authorized": true,
+  "OUTER_TEST_USED": false
+}

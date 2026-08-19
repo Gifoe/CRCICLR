@@ -1,0 +1,64 @@
+{
+  "status": "V3_RESIDUAL_ACTION_SPEC_FROZEN_BEFORE_ORACLE_OUTCOMES",
+  "experiment_type": "exploratory discovery on 52 historical development subjects",
+  "reference": {
+    "method_id": "B6_ALL_RUN_LOGIT_MEAN",
+    "margin": "arithmetic mean of all available frozen KEEP binary margins",
+    "probability": "sigmoid(mean margin)",
+    "prediction": "class 1 iff mean margin >= 0",
+    "unit": "one row per dataset x subject x session x manifest trial"
+  },
+  "action_menus": {
+    "PROTECTED_SAFE_GLOBAL": [
+      "KEEP_ENSEMBLE",
+      "ALL_AMPLIFY",
+      "ALL_GEOMETRY"
+    ],
+    "FULL_GLOBAL": [
+      "KEEP_ENSEMBLE",
+      "ALL_AMPLIFY",
+      "ALL_GEOMETRY",
+      "ALL_ERASE"
+    ],
+    "PROTECTED_SAFE_SINGLE_REPLACEMENT": [
+      "KEEP_ENSEMBLE",
+      "each available r->AMPLIFY",
+      "each available r->GEOMETRY"
+    ],
+    "FULL_SINGLE_REPLACEMENT": [
+      "KEEP_ENSEMBLE",
+      "each available r->AMPLIFY",
+      "each available r->GEOMETRY",
+      "each available r->ERASE"
+    ]
+  },
+  "keep_only_menu": [
+    "B6 all-run logit mean",
+    "B4 all-run probability mean",
+    "B2 all-run hard majority with tie->class1",
+    "each leave-one-run KEEP logit mean",
+    "each individual frozen KEEP expert"
+  ],
+  "oracle_priority": "KEEP first; if wrong, lexicographically first correct candidate within fixed menu",
+  "primary_metric": "mean subject balanced accuracy and paired subject bootstrap Delta BA vs B6",
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 20260819,
+  "headroom_gate": {
+    "state_A_if": "strongest action oracle Delta BA < 0.005 OR top-20%-subject concentration >= 0.90 OR STATE C breadth criteria fail after generic-diversity exclusion",
+    "state_B_if": "action oracle beats B6 but action-oracle minus KEEP-only-oracle Delta BA < 0.005",
+    "state_C_all_required": {
+      "strongest_action_oracle_delta_BA_min": 0.01,
+      "action_oracle_minus_keep_only_oracle_delta_BA_min": 0.005,
+      "combined_keep_plus_action_minus_keep_oracle_delta_BA_min": 0.005,
+      "positive_subjects_min": 8,
+      "positive_subject_fraction_min": 0.2,
+      "positive_sessions_min": 2,
+      "dominant_unique_action_rescue_fraction_max": 0.8,
+      "dominant_unique_run_rescue_fraction_max": 0.8
+    }
+  },
+  "phase_8_plus_authorized_only_by": "STRUCTURAL_ACTION_RESIDUAL_EXISTS",
+  "outer_test_authorized": false,
+  "OUTER_TEST_USED": false,
+  "spec_sha256": "c81fb07dd42cc9883df65e0f915baa026afee2c3bed2f890f3e3252a94d3b15a"
+}

@@ -1,0 +1,257 @@
+{
+  "status": "V2_1_RECONSTRUCTION_PASS",
+  "checks": [
+    {
+      "check": "historical_V2_1_reconstruction_status",
+      "passed": true,
+      "expected": "V2_RECONSTRUCTION_PASS",
+      "actual": "V2_RECONSTRUCTION_PASS",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "V2_policy_lock_hash",
+      "passed": true,
+      "expected": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+      "actual": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "cache_sha256:OOF_BASE_LOGITS.parquet",
+      "passed": true,
+      "expected": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+      "actual": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "cache_sha256:OOF_COUNTERFACTUAL_LOGITS.parquet",
+      "passed": true,
+      "expected": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+      "actual": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "cache_sha256:OOF_GEOMETRY_FEATURES.parquet",
+      "passed": true,
+      "expected": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+      "actual": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "cache_sha256:OOF_ROUTER_FEATURES.parquet",
+      "passed": true,
+      "expected": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+      "actual": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:B0_TARGET_KEEP:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8202708333333334,
+      "actual": 0.8202708333333334,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:B0_TARGET_KEEP:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0,
+      "actual": 0.0,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:B4_ALL_RUN_PROBABILITY_MEAN:mean_subject_BA",
+      "passed": true,
+      "expected": 0.844,
+      "actual": 0.844,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:B4_ALL_RUN_PROBABILITY_MEAN:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0237291666666666,
+      "actual": 0.02372916666666658,
+      "absolute_difference": 2.0816681711721685e-17
+    },
+    {
+      "check": "exploration:B6_ALL_RUN_LOGIT_MEAN:mean_subject_BA",
+      "passed": true,
+      "expected": 0.84425,
+      "actual": 0.84425,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:B6_ALL_RUN_LOGIT_MEAN:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0239791666666666,
+      "actual": 0.02397916666666655,
+      "absolute_difference": 4.85722573273506e-17
+    },
+    {
+      "check": "exploration:B7_CONFIDENCE_WEIGHTED_KEEP_ENSEMBLE:mean_subject_BA",
+      "passed": true,
+      "expected": 0.843625,
+      "actual": 0.843625,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:B7_CONFIDENCE_WEIGHTED_KEEP_ENSEMBLE:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0233541666666666,
+      "actual": 0.023354166666666565,
+      "absolute_difference": 3.469446951953614e-17
+    },
+    {
+      "check": "exploration:I003_CROSS_RUN_FULL:mean_subject_BA",
+      "passed": true,
+      "expected": 0.834,
+      "actual": 0.834,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:I003_CROSS_RUN_FULL:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0137291666666666,
+      "actual": 0.01372916666666657,
+      "absolute_difference": 2.949029909160572e-17
+    },
+    {
+      "check": "exploration:I003_CROSS_RUN_PROTECTED_SAFE:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8275833333333334,
+      "actual": 0.8275833333333334,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "exploration:I003_CROSS_RUN_PROTECTED_SAFE:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0073124999999999,
+      "actual": 0.007312500000000055,
+      "absolute_difference": 1.5525775109992423e-16
+    },
+    {
+      "check": "exploration:B6:deployment_mean_subject_BA",
+      "passed": true,
+      "expected": 0.84425,
+      "actual": 0.84425,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:B0_TARGET_KEEP:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8334722222222223,
+      "actual": 0.8334722222222223,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:B0_TARGET_KEEP:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0,
+      "actual": 0.0,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:B4_ALL_RUN_PROBABILITY_MEAN:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8533333333333335,
+      "actual": 0.8533333333333335,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:B4_ALL_RUN_PROBABILITY_MEAN:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0198611111111111,
+      "actual": 0.019861111111111218,
+      "absolute_difference": 1.1796119636642288e-16
+    },
+    {
+      "check": "holdout:B6_ALL_RUN_LOGIT_MEAN:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8537500000000001,
+      "actual": 0.8537500000000001,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:B6_ALL_RUN_LOGIT_MEAN:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0202777777777778,
+      "actual": 0.02027777777777784,
+      "absolute_difference": 3.8163916471489756e-17
+    },
+    {
+      "check": "holdout:B7_CONFIDENCE_WEIGHTED_KEEP_ENSEMBLE:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8520833333333334,
+      "actual": 0.8520833333333334,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:B7_CONFIDENCE_WEIGHTED_KEEP_ENSEMBLE:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0186111111111111,
+      "actual": 0.018611111111111134,
+      "absolute_difference": 3.469446951953614e-17
+    },
+    {
+      "check": "holdout:I003_CROSS_RUN_FULL:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8419444444444443,
+      "actual": 0.8419444444444443,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:I003_CROSS_RUN_FULL:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0084722222222222,
+      "actual": 0.008472222222221992,
+      "absolute_difference": 2.0816681711721685e-16
+    },
+    {
+      "check": "holdout:I003_CROSS_RUN_PROTECTED_SAFE:mean_subject_BA",
+      "passed": true,
+      "expected": 0.8407986111111111,
+      "actual": 0.8407986111111111,
+      "absolute_difference": 0.0
+    },
+    {
+      "check": "holdout:I003_CROSS_RUN_PROTECTED_SAFE:mean_subject_delta_BA",
+      "passed": true,
+      "expected": 0.0073263888888889,
+      "actual": 0.007326388888888813,
+      "absolute_difference": 8.673617379884035e-17
+    },
+    {
+      "check": "holdout:B6:deployment_mean_subject_BA",
+      "passed": true,
+      "expected": 0.8537500000000001,
+      "actual": 0.8537500000000001,
+      "absolute_difference": 0.0
+    }
+  ],
+  "numerical_tolerance": 1e-14,
+  "dataset": "OpenBMI_SSVEP_NEMAR_nm000273_offline",
+  "target_run_rows": 40800,
+  "unique_trials": 10400,
+  "subjects": 52,
+  "sessions": [
+    "1",
+    "2"
+  ],
+  "run_ids": [
+    "fold-0_seed-0",
+    "fold-0_seed-1",
+    "fold-1_seed-0",
+    "fold-1_seed-1",
+    "fold-2_seed-0",
+    "fold-2_seed-1"
+  ],
+  "unique_trial_identity_sha256": "ae4679d49794bc6104053798b3c7ffd6043c843f970ede32a989a46ddf9f2f45",
+  "B6_unique_prediction_sha256": "2c65c51a1362609832c9e3b4e12c166acff6145000a62c6c4c877f76e720aad2",
+  "historical_v2_1_final_state": "ENSEMBLE_EXPLAINS_V2_GAIN",
+  "historical_v2_1_best_ensemble": "B6_ALL_RUN_LOGIT_MEAN",
+  "source_cache_sha256": {
+    "OOF_BASE_LOGITS.parquet": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+    "OOF_COUNTERFACTUAL_LOGITS.parquet": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+    "OOF_GEOMETRY_FEATURES.parquet": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+    "OOF_ROUTER_FEATURES.parquet": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd"
+  },
+  "OUTER_TEST_USED": false
+}

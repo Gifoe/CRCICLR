@@ -1,0 +1,38 @@
+{
+  "status": "PROVENANCE_AUDIT_PASS",
+  "dataset": "OpenBMI_SSVEP_NEMAR_nm000273_offline",
+  "source_cache_sha256": {
+    "OOF_BASE_LOGITS.parquet": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+    "OOF_COUNTERFACTUAL_LOGITS.parquet": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+    "OOF_GEOMETRY_FEATURES.parquet": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+    "OOF_ROUTER_FEATURES.parquet": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd"
+  },
+  "v2_policy_lock_hash": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+  "v2_1_reconstruction_sha256": "0fd30e57462d2e2aff00210f1b52b2b9f2c18f96fae74230a393a1af461ccb9e",
+  "v2_1_final_decision_sha256": "dd267078825c2c0938174ba2fa710840ba9cdfc4bddd707a5de49309f8c4f862",
+  "frozen_model_provenance": {
+    "run_ids": [
+      "fold-0_seed-0",
+      "fold-0_seed-1",
+      "fold-1_seed-0",
+      "fold-1_seed-1",
+      "fold-2_seed-0",
+      "fold-2_seed-1"
+    ],
+    "available_run_counts": [
+      2,
+      4,
+      6
+    ],
+    "identity_sha256": "ae4679d49794bc6104053798b3c7ffd6043c843f970ede32a989a46ddf9f2f45"
+  },
+  "identity_checks": {
+    "one_subject_per_manifest": true,
+    "one_session_per_manifest": true,
+    "one_label_per_manifest": true,
+    "no_duplicate_run_per_manifest": true,
+    "unique_dataset_subject_session_manifest": true
+  },
+  "outer_test_authorized": false,
+  "OUTER_TEST_USED": false
+}

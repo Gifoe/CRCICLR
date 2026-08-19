@@ -1,0 +1,117 @@
+{
+  "terminal_state": "RESIDUAL_ACTION_SIGNAL_BUT_NO_NET_GAIN",
+  "phase_8_plus_executed": true,
+  "best_exploratory_policy": "M5_HIST_GRADIENT_BOOSTING",
+  "best_mean_subject_delta_BA_vs_B6": -0.0002884615384615409,
+  "best_bootstrap_CI95": [
+    -0.0008653846153846183,
+    0.00019230769230769036
+  ],
+  "best_positive_subject_fraction": 0.038461538461538464,
+  "best_positive_fold_fraction": 0.0,
+  "best_worst_subject_delta_BA": -0.010000000000000009,
+  "best_action_rate": 0.0010576923076923077,
+  "best_rescue_precision": 0.36363636363636365,
+  "best_harm_rate": 0.6363636363636364,
+  "best_action_oracle_recovery_fraction": -0.0033557046979866066,
+  "best_unique_action_oracle_recovery_fraction": -0.030927835051546733,
+  "persist_full_minus_movement_delta_BA": 9.615384615385906e-05,
+  "persist_full_minus_movement_CI95": [
+    -0.0021153846153846067,
+    0.0024038461538461774
+  ],
+  "persist_features_add_grouped_value": false,
+  "learnability_signal_rule": "among boundary-cross candidates only: any grouped-OOF target/action with AUPRC > 1.10x prevalence and AUROC > 0.55",
+  "best_conditional_learnability_AUROC": 0.7216940767482284,
+  "best_conditional_learnability_AUPRC_lift": 1.7010268269557298,
+  "top_full_legal_logistic_features": [
+    {
+      "feature": "action_boundary_cross",
+      "absolute_coefficient": 1.169042403243515
+    },
+    {
+      "feature": "action_vs_b6_disagreement",
+      "absolute_coefficient": 1.169042403243515
+    },
+    {
+      "feature": "b6_probability",
+      "absolute_coefficient": 0.3833746082988647
+    },
+    {
+      "feature": "action_entropy",
+      "absolute_coefficient": 0.24669264477712977
+    },
+    {
+      "feature": "persist_mean_original_protected_slot1_weighted_geometry_score",
+      "absolute_coefficient": 0.2247017268221983
+    },
+    {
+      "feature": "base_min_margin",
+      "absolute_coefficient": 0.21770876377099646
+    },
+    {
+      "feature": "persist_std_original_entropy_full",
+      "absolute_coefficient": 0.21707838511021932
+    },
+    {
+      "feature": "persist_mean_original_js_full_erase",
+      "absolute_coefficient": 0.21490586765798197
+    },
+    {
+      "feature": "base_entropy",
+      "absolute_coefficient": 0.21060955228016126
+    },
+    {
+      "feature": "persist_mean_original_protected_slot1_projection",
+      "absolute_coefficient": 0.21032333598595293
+    },
+    {
+      "feature": "base_max_margin",
+      "absolute_coefficient": 0.2057645825629201
+    },
+    {
+      "feature": "base_vote_fraction_class1",
+      "absolute_coefficient": 0.19814349961955569
+    },
+    {
+      "feature": "action_margin_movement",
+      "absolute_coefficient": 0.190579381878396
+    },
+    {
+      "feature": "persist_mean_original_logit_norm_full",
+      "absolute_coefficient": 0.18874792315060823
+    },
+    {
+      "feature": "persist_mean_original_entropy_change_full_erase",
+      "absolute_coefficient": 0.18443601450370747
+    },
+    {
+      "feature": "action_abs_margin",
+      "absolute_coefficient": 0.18304831169781038
+    },
+    {
+      "feature": "persist_mean_original_nll_proxy_full",
+      "absolute_coefficient": 0.16122190178004742
+    },
+    {
+      "feature": "action_run_margin_std",
+      "absolute_coefficient": 0.16117180526413266
+    },
+    {
+      "feature": "base_run_margin_std",
+      "absolute_coefficient": 0.15148524375693198
+    },
+    {
+      "feature": "persist_std_original_protected_slot0_projection",
+      "absolute_coefficient": 0.15025202863790832
+    }
+  ],
+  "headroom_state": "STRUCTURAL_ACTION_RESIDUAL_EXISTS",
+  "strongest_action_oracle_delta_BA": 0.08596153846153842,
+  "keep_only_oracle_delta_BA": 0.07663461538461537,
+  "unique_action_oracle_delta_BA": 0.009326923076923052,
+  "all_52_subjects_historical_development": true,
+  "confirmatory": false,
+  "outer_test_authorized": false,
+  "OUTER_TEST_USED": false
+}
