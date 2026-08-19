@@ -1,0 +1,277 @@
+{
+  "primary_state": "ENSEMBLE_EXPLAINS_V2_GAIN",
+  "secondary_qualifiers": [
+    "PROTECTED_SAFE_PREFERRED",
+    "DEPLOYMENT_DEFINITION_REQUIRED"
+  ],
+  "experiment_type": "post-V2 exploratory falsification audit",
+  "best_ensemble_selected_on_exploration": "B6_ALL_RUN_LOGIT_MEAN",
+  "selection_used_holdout": false,
+  "classification_equivalence": {
+    "full_vs_C2": true,
+    "safe_vs_C3": true
+  },
+  "holdout_incremental_comparisons": {
+    "full_vs_best": {
+      "left_method": "I003_CROSS_RUN_FULL",
+      "right_method": "B6_ALL_RUN_LOGIT_MEAN",
+      "mean_paired_delta_BA": -0.011805555555555597,
+      "median_paired_delta_BA": -0.005625000000000047,
+      "bootstrap_CI95_L": -0.01979166666666669,
+      "bootstrap_CI95_U": -0.004375000000000055,
+      "positive_subject_fraction": 0.16666666666666666,
+      "nonnegative_subject_fraction": 0.25,
+      "subjects": 12,
+      "positive_run_fraction": 0.0,
+      "nonnegative_run_fraction": 0.0,
+      "worst_run_delta_BA": -0.01937500000000003,
+      "runs": 6
+    },
+    "safe_vs_best": {
+      "left_method": "I003_CROSS_RUN_PROTECTED_SAFE",
+      "right_method": "B6_ALL_RUN_LOGIT_MEAN",
+      "mean_paired_delta_BA": -0.012951388888888896,
+      "median_paired_delta_BA": -0.010624999999999996,
+      "bootstrap_CI95_L": -0.020486111111111104,
+      "bootstrap_CI95_U": -0.005902777777777838,
+      "positive_subject_fraction": 0.16666666666666666,
+      "nonnegative_subject_fraction": 0.25,
+      "subjects": 12,
+      "positive_run_fraction": 0.16666666666666666,
+      "nonnegative_run_fraction": 0.16666666666666666,
+      "worst_run_delta_BA": -0.02571428571428569,
+      "runs": 6
+    }
+  },
+  "exploration_incremental_comparisons": {
+    "full_vs_best": {
+      "left_method": "I003_CROSS_RUN_FULL",
+      "right_method": "B6_ALL_RUN_LOGIT_MEAN",
+      "mean_paired_delta_BA": -0.010249999999999987,
+      "median_paired_delta_BA": -0.00874999999999998,
+      "bootstrap_CI95_L": -0.014135416666666659,
+      "bootstrap_CI95_U": -0.006447656249999988,
+      "positive_subject_fraction": 0.175,
+      "nonnegative_subject_fraction": 0.2,
+      "subjects": 40,
+      "positive_run_fraction": 0.0,
+      "nonnegative_run_fraction": 0.0,
+      "worst_run_delta_BA": -0.014423076923077094,
+      "runs": 6
+    },
+    "safe_vs_best": {
+      "left_method": "I003_CROSS_RUN_PROTECTED_SAFE",
+      "right_method": "B6_ALL_RUN_LOGIT_MEAN",
+      "mean_paired_delta_BA": -0.01666666666666667,
+      "median_paired_delta_BA": -0.015624999999999944,
+      "bootstrap_CI95_L": -0.021666927083333332,
+      "bootstrap_CI95_U": -0.011947916666666678,
+      "positive_subject_fraction": 0.15,
+      "nonnegative_subject_fraction": 0.15,
+      "subjects": 40,
+      "positive_run_fraction": 0.0,
+      "nonnegative_run_fraction": 0.0,
+      "worst_run_delta_BA": -0.034074074074074034,
+      "runs": 6
+    }
+  },
+  "questions": {
+    "1_v2_reproduced": true,
+    "2_full_equivalent_to_C2": true,
+    "3_safe_equivalent_to_C3": true,
+    "4_other_run_hard_majority_gain": {
+      "left_method": "B1_OTHER_RUN_HARD_MAJORITY",
+      "right_method": "B0_TARGET_KEEP",
+      "mean_paired_delta_BA": 0.008819444444444463,
+      "median_paired_delta_BA": 0.005624999999999991,
+      "bootstrap_CI95_L": 0.003784722222222231,
+      "bootstrap_CI95_U": 0.014548611111111146,
+      "positive_subject_fraction": 0.6666666666666666,
+      "nonnegative_subject_fraction": 1.0,
+      "subjects": 12,
+      "positive_run_fraction": 0.6666666666666666,
+      "nonnegative_run_fraction": 0.6666666666666666,
+      "worst_run_delta_BA": -0.007499999999999951,
+      "runs": 6
+    },
+    "5_all_run_hard_majority_gain": {
+      "left_method": "B2_ALL_RUN_HARD_MAJORITY",
+      "right_method": "B0_TARGET_KEEP",
+      "mean_paired_delta_BA": 0.009027777777777782,
+      "median_paired_delta_BA": 0.011666666666666714,
+      "bootstrap_CI95_L": -0.0013897569444444838,
+      "bootstrap_CI95_U": 0.018263888888888913,
+      "positive_subject_fraction": 0.8333333333333334,
+      "nonnegative_subject_fraction": 0.8333333333333334,
+      "subjects": 12,
+      "positive_run_fraction": 0.8333333333333334,
+      "nonnegative_run_fraction": 0.8333333333333334,
+      "worst_run_delta_BA": -0.0031250000000000444,
+      "runs": 6
+    },
+    "6_probability_averaging_gain": {
+      "other_run": {
+        "left_method": "B3_OTHER_RUN_PROBABILITY_MEAN",
+        "right_method": "B0_TARGET_KEEP",
+        "mean_paired_delta_BA": 0.008854166666666682,
+        "median_paired_delta_BA": 0.003124999999999989,
+        "bootstrap_CI95_L": 0.0028125000000000047,
+        "bootstrap_CI95_U": 0.01600694444444445,
+        "positive_subject_fraction": 0.5,
+        "nonnegative_subject_fraction": 0.8333333333333334,
+        "subjects": 12,
+        "positive_run_fraction": 0.6666666666666666,
+        "nonnegative_run_fraction": 0.6666666666666666,
+        "worst_run_delta_BA": -0.008124999999999938,
+        "runs": 6
+      },
+      "all_run": {
+        "left_method": "B4_ALL_RUN_PROBABILITY_MEAN",
+        "right_method": "B0_TARGET_KEEP",
+        "mean_paired_delta_BA": 0.019861111111111145,
+        "median_paired_delta_BA": 0.014375000000000027,
+        "bootstrap_CI95_L": 0.010693576388888917,
+        "bootstrap_CI95_U": 0.02961805555555554,
+        "positive_subject_fraction": 0.9166666666666666,
+        "nonnegative_subject_fraction": 0.9166666666666666,
+        "subjects": 12,
+        "positive_run_fraction": 1.0,
+        "nonnegative_run_fraction": 1.0,
+        "worst_run_delta_BA": 0.0025000000000000577,
+        "runs": 6
+      }
+    },
+    "7_logit_averaging_gain": {
+      "other_run": {
+        "left_method": "B5_OTHER_RUN_LOGIT_MEAN",
+        "right_method": "B0_TARGET_KEEP",
+        "mean_paired_delta_BA": 0.008437500000000006,
+        "median_paired_delta_BA": 0.003124999999999989,
+        "bootstrap_CI95_L": 0.002743055555555559,
+        "bootstrap_CI95_U": 0.015243055555555543,
+        "positive_subject_fraction": 0.5,
+        "nonnegative_subject_fraction": 0.8333333333333334,
+        "subjects": 12,
+        "positive_run_fraction": 0.6666666666666666,
+        "nonnegative_run_fraction": 0.6666666666666666,
+        "worst_run_delta_BA": -0.008750000000000036,
+        "runs": 6
+      },
+      "all_run": {
+        "left_method": "B6_ALL_RUN_LOGIT_MEAN",
+        "right_method": "B0_TARGET_KEEP",
+        "mean_paired_delta_BA": 0.02027777777777781,
+        "median_paired_delta_BA": 0.014375000000000027,
+        "bootstrap_CI95_L": 0.011145833333333374,
+        "bootstrap_CI95_U": 0.030138888888888892,
+        "positive_subject_fraction": 0.9166666666666666,
+        "nonnegative_subject_fraction": 0.9166666666666666,
+        "subjects": 12,
+        "positive_run_fraction": 1.0,
+        "nonnegative_run_fraction": 1.0,
+        "worst_run_delta_BA": 0.0031250000000000444,
+        "runs": 6
+      }
+    },
+    "8_strongest_predefined_keep_ensemble": "B6_ALL_RUN_LOGIT_MEAN",
+    "9_full_vs_best_ensemble": {
+      "left_method": "I003_CROSS_RUN_FULL",
+      "right_method": "B6_ALL_RUN_LOGIT_MEAN",
+      "mean_paired_delta_BA": -0.011805555555555597,
+      "median_paired_delta_BA": -0.005625000000000047,
+      "bootstrap_CI95_L": -0.01979166666666669,
+      "bootstrap_CI95_U": -0.004375000000000055,
+      "positive_subject_fraction": 0.16666666666666666,
+      "nonnegative_subject_fraction": 0.25,
+      "subjects": 12,
+      "positive_run_fraction": 0.0,
+      "nonnegative_run_fraction": 0.0,
+      "worst_run_delta_BA": -0.01937500000000003,
+      "runs": 6
+    },
+    "10_safe_vs_best_ensemble": {
+      "left_method": "I003_CROSS_RUN_PROTECTED_SAFE",
+      "right_method": "B6_ALL_RUN_LOGIT_MEAN",
+      "mean_paired_delta_BA": -0.012951388888888896,
+      "median_paired_delta_BA": -0.010624999999999996,
+      "bootstrap_CI95_L": -0.020486111111111104,
+      "bootstrap_CI95_U": -0.005902777777777838,
+      "positive_subject_fraction": 0.16666666666666666,
+      "nonnegative_subject_fraction": 0.25,
+      "subjects": 12,
+      "positive_run_fraction": 0.16666666666666666,
+      "nonnegative_run_fraction": 0.16666666666666666,
+      "worst_run_delta_BA": -0.02571428571428569,
+      "runs": 6
+    },
+    "11_incremental_bootstrap_CI": {
+      "full": [
+        -0.01979166666666669,
+        -0.004375000000000055
+      ],
+      "safe": [
+        -0.020486111111111104,
+        -0.005902777777777838
+      ]
+    },
+    "12_hard_label_intervention_specific_improvement": false,
+    "13_probabilistic_benefit": {
+      "present": false,
+      "comparator": "B7_CONFIDENCE_WEIGHTED_KEEP_ENSEMBLE",
+      "full_comparator_minus_full": {
+        "mean_subject_NLL": -0.029356617966505016,
+        "mean_subject_Brier": -0.011452782151582727,
+        "mean_subject_ECE": 0.018270039784053817
+      },
+      "warning": "Probabilistic metrics cannot rescue an intervention-specific classification claim."
+    },
+    "14_action_with_most_unique_rescue_beyond_ensemble": {
+      "action": "ERASE_MATCHES_MAJORITY",
+      "count": 55
+    },
+    "15_erase_contribution": {
+      "selected": 443,
+      "rescue": 232,
+      "harm": 211,
+      "net": 21,
+      "unique_rescue_beyond_best_ensemble": 55
+    },
+    "16_protected_safe_preferred": true,
+    "17_negative_full_runs": {
+      "runs": [
+        "fold-0_seed-0",
+        "fold-1_seed-0"
+      ],
+      "count": 2,
+      "nonnegative_under_safe": 2,
+      "erase_is_only_structural_difference": true,
+      "run_details": [
+        {
+          "run": "fold-0_seed-0",
+          "full_delta_BA": -0.007500000000000062,
+          "safe_delta_BA": 0.0012499999999999734,
+          "best_ensemble_delta_BA": 0.011874999999999969,
+          "erase_selected": 86,
+          "erase_rescue": 36,
+          "erase_harm": 50,
+          "erase_net_correctness": -14
+        },
+        {
+          "run": "fold-1_seed-0",
+          "full_delta_BA": -0.0031249999999999334,
+          "safe_delta_BA": 0.009375000000000022,
+          "best_ensemble_delta_BA": 0.0031250000000000444,
+          "erase_selected": 72,
+          "erase_rescue": 26,
+          "erase_harm": 46,
+          "erase_net_correctness": -20
+        }
+      ]
+    },
+    "18_unique_deployment_result_defined": false,
+    "19_supported_mechanism": "generic KEEP-only ensemble gain",
+    "20_next_experiment": "Freeze one unique trial-level deployment rule before outcomes, then compare compute-matched all-run KEEP ensembles against action-masked direct consensus and real interventions on genuinely new subjects or a new dataset. Use subject-level inference and authorize any outer set only under a separate protocol."
+  },
+  "previous_holdout_is_not_sealed_for_v2_1": true,
+  "OUTER_TEST_USED": false
+}

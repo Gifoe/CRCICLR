@@ -1,0 +1,56 @@
+{
+  "status": "V2_1_REPRODUCIBLE_ARTIFACT_SET",
+  "command": "python experiments/persist_eeg_prospective_action_policy_v2_1/code/run_all.py --phase all",
+  "audit_seed": 20260819,
+  "bootstrap_repetitions": 10000,
+  "best_ensemble_id": "B6_ALL_RUN_LOGIT_MEAN",
+  "code_sha256": {
+    "ensemble_baselines.py": "1c97f844329089a88ea19cdf08537776ec1b10349651a3a5a0e61d53d5916238",
+    "equivalence_analysis.py": "611ad7da2c7f69262a611d5587bd7be6ee5a3ce52fe3f4337395abdf3722befd",
+    "evaluate.py": "15300d7c0d99714a2c075cd557ba928ddfec3ca85bf72ff50696a26f41550251",
+    "reconstruct_v2.py": "08efad83e64fbe712dd54194e8a70d122abe39472c16ca692537f61f512184db",
+    "run_all.py": "965351f2afde02ae0d69da5a48c853d277d82d8c6be2403879cc820660af51b0",
+    "test_v2_1.py": "1760c78f6400500ccd066b070f84ed59cd0a329d7c015666b971b29fec6e662a"
+  },
+  "source_cache_sha256": {
+    "OOF_BASE_LOGITS.parquet": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+    "OOF_COUNTERFACTUAL_LOGITS.parquet": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+    "OOF_GEOMETRY_FEATURES.parquet": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+    "OOF_ROUTER_FEATURES.parquet": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd"
+  },
+  "v2_policy_lock_sha256": "63cd7f389ed772ea783e2ba66033d719603bc84711e1d2f22faaaad8bcc7ead5",
+  "artifact_sha256": {
+    "figures/action_rescue_harm.png": "40757cab8b3bbbbcd06b3b5cd6b5aec75e1e1fe5c816d6e175c08d22793c9db7",
+    "figures/calibration_comparison.png": "23e8624db48e3f5008ee9204990a1b477369fcbe06d8d1712a04070d1a2227b9",
+    "figures/paired_subject_delta_vs_ensemble.png": "eb13277fc38260b45b059ecd33d745dbf968c459827d3f7c38d0418b993b25a3",
+    "figures/rescue_overlap.png": "6efcd7b6612986cfd7bca2b7df52fc025e16693d23528fcbbd7e0b7b56452bb1",
+    "figures/run_delta_vs_ensemble.png": "f4b9ce6092b8bce2b8eb0c2c30f98f88cf6935b2839afa0e81c0f0553a857069",
+    "FINAL_DECISION.json": "303c2549991579054ed978a8441f1d663c48693d5bc5ff8100b3e5bc056bf35c",
+    "protocol/LEAKAGE_AUDIT.json": "fa8c26c1923a738dca4ae22d467f6ab539f246ec3fd406d78a168f433ac8ae5a",
+    "protocol/V2_1_ANALYSIS_SPEC.json": "fd228281618e5aea5cd68d80ccf1784380ecf4b210dc18e8cd902daf4bda632b",
+    "protocol/V2_RECONSTRUCTION.json": "c56058cd2481f6ab16cf509f625d2fc8c47a140698e2e6e5e56695431d61d567",
+    "protocol/V2_RECONSTRUCTION.md": "d27bfdd05c46acb445fc6afdb0dd11eb3a822f3f607911dea96619bd845c3fa4",
+    "results/ACTION_DECOMPOSITION.csv": "9bb6337a0936740166c60511124caa471ef31eec4363c3859d9035066eee563b",
+    "results/ACTION_EQUIVALENCE_RESULTS.csv": "c3e0bbc7ec0728efe2aaf73c9978f1a2a9c3f0b16abd80b8c34cd5866212b78c",
+    "results/CONSENSUS_CONTROL_RESULTS.csv": "67ceb22050d9ac4a1e0e778e00f3a980e8bd42b06713b5bb3148e4bfb6474eb3",
+    "results/DEPLOYMENT_LEVEL_RESULTS.csv": "8b85b38c6787395fc9a995c32b6db91bec67a6c8861c19b47886ff14aac91b68",
+    "results/ENSEMBLE_BASELINE_RESULTS.csv": "e09b71dbc07b8249fef9b6e7ffbe4459b7dbbd7addb79ce4775e36341dec5c9a",
+    "results/PROBABILISTIC_RESULTS.csv": "3727658f244e6b6450681c344e916401ada2721e30d4c70f3cd908bfde0d3434",
+    "results/RESCUE_OVERLAP.csv": "7c6f70d34f762fcd1acff8c98aaa3ee9b64050dfa61f337271aa1c9eb16a954c",
+    "results/RUN_PAIRED_RESULTS.csv": "5acd9d266641f8560dca2411d115cd8a23836b43418a30bb73135a6a2bc380e6",
+    "results/SUBJECT_PAIRED_RESULTS.csv": "f782a5a235f8807927ecb0d446a43c1f91194bb00aa81f1b0a14b338cea0b2d3",
+    "results/TARGET_RUN_POLICY_RESULTS.csv": "af85b9b674c50c11b951def1f76bc3c1124c7b2b99d30b39e6640386cd345270",
+    "SCIENTIFIC_REPORT.md": "c8ba5cee03c0759b19c1b60a208be87daf9bccf4ba5c21eee239786412ef73ab"
+  },
+  "runtime": {
+    "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.18363-SP0",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0",
+    "matplotlib": "3.11.1"
+  },
+  "analysis_identity_sha256": "9167ccbbb9d090eedd8aeb8109bccbd2bc0f32c62f55da962e4067c0c3487602",
+  "previous_holdout_is_not_sealed_for_v2_1": true,
+  "OUTER_TEST_USED": false
+}

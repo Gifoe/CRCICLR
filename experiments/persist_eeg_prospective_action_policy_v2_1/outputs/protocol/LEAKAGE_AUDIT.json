@@ -1,0 +1,121 @@
+{
+  "status": "LEAKAGE_AUDIT_PASS",
+  "checks": [
+    {
+      "check": "exploration_holdout_subject_disjoint",
+      "passed": true
+    },
+    {
+      "check": "best_ensemble_selected_on_exploration_only",
+      "passed": true
+    },
+    {
+      "check": "holdout_not_used_for_ensemble_selection",
+      "passed": true
+    },
+    {
+      "check": "finite_predeclared_B0_B7_family_only",
+      "passed": true
+    },
+    {
+      "check": "confidence_weighting_has_no_label_input",
+      "passed": true
+    },
+    {
+      "check": "fixed_probability_threshold_0_5",
+      "passed": true
+    },
+    {
+      "check": "fixed_logit_threshold_0",
+      "passed": true
+    },
+    {
+      "check": "all_run_tie_maps_to_class_1",
+      "passed": true
+    },
+    {
+      "check": "WBCIC_outer_not_authorized",
+      "passed": true
+    },
+    {
+      "check": "OUTER_TEST_USED_false",
+      "passed": true
+    }
+  ],
+  "best_ensemble_id": "B6_ALL_RUN_LOGIT_MEAN",
+  "selection_pool": "exploration",
+  "selection_criterion": {
+    "pool": "EXPLORATION_POOL only",
+    "criterion": "largest mean subject-balanced Delta BA versus B0 among B1-B7",
+    "tie_break": "lexicographically smallest baseline ID within 1e-15",
+    "threshold_tuning": false
+  },
+  "holdout_accessed_for_selection": false,
+  "labels_used_for_prediction_rules": false,
+  "labels_used_for_post_prediction_evaluation": true,
+  "confidence_weight_formula": "max(abs(p_KEEP-0.5),1e-12)",
+  "source_cache_sha256": {
+    "OOF_BASE_LOGITS.parquet": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+    "OOF_COUNTERFACTUAL_LOGITS.parquet": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+    "OOF_GEOMETRY_FEATURES.parquet": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+    "OOF_ROUTER_FEATURES.parquet": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd"
+  },
+  "exploration_subjects": [
+    "2",
+    "3",
+    "5",
+    "8",
+    "10",
+    "11",
+    "12",
+    "13",
+    "15",
+    "16",
+    "18",
+    "19",
+    "20",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "36",
+    "37",
+    "38",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "47",
+    "48",
+    "49",
+    "50",
+    "51",
+    "52",
+    "54"
+  ],
+  "holdout_subjects": [
+    "1",
+    "4",
+    "7",
+    "9",
+    "14",
+    "21",
+    "22",
+    "28",
+    "35",
+    "39",
+    "46",
+    "53"
+  ],
+  "previous_holdout_is_not_sealed_for_v2_1": true,
+  "OUTER_TEST_USED": false
+}

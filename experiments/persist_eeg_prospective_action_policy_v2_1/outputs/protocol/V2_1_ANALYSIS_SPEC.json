@@ -1,0 +1,33 @@
+{
+  "status": "V2_1_ANALYSIS_PREDECLARED",
+  "experiment_type": "post-V2 exploratory falsification audit",
+  "baselines": {
+    "B0_TARGET_KEEP": "target KEEP prediction",
+    "B1_OTHER_RUN_HARD_MAJORITY": "class 1 iff leave-target-run KEEP vote fraction >= 0.5",
+    "B2_ALL_RUN_HARD_MAJORITY": "class 1 iff all-run KEEP vote fraction >= 0.5; exact tie deterministically maps to class 1",
+    "B3_OTHER_RUN_PROBABILITY_MEAN": "class 1 iff leave-target-run mean KEEP p(y=1) >= 0.5",
+    "B4_ALL_RUN_PROBABILITY_MEAN": "class 1 iff all-run mean KEEP p(y=1) >= 0.5",
+    "B5_OTHER_RUN_LOGIT_MEAN": "class 1 iff leave-target-run mean centered KEEP margin >= 0",
+    "B6_ALL_RUN_LOGIT_MEAN": "class 1 iff all-run mean centered KEEP margin >= 0",
+    "B7_CONFIDENCE_WEIGHTED_KEEP_ENSEMBLE": "all-run p(y=1) mean weighted by max(abs(p-0.5),1e-12), threshold 0.5"
+  },
+  "controls": {
+    "C1_GATED_DIRECT_CONSENSUS": "replace target prediction with other-run hard majority on disagreement",
+    "C2_ACTION_MASKED_DIRECT_CONSENSUS_FULL": "same availability mask as frozen FULL; directly emit other-run majority",
+    "C3_ACTION_MASKED_DIRECT_CONSENSUS_SAFE": "same AMPLIFY+GEOMETRY mask as frozen SAFE; directly emit other-run majority"
+  },
+  "best_ensemble_selection": {
+    "pool": "EXPLORATION_POOL only",
+    "criterion": "largest mean subject-balanced Delta BA versus B0 among B1-B7",
+    "tie_break": "lexicographically smallest baseline ID within 1e-15",
+    "threshold_tuning": false
+  },
+  "confidence_weight_formula_frozen_before_outcomes": true,
+  "paired_bootstrap_unit": "subject",
+  "bootstrap_repetitions": 10000,
+  "deployment_i003_aggregation": "DEPLOYMENT_OUTPUT_NOT_YET_DEFINED",
+  "previous_holdout_is_not_sealed_for_v2_1": true,
+  "outer_test_authorized": false,
+  "OUTER_TEST_USED": false,
+  "analysis_spec_hash": "3a9c60229fd43d6afea39f03f0c41f3fbbdc2c328cab3fa7c2e245408c0c0603"
+}

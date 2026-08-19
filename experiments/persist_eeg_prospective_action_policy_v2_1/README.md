@@ -35,3 +35,26 @@ probability/calibration results are reported separately and cannot be used to
 relabel the hard-classification mechanism as intervention-specific.
 
 WBCIC outer remains unauthorized and unused.
+
+## Frozen server result (2026-08-19)
+
+The server execution passed exact V2 reconstruction and all six unit tests.
+The exploration-only selection chose `B6_ALL_RUN_LOGIT_MEAN`. On the existing
+12-subject development holdout:
+
+- B6 minus target KEEP: `+2.028 pp`, subject-bootstrap CI95
+  `[+1.115, +3.014] pp`;
+- frozen FULL minus B6: `-1.181 pp`, CI95 `[-1.979, -0.438] pp`;
+- frozen protected-safe minus B6: `-1.295 pp`, CI95
+  `[-2.049, -0.590] pp`;
+- C2 vs FULL and C3 vs protected-safe: zero hard-prediction disagreements
+  across all 9,200 holdout target-run rows.
+
+The primary state is therefore `ENSEMBLE_EXPLAINS_V2_GAIN`. The result is
+negative for intervention-specific hard-label value: ordinary all-run KEEP
+logit averaging is materially stronger. Protected-safe remains a secondary
+safety qualifier because it removes ERASE, lowers harm, and converts both
+negative FULL target runs to nonnegative, but it does not beat B6.
+
+See `outputs/SCIENTIFIC_REPORT.md` and `outputs/FINAL_DECISION.json`. The
+server runtime and hashes are recorded in `outputs/REPRODUCIBILITY.json`.

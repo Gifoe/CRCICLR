@@ -1,0 +1,155 @@
+{
+  "status": "V2_RECONSTRUCTION_PASS",
+  "v2_policy_lock_hash": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+  "v2_split_assignment_hash": "f033c6ce4b6c79dcbba60581423b812ed32a921595c740396aac62163edac944",
+  "checks": [
+    {
+      "check": "V2_POLICY_LOCK_HASH",
+      "passed": true,
+      "expected": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+      "actual": "e679c7a955ccf3745bb35ce6c86a61c57705557f3eed8917b724b0e5613b5fd4",
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "source_cache_sha256:OOF_ROUTER_FEATURES.parquet",
+      "passed": true,
+      "expected": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+      "actual": "93b32654f67baa653d1d89a4e76b3241256cec5f5f5977b2ea08d4b166da0fbd",
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "source_cache_sha256:OOF_BASE_LOGITS.parquet",
+      "passed": true,
+      "expected": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+      "actual": "9072912ee0b1b4513fd5ec1034727d755b118be20d7c5f8355f95c1aaa1cc8a9",
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "source_cache_sha256:OOF_COUNTERFACTUAL_LOGITS.parquet",
+      "passed": true,
+      "expected": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+      "actual": "1ebbe70ac854f9abb957875c49ba81fb782dc5be88a53a832ff70498db14ba2e",
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "source_cache_sha256:OOF_GEOMETRY_FEATURES.parquet",
+      "passed": true,
+      "expected": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+      "actual": "77b2234deae19c18f3c7cf9217077ce44d1a8181acf400c6b96cfdf980c6e76d",
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "exploration:subject_delta",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 9.71445146547012e-17
+    },
+    {
+      "check": "exploration:run_delta",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 8.153200337090993e-17
+    },
+    {
+      "check": "exploration:action_counts",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 9.71445146547012e-17
+    },
+    {
+      "check": "exploration:summary",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 7.112366251504909e-17
+    },
+    {
+      "check": "exploration:oracle_summary",
+      "passed": true,
+      "expected": "historical EXPLORATION_DECISION.json",
+      "actual": "numerically identical",
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "holdout:subject_delta",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 9.71445146547012e-17
+    },
+    {
+      "check": "holdout:run_delta",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 8.326672684688674e-17
+    },
+    {
+      "check": "holdout:action_counts",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 1.1102230246251565e-16
+    },
+    {
+      "check": "holdout:summary",
+      "passed": true,
+      "expected": "historical V2 CSV",
+      "actual": "numerically identical",
+      "max_abs_difference": 9.8879238130678e-17
+    }
+  ],
+  "pools": {
+    "exploration": {
+      "rows": 31600,
+      "subjects": 40,
+      "manifest_trials": 8000,
+      "runs": [
+        "fold-0_seed-0",
+        "fold-0_seed-1",
+        "fold-1_seed-0",
+        "fold-1_seed-1",
+        "fold-2_seed-0",
+        "fold-2_seed-1"
+      ],
+      "identity_sha256": "654b9eb412654764ff4dd820e12bcab9342c09d94513bbe94c0527335e29934f",
+      "policy_prediction_sha256": {
+        "M0_KEEP": "0d12d7d4ab9c222f68a7179a3079748c8d6e308ce251cb03f116241775aee5e7",
+        "I003_CROSS_RUN_FULL": "f3725e7320eb566e6376889fc866631826ee094c9bf5012cfe0bb5e8fad6589b",
+        "I003_CROSS_RUN_PROTECTED_SAFE": "c92b865000a30cf6734777a0a9e6926ae8ca4c0fe52539e03cbf7128c999f312",
+        "ORACLE_FULL_MENU": "567de1225f1b223bb42e92a68efb8f6a1e65321ea23e03bc2a0283a7299daa45"
+      }
+    },
+    "holdout": {
+      "rows": 9200,
+      "subjects": 12,
+      "manifest_trials": 2400,
+      "runs": [
+        "fold-0_seed-0",
+        "fold-0_seed-1",
+        "fold-1_seed-0",
+        "fold-1_seed-1",
+        "fold-2_seed-0",
+        "fold-2_seed-1"
+      ],
+      "identity_sha256": "61c92eb43254758d160a592c2a63c58717eab21787b0b8026d3432f815187552",
+      "policy_prediction_sha256": {
+        "M0_KEEP": "b32d99ae86f32190e1691fd71fb9eb44ed04e75948f30cff74f2001425426e12",
+        "I003_CROSS_RUN_FULL": "bad947650fcb873d64d18f9b0888feba38b5526fe7f353be258dbb821069945b",
+        "I003_CROSS_RUN_PROTECTED_SAFE": "69bea8a31eb30121baa9db1236074038b572cc44651f7eceae2743e19f6e0b11",
+        "ORACLE_FULL_MENU": "e6e0a959c3e1647b6c483e7c5d8e1d2f19c7564cd35d39f6f8a8f6819c7c7b6e"
+      }
+    }
+  },
+  "analysis_spec_hash": "3a9c60229fd43d6afea39f03f0c41f3fbbdc2c328cab3fa7c2e245408c0c0603",
+  "numerical_tolerance": 1e-14,
+  "historical_artifact_scope": {
+    "exploration": "M0/FULL/SAFE subject-run-action-summary CSV plus ORACLE summary JSON",
+    "holdout": "M0/FULL/SAFE/ORACLE subject-run-action-summary CSV",
+    "note": "V2 did not persist exploration ORACLE subject/run/action rows; they are deterministically recomputed but cannot be compared to a nonexistent historical table."
+  },
+  "OUTER_TEST_USED": false
+}
