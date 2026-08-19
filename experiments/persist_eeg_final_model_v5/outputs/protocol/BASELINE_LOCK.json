@@ -1,0 +1,17 @@
+{
+  "OUTER_TEST_USED": false,
+  "OpenBMI": {
+    "B_STATIC": "A0_STATIC_B_STRONG",
+    "B_STATIC_BA": 0.8464423076923075,
+    "B_STRONG_CURRENT": "A1_DYNAMIC_KEEP_FINAL",
+    "B_STRONG_CURRENT_BA": 0.8509615384615383
+  },
+  "WBCIC-development": {
+    "B_STATIC": "W0_B_STRONG_PROBABILITY_MEAN",
+    "B_STATIC_BA": 0.8036257390983,
+    "B_STRONG_CURRENT": "W1_RAW_LINEAR",
+    "B_STRONG_CURRENT_BA": 0.8067887718649914
+  },
+  "policy": "Report both static and strongest pre-existing current references; update if V5 creates a stronger non-adaptive baseline.",
+  "status": "V5_INITIAL_BASELINE_LOCK"
+}

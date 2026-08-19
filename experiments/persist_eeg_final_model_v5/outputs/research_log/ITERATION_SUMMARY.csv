@@ -1,0 +1,10 @@
+iteration,title,hypothesis,conclusion,result,OUTER_TEST_USED
+1,Cross-session scalar expert reliability,S1/S2 expert ranking will transfer to S3.,ABANDON,F5/F9: fold-unstable and nonpositive.,False
+2,Output and fixed EEG context,Compact morphology will explain local expert competence.,MODIFY,Best +0.122 pp; CI crossed zero.,False
+3,Fold-compatible shared representation,Checkpoint coordinate repair will unlock context.,MODIFY,Best +0.148 pp; still unstable.,False
+4,Structurally distinct zero-shot competence,"Error rescue, kNN, multi-label, pairwise, or covariance aggregation will exploit oracle headroom.",ABANDON,Only +0.049 pp from a very sparse 3-2 rescue; all others negative.,False
+5,Target-history subject-local heads,S1/S2 can expose subject geometry missing under zero-shot shift.,KEEP,"+0.562 pp, 4/5 folds positive, CI crossed zero.",False
+6,Fixed variance-reduced local stack,Removing inner configuration variance will stabilize the local signal.,KEEP,"+0.867 pp, positive CI, 5/5 folds.",False
+7,Loss alignment and non-outcome refit,Disagreement loss or full non-outcome refit will close the remaining gap.,KEEP,+0.928 pp; disagreement-only loss did not help.,False
+8,CSP spatial context augmentation,History-derived spatial geometry adds complementary context without acting as a standalone expert.,KEEP,+1.099 pp final refit; target conditions met.,False
+9,Seed and cross-benchmark confirmation,The fixed method is deterministic and fail-closed fallback is non-degrading.,KEEP,Five hashes identical; OpenBMI exactly matched A1.,False

@@ -1,0 +1,38 @@
+{
+  "OUTER_TEST_USED": false,
+  "base_commit": "ee9e280e350073f4cc30f8e3cad8c27cd1347bec",
+  "branch": "codex/persist-eeg-final-model-v5-local-competence",
+  "commands": [
+    "python reconstruct_v4.py",
+    "python disagreement_audit.py",
+    "python expert_audit.py",
+    "python run_iteration.py",
+    "python run_search.py",
+    "python run_shared_representation.py",
+    "python run_structural_search.py",
+    "python run_subject_adaptation.py",
+    "python run_reliability_stack.py",
+    "python run_refit_disagreement.py",
+    "python run_csp_augmentation.py --workers 4",
+    "python run_confirmation.py",
+    "python run_final_dev.py"
+  ],
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "multi_seed_prediction_sha256": "c1a16a28c7d7d115c7dd56c1eb5777ba10e01d10ccaf18b763b331c88c0a0da4",
+  "numpy": "2.4.4",
+  "outer_split_lock_opened": false,
+  "outer_subject_ids_loaded": false,
+  "pandas": "3.0.5",
+  "platform": "Windows-10-10.0.18363-SP0",
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "scikit_learn": "1.9.0",
+  "scipy": "1.17.1",
+  "thread_limits": {
+    "MKL_NUM_THREADS": 1,
+    "NUMEXPR_NUM_THREADS": 1,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1
+  },
+  "torch": "2.11.0+cu128"
+}

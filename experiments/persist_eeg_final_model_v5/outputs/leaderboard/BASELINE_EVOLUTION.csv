@@ -1,0 +1,4 @@
+benchmark,stage,method_id,mean_subject_BA,baseline_updated,reason,OUTER_TEST_USED
+OpenBMI,V5 initial/final non-adaptive baseline,A1_DYNAMIC_KEEP_FINAL,0.8509615384615383,False,No V5 non-adaptive OpenBMI baseline exceeded A1; final uses exact safe fallback.,False
+WBCIC-development,V5 initial/final non-adaptive baseline,W1_RAW_LINEAR,0.8067887718649914,False,"All stronger V5 candidates use target-subject S1/S2 adaptation and are model variants, not non-adaptive baselines.",False
+WBCIC-development,V5 selected adaptive model,M13_CSP_AUGMENTED_REFIT4,0.8177820891845283,False,"Reported as final adaptive candidate against frozen W1_RAW_LINEAR, with incremental V5 ablations reported separately.",False

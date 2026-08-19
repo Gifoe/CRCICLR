@@ -1,0 +1,331 @@
+{
+  "OUTER_TEST_USED": false,
+  "datasets": {
+    "OpenBMI": {
+      "current_BA": 0.8509615384615383,
+      "current_Delta_BA_vs_static": 0.004519230769230767,
+      "experts": [
+        "fold-0_seed-0",
+        "fold-0_seed-1",
+        "fold-1_seed-0",
+        "fold-1_seed-1",
+        "fold-2_seed-0",
+        "fold-2_seed-1"
+      ],
+      "sessions": [
+        "1",
+        "2"
+      ],
+      "static_BA": 0.8464423076923075,
+      "subjects": 52,
+      "trials": 10400
+    },
+    "WBCIC-development": {
+      "current_BA": 0.8067887718649914,
+      "current_Delta_BA_vs_static": 0.0031630327666913086,
+      "experts": [
+        "EEGNet_STABLE",
+        "EEGNet_STD",
+        "DeepConvNet",
+        "EEGConformer",
+        "TeCh"
+      ],
+      "sessions": [
+        "S"
+      ],
+      "static_BA": 0.8036257390983,
+      "subjects": 41,
+      "trials": 8195
+    }
+  },
+  "hash_checks": [
+    {
+      "actual": "950fb0b03dc8f83c1d675084ba65367fcc124667807ffb7317b53d3605e2b3d8",
+      "expected": "950fb0b03dc8f83c1d675084ba65367fcc124667807ffb7317b53d3605e2b3d8",
+      "pass": true,
+      "path": "code\\ablations.py",
+      "section": "code"
+    },
+    {
+      "actual": "9a9c01c7421d5a0fc6121bfb113c6cb82eebfd62bfb798fac739f6e046e684a3",
+      "expected": "9a9c01c7421d5a0fc6121bfb113c6cb82eebfd62bfb798fac739f6e046e684a3",
+      "pass": true,
+      "path": "code\\audit_wbcic_static.py",
+      "section": "code"
+    },
+    {
+      "actual": "09d8d86639f866a36b08bb8dbda58b104d975772b4ad296d0b93316721578085",
+      "expected": "09d8d86639f866a36b08bb8dbda58b104d975772b4ad296d0b93316721578085",
+      "pass": true,
+      "path": "code\\build_wbcic_experts.py",
+      "section": "code"
+    },
+    {
+      "actual": "1b023a05965aa5991a4416d46540bf05eb9bd338618e01c4f245a86bb9490748",
+      "expected": "1b023a05965aa5991a4416d46540bf05eb9bd338618e01c4f245a86bb9490748",
+      "pass": true,
+      "path": "code\\calibration.py",
+      "section": "code"
+    },
+    {
+      "actual": "4a7ba84c9be4db218f5b64bf835a03b75925ea72847daf1f6a2737c258e26425",
+      "expected": "4a7ba84c9be4db218f5b64bf835a03b75925ea72847daf1f6a2737c258e26425",
+      "pass": true,
+      "path": "code\\common.py",
+      "section": "code"
+    },
+    {
+      "actual": "86c64d6c4d43c07d242a0436b827ad8408645edb6cbd543946fcea71ccb6fa61",
+      "expected": "86c64d6c4d43c07d242a0436b827ad8408645edb6cbd543946fcea71ccb6fa61",
+      "pass": true,
+      "path": "code\\datasets.py",
+      "section": "code"
+    },
+    {
+      "actual": "7f1039f6c75f9912cb47d081b1b5fb7dd258ba3798ef149253250d5ee350e33c",
+      "expected": "7f1039f6c75f9912cb47d081b1b5fb7dd258ba3798ef149253250d5ee350e33c",
+      "pass": true,
+      "path": "code\\evaluation.py",
+      "section": "code"
+    },
+    {
+      "actual": "d35318528282c092e570ea75d7320ff15e242646cadc3b472079d2f1eb796fbf",
+      "expected": "d35318528282c092e570ea75d7320ff15e242646cadc3b472079d2f1eb796fbf",
+      "pass": true,
+      "path": "code\\expert_pool.py",
+      "section": "code"
+    },
+    {
+      "actual": "270344cd723bb5109c3029bf3ab8bdec431b67ef504ee7dc35ef678d3cbfbb26",
+      "expected": "270344cd723bb5109c3029bf3ab8bdec431b67ef504ee7dc35ef678d3cbfbb26",
+      "pass": true,
+      "path": "code\\features.py",
+      "section": "code"
+    },
+    {
+      "actual": "a44c8a89401b989527ec3a065445c5947a2448a4e0f2277a0630630e8147067a",
+      "expected": "a44c8a89401b989527ec3a065445c5947a2448a4e0f2277a0630630e8147067a",
+      "pass": true,
+      "path": "code\\make_figures.py",
+      "section": "code"
+    },
+    {
+      "actual": "7342695f70a5f96fd66dbc458aeb6d36ff2b8fc4d108f7f022d0429ecfd6273f",
+      "expected": "7342695f70a5f96fd66dbc458aeb6d36ff2b8fc4d108f7f022d0429ecfd6273f",
+      "pass": true,
+      "path": "code\\models\\__init__.py",
+      "section": "code"
+    },
+    {
+      "actual": "4b8ee54f183a15875a46969f5425d6d11a34eb775107e07c2038a74ff95cab16",
+      "expected": "4b8ee54f183a15875a46969f5425d6d11a34eb775107e07c2038a74ff95cab16",
+      "pass": true,
+      "path": "code\\models\\deepsets.py",
+      "section": "code"
+    },
+    {
+      "actual": "0f1be81a36a934a83ff7b707e57bf8f296f4edb2082b75e8ed41fd78e238f9fd",
+      "expected": "0f1be81a36a934a83ff7b707e57bf8f296f4edb2082b75e8ed41fd78e238f9fd",
+      "pass": true,
+      "path": "code\\models\\linear.py",
+      "section": "code"
+    },
+    {
+      "actual": "19da2cda9cbebd26b89ca850286195b6b7a6429f19c5fd3303c02f72479d85e7",
+      "expected": "19da2cda9cbebd26b89ca850286195b6b7a6429f19c5fd3303c02f72479d85e7",
+      "pass": true,
+      "path": "code\\models\\mlp.py",
+      "section": "code"
+    },
+    {
+      "actual": "ab98c63a567a3ec891d0f3199b56be05e7429d1550d14c4b76352bda4933ebd2",
+      "expected": "ab98c63a567a3ec891d0f3199b56be05e7429d1550d14c4b76352bda4933ebd2",
+      "pass": true,
+      "path": "code\\models\\moe.py",
+      "section": "code"
+    },
+    {
+      "actual": "9e74b84040f1b7a4b47634a8f34d62d028583463a8d0f1514e79489f3b68d04f",
+      "expected": "9e74b84040f1b7a4b47634a8f34d62d028583463a8d0f1514e79489f3b68d04f",
+      "pass": true,
+      "path": "code\\models\\ranking.py",
+      "section": "code"
+    },
+    {
+      "actual": "dc70d051205cd64ae493e3331f8bef2c7c3b3f5b57e8f8de0df8a0da0aba3d84",
+      "expected": "dc70d051205cd64ae493e3331f8bef2c7c3b3f5b57e8f8de0df8a0da0aba3d84",
+      "pass": true,
+      "path": "code\\models\\residual.py",
+      "section": "code"
+    },
+    {
+      "actual": "b07e6fd19e88312e5aa01b5b42f55dd0f3f18ff4f272ac42199181ce126ba7ee",
+      "expected": "b07e6fd19e88312e5aa01b5b42f55dd0f3f18ff4f272ac42199181ce126ba7ee",
+      "pass": true,
+      "path": "code\\models\\set_transformer.py",
+      "section": "code"
+    },
+    {
+      "actual": "9117ae8f80598b48429d1053f1932bf120bbb1bd324eca7b43cb0f34a8540650",
+      "expected": "9117ae8f80598b48429d1053f1932bf120bbb1bd324eca7b43cb0f34a8540650",
+      "pass": true,
+      "path": "code\\models\\stacking.py",
+      "section": "code"
+    },
+    {
+      "actual": "bbe2ca6b1b46ff5217aaaa65a7be569e71cc2f5a073419f8cbdb2be276dc56c3",
+      "expected": "bbe2ca6b1b46ff5217aaaa65a7be569e71cc2f5a073419f8cbdb2be276dc56c3",
+      "pass": true,
+      "path": "code\\models\\trees.py",
+      "section": "code"
+    },
+    {
+      "actual": "500fe7b6fcba52fb22eea9497ad65419d7c7c18afc5ae46de3a28dc7de8f13fa",
+      "expected": "500fe7b6fcba52fb22eea9497ad65419d7c7c18afc5ae46de3a28dc7de8f13fa",
+      "pass": true,
+      "path": "code\\reconstruct.py",
+      "section": "code"
+    },
+    {
+      "actual": "ac5d4d49f3caee02f0a543685c781090dd9fb61a83e1c76294cc40fc6c4c4521",
+      "expected": "ac5d4d49f3caee02f0a543685c781090dd9fb61a83e1c76294cc40fc6c4c4521",
+      "pass": true,
+      "path": "code\\run_final.py",
+      "section": "code"
+    },
+    {
+      "actual": "f3c3627008ffe97899cb0e9a91575d14a29b05ccda7a54923abcfc3e61e86b0c",
+      "expected": "f3c3627008ffe97899cb0e9a91575d14a29b05ccda7a54923abcfc3e61e86b0c",
+      "pass": true,
+      "path": "code\\run_final_ablations.py",
+      "section": "code"
+    },
+    {
+      "actual": "b6f1f33b8612f15cc46ffcedeee6aac4d5beefcfbf4b7a68182c761076cea0bc",
+      "expected": "b6f1f33b8612f15cc46ffcedeee6aac4d5beefcfbf4b7a68182c761076cea0bc",
+      "pass": true,
+      "path": "code\\run_keep_dynamic.py",
+      "section": "code"
+    },
+    {
+      "actual": "071137ba2519dfbba3fa9b7bbdc84a62046e2762131ee60a3b140a20f8c6e80d",
+      "expected": "071137ba2519dfbba3fa9b7bbdc84a62046e2762131ee60a3b140a20f8c6e80d",
+      "pass": true,
+      "path": "code\\run_keep_refine.py",
+      "section": "code"
+    },
+    {
+      "actual": "5f9fc1b7d59142e01a49935ee2c3d39bddcba1d7d14d75de086512d3f05d97c2",
+      "expected": "5f9fc1b7d59142e01a49935ee2c3d39bddcba1d7d14d75de086512d3f05d97c2",
+      "pass": true,
+      "path": "code\\run_search.py",
+      "section": "code"
+    },
+    {
+      "actual": "f90a6750dc0fb8f4d995fbef507b511b0ba3b3d6a17b10df7565433c56701d2a",
+      "expected": "f90a6750dc0fb8f4d995fbef507b511b0ba3b3d6a17b10df7565433c56701d2a",
+      "pass": true,
+      "path": "code\\run_wbcic_keep_search.py",
+      "section": "code"
+    },
+    {
+      "actual": "8beb8a34c2ce31f2690dbc68fc997ae47f6d393a3e9bf7baca67e9de1109fceb",
+      "expected": "8beb8a34c2ce31f2690dbc68fc997ae47f6d393a3e9bf7baca67e9de1109fceb",
+      "pass": true,
+      "path": "code\\run_wbcic_linear_refine.py",
+      "section": "code"
+    },
+    {
+      "actual": "c509985a74f02ea628fc5847a7550599e256b07e430349a5f42b8ecfee9194a5",
+      "expected": "c509985a74f02ea628fc5847a7550599e256b07e430349a5f42b8ecfee9194a5",
+      "pass": true,
+      "path": "code\\run_wbcic_transfer.py",
+      "section": "code"
+    },
+    {
+      "actual": "10f37de9f05caf40b48baa63e0b833e3be8c32d1bb65ea112a6f1f8acbe96002",
+      "expected": "10f37de9f05caf40b48baa63e0b833e3be8c32d1bb65ea112a6f1f8acbe96002",
+      "pass": true,
+      "path": "code\\training.py",
+      "section": "code"
+    },
+    {
+      "actual": "54c59ca021388db71502d570fc1aaa0d5c941df2357343075bbaa340e8b27826",
+      "expected": "54c59ca021388db71502d570fc1aaa0d5c941df2357343075bbaa340e8b27826",
+      "pass": true,
+      "path": "outputs\\protocol\\BASELINE_RECONSTRUCTION.json",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "56cffb25d3cb945df6b086d6497133618818db99c4314f60c9c68cd1c5603097",
+      "expected": "56cffb25d3cb945df6b086d6497133618818db99c4314f60c9c68cd1c5603097",
+      "pass": true,
+      "path": "outputs\\protocol\\DATA_LEGALITY_AUDIT.json",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "99c27f5da0c7d9081279f7c9e4cc9c7fe4f33656d6dad9202a3f0188516244cf",
+      "expected": "99c27f5da0c7d9081279f7c9e4cc9c7fe4f33656d6dad9202a3f0188516244cf",
+      "pass": true,
+      "path": "outputs\\protocol\\WBCIC_EXPERT_TABLE_AUDIT.json",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "07bef29aac4b7e68b6a5ff0e49f792e8261969cc453b2937575acb5f3b88a967",
+      "expected": "07bef29aac4b7e68b6a5ff0e49f792e8261969cc453b2937575acb5f3b88a967",
+      "pass": true,
+      "path": "outputs\\ablations\\FINAL_MODEL_ABLATIONS.csv",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "12770358bd9a7b42d7a9d2b01c04bc51225f5190f010d0cc5a6a8014461d7cc1",
+      "expected": "12770358bd9a7b42d7a9d2b01c04bc51225f5190f010d0cc5a6a8014461d7cc1",
+      "pass": true,
+      "path": "outputs\\ablations\\PERSIST_INCREMENTAL_VALUE.csv",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "144a8719bb58e33594d32bf520e9b78b23f89fc29a6ddc030044c70ca04c9734",
+      "expected": "144a8719bb58e33594d32bf520e9b78b23f89fc29a6ddc030044c70ca04c9734",
+      "pass": true,
+      "path": "outputs\\leaderboard\\FINAL_DEVELOPMENT_TABLE.csv",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "2be19770172895438e010b1be8af43efbfa719bb1b4ced8f11e6e6299078a615",
+      "expected": "2be19770172895438e010b1be8af43efbfa719bb1b4ced8f11e6e6299078a615",
+      "pass": true,
+      "path": "outputs\\leaderboard\\CROSS_BENCHMARK_LEADERBOARD.csv",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "0a814ecda9df0d8af5ddd66d2b9cf8168b72576ce1ad1d83aa96eca7b1cb09cb",
+      "expected": "0a814ecda9df0d8af5ddd66d2b9cf8168b72576ce1ad1d83aa96eca7b1cb09cb",
+      "pass": true,
+      "path": "outputs\\FINAL_DECISION.json",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "7dbe1b047e151256438af3e713ce71d0de5f77534dded63860b7d38838ab10d1",
+      "expected": "7dbe1b047e151256438af3e713ce71d0de5f77534dded63860b7d38838ab10d1",
+      "pass": true,
+      "path": "outputs\\SCIENTIFIC_REPORT.md",
+      "section": "key_outputs"
+    },
+    {
+      "actual": "62c698cc7a2fcc9c9a8028b7c4cfcc76a2ec61131e33a14f85b938d78a60bfac",
+      "expected": "62c698cc7a2fcc9c9a8028b7c4cfcc76a2ec61131e33a14f85b938d78a60bfac",
+      "pass": true,
+      "path": "outputs\\final_lock\\FINAL_MODEL_SPEC.json",
+      "section": "key_outputs"
+    }
+  ],
+  "numerical_checks": {
+    "OpenBMI_current_BA": true,
+    "OpenBMI_static_BA": true,
+    "WBCIC_current_BA": true,
+    "WBCIC_static_BA": true
+  },
+  "starting_branch": "codex/persist-eeg-final-model-v4",
+  "status": "V4_RECONSTRUCTION_PASS"
+}

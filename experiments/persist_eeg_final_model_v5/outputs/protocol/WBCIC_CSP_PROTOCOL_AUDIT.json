@@ -1,0 +1,15 @@
+{
+  "OUTER_TEST_USED": false,
+  "band_hz": [
+    8.0,
+    30.0
+  ],
+  "covariance": "per-trial trace normalized",
+  "filter": "fourth-order Butterworth SOS, zero phase",
+  "outer_split_lock_opened": false,
+  "sampling_rate_hz": 250,
+  "selection": "target-subject S1->S2 and S2->S1 only",
+  "spatial_regularization": "1e-4 composite trace per channel",
+  "target_S3_labels_used_for_fit": false,
+  "target_batch_adaptation": false
+}
