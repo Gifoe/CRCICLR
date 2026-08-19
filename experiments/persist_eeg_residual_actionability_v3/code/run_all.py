@@ -56,6 +56,12 @@ REQUIRED_RESULTS = (
     "ACTION_RESULTS.csv",
     "ORACLE_RECOVERY.csv",
 )
+REQUIRED_POLICY_AUDIT_RESULTS = (
+    "CALIBRATION_SELECTION.csv",
+    "FEATURE_IMPORTANCE.csv",
+    "RESIDUAL_LEARNABILITY_PREDICTIONS.csv",
+    "OOF_POLICY_PREDICTIONS.csv",
+)
 
 
 def _pp(value: float) -> str:
@@ -282,6 +288,17 @@ def _validate_outputs(final_required: bool) -> None:
                 OUTPUTS / "REPRODUCIBILITY.json",
             ]
         )
+        final_path = OUTPUTS / "FINAL_DECISION.json"
+        if final_path.exists():
+            final = json.loads(final_path.read_text(encoding="utf-8"))
+            if final.get("phase_8_plus_executed", False):
+                required.extend(
+                    [
+                        PROTOCOL / "GROUPED_NESTED_CV.json",
+                        PROTOCOL / "LEGAL_FEATURE_SCHEMA.json",
+                        *[RESULTS / name for name in REQUIRED_POLICY_AUDIT_RESULTS],
+                    ]
+                )
     missing = [str(path) for path in required if not path.exists() or path.stat().st_size == 0]
     if missing:
         raise RuntimeError(f"Missing or empty required V3 artifacts: {missing}")
@@ -289,8 +306,72 @@ def _validate_outputs(final_required: bool) -> None:
         frame = pd.read_csv(path)
         if frame.empty:
             raise RuntimeError(f"Empty result table: {path}")
-        if "OUTER_TEST_USED" in frame and frame.OUTER_TEST_USED.astype(str).str.lower().isin(("true", "1")).any():
+        outer_columns = [column for column in frame if column.lower() == "outer_test_used"]
+        for column in outer_columns:
+            if frame[column].astype(str).str.lower().isin(("true", "1")).any():
+                raise RuntimeError(f"Outer-test flag in {path}")
+
+    if not final_required:
+        return
+
+    def contains_outer_true(value: Any) -> bool:
+        if isinstance(value, dict):
+            return any(
+                (str(key).lower() == "outer_test_used" and item is True)
+                or contains_outer_true(item)
+                for key, item in value.items()
+            )
+        if isinstance(value, list):
+            return any(contains_outer_true(item) for item in value)
+        return False
+
+    for path in OUTPUTS.rglob("*.json"):
+        if contains_outer_true(json.loads(path.read_text(encoding="utf-8"))):
             raise RuntimeError(f"Outer-test flag in {path}")
+
+    final = json.loads((OUTPUTS / "FINAL_DECISION.json").read_text(encoding="utf-8"))
+    if final.get("OUTER_TEST_USED") is not False or final.get("outer_test_authorized", False):
+        raise RuntimeError("Final decision does not preserve the sealed outer test")
+    if not final.get("phase_8_plus_executed", False):
+        return
+
+    protocol = json.loads((PROTOCOL / "GROUPED_NESTED_CV.json").read_text(encoding="utf-8"))
+    heldout_seen: set[str] = set()
+    for fold in protocol["folds"]:
+        train = set(map(str, fold["model_training_subjects"]))
+        calibration = set(map(str, fold["calibration_subjects"]))
+        heldout = set(map(str, fold["heldout_subjects"]))
+        if train & calibration or train & heldout or calibration & heldout:
+            raise RuntimeError(f"Subject leakage in grouped fold {fold['outer_fold']}")
+        if heldout_seen & heldout:
+            raise RuntimeError("A held-out subject occurs in multiple outer folds")
+        heldout_seen |= heldout
+    if len(heldout_seen) != int(protocol["subjects"]):
+        raise RuntimeError("Grouped folds do not cover every historical development subject")
+
+    schema = json.loads((PROTOCOL / "LEGAL_FEATURE_SCHEMA.json").read_text(encoding="utf-8"))
+    feature_names = schema["full_legal_features"]
+    forbidden = ("label", "outcome", "correct", "rescue", "harm", "effect", "target_baseline_error")
+    offenders = [name for name in feature_names if any(token in name.lower() for token in forbidden)]
+    if offenders:
+        raise RuntimeError(f"Outcome-dependent names in legal feature schema: {offenders}")
+
+    oof = pd.read_csv(RESULTS / "OOF_POLICY_PREDICTIONS.csv")
+    if oof.duplicated(["trial_uid", "model_id"]).any():
+        raise RuntimeError("Duplicate trial/model rows in OOF predictions")
+    model_counts = oof.groupby("model_id").trial_uid.nunique()
+    if len(model_counts) != 6 or not (model_counts == 10_400).all() or len(oof) != 62_400:
+        raise RuntimeError(f"Incomplete OOF coverage: {model_counts.to_dict()}, rows={len(oof)}")
+
+    selection = pd.read_csv(RESULTS / "CALIBRATION_SELECTION.csv")
+    if selection.heldout_subjects_read_for_selection.astype(str).str.lower().isin(("true", "1")).any():
+        raise RuntimeError("Held-out subjects were read during model/threshold selection")
+    selected = selection[
+        selection.selected_on_inner_calibration.astype(str).str.lower().isin(("true", "1"))
+    ]
+    selected_counts = selected.groupby(["model_id", "outer_fold"]).size()
+    if len(selected_counts) != 25 or not (selected_counts == 1).all():
+        raise RuntimeError(f"Expected one inner-calibration choice per policy/fold: {selected_counts.to_dict()}")
 
 
 def diagnose(cache_root: Path) -> tuple[dict[str, Any], dict[str, Any], pd.DataFrame]:
@@ -325,8 +406,20 @@ def main() -> None:
     if state == "STRUCTURAL_ACTION_RESIDUAL_EXISTS":
         from policy import run_residual_policy_research
 
-        run_residual_policy_research(trials=trials, audit=audit, cache_root=cache_root)
-        raise RuntimeError("Policy implementation must finalize and validate V3 outputs")
+        final = run_residual_policy_research(trials=trials, audit=audit, cache_root=cache_root)
+        _write_reproducibility(cache_root)
+        _validate_outputs(final_required=True)
+        print(
+            json.dumps(
+                {
+                    "phase": "all",
+                    "status": "PASS",
+                    "terminal_state": final["terminal_state"],
+                    "OUTER_TEST_USED": final["OUTER_TEST_USED"],
+                }
+            )
+        )
+        return
     final = _finalize_stopped(reconstruction, audit, cache_root)
     _validate_outputs(final_required=True)
     print(
