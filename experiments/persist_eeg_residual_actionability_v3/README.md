@@ -10,6 +10,15 @@ finite KEEP-only diversity control, and applies the frozen headroom gate.
 Policy learning is prohibited unless that gate returns
 `STRUCTURAL_ACTION_RESIDUAL_EXISTS`.
 
+The pre-outcome M1-M5 run was frozen before its grouped OOF outcomes. Its
+conditional audit found that unconditional learnability was inflated by rows
+where an action could not change B6. One finite adaptive follow-up (I006-I007)
+therefore trains action-specific rescue-vs-harm heads only on boundary-cross
+candidates. It uses the same outer folds, calibrates a finite KEEP/FULL/
+protected-safe/ERASE-only menu on inner subjects, and is explicitly
+post-primary-adaptive exploratory evidence. No MLP or unrestricted search is
+run.
+
 Server execution:
 
 ```powershell

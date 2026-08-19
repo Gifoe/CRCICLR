@@ -37,7 +37,16 @@ MODEL_IDS = (
     "M3_ACTION_MOVEMENT_LOGISTIC",
     "M4_FULL_LEGAL_LOGISTIC",
     "M5_HIST_GRADIENT_BOOSTING",
+    "I006_CONDITIONAL_ACTION_LOGISTIC",
+    "I007_CONDITIONAL_ACTION_HGB",
 )
+CONDITIONAL_ACTIONS = ("AMPLIFY", "GEOMETRY", "ERASE")
+CONDITIONAL_MENUS = {
+    "KEEP_ONLY": (),
+    "FULL": CONDITIONAL_ACTIONS,
+    "PROTECTED_SAFE": ("AMPLIFY", "GEOMETRY"),
+    "ERASE_ONLY": ("ERASE",),
+}
 
 
 class ConstantProbability:
@@ -104,6 +113,7 @@ def _subject_protocol(subjects: list[str]) -> dict[str, Any]:
         "trial_random_split": False,
         "heldout_threshold_calibration": False,
         "confirmatory": False,
+        "policy_model_ids": list(MODEL_IDS),
         "OUTER_TEST_USED": False,
     }
 
@@ -456,6 +466,199 @@ def _fit_calibrate_model(
     return rescue_model, harm_model, parameters, decision, grid_records, importance_records
 
 
+def _fit_conditional_action_models(
+    model_kind: str,
+    configuration: dict[str, Any],
+    features: pd.DataFrame,
+    feature_columns: list[str],
+    train_rows: np.ndarray,
+    model_id: str,
+    outer_fold: int,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    models: dict[str, Any] = {}
+    importance: list[dict[str, Any]] = []
+    for action in CONDITIONAL_ACTIONS:
+        action_rows = (
+            train_rows
+            & features.action_family.eq(action).to_numpy()
+            & features.action_boundary_cross.eq(1).to_numpy()
+        )
+        if not action_rows.any():
+            raise RuntimeError(f"No conditional training candidates for {action}")
+        seed = stable_seed(
+            "V3_CONDITIONAL_MODEL",
+            model_id,
+            outer_fold,
+            action,
+            json.dumps(configuration, sort_keys=True),
+        )
+        model = _fit_binary_model(
+            model_kind,
+            configuration,
+            features.loc[action_rows, feature_columns].to_numpy(dtype=float),
+            features.loc[action_rows, "target_rescue"].to_numpy(dtype=int),
+            seed,
+        )
+        models[action] = model
+        if model_kind == "logistic" and isinstance(model, Pipeline):
+            coefficient = model.named_steps["classifier"].coef_[0]
+            for feature, value in zip(feature_columns, coefficient):
+                importance.append(
+                    {
+                        "outer_fold": outer_fold,
+                        "model_id": model_id,
+                        "target": "conditional_rescue",
+                        "action_family": action,
+                        "feature": feature,
+                        "coefficient": float(value),
+                        "absolute_coefficient": abs(float(value)),
+                        "OUTER_TEST_USED": False,
+                    }
+                )
+    return models, importance
+
+
+def _predict_conditional_action_models(
+    models: dict[str, Any],
+    features: pd.DataFrame,
+    feature_columns: list[str],
+) -> tuple[np.ndarray, np.ndarray]:
+    p_rescue = np.zeros(len(features), dtype=float)
+    p_harm = np.zeros(len(features), dtype=float)
+    crossing = features.action_boundary_cross.eq(1).to_numpy()
+    for action in CONDITIONAL_ACTIONS:
+        rows = crossing & features.action_family.eq(action).to_numpy()
+        if rows.any():
+            p_rescue[rows] = _predict_positive(
+                models[action], features.loc[rows, feature_columns].to_numpy(dtype=float)
+            )
+            p_harm[rows] = 1.0 - p_rescue[rows]
+    return p_rescue, p_harm
+
+
+def _conditional_action_decision(
+    features: pd.DataFrame,
+    p_rescue: np.ndarray,
+    p_harm: np.ndarray,
+    *,
+    menu: str,
+    threshold: float,
+) -> pd.DataFrame:
+    if len(features) != len(p_rescue) or len(features) != len(p_harm):
+        raise RuntimeError("Conditional residual probability alignment mismatch")
+    allowed = set(CONDITIONAL_MENUS[menu])
+    selected = features.copy()
+    selected["p_rescue"] = np.asarray(p_rescue, dtype=float)
+    selected["p_harm"] = np.asarray(p_harm, dtype=float)
+    selected = selected.sort_values(["trial_index", "action_priority"])
+    rows = []
+    for trial_index, group in selected.groupby("trial_index", sort=True):
+        first = group.iloc[0]
+        candidate = group[
+            group.action_family.isin(allowed)
+            & group.action_boundary_cross.eq(1)
+            & group.p_rescue.ge(threshold)
+        ].sort_values(["p_rescue", "action_priority"], ascending=[False, True])
+        if len(candidate):
+            choice = candidate.iloc[0]
+            rows.append(
+                {
+                    "trial_index": int(trial_index),
+                    "prediction": int(choice.action_prediction),
+                    "probability": float(choice.action_probability),
+                    "selected_action": str(choice.action_family),
+                    "selected_value": float(choice.p_rescue - choice.p_harm),
+                    "predicted_rescue": float(choice.p_rescue),
+                    "predicted_harm": float(choice.p_harm),
+                }
+            )
+        else:
+            rows.append(
+                {
+                    "trial_index": int(trial_index),
+                    "prediction": int(first.b6_prediction),
+                    "probability": float(first.b6_probability),
+                    "selected_action": "KEEP",
+                    "selected_value": 0.0,
+                    "predicted_rescue": 0.0,
+                    "predicted_harm": 0.0,
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def _fit_calibrate_conditional_model(
+    trials: pd.DataFrame,
+    features: pd.DataFrame,
+    feature_columns: list[str],
+    train_subjects: list[str],
+    calibration_subjects: list[str],
+    model_kind: str,
+    model_id: str,
+    outer_fold: int,
+) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]], list[dict[str, Any]]]:
+    train_rows = features.subject_id.isin(train_subjects).to_numpy()
+    calibration_rows = features.subject_id.isin(calibration_subjects).to_numpy()
+    calibration_features = features.loc[calibration_rows].reset_index(drop=True)
+    choices = []
+    records: list[dict[str, Any]] = []
+    importance_by_configuration: dict[str, list[dict[str, Any]]] = {}
+    candidate_order = 0
+    for configuration in _model_configurations(model_kind):
+        configuration_key = json.dumps(configuration, sort_keys=True)
+        models, importance = _fit_conditional_action_models(
+            model_kind,
+            configuration,
+            features,
+            feature_columns,
+            train_rows,
+            model_id,
+            outer_fold,
+        )
+        importance_by_configuration[configuration_key] = importance
+        p_rescue, p_harm = _predict_conditional_action_models(
+            models, calibration_features, feature_columns
+        )
+        for menu in CONDITIONAL_MENUS:
+            for threshold in (1.01, 0.50, 0.60, 0.70, 0.80, 0.90, 0.95):
+                decision = _conditional_action_decision(
+                    calibration_features,
+                    p_rescue,
+                    p_harm,
+                    menu=menu,
+                    threshold=threshold,
+                )
+                metrics = _selection_metrics(trials, decision)
+                parameters = {**configuration, "menu": menu, "threshold": threshold}
+                key_text = json.dumps(parameters, sort_keys=True)
+                records.append(
+                    {
+                        "outer_fold": outer_fold,
+                        "model_id": model_id,
+                        "parameters": key_text,
+                        "candidate_order": candidate_order,
+                        **metrics,
+                        "selected_on_inner_calibration": False,
+                        "heldout_subjects_read_for_selection": False,
+                        "OUTER_TEST_USED": False,
+                    }
+                )
+                choices.append(
+                    (
+                        _candidate_key(metrics, candidate_order),
+                        models,
+                        parameters,
+                        configuration_key,
+                    )
+                )
+                candidate_order += 1
+    _, models, parameters, configuration_key = max(choices, key=lambda item: item[0])
+    selected_key = json.dumps(parameters, sort_keys=True)
+    for record in records:
+        record["selected_on_inner_calibration"] = record["parameters"] == selected_key
+    return models, parameters, records, importance_by_configuration[configuration_key]
+
+
 def _assign_policy(oof: OOFPolicy, decision: pd.DataFrame, outer_fold: int) -> None:
     decision = decision.sort_values("trial_index").reset_index(drop=True)
     if decision.trial_index.duplicated().any():
@@ -602,21 +805,33 @@ def _evaluate_oof(
 def _learnability_table(records: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for (model_id, action), group in records.groupby(["model_id", "action_family"]):
-        for target, score in (("rescue", "p_rescue"), ("harm", "p_harm")):
-            y = group[f"target_{target}"].to_numpy(dtype=int)
-            values = group[score].to_numpy(dtype=float)
-            rows.append(
-                {
-                    "model_id": model_id,
-                    "action_family": action,
-                    "target": target,
-                    "rows": int(len(group)),
-                    "prevalence": float(y.mean()),
-                    "AUPRC": float(average_precision_score(y, values)) if y.sum() else np.nan,
-                    "AUROC": float(roc_auc_score(y, values)) if len(np.unique(y)) == 2 else np.nan,
-                    "OUTER_TEST_USED": False,
-                }
-            )
+        for population, subset in (
+            ("all_action_rows", group),
+            ("boundary_cross_only", group[group.action_boundary_cross.eq(1)]),
+        ):
+            for target, score in (("rescue", "p_rescue"), ("harm", "p_harm")):
+                y = subset[f"target_{target}"].to_numpy(dtype=int)
+                values = subset[score].to_numpy(dtype=float)
+                prevalence = float(y.mean()) if len(y) else np.nan
+                auprc = float(average_precision_score(y, values)) if y.sum() else np.nan
+                rows.append(
+                    {
+                        "model_id": model_id,
+                        "action_family": action,
+                        "population": population,
+                        "target": target,
+                        "rows": int(len(subset)),
+                        "prevalence": prevalence,
+                        "AUPRC": auprc,
+                        "AUPRC_lift": auprc / prevalence if prevalence and np.isfinite(auprc) else np.nan,
+                        "AUROC": (
+                            float(roc_auc_score(y, values))
+                            if len(np.unique(y)) == 2
+                            else np.nan
+                        ),
+                        "OUTER_TEST_USED": False,
+                    }
+                )
     return pd.DataFrame(rows)
 
 
@@ -641,6 +856,14 @@ def _write_iteration_logs(results: pd.DataFrame) -> None:
         "M5_HIST_GRADIENT_BOOSTING": (
             "Small nonlinear interactions improve the legal residual value estimate.",
             "small depth-controlled HistGradientBoosting heads",
+        ),
+        "I006_CONDITIONAL_ACTION_LOGISTIC": (
+            "Training only on boundary-cross candidates and separating action families removes trivial eligibility discrimination and may stabilize rescue-versus-harm routing.",
+            "action-specific conditional regularized logistic rescue heads with a finite calibrated action menu",
+        ),
+        "I007_CONDITIONAL_ACTION_HGB": (
+            "Small nonlinear action-specific conditional heads may capture the moderate ERASE rescue signal without unrestricted model search.",
+            "action-specific conditional depth-controlled HistGradientBoosting rescue heads with the same finite menu",
         ),
     }
     summary_rows = []
@@ -720,12 +943,14 @@ def _final_decision(
         and best.rescue_precision > best.harm_rate
     )
     ready = interesting and best.mean_subject_delta_BA_vs_B6 >= 0.005 and best.positive_fold_fraction >= 0.80
+    finite_learnability = learnability[
+        learnability.population.eq("boundary_cross_only")
+    ].dropna(subset=["AUPRC", "AUROC"]).copy()
     if ready:
         state = "READY_FOR_NEW_INDEPENDENT_PROTOCOL"
     elif interesting:
         state = "PROMISING_RESIDUAL_ACTION_POLICY"
     else:
-        finite_learnability = learnability.dropna(subset=["AUPRC", "AUROC"]).copy()
         signal = bool(
             (
                 (finite_learnability.AUPRC > 1.10 * finite_learnability.prevalence)
@@ -769,7 +994,11 @@ def _final_decision(
         "persist_full_minus_movement_delta_BA": float(persist_delta.mean()),
         "persist_full_minus_movement_CI95": list(persist_ci),
         "persist_features_add_grouped_value": persist_adds,
-        "learnability_signal_rule": "any grouped-OOF target/action with AUPRC > 1.10x prevalence and AUROC > 0.55",
+        "learnability_signal_rule": "among boundary-cross candidates only: any grouped-OOF target/action with AUPRC > 1.10x prevalence and AUROC > 0.55",
+        "best_conditional_learnability_AUROC": float(finite_learnability.AUROC.max()),
+        "best_conditional_learnability_AUPRC_lift": float(
+            (finite_learnability.AUPRC / finite_learnability.prevalence).max()
+        ),
         "top_full_legal_logistic_features": top_features,
         "headroom_state": audit["decision"]["state"],
         "strongest_action_oracle_delta_BA": audit["decision"]["strongest_action_oracle_delta_BA_vs_B6"],
@@ -896,7 +1125,10 @@ subjects. It is not a new confirmation. WBCIC outer was not accessed.
     count is substantially larger than its rescue count.
 11. Protected-safe oracle headroom remains nonzero but is smaller than FULL.
 12. Residual rescue/harm learnability is reported in
-    `RESIDUAL_LEARNABILITY.csv` using held-out subjects only.
+    `RESIDUAL_LEARNABILITY.csv` using held-out subjects only. The decision uses
+    boundary-cross candidates only; best conditional AUROC is
+    **{final['best_conditional_learnability_AUROC']:.3f}** and best conditional
+    AUPRC/prevalence lift is **{final['best_conditional_learnability_AUPRC_lift']:.3f}**.
 13. The largest full-logistic legal features are stored in
     `FEATURE_IMPORTANCE.csv` and `FINAL_DECISION.json`.
 14. PERSIST feature increment over movement-only logistic:
@@ -924,8 +1156,10 @@ subjects. It is not a new confirmation. WBCIC outer was not accessed.
 ## Scientific limitation
 
 The model ladder and best-policy selection were explored on the same 52
-historical subjects through grouped OOF estimates. Even a positive result must
-be frozen and tested under a genuinely new independent protocol.
+historical subjects through grouped OOF estimates. I006-I007 were motivated
+after auditing M1-M5 conditional learnability, so their CIs are additionally
+post-primary-adaptive and descriptive. Even a positive result must be frozen
+and tested under a genuinely new independent protocol.
 
 `OUTER_TEST_USED=false`
 """
@@ -944,6 +1178,19 @@ def run_residual_policy_research(
     features, movement_features, full_features, categories = build_legal_residual_features(
         trials, action_candidates, cache_root
     )
+    conditional_features = [
+        column
+        for column in full_features
+        if column
+        not in (
+            "action_boundary_cross",
+            "action_vs_b6_disagreement",
+            "is_amplify",
+            "is_geometry",
+            "is_erase",
+            "protected_safe",
+        )
+    ]
     protocol = _subject_protocol(sorted(trials.subject_id.unique().tolist(), key=int))
     write_json(OUTPUTS / "protocol" / "GROUPED_NESTED_CV.json", protocol)
     write_json(
@@ -951,6 +1198,7 @@ def run_residual_policy_research(
         {
             "movement_features": movement_features,
             "full_legal_features": full_features,
+            "conditional_action_features": conditional_features,
             "categories": categories,
             "target_columns_excluded": ["outcome_label", "target_rescue", "target_harm"],
             "rows": int(len(features)),
@@ -984,6 +1232,10 @@ def run_residual_policy_research(
         ("M3_ACTION_MOVEMENT_LOGISTIC", "logistic", movement_features),
         ("M4_FULL_LEGAL_LOGISTIC", "logistic", full_features),
         ("M5_HIST_GRADIENT_BOOSTING", "hgb", full_features),
+    )
+    conditional_model_definitions = (
+        ("I006_CONDITIONAL_ACTION_LOGISTIC", "logistic"),
+        ("I007_CONDITIONAL_ACTION_HGB", "hgb"),
     )
     for fold_spec in protocol["folds"]:
         outer_fold = int(fold_spec["outer_fold"])
@@ -1034,7 +1286,59 @@ def run_residual_policy_research(
             _assign_policy(policies[model_id], decision, outer_fold)
             learnability_records.append(
                 test_features[
-                    ["trial_index", "subject_id", "action_family", "target_rescue", "target_harm"]
+                    [
+                        "trial_index",
+                        "subject_id",
+                        "action_family",
+                        "action_boundary_cross",
+                        "target_rescue",
+                        "target_harm",
+                    ]
+                ].assign(
+                    model_id=model_id,
+                    outer_fold=outer_fold,
+                    p_rescue=p_rescue,
+                    p_harm=p_harm,
+                    OUTER_TEST_USED=False,
+                )
+            )
+
+        for model_id, model_kind in conditional_model_definitions:
+            models, parameters, records, importance = _fit_calibrate_conditional_model(
+                trials,
+                features,
+                conditional_features,
+                fold_spec["model_training_subjects"],
+                fold_spec["calibration_subjects"],
+                model_kind,
+                model_id,
+                outer_fold,
+            )
+            selection_records.extend(records)
+            importance_records.extend(importance)
+            test_rows = features.subject_id.isin(test_subjects).to_numpy()
+            test_features = features.loc[test_rows].reset_index(drop=True)
+            p_rescue, p_harm = _predict_conditional_action_models(
+                models, test_features, conditional_features
+            )
+            decision = _conditional_action_decision(
+                test_features,
+                p_rescue,
+                p_harm,
+                menu=str(parameters["menu"]),
+                threshold=float(parameters["threshold"]),
+            )
+            _assign_policy(policies[model_id], decision, outer_fold)
+            learnability_records.append(
+                test_features[
+                    [
+                        "trial_index",
+                        "subject_id",
+                        "action_family",
+                        "action_boundary_cross",
+                        "target_rescue",
+                        "target_harm",
+                    ]
                 ].assign(
                     model_id=model_id,
                     outer_fold=outer_fold,
@@ -1053,6 +1357,10 @@ def run_residual_policy_research(
     learnability_table = _learnability_table(learnability_predictions)
 
     write_csv(RESULTS / "RESIDUAL_LEARNABILITY.csv", learnability_table)
+    write_csv(
+        RESULTS / "RESIDUAL_LEARNABILITY_CONDITIONAL.csv",
+        learnability_table[learnability_table.population.eq("boundary_cross_only")].reset_index(drop=True),
+    )
     write_csv(RESULTS / "RESIDUAL_POLICY_RESULTS.csv", result_table)
     write_csv(RESULTS / "SUBJECT_RESULTS.csv", subject_table)
     write_csv(RESULTS / "FOLD_RESULTS.csv", fold_table)

@@ -59,6 +59,7 @@ REQUIRED_RESULTS = (
 REQUIRED_POLICY_AUDIT_RESULTS = (
     "CALIBRATION_SELECTION.csv",
     "FEATURE_IMPORTANCE.csv",
+    "RESIDUAL_LEARNABILITY_CONDITIONAL.csv",
     "RESIDUAL_LEARNABILITY_PREDICTIONS.csv",
     "OOF_POLICY_PREDICTIONS.csv",
 )
@@ -360,7 +361,12 @@ def _validate_outputs(final_required: bool) -> None:
     if oof.duplicated(["trial_uid", "model_id"]).any():
         raise RuntimeError("Duplicate trial/model rows in OOF predictions")
     model_counts = oof.groupby("model_id").trial_uid.nunique()
-    if len(model_counts) != 6 or not (model_counts == 10_400).all() or len(oof) != 62_400:
+    expected_models = set(protocol["policy_model_ids"])
+    if (
+        set(model_counts.index) != expected_models
+        or not (model_counts == 10_400).all()
+        or len(oof) != 10_400 * len(expected_models)
+    ):
         raise RuntimeError(f"Incomplete OOF coverage: {model_counts.to_dict()}, rows={len(oof)}")
 
     selection = pd.read_csv(RESULTS / "CALIBRATION_SELECTION.csv")
@@ -370,7 +376,12 @@ def _validate_outputs(final_required: bool) -> None:
         selection.selected_on_inner_calibration.astype(str).str.lower().isin(("true", "1"))
     ]
     selected_counts = selected.groupby(["model_id", "outer_fold"]).size()
-    if len(selected_counts) != 25 or not (selected_counts == 1).all():
+    selectable_models = expected_models - {"M0_B6_KEEP_ENSEMBLE"}
+    if (
+        set(selected_counts.index.get_level_values("model_id")) != selectable_models
+        or len(selected_counts) != 5 * len(selectable_models)
+        or not (selected_counts == 1).all()
+    ):
         raise RuntimeError(f"Expected one inner-calibration choice per policy/fold: {selected_counts.to_dict()}")
 
 
