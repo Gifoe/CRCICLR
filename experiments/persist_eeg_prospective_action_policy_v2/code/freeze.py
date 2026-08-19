@@ -24,6 +24,8 @@ def _code_hashes() -> dict[str, str]:
 
 def freeze_candidates() -> dict[str, Any]:
     ensure_directories()
+    if (FREEZE / "FROZEN_POLICY_SPEC.json").exists():
+        raise RuntimeError("V2 policy is already frozen; overwrite is forbidden")
     decision_path = EXPLORATION / "EXPLORATION_DECISION.json"
     split_path = PROTOCOL / "AUTONOMOUS_RESEARCH_SPLIT.json"
     if not decision_path.exists() or not split_path.exists():

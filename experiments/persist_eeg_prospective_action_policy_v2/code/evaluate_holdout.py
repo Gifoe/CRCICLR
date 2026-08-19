@@ -114,6 +114,10 @@ def evaluate_holdout_once(cache_root: Path) -> dict[str, Any]:
         + "\n",
         encoding="utf-8",
     )
+    authorization["remaining_openings"] = 0
+    authorization["completed_openings"] = 1
+    authorization["status"] = "DEVELOPMENT_HOLDOUT_OPEN_CONSUMED"
+    write_json(authorization_path, authorization)
     bundle = load_pool(cache_root, "DEVELOPMENT_HOLDOUT")
     frame = bundle.frame
     if frame.subject_id.nunique() != 12 or frame.pool.ne("DEVELOPMENT_HOLDOUT").any():
@@ -180,6 +184,7 @@ def evaluate_holdout_once(cache_root: Path) -> dict[str, Any]:
         and best.bootstrap_CI95_L > 0
         and best.action_rate > 0
         and best.positive_run_fraction >= 4 / 6
+        and best.rescue_precision > best.unsafe_intervention_rate
     )
     terminal = (
         "DEVELOPMENT_HOLDOUT_SUCCESS_NEW_PROTOCOL_REQUIRED"
@@ -307,4 +312,3 @@ would still be exploratory and would require a new independent protocol.
     }
     write_json(OUTPUTS / "REPRODUCIBILITY.json", reproducibility)
     return final
-
