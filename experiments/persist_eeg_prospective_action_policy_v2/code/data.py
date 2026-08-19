@@ -142,8 +142,10 @@ def read_split() -> dict[str, Any]:
 
 
 def _filtered_read(path: Path, subjects: list[str], columns: list[str] | None = None) -> pd.DataFrame:
-    integer_subjects = [int(subject) for subject in subjects]
-    frame = pd.read_parquet(path, columns=columns, filters=[("subject", "in", integer_subjects)])
+    # The historical cache stores canonical subject identifiers as
+    # large_string. Keeping the predicate values as strings is required for
+    # Arrow pushdown and, critically, prevents materializing the excluded pool.
+    frame = pd.read_parquet(path, columns=columns, filters=[("subject", "in", subjects)])
     observed = {_subject_key(value) for value in frame.subject.unique()}
     if not observed.issubset(set(subjects)):
         raise RuntimeError("Parquet predicate admitted a subject outside the requested pool")
@@ -285,4 +287,3 @@ def load_pool(cache_root: Path, pool: str) -> PolicyData:
     ]
     cross_run_features = sorted(set(single_features + cross_features))
     return PolicyData(data.reset_index(drop=True), single_features, cross_run_features, split)
-
