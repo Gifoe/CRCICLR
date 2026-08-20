@@ -1,0 +1,7 @@
+{
+  "OUTER_TEST_USED": false,
+  "locked_inputs": "saved refit checkpoints and discovery-selected adaptation configurations",
+  "outcome_labels_used_for_fit_or_selection": false,
+  "reason": "dropout RNG was not independently reset in the initial outcome pass",
+  "repair": "per-fold/subject CPU and CUDA RNG reset before adaptation"
+}

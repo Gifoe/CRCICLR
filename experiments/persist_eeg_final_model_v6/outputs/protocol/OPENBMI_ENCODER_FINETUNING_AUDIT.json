@@ -1,0 +1,40 @@
+{
+  "OUTER_TEST_USED": false,
+  "PERSIST_protection": "target-history diagonal empirical Fisher, normalized within trainable parameters",
+  "equal_capacity_controls": [
+    "unprotected",
+    "uniform L2",
+    "randomly permuted Fisher"
+  ],
+  "exploratory": true,
+  "hyperparameters_selected_on": "discovery-subject history-to-future episodes",
+  "outcome_future_labels_used_for_adaptation_or_selection": false,
+  "source_checkpoints": [
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-0\\seed-0\\trajectory\\epoch-054.pt",
+      "fold": 0,
+      "source_future_target_subjects_used": false
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-1\\seed-0\\trajectory\\epoch-054.pt",
+      "fold": 1,
+      "source_future_target_subjects_used": false
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-2\\seed-0\\trajectory\\epoch-025.pt",
+      "fold": 2,
+      "source_future_target_subjects_used": false
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-3\\seed-0\\trajectory\\epoch-047.pt",
+      "fold": 3,
+      "source_future_target_subjects_used": false
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-4\\seed-0\\trajectory\\epoch-044.pt",
+      "fold": 4,
+      "source_future_target_subjects_used": false
+    }
+  ],
+  "target_history_labels_used_for_adaptation": true
+}

@@ -1,0 +1,8 @@
+{
+  "OUTER_TEST_USED": false,
+  "PERSIST_gate": "accept only if mean history-CV BA improves >=1 pp and worst fold delta >=-5 pp",
+  "future_S2_labels_used_for_selection_or_fit": false,
+  "generic_rule": "best history-CV ridge head and anchor blend",
+  "history": "outcome subject S1 labels and MI-backbone representations only",
+  "selection": "five-fold stratified S1-only cross-validation independently per subject"
+}

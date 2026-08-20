@@ -1,0 +1,1 @@
+"""Legality-checked benchmark protocols."""

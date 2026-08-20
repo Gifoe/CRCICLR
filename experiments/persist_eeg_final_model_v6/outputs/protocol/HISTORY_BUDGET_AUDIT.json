@@ -1,0 +1,16 @@
+{
+  "OUTER_TEST_USED": false,
+  "OpenBMI": {
+    "K": 1,
+    "future_evaluation": "all 100 MI trials from Session 2",
+    "future_labels_available_to_adapter": false,
+    "target_history": "all 100 labeled MI trials from Session 1"
+  },
+  "WBCIC": {
+    "K": 2,
+    "future_evaluation": "Session 3",
+    "future_labels_available_to_adapter": false,
+    "target_history": "all labeled MI trials from Sessions 1 and 2"
+  },
+  "matched_baseline_rule": "Every headline comparator receives the identical target-history labels used by V6."
+}

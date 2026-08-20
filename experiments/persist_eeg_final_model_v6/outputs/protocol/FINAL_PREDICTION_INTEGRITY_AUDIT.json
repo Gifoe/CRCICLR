@@ -1,0 +1,142 @@
+{
+  "OUTER_TEST_USED": false,
+  "all_valid": true,
+  "checks": [
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "OpenBMI",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "B_HISTORY_FUSION_LDA",
+      "subjects": 54,
+      "target_future_labels_used_for_fit": false,
+      "trials": 5400,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "OpenBMI",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "B_POPULATION_LINEAR",
+      "subjects": 54,
+      "target_future_labels_used_for_fit": false,
+      "trials": 5400,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "OpenBMI",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "MI_SPECIFIC_BACKBONE_ADAPTED",
+      "subjects": 54,
+      "target_future_labels_used_for_fit": false,
+      "trials": 5400,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "OpenBMI",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "PERSIST_MI_SELECTIVE_HISTORY_HEAD",
+      "subjects": 54,
+      "target_future_labels_used_for_fit": false,
+      "trials": 5400,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "WBCIC",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "B_EEGNET_FROZEN_HEAD",
+      "subjects": 41,
+      "target_future_labels_used_for_fit": false,
+      "trials": 8195,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "WBCIC",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "V5_CS_LGS_ANCHOR",
+      "subjects": 41,
+      "target_future_labels_used_for_fit": false,
+      "trials": 8195,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "WBCIC",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED",
+      "subjects": 41,
+      "target_future_labels_used_for_fit": false,
+      "trials": 8195,
+      "valid": true
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "WBCIC",
+      "duplicate_trial_uids": 0,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "method_id": "V6_V5_UNCERTAINTY_GATE_010",
+      "subjects": 41,
+      "target_future_labels_used_for_fit": false,
+      "trials": 8195,
+      "valid": true
+    }
+  ]
+}

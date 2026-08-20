@@ -1,0 +1,31 @@
+{
+  "OUTER_TEST_USED": false,
+  "exploratory": true,
+  "outcome_future_labels_used_for_adaptation_or_selection": false,
+  "paired_control_seed": "identical minibatch permutation for generic, uniform, random-Fisher, and Fisher methods within fold/subject",
+  "recovery_reason": "The complete discovery search finished, then summarization failed because frozen fold 2 omitted protection method IDs.",
+  "recovery_scope": "locked outcome configurations only; no outcome label was used for selection",
+  "source_checkpoints": [
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_WBCIC_EEGNET\\experiments\\persist_eeg_wbcic_actionability_v2\\outputs\\model\\competence\\EEGNET_STABLE_fold-0.pt",
+      "fold": 0
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_WBCIC_EEGNET\\experiments\\persist_eeg_wbcic_actionability_v2\\outputs\\model\\competence\\EEGNET_STABLE_fold-1.pt",
+      "fold": 1
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_WBCIC_EEGNET\\experiments\\persist_eeg_wbcic_actionability_v2\\outputs\\model\\competence\\EEGNET_STABLE_fold-2.pt",
+      "fold": 2
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_WBCIC_EEGNET\\experiments\\persist_eeg_wbcic_actionability_v2\\outputs\\model\\competence\\EEGNET_STABLE_fold-3.pt",
+      "fold": 3
+    },
+    {
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_WBCIC_EEGNET\\experiments\\persist_eeg_wbcic_actionability_v2\\outputs\\model\\competence\\EEGNET_STABLE_fold-4.pt",
+      "fold": 4
+    }
+  ],
+  "target_history_labels_used_for_adaptation": true
+}

@@ -1,0 +1,21 @@
+{
+  "OUTER_TEST_USED": false,
+  "PERSIST_protection": "diagonal empirical Fisher with identical paired optimization controls",
+  "best_PERSIST_methods": {
+    "OpenBMI": "PERSIST_MI_SELECTIVE_HISTORY_HEAD",
+    "WBCIC": "V6_V5_UNCERTAINTY_GATE_010"
+  },
+  "best_legal_methods": {
+    "OpenBMI": "MI_SPECIFIC_BACKBONE_ADAPTED",
+    "WBCIC": "V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED"
+  },
+  "core_backbone_family": "MI-specific EEGNet; enlarged 2x-width candidate tested on both benchmarks",
+  "harmful_subspace": "empty",
+  "name": "PERSIST-SA V6 exploratory candidate",
+  "outer_test_used": false,
+  "suppression": 0.0,
+  "target_history": {
+    "OpenBMI": "S1 labeled",
+    "WBCIC": "S1/S2 labeled"
+  }
+}
