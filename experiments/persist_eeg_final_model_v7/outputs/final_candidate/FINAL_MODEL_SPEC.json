@@ -1,0 +1,25 @@
+{
+  "OUTER_TEST_USED": false,
+  "PERSIST_context": [
+    "P",
+    "U",
+    "D",
+    "G",
+    "R"
+  ],
+  "adaptation_components": {
+    "OpenBMI": 17,
+    "WBCIC": 18
+  },
+  "backbone": "fold-compatible encoder; strongest observed generic control is anchor + compact EEG-Conformer head",
+  "history_depth": {
+    "OpenBMI": 1,
+    "WBCIC": 2
+  },
+  "provisional_name": "PERSIST-Meta: Future-Utility-Guided Selective Meta-Adaptation",
+  "reason_not_frozen": "PERSIST does not beat the strongest generic control and the +5 pp matched target is missed on both benchmarks.",
+  "risk_policy": "mu - kappa*sigma - threshold; PRESERVE when non-positive",
+  "status": "NOT_FROZEN_FOR_OUTER",
+  "suppression_enabled": false,
+  "utility_controller": "capacity-matched Ridge/ExtraTrees grouped-subject cross-fitting"
+}

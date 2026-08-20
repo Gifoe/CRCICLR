@@ -1,0 +1,68 @@
+{
+  "OpenBMI": {
+    "EEGNet_reference_BA": 0.752962962962963,
+    "PERSIST_vs_capacity_matched_META_GENERIC": {
+      "CI95_L": -0.0012962962962963015,
+      "CI95_U": 0.0033333333333333344,
+      "Delta_BA": 0.0009259259259259247,
+      "bootstrap_draws": 20000,
+      "median_subject_delta": 0.0,
+      "nonnegative_subject_fraction": 0.8703703703703703,
+      "positive_subject_fraction": 0.16666666666666666,
+      "subjects": 54,
+      "worst_subject_delta": -0.020000000000000018
+    },
+    "V6_strong_anchor_BA": 0.832037037037037,
+    "best_PERSIST_BA": 0.836851851851852,
+    "best_PERSIST_method": "ANCHOR_BLEND_PERSIST_META",
+    "plus_5pp_over_EEGNet": true,
+    "strongest_fair_V7_BA": 0.8377777777777777,
+    "strongest_fair_V7_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+    "strongest_generic_vs_V6_anchor": {
+      "CI95_L": -0.006296296296296298,
+      "CI95_U": 0.016851851851851833,
+      "Delta_BA": 0.005740740740740734,
+      "bootstrap_draws": 20000,
+      "median_subject_delta": 0.010000000000000064,
+      "nonnegative_subject_fraction": 0.6481481481481481,
+      "positive_subject_fraction": 0.6111111111111112,
+      "subjects": 54,
+      "worst_subject_delta": -0.14
+    },
+    "target_BA": 0.882037037037037,
+    "target_reached": false
+  },
+  "WBCIC": {
+    "EEGNet_reference_BA": 0.794354982754373,
+    "PERSIST_vs_capacity_matched_META_GENERIC": {
+      "CI95_L": -0.003161800936191174,
+      "CI95_U": 0.008432718957871385,
+      "Delta_BA": 0.002326003941857598,
+      "bootstrap_draws": 20000,
+      "median_subject_delta": 0.0,
+      "nonnegative_subject_fraction": 0.7804878048780488,
+      "positive_subject_fraction": 0.21951219512195122,
+      "subjects": 41,
+      "worst_subject_delta": -0.05500000000000005
+    },
+    "V6_strong_anchor_BA": 0.8208170115792067,
+    "best_PERSIST_BA": 0.8216796008869179,
+    "best_PERSIST_method": "ANCHOR_PLUS_PERSIST_META_RESIDUAL",
+    "plus_5pp_over_EEGNet": false,
+    "strongest_fair_V7_BA": 0.8249672025129341,
+    "strongest_fair_V7_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+    "strongest_generic_vs_V6_anchor": {
+      "CI95_L": -0.0019473700418822495,
+      "CI95_U": 0.010369703128849467,
+      "Delta_BA": 0.004150190933727504,
+      "bootstrap_draws": 20000,
+      "median_subject_delta": 0.00015782828282828731,
+      "nonnegative_subject_fraction": 0.5609756097560976,
+      "positive_subject_fraction": 0.5121951219512195,
+      "subjects": 41,
+      "worst_subject_delta": -0.04500000000000004
+    },
+    "target_BA": 0.8708170115792067,
+    "target_reached": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "OUTER_TEST_USED": false,
+  "existing_expert_oracle_headroom": {
+    "OpenBMI": {
+      "anchor_BA": 0.832037,
+      "candidate_count": 23,
+      "headroom_pp": 2.4815,
+      "oracle_BA": 0.856852
+    },
+    "WBCIC": {
+      "anchor_BA": 0.820817,
+      "candidate_count": 39,
+      "headroom_pp": 2.0989,
+      "oracle_BA": 0.841806
+    },
+    "interpretation": "A new selector over V1-V6 experts cannot reach the V7 +5 pp target.",
+    "used_to_tune_selector": false
+  },
+  "files": {
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\FINAL_DECISION.json": "acf73cba16d5f9c339c321f66541c0b46c13caebf3656ded7c74c43aacc47cae",
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\final_candidate\\DEVELOPMENT_RESULTS.json": "179b5f7d023e2cce0dfb7680f9a48462b5bfcd0490a7c853d31bc3783b479ed6",
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\protocol\\FINAL_PREDICTION_INTEGRITY_AUDIT.json": "5b2004b340dd402eb5ff35ca24296b6dd6d5d72d0d4ed08247999044b15ddf87"
+  },
+  "source_commit": "c8413beff50912777f1f58180a99ffbdeff21637",
+  "source_terminal_state": "V6_OPENBMI_TARGET_ONLY"
+}

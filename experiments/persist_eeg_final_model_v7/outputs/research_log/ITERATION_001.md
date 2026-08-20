@@ -1,0 +1,31 @@
+# Iteration 001 — coarse future-utility meta-adaptation
+
+This iteration evaluates calibration, subject heads, shrinkage LDA, prototype transport, module-wise Meta-SGD, and eight projected-gradient components. Population heads and utility controllers are subject-group cross-fitted. Outcome future labels never fit the policy.
+
+## OpenBMI
+
+```text
+          benchmark                         method_id  subjects  mean_subject_BA  mean_subject_NLL          reference_method_id  Delta_BA  positive_subject_fraction  nonnegative_subject_fraction  worst_subject_delta  positive_fold_fraction  target_future_labels_used_for_fit  OUTER_TEST_USED
+OpenBMI_MI_S1_to_S2         ANCHOR_BLEND_PERSIST_META        54         0.836852          0.412635 MI_SPECIFIC_BACKBONE_ADAPTED  0.004815                   0.351852                      0.703704                -0.05                     0.6                              False            False
+OpenBMI_MI_S1_to_S2         ANCHOR_BLEND_META_GENERIC        54         0.835926          0.415492 MI_SPECIFIC_BACKBONE_ADAPTED  0.003889                   0.407407                      0.666667                -0.05                     0.8                              False            False
+OpenBMI_MI_S1_to_S2 ANCHOR_PLUS_META_GENERIC_RESIDUAL        54         0.833519          0.408947 MI_SPECIFIC_BACKBONE_ADAPTED  0.001481                   0.166667                      0.944444                -0.03                     0.6                              False            False
+OpenBMI_MI_S1_to_S2 ANCHOR_PLUS_PERSIST_META_RESIDUAL        54         0.832593          0.407821 MI_SPECIFIC_BACKBONE_ADAPTED  0.000556                   0.203704                      0.796296                -0.03                     0.4                              False            False
+OpenBMI_MI_S1_to_S2      MI_SPECIFIC_BACKBONE_ADAPTED        54         0.832037          0.413667 MI_SPECIFIC_BACKBONE_ADAPTED  0.000000                   0.000000                      1.000000                 0.00                     0.0                              False            False
+OpenBMI_MI_S1_to_S2                      PERSIST_META        54         0.830185          0.444141 MI_SPECIFIC_BACKBONE_ADAPTED -0.001852                   0.296296                      0.537037                -0.09                     0.2                              False            False
+OpenBMI_MI_S1_to_S2                      META_GENERIC        54         0.830000          0.451821 MI_SPECIFIC_BACKBONE_ADAPTED -0.002037                   0.333333                      0.555556                -0.10                     0.4                              False            False
+OpenBMI_MI_S1_to_S2                   V7_FEATURE_BASE        54         0.828519          0.460690 MI_SPECIFIC_BACKBONE_ADAPTED -0.003519                   0.277778                      0.574074                -0.09                     0.2                              False            False
+```
+
+## WBCIC development
+
+```text
+                              benchmark                                             method_id  subjects  mean_subject_BA  mean_subject_NLL                                   reference_method_id  Delta_BA  positive_subject_fraction  nonnegative_subject_fraction  worst_subject_delta  positive_fold_fraction  target_future_labels_used_for_fit  OUTER_TEST_USED
+WBCIC_S1S2_to_S3_authorized_development                     ANCHOR_PLUS_PERSIST_META_RESIDUAL        41         0.821680          0.353635 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED  0.000863                   0.243902                      0.756098               -0.070                     0.4                              False            False
+WBCIC_S1S2_to_S3_authorized_development V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED        41         0.820817          0.349142 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED  0.000000                   0.000000                      1.000000                0.000                     0.0                              False            False
+WBCIC_S1S2_to_S3_authorized_development                     ANCHOR_PLUS_META_GENERIC_RESIDUAL        41         0.819354          0.355584 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED -0.001463                   0.243902                      0.829268               -0.070                     0.4                              False            False
+WBCIC_S1S2_to_S3_authorized_development                             ANCHOR_BLEND_META_GENERIC        41         0.814966          0.365188 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED -0.005851                   0.317073                      0.439024               -0.065                     0.0                              False            False
+WBCIC_S1S2_to_S3_authorized_development                             ANCHOR_BLEND_PERSIST_META        41         0.813625          0.362314 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED -0.007193                   0.268293                      0.414634               -0.065                     0.0                              False            False
+WBCIC_S1S2_to_S3_authorized_development                                          PERSIST_META        41         0.796423          0.391952 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED -0.024394                   0.097561                      0.146341               -0.130                     0.0                              False            False
+WBCIC_S1S2_to_S3_authorized_development                                          META_GENERIC        41         0.795326          0.398137 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED -0.025492                   0.121951                      0.121951               -0.120                     0.0                              False            False
+WBCIC_S1S2_to_S3_authorized_development                                       V7_FEATURE_BASE        41         0.793374          0.408026 V5_FIXED_LOGIT_BLEND__A_FUTURE_SESSION_TARGET_ADAPTED -0.027443                   0.121951                      0.195122               -0.125                     0.0                              False            False
+```

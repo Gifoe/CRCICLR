@@ -1,0 +1,42 @@
+{
+  "openbmi": {
+    "OUTER_TEST_USED": false,
+    "anchor_BA": 0.8320370370370371,
+    "benchmark": "openbmi",
+    "best_global_equal_weight_subset": {
+      "NLL": 0.35044137561782546,
+      "OUTER_TEST_USED": false,
+      "benchmark": "openbmi",
+      "experts": 3,
+      "mean_subject_BA": 0.8427777777777777,
+      "outcome_labels_used_to_rank_subset": true,
+      "subset": "identity_head+conformer_head+initial_persist",
+      "used_to_tune_router": false
+    },
+    "outcome_labels_used_for_headroom_only": true,
+    "subject_oracle_BA": 0.8525925925925928,
+    "subject_oracle_headroom_pp": 2.055555555555566,
+    "trial_oracle_accuracy": 0.9522222222222222,
+    "used_to_tune_router": false
+  },
+  "wbcic": {
+    "OUTER_TEST_USED": false,
+    "anchor_BA": 0.8208170115792067,
+    "benchmark": "wbcic",
+    "best_global_equal_weight_subset": {
+      "NLL": 0.33991944767072463,
+      "OUTER_TEST_USED": false,
+      "benchmark": "wbcic",
+      "experts": 3,
+      "mean_subject_BA": 0.8258233247105198,
+      "outcome_labels_used_to_rank_subset": true,
+      "subset": "anchor+conformer_head+initial_persist",
+      "used_to_tune_router": false
+    },
+    "outcome_labels_used_for_headroom_only": true,
+    "subject_oracle_BA": 0.8346064301552109,
+    "subject_oracle_headroom_pp": 1.378941857600413,
+    "trial_oracle_accuracy": 0.922391702257474,
+    "used_to_tune_router": false
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "OUTER_TEST_USED": false,
+  "PERSIST_increment_over_capacity_matched_META_GENERIC_point_estimate": true,
+  "PERSIST_increment_over_capacity_matched_META_GENERIC_statistically_resolved": false,
+  "PERSIST_increment_over_strongest_generic": false,
+  "PERSIST_utility_signal_found": true,
+  "READY_FOR_OUTER_FREEZE": false,
+  "action_summary": [
+    {
+      "adapt_fraction": 0.42592592592592593,
+      "benchmark": "OpenBMI_MI_S1_to_S2",
+      "harmful_subject_fraction": 0.09259259259259259,
+      "mode": "META_GENERIC",
+      "worst_subject_delta": -0.02
+    },
+    {
+      "adapt_fraction": 0.7037037037037037,
+      "benchmark": "OpenBMI_MI_S1_to_S2",
+      "harmful_subject_fraction": 0.14814814814814814,
+      "mode": "PERSIST_META",
+      "worst_subject_delta": -0.02
+    },
+    {
+      "adapt_fraction": 0.6097560975609756,
+      "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+      "harmful_subject_fraction": 0.1951219512195122,
+      "mode": "META_GENERIC",
+      "worst_subject_delta": -0.01
+    },
+    {
+      "adapt_fraction": 0.8536585365853658,
+      "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+      "harmful_subject_fraction": 0.21951219512195122,
+      "mode": "PERSIST_META",
+      "worst_subject_delta": -0.025
+    }
+  ],
+  "benchmarks": {
+    "OpenBMI": {
+      "EEGNet_reference_BA": 0.752962962962963,
+      "PERSIST_vs_capacity_matched_META_GENERIC": {
+        "CI95_L": -0.0012962962962963015,
+        "CI95_U": 0.0033333333333333344,
+        "Delta_BA": 0.0009259259259259247,
+        "bootstrap_draws": 20000,
+        "median_subject_delta": 0.0,
+        "nonnegative_subject_fraction": 0.8703703703703703,
+        "positive_subject_fraction": 0.16666666666666666,
+        "subjects": 54,
+        "worst_subject_delta": -0.020000000000000018
+      },
+      "V6_strong_anchor_BA": 0.832037037037037,
+      "best_PERSIST_BA": 0.836851851851852,
+      "best_PERSIST_method": "ANCHOR_BLEND_PERSIST_META",
+      "plus_5pp_over_EEGNet": true,
+      "strongest_fair_V7_BA": 0.8377777777777777,
+      "strongest_fair_V7_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "strongest_generic_vs_V6_anchor": {
+        "CI95_L": -0.006296296296296298,
+        "CI95_U": 0.016851851851851833,
+        "Delta_BA": 0.005740740740740734,
+        "bootstrap_draws": 20000,
+        "median_subject_delta": 0.010000000000000064,
+        "nonnegative_subject_fraction": 0.6481481481481481,
+        "positive_subject_fraction": 0.6111111111111112,
+        "subjects": 54,
+        "worst_subject_delta": -0.14
+      },
+      "target_BA": 0.882037037037037,
+      "target_reached": false
+    },
+    "WBCIC": {
+      "EEGNet_reference_BA": 0.794354982754373,
+      "PERSIST_vs_capacity_matched_META_GENERIC": {
+        "CI95_L": -0.003161800936191174,
+        "CI95_U": 0.008432718957871385,
+        "Delta_BA": 0.002326003941857598,
+        "bootstrap_draws": 20000,
+        "median_subject_delta": 0.0,
+        "nonnegative_subject_fraction": 0.7804878048780488,
+        "positive_subject_fraction": 0.21951219512195122,
+        "subjects": 41,
+        "worst_subject_delta": -0.05500000000000005
+      },
+      "V6_strong_anchor_BA": 0.8208170115792067,
+      "best_PERSIST_BA": 0.8216796008869179,
+      "best_PERSIST_method": "ANCHOR_PLUS_PERSIST_META_RESIDUAL",
+      "plus_5pp_over_EEGNet": false,
+      "strongest_fair_V7_BA": 0.8249672025129341,
+      "strongest_fair_V7_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "strongest_generic_vs_V6_anchor": {
+        "CI95_L": -0.0019473700418822495,
+        "CI95_U": 0.010369703128849467,
+        "Delta_BA": 0.004150190933727504,
+        "bootstrap_draws": 20000,
+        "median_subject_delta": 0.00015782828282828731,
+        "nonnegative_subject_fraction": 0.5609756097560976,
+        "positive_subject_fraction": 0.5121951219512195,
+        "subjects": 41,
+        "worst_subject_delta": -0.04500000000000004
+      },
+      "target_BA": 0.8708170115792067,
+      "target_reached": false
+    }
+  },
+  "development_outcomes_observed_between_structural_iterations": true,
+  "development_status": "adaptive_exploratory",
+  "distinct_structural_families_attempted": 9,
+  "dual_target_reached": false,
+  "new_expert_headroom": {
+    "openbmi": {
+      "OUTER_TEST_USED": false,
+      "anchor_BA": 0.8320370370370371,
+      "benchmark": "openbmi",
+      "best_global_equal_weight_subset": {
+        "NLL": 0.35044137561782546,
+        "OUTER_TEST_USED": false,
+        "benchmark": "openbmi",
+        "experts": 3,
+        "mean_subject_BA": 0.8427777777777777,
+        "outcome_labels_used_to_rank_subset": true,
+        "subset": "identity_head+conformer_head+initial_persist",
+        "used_to_tune_router": false
+      },
+      "outcome_labels_used_for_headroom_only": true,
+      "subject_oracle_BA": 0.8525925925925928,
+      "subject_oracle_headroom_pp": 2.055555555555566,
+      "trial_oracle_accuracy": 0.9522222222222222,
+      "used_to_tune_router": false
+    },
+    "wbcic": {
+      "OUTER_TEST_USED": false,
+      "anchor_BA": 0.8208170115792067,
+      "benchmark": "wbcic",
+      "best_global_equal_weight_subset": {
+        "NLL": 0.33991944767072463,
+        "OUTER_TEST_USED": false,
+        "benchmark": "wbcic",
+        "experts": 3,
+        "mean_subject_BA": 0.8258233247105198,
+        "outcome_labels_used_to_rank_subset": true,
+        "subset": "anchor+conformer_head+initial_persist",
+        "used_to_tune_router": false
+      },
+      "outcome_labels_used_for_headroom_only": true,
+      "subject_oracle_BA": 0.8346064301552109,
+      "subject_oracle_headroom_pp": 1.378941857600413,
+      "trial_oracle_accuracy": 0.922391702257474,
+      "used_to_tune_router": false
+    }
+  },
+  "one_seed_exploratory": true,
+  "real_harmful_subspace_certified": false,
+  "scientific_exhaustion_scope": "Within one-seed heavily reused development data and the authorized V1-V7 model/covariance caches. Further tuning would chiefly reuse the same outcomes; credible progress now requires fresh confirmation or a pre-registered new backbone study.",
+  "secondary_state": "V7_PERSIST_UTILITY_SIGNAL_FOUND",
+  "suppression_used": false,
+  "synthetic_positive_control": {
+    "OUTER_TEST_USED": false,
+    "adaptable_sensitivity": 1.0,
+    "harmful_rejection_rate": 1.0,
+    "protected_specificity": 1.0,
+    "real_EEG_evidence": false,
+    "synthetic_only": true,
+    "utility_predictability": {
+      "controller_id": "RIDGE_A1",
+      "cross_fitted": true,
+      "mode": "PERSIST_META",
+      "positive_target_fraction": 0.475,
+      "rows": 720,
+      "subjects": 240,
+      "utility_R2": 0.9549845346637392,
+      "utility_pearson": 0.9772332735145123,
+      "utility_sign_accuracy": 0.8652777777777778,
+      "utility_spearman": 0.8989239948379528
+    }
+  },
+  "terminal_state": "V7_SCIENTIFIC_EXHAUSTION",
+  "utility_predictability": {
+    "OpenBMI_MI_S1_to_S2": {
+      "META_GENERIC": {
+        "outcome_utility_pearson": -0.1796871726197593,
+        "outcome_utility_sign_accuracy": 0.47276688453159044,
+        "utility_R2": -0.026536196728373675,
+        "utility_pearson": 0.1717522673806191,
+        "utility_sign_accuracy": 0.5781391203415825,
+        "utility_spearman": 0.17733287626071195
+      },
+      "PERSIST_META": {
+        "outcome_utility_pearson": -0.05512716468166727,
+        "outcome_utility_sign_accuracy": 0.5370370370370371,
+        "utility_R2": 0.027951462810997838,
+        "utility_pearson": 0.21906328669007688,
+        "utility_sign_accuracy": 0.5883099117025244,
+        "utility_spearman": 0.2354838029272836
+      }
+    },
+    "WBCIC_S1S2_to_S3_authorized_development": {
+      "META_GENERIC": {
+        "outcome_utility_pearson": 0.491918501858719,
+        "outcome_utility_sign_accuracy": 0.6192411924119241,
+        "utility_R2": 0.05764505633339037,
+        "utility_pearson": 0.29565777211900574,
+        "utility_sign_accuracy": 0.6013222502805837,
+        "utility_spearman": 0.25125702801934496
+      },
+      "PERSIST_META": {
+        "outcome_utility_pearson": 0.5345612386426202,
+        "outcome_utility_sign_accuracy": 0.6395663956639567,
+        "utility_R2": 0.11175215331597564,
+        "utility_pearson": 0.33942919291533596,
+        "utility_sign_accuracy": 0.6114583333333333,
+        "utility_spearman": 0.3008415317845257
+      }
+    }
+  },
+  "within_run_outcome_future_labels_used_for_fit_or_selection": false
+}

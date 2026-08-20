@@ -1,0 +1,107 @@
+{
+  "10_harm_reduction": "No consistent reduction.",
+  "11_worst_subject": "No consistent improvement versus strongest generic.",
+  "12_OpenBMI_plus5_matched": false,
+  "13_WBCIC_plus5_matched": false,
+  "14_same_algorithm_K1_K2": true,
+  "15_preserve_adapt_fraction": [
+    {
+      "adapt_fraction": 0.42592592592592593,
+      "benchmark": "OpenBMI_MI_S1_to_S2",
+      "harmful_subject_fraction": 0.09259259259259259,
+      "mode": "META_GENERIC",
+      "worst_subject_delta": -0.02
+    },
+    {
+      "adapt_fraction": 0.7037037037037037,
+      "benchmark": "OpenBMI_MI_S1_to_S2",
+      "harmful_subject_fraction": 0.14814814814814814,
+      "mode": "PERSIST_META",
+      "worst_subject_delta": -0.02
+    },
+    {
+      "adapt_fraction": 0.6097560975609756,
+      "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+      "harmful_subject_fraction": 0.1951219512195122,
+      "mode": "META_GENERIC",
+      "worst_subject_delta": -0.01
+    },
+    {
+      "adapt_fraction": 0.8536585365853658,
+      "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+      "harmful_subject_fraction": 0.21951219512195122,
+      "mode": "PERSIST_META",
+      "worst_subject_delta": -0.025
+    }
+  ],
+  "16_suppression_needed": false,
+  "17_V6_failure_resolved": "Utility prediction gained a PERSIST signal, but the performance failure was not resolved.",
+  "18_backbone_gain_pp": {
+    "OpenBMI": 0.5740740740740734,
+    "WBCIC": 0.4150190933727504
+  },
+  "19_generic_history_adaptation": "Conformer fixed history head is part of the strongest generic ensemble.",
+  "1_strongest_OpenBMI": {
+    "BA": 0.8377777777777777,
+    "method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD"
+  },
+  "20_meta_learning": "Initial selective controller improves its feature base slightly but remains below the strong anchor.",
+  "21_unique_PERSIST": "Better utility predictability and small matched-family point estimates; no robust gain over strongest generic.",
+  "22_illegal_future_labels": "No future label entered an outcome-subject fit within a run. However, development outcomes were inspected between structural iterations, so every V7 estimate is adaptive/exploratory and not confirmatory.",
+  "23_WBCIC_outer_touched": false,
+  "24_distinct_families": 9,
+  "25_failure_causes": "insufficient component oracle headroom; EA/session alignment erase useful persistent geometry; FBC/hypernetwork overfit meta subjects; generic Conformer diversity helps only modestly",
+  "26_exhaustion": "Within one-seed heavily reused development data and the authorized V1-V7 model/covariance caches. Further tuning would chiefly reuse the same outcomes; credible progress now requires fresh confirmation or a pre-registered new backbone study.",
+  "2_strongest_WBCIC": {
+    "BA": 0.8249672025129341,
+    "method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD"
+  },
+  "3_generic_meta_beats_ordinary": "No consistently; Conformer generic ensemble is strongest, initial META-GENERIC is weaker.",
+  "4_future_utility_predictable": "Weakly. WBCIC yes at modest correlation; OpenBMI does not transfer reliably to outcome.",
+  "5_metrics": {
+    "OpenBMI_MI_S1_to_S2": {
+      "META_GENERIC": {
+        "outcome_utility_pearson": -0.1796871726197593,
+        "outcome_utility_sign_accuracy": 0.47276688453159044,
+        "utility_R2": -0.026536196728373675,
+        "utility_pearson": 0.1717522673806191,
+        "utility_sign_accuracy": 0.5781391203415825,
+        "utility_spearman": 0.17733287626071195
+      },
+      "PERSIST_META": {
+        "outcome_utility_pearson": -0.05512716468166727,
+        "outcome_utility_sign_accuracy": 0.5370370370370371,
+        "utility_R2": 0.027951462810997838,
+        "utility_pearson": 0.21906328669007688,
+        "utility_sign_accuracy": 0.5883099117025244,
+        "utility_spearman": 0.2354838029272836
+      }
+    },
+    "WBCIC_S1S2_to_S3_authorized_development": {
+      "META_GENERIC": {
+        "outcome_utility_pearson": 0.491918501858719,
+        "outcome_utility_sign_accuracy": 0.6192411924119241,
+        "utility_R2": 0.05764505633339037,
+        "utility_pearson": 0.29565777211900574,
+        "utility_sign_accuracy": 0.6013222502805837,
+        "utility_spearman": 0.25125702801934496
+      },
+      "PERSIST_META": {
+        "outcome_utility_pearson": 0.5345612386426202,
+        "outcome_utility_sign_accuracy": 0.6395663956639567,
+        "utility_R2": 0.11175215331597564,
+        "utility_pearson": 0.33942919291533596,
+        "utility_sign_accuracy": 0.6114583333333333,
+        "utility_spearman": 0.3008415317845257
+      }
+    }
+  },
+  "6_best_granularity": "coarse calibration/full-gradient on OpenBMI and low-C ridge/prototype on WBCIC; none has target-level oracle headroom",
+  "7_PUDG_improve_prediction": true,
+  "7_qualification": "Improvement is an average over correlated one-seed adaptive-development configurations; it is not independent confirmation.",
+  "8_PERSIST_beats_META_GENERIC": "Point estimates within the initial matched family only; not the strongest generic control.",
+  "9_increment_pp": {
+    "OpenBMI_initial_matched": 0.09259259259259246,
+    "WBCIC_initial_matched": 0.2326003941857598
+  }
+}
