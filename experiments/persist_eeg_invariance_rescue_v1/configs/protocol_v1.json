@@ -1,0 +1,41 @@
+{
+  "protocol_version": "INVARIANCE_RESCUE_V1",
+  "dataset": "OpenBMI_nm000273_MI",
+  "development_folds": [0, 1, 2],
+  "seeds": [0, 1],
+  "model_fit_subject_count": 28,
+  "calibration_subject_count": 6,
+  "outcome_role": "existing_validation_subjects",
+  "train_sessions": [1, 2],
+  "calibration_session": 2,
+  "outcome_session": 2,
+  "subject_probe_train_session": 1,
+  "subject_probe_eval_session": 2,
+  "grl_lambdas": [0.05, 0.1, 0.3, 1.0],
+  "primary_grl_lambda": 0.3,
+  "embedding_dim": 64,
+  "training": {
+    "full_max_epochs": 20,
+    "full_min_epochs": 6,
+    "full_patience": 5,
+    "smoke_max_epochs": 8,
+    "smoke_min_epochs": 3,
+    "smoke_patience": 3,
+    "gradient_clip": 5.0,
+    "family_hyperparameters": {
+      "A": {"batch_size": 256, "learning_rate": 0.0002, "weight_decay": 0.001},
+      "B": {"batch_size": 192, "learning_rate": 0.0005, "weight_decay": 0.01},
+      "C": {"batch_size": 64, "learning_rate": 0.001, "weight_decay": 0.001}
+    }
+  },
+  "eeg_dg_weights": {"marginal_mmd": 0.1, "conditional_alignment": 0.1, "domain_classification": 0.1},
+  "scldgn_weights": {"coral": 1.0, "supervised_contrastive": 0.1},
+  "scldgn_filter_bands_hz": [[4, 8], [8, 12], [12, 16], [16, 20], [20, 24], [24, 28], [28, 32], [32, 36], [36, 40]],
+  "spectrum": {"whitening_rank": 20, "max_block_rank": 4, "permutation_draws": 200, "inner_splits": 5, "per_group_cap": 32, "random_erasures": 100},
+  "rescue": {"random_draws": 20, "ridge_values": [0.001, 0.1, 1.0], "residual_scales": [0.25, 0.5, 1.0]},
+  "bootstrap_draws": 10000,
+  "fidelity_min_task_only_calibration_BA": 0.6,
+  "outer_split_field_read": false,
+  "outer_test_used": false
+}
+
