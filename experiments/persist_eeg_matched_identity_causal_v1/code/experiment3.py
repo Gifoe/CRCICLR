@@ -486,7 +486,7 @@ def match_controls(train_meta: pd.DataFrame, train_q: np.ndarray, spec: Mapping[
 
 
 def interpolate_alpha(curve: pd.DataFrame, target_drop: float) -> tuple[float, float]:
-    drops = curve.drop.to_numpy(float)
+    drops = curve["drop"].to_numpy(float)
     alphas = curve.alpha.to_numpy(float)
     finite = np.isfinite(drops)
     if not np.any(finite):
@@ -544,8 +544,8 @@ def build_train_only() -> dict[str, Any]:
                 c = identity_curve(mi_meta, mi_q, dims, splits[fold]["train_subjects"], fold, seed, str(row.control_id))
                 n_curves[str(row.control_id)] = c
                 all_curves.append(c)
-            p_max = float(np.nanmax(p_curve.drop))
-            n_maxes = {key: float(np.nanmax(value.drop)) for key, value in n_curves.items()}
+            p_max = float(np.nanmax(p_curve["drop"]))
+            n_maxes = {key: float(np.nanmax(value["drop"])) for key, value in n_curves.items()}
             common_max = float(min([p_max] + list(n_maxes.values())))
             if not np.isfinite(common_max) or common_max <= 0:
                 raise RuntimeError(f"IDENTITY_MATCH_FAILED fold={fold} seed={seed}: common train range={common_max}")
