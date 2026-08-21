@@ -1,0 +1,57 @@
+{
+  "accepted_count": 1,
+  "accepted_distance_max": 2.0,
+  "accepted_max_abs_z_max": 2.0,
+  "candidate_count": 1,
+  "controls": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  ],
+  "fold": 2,
+  "matching_features": [
+    "rho_mean",
+    "rho_std",
+    "coordinate_variance_mean",
+    "coordinate_energy_mean",
+    "train_identity_balanced_accuracy",
+    "dewhitened_direction_norm_mean",
+    "train_task_margin_magnitude"
+  ],
+  "matching_rule": "top_k_train_only_standardized_structural_distance",
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "pool": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "protected_block_ids": [
+    5,
+    6
+  ],
+  "protected_coordinate_ids": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "rank": 8,
+  "seed": 1
+}

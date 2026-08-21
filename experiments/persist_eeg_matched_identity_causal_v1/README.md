@@ -17,14 +17,22 @@ Run on the server (the data root is intentionally external to Git):
 ```text
 python experiments/persist_eeg_matched_identity_causal_v1/code/experiment3.py phase0
 python experiments/persist_eeg_matched_identity_causal_v1/code/experiment3.py train_only
-python experiments/persist_eeg_matched_identity_causal_v1/code/experiment3.py freeze
-python experiments/persist_eeg_matched_identity_causal_v1/code/experiment3.py final
-python experiments/persist_eeg_matched_identity_causal_v1/code/experiment3.py finalize
 ```
 
-`final` runs the frozen G0–G3, dose-response and random-control diagnostics.
-`finalize` is deterministic and should be run twice; the reproducibility audit
-checks lightweight output hashes.
+If `TRAIN_ONLY_DESIGN.json` is `TRAIN_ONLY_DESIGN_READY`, continue with
+`freeze`, `final` and `finalize`.  If it reports
+`MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE`, run the explicit `terminal` phase;
+it computes only the applicable held-out persistence audit and writes
+non-evaluated causal endpoint markers.
+
+`finalize` (or `terminal`) is deterministic and should be run twice; the
+reproducibility audit checks lightweight output hashes.
 
 The experiment can terminate with a negative scientific state.  No validation
 BA is used to change matching, dose, alpha, metric, or gate definitions.
+
+The current server closure is terminal: G0 passes (`R_persist` mean 0.5663,
+95% CI [0.4345, 0.7036]), but G1 fails for fold-2/seed-1 because its rank-8
+Protected assignment has only eight non-Protected persistence-supported
+coordinates, yielding one legal exact-rank control rather than the required
+20.  Therefore G2/G3 and the causal task endpoint are not evaluated.

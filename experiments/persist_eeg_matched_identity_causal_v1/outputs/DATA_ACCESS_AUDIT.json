@@ -1,0 +1,84 @@
+{
+  "authorized_scope": "development_train_and_development_validation_only",
+  "dataset": "OpenBMI_nm000273_MI",
+  "folds": [
+    {
+      "channels": [
+        62
+      ],
+      "fold": 0,
+      "materialized_rows": 187479,
+      "materialized_subjects": 43,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "paradigms": [
+        "erp",
+        "mi",
+        "ssvep"
+      ],
+      "sampling_rates": [
+        250.0
+      ],
+      "sessions": [
+        1,
+        2
+      ],
+      "train_subjects": 34,
+      "validation_subjects": 9
+    },
+    {
+      "channels": [
+        62
+      ],
+      "fold": 1,
+      "materialized_rows": 187479,
+      "materialized_subjects": 43,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "paradigms": [
+        "erp",
+        "mi",
+        "ssvep"
+      ],
+      "sampling_rates": [
+        250.0
+      ],
+      "sessions": [
+        1,
+        2
+      ],
+      "train_subjects": 34,
+      "validation_subjects": 9
+    },
+    {
+      "channels": [
+        62
+      ],
+      "fold": 2,
+      "materialized_rows": 187480,
+      "materialized_subjects": 43,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "paradigms": [
+        "erp",
+        "mi",
+        "ssvep"
+      ],
+      "sampling_rates": [
+        250.0
+      ],
+      "sessions": [
+        1,
+        2
+      ],
+      "train_subjects": 34,
+      "validation_subjects": 9
+    }
+  ],
+  "manifest_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_stage0\\manifests\\openbmi_trials.parquet",
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "split_file_sha256": "8f12709c53494c205eb3d1a314cdff02f77d70fdebfc0820ac8b122c3c1ae065",
+  "split_path": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\delivery\\persist_eeg_stage0\\SPLIT_FREEZE.json",
+  "stage0_root": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full"
+}

@@ -1,0 +1,550 @@
+{
+  "eligible_runs": [
+    {
+      "controls": 50,
+      "fold": 0,
+      "seed": 0
+    },
+    {
+      "controls": 50,
+      "fold": 0,
+      "seed": 1
+    },
+    {
+      "controls": 50,
+      "fold": 1,
+      "seed": 0
+    },
+    {
+      "controls": 50,
+      "fold": 1,
+      "seed": 1
+    },
+    {
+      "controls": 50,
+      "fold": 2,
+      "seed": 0
+    }
+  ],
+  "failed_runs": [
+    {
+      "accepted_controls": 1,
+      "candidate_count": 1,
+      "fold": 2,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "pool_size": 8,
+      "protected_block_ids": [
+        5,
+        6
+      ],
+      "protected_rank": 8,
+      "reason": "frozen non-Protected persistence-supported pool has fewer than the required 20 exact-rank controls",
+      "required_controls": 20,
+      "seed": 1
+    }
+  ],
+  "matching_distance_cutoff": null,
+  "matching_selection": "top_k_train_only_standardized_structural_distance",
+  "maximum_controls": 50,
+  "minimum_controls": 20,
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "runs": [
+    {
+      "accepted_controls": 50,
+      "assignment_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-0\\seed-0\\SIGNED_ASSIGNMENTS_V3_1.json",
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-0\\seed-0\\best.pt",
+      "checkpoint_sha256": "b10f0b4f0aa31f07525723c1e508665710304e8a7a3fd2bce6aa016149f7dafd",
+      "fold": 0,
+      "matching_status": "OK",
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "protected_block_ids": [
+        5
+      ],
+      "protected_coordinate_ids": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "seed": 0,
+      "spectrum_fingerprint": {
+        "arrays": {
+          "dewhitener": "c81168ab36fc121cff610b7014aa18c6752a6a554bc59146c5165dadbfba4d40",
+          "directions": "fe50b09a863e44df56362921f85baef34908d28c374a6207b45bb4c6a87038f2",
+          "mean": "c0610fae5b0e6d8ae0dc799270c8746d1cac1b29c449ca6840ada4ca255b6398",
+          "rho": "75f77b6ee6d3c2d5258185776b157324efc7f32084ce25d275354b9a543d6a77",
+          "whitener": "0b491fcdf6493c11cd66648a3fb1b3fa1e5e7d73176f0f873a5189ee2bc6bf7a"
+        },
+        "block_dimensions": [
+          1,
+          1,
+          2,
+          4,
+          4,
+          4,
+          4
+        ],
+        "blocks": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6,
+            7
+          ],
+          [
+            8,
+            9,
+            10,
+            11
+          ],
+          [
+            12,
+            13,
+            14,
+            15
+          ],
+          [
+            16,
+            17,
+            18,
+            19
+          ]
+        ],
+        "combined_arrays_sha256": "3ec992796d62ba43d27b22123ee72df5cf29a42cd9c80242cc2887c5177e114d",
+        "npz_sha256": "129567f93cc5b2c17f6142ddfb0dadd09342cf596195a6828e4104dea1a540e2"
+      },
+      "spectrum_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-0\\seed-0\\spectrum\\PERSISTENCE_SPECTRUM.npz",
+      "train_rows": 148239,
+      "validation_rows": 39240
+    },
+    {
+      "accepted_controls": 50,
+      "assignment_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-0\\seed-1\\SIGNED_ASSIGNMENTS_V3_1.json",
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-0\\seed-1\\best.pt",
+      "checkpoint_sha256": "0bda493f6e4943a5c46847459be1f2b0f50fb735dda7da272b17d23fc23eb39f",
+      "fold": 0,
+      "matching_status": "OK",
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "protected_block_ids": [
+        5,
+        6
+      ],
+      "protected_coordinate_ids": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "seed": 1,
+      "spectrum_fingerprint": {
+        "arrays": {
+          "dewhitener": "dbb89769939043332879621b7ae8f9ff158dc874638eb4e8f6ca58f22040176c",
+          "directions": "63d5d5c3c69431c2792e2694e309ae888f603c14959356e267b3e5b493873723",
+          "mean": "c3aa54f7c30d3a5c4120f3c821ac68ad5478954c68ec19cdb5fb5a9b7626957e",
+          "rho": "fdbd32a297722943fbdb5451e6491154a3e5611ea441d5134ea745d9fee8ecd5",
+          "whitener": "0ae86c5ac3eba24987aba3b2d87d37d2c1d87180ea0f8b0843a064845c437d0b"
+        },
+        "block_dimensions": [
+          1,
+          1,
+          3,
+          4,
+          4,
+          4,
+          3
+        ],
+        "blocks": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            9,
+            10,
+            11,
+            12
+          ],
+          [
+            13,
+            14,
+            15,
+            16
+          ],
+          [
+            17,
+            18,
+            19
+          ]
+        ],
+        "combined_arrays_sha256": "fb808909f5ff8e8aa7d0dd3950968c180d3a69bb256d5e6e323290e9528efb3c",
+        "npz_sha256": "db87a4f0193d3417fec2baa8b1cc276d078dc5b76eb0c2fcb740189613cd1d18"
+      },
+      "spectrum_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-0\\seed-1\\spectrum\\PERSISTENCE_SPECTRUM.npz",
+      "train_rows": 148239,
+      "validation_rows": 39240
+    },
+    {
+      "accepted_controls": 50,
+      "assignment_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-1\\seed-0\\SIGNED_ASSIGNMENTS_V3_1.json",
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-1\\seed-0\\best.pt",
+      "checkpoint_sha256": "4324cf3295ca74e4a35e42cdcb15b2817694786f0f87c321f82b16959c0306b7",
+      "fold": 1,
+      "matching_status": "OK",
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "protected_block_ids": [
+        4,
+        6
+      ],
+      "protected_coordinate_ids": [
+        9,
+        10,
+        11,
+        12,
+        17,
+        18,
+        19
+      ],
+      "seed": 0,
+      "spectrum_fingerprint": {
+        "arrays": {
+          "dewhitener": "938bbf26e1ccbc62953de6edb792b2d0f3184e42e03fd3fd68a5f3065f74db1c",
+          "directions": "d54a415e6a23a6ba3bcf25a0eae5e115938f0c348a2f21dc507e685714a1a9d0",
+          "mean": "c15e8f00877c2e2797dc3b783c2a869a897d96d4028e3be41579aa4dd26bf14b",
+          "rho": "4d68a67c94e82e78be58c2233ae86ab0712b382f046bdb62e3390854402d4778",
+          "whitener": "c019263e1723ea465fb01898ab6217e0117e8de3b05ca7533a4e9e4b665ee0e5"
+        },
+        "block_dimensions": [
+          1,
+          2,
+          2,
+          4,
+          4,
+          4,
+          3
+        ],
+        "blocks": [
+          [
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            9,
+            10,
+            11,
+            12
+          ],
+          [
+            13,
+            14,
+            15,
+            16
+          ],
+          [
+            17,
+            18,
+            19
+          ]
+        ],
+        "combined_arrays_sha256": "aa2117f2fc888bd03eba7f9e463030e0df10512d6ea2ee5aa40608439b3a54ad",
+        "npz_sha256": "37c689014d2052739ee7beb12e4f809f11fa2cdb53f88c0bcd075c5e5bdc6e83"
+      },
+      "spectrum_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-1\\seed-0\\spectrum\\PERSISTENCE_SPECTRUM.npz",
+      "train_rows": 148239,
+      "validation_rows": 39240
+    },
+    {
+      "accepted_controls": 50,
+      "assignment_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-1\\seed-1\\SIGNED_ASSIGNMENTS_V3_1.json",
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-1\\seed-1\\best.pt",
+      "checkpoint_sha256": "a1d3dbfec0e680a66f18d9442e4044cb22031778a7c14bcfd9634cf84974d476",
+      "fold": 1,
+      "matching_status": "OK",
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "protected_block_ids": [
+        4
+      ],
+      "protected_coordinate_ids": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "seed": 1,
+      "spectrum_fingerprint": {
+        "arrays": {
+          "dewhitener": "9b386ff0db4f077d43c03b0527c56ab7166f595e9093d32ed8139af111c97be0",
+          "directions": "ca8769d74be0ddf03ffd141988c793054dd869cbdd278b74b1fab44c4f716bfb",
+          "mean": "5811ac370b3521a77acf0c47e9215ae938a4d3b8f9903cfac377061b8e074524",
+          "rho": "3fdc335f5bfbe1400fb817d5df0d6333433477c88b7d3712a2004c0aa2436166",
+          "whitener": "da60322eef0b21e409210aaddf3b14ebb577909348ef887ccd2d66cc8d459005"
+        },
+        "block_dimensions": [
+          1,
+          1,
+          3,
+          4,
+          4,
+          4,
+          3
+        ],
+        "blocks": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            9,
+            10,
+            11,
+            12
+          ],
+          [
+            13,
+            14,
+            15,
+            16
+          ],
+          [
+            17,
+            18,
+            19
+          ]
+        ],
+        "combined_arrays_sha256": "73069b068a2686514726c20ab14c729bcb248b2a92fceb7e675fe1ffd592b9ef",
+        "npz_sha256": "8dc5490a0f9b111c516ad25b8e603de3869e34d43314e5f005ebb98362daca47"
+      },
+      "spectrum_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-1\\seed-1\\spectrum\\PERSISTENCE_SPECTRUM.npz",
+      "train_rows": 148239,
+      "validation_rows": 39240
+    },
+    {
+      "accepted_controls": 50,
+      "assignment_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-2\\seed-0\\SIGNED_ASSIGNMENTS_V3_1.json",
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-2\\seed-0\\best.pt",
+      "checkpoint_sha256": "41b65684a87af12be4cce6ef9ab4b8f469c1f1530520841a463d5621c9264049",
+      "fold": 2,
+      "matching_status": "OK",
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "protected_block_ids": [
+        5,
+        6
+      ],
+      "protected_coordinate_ids": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "seed": 0,
+      "spectrum_fingerprint": {
+        "arrays": {
+          "dewhitener": "6b7376e627503514d80eba41e293ef4a75a18d7152769ca9cc3387325786a393",
+          "directions": "95649c0f027708f13069177c5ec2fb276084e5cdfd4321b64040a72a48d8e7cc",
+          "mean": "17dc68126ea4384ff70510d63551fec1c1878c441d110eacd2425d13bb8ea135",
+          "rho": "08a45ffd2e9f71773a9676c77c189cba154a320d80840fab3785086ab3b310af",
+          "whitener": "aedc5c1dc1ee6ad37168fa3744b4551318d163dbec6433feea812b6872d5316e"
+        },
+        "block_dimensions": [
+          1,
+          1,
+          2,
+          4,
+          4,
+          4,
+          4
+        ],
+        "blocks": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6,
+            7
+          ],
+          [
+            8,
+            9,
+            10,
+            11
+          ],
+          [
+            12,
+            13,
+            14,
+            15
+          ],
+          [
+            16,
+            17,
+            18,
+            19
+          ]
+        ],
+        "combined_arrays_sha256": "9a4d0cfb45838c886b609eb4b0d964f1c324e196a668d95e236d9670a537b3bb",
+        "npz_sha256": "021ea98a0c849126e217504acf3189461d766a57a6b58edb02010fff7352d8d8"
+      },
+      "spectrum_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-2\\seed-0\\spectrum\\PERSISTENCE_SPECTRUM.npz",
+      "train_rows": 148240,
+      "validation_rows": 39240
+    },
+    {
+      "accepted_controls": 1,
+      "assignment_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-2\\seed-1\\SIGNED_ASSIGNMENTS_V3_1.json",
+      "checkpoint": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_p2p3\\backbone\\checkpoints\\eegnet\\fold-2\\seed-1\\best.pt",
+      "checkpoint_sha256": "63ca207e6955ba642730bd886d8697672e93e8ebf4ca9eea57e0c427fb332a93",
+      "fold": 2,
+      "matching_status": "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE",
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "protected_block_ids": [
+        5,
+        6
+      ],
+      "protected_coordinate_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "seed": 1,
+      "spectrum_fingerprint": {
+        "arrays": {
+          "dewhitener": "804113950fea1f6e870f7a1e500f5fc6e0dd365c453d2a41b297b6e99f731eea",
+          "directions": "042a38d20b7f70b9243e2b2c4396577a19968c669915c42af5bdbb8f7bae1b17",
+          "mean": "1ae3b1a20723e42f28ba5195cd64d5436fdbbd5ff31405e58302b4ed723d7b19",
+          "rho": "06ec8e16a21799067d425d1e39777ea6f3e73a92f872c5f558a6eab204e382f6",
+          "whitener": "ff03e715f329d634ac23666d1b3c323c2069eb068fcc8e82c67ef676f2ecfe30"
+        },
+        "block_dimensions": [
+          1,
+          1,
+          1,
+          1,
+          4,
+          4,
+          4,
+          4
+        ],
+        "blocks": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4,
+            5,
+            6,
+            7
+          ],
+          [
+            8,
+            9,
+            10,
+            11
+          ],
+          [
+            12,
+            13,
+            14,
+            15
+          ],
+          [
+            16,
+            17,
+            18,
+            19
+          ]
+        ],
+        "combined_arrays_sha256": "1f6b403b69df2e0985473c69864fc7a68adae2e01568d48699fb67480da0025b",
+        "npz_sha256": "d96b1f574dc40e045d2a865ad1401c64e4ea15d5eb487ea2171b090529554ec6"
+      },
+      "spectrum_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_INVARIANCE_RESCUE_V1\\experiments\\persist_eeg_p4_signed_v3_1\\results_v3_1\\runs\\fold-2\\seed-1\\spectrum\\PERSISTENCE_SPECTRUM.npz",
+      "train_rows": 148240,
+      "validation_rows": 39240
+    }
+  ]
+}

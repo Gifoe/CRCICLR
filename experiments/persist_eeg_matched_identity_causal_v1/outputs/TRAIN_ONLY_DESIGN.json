@@ -1,0 +1,57 @@
+{
+  "common_train_identity_range_min": 0.017941176470588183,
+  "config_sha256": "eeeab17ea6f4432d9eafcc2c53c0af7e811b4b50cac052a1365171d008317e8a",
+  "controls_per_run_min": 1,
+  "device": "cuda",
+  "eligible_runs": [
+    {
+      "controls": 50,
+      "fold": 0,
+      "seed": 0
+    },
+    {
+      "controls": 50,
+      "fold": 0,
+      "seed": 1
+    },
+    {
+      "controls": 50,
+      "fold": 1,
+      "seed": 0
+    },
+    {
+      "controls": 50,
+      "fold": 1,
+      "seed": 1
+    },
+    {
+      "controls": 50,
+      "fold": 2,
+      "seed": 0
+    }
+  ],
+  "failed_runs": [
+    {
+      "accepted_controls": 1,
+      "candidate_count": 1,
+      "fold": 2,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "pool_size": 8,
+      "protected_block_ids": [
+        5,
+        6
+      ],
+      "protected_rank": 8,
+      "reason": "frozen non-Protected persistence-supported pool has fewer than the required 20 exact-rank controls",
+      "required_controls": 20,
+      "seed": 1
+    }
+  ],
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "runs": 6,
+  "split_sha256": "8f12709c53494c205eb3d1a314cdff02f77d70fdebfc0820ac8b122c3c1ae065",
+  "status": "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE",
+  "validation_outcome_used": false
+}

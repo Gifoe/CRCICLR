@@ -1,0 +1,73 @@
+{
+  "G0_heldout_persistence": true,
+  "G1_matched_controls": false,
+  "G2_identity_equivalence": null,
+  "G3_utility_causal_effect": null,
+  "enter_experiment_4": "NO",
+  "identity_difference": null,
+  "matching_failures": [
+    {
+      "accepted_controls": 1,
+      "candidate_count": 1,
+      "fold": 2,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "pool_size": 8,
+      "protected_block_ids": [
+        5,
+        6
+      ],
+      "protected_rank": 8,
+      "reason": "frozen non-Protected persistence-supported pool has fewer than the required 20 exact-rank controls",
+      "required_controls": 20,
+      "seed": 1
+    }
+  ],
+  "mean_delta_ID_N": null,
+  "mean_delta_ID_P": null,
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "primary": {
+    "Delta_H": {
+      "ci95": [
+        null,
+        null
+      ],
+      "draws": 10000,
+      "mean": null,
+      "median": null,
+      "n_unique_subjects": 0,
+      "sign_probability": null
+    },
+    "H_N": {
+      "ci95": [
+        null,
+        null
+      ],
+      "draws": 10000,
+      "mean": null,
+      "median": null,
+      "n_unique_subjects": 0,
+      "sign_probability": null
+    },
+    "H_P": {
+      "ci95": [
+        null,
+        null
+      ],
+      "draws": 10000,
+      "mean": null,
+      "median": null,
+      "n_unique_subjects": 0,
+      "sign_probability": null
+    },
+    "gate_G3": null,
+    "outer_membership_enumerated": false,
+    "outer_test_used": false,
+    "primary_dose": "MEDIUM",
+    "status": "NOT_EVALUATED_G1_FAILED"
+  },
+  "terminal_state": "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE",
+  "utility_not_identity_claim": "PARTIAL",
+  "validation_outcome_used_for_design": false
+}
