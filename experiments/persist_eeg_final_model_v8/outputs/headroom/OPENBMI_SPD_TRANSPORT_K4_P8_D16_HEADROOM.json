@@ -1,0 +1,57 @@
+{
+  "OUTER_TEST_USED": false,
+  "baseline_BA": 0.8516666666666668,
+  "baseline_method": "B_STRONG_MATCHED_V7",
+  "baseline_source_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+  "benchmark": "OpenBMI_MI_S1_to_S2",
+  "covariance_cache": {
+    "OUTER_TEST_USED": false,
+    "band_hz": [
+      8.0,
+      30.0
+    ],
+    "channels": 62,
+    "internal_holdout_rows": 0,
+    "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V8_HEADROOM_FIRST\\experiments\\persist_eeg_final_model_v8\\outputs\\cache\\OPENBMI_V8_SEARCH_SPECTRAL_COV_FLOAT16.npy",
+    "reused": false,
+    "rows": 8000,
+    "sampling_rate_hz": 250,
+    "shrinkage": 0.05
+  },
+  "deployment_transform": "locked strong anchor plus half learned SPD residual",
+  "epochs": 250,
+  "experts": 4,
+  "family_id": "OpenBMI_MI_S1_to_S2__SPD_TRANSPORT_K4_P8_D16",
+  "folds": [
+    0,
+    1
+  ],
+  "headroom_state": "V8_HEADROOM_WEAK",
+  "internal_holdout_used": false,
+  "lambda_mean": 0.35,
+  "mean_expert_BA": 0.8547222222222222,
+  "mean_pairwise_correctness_correlation": 0.9962777472626366,
+  "mean_pairwise_correctness_disagreement": 0.000925925925925926,
+  "oracle_assignment_entropy": 1.2394967485779316,
+  "oracle_headroom_pp": 0.49999999999999983,
+  "oracle_usage": {
+    "B_STRONG_MATCHED_V7": 7,
+    "SPD_TRANSPORT_K4_P8_D16__E0_RESIDUAL50": 5,
+    "SPD_TRANSPORT_K4_P8_D16__E1_RESIDUAL50": 0,
+    "SPD_TRANSPORT_K4_P8_D16__E2_RESIDUAL50": 1,
+    "SPD_TRANSPORT_K4_P8_D16__E3_RESIDUAL50": 5
+  },
+  "outcome_labels_used_for_headroom_only": true,
+  "positive_fold_fraction": 1.0,
+  "reduced_dimension": 16,
+  "spatial_filters": 8,
+  "strongest_single_candidate": "SPD_TRANSPORT_K4_P8_D16__E2_RESIDUAL50",
+  "strongest_single_candidate_BA": 0.8550000000000001,
+  "subject_oracle_BA": 0.8566666666666668,
+  "subjects": 18,
+  "subjects_rescued_ge_2pp_fraction": 0.1111111111111111,
+  "subjects_rescued_ge_5pp_fraction": 0.0,
+  "tau": 0.08,
+  "training_objective": "history-whitened shrinkage SPD class prototypes with query-trained spatial metric coverage",
+  "used_to_train_selector": false
+}

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+
+# Server-side reproducibility intermediates. Compact summaries, subject-level
+# diagnostics, legality audits, and reports remain tracked.
+!outputs/
+!outputs/**
+outputs/cache/
+outputs/diagnostics/*_SEARCH_PREDICTIONS.csv

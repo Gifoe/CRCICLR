@@ -1,0 +1,28 @@
+{
+  "OUTER_TEST_USED": false,
+  "baseline_update_rule": "Promote any stronger fair information-matched generic discovered in V8.",
+  "baselines": [
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "OpenBMI_MI_S1_to_S2",
+      "information_matched": true,
+      "mean_subject_BA": 0.8377777777777777,
+      "method_id": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "source_predictions": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V7_FUTURE_UTILITY_META\\experiments\\persist_eeg_final_model_v7\\outputs\\diagnostics\\OPENBMI_CONFORMER_NORM_PREDICTIONS.csv",
+      "source_predictions_sha256": "5740f6a4c7aedd77ab60ea0a0373f114c343721bafadf70af6df261c38969d0a",
+      "subjects": 54,
+      "target_future_labels_used_for_fit": false
+    },
+    {
+      "OUTER_TEST_USED": false,
+      "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+      "information_matched": true,
+      "mean_subject_BA": 0.8249672025129341,
+      "method_id": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "source_predictions": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V7_FUTURE_UTILITY_META\\experiments\\persist_eeg_final_model_v7\\outputs\\diagnostics\\WBCIC_CONFORMER_NORM_PREDICTIONS.csv",
+      "source_predictions_sha256": "dffd218c3ff08689b9e49dba508870c9cade2016a124e046ee346384aa7d4429",
+      "subjects": 41,
+      "target_future_labels_used_for_fit": false
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+[
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "OpenBMI_MI_S1_to_S2",
+    "configs": [
+      {
+        "epochs": 1,
+        "id": "ADABN",
+        "lr": 0.0,
+        "strategy": "adabn"
+      },
+      {
+        "epochs": 10,
+        "id": "HEAD_SHORT",
+        "lr": 0.001,
+        "strategy": "head"
+      },
+      {
+        "epochs": 30,
+        "id": "HEAD_LONG",
+        "lr": 0.0003,
+        "strategy": "head"
+      },
+      {
+        "epochs": 10,
+        "id": "TAIL_SLOW",
+        "lr": 0.0001,
+        "strategy": "tail"
+      },
+      {
+        "epochs": 10,
+        "id": "TAIL_FAST",
+        "lr": 0.0003,
+        "strategy": "tail"
+      },
+      {
+        "epochs": 10,
+        "id": "FULL_SLOW",
+        "lr": 1e-05,
+        "strategy": "full"
+      },
+      {
+        "epochs": 30,
+        "id": "FULL_LONG",
+        "lr": 3e-05,
+        "strategy": "full"
+      }
+    ],
+    "family_id": "OpenBMI_MI_S1_to_S2__RAW_ENCODER_FINETUNE_BANK",
+    "internal_holdout_used": false,
+    "search_outcome_subjects": 9,
+    "source": {
+      "source_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\cache\\OPENBMI_MI_SPECIFIC_BACKBONE_FOLD_0.pt",
+      "source_payload": {
+        "OUTER_TEST_USED": false,
+        "adaptation": {
+          "epochs": 0,
+          "lr": 0.0,
+          "strategy": "frozen"
+        },
+        "configuration": {
+          "architecture": "eegnet",
+          "dropout": 0.5,
+          "f1": 16,
+          "f2": 32,
+          "lr": 0.0003,
+          "weight_decay": 0.0005
+        },
+        "epochs": 44
+      }
+    },
+    "source_fold": 0,
+    "source_model_preexisted_V8_split": true
+  },
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "OpenBMI_MI_S1_to_S2",
+    "configs": [
+      {
+        "epochs": 1,
+        "id": "ADABN",
+        "lr": 0.0,
+        "strategy": "adabn"
+      },
+      {
+        "epochs": 10,
+        "id": "HEAD_SHORT",
+        "lr": 0.001,
+        "strategy": "head"
+      },
+      {
+        "epochs": 30,
+        "id": "HEAD_LONG",
+        "lr": 0.0003,
+        "strategy": "head"
+      },
+      {
+        "epochs": 10,
+        "id": "TAIL_SLOW",
+        "lr": 0.0001,
+        "strategy": "tail"
+      },
+      {
+        "epochs": 10,
+        "id": "TAIL_FAST",
+        "lr": 0.0003,
+        "strategy": "tail"
+      },
+      {
+        "epochs": 10,
+        "id": "FULL_SLOW",
+        "lr": 1e-05,
+        "strategy": "full"
+      },
+      {
+        "epochs": 30,
+        "id": "FULL_LONG",
+        "lr": 3e-05,
+        "strategy": "full"
+      }
+    ],
+    "family_id": "OpenBMI_MI_S1_to_S2__RAW_ENCODER_FINETUNE_BANK",
+    "internal_holdout_used": false,
+    "search_outcome_subjects": 9,
+    "source": {
+      "source_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\cache\\OPENBMI_MI_SPECIFIC_BACKBONE_FOLD_1.pt",
+      "source_payload": {
+        "OUTER_TEST_USED": false,
+        "adaptation": {
+          "epochs": 10,
+          "lr": 0.0003,
+          "strategy": "tail"
+        },
+        "configuration": {
+          "architecture": "eegnet",
+          "dropout": 0.5,
+          "f1": 16,
+          "f2": 32,
+          "lr": 0.0003,
+          "weight_decay": 0.0005
+        },
+        "epochs": 53
+      }
+    },
+    "source_fold": 1,
+    "source_model_preexisted_V8_split": true
+  }
+]

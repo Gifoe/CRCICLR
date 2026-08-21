@@ -1,0 +1,33 @@
+{
+  "OUTER_TEST_USED": false,
+  "branch": "codex/persist-eeg-final-model-v8-headroom-first",
+  "commands": [
+    "python code/protocol/bootstrap_v8.py",
+    "python code/adaptation_banks/run_query_bank.py --benchmark <openbmi|wbcic> --family CONFORMER_NORM --fold 0 --fold 1",
+    "python code/adaptation_banks/run_meta_sgd_bank.py --benchmark <openbmi|wbcic> --family <CONFORMER_NORM|MI_SPECIFIC> --fold 0 --fold 1",
+    "python code/adaptation_banks/run_metric_bank.py --benchmark <openbmi|wbcic> --family <CONFORMER_NORM|MI_SPECIFIC> --fold 0 --fold 1",
+    "python code/normalization/run_norm_hyper_bank.py --benchmark <openbmi|wbcic> --family MI_SPECIFIC --fold 0 --fold 1",
+    "python code/geometry/run_spd_transport.py --benchmark <openbmi|wbcic> --fold 0 --fold 1",
+    "python code/adaptation_banks/run_raw_finetune_bank.py --benchmark <openbmi|wbcic> --fold 0 --fold 1",
+    "python code/backbones/run_multiscale_bank.py --benchmark wbcic --experts 4 --adapter-rank 0 --pretrain-epochs 24 --epochs 8 --training-mode staged --lambda-mean 1.0 --fold 0 --fold 1",
+    "python code/backbones/run_multiscale_bank.py --benchmark wbcic --experts 4 --adapter-rank 8 --pretrain-epochs 24 --epochs 12 --training-mode staged --lambda-mean 1.0 --fold 0 --fold 1",
+    "python code/adaptation_banks/run_raw_fomaml_bank.py --benchmark wbcic --meta-epochs 4 --fold 0 --fold 1",
+    "python code/evaluation/run_multibackbone_union.py --benchmark <openbmi|wbcic> --fold 0 --fold 1",
+    "python code/evaluation/finalize_v8.py"
+  ],
+  "cuda_available": true,
+  "cuda_device": "NVIDIA GeForce RTX 5090",
+  "git_excludes": [
+    "outputs/cache/",
+    "outputs/diagnostics/*_SEARCH_PREDICTIONS.csv"
+  ],
+  "internal_holdout_used": false,
+  "numpy": "2.4.4",
+  "pandas": "3.0.5",
+  "platform": "Windows-10-10.0.18363-SP0",
+  "python": "3.11.15",
+  "scikit_learn": "1.9.0",
+  "seed": 20260821,
+  "source_commit": "9feee89daa3fdcdae1602104a8b6ef5fc05afd64",
+  "torch": "2.11.0+cu128"
+}

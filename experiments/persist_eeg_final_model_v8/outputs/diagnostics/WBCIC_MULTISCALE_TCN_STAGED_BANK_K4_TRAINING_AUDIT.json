@@ -1,0 +1,570 @@
+[
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "family_id": "WBCIC_S1S2_to_S3_authorized_development__MULTISCALE_TCN_STAGED_BANK_K4",
+    "history": [
+      {
+        "epoch": 1,
+        "learning_rate": 0.0009961501876182147,
+        "objective": 0.7015694263504773,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 2,
+        "learning_rate": 0.0009846666218300806,
+        "objective": 0.6938448148529704,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 3,
+        "learning_rate": 0.0009657457896300789,
+        "objective": 0.6936595578019212,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 4,
+        "learning_rate": 0.0009397114317029974,
+        "objective": 0.6917205452919006,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 5,
+        "learning_rate": 0.0009070090031310558,
+        "objective": 0.6815116979726931,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 6,
+        "learning_rate": 0.0008681980515339464,
+        "objective": 0.6398011424192568,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 7,
+        "learning_rate": 0.0008239426430539244,
+        "objective": 0.579749980714263,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 8,
+        "learning_rate": 0.0007750000000000001,
+        "objective": 0.5221323200115343,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 9,
+        "learning_rate": 0.0007222075445642905,
+        "objective": 0.49596843050747386,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 10,
+        "learning_rate": 0.0006664685702961343,
+        "objective": 0.4714210189697219,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 11,
+        "learning_rate": 0.0006087367864990234,
+        "objective": 0.45095912457966225,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 12,
+        "learning_rate": 0.00055,
+        "objective": 0.44018930523860744,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 13,
+        "learning_rate": 0.0004912632135009768,
+        "objective": 0.43202689326390986,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 14,
+        "learning_rate": 0.0004335314297038657,
+        "objective": 0.41896269870240516,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 15,
+        "learning_rate": 0.0003777924554357097,
+        "objective": 0.4056990241132131,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 16,
+        "learning_rate": 0.0003250000000000001,
+        "objective": 0.4143355030839036,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 17,
+        "learning_rate": 0.00027605735694607574,
+        "objective": 0.4043870455608135,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 18,
+        "learning_rate": 0.0002318019484660537,
+        "objective": 0.402091062287005,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 19,
+        "learning_rate": 0.00019299099686894428,
+        "objective": 0.397128098985044,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 20,
+        "learning_rate": 0.0001602885682970026,
+        "objective": 0.3949704104807319,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 21,
+        "learning_rate": 0.00013425421036992097,
+        "objective": 0.3941105015394164,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 22,
+        "learning_rate": 0.0001153333781699193,
+        "objective": 0.3931317267621436,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 23,
+        "learning_rate": 0.00010384981238178532,
+        "objective": 0.39253407244275257,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 24,
+        "learning_rate": 0.0001,
+        "objective": 0.39499828982643964,
+        "phase": "competence_pretrain"
+      },
+      {
+        "balance": 2.2246123150737055e-05,
+        "coverage_loss": 0.36786109990463023,
+        "epoch": 1,
+        "learning_rate": 0.0002904849415639108,
+        "mean_loss": 0.36789779583128485,
+        "objective": 0.9330366239315127,
+        "phase": "coverage",
+        "population_loss": 0.39455322739554616,
+        "usage": [
+          0.2500968937103341,
+          0.24979802820740676,
+          0.25017915284488257,
+          0.24992595849240698
+        ]
+      },
+      {
+        "balance": 1.3841922217685218e-05,
+        "coverage_loss": 0.3502947736258914,
+        "epoch": 2,
+        "learning_rate": 0.0002633883476483184,
+        "mean_loss": 0.35032010778057865,
+        "objective": 0.8974919126528066,
+        "phase": "coverage",
+        "population_loss": 0.3937526890417425,
+        "usage": [
+          0.25013948468173425,
+          0.24993243668137527,
+          0.25000498970834223,
+          0.24992312072980694
+        ]
+      },
+      {
+        "balance": 3.4038445976448644e-05,
+        "coverage_loss": 0.36613936395179936,
+        "epoch": 3,
+        "learning_rate": 0.00022283542904563623,
+        "mean_loss": 0.3662017482083018,
+        "objective": 0.9281163157486334,
+        "phase": "coverage",
+        "population_loss": 0.39154700335206055,
+        "usage": [
+          0.2499494145556194,
+          0.25037081339737266,
+          0.2496592195295706,
+          0.25002058032082347
+        ]
+      },
+      {
+        "balance": 8.864631367054599e-05,
+        "coverage_loss": 0.3555811667224256,
+        "epoch": 4,
+        "learning_rate": 0.000175,
+        "mean_loss": 0.355795289866808,
+        "objective": 0.9089273919419545,
+        "phase": "coverage",
+        "population_loss": 0.3950930117833905,
+        "usage": [
+          0.25097617670530226,
+          0.24986456298246618,
+          0.24971031433925395,
+          0.24944897650218592
+        ]
+      },
+      {
+        "balance": 0.00021973595460652665,
+        "coverage_loss": 0.36328545285434255,
+        "epoch": 5,
+        "learning_rate": 0.0001271645709543638,
+        "mean_loss": 0.363783605941912,
+        "objective": 0.9224417776596255,
+        "phase": "coverage",
+        "population_loss": 0.39072346469251124,
+        "usage": [
+          0.25045155733823776,
+          0.25078227352805255,
+          0.2493754076521571,
+          0.24939079001182463
+        ]
+      },
+      {
+        "balance": 0.00043511137725334533,
+        "coverage_loss": 0.35410056499446313,
+        "epoch": 6,
+        "learning_rate": 8.661165235168157e-05,
+        "mean_loss": 0.35508780999154577,
+        "objective": 0.900543691908441,
+        "phase": "coverage",
+        "population_loss": 0.38266712645205053,
+        "usage": [
+          0.25077295993886345,
+          0.25263902672180316,
+          0.24766537565283658,
+          0.24892266530816148
+        ]
+      },
+      {
+        "balance": 0.0008723389898710682,
+        "coverage_loss": 0.3602706290236333,
+        "epoch": 7,
+        "learning_rate": 5.951505843608916e-05,
+        "mean_loss": 0.36197159057710226,
+        "objective": 0.9147860386022707,
+        "phase": "coverage",
+        "population_loss": 0.385000409876428,
+        "usage": [
+          0.25401876594235256,
+          0.251226432984922,
+          0.24688947945833206,
+          0.24786535250704464
+        ]
+      },
+      {
+        "balance": 0.001104807859142389,
+        "coverage_loss": 0.3561280283440904,
+        "epoch": 8,
+        "learning_rate": 5e-05,
+        "mean_loss": 0.3582940850316024,
+        "objective": 0.907052160399716,
+        "phase": "coverage",
+        "population_loss": 0.3851496028464015,
+        "usage": [
+          0.2513363921060795,
+          0.2544926668449146,
+          0.24504628050618055,
+          0.24912469016342628
+        ]
+      }
+    ],
+    "internal_holdout_used": false,
+    "meta_subjects": 26,
+    "parameters": 45331,
+    "search_outcome_subjects": 5,
+    "source_fold": 0
+  },
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "family_id": "WBCIC_S1S2_to_S3_authorized_development__MULTISCALE_TCN_STAGED_BANK_K4",
+    "history": [
+      {
+        "epoch": 1,
+        "learning_rate": 0.0009961501876182147,
+        "objective": 0.6990797670682272,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 2,
+        "learning_rate": 0.0009846666218300806,
+        "objective": 0.6923822402954102,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 3,
+        "learning_rate": 0.0009657457896300789,
+        "objective": 0.6899438468615214,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 4,
+        "learning_rate": 0.0009397114317029974,
+        "objective": 0.6834559559822082,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 5,
+        "learning_rate": 0.0009070090031310558,
+        "objective": 0.6647397367159525,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 6,
+        "learning_rate": 0.0008681980515339464,
+        "objective": 0.6129068978627523,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 7,
+        "learning_rate": 0.0008239426430539244,
+        "objective": 0.533383351167043,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 8,
+        "learning_rate": 0.0007750000000000001,
+        "objective": 0.49403049031893415,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 9,
+        "learning_rate": 0.0007222075445642905,
+        "objective": 0.46440028111139936,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 10,
+        "learning_rate": 0.0006664685702961343,
+        "objective": 0.43889188408851626,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 11,
+        "learning_rate": 0.0006087367864990234,
+        "objective": 0.4321157507101695,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 12,
+        "learning_rate": 0.00055,
+        "objective": 0.4175242773691813,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 13,
+        "learning_rate": 0.0004912632135009768,
+        "objective": 0.4095989235242208,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 14,
+        "learning_rate": 0.0004335314297038657,
+        "objective": 0.40869242906570435,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 15,
+        "learning_rate": 0.0003777924554357097,
+        "objective": 0.38787490288416543,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 16,
+        "learning_rate": 0.0003250000000000001,
+        "objective": 0.39269506335258486,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 17,
+        "learning_rate": 0.00027605735694607574,
+        "objective": 0.3823561922709147,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 18,
+        "learning_rate": 0.0002318019484660537,
+        "objective": 0.38339325626691184,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 19,
+        "learning_rate": 0.00019299099686894428,
+        "objective": 0.3715326642990112,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 20,
+        "learning_rate": 0.0001602885682970026,
+        "objective": 0.3699382829666138,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 21,
+        "learning_rate": 0.00013425421036992097,
+        "objective": 0.3676898185412089,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 22,
+        "learning_rate": 0.0001153333781699193,
+        "objective": 0.37348695000012716,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 23,
+        "learning_rate": 0.00010384981238178532,
+        "objective": 0.3669855272769928,
+        "phase": "competence_pretrain"
+      },
+      {
+        "epoch": 24,
+        "learning_rate": 0.0001,
+        "objective": 0.36132480104764303,
+        "phase": "competence_pretrain"
+      },
+      {
+        "balance": 1.2221041815791978e-05,
+        "coverage_loss": 0.36203873018423716,
+        "epoch": 1,
+        "learning_rate": 0.0002904849415639108,
+        "mean_loss": 0.3620659820238749,
+        "objective": 0.9111393491427103,
+        "phase": "coverage",
+        "population_loss": 0.37406805555025735,
+        "usage": [
+          0.2499743741750717,
+          0.2498815103371938,
+          0.24998233517011006,
+          0.2501618047555288
+        ]
+      },
+      {
+        "balance": 2.76454193014312e-05,
+        "coverage_loss": 0.37527218262354534,
+        "epoch": 2,
+        "learning_rate": 0.0002633883476483184,
+        "mean_loss": 0.37531965514024096,
+        "objective": 0.9352656515439352,
+        "phase": "coverage",
+        "population_loss": 0.3693448634942373,
+        "usage": [
+          0.250044447183609,
+          0.24985119938850403,
+          0.24993828078111013,
+          0.25016610364119213
+        ]
+      },
+      {
+        "balance": 0.00010348304607646241,
+        "coverage_loss": 0.36322006026903786,
+        "epoch": 3,
+        "learning_rate": 0.00022283542904563623,
+        "mean_loss": 0.36340943733851117,
+        "objective": 0.9119883759816487,
+        "phase": "coverage",
+        "population_loss": 0.37070741891860964,
+        "usage": [
+          0.24954807738463083,
+          0.2496830407778422,
+          0.24957536141077677,
+          0.2511935478448868
+        ]
+      },
+      {
+        "balance": 0.00025704660009220486,
+        "coverage_loss": 0.350198796192805,
+        "epoch": 4,
+        "learning_rate": 0.000175,
+        "mean_loss": 0.3507449686527252,
+        "objective": 0.8881530729929606,
+        "phase": "coverage",
+        "population_loss": 0.3743929159641266,
+        "usage": [
+          0.250149302482605,
+          0.25059241970380147,
+          0.24889783402283985,
+          0.250360474785169
+        ]
+      },
+      {
+        "balance": 0.0007674683605303775,
+        "coverage_loss": 0.34583391368389127,
+        "epoch": 5,
+        "learning_rate": 0.0001271645709543638,
+        "mean_loss": 0.3474414308865865,
+        "objective": 0.8755680886904399,
+        "phase": "coverage",
+        "population_loss": 0.3645087428887685,
+        "usage": [
+          0.24950020571549733,
+          0.2501070894797643,
+          0.24722248395284016,
+          0.253170247276624
+        ]
+      },
+      {
+        "balance": 0.0015219553064040761,
+        "coverage_loss": 0.3465305729707082,
+        "epoch": 6,
+        "learning_rate": 8.661165235168157e-05,
+        "mean_loss": 0.34950655221939086,
+        "objective": 0.878980503877004,
+        "phase": "coverage",
+        "population_loss": 0.36573455969492596,
+        "usage": [
+          0.24847138206164043,
+          0.24925121665000916,
+          0.24585146645704906,
+          0.2564259650309881
+        ]
+      },
+      {
+        "balance": 0.002935934274889102,
+        "coverage_loss": 0.3482244489590327,
+        "epoch": 7,
+        "learning_rate": 5.951505843608916e-05,
+        "mean_loss": 0.3537029967705409,
+        "objective": 0.8827939065297444,
+        "phase": "coverage",
+        "population_loss": 0.3614393272002538,
+        "usage": [
+          0.24897257844607035,
+          0.25018820762634275,
+          0.24509954531987507,
+          0.25573969542980196
+        ]
+      },
+      {
+        "balance": 0.0027848053340615783,
+        "coverage_loss": 0.34063806196053825,
+        "epoch": 8,
+        "learning_rate": 5e-05,
+        "mean_loss": 0.3471469885110855,
+        "objective": 0.8714644424120586,
+        "phase": "coverage",
+        "population_loss": 0.3670802970727285,
+        "usage": [
+          0.24898852149645487,
+          0.24999659637610117,
+          0.24483958919843038,
+          0.25617532511552177
+        ]
+      }
+    ],
+    "internal_holdout_used": false,
+    "meta_subjects": 24,
+    "parameters": 45331,
+    "search_outcome_subjects": 7,
+    "source_fold": 1
+  }
+]

@@ -1,0 +1,48 @@
+# OPENBMI_RAW_ENCODER_FINETUNE_BANK
+
+Structural diagnostic: test whether normalization, head, tail, or full raw-encoder movement supplies headroom absent from feature adapters.
+
+```json
+{
+  "benchmark": "OpenBMI_MI_S1_to_S2",
+  "family_id": "OpenBMI_MI_S1_to_S2__RAW_ENCODER_FINETUNE_BANK",
+  "subjects": 18,
+  "baseline_method": "B_STRONG_MATCHED_V7",
+  "baseline_BA": 0.8516666666666668,
+  "strongest_single_candidate": "RAW_ENCODER_FINETUNE_BANK__TAIL_FAST_RESIDUAL50",
+  "strongest_single_candidate_BA": 0.8588888888888889,
+  "mean_expert_BA": 0.8547619047619047,
+  "subject_oracle_BA": 0.8666666666666667,
+  "oracle_headroom_pp": 1.5000000000000002,
+  "subjects_rescued_ge_2pp_fraction": 0.3888888888888889,
+  "subjects_rescued_ge_5pp_fraction": 0.05555555555555555,
+  "positive_fold_fraction": 1.0,
+  "mean_pairwise_correctness_correlation": 0.9317262772240589,
+  "mean_pairwise_correctness_disagreement": 0.016984126984126983,
+  "oracle_usage": {
+    "B_STRONG_MATCHED_V7": 4,
+    "RAW_ENCODER_FINETUNE_BANK__ADABN_RESIDUAL50": 1,
+    "RAW_ENCODER_FINETUNE_BANK__HEAD_SHORT_RESIDUAL50": 1,
+    "RAW_ENCODER_FINETUNE_BANK__HEAD_LONG_RESIDUAL50": 0,
+    "RAW_ENCODER_FINETUNE_BANK__TAIL_SLOW_RESIDUAL50": 1,
+    "RAW_ENCODER_FINETUNE_BANK__TAIL_FAST_RESIDUAL50": 6,
+    "RAW_ENCODER_FINETUNE_BANK__FULL_SLOW_RESIDUAL50": 0,
+    "RAW_ENCODER_FINETUNE_BANK__FULL_LONG_RESIDUAL50": 5
+  },
+  "oracle_assignment_entropy": 1.537987101117365,
+  "headroom_state": "V8_HEADROOM_WEAK",
+  "outcome_labels_used_for_headroom_only": true,
+  "used_to_train_selector": false,
+  "internal_holdout_used": false,
+  "OUTER_TEST_USED": false,
+  "folds": [
+    0,
+    1
+  ],
+  "experts": 7,
+  "baseline_source_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+  "training_objective": "V6 discovery-query-screened raw encoder rules; V8 uses fixed residual actions",
+  "deployment_transform": "locked strong anchor plus half raw adaptation residual",
+  "diagnostic_status": "structural raw-adaptation headroom audit, not a newly meta-learned direction bank"
+}
+```

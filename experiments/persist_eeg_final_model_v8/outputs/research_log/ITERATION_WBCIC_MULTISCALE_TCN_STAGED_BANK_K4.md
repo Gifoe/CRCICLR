@@ -1,0 +1,56 @@
+# WBCIC_MULTISCALE_TCN_STAGED_BANK_K4
+
+Structural hypothesis: a stronger multi-scale temporal-spatial TCN trained with subject-level future coverage can create competent complementary experts beyond frozen EEGNet/Conformer representations.
+
+```json
+{
+  "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+  "family_id": "WBCIC_S1S2_to_S3_authorized_development__MULTISCALE_TCN_STAGED_BANK_K4",
+  "subjects": 12,
+  "baseline_method": "B_STRONG_MATCHED_V7",
+  "baseline_BA": 0.8137499999999999,
+  "strongest_single_candidate": "MULTISCALE_TCN_STAGED_BANK_K4__E0_GENERIC_BLEND50",
+  "strongest_single_candidate_BA": 0.8229166666666665,
+  "mean_expert_BA": 0.8062916666666666,
+  "subject_oracle_BA": 0.8337500000000001,
+  "oracle_headroom_pp": 2.0,
+  "subjects_rescued_ge_2pp_fraction": 0.3333333333333333,
+  "subjects_rescued_ge_5pp_fraction": 0.16666666666666666,
+  "positive_fold_fraction": 1.0,
+  "mean_pairwise_correctness_correlation": 0.6745052258226755,
+  "mean_pairwise_correctness_disagreement": 0.10312037037037038,
+  "oracle_usage": {
+    "B_STRONG_MATCHED_V7": 1,
+    "MULTISCALE_TCN_STAGED_BANK_K4__POPULATION_BLEND50": 1,
+    "MULTISCALE_TCN_STAGED_BANK_K4__FEATURE_HEAD_BLEND50": 1,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E0_GENERIC_BLEND50": 0,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E0_HISTORY_RESIDUAL50": 2,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E1_GENERIC_BLEND50": 3,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E1_HISTORY_RESIDUAL50": 1,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E2_GENERIC_BLEND50": 0,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E2_HISTORY_RESIDUAL50": 2,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E3_GENERIC_BLEND50": 1,
+    "MULTISCALE_TCN_STAGED_BANK_K4__E3_HISTORY_RESIDUAL50": 0
+  },
+  "oracle_assignment_entropy": 1.9792045174343245,
+  "headroom_state": "V8_HEADROOM_WEAK",
+  "outcome_labels_used_for_headroom_only": true,
+  "used_to_train_selector": false,
+  "internal_holdout_used": false,
+  "OUTER_TEST_USED": false,
+  "experts": 4,
+  "adapter_rank": 0,
+  "epochs": 8,
+  "pretrain_epochs": 24,
+  "training_mode": "staged",
+  "tau": 0.08,
+  "lambda_mean": 1.0,
+  "folds": [
+    0,
+    1
+  ],
+  "baseline_source_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+  "training_objective": "competence-first subject-balanced population pretraining followed by future-session subject-coverage specialization",
+  "candidate_actions": "generic anchor blend and legal-history feature-head residual"
+}
+```

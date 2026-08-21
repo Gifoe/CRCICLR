@@ -1,0 +1,224 @@
+[
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "OpenBMI_MI_S1_to_S2",
+    "best_objective": 0.16680006682872772,
+    "context": {
+      "explained_variance_fraction": 0.9309602422507066,
+      "projected_dimension": 12,
+      "raw_dimension": 396
+    },
+    "experts": 4,
+    "family_id": "OpenBMI_MI_S1_to_S2__LR_COVERAGE_CONFORMER_NORM_K4_R4",
+    "history": [
+      {
+        "assignment": [
+          0.25114554166793823,
+          0.25034889578819275,
+          0.24734535813331604,
+          0.2511601746082306
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.2158568799495697,
+        "epoch": 1,
+        "mean_abs_residual": 0.04027753323316574,
+        "mean_loss": 0.21586227416992188,
+        "objective": 0.29141727089881897,
+        "usage_balance": 9.827122084971052e-06
+      },
+      {
+        "assignment": [
+          0.24980399012565613,
+          0.24609121680259705,
+          0.25063082575798035,
+          0.2534739375114441
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.17507721483707428,
+        "epoch": 50,
+        "mean_abs_residual": 1.3448140621185303,
+        "mean_loss": 0.1753363162279129,
+        "objective": 0.23797976970672607,
+        "usage_balance": 2.7783189580077305e-05
+      },
+      {
+        "assignment": [
+          0.2545963227748871,
+          0.24334682524204254,
+          0.2552337348461151,
+          0.24682310223579407
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.15268947184085846,
+        "epoch": 100,
+        "mean_abs_residual": 1.8086313009262085,
+        "mean_loss": 0.15312592685222626,
+        "objective": 0.20914016664028168,
+        "usage_balance": 0.00010287557961419225
+      },
+      {
+        "assignment": [
+          0.2512871026992798,
+          0.249639630317688,
+          0.25364968180656433,
+          0.24542352557182312
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.13182102143764496,
+        "epoch": 200,
+        "mean_abs_residual": 2.205746650695801,
+        "mean_loss": 0.1324402540922165,
+        "objective": 0.18236905336380005,
+        "usage_balance": 3.605079837143421e-05
+      },
+      {
+        "assignment": [
+          0.2483646124601364,
+          0.25384950637817383,
+          0.2525436282157898,
+          0.24524220824241638
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.11957164108753204,
+        "epoch": 300,
+        "mean_abs_residual": 2.4119770526885986,
+        "mean_loss": 0.12088284641504288,
+        "objective": 0.16680006682872772,
+        "usage_balance": 4.65998200525064e-05
+      }
+    ],
+    "internal_holdout_used": false,
+    "lambda_mean": 0.35,
+    "mean_abs_target_coefficient": 0.7305518388748169,
+    "mean_abs_target_residual": 2.2966442108154297,
+    "meta_assignment": [
+      0.248356893658638,
+      0.2538394629955292,
+      0.2525361180305481,
+      0.24526751041412354
+    ],
+    "meta_subjects": 31,
+    "meta_usage": [
+      0.248356893658638,
+      0.2538394629955292,
+      0.2525361180305481,
+      0.24526751041412354
+    ],
+    "query_trials": 3100,
+    "rank": 4,
+    "search_outcome_subjects": 9,
+    "source_fold": 0,
+    "tau": 0.08
+  },
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "OpenBMI_MI_S1_to_S2",
+    "best_objective": 0.22045812010765076,
+    "context": {
+      "explained_variance_fraction": 0.9528321416192831,
+      "projected_dimension": 12,
+      "raw_dimension": 396
+    },
+    "experts": 4,
+    "family_id": "OpenBMI_MI_S1_to_S2__LR_COVERAGE_CONFORMER_NORM_K4_R4",
+    "history": [
+      {
+        "assignment": [
+          0.25121551752090454,
+          0.24950651824474335,
+          0.2524024546146393,
+          0.24687549471855164
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.2808060646057129,
+        "epoch": 1,
+        "mean_abs_residual": 0.027751801535487175,
+        "mean_loss": 0.2808338701725006,
+        "objective": 0.3791053295135498,
+        "usage_balance": 1.7255328202736564e-05
+      },
+      {
+        "assignment": [
+          0.25129789113998413,
+          0.24765543639659882,
+          0.25158795714378357,
+          0.2494587004184723
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.21113373339176178,
+        "epoch": 50,
+        "mean_abs_residual": 1.4468449354171753,
+        "mean_loss": 0.21132445335388184,
+        "objective": 0.28683558106422424,
+        "usage_balance": 9.996112567023374e-06
+      },
+      {
+        "assignment": [
+          0.2478346973657608,
+          0.24600709974765778,
+          0.2514655292034149,
+          0.2546926736831665
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.1907033771276474,
+        "epoch": 100,
+        "mean_abs_residual": 1.8750945329666138,
+        "mean_loss": 0.19100435078144073,
+        "objective": 0.26058804988861084,
+        "usage_balance": 4.480075222090818e-05
+      },
+      {
+        "assignment": [
+          0.2462460845708847,
+          0.24946898221969604,
+          0.2521996796131134,
+          0.25208520889282227
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.17132025957107544,
+        "epoch": 200,
+        "mean_abs_residual": 2.239611864089966,
+        "mean_loss": 0.17167139053344727,
+        "objective": 0.2356945276260376,
+        "usage_balance": 2.3560547560919076e-05
+      },
+      {
+        "assignment": [
+          0.24222807586193085,
+          0.2482181191444397,
+          0.2531247138977051,
+          0.2564290463924408
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.15973447263240814,
+        "epoch": 300,
+        "mean_abs_residual": 2.3419482707977295,
+        "mean_loss": 0.16023676097393036,
+        "objective": 0.22045812010765076,
+        "usage_balance": 0.0001146743816207163
+      }
+    ],
+    "internal_holdout_used": false,
+    "lambda_mean": 0.35,
+    "mean_abs_target_coefficient": 0.7428591251373291,
+    "mean_abs_target_residual": 2.4101779460906982,
+    "meta_assignment": [
+      0.2422359734773636,
+      0.24816358089447021,
+      0.25314655900001526,
+      0.25645387172698975
+    ],
+    "meta_subjects": 31,
+    "meta_usage": [
+      0.2422359734773636,
+      0.24816358089447021,
+      0.25314655900001526,
+      0.25645387172698975
+    ],
+    "query_trials": 3100,
+    "rank": 4,
+    "search_outcome_subjects": 9,
+    "source_fold": 1,
+    "tau": 0.08
+  }
+]

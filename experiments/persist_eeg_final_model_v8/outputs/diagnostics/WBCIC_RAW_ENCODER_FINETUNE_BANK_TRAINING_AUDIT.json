@@ -1,0 +1,98 @@
+[
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "configs": [
+      {
+        "epochs": 1,
+        "id": "ADABN",
+        "lr": 0.0,
+        "strategy": "adabn"
+      },
+      {
+        "epochs": 24,
+        "id": "HEAD",
+        "lr": 0.0003,
+        "strategy": "head"
+      },
+      {
+        "epochs": 8,
+        "id": "TAIL",
+        "lr": 0.0001,
+        "strategy": "tail"
+      },
+      {
+        "epochs": 8,
+        "id": "FULL",
+        "lr": 0.0001,
+        "strategy": "full"
+      }
+    ],
+    "family_id": "WBCIC_S1S2_to_S3_authorized_development__RAW_ENCODER_FINETUNE_BANK",
+    "internal_holdout_used": false,
+    "search_outcome_subjects": 5,
+    "source": {
+      "source_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\cache\\WBCIC_LARGE_EEGNET_FOLD_0.pt",
+      "source_payload": {
+        "OUTER_TEST_USED": false,
+        "adaptation": {
+          "augment": false,
+          "epochs": 0,
+          "lr": 0.0,
+          "strategy": "frozen"
+        },
+        "epochs": 15
+      }
+    },
+    "source_fold": 0,
+    "source_model_preexisted_V8_split": true
+  },
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "configs": [
+      {
+        "epochs": 1,
+        "id": "ADABN",
+        "lr": 0.0,
+        "strategy": "adabn"
+      },
+      {
+        "epochs": 24,
+        "id": "HEAD",
+        "lr": 0.0003,
+        "strategy": "head"
+      },
+      {
+        "epochs": 8,
+        "id": "TAIL",
+        "lr": 0.0001,
+        "strategy": "tail"
+      },
+      {
+        "epochs": 8,
+        "id": "FULL",
+        "lr": 0.0001,
+        "strategy": "full"
+      }
+    ],
+    "family_id": "WBCIC_S1S2_to_S3_authorized_development__RAW_ENCODER_FINETUNE_BANK",
+    "internal_holdout_used": false,
+    "search_outcome_subjects": 7,
+    "source": {
+      "source_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V6_PERSIST_SA\\experiments\\persist_eeg_final_model_v6\\outputs\\cache\\WBCIC_LARGE_EEGNET_FOLD_1.pt",
+      "source_payload": {
+        "OUTER_TEST_USED": false,
+        "adaptation": {
+          "augment": false,
+          "epochs": 8,
+          "lr": 0.0001,
+          "strategy": "full"
+        },
+        "epochs": 19
+      }
+    },
+    "source_fold": 1,
+    "source_model_preexisted_V8_split": true
+  }
+]
