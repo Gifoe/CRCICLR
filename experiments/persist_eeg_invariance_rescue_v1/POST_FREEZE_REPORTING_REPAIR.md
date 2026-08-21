@@ -14,3 +14,8 @@ or metric calculation. It:
 - keeps lower GRL lambdas explicitly exploratory rather than promoting them.
 
 All numeric outputs and `NO_ELIGIBLE_PROTECTED_LOSS_OBSERVED` are unchanged.
+
+A second reporting/provenance-only repair clarifies that the complete
+`SPLIT_FREEZE.json` was hashed as opaque bytes even though outer membership was
+never indexed or enumerated, and consolidates the full, binding-smoke, and
+excluded-debug run ledgers. It does not alter any scientific computation.

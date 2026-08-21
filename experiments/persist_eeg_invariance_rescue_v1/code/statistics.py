@@ -490,6 +490,90 @@ def _make_figures(
     plt.close(fig)
 
 
+def _consolidate_run_ledgers(config: Mapping[str, Any]) -> dict[str, int]:
+    """Persist a repeatable ledger covering full, binding-smoke, and debug runs."""
+    full_path = OUTPUTS / "RUN_LEDGER_FULL.csv"
+    if full_path.exists():
+        full = pd.read_csv(full_path)
+    else:
+        source = pd.read_csv(OUTPUTS / "RUN_LEDGER.csv")
+        if "ledger_scope" in source:
+            source = source[source.ledger_scope == "FULL_SCIENCE"]
+        if "mode" in source:
+            source = source[source["mode"] == "full"]
+        full = source.copy()
+
+    ledger_only = {
+        "record_id", "ledger_scope", "scientific_use",
+        "included_in_scientific_results", "reason", "execution_server_artifact",
+    }
+    full = full.drop(columns=[column for column in ledger_only if column in full], errors="ignore")
+    expected_full = (
+        len(config["development_folds"]) * len(config["seeds"]) * len(roster(config))
+    )
+    if len(full) != expected_full:
+        raise RuntimeError(f"Expected {expected_full} full runs, found {len(full)}")
+    if full.duplicated(["fold", "seed", "method_id"]).any():
+        raise RuntimeError("Duplicate fold/seed/method row in full-run ledger")
+    if not full.status.astype(str).eq("COMPLETE").all():
+        raise RuntimeError("Non-complete row in full-run ledger")
+    write_csv(full_path, full)
+
+    smoke = pd.read_csv(OUTPUTS / "SMOKE_RESULTS.csv")
+    if len(smoke) != len(roster(config)):
+        raise RuntimeError(f"Expected {len(roster(config))} binding smoke runs, found {len(smoke)}")
+    if smoke.duplicated(["fold", "seed", "method_id"]).any():
+        raise RuntimeError("Duplicate fold/seed/method row in binding-smoke ledger")
+
+    debug_all = pd.read_csv(EXPERIMENT_ROOT / "PRE_FREEZE_FIDELITY_DEBUG.csv")
+    debug = debug_all[debug_all.scientific_use == "EXCLUDED_FIDELITY_DEBUG"].copy()
+    if len(debug) != 3:
+        raise RuntimeError(f"Expected 3 excluded pre-freeze debug attempts, found {len(debug)}")
+
+    def decorate(frame: pd.DataFrame, scope: str, use: str, included: bool) -> pd.DataFrame:
+        value = frame.copy()
+        value["ledger_scope"] = scope
+        value["scientific_use"] = use
+        value["included_in_scientific_results"] = included
+        if "reason" not in value:
+            value["reason"] = ""
+        if "execution_server_artifact" not in value:
+            value["execution_server_artifact"] = value.get("checkpoint", "")
+        value["record_id"] = [
+            f"{scope}|fold={row.fold}|seed={row.seed}|method={row.method_id}"
+            for row in value.itertuples()
+        ]
+        return value
+
+    full_rows = decorate(full, "FULL_SCIENCE", "PRIMARY_FULL_EXPERIMENT", True)
+    smoke_rows = decorate(smoke, "BINDING_SMOKE", "FIDELITY_GATE_ONLY", False)
+    debug_rows = decorate(debug, "PRE_FREEZE_DEBUG", "EXCLUDED_FIDELITY_DEBUG", False)
+    debug_rows["record_id"] = [
+        f"PRE_FREEZE_DEBUG|event={row.event_id}|method={row.method_id}"
+        for row in debug_rows.itertuples()
+    ]
+
+    ledger = pd.concat([full_rows, smoke_rows, debug_rows], ignore_index=True, sort=False)
+    outer = ledger["outer_test_used"].astype(str).str.lower()
+    if not outer.eq("false").all():
+        raise RuntimeError("Outer-lock violation in consolidated run ledger")
+    leading = [
+        "record_id", "ledger_scope", "scientific_use",
+        "included_in_scientific_results", "status", "fold", "seed", "method_id",
+        "family", "mode", "best_calibration_BA", "reason",
+        "execution_server_artifact", "outer_test_used",
+    ]
+    columns = [column for column in leading if column in ledger]
+    columns.extend(column for column in ledger.columns if column not in columns)
+    write_csv(OUTPUTS / "RUN_LEDGER.csv", ledger[columns])
+    return {
+        "full_science_runs": int(len(full_rows)),
+        "binding_smoke_runs": int(len(smoke_rows)),
+        "excluded_pre_freeze_debug_attempts": int(len(debug_rows)),
+        "total_ledger_rows": int(len(ledger)),
+    }
+
+
 def finalize() -> dict[str, Any]:
     config = load_config()
     audit = pd.read_csv(OUTPUTS / "INVARIANCE_AUDIT.csv")
@@ -521,6 +605,7 @@ def finalize() -> dict[str, Any]:
     else:
         terminal = "PERSIST_RESCUE_NOT_SUPPORTED"
 
+    run_ledger_counts = _consolidate_run_ledgers(config)
     decision = {
         "terminal_scientific_state": terminal,
         "development_exploratory": True,
@@ -532,9 +617,12 @@ def finalize() -> dict[str, Any]:
         "cross_family_supported": terminal == "PERSIST_RESCUE_CROSS_FAMILY_SUPPORTED",
         "outer_test_used": False,
         "outer_split_field_read": False,
+        "outer_membership_indexed_or_enumerated": False,
+        "split_freeze_file_hashed_as_opaque_bytes": True,
         "outcome_used_for_protected_assignment": False,
         "outcome_used_for_rescue_selection": False,
         "scientific_gates_changed_after_freeze": False,
+        "run_ledger_counts": run_ledger_counts,
     }
     write_json(OUTPUTS / "FINAL_DECISION.json", decision)
 
@@ -641,6 +729,11 @@ Protected-retention task-only R2 is expected to approach one because its target 
 This experiment does not establish that subject invariance is generally wrong, does not test absolute SOTA, and does not authorize an outer-test claim. It only tests whether the preregistered independently trained invariance objectives exhibit the full identity-loss/protected-loss/task-harm chain and, if so, whether intervention-defined protected restoration beats matched controls.
 
 It is insufficient by itself to justify Experiment 2 as a PERSIST-rescue follow-up. Proceed only if Experiment 2 is framed independently and first repairs the prerequisites: a reproducibly identity-reducing primary method, complete Protected assignment, and a retention metric that separates protected loss from generic cross-model alignability.
+
+## Provenance and run accounting
+
+- `RUN_LEDGER.csv` contains `{run_ledger_counts['full_science_runs']}` full science runs, `{run_ledger_counts['binding_smoke_runs']}` binding smoke runs, and `{run_ledger_counts['excluded_pre_freeze_debug_attempts']}` excluded pre-freeze debug attempts. `RUN_LEDGER_FULL.csv` preserves the 54-row full-run view.
+- The complete `SPLIT_FREEZE.json` was SHA-256 hashed as opaque file bytes for provenance. Only `train_subjects` and `validation_subjects` were indexed; outer membership was not extracted, enumerated, logged, featurized, or scored.
 """
     (OUTPUTS / "SCIENTIFIC_REPORT.md").write_text(report, encoding="utf-8")
 
@@ -648,7 +741,7 @@ It is insufficient by itself to justify Experiment 2 as a PERSIST-rescue follow-
 
 - Terminal claim: `{terminal}`.
 - `outer_test_used=false`.
-- `SPLIT_FREEZE.json` was parsed to access only `train_subjects` and `validation_subjects`; the code never indexed, enumerated, logged, hashed, featurized, or scored outer membership. No outer signal or label was accessed.
+- `SPLIT_FREEZE.json` was parsed to index only `train_subjects` and `validation_subjects`; outer membership was never extracted, enumerated, logged, featurized, or scored. The complete file bytes were SHA-256 hashed solely for provenance, so the uninspected outer-field bytes necessarily contributed opaquely to the file-level digest. No outer signal or label was accessed.
 - Protected assignment used model-fit subjects only.
 - No rescue model or rescue hyperparameter selection was executed because no family was eligible. The dormant preregistered selector is calibration-Session-2-only.
 - Development outcome labels were used only for final task scoring; outcome Session 1/2 identity labels were used only for the preregistered cross-session probe.

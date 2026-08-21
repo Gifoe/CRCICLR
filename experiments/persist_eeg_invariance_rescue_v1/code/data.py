@@ -75,8 +75,10 @@ def load_development_split(fold: int) -> DevelopmentSplit:
     payload = json.loads(path.read_text(encoding="utf-8-sig"))
     folds = payload["openbmi"]["folds"]
     record = next(item for item in folds if int(item["fold"]) == int(fold))
-    # Deliberately access only the two development fields. The outer field is
-    # neither read nor hashed by this experiment.
+    # Deliberately index only the two development fields. The outer membership
+    # is never extracted or enumerated. The complete JSON file is nevertheless
+    # hashed as opaque bytes below for provenance, so its bytes (including the
+    # uninspected outer field) necessarily contribute to that file-level digest.
     original_train = tuple(subject_sort(record["train_subjects"]))
     outcome = tuple(subject_sort(record["validation_subjects"]))
     if len(original_train) != 34 or len(outcome) != 9 or set(original_train) & set(outcome):
