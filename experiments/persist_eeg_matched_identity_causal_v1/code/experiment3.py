@@ -252,14 +252,14 @@ def extract_or_load_features(fold: int, seed: int, split: Mapping[str, Any], man
         n_train=np.asarray(len(train_meta), dtype=np.int64),
         train_features=train_features.astype(np.float32),
         val_features=val_features.astype(np.float32),
-        train_subject_id=train_meta.subject_id.astype(str).to_numpy(),
+        train_subject_id=np.asarray(train_meta.subject_id.astype(str).tolist(), dtype="<U32"),
         train_session_id=train_meta.session_id.astype(np.int64).to_numpy(),
-        train_paradigm=train_meta.paradigm.astype(str).to_numpy(),
-        train_event_label=train_meta.event_label.astype(str).to_numpy(),
-        val_subject_id=val_meta.subject_id.astype(str).to_numpy(),
+        train_paradigm=np.asarray(train_meta.paradigm.astype(str).tolist(), dtype="<U16"),
+        train_event_label=np.asarray(train_meta.event_label.astype(str).tolist(), dtype="<U64"),
+        val_subject_id=np.asarray(val_meta.subject_id.astype(str).tolist(), dtype="<U32"),
         val_session_id=val_meta.session_id.astype(np.int64).to_numpy(),
-        val_paradigm=val_meta.paradigm.astype(str).to_numpy(),
-        val_event_label=val_meta.event_label.astype(str).to_numpy(),
+        val_paradigm=np.asarray(val_meta.paradigm.astype(str).tolist(), dtype="<U16"),
+        val_event_label=np.asarray(val_meta.event_label.astype(str).tolist(), dtype="<U64"),
         outer_test_used=np.asarray(False), outer_membership_enumerated=np.asarray(False))
     os.replace(tmp, paths["features"])
     write_json(paths["feature_meta"], meta)
