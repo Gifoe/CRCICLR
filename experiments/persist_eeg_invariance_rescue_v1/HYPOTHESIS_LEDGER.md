@@ -27,3 +27,14 @@ unbounded search.
   `torch.nonzero(condition, as_tuple=False).flatten()`. The smoke run exposed
   this in B1's domain grouping after A-family and B0 competence checks. No
   objective, weight, gate, split, rank, or evaluation definition changed.
+
+- 2026-08-21, still before freeze and before any outcome representation was
+  extracted: B1 reached exactly chance while B0 reached 0.722 calibration BA.
+  Loss traces showed task CE fixed at 0.693 because the first clean-room draft
+  applied marginal MMD directly across the final task mixture. The audited
+  upstream instead aligns source-special branches to their branch consensus.
+  B1 was repaired to expose its already-computed expert stack and apply the
+  preregistered 0.1 MMD/0.1 conditional objectives to a rotating bounded set
+  of special branches. The task architecture, parameter count, objective
+  roster and weights are unchanged. The collapsed pre-repair run is retained
+  as a debug artifact and cannot enter the full experiment.

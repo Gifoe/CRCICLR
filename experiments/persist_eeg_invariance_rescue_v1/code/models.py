@@ -28,6 +28,7 @@ class ModelOutput:
     projection: torch.Tensor | None = None
     domain_logits: torch.Tensor | None = None
     router_weights: torch.Tensor | None = None
+    expert_features: torch.Tensor | None = None
 
 
 class ControlledEEGNet(nn.Module):
@@ -109,7 +110,7 @@ class EEGDGNet(nn.Module):
         )
         self.head = nn.Linear(embedding_dim, 2)
 
-    def forward_features(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    def forward_features(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         value = x.unsqueeze(1)
         value = torch.cat([branch(value) for branch in self.temporal], dim=1)
         value = self.temporal_bn(value)
@@ -122,16 +123,17 @@ class EEGDGNet(nn.Module):
         weights = F.softmax(domain_logits, dim=1)
         expert_stack = torch.stack([expert(shared) for expert in self.experts], dim=1)
         weighted = torch.sum(weights.unsqueeze(-1) * expert_stack, dim=1)
-        return weighted, domain_logits, weights
+        return weighted, domain_logits, weights, expert_stack
 
     def forward(self, x: torch.Tensor, grl_strength: float = 0.0) -> ModelOutput:
         del grl_strength
-        features, domain_logits, weights = self.forward_features(x)
+        features, domain_logits, weights, expert_stack = self.forward_features(x)
         return ModelOutput(
             logits=self.head(features),
             features=features,
             domain_logits=domain_logits,
             router_weights=weights,
+            expert_features=expert_stack,
         )
 
 
@@ -268,4 +270,3 @@ def grl_lambda(method_id: str) -> float:
     if "_L" not in method_id:
         return 0.0
     return int(method_id.rsplit("_L", 1)[1]) / 1000.0
-

@@ -42,6 +42,8 @@ from data import (
 from losses import (
     conditional_alignment_loss,
     coral_loss,
+    expert_conditional_alignment_loss,
+    expert_mmd_loss,
     marginal_mmd_loss,
     supervised_contrastive_loss,
 )
@@ -86,8 +88,10 @@ def _loss(
         parts["subject_ce"] = domain
     elif method_id == "B1_EEG_DG_FULL":
         weights = config["eeg_dg_weights"]
-        marginal = marginal_mmd_loss(output.features.float(), labels, domains, step)
-        conditional = conditional_alignment_loss(output.features.float(), labels, domains, step)
+        if output.expert_features is None:
+            raise RuntimeError("B1 requires source-special expert features")
+        marginal = expert_mmd_loss(output.expert_features, step)
+        conditional = expert_conditional_alignment_loss(output.expert_features, labels, step)
         domain = F.cross_entropy(output.domain_logits.float(), domains)
         total = (
             total

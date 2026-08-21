@@ -142,8 +142,14 @@ def smoke(force: bool = False) -> dict[str, Any]:
         complete = len(selected) == len(family_methods) and set(selected.status) == {"COMPLETE"}
         finite = bool(np.isfinite(selected.best_calibration_BA.astype(float)).all()) if complete else False
         competent = bool(len(task_row) == 1 and float(task_row.iloc[0].best_calibration_BA) >= float(config["fidelity_min_task_only_calibration_BA"]))
+        non_task = selected[selected.method_id != task]
+        invariant_competent = bool(
+            complete
+            and len(non_task)
+            and (non_task.best_calibration_BA.astype(float) >= float(config["fidelity_min_invariant_calibration_BA"])).all()
+        )
         parameter_equal = selected.parameter_count.nunique() == 1 if complete else False
-        passed = bool(complete and finite and competent and parameter_equal)
+        passed = bool(complete and finite and competent and invariant_competent and parameter_equal)
         declared_deviation = family.startswith(("B_", "C_"))
         statuses[family] = {
             "status": ("DEVIATION" if declared_deviation else "PASS") if passed else "FAIL",
@@ -151,6 +157,8 @@ def smoke(force: bool = False) -> dict[str, Any]:
             "methods": family_methods,
             "task_only_calibration_BA": float(task_row.iloc[0].best_calibration_BA) if len(task_row) else None,
             "minimum_task_only_calibration_BA": float(config["fidelity_min_task_only_calibration_BA"]),
+            "minimum_invariant_calibration_BA": float(config["fidelity_min_invariant_calibration_BA"]),
+            "all_invariant_smoke_models_competent": invariant_competent,
             "all_runs_complete": complete,
             "all_losses_and_metrics_finite": finite,
             "matched_parameter_count": parameter_equal,
@@ -170,11 +178,18 @@ def smoke(force: bool = False) -> dict[str, Any]:
                 f"threshold: `{result['minimum_task_only_calibration_BA']}`; matched parameter count: "
                 f"`{str(result['matched_parameter_count']).lower()}`.",
                 "",
+                f"Every invariant/ladder smoke model exceeds `{result['minimum_invariant_calibration_BA']}`: "
+                f"`{str(result['all_invariant_smoke_models_competent']).lower()}`.",
+                "",
                 f"Fidelity note: {result['deviation']}. Outcome loaders were not constructed during training; outer test used: `false`.",
                 "",
             ]
         )
     lines.extend([
+        "## Pre-freeze repair retained in the ledger",
+        "",
+        "The first B1 draft aligned final mixed task features directly across subject groups and collapsed at calibration BA 0.500 while B0 reached 0.722. That run is excluded from science but retained on the execution server. Before freeze, the alignment site was corrected to the source-special expert stack used by the audited upstream topology; objective names and weights did not change. See `HYPOTHESIS_LEDGER.md`.",
+        "",
         "## Interpretation limit",
         "",
         "A is a controlled causal comparison with identical local EEGNet architectures. B and C are method-level clean-room instantiations because the audited upstream trees have no license and EEG-DG is incomplete at the audited commit. A DEVIATION status can pass the task-competence gate, but it cannot be described as exact official-code reproduction. See `LICENSE_AUDIT.md` for commits and concrete deviations.",

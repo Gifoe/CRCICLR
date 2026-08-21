@@ -41,7 +41,8 @@ listed in `LICENSE_AUDIT.md` and `METHOD_FIDELITY.md`.
 
 Every roster member runs fold 0 / seed 0 smoke training. Task-only calibration
 BA must exceed 0.60, shapes and finite losses must pass, task-only/full models
-must have equal parameter counts within family, and no outcome loader may be
+must have equal parameter counts within family, every invariant/ladder smoke
+model must exceed 0.55 calibration BA (chance + 0.05), and no outcome loader may be
 constructed during training. Only implementation/fidelity repair is permitted
 before `PROTOCOL_FROZEN.json` is emitted. After freezing, only demonstrable bug
 repair is allowed; gates and scientific definitions cannot change.
@@ -111,4 +112,3 @@ scientific gate may be changed after freezing.
 
 `OUTER_TEST_USED=false` is mandatory. The outer split field is not read; outer
 signals, labels, features, and metrics are not constructed.
-

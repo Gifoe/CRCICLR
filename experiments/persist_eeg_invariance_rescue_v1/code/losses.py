@@ -66,6 +66,40 @@ def conditional_alignment_loss(
     return torch.stack(values).mean() if values else features.sum() * 0.0
 
 
+def _rotating_experts(count: int, offset: int, maximum: int = 4) -> list[int]:
+    values = list(range(int(count)))
+    shift = int(offset) % max(len(values), 1)
+    return (values[shift:] + values[:shift])[: min(maximum, len(values))]
+
+
+def expert_mmd_loss(expert_features: torch.Tensor, offset: int) -> torch.Tensor:
+    """Align source-special branches to their same-minibatch consensus."""
+    selected = _rotating_experts(expert_features.shape[1], offset)
+    if len(selected) < 2:
+        return expert_features.sum() * 0.0
+    branches = [expert_features[:, index, :].float() for index in selected]
+    consensus = torch.stack(branches, dim=0).mean(dim=0)
+    return torch.stack([rbf_mmd(branch, consensus) for branch in branches]).mean()
+
+
+def expert_conditional_alignment_loss(
+    expert_features: torch.Tensor,
+    labels: torch.Tensor,
+    offset: int,
+) -> torch.Tensor:
+    selected = _rotating_experts(expert_features.shape[1], offset)
+    values: list[torch.Tensor] = []
+    for left in range(len(selected)):
+        for right in range(left + 1, len(selected)):
+            for label in torch.unique(labels):
+                mask = labels == label
+                if int(mask.sum()) >= 2:
+                    a = expert_features[mask, selected[left], :].float().mean(dim=0)
+                    b = expert_features[mask, selected[right], :].float().mean(dim=0)
+                    values.append(torch.square(a - b).mean())
+    return torch.stack(values).mean() if values else expert_features.sum() * 0.0
+
+
 def coral(source: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
     if len(source) < 2 or len(target) < 2:
         return source.sum() * 0.0
