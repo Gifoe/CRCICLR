@@ -66,7 +66,7 @@ def conditional_alignment_loss(
     return torch.stack(values).mean() if values else features.sum() * 0.0
 
 
-def _rotating_experts(count: int, offset: int, maximum: int = 4) -> list[int]:
+def _rotating_experts(count: int, offset: int, maximum: int = 2) -> list[int]:
     values = list(range(int(count)))
     shift = int(offset) % max(len(values), 1)
     return (values[shift:] + values[:shift])[: min(maximum, len(values))]

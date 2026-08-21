@@ -205,9 +205,9 @@ def train_one(
     optimizer = torch.optim.AdamW(
         model.parameters(), lr=float(hyper["learning_rate"]), weight_decay=float(hyper["weight_decay"])
     )
-    max_epochs = int(config["training"][f"{mode}_max_epochs"])
-    min_epochs = int(config["training"][f"{mode}_min_epochs"])
-    patience = int(config["training"][f"{mode}_patience"])
+    max_epochs = int(hyper.get(f"{mode}_max_epochs", config["training"][f"{mode}_max_epochs"]))
+    min_epochs = int(hyper.get(f"{mode}_min_epochs", config["training"][f"{mode}_min_epochs"]))
+    patience = int(hyper.get(f"{mode}_patience", config["training"][f"{mode}_patience"]))
     clip = float(config["training"]["gradient_clip"])
     history: list[dict[str, Any]] = []
     best_ba = -np.inf

@@ -24,7 +24,7 @@
     "gradient_clip": 5.0,
     "family_hyperparameters": {
       "A": {"batch_size": 256, "learning_rate": 0.0002, "weight_decay": 0.001},
-      "B": {"batch_size": 192, "learning_rate": 0.0005, "weight_decay": 0.01},
+      "B": {"batch_size": 192, "learning_rate": 0.0005, "weight_decay": 0.01, "smoke_max_epochs": 12, "smoke_min_epochs": 8, "smoke_patience": 4, "full_max_epochs": 30, "full_min_epochs": 10, "full_patience": 7},
       "C": {"batch_size": 64, "learning_rate": 0.001, "weight_decay": 0.001}
     }
   },

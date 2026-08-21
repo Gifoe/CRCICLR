@@ -38,3 +38,12 @@ unbounded search.
   of special branches. The task architecture, parameter count, objective
   roster and weights are unchanged. The collapsed pre-repair run is retained
   as a debug artifact and cannot enter the full experiment.
+
+- 2026-08-21, before freeze: the first expert-stack rerun reached BA 0.555 but
+  its four-branch MMD oscillated from 0.30 to 3.21. The audited upstream entry
+  point is explicitly 2-source and trains for 500 epochs. The final bounded
+  fidelity correction rotates one pair of special branches per minibatch and
+  gives both B0/B1 a matched 30-epoch full ceiling (minimum 10, patience 7).
+  This is the last B-family fidelity adjustment; the next smoke result is
+  binding for inclusion/exclusion. Gates, loss weights and rescue definitions
+  remain unchanged.

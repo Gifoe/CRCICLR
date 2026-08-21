@@ -188,7 +188,7 @@ def smoke(force: bool = False) -> dict[str, Any]:
     lines.extend([
         "## Pre-freeze repair retained in the ledger",
         "",
-        "The first B1 draft aligned final mixed task features directly across subject groups and collapsed at calibration BA 0.500 while B0 reached 0.722. That run is excluded from science but retained on the execution server. Before freeze, the alignment site was corrected to the source-special expert stack used by the audited upstream topology; objective names and weights did not change. See `HYPOTHESIS_LEDGER.md`.",
+        "The first B1 draft aligned final mixed task features directly across subject groups and collapsed at calibration BA 0.500 while B0 reached 0.722. A first expert-stack repair reached BA 0.555 but its four-branch MMD remained unstable. Both runs are excluded from science but retained on the execution server. The final pre-freeze implementation rotates exactly one two-source special-branch pair per minibatch and uses a matched longer B0/B1 full schedule, reflecting the audited upstream topology; objective names and weights did not change. See `HYPOTHESIS_LEDGER.md`.",
         "",
         "## Interpretation limit",
         "",

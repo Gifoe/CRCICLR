@@ -28,7 +28,11 @@ identity labels and score Session 2 identity labels.
   comparison; the full ladder is retained for Figure A.
 - `B0_EEG_DG_TASK_ONLY` / `B1_EEG_DG_FULL`: identical multi-scale routed
   architecture. Full adds marginal RBF-MMD, class-conditional centroid
-  alignment, and source-domain classification at weights 0.1/0.1/0.1.
+  alignment, and source-domain classification at weights 0.1/0.1/0.1. The
+  many-source implementation rotates one two-source special-branch pair per
+  minibatch, matching the topology of the audited 2-source upstream entry
+  point. Both B0/B1 use the same preregistered 30-epoch ceiling, 10-epoch
+  minimum, and patience 7 in full runs.
 - `C0_SCLDGN_TASK_ONLY` / `C1_SCLDGN_FULL`: identical fixed nine-band FIR plus
   multi-kernel spatial-temporal architecture. Full adds pairwise CORAL and
   same-class feature-mix supervised contrastive loss at weights 1.0/0.1.
