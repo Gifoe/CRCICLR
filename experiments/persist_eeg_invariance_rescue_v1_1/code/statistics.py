@@ -14,18 +14,41 @@ from common import EXPERIMENT_ROOT, FIGURES, OUTPUTS, load_config, stable_seed, 
 
 
 def _boot(frame: pd.DataFrame, column: str, draws: int = 10000, seed: int = 0) -> dict[str, Any]:
-    data = frame[["fold", "seed", "subject_id", column]].copy(); data[column] = pd.to_numeric(data[column], errors="coerce"); data = data[np.isfinite(data[column])]
-    if not len(data): return {"mean": None, "median": None, "ci95": [None, None], "n_subjects": 0, "draws": draws}
-    rng = np.random.default_rng(seed); folds = sorted(data.fold.unique()); vals = np.empty(draws)
-    for d in range(draws):
-        fpick = rng.choice(folds, len(folds), replace=True); means = []
-        for f in fpick:
-            ff = data[data.fold == f]; seeds = sorted(ff.seed.unique()); spick = rng.choice(seeds, len(seeds), replace=True); runvals = []
-            for s in spick:
-                rr = ff[ff.seed == s]; picks = rng.choice(rr.index.to_numpy(), len(rr), replace=True); runvals.append(float(rr.loc[picks, column].mean()))
-            means.append(float(np.mean(runvals)))
+    data = frame[["fold", "seed", "subject_id", column]].copy()
+    data[column] = pd.to_numeric(data[column], errors="coerce")
+    data = data[np.isfinite(data[column])]
+    if not len(data):
+        return {"mean": None, "median": None, "ci95": [None, None], "n_subjects": 0, "draws": draws}
+    # Keep the frozen fold -> seed -> subject hierarchy, but materialize each
+    # run as a NumPy vector once.  The previous implementation performed two
+    # pandas boolean filters inside every bootstrap draw and made finalization
+    # needlessly take many minutes without changing the statistic.
+    run_values: dict[tuple[Any, Any], np.ndarray] = {
+        (fold, run_seed): group[column].to_numpy(dtype=float)
+        for (fold, run_seed), group in data.groupby(["fold", "seed"], sort=True)
+    }
+    fold_runs: dict[Any, list[np.ndarray]] = {}
+    for (fold, _), values in run_values.items():
+        fold_runs.setdefault(fold, []).append(values)
+    rng = np.random.default_rng(seed)
+    folds = sorted(fold_runs)
+    vals = np.empty(int(draws), dtype=float)
+    for d in range(int(draws)):
+        fpick = rng.choice(folds, len(folds), replace=True)
+        means = []
+        for fold in fpick:
+            runs = fold_runs[fold]
+            spick = rng.integers(0, len(runs), size=len(runs))
+            run_means = []
+            for run_index in spick:
+                values = runs[int(run_index)]
+                picks = rng.integers(0, len(values), size=len(values))
+                run_means.append(float(values[picks].mean()))
+            means.append(float(np.mean(run_means)))
         vals[d] = float(np.mean(means))
-    raw = data[column].to_numpy(float); return {"mean": float(raw.mean()), "median": float(np.median(raw)), "ci95": [float(np.quantile(vals, .025)), float(np.quantile(vals, .975))], "n_subjects": int(data.subject_id.nunique()), "draws": int(draws), "positive_subject_fraction": float(np.mean(data.groupby("subject_id")[column].mean() > 0)), "nonnegative_subject_fraction": float(np.mean(data.groupby("subject_id")[column].mean() >= 0)), "worst_subject": float(data.groupby("subject_id")[column].mean().min()), "fold_positivity": int(np.sum(data.groupby("fold")[column].mean() > 0)), "seed_positivity": int(np.sum(data.groupby(["fold", "seed"])[column].mean() > 0))}
+    raw = data[column].to_numpy(float)
+    subject_means = data.groupby("subject_id")[column].mean()
+    return {"mean": float(raw.mean()), "median": float(np.median(raw)), "ci95": [float(np.quantile(vals, .025)), float(np.quantile(vals, .975))], "n_subjects": int(data.subject_id.nunique()), "n_subject_units": int(data.groupby(["fold", "seed", "subject_id"]).ngroups), "draws": int(draws), "positive_subject_fraction": float(np.mean(subject_means > 0)), "nonnegative_subject_fraction": float(np.mean(subject_means >= 0)), "worst_subject": float(subject_means.min()), "fold_positivity": int(np.sum(data.groupby("fold")[column].mean() > 0)), "seed_positivity": int(np.sum(data.groupby(["fold", "seed"])[column].mean() > 0))}
 
 
 def _p_less(values: Sequence[float]) -> float | None:
@@ -43,24 +66,46 @@ def _holm(values: Mapping[str, float | None]) -> dict[str, float | None]:
 def determine_eligibility(identity: pd.DataFrame, task: pd.DataFrame, functional: pd.DataFrame, assignments: pd.DataFrame) -> dict[str, Any]:
     cfg = load_config(); families = ["A_SUBJECT_GRL_EEGNET", "B_EEG_DG", "C_SCLDGN"]; result = {}
     for family in families:
-        idf = identity[identity.family == family]; tf = task[task.family == family]; sf = functional[functional.family == family]; af = assignments[assignments.family == family]; valid_runs = af[af.measurement_valid.astype(bool)] if len(af) else af; id_summary = _boot(idf.rename(columns={"subject_id": "subject_id"}), "delta_ID", int(cfg["bootstrap_draws"]), stable_seed("i1", family)); ba_summary = _boot(tf, "delta_BA_INV", int(cfg["bootstrap_draws"]), stable_seed("i3", family)); spl_summary = _boot(sf, "SPL", int(cfg["bootstrap_draws"]), stable_seed("i2", family)); lp_summary = _boot(sf, "L_P", int(cfg["bootstrap_draws"]), stable_seed("lp", family)); i1 = bool(id_summary["mean"] is not None and id_summary["mean"] < 0); i1_cert = bool(id_summary["ci95"][1] is not None and id_summary["ci95"][1] < 0); i2 = bool(len(valid_runs) >= int(cfg.get("protected_assignment_min_runs", 4)) and spl_summary["mean"] is not None and spl_summary["mean"] > 0 and lp_summary["mean"] > 0); i2_cert = bool(i2 and spl_summary["ci95"][0] is not None and spl_summary["ci95"][0] > 0 and lp_summary["ci95"][0] is not None and lp_summary["ci95"][0] > 0); i3 = bool(ba_summary["mean"] is not None and ba_summary["mean"] < 0); i3_cert = bool(ba_summary["ci95"][1] is not None and ba_summary["ci95"][1] < 0); qvar = float(sf["q_variance_train"].dropna().mean()) if "q_variance_train" in sf.columns and sf["q_variance_train"].notna().any() else np.nan; measurement_invalid = bool(len(valid_runs) == 0 or sf.empty or (np.isfinite(qvar) and qvar <= float(cfg["functional"]["q_variance_floor"])))
+        idf = identity[identity.family == family]; tf = task[task.family == family]; sf = functional[functional.family == family]; af = assignments[assignments.family == family]; valid_runs = af[af.measurement_valid.astype(bool)] if len(af) else af; id_summary = _boot(idf.rename(columns={"subject_id": "subject_id"}), "delta_ID", int(cfg["bootstrap_draws"]), stable_seed("i1", family)); ba_summary = _boot(tf, "delta_BA_INV", int(cfg["bootstrap_draws"]), stable_seed("i3", family)); spl_summary = _boot(sf, "SPL", int(cfg["bootstrap_draws"]), stable_seed("i2", family)); lp_summary = _boot(sf, "L_P", int(cfg["bootstrap_draws"]), stable_seed("lp", family)); ln_summary = _boot(sf, "L_N", int(cfg["bootstrap_draws"]), stable_seed("ln", family)); i1 = bool(id_summary["mean"] is not None and id_summary["mean"] < 0); i1_cert = bool(id_summary["ci95"][1] is not None and id_summary["ci95"][1] < 0); i2 = bool(len(valid_runs) >= int(cfg.get("protected_assignment_min_runs", 4)) and spl_summary["mean"] is not None and spl_summary["mean"] > 0 and lp_summary["mean"] > 0); i2_cert = bool(i2 and spl_summary["ci95"][0] is not None and spl_summary["ci95"][0] > 0 and lp_summary["ci95"][0] is not None and lp_summary["ci95"][0] > 0); i3 = bool(ba_summary["mean"] is not None and ba_summary["mean"] < 0); i3_cert = bool(ba_summary["ci95"][1] is not None and ba_summary["ci95"][1] < 0); qvar = float(sf["q_variance_train"].dropna().mean()) if "q_variance_train" in sf.columns and sf["q_variance_train"].notna().any() else np.nan; measurement_invalid = bool(len(valid_runs) == 0 or sf.empty or (np.isfinite(qvar) and qvar <= float(cfg["functional"]["q_variance_floor"])))
         if measurement_invalid: status = "MEASUREMENT_INVALID"
         elif not i1: status = "NO_MEASURABLE_INVARIANCE_EFFECT"
         elif not i2: status = "INVARIANCE_WITHOUT_SELECTIVE_PROTECTED_LOSS"
         elif not i3: status = "SELECTIVE_PROTECTED_LOSS_NO_TASK_HARM"
         else: status = "ELIGIBLE_PROTECTED_LOSS"
-        result[family] = {"runs": int(len(idf)), "valid_assignment_runs": int(len(valid_runs)), "I1": i1, "I1_certified": i1_cert, "I2": i2, "I2_certified": i2_cert, "I3": i3, "I3_certified": i3_cert, "measurement_invalid": measurement_invalid, "status": status, "eligible": bool(status == "ELIGIBLE_PROTECTED_LOSS"), "identity": id_summary, "task_harm": ba_summary, "protected_loss": lp_summary, "selective_loss": spl_summary, "outer_test_used": False, "outer_membership_enumerated": False}
+        # Rescue is a prespecified secondary analysis for either an eligible
+        # protected-loss family (STATUS_D) or a STATUS_C family.  The latter
+        # is explicitly diagnostic only: it does not turn task preservation
+        # into evidence of task-harm rescue.  This field is written here,
+        # rather than inferred later by rescue.py, so the gate is auditable in
+        # the frozen eligibility artifact and cannot silently suppress a
+        # permitted STATUS_C run.
+        rescue_allowed = bool(
+            (not measurement_invalid)
+            and i1
+            and i2
+            and (i3 or status == "SELECTIVE_PROTECTED_LOSS_NO_TASK_HARM")
+        )
+        raw_p = {"I1": _p_less(idf["delta_ID"].to_numpy(float)) if len(idf) else None, "I2_LP": _p_less(-sf["L_P"].to_numpy(float)) if len(sf) else None, "I2_SPL": _p_less(-sf["SPL"].to_numpy(float)) if len(sf) else None, "I3": _p_less(tf["delta_BA_INV"].to_numpy(float)) if len(tf) else None}
+        result[family] = {"runs": int(len(idf)), "valid_assignment_runs": int(len(valid_runs)), "I1": i1, "I1_certified": i1_cert, "I2": i2, "I2_certified": i2_cert, "I3": i3, "I3_certified": i3_cert, "measurement_invalid": measurement_invalid, "status": status, "eligible": bool(status == "ELIGIBLE_PROTECTED_LOSS"), "rescue_allowed": rescue_allowed, "identity": id_summary, "task_harm": ba_summary, "protected_loss": lp_summary, "matched_nonprotected_loss": ln_summary, "selective_loss": spl_summary, "p_values": {"raw": raw_p}, "outer_test_used": False, "outer_membership_enumerated": False}
+    for key in ("I1", "I2_LP", "I2_SPL", "I3"):
+        corrected = _holm({family: result[family]["p_values"]["raw"][key] for family in families})
+        for family in families:
+            result[family]["p_values"].setdefault("holm", {})[key] = corrected[family]
     payload = {"families": result, "outer_test_used": False, "outer_membership_enumerated": False}; write_json(OUTPUTS / "ELIGIBILITY.json", payload); return payload
 
 
 def _make_figures(identity: pd.DataFrame, functional: pd.DataFrame, rescue: pd.DataFrame) -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
+    retention = functional
+    retention_path = OUTPUTS / "FUNCTIONAL_RETENTION.csv"
+    if retention_path.exists():
+        retention = pd.read_csv(retention_path)
     # 1: identity/task train-side selection and final outcome.
     fig, ax = plt.subplots(figsize=(7, 4)); ax.axhline(0, color="k", lw=.8); final = identity.groupby("family").mean(numeric_only=True); ax.scatter(final.get("T_anchor_ID", pd.Series()), final.get("invariant_ID", pd.Series()), s=70); ax.set_xlabel("T_anchor identity BA"); ax.set_ylabel("Invariant identity BA"); ax.set_title("Final cross-session identity audit"); fig.tight_layout(); fig.savefig(FIGURES / "FIGURE1_GRL_SELECTION_FINAL_IDENTITY.png", dpi=160); plt.close(fig)
     # 2: replica-normalized retention.
     fig, ax = plt.subplots(figsize=(7, 4));
-    if len(functional):
-        p = functional.groupby(["family", "role"]).FR.mean().unstack(); p.plot.bar(ax=ax); ax.set_ylabel("FR (1-MSE)"); ax.set_title("Functional protected retention");
+    if len(retention) and {"family", "role", "FR"}.issubset(retention.columns):
+        p = retention.groupby(["family", "role"]).FR.mean().unstack(); p.plot.bar(ax=ax); ax.set_ylabel("FR (1-MSE)"); ax.set_title("Functional protected retention");
     fig.tight_layout(); fig.savefig(FIGURES / "FIGURE2_REPLICA_NORMALIZED_RETENTION.png", dpi=160); plt.close(fig)
     fig, ax = plt.subplots(figsize=(7, 4));
     if len(functional):
@@ -77,7 +122,20 @@ def _make_figures(identity: pd.DataFrame, functional: pd.DataFrame, rescue: pd.D
 
 
 def finalize() -> dict[str, Any]:
-    cfg = load_config(); identity = pd.read_csv(OUTPUTS / "IDENTITY_AUDIT.csv"); task = pd.read_csv(OUTPUTS / "TASK_HARM.csv"); functional = pd.read_csv(OUTPUTS / "SELECTIVE_PROTECTED_LOSS.csv") if (OUTPUTS / "SELECTIVE_PROTECTED_LOSS.csv").exists() else pd.DataFrame(); assignments = pd.read_csv(OUTPUTS / "PROTECTED_ASSIGNMENT.csv"); eligibility = determine_eligibility(identity, task, functional, assignments); rescue = pd.read_csv(OUTPUTS / "RESCUE_RESULTS.csv") if (OUTPUTS / "RESCUE_RESULTS.csv").exists() else pd.DataFrame(); rescue_subject = pd.read_csv(OUTPUTS / "RESCUE_SUBJECT_RESULTS.csv") if (OUTPUTS / "RESCUE_SUBJECT_RESULTS.csv").exists() else pd.DataFrame(); rescue_rows = []
+    cfg = load_config()
+    # IDENTITY_AUDIT is intentionally a run-level table (one row per
+    # family/fold/seed).  The primary I1 inference is subject-level, so use
+    # the paired subject audit for eligibility/bootstrap while retaining the
+    # run-level table for reporting and figures.
+    identity = pd.read_csv(OUTPUTS / "IDENTITY_AUDIT.csv")
+    identity_subject = pd.read_csv(OUTPUTS / "SUBJECT_LEVEL_AUDIT.csv") if (OUTPUTS / "SUBJECT_LEVEL_AUDIT.csv").exists() else identity
+    task = pd.read_csv(OUTPUTS / "TASK_HARM.csv")
+    functional = pd.read_csv(OUTPUTS / "SELECTIVE_PROTECTED_LOSS.csv") if (OUTPUTS / "SELECTIVE_PROTECTED_LOSS.csv").exists() else pd.DataFrame()
+    assignments = pd.read_csv(OUTPUTS / "PROTECTED_ASSIGNMENT.csv")
+    eligibility = determine_eligibility(identity_subject, task, functional, assignments)
+    rescue = pd.read_csv(OUTPUTS / "RESCUE_RESULTS.csv") if (OUTPUTS / "RESCUE_RESULTS.csv").exists() else pd.DataFrame()
+    rescue_subject = pd.read_csv(OUTPUTS / "RESCUE_SUBJECT_RESULTS.csv") if (OUTPUTS / "RESCUE_SUBJECT_RESULTS.csv").exists() else pd.DataFrame()
+    rescue_rows = []
     if len(rescue_subject):
         for family, group in rescue_subject.groupby("family"):
             for method, values in group.groupby("rescue_method").balanced_accuracy:
@@ -96,8 +154,8 @@ def finalize() -> dict[str, Any]:
     elif len(supported) == 1: terminal = "V1_1_PERSIST_RESCUE_SINGLE_FAMILY_ONLY"
     else: terminal = "V1_1_PERSIST_RESCUE_CROSS_FAMILY_SUPPORTED"
     _make_figures(identity, functional, rescue_subject); ready = bool(any(x["I1"] and x["I2"] for x in eligibility["families"].values()) and (supported or any(x["status"] == "SELECTIVE_PROTECTED_LOSS_NO_TASK_HARM" for x in eligibility["families"].values())))
-    decision = {"terminal_state": terminal, "families": eligibility["families"], "eligible_families": allowed, "rescue_supported_families": supported, "READY_TO_DESIGN_EXPERIMENT_2": ready, "outer_test_used": False, "outer_membership_enumerated": False}; write_json(OUTPUTS / "FINAL_DECISION.json", decision); write_csv(OUTPUTS / "SUBJECT_LEVEL_RESULTS.csv", identity.merge(task[["family","fold","seed","subject_id","delta_BA_INV"]], on=["family","fold","seed","subject_id"], how="left"))
+    decision = {"terminal_state": terminal, "families": eligibility["families"], "eligible_families": allowed, "rescue_supported_families": supported, "READY_TO_DESIGN_EXPERIMENT_2": ready, "outer_test_used": False, "outer_membership_enumerated": False}; write_json(OUTPUTS / "FINAL_DECISION.json", decision); write_csv(OUTPUTS / "SUBJECT_LEVEL_RESULTS.csv", identity_subject)
     report = ["# Scientific report", "", "## Direct answers", "", "V1 old PRS was a cross-model latent-coordinate reconstruction and therefore confounded by rotation/remapping non-identifiability. V1.1 uses an independently trained task-only replica and frozen teacher task-evidence targets.", "", f"Terminal state: `{terminal}`.", "", "Family summaries:"]
-    for family, row in eligibility["families"].items(): report.append(f"- {family}: I1={row['I1']} (mean ΔID={row['identity']['mean']}), I2={row['I2']} (mean SPL={row['selective_loss']['mean']}), I3={row['I3']} (mean ΔBA={row['task_harm']['mean']}), status={row['status']}.")
+    for family, row in eligibility["families"].items(): report.append(f"- {family}: I1={row['I1']} (mean ΔID={row['identity']['mean']}, CI={row['identity']['ci95']}), I2={row['I2']} (mean L_P={row['protected_loss']['mean']}, mean L_N={row['matched_nonprotected_loss']['mean']}, mean SPL={row['selective_loss']['mean']}, CI={row['selective_loss']['ci95']}), I3={row['I3']} (mean ΔBA={row['task_harm']['mean']}, CI={row['task_harm']['ci95']}), status={row['status']}.")
     report += ["", f"Rescue-supported families: {supported or 'none'}.", "", "All reported outputs set outer_test_used=false and outer_membership_enumerated=false.", "", "The result is exploratory because V1.1 was redesigned after observing V1."]
     (OUTPUTS / "SCIENTIFIC_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8"); return decision

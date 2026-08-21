@@ -1,0 +1,336 @@
+{
+  "families": {
+    "A_SUBJECT_GRL_EEGNET": {
+      "I1": true,
+      "I1_certified": true,
+      "I2": false,
+      "I2_certified": false,
+      "I3": true,
+      "I3_certified": false,
+      "eligible": false,
+      "identity": {
+        "ci95": [
+          -0.052592592592592545,
+          -0.007777777777777772
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.029444444444444426,
+        "median": -0.0199999999999999,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.30434782608695654,
+        "positive_subject_fraction": 0.2608695652173913,
+        "seed_positivity": 0,
+        "worst_subject": -0.16999999999999998
+      },
+      "matched_nonprotected_loss": {
+        "ci95": [
+          -0.6881339438155837,
+          -0.32095414707886843
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.5289270223885802,
+        "median": -0.5409543595280378,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.0,
+        "positive_subject_fraction": 0.0,
+        "seed_positivity": 0,
+        "worst_subject": -0.8758846035896821
+      },
+      "measurement_invalid": false,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "p_values": {
+        "holm": {
+          "I1": 0.0007199928000719992,
+          "I2_LP": 1.0,
+          "I2_SPL": 8.999910000899992e-05,
+          "I3": 0.7926520734792653
+        },
+        "raw": {
+          "I1": 0.0003599964000359996,
+          "I2_LP": 1.0,
+          "I2_SPL": 2.999970000299997e-05,
+          "I3": 0.3963260367396326
+        }
+      },
+      "protected_loss": {
+        "ci95": [
+          -0.5311631469754542,
+          -0.23539128950721705
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.3718234450157514,
+        "median": -0.33063888759627086,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.0,
+        "positive_subject_fraction": 0.0,
+        "seed_positivity": 0,
+        "worst_subject": -0.7522375546697975
+      },
+      "rescue_allowed": false,
+      "runs": 54,
+      "selective_loss": {
+        "ci95": [
+          -0.10496639549359388,
+          0.33458750735226056
+        ],
+        "draws": 10000,
+        "fold_positivity": 2,
+        "mean": 0.15710357737282873,
+        "median": 0.21212527901173528,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.6956521739130435,
+        "positive_subject_fraction": 0.6956521739130435,
+        "seed_positivity": 5,
+        "worst_subject": -0.3193802427140491
+      },
+      "status": "INVARIANCE_WITHOUT_SELECTIVE_PROTECTED_LOSS",
+      "task_harm": {
+        "ci95": [
+          -0.005925925925925928,
+          0.004444444444444417
+        ],
+        "draws": 10000,
+        "fold_positivity": 2,
+        "mean": -0.00037037037037038163,
+        "median": 0.0,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.6956521739130435,
+        "positive_subject_fraction": 0.5217391304347826,
+        "seed_positivity": 4,
+        "worst_subject": -0.03
+      },
+      "valid_assignment_runs": 6
+    },
+    "B_EEG_DG": {
+      "I1": false,
+      "I1_certified": false,
+      "I2": true,
+      "I2_certified": false,
+      "I3": true,
+      "I3_certified": true,
+      "eligible": false,
+      "identity": {
+        "ci95": [
+          0.05611111111111111,
+          0.1822222222222222
+        ],
+        "draws": 10000,
+        "fold_positivity": 3,
+        "mean": 0.11759259259259257,
+        "median": 0.06999999999999995,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.7391304347826086,
+        "positive_subject_fraction": 0.7391304347826086,
+        "seed_positivity": 6,
+        "worst_subject": -0.14
+      },
+      "matched_nonprotected_loss": {
+        "ci95": [
+          0.047986911917789796,
+          0.13772505667360369
+        ],
+        "draws": 10000,
+        "fold_positivity": 2,
+        "mean": 0.09385390965253058,
+        "median": 0.07027362097382915,
+        "n_subject_units": 36,
+        "n_subjects": 16,
+        "nonnegative_subject_fraction": 1.0,
+        "positive_subject_fraction": 1.0,
+        "seed_positivity": 4,
+        "worst_subject": 0.007483603763555502
+      },
+      "measurement_invalid": false,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "p_values": {
+        "holm": {
+          "I1": 0.999960000399996,
+          "I2_LP": 0.0013499865001349986,
+          "I2_SPL": 0.9153308466915331,
+          "I3": 2.999970000299997e-05
+        },
+        "raw": {
+          "I1": 0.999960000399996,
+          "I2_LP": 0.00044999550004499957,
+          "I2_SPL": 0.45766542334576654,
+          "I3": 9.99990000099999e-06
+        }
+      },
+      "protected_loss": {
+        "ci95": [
+          -0.0007633231165416545,
+          0.2014112970240151
+        ],
+        "draws": 10000,
+        "fold_positivity": 2,
+        "mean": 0.09693814968781533,
+        "median": 0.05146243555537185,
+        "n_subject_units": 36,
+        "n_subjects": 16,
+        "nonnegative_subject_fraction": 0.75,
+        "positive_subject_fraction": 0.75,
+        "seed_positivity": 3,
+        "worst_subject": -0.17697937273801934
+      },
+      "rescue_allowed": false,
+      "runs": 54,
+      "selective_loss": {
+        "ci95": [
+          -0.10418244031996318,
+          0.10783124359506766
+        ],
+        "draws": 10000,
+        "fold_positivity": 1,
+        "mean": 0.0030842400352847016,
+        "median": -0.01217129224320895,
+        "n_subject_units": 36,
+        "n_subjects": 16,
+        "nonnegative_subject_fraction": 0.5,
+        "positive_subject_fraction": 0.5,
+        "seed_positivity": 2,
+        "worst_subject": -0.2434842527578086
+      },
+      "status": "NO_MEASURABLE_INVARIANCE_EFFECT",
+      "task_harm": {
+        "ci95": [
+          -0.1009259259259259,
+          -0.02092592592592593
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.052777777777777764,
+        "median": -0.03,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.21739130434782608,
+        "positive_subject_fraction": 0.17391304347826086,
+        "seed_positivity": 0,
+        "worst_subject": -0.31500000000000006
+      },
+      "valid_assignment_runs": 4
+    },
+    "C_SCLDGN": {
+      "I1": true,
+      "I1_certified": true,
+      "I2": false,
+      "I2_certified": false,
+      "I3": false,
+      "I3_certified": false,
+      "eligible": false,
+      "identity": {
+        "ci95": [
+          -0.2014907407407407,
+          -0.06407407407407407
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.12944444444444442,
+        "median": -0.10499999999999995,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.17391304347826086,
+        "positive_subject_fraction": 0.17391304347826086,
+        "seed_positivity": 0,
+        "worst_subject": -0.5449999999999999
+      },
+      "matched_nonprotected_loss": {
+        "ci95": [
+          0.03350295267606478,
+          0.3925720324974062
+        ],
+        "draws": 10000,
+        "fold_positivity": 3,
+        "mean": 0.16630674139231244,
+        "median": 0.0455552474924124,
+        "n_subject_units": 45,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.8260869565217391,
+        "positive_subject_fraction": 0.8260869565217391,
+        "seed_positivity": 5,
+        "worst_subject": -0.0380273475571543
+      },
+      "measurement_invalid": false,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "p_values": {
+        "holm": {
+          "I1": 2.999970000299997e-05,
+          "I2_LP": 1.0,
+          "I2_SPL": 1.0,
+          "I3": 0.8653513464865351
+        },
+        "raw": {
+          "I1": 9.99990000099999e-06,
+          "I2_LP": 0.9792002079979201,
+          "I2_SPL": 1.0,
+          "I3": 0.8653513464865351
+        }
+      },
+      "protected_loss": {
+        "ci95": [
+          -0.08763631289866194,
+          -0.0009954316602982583
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.0376830631842138,
+        "median": -0.0421796666833398,
+        "n_subject_units": 45,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.34782608695652173,
+        "positive_subject_fraction": 0.34782608695652173,
+        "seed_positivity": 1,
+        "worst_subject": -0.188173684053891
+      },
+      "rescue_allowed": false,
+      "runs": 54,
+      "selective_loss": {
+        "ci95": [
+          -0.437133124381558,
+          -0.057124929338724574
+        ],
+        "draws": 10000,
+        "fold_positivity": 0,
+        "mean": -0.20398980457652624,
+        "median": -0.0861368564522588,
+        "n_subject_units": 45,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.13043478260869565,
+        "positive_subject_fraction": 0.13043478260869565,
+        "seed_positivity": 0,
+        "worst_subject": -1.0717019538384138
+      },
+      "status": "INVARIANCE_WITHOUT_SELECTIVE_PROTECTED_LOSS",
+      "task_harm": {
+        "ci95": [
+          -0.011296296296296285,
+          0.025740740740740703
+        ],
+        "draws": 10000,
+        "fold_positivity": 2,
+        "mean": 0.007962962962962944,
+        "median": 0.009999999999999901,
+        "n_subject_units": 54,
+        "n_subjects": 23,
+        "nonnegative_subject_fraction": 0.6086956521739131,
+        "positive_subject_fraction": 0.6086956521739131,
+        "seed_positivity": 4,
+        "worst_subject": -0.037500000000000026
+      },
+      "valid_assignment_runs": 5
+    }
+  },
+  "outer_membership_enumerated": false,
+  "outer_test_used": false
+}
