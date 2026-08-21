@@ -80,7 +80,7 @@ def run_eligible_rescues() -> tuple[pd.DataFrame, pd.DataFrame, dict[str, Any]]:
     eligibility = json.loads((OUTPUTS / "ELIGIBILITY.json").read_text(encoding="utf-8")); config = load_config(); rows, subjects = [], []
     selections = pd.read_csv(OUTPUTS / "HYPERPARAM_SELECTION.csv")
     for fold in map(int, config["development_folds"]):
-        lam = float(selections[selections.fold == fold].iloc[0].selected_lambda); pairs = [("A_SUBJECT_GRL_EEGNET", "A0_TASK_ONLY_EEGNET", f"A1_SUBJECT_GRL_EEGNET_L{int(round(lam*1000)):04d}"), ("B_EEG_DG", "B0_EEG_DG_TASK_ONLY", "B1_EEG_DG_FULL"), ("C_SCLDGN", "C0_SCLDGN_TASK_ONLY", "C1_SCLDGN_FULL")]
+        selected = selections[selections.fold == fold]; lam = float(selected[selected.selected.astype(bool)].iloc[0].candidate_lambda); pairs = [("A_SUBJECT_GRL_EEGNET", "A0_TASK_ONLY_EEGNET", f"A1_SUBJECT_GRL_EEGNET_L{int(round(lam*1000)):04d}"), ("B_EEG_DG", "B0_EEG_DG_TASK_ONLY", "B1_EEG_DG_FULL"), ("C_SCLDGN", "C0_SCLDGN_TASK_ONLY", "C1_SCLDGN_FULL")]
         for seed in map(int, config["seeds"]):
             for family, task, inv in pairs:
                 entry = eligibility["families"].get(family, {});

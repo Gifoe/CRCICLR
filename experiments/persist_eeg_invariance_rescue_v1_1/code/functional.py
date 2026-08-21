@@ -104,7 +104,7 @@ def analyze_one(family: str, task_method: str, invariant_method: str, fold: int,
 def analyze_all() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     config = load_config(); selections = pd.read_csv(OUTPUTS / "HYPERPARAM_SELECTION.csv"); p_rows, n_rows, spl_rows, assignment_rows = [], [], [], []
     for fold in map(int, config["development_folds"]):
-        lam = float(selections[selections.fold == fold].iloc[0].selected_lambda); pairs = [("A_SUBJECT_GRL_EEGNET", "A0_TASK_ONLY_EEGNET", f"A1_SUBJECT_GRL_EEGNET_L{int(round(lam*1000)):04d}"), ("B_EEG_DG", "B0_EEG_DG_TASK_ONLY", "B1_EEG_DG_FULL"), ("C_SCLDGN", "C0_SCLDGN_TASK_ONLY", "C1_SCLDGN_FULL")]
+        selected = selections[selections.fold == fold]; lam = float(selected[selected.selected.astype(bool)].iloc[0].candidate_lambda); pairs = [("A_SUBJECT_GRL_EEGNET", "A0_TASK_ONLY_EEGNET", f"A1_SUBJECT_GRL_EEGNET_L{int(round(lam*1000)):04d}"), ("B_EEG_DG", "B0_EEG_DG_TASK_ONLY", "B1_EEG_DG_FULL"), ("C_SCLDGN", "C0_SCLDGN_TASK_ONLY", "C1_SCLDGN_FULL")]
         for seed in map(int, config["seeds"]):
             for family, task, inv in pairs:
                 result = analyze_one(family, task, inv, fold, seed); p_rows.append(result["functional_rows"]); n_rows.append(result["control_rows"]); spl_rows.append(result["spl_rows"]); assignment_rows.append({"family": family, "fold": fold, "seed": seed, "protected_assignment_exists": result["protected_assignment_exists"], "protected_rank": result["protected_rank"], "q_variance_train": result["q_variance_train"], "measurement_valid": result["measurement_valid"], "outer_test_used": False})
