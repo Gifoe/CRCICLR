@@ -516,6 +516,8 @@ def build_train_only() -> dict[str, Any]:
     if device.type != "cuda":
         raise RuntimeError("Experiment 3 requires the server CUDA environment for V3.1 feature extraction")
     all_controls, all_diags, all_curves, all_params, provenance = [], [], [], [], []
+    failed_runs: list[dict[str, Any]] = []
+    eligible_runs: list[dict[str, int]] = []
     for fold in FOLDS:
         allowed = splits[fold]["train_subjects"] + splits[fold]["validation_subjects"]
         manifest = load_development_manifest(allowed)
@@ -529,13 +531,21 @@ def build_train_only() -> dict[str, Any]:
             mi_q = train_q[mi_train_mask]
             protected_blocks = list(map(int, assignment["mi"]["protected"]))
             controls, diagnostics, control_payload = match_controls(mi_meta, mi_q, spec, protected_blocks, fold, seed, splits[fold]["train_subjects"])
-            if len(controls) < MATCH_MIN:
-                raise RuntimeError(f"MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE fold={fold} seed={seed} accepted={len(controls)}")
             write_csv(OUT / "train_only" / f"MATCHED_CONTROLS_FOLD_{fold}_SEED_{seed}.csv", controls)
             write_json(OUT / "train_only" / f"MATCHED_CONTROLS_FOLD_{fold}_SEED_{seed}.json", control_payload)
-            all_controls.append(controls)
+            if len(controls):
+                all_controls.append(controls)
             all_diags.append(diagnostics)
             protected_dims = sorted(set(sum((list(map(int, spec["blocks"][b])) for b in protected_blocks), [])))
+            run_provenance = {"fold": fold, "seed": seed, "protected_block_ids": protected_blocks, "protected_coordinate_ids": protected_dims, "spectrum_fingerprint": upstream_prov["fingerprint"], "spectrum_path": upstream_prov["paths"]["spectrum"], "assignment_path": upstream_prov["paths"]["assignment"], "checkpoint": feat_prov["checkpoint"], "checkpoint_sha256": feat_prov["checkpoint_sha256"], "train_rows": len(train_meta), "validation_rows": len(val_meta), "accepted_controls": len(controls), **flags()}
+            if len(controls) < MATCH_MIN:
+                run_provenance["matching_status"] = "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE"
+                provenance.append(run_provenance)
+                failed_runs.append({"fold": fold, "seed": seed, "accepted_controls": len(controls), "required_controls": MATCH_MIN, "protected_block_ids": protected_blocks, "protected_rank": len(protected_dims), "pool_size": int(control_payload.get("pool", []) and len(control_payload["pool"]) or 0), "candidate_count": int(control_payload.get("candidate_count", 0)), "reason": "frozen non-Protected persistence-supported pool has fewer than the required 20 exact-rank controls", **flags()})
+                continue
+            run_provenance["matching_status"] = "OK"
+            provenance.append(run_provenance)
+            eligible_runs.append({"fold": fold, "seed": seed, "controls": len(controls)})
             p_curve = identity_curve(mi_meta, mi_q, protected_dims, splits[fold]["train_subjects"], fold, seed, "P")
             all_curves.append(p_curve)
             n_curves: dict[str, pd.DataFrame] = {}
@@ -556,17 +566,19 @@ def build_train_only() -> dict[str, Any]:
                 for control_id, curve in n_curves.items():
                     alpha_n, drop_n = interpolate_alpha(curve, target)
                     all_params.append({"fold": fold, "seed": seed, "group_id": control_id, "dose": dose, "target_drop_train": target, "alpha": alpha_n, "drop_train": drop_n, "common_max_drop_train": common_max, **flags()})
-            provenance.append({"fold": fold, "seed": seed, "protected_block_ids": protected_blocks, "protected_coordinate_ids": protected_dims, "spectrum_fingerprint": upstream_prov["fingerprint"], "spectrum_path": upstream_prov["paths"]["spectrum"], "assignment_path": upstream_prov["paths"]["assignment"], "checkpoint": feat_prov["checkpoint"], "checkpoint_sha256": feat_prov["checkpoint_sha256"], "train_rows": len(train_meta), "validation_rows": len(val_meta), **flags()})
-    controls_frame = pd.concat(all_controls, ignore_index=True)
+    controls_frame = pd.concat(all_controls, ignore_index=True) if all_controls else pd.DataFrame()
     diags_frame = pd.concat(all_diags, ignore_index=True)
-    curves_frame = pd.concat(all_curves, ignore_index=True)
+    curves_frame = pd.concat(all_curves, ignore_index=True) if all_curves else pd.DataFrame()
     params_frame = pd.DataFrame(all_params)
     write_csv(OUT / "MATCHED_CONTROL_TABLE.csv", controls_frame)
     write_csv(OUT / "MATCHING_DIAGNOSTICS.csv", diags_frame)
     write_csv(OUT / "IDENTITY_RESPONSE_CURVES.csv", curves_frame)
     write_csv(OUT / "IDENTITY_MATCHING_PARAMETERS.csv", params_frame)
-    write_json(OUT / "MATCHED_CONTROL_PROVENANCE.json", {"runs": provenance, "minimum_controls": MATCH_MIN, "maximum_controls": MATCH_MAX, "matching_selection": MATCH_SELECTION, "matching_distance_cutoff": None, **flags()})
-    payload = {"status": "TRAIN_ONLY_DESIGN_READY", "runs": len(provenance), "controls_per_run_min": int(controls_frame.groupby(["fold", "seed"]).control_id.nunique().min()), "common_train_identity_range_min": float(params_frame.common_max_drop_train.min()), "config_sha256": sha256_file(CONFIG_PATH), "split_sha256": split_sha, "device": str(device), "validation_outcome_used": False, **flags()}
+    write_json(OUT / "MATCHED_CONTROL_PROVENANCE.json", {"runs": provenance, "failed_runs": failed_runs, "eligible_runs": eligible_runs, "minimum_controls": MATCH_MIN, "maximum_controls": MATCH_MAX, "matching_selection": MATCH_SELECTION, "matching_distance_cutoff": None, **flags()})
+    if failed_runs:
+        payload = {"status": "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE", "runs": len(provenance), "eligible_runs": eligible_runs, "failed_runs": failed_runs, "controls_per_run_min": int(diags_frame.accepted_count.min()) if len(diags_frame) else 0, "common_train_identity_range_min": float(params_frame.common_max_drop_train.min()) if len(params_frame) else None, "config_sha256": sha256_file(CONFIG_PATH), "split_sha256": split_sha, "device": str(device), "validation_outcome_used": False, **flags()}
+    else:
+        payload = {"status": "TRAIN_ONLY_DESIGN_READY", "runs": len(provenance), "controls_per_run_min": int(controls_frame.groupby(["fold", "seed"]).control_id.nunique().min()), "common_train_identity_range_min": float(params_frame.common_max_drop_train.min()), "config_sha256": sha256_file(CONFIG_PATH), "split_sha256": split_sha, "device": str(device), "validation_outcome_used": False, **flags()}
     write_json(OUT / "TRAIN_ONLY_DESIGN.json", payload)
     return payload
 
@@ -575,6 +587,9 @@ def freeze() -> dict[str, Any]:
     design_path = OUT / "TRAIN_ONLY_DESIGN.json"
     if not design_path.exists():
         raise RuntimeError("run train_only before freeze")
+    design = json.loads(design_path.read_text(encoding="utf-8"))
+    if design.get("status") != "TRAIN_ONLY_DESIGN_READY":
+        raise RuntimeError(f"cannot freeze terminal train-only design: {design.get('status')}")
     code_hashes = {str(p.relative_to(EXP_ROOT)): sha256_file(p) for p in sorted((EXP_ROOT / "code").glob("*.py"))}
     payload = {"status": "FROZEN_BEFORE_FINAL_VALIDATION", "protocol_sha256": sha256_file(CONFIG_PATH), "code_sha256": code_hashes, "design_sha256": sha256_file(design_path), "frozen_features": ["matching_features", "candidate_rule", "identity_metric", "alpha_grid", "dose_fractions", "identity_tolerance", "task_probe", "bootstrap", "gates"], "validation_outcome_used": False, **flags()}
     path = OUT / "PROTOCOL_FREEZE_RECORD.json"
@@ -677,6 +692,92 @@ def run_final() -> dict[str, Any]:
     write_json(OUT / "PROVENANCE_AUDIT.json", {"runs": provenance, "freeze_record": freeze_record, "split_sha256": split_sha, "validation_outcome_used_for_design": False, **flags()})
     write_json(OUT / "DATA_ACCESS_AUDIT_FINAL.json", {"authorized_subject_scope": "development_train_and_development_validation_only", "outer_data_loaded": False, "outer_membership_enumerated": False, "outer_test_used": False})
     return {"status": "FINAL_RAW_OUTPUTS_READY", "persistence_rows": len(persistence_rows_all), "identity_rows": len(id_rows_all), "task_rows": len(task_rows_all), "dose_rows": len(dose_rows_all), **flags()}
+
+
+def terminal_after_train_only() -> dict[str, Any]:
+    """Close the experiment honestly when G1 is impossible in train-only data.
+
+    This path computes the held-out persistence audit, but deliberately does
+    not run identity-dose or task-consequence outcomes.  It is therefore not
+    a workaround for the G1 gate and cannot produce a causal positive claim.
+    """
+    design_path = OUT / "TRAIN_ONLY_DESIGN.json"
+    if not design_path.exists():
+        raise RuntimeError("run train_only before terminal")
+    design = json.loads(design_path.read_text(encoding="utf-8"))
+    if design.get("status") != "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE":
+        raise RuntimeError(f"terminal phase requires G1-unavailable design, got {design.get('status')}")
+    ensure_dirs(); splits, split_sha = load_development_splits()
+    import torch
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device.type != "cuda":
+        raise RuntimeError("Experiment 3 terminal audit requires the server CUDA environment")
+    persistence_rows_all: list[dict[str, Any]] = []
+    provenance: list[dict[str, Any]] = []
+    for fold in FOLDS:
+        allowed = splits[fold]["train_subjects"] + splits[fold]["validation_subjects"]
+        manifest = load_development_manifest(allowed)
+        for seed in SEEDS:
+            _, _, val_meta, val_h, feat_prov = extract_or_load_features(fold, seed, splits[fold], manifest, device)
+            spec, assignment, upstream_prov = load_upstream_run(fold, seed)
+            val_q = coordinates(val_h, spec).astype(np.float32)
+            persistence_rows_all.extend(persistence_rows(val_meta, val_q, splits[fold]["validation_subjects"], fold, seed))
+            protected_blocks = list(map(int, assignment["mi"]["protected"]))
+            protected_dims = sorted(set(sum((list(map(int, spec["blocks"][b])) for b in protected_blocks), [])))
+            provenance.append({"fold": fold, "seed": seed, "checkpoint": feat_prov["checkpoint"], "checkpoint_sha256": feat_prov["checkpoint_sha256"], "spectrum_fingerprint": upstream_prov["fingerprint"], "protected_block_ids": protected_blocks, "protected_coordinate_ids": protected_dims, "train_subjects": splits[fold]["train_subjects"], "validation_subjects": splits[fold]["validation_subjects"], **flags()})
+    persistence = pd.DataFrame(persistence_rows_all)
+    write_csv(OUT / "PERSISTENCE_REPLICATION.csv", persistence)
+    if len(persistence):
+        p_subject = persistence.groupby("subject_id", as_index=False).agg(same_similarity=("same_similarity", "mean"), mismatched_similarity=("mismatched_similarity", "mean"), R_persist=("R_persist", "mean"))
+    else:
+        p_subject = pd.DataFrame(columns=["subject_id", "same_similarity", "mismatched_similarity", "R_persist"])
+    write_csv(OUT / "PERSISTENCE_REPLICATION_SUBJECT_LEVEL.csv", p_subject)
+    p_stats = bootstrap(p_subject, "R_persist", stable_seed("g0"))
+    write_json(OUT / "PERSISTENCE_REPLICATION_STATS.json", p_stats)
+    g0 = bool(p_stats.get("ci95", [None, None])[0] is not None and p_stats["ci95"][0] > 0)
+    reason = "G1 failed in train-only construction: at least one frozen Protected assignment has fewer than 20 exact-rank non-Protected persistence-supported controls."
+    marker = pd.DataFrame([{"status": "NOT_EVALUATED", "reason": reason, **flags()}])
+    for name in ("IDENTITY_MANIPULATION_CHECK.csv", "IDENTITY_MANIPULATION_SUBJECT_LEVEL.csv", "IDENTITY_MANIPULATION_PAIRED.csv", "TASK_CONSEQUENCE_SUBJECT_LEVEL.csv", "TASK_CONSEQUENCE_RUN_LEVEL.csv", "DOSE_RESPONSE.csv", "RANDOM_CONTROL_DIAGNOSTIC.csv"):
+        write_csv(OUT / name, marker)
+    empty_metric = {"mean": None, "median": None, "ci95": [None, None], "sign_probability": None, "n_unique_subjects": 0, "draws": BOOTSTRAP_DRAWS}
+    primary = {"status": "NOT_EVALUATED_G1_FAILED", "H_P": empty_metric, "H_N": empty_metric, "Delta_H": empty_metric, "gate_G3": None, "primary_dose": "MEDIUM", **flags()}
+    write_json(OUT / "PRIMARY_CAUSAL_EFFECT.json", primary)
+    write_json(OUT / "IDENTITY_MANIPULATION_STATS.json", {"status": "NOT_EVALUATED_G1_FAILED", "reason": reason, **flags()})
+    write_json(OUT / "DOSE_RESPONSE_STATS.json", {"status": "NOT_EVALUATED_G1_FAILED", "reason": reason, **flags()})
+    write_json(OUT / "PROVENANCE_AUDIT.json", {"runs": provenance, "train_only_design": design, "split_sha256": split_sha, "validation_outcome_used_for_design": False, **flags()})
+    write_json(OUT / "DATA_ACCESS_AUDIT_FINAL.json", {"authorized_subject_scope": "development_train_and_development_validation_only", "outer_data_loaded": False, "outer_membership_enumerated": False, "outer_test_used": False})
+    failed = design.get("failed_runs", [])
+    decision = {"terminal_state": "MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE", "G0_heldout_persistence": g0, "G1_matched_controls": False, "G2_identity_equivalence": None, "G3_utility_causal_effect": None, "mean_delta_ID_P": None, "mean_delta_ID_N": None, "identity_difference": None, "primary": primary, "matching_failures": failed, "utility_not_identity_claim": "PARTIAL" if g0 else "NO", "enter_experiment_4": "NO", "validation_outcome_used_for_design": False, **flags()}
+    write_json(OUT / "FINAL_DECISION.json", decision)
+    p_ci = p_stats.get("ci95")
+    report = "\n".join([
+        "# PERSIST-EEG Experiment 3 scientific report", "", "## Scope", "",
+        "This prospectively frozen closure stopped before causal validation outcomes because the train-only matched-control gate was impossible for one frozen assignment. It is not an untouched independent replication and it is not outer validation.", "",
+        "## Gate results", "",
+        f"- G0 held-out persistence replication: `{g0}`; R_persist mean={p_stats.get('mean')}, 95% CI={p_ci}.",
+        f"- G1 matched controls: `False`; required at least {MATCH_MIN} controls for every assignment. Train-only failed runs: {json.dumps(failed, ensure_ascii=False)}.",
+        "- G2 identity-dose equivalence: not evaluated because G1 failed before validation outcome.",
+        "- G3 primary causal consequence: not evaluated because no valid six-run matched-control design was frozen.", "",
+        "## Scientific interpretation", "",
+        "The natural non-Protected persistence-supported pool cannot supply the required exact-rank control ensemble for fold-2/seed-1 (Protected rank 8, non-Protected pool rank 8, one legal combination). Creating duplicate rotations of the same full-rank span would not be independent controls, and admitting unsupported coordinates would change the frozen control source; neither was used.", "",
+        "No H_P, H_N, Delta_H, identity-dose equivalence, or dose-response causal quantity is reported as measured. The terminal state is `MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE`.", "",
+        f"Utility-not-identity claim: `{'PARTIAL' if g0 else 'NO'}`. Experiment-4 entry: `NO`.", "",
+        "## Leakage and outer audit", "",
+        "Validation representations were used only for the held-out persistence audit after the train-only design failed. No validation task BA, identity-dose outcome, or task consequence was used to select matching. All artifacts set `outer_test_used=false` and `outer_membership_enumerated=false`.", "",
+    ])
+    (OUT / "SCIENTIFIC_REPORT.md").write_text(report, encoding="utf-8")
+    # Only the applicable held-out persistence figure is generated.  No causal
+    # figure is fabricated for an endpoint that was not evaluated.
+    try:
+        import matplotlib.pyplot as plt
+        if len(persistence):
+            fig, ax = plt.subplots(figsize=(6, 4)); ax.scatter(persistence.same_similarity, persistence.mismatched_similarity, alpha=.7); lo = min(persistence.same_similarity.min(), persistence.mismatched_similarity.min()); hi = max(persistence.same_similarity.max(), persistence.mismatched_similarity.max()); ax.plot([lo, hi], [lo, hi], "k--", lw=.8); ax.set_xlabel("same-subject cosine"); ax.set_ylabel("mismatched-subject cosine"); ax.set_title("Held-out persistence replication"); fig.tight_layout(); fig.savefig(FIGURES / "01_heldout_persistence.png", dpi=160); plt.close(fig)
+    except Exception:
+        pass
+    expected = ["PERSISTENCE_REPLICATION.csv", "PERSISTENCE_REPLICATION_STATS.json", "MATCHED_CONTROL_TABLE.csv", "MATCHING_DIAGNOSTICS.csv", "MATCHED_CONTROL_PROVENANCE.json", "IDENTITY_RESPONSE_CURVES.csv", "IDENTITY_MATCHING_PARAMETERS.csv", "IDENTITY_MANIPULATION_CHECK.csv", "IDENTITY_MANIPULATION_STATS.json", "TASK_CONSEQUENCE_SUBJECT_LEVEL.csv", "TASK_CONSEQUENCE_RUN_LEVEL.csv", "PRIMARY_CAUSAL_EFFECT.json", "DOSE_RESPONSE.csv", "DOSE_RESPONSE_STATS.json", "RANDOM_CONTROL_DIAGNOSTIC.csv", "PROVENANCE_AUDIT.json", "DATA_ACCESS_AUDIT_FINAL.json", "FINAL_DECISION.json", "SCIENTIFIC_REPORT.md"]
+    hashes = {name: sha256_file(OUT / name) for name in expected if (OUT / name).exists()}
+    write_json(OUT / "REPRODUCIBILITY_AUDIT.json", {"terminal_state": decision["terminal_state"], "lightweight_output_sha256": hashes, "expected_files": expected, "bootstrap_draws": BOOTSTRAP_DRAWS, "finalize_deterministic": True, **flags()})
+    return decision
 
 
 def bootstrap(values: pd.DataFrame, column: str, seed: int) -> dict[str, Any]:
@@ -789,7 +890,7 @@ def make_figures(persistence: pd.DataFrame, identity: pd.DataFrame, task_subject
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("phase", choices=["phase0", "train_only", "freeze", "final", "finalize", "all"])
+    parser.add_argument("phase", choices=["phase0", "train_only", "freeze", "final", "terminal", "finalize", "all"])
     args = parser.parse_args()
     if args.phase in {"phase0", "all"}:
         phase0()
@@ -799,6 +900,8 @@ def main() -> None:
         freeze()
     if args.phase in {"final", "all"}:
         run_final()
+    if args.phase == "terminal":
+        print(json.dumps(clean(terminal_after_train_only()), ensure_ascii=False, indent=2))
     if args.phase in {"finalize", "all"}:
         print(json.dumps(clean(finalize()), ensure_ascii=False, indent=2))
 

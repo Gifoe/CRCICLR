@@ -62,6 +62,11 @@ Allowed terminal states include `EXP3_UTILITY_NOT_IDENTITY_SUPPORTED`,
 `PROTECTED_CAUSAL_EFFECT_NOT_SUPPORTED`, and
 `EXP3_DEVELOPMENT_CAUSAL_EVIDENCE_ONLY`.
 
+When `MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE` occurs during train-only
+construction, the terminal phase may compute the held-out persistence audit and
+write an explicit non-evaluated record for identity/task outcomes.  It must not
+freeze a partial control design or fabricate causal endpoint values.
+
 This is a prospectively frozen closure on a development resource already used
 by earlier experiments; it is not an untouched independent replication and is
 not an outer validation.

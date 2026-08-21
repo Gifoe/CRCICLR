@@ -33,3 +33,12 @@ identity accuracy is still reported at every dose.
 The loader reads only the frozen train and development-validation subject
 fields needed for this experiment.  It does not extract, enumerate, or
 materialize outer subject membership, EEG, labels, or features.
+
+For fold 2 / seed 1, the frozen MI Protected assignment has rank 8 while the
+non-Protected persistence-supported pool also has rank 8, yielding exactly one
+legal exact-rank control.  The required control ensemble therefore cannot be
+constructed.  The implementation records this as the terminal
+`MATCHED_NONPROTECTED_CONTROL_UNAVAILABLE` state and computes only the
+applicable held-out persistence audit.  It does not manufacture duplicate
+rotations of the same full-rank span or admit unsupported coordinates merely to
+make G1 pass.
