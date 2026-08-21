@@ -26,7 +26,11 @@ EPSILON_NEUTRAL = 0.005
 
 
 def aligned_representation(method_id: str, fold: int, seed: int, role: str = "T_anchor") -> tuple[pd.DataFrame, np.ndarray, np.ndarray]:
-    split = load_development_split(fold); manifest = load_manifest(split); cached = load_representation(method_id, fold, seed, role); lookup = manifest.set_index("manifest_position", drop=False); positions = cached["positions"].astype(np.int64)
+    split = load_development_split(fold); cached = load_representation(method_id, fold, seed, role); positions = cached["positions"].astype(np.int64)
+    if all(name in cached for name in ("subject_id", "session_id", "label")):
+        frame = pd.DataFrame({"subject_id": cached["subject_id"].astype(str), "session_id": cached["session_id"].astype(int), "label": cached["label"].astype(int), "manifest_position": positions})
+        return frame, cached["features"].astype(np.float32), cached["logits"].astype(np.float32)
+    manifest = load_manifest(split); lookup = manifest.set_index("manifest_position", drop=False)
     if not set(map(int, positions)).issubset(set(map(int, lookup.index))): raise RuntimeError("representation position outside development manifest")
     frame = lookup.loc[positions].reset_index(drop=True)
     if not np.array_equal(frame.manifest_position.to_numpy(dtype=np.int64), positions): raise RuntimeError("representation/manifest alignment failure")

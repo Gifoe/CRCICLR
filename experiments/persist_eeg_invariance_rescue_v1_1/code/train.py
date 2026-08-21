@@ -157,22 +157,25 @@ def load_trained_model(method_id: str, role: str, fold: int, seed: int, device: 
 
 
 @torch.inference_mode()
-def extract_one(method_id: str, role: str, fold: int, seed: int, device: torch.device, force: bool = False, mode: str = "full") -> Path:
+def extract_one(method_id: str, role: str, fold: int, seed: int, device: torch.device, force: bool = False, mode: str = "full", subjects: Sequence[str] | None = None) -> Path:
     path = representation_path(fold, seed, method_id, role); provenance_path = path.with_suffix(".json")
     if path.exists() and provenance_path.exists() and not force: return path
-    config = load_config(); split = load_development_split(fold); manifest = load_manifest(split); mean, std, norm_path = normalizer(fold, manifest, split.model_fit_subjects); frame = select_frame(manifest, split.allowed_subjects, [1, 2]); model = load_trained_model(method_id, role, fold, seed, device, mode=mode)
+    config = load_config(); split = load_development_split(fold); selected_subjects = tuple(map(str, subjects)) if subjects is not None else split.allowed_subjects; manifest = load_manifest(split, selected_subjects); mean, std, norm_path = normalizer(fold, load_manifest(split, split.model_fit_subjects), split.model_fit_subjects); frame = select_frame(manifest, selected_subjects, [1, 2]); model = load_trained_model(method_id, role, fold, seed, device, mode=mode)
     batch_size = int(config["training"]["family_hyperparameters"][method_family(method_id)]["batch_size"]); loader = make_loader(MIDataset(frame, mean, std, None), batch_size, False, stable_seed("v11-extract", fold, seed, method_id, role)); features, logits, positions = [], [], []
     for signals, _, _, position in loader:
         output = model(signals.to(device, non_blocking=True)); features.append(output.features.float().cpu().numpy()); logits.append(output.logits.float().cpu().numpy()); positions.append(position.numpy())
     h, score, pos = np.concatenate(features).astype(np.float32), np.concatenate(logits).astype(np.float32), np.concatenate(positions).astype(np.int64); order = np.argsort(pos); path.parent.mkdir(parents=True, exist_ok=True); temp = path.with_suffix(".part.npz")
-    np.savez_compressed(temp, positions=pos[order], features=h[order], logits=score[order], outer_test_used=np.asarray(False), outer_membership_enumerated=np.asarray(False)); os.replace(temp, path)
+    ordered_frame = frame.iloc[order]
+    np.savez_compressed(temp, positions=pos[order], features=h[order], logits=score[order], subject_id=ordered_frame.subject_id.astype(str).to_numpy(), session_id=ordered_frame.session_id.to_numpy(dtype=np.int64), label=ordered_frame.label.to_numpy(dtype=np.int64), outer_test_used=np.asarray(False), outer_membership_enumerated=np.asarray(False)); os.replace(temp, path)
     write_json(provenance_path, {"method_id": method_id, "role": role, "fold": int(fold), "seed": int(seed), "mode": mode, "shape": list(h.shape), "manifest_positions_sha256": __import__("hashlib").sha256(pos[order].tobytes()).hexdigest(), "checkpoint_sha256": sha256_file(checkpoint_path(mode, fold, seed, method_id, role)), "normalizer_sha256": sha256_file(norm_path), "outer_test_used": False, "outer_membership_enumerated": False}); return path
 
 
 def load_representation(method_id: str, fold: int, seed: int, role: str = "T_anchor") -> dict[str, np.ndarray]:
     value = np.load(representation_path(fold, seed, method_id, role), allow_pickle=False)
     if bool(value["outer_test_used"].item()): raise RuntimeError("outer lock violation")
-    return {name: value[name] for name in ("positions", "features", "logits")}
+    names = ["positions", "features", "logits"]
+    names.extend(name for name in ("subject_id", "session_id", "label") if name in value.files)
+    return {name: value[name] for name in names}
 
 
 def _make_initial_state(method_id: str, fold: int, seed: int, device: torch.device) -> dict[str, torch.Tensor]:
@@ -185,7 +188,8 @@ def _inner_identity(fold: int, candidate: float, inner: int, fit_subjects: Seque
     train_model("A0_TASK_ONLY_EEGNET", "T_anchor", fold, 9000 + inner, device, fit_subjects, eval_subjects, init_state=init, order_seed=order, mode="smoke", force=True, epochs=int(config["training"]["inner_epochs"])); train_model(method, "I_invariant", fold, 9000 + inner, device, fit_subjects, eval_subjects, init_state=init, order_seed=order, mode="smoke", force=True, epochs=int(config["training"]["inner_epochs"]))
     # Reloading the two small smoke representations is deterministic and keeps
     # the selector independent of any final outcome artefact.
-    extract_one("A0_TASK_ONLY_EEGNET", "T_anchor", fold, 9000 + inner, device, force=True, mode="smoke"); extract_one(method, "I_invariant", fold, 9000 + inner, device, force=True, mode="smoke")
+    selected_subjects = tuple(fit_subjects) + tuple(eval_subjects)
+    extract_one("A0_TASK_ONLY_EEGNET", "T_anchor", fold, 9000 + inner, device, force=True, mode="smoke", subjects=selected_subjects); extract_one(method, "I_invariant", fold, 9000 + inner, device, force=True, mode="smoke", subjects=selected_subjects)
     return float(identity_from_cached_inner(fold, 9000 + inner, eval_subjects, "A0_TASK_ONLY_EEGNET", method))
 
 
