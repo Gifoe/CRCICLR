@@ -1,0 +1,57 @@
+{
+  "families": {
+    "A_SUBJECT_GRL_EEGNET": {
+      "all_invariant_smoke_models_competent": true,
+      "all_losses_and_metrics_finite": true,
+      "all_runs_complete": true,
+      "deviation": "none",
+      "fidelity_gate_pass": true,
+      "matched_parameter_count": true,
+      "methods": [
+        "A0_TASK_ONLY_EEGNET",
+        "A1_SUBJECT_GRL_EEGNET_L0050",
+        "A1_SUBJECT_GRL_EEGNET_L0100",
+        "A1_SUBJECT_GRL_EEGNET_L0300",
+        "A1_SUBJECT_GRL_EEGNET_L1000"
+      ],
+      "minimum_invariant_calibration_BA": 0.55,
+      "minimum_task_only_calibration_BA": 0.6,
+      "status": "PASS",
+      "task_only_calibration_BA": 0.6799999999999999
+    },
+    "B_EEG_DG": {
+      "all_invariant_smoke_models_competent": true,
+      "all_losses_and_metrics_finite": true,
+      "all_runs_complete": true,
+      "deviation": "clean-room method-level reproduction; not exact official-code replication",
+      "fidelity_gate_pass": true,
+      "matched_parameter_count": true,
+      "methods": [
+        "B0_EEG_DG_TASK_ONLY",
+        "B1_EEG_DG_FULL"
+      ],
+      "minimum_invariant_calibration_BA": 0.55,
+      "minimum_task_only_calibration_BA": 0.6,
+      "status": "DEVIATION",
+      "task_only_calibration_BA": 0.7216666666666667
+    },
+    "C_SCLDGN": {
+      "all_invariant_smoke_models_competent": true,
+      "all_losses_and_metrics_finite": true,
+      "all_runs_complete": true,
+      "deviation": "clean-room method-level reproduction; not exact official-code replication",
+      "fidelity_gate_pass": true,
+      "matched_parameter_count": true,
+      "methods": [
+        "C0_SCLDGN_TASK_ONLY",
+        "C1_SCLDGN_FULL"
+      ],
+      "minimum_invariant_calibration_BA": 0.55,
+      "minimum_task_only_calibration_BA": 0.6,
+      "status": "DEVIATION",
+      "task_only_calibration_BA": 0.76
+    }
+  },
+  "outer_test_used": false,
+  "status": "PASS"
+}

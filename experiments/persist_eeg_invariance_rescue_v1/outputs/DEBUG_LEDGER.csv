@@ -1,0 +1,5 @@
+event_id,phase,fold,seed,method_id,status,best_calibration_BA,reason,scientific_use,execution_server_artifact,outer_test_used
+1,smoke,0,0,B1_EEG_DG_FULL,CRASHED,,torch.flatnonzero unavailable in installed PyTorch,EXCLUDED_FIDELITY_DEBUG,outputs/smoke/fold-0/seed-0/B1_EEG_DG_FULL__PRE_REPAIR_COLLAPSED/TRAINING_FAILED.json,False
+2,smoke,0,0,B1_EEG_DG_FULL,TASK_INCOMPETENT,0.5,alignment applied to final mixed task features collapsed task CE,EXCLUDED_FIDELITY_DEBUG,outputs/smoke/fold-0/seed-0/B1_EEG_DG_FULL__PRE_REPAIR_COLLAPSED/TRAINING_HISTORY.csv,False
+3,smoke,0,0,B1_EEG_DG_FULL,UNSTABLE_FIDELITY,0.555,four-branch MMD oscillated from 0.30 to 3.21,EXCLUDED_FIDELITY_DEBUG,outputs/smoke/fold-0/seed-0/B1_EEG_DG_FULL__PRE_REPAIR_FOUR_BRANCH/TRAINING_HISTORY.csv,False
+4,smoke,0,0,B1_EEG_DG_FULL,ACCEPTED_BINDING_SMOKE,0.6167,rotating two-source special-branch topology passed frozen competence gate,USED_FOR_FIDELITY_GATE,outputs/smoke/fold-0/seed-0/B1_EEG_DG_FULL/TRAINING_HISTORY.csv,False

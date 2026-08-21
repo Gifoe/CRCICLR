@@ -45,6 +45,10 @@ figures, and reports are versioned.
 - Server-only large artifacts: `outputs/cache`, `outputs/checkpoints`, and
   `outputs/smoke`; they can be regenerated with the commands above.
 - Terminal state: `NO_ELIGIBLE_PROTECTED_LOSS_OBSERVED`.
+- Completion audit: 54/54 full trainings, 54 checkpoints, 54 aligned
+  representations, 0 failed full runs, and 0 outer-access violations.
+- Repeated steady-state finalization reproduced all 29 lightweight artifacts
+  byte-for-byte by SHA-256.
 
 No family passed the frozen I1+I2+I3 chain, so running rescue models would have
 violated the protocol. Consequently Generic/PERSIST rescue BA, their paired CI,

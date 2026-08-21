@@ -1,0 +1,44 @@
+{
+  "families": {
+    "A_SUBJECT_GRL_EEGNET": {
+      "I1": false,
+      "I2": true,
+      "I3": true,
+      "audit_family": "A_SUBJECT_GRL_EEGNET_L0300",
+      "eligible": false,
+      "expected_runs": 6,
+      "mean_delta_BA_INV": -0.009444444444444316,
+      "mean_delta_ID": 0.0046296296296296155,
+      "mean_delta_PRS": -0.6498790006112266,
+      "runs_complete": 6,
+      "status": "NO_MEASURABLE_INVARIANCE_EFFECT"
+    },
+    "B_EEG_DG": {
+      "I1": false,
+      "I2": true,
+      "I3": true,
+      "audit_family": "B_EEG_DG",
+      "eligible": false,
+      "expected_runs": 6,
+      "mean_delta_BA_INV": -0.07611111111111106,
+      "mean_delta_ID": 0.04185185185185187,
+      "mean_delta_PRS": -0.8864868395610692,
+      "runs_complete": 6,
+      "status": "NO_MEASURABLE_INVARIANCE_EFFECT"
+    },
+    "C_SCLDGN": {
+      "I1": true,
+      "I2": false,
+      "I3": true,
+      "audit_family": "C_SCLDGN",
+      "eligible": false,
+      "expected_runs": 6,
+      "mean_delta_BA_INV": -0.0014814814814814996,
+      "mean_delta_ID": -0.13074074074074069,
+      "mean_delta_PRS": null,
+      "runs_complete": 6,
+      "status": "INVARIANCE_PRESERVES_PROTECTED_STRUCTURE"
+    }
+  },
+  "outer_test_used": false
+}
