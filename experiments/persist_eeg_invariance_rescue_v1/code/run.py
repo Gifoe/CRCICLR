@@ -155,6 +155,9 @@ def smoke(force: bool = False) -> dict[str, Any]:
             "status": ("DEVIATION" if declared_deviation else "PASS") if passed else "FAIL",
             "fidelity_gate_pass": passed,
             "methods": family_methods,
+            "method_calibration_BA": {
+                str(row.method_id): float(row.best_calibration_BA) for _, row in selected.iterrows()
+            },
             "task_only_calibration_BA": float(task_row.iloc[0].best_calibration_BA) if len(task_row) else None,
             "minimum_task_only_calibration_BA": float(config["fidelity_min_task_only_calibration_BA"]),
             "minimum_invariant_calibration_BA": float(config["fidelity_min_invariant_calibration_BA"]),
@@ -180,6 +183,10 @@ def smoke(force: bool = False) -> dict[str, Any]:
                 "",
                 f"Every invariant/ladder smoke model exceeds `{result['minimum_invariant_calibration_BA']}`: "
                 f"`{str(result['all_invariant_smoke_models_competent']).lower()}`.",
+                "",
+                "Method calibration BA: " + ", ".join(
+                    f"`{method}={score:.4f}`" for method, score in result["method_calibration_BA"].items()
+                ) + ".",
                 "",
                 f"Fidelity note: {result['deviation']}. Outcome loaders were not constructed during training; outer test used: `false`.",
                 "",
