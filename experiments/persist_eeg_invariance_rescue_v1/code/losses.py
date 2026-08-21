@@ -22,7 +22,7 @@ def _domain_groups(
     available = (available[shift:] + available[:shift])[:maximum_domains]
     groups = []
     for domain in available:
-        positions = torch.flatnonzero(domains == domain)
+        positions = torch.nonzero(domains == domain, as_tuple=False).flatten()
         if len(positions) < 2:
             continue
         positions = positions[:maximum_samples]
@@ -85,7 +85,7 @@ def coral_loss(features: torch.Tensor, labels: torch.Tensor, domains: torch.Tens
 def _same_label_permutation(labels: torch.Tensor, shift: int) -> torch.Tensor:
     result = torch.arange(len(labels), device=labels.device)
     for label in torch.unique(labels):
-        positions = torch.flatnonzero(labels == label)
+        positions = torch.nonzero(labels == label, as_tuple=False).flatten()
         if len(positions) > 1:
             result[positions] = positions.roll(int(shift) % len(positions))
     return result
@@ -115,4 +115,3 @@ def supervised_contrastive_loss(
     count = positive.sum(dim=1).clamp_min(1)
     loss = -(log_probability.masked_fill(~positive, 0.0).sum(dim=1) / count)
     return loss.mean()
-
