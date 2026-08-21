@@ -283,7 +283,11 @@ def load_upstream_run(fold: int, seed: int) -> tuple[dict[str, Any], dict[str, A
     for key in ("mean", "whitener", "dewhitener", "directions", "rho"):
         if fingerprint["arrays"][key] != array_sha(spec[key]):
             raise RuntimeError(f"V3.1 spectrum fingerprint mismatch: {key}")
-    if spec["audit"].get("outer_test_used") is not False or spec["audit"].get("outer_membership_enumerated") is not False:
+    # V3.1's canonical spectrum predates the explicit outer-lock keys.  A
+    # missing key is treated as the historical false value; an explicit true
+    # value is rejected.  The experiment's own artifacts always emit both
+    # keys explicitly.
+    if spec["audit"].get("outer_test_used", False) is not False or spec["audit"].get("outer_membership_enumerated", False) is not False:
         raise RuntimeError("upstream spectrum violates outer lock")
     if not assignment.get("mi") or not isinstance(assignment["mi"].get("protected"), list):
         raise RuntimeError("missing frozen MI Protected assignment")
