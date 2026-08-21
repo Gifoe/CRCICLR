@@ -47,3 +47,13 @@ unbounded search.
   This is the last B-family fidelity adjustment; the next smoke result is
   binding for inclusion/exclusion. Gates, loss weights and rescue definitions
   remain unchanged.
+
+## Post-freeze reporting repair (after final statistics)
+
+- No scientific computation, gate, eligibility decision, metric value, method,
+  or rescue execution changed. The report generator was amended only to avoid
+  three misleading statements: no-rescue selectivity is `not estimable`, the
+  C status label is not affirmative preservation evidence when only 4/6 runs
+  have a Protected assignment, and PRS loss must be compared with matched
+  non-Protected retention because independently trained latent spaces need not
+  be linearly identifiable. This is claim-discipline repair, not redesign.

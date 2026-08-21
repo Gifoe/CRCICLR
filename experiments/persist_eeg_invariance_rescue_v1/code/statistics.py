@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import FIGURES, OUTPUTS, load_config, stable_seed, write_csv, write_json
+from common import EXPERIMENT_ROOT, FIGURES, OUTPUTS, load_config, stable_seed, write_csv, write_json
 from models import primary_pairs, roster
 from rescue import determine_eligibility
 
@@ -200,6 +200,8 @@ def audit_statistics(
             "task_only_protected_retention": float(run_frame.task_only_PRS.mean()) if run_frame.task_only_PRS.notna().any() else None,
             "invariant_protected_retention": float(run_frame.invariant_PRS.mean()) if run_frame.invariant_PRS.notna().any() else None,
             "delta_PRS": float(run_frame.delta_PRS.mean()) if run_frame.delta_PRS.notna().any() else None,
+            "task_only_matched_nonprotected_retention": float(run_frame.task_only_matched_nonprotected_R2.mean()) if run_frame.task_only_matched_nonprotected_R2.notna().any() else None,
+            "invariant_matched_nonprotected_retention": float(run_frame.invariant_matched_nonprotected_R2.mean()) if run_frame.invariant_matched_nonprotected_R2.notna().any() else None,
             "I1": entry["I1"],
             "I2": entry["I2"],
             "I3": entry["I3"],
@@ -562,6 +564,8 @@ def finalize() -> dict[str, Any]:
             }
         )
     write_csv(OUTPUTS / "METHOD_LEDGER.csv", pd.DataFrame(method_rows))
+    debug_ledger = pd.read_csv(EXPERIMENT_ROOT / "PRE_FREEZE_FIDELITY_DEBUG.csv")
+    write_csv(OUTPUTS / "DEBUG_LEDGER.csv", debug_ledger)
     _make_figures(audit, audit_subjects, rescue, rescue_subjects, family_decisions)
 
     table1_md = _markdown(table1)
@@ -574,6 +578,26 @@ def finalize() -> dict[str, Any]:
         eligibility["families"].items(),
         key=lambda item: (item[1]["mean_delta_BA_INV"] if item[1]["mean_delta_BA_INV"] is not None else -math.inf),
     )[0]
+    a_ladder = audit[audit.family.str.startswith("A_SUBJECT_GRL_EEGNET_L")].groupby("family")[["delta_ID", "delta_PRS", "delta_BA_INV"]].mean()
+    a_ladder_lines = "; ".join(
+        f"{family.rsplit('L', 1)[-1]}: DeltaID={row.delta_ID:.4f}, DeltaPRS={row.delta_PRS:.4f}, DeltaBA={row.delta_BA_INV:.4f}"
+        for family, row in a_ladder.iterrows()
+    )
+    c_entry = eligibility["families"].get("C_SCLDGN", {})
+    c_table = table1[table1.family == "C_SCLDGN"]
+    c_assignment_runs = int(c_table.protected_assignment_runs.iloc[0]) if len(c_table) else 0
+    c_ba_ci = (
+        [float(c_table.delta_BA_INV_CI95_low.iloc[0]), float(c_table.delta_BA_INV_CI95_high.iloc[0])]
+        if len(c_table) else [None, None]
+    )
+    if eligible:
+        rescue_answer = f"Rescue was executed for `{eligible}`; certified families: `{certified}`."
+        generic_answer = f"Certified PERSIST-over-generic support was obtained for `{certified}`; Table 3 contains the intervals."
+        selectivity_answer = "Figure E and Table 2 report identity-versus-task recovery; this is descriptive, not a hard gate."
+    else:
+        rescue_answer = "No rescue was fit or scored because no family passed I1+I2+I3."
+        generic_answer = "Not estimable: Generic and PERSIST rescue were not run, so no paired rescue CI exists."
+        selectivity_answer = "Not estimable: no eligible family entered rescue, hence no post-rescue identity probe exists."
     report = f"""# Experiment 1 scientific report
 
 Status: `{terminal}`. All results are **DEVELOPMENT / EXPLORATORY**.
@@ -581,17 +605,24 @@ Status: `{terminal}`. All results are **DEVELOPMENT / EXPLORATORY**.
 ## Direct answers
 
 1. Methods with measurable mean subject-information reduction: `{q1}`.
-2. Methods also showing mean protected-retention loss: `{q2}`.
+2. Families passing the frozen all-run protected-loss gate I2 after I1: `{q2}`. C has PRS defined in only `{c_assignment_runs}/6` runs, so its large observed PRS decrease is incomplete rather than evidence of preservation.
 3. Families where protected loss accompanied future-session task harm: `{q3}`.
-4. PERSIST rescue certified for: `{certified}`.
-5. Capacity-matched generic persistence was beaten with certified paired CIs for: `{certified}`; see Table 3 for the actual intervals.
-6. Selectivity is reported, not assumed: Figure E and Table 2 compare identity recovery against BA recovery. Identity returning below the task-only level is descriptive, not a hard gate.
+4. {rescue_answer}
+5. {generic_answer}
+6. {selectivity_answer}
 7. Evidence spans `{len(config['development_folds'])}` folds, `{len(config['seeds'])}` seeds, and the subject counts in the statistics tables. Cross-family support: `{decision['cross_family_supported']}`.
-8. Strongest counterexample to a blanket invariance-harm claim: `{strongest_counterexample}`. Family-specific statuses are binding.
+8. Strongest counterexample to a blanket invariance-harm claim: `{strongest_counterexample}`. C reduced identity but had only `{c_assignment_runs}/6` Protected assignments and DeltaBA CI `{c_ba_ci}`.
 9. Outer test used: `false`.
 10. Terminal state: `{terminal}`.
 
 Protected-retention task-only R2 is expected to approach one because its target is a frozen linear coordinate of the same task-only representation. The evidential quantity is the cross-subject, cross-session recoverability change in the independently trained invariant representation, not task-only self-reconstruction in isolation.
+
+## Strict diagnostic interpretation
+
+- The primary GRL lambda 0.3 did not reduce identity on average (`DeltaID={eligibility['families']['A_SUBJECT_GRL_EEGNET']['mean_delta_ID']:.4f}`). The lower 0.05/0.10 ladder points did reduce mean identity, but promoting either after seeing outcome would be post hoc selection. Full ladder means (lambda encoded in thousandths) are: {a_ladder_lines}.
+- The clean-room EEG-DG instantiation harmed task BA but increased rather than reduced the cross-session identity probe (`DeltaID={eligibility['families']['B_EEG_DG']['mean_delta_ID']:.4f}`). Its task harm therefore cannot support the proposed invariance-to-protected-loss causal chain.
+- SCLDGN produced the only certified identity reduction, but the mean task effect was negligible and non-certified (`DeltaBA={c_entry.get('mean_delta_BA_INV')}`, CI `{c_ba_ci}`), while Protected assignment was absent in two runs. The formal label `INVARIANCE_PRESERVES_PROTECTED_STRUCTURE` means only that frozen I2 failed; it must not be read as affirmative preservation evidence.
+- PRS is not protected-selectivity proof by itself. For A, invariant protected/non-Protected R2 was `{float(table1.loc[table1.family == 'A_SUBJECT_GRL_EEGNET', 'invariant_protected_retention'].iloc[0]):.4f}/{float(table1.loc[table1.family == 'A_SUBJECT_GRL_EEGNET', 'invariant_matched_nonprotected_retention'].iloc[0]):.4f}`; for C it was `{float(table1.loc[table1.family == 'C_SCLDGN', 'invariant_protected_retention'].iloc[0]):.4f}/{float(table1.loc[table1.family == 'C_SCLDGN', 'invariant_matched_nonprotected_retention'].iloc[0]):.4f}` over evaluable runs. These similar drops are compatible with broad cross-model linear non-identifiability. B showed a larger protected-specific gap, but failed I1.
 
 ## Table 1 — Invariance audit
 
@@ -608,6 +639,8 @@ Protected-retention task-only R2 is expected to approach one because its target 
 ## Interpretation boundary
 
 This experiment does not establish that subject invariance is generally wrong, does not test absolute SOTA, and does not authorize an outer-test claim. It only tests whether the preregistered independently trained invariance objectives exhibit the full identity-loss/protected-loss/task-harm chain and, if so, whether intervention-defined protected restoration beats matched controls.
+
+It is insufficient by itself to justify Experiment 2 as a PERSIST-rescue follow-up. Proceed only if Experiment 2 is framed independently and first repairs the prerequisites: a reproducibly identity-reducing primary method, complete Protected assignment, and a retention metric that separates protected loss from generic cross-model alignability.
 """
     (OUTPUTS / "SCIENTIFIC_REPORT.md").write_text(report, encoding="utf-8")
 
@@ -615,12 +648,15 @@ This experiment does not establish that subject invariance is generally wrong, d
 
 - Terminal claim: `{terminal}`.
 - `outer_test_used=false`.
-- No outer split field was accessed and no outer subject, label, signal, feature, or score was enumerated by this experiment.
+- `SPLIT_FREEZE.json` was parsed to access only `train_subjects` and `validation_subjects`; the code never indexed, enumerated, logged, hashed, featurized, or scored outer membership. No outer signal or label was accessed.
 - Protected assignment used model-fit subjects only.
-- Rescue hyperparameters used calibration subjects Session 2 only.
+- No rescue model or rescue hyperparameter selection was executed because no family was eligible. The dormant preregistered selector is calibration-Session-2-only.
 - Development outcome labels were used only for final task scoring; outcome Session 1/2 identity labels were used only for the preregistered cross-session probe.
 - B/C are clean-room method-level reproductions, not exact official-source reproductions; conclusions are limited to these audited instantiations.
 - Task-only PRS is a self-coordinate recoverability reference and is not independent evidence.
+- A/C matched non-Protected retention fell similarly to Protected retention, so PRS loss may reflect broad cross-model linear non-identifiability and cannot be called selective deletion.
+- C's formal status label records failure of the all-run I2 gate; with only {c_assignment_runs}/6 Protected assignments it is not affirmative evidence that protected structure was preserved.
+- The lower GRL ladder points are exploratory diagnostics and were not promoted to primary after outcome inspection.
 - No V6/V7/V8 generic adaptation, router, Conformer blend, action bank, or meta-selector was used.
 """
     (OUTPUTS.parent / "CLAIM_AUDIT.md").write_text(claim_audit, encoding="utf-8")
