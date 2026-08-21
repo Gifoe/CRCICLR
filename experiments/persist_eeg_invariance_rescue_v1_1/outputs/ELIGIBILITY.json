@@ -74,7 +74,7 @@
         "worst_subject": -0.7522375546697975
       },
       "rescue_allowed": false,
-      "runs": 54,
+      "runs": 6,
       "selective_loss": {
         "ci95": [
           -0.10496639549359388,
@@ -92,6 +92,7 @@
         "worst_subject": -0.3193802427140491
       },
       "status": "INVARIANCE_WITHOUT_SELECTIVE_PROTECTED_LOSS",
+      "subject_rows": 54,
       "task_harm": {
         "ci95": [
           -0.005925925925925928,
@@ -107,6 +108,14 @@
         "positive_subject_fraction": 0.5217391304347826,
         "seed_positivity": 4,
         "worst_subject": -0.03
+      },
+      "task_models": {
+        "T_anchor_BA": 0.7133333333333334,
+        "T_anchor_ID": 0.357962962962963,
+        "T_replica_BA": 0.7244444444444444,
+        "T_replica_ID": 0.3648148148148148,
+        "invariant_BA": 0.7129629629629628,
+        "invariant_ID": 0.32851851851851854
       },
       "valid_assignment_runs": 6
     },
@@ -184,7 +193,7 @@
         "worst_subject": -0.17697937273801934
       },
       "rescue_allowed": false,
-      "runs": 54,
+      "runs": 6,
       "selective_loss": {
         "ci95": [
           -0.10418244031996318,
@@ -202,6 +211,7 @@
         "worst_subject": -0.2434842527578086
       },
       "status": "NO_MEASURABLE_INVARIANCE_EFFECT",
+      "subject_rows": 54,
       "task_harm": {
         "ci95": [
           -0.1009259259259259,
@@ -217,6 +227,14 @@
         "positive_subject_fraction": 0.17391304347826086,
         "seed_positivity": 0,
         "worst_subject": -0.31500000000000006
+      },
+      "task_models": {
+        "T_anchor_BA": 0.7383333333333335,
+        "T_anchor_ID": 0.2961111111111111,
+        "T_replica_BA": 0.7390740740740741,
+        "T_replica_ID": 0.3120370370370371,
+        "invariant_BA": 0.6855555555555556,
+        "invariant_ID": 0.4137037037037037
       },
       "valid_assignment_runs": 4
     },
@@ -294,7 +312,7 @@
         "worst_subject": -0.188173684053891
       },
       "rescue_allowed": false,
-      "runs": 54,
+      "runs": 6,
       "selective_loss": {
         "ci95": [
           -0.437133124381558,
@@ -312,6 +330,7 @@
         "worst_subject": -1.0717019538384138
       },
       "status": "INVARIANCE_WITHOUT_SELECTIVE_PROTECTED_LOSS",
+      "subject_rows": 54,
       "task_harm": {
         "ci95": [
           -0.011296296296296285,
@@ -327,6 +346,14 @@
         "positive_subject_fraction": 0.6086956521739131,
         "seed_positivity": 4,
         "worst_subject": -0.037500000000000026
+      },
+      "task_models": {
+        "T_anchor_BA": 0.7101851851851853,
+        "T_anchor_ID": 0.32925925925925914,
+        "T_replica_BA": 0.7092592592592593,
+        "T_replica_ID": 0.30314814814814817,
+        "invariant_BA": 0.7181481481481481,
+        "invariant_ID": 0.19981481481481486
       },
       "valid_assignment_runs": 5
     }

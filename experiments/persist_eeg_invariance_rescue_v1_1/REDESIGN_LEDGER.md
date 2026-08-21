@@ -12,3 +12,4 @@
 | Vectorize hierarchical bootstrap implementation | Remove repeated pandas filtering inside each draw; fold→seed→subject resampling definition is unchanged | After full outcome, performance-only repair |
 | Separate functional-retention and SPL inputs for figures; write subject-level result table directly | Finalizer previously assumed columns that belong to different frozen output tables | After full outcome, output plumbing repair; no scientific change |
 | Add L_N summaries and raw/Holm p-value fields | Complete the predeclared reporting contract without changing I1/I2/I3 status gates | After full outcome, reporting-only repair |
+| Report run count separately from subject-row count and expose paired model BA means | Subject-level I1 input otherwise made the `runs` label misleading and hid the required T_anchor/T_replica/invariant summary | After full outcome, reporting-only repair |
