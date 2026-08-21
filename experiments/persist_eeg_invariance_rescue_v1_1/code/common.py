@@ -112,6 +112,9 @@ def sha256_lines(values: Iterable[object]) -> str:
 
 
 def git_sha() -> str:
+    declared = os.environ.get("PERSIST_PROTOCOL_GIT_SHA")
+    if declared:
+        return str(declared)
     return subprocess.check_output(
         ["git", "-C", str(REPO_ROOT), "rev-parse", "HEAD"], text=True
     ).strip()
