@@ -115,6 +115,9 @@ def git_sha() -> str:
     declared = os.environ.get("PERSIST_PROTOCOL_GIT_SHA")
     if declared:
         return str(declared).strip()
+    declared_path = EXPERIMENT_ROOT / "PROTOCOL_SOURCE_SHA.txt"
+    if declared_path.exists():
+        return declared_path.read_text(encoding="utf-8").strip()
     return subprocess.check_output(
         ["git", "-C", str(REPO_ROOT), "rev-parse", "HEAD"], text=True
     ).strip()
