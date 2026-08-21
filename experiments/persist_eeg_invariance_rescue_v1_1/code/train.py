@@ -166,7 +166,8 @@ def extract_one(method_id: str, role: str, fold: int, seed: int, device: torch.d
         output = model(signals.to(device, non_blocking=True)); features.append(output.features.float().cpu().numpy()); logits.append(output.logits.float().cpu().numpy()); positions.append(position.numpy())
     h, score, pos = np.concatenate(features).astype(np.float32), np.concatenate(logits).astype(np.float32), np.concatenate(positions).astype(np.int64); order = np.argsort(pos); path.parent.mkdir(parents=True, exist_ok=True); temp = path.with_suffix(".part.npz")
     ordered_frame = frame.iloc[order]
-    np.savez_compressed(temp, positions=pos[order], features=h[order], logits=score[order], subject_id=ordered_frame.subject_id.astype(str).to_numpy(), session_id=ordered_frame.session_id.to_numpy(dtype=np.int64), label=ordered_frame.label.to_numpy(dtype=np.int64), outer_test_used=np.asarray(False), outer_membership_enumerated=np.asarray(False)); os.replace(temp, path)
+    subject_values = np.asarray(ordered_frame.subject_id.astype(str).tolist(), dtype="U32")
+    np.savez_compressed(temp, positions=pos[order], features=h[order], logits=score[order], subject_id=subject_values, session_id=ordered_frame.session_id.to_numpy(dtype=np.int64), label=ordered_frame.label.to_numpy(dtype=np.int64), outer_test_used=np.asarray(False), outer_membership_enumerated=np.asarray(False)); os.replace(temp, path)
     write_json(provenance_path, {"method_id": method_id, "role": role, "fold": int(fold), "seed": int(seed), "mode": mode, "shape": list(h.shape), "manifest_positions_sha256": __import__("hashlib").sha256(pos[order].tobytes()).hexdigest(), "checkpoint_sha256": sha256_file(checkpoint_path(mode, fold, seed, method_id, role)), "normalizer_sha256": sha256_file(norm_path), "outer_test_used": False, "outer_membership_enumerated": False}); return path
 
 
