@@ -23,9 +23,12 @@ intervention is continuous in the frozen persistence coordinates:
   never redefined.
 * Natural Non-Protected controls are exact-rank coordinate subsets from the
   frozen non-Protected persistence-supported span.  Candidates are generated
-  deterministically and selected by a predeclared train-only nearest-neighbour
-  structural matching score.  Up to 50 controls are retained per Protected
-  assignment; at least 20 valid controls are required.
+  deterministically and ranked by a predeclared train-only standardized
+  structural distance.  The first 50 legal candidates are retained per
+  Protected assignment; at least 20 valid controls are required.  There is no
+  outcome-dependent distance cutoff: the full candidate ranking is retained in
+  the diagnostics, including the accepted maximum distance and maximum
+  per-feature standardized deviation.
 * Matching features are: mean/dispersion of frozen rho, train coordinate
   variance/energy, train subject-ID probe BA, whitened direction norm, and
   train task-probe margin magnitude.  All are computed on development-train MI

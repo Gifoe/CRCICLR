@@ -51,7 +51,13 @@ BOOTSTRAP_DRAWS = 10_000
 MI_CLASSES = 2
 MATCH_MAX = 50
 MATCH_MIN = 20
-MATCH_DISTANCE_MAX = 2.5
+# The structural features are correlated (for example, task-margin and
+# dewhitened direction norm).  A hard per-feature z-score cutoff can therefore
+# reject every legal candidate even when the joint train-only distance is
+# small.  Matching is consequently a deterministic top-K ranking over the
+# complete exact-rank candidate set.  The per-feature extrema remain in the
+# diagnostics and are not hidden.
+MATCH_SELECTION = "top_k_train_only_standardized_structural_distance"
 IDENTITY_TOLERANCE = 0.01
 
 
@@ -463,17 +469,19 @@ def match_controls(train_meta: pd.DataFrame, train_q: np.ndarray, spec: Mapping[
     cand["match_distance"] = np.sqrt(np.nanmean(z * z, axis=1))
     cand["match_max_abs_z"] = np.nanmax(np.abs(z), axis=1)
     cand = cand.sort_values(["match_distance", "match_max_abs_z", "coordinate_ids"], kind="mergesort").reset_index(drop=True)
-    accepted = cand[(cand.match_distance <= MATCH_DISTANCE_MAX) & (cand.match_max_abs_z <= MATCH_DISTANCE_MAX)].head(MATCH_MAX).copy()
-    diagnostics = [{"fold": fold, "seed": seed, "protected_block_ids": json.dumps(list(map(int, protected_blocks))), "protected_coordinate_ids": json.dumps(protected), "candidate_count": len(cand), "accepted_count": len(accepted), "protected_rank": rank, "pool_size": len(pool), "protected_" + key: value, **flags()} for key, value in p_metrics.items()]
+    accepted = cand.head(MATCH_MAX).copy()
+    accepted_distance_max = float(accepted.match_distance.max()) if len(accepted) else float("nan")
+    accepted_max_abs_z_max = float(accepted.match_max_abs_z.max()) if len(accepted) else float("nan")
+    diagnostics = [{"fold": fold, "seed": seed, "protected_block_ids": json.dumps(list(map(int, protected_blocks))), "protected_coordinate_ids": json.dumps(protected), "candidate_count": len(cand), "accepted_count": len(accepted), "protected_rank": rank, "pool_size": len(pool), "accepted_distance_max": accepted_distance_max, "accepted_max_abs_z_max": accepted_max_abs_z_max, "matching_selection": MATCH_SELECTION, "protected_" + key: value, **flags()} for key, value in p_metrics.items()]
     # The repeated rows above are convenient for long-format diagnostics but
     # the actual table below has one summary row.
-    diag_row = {"fold": fold, "seed": seed, "protected_block_ids": json.dumps(list(map(int, protected_blocks))), "protected_coordinate_ids": json.dumps(protected), "candidate_count": len(cand), "accepted_count": len(accepted), "protected_rank": rank, "pool_size": len(pool), **{"protected_" + key: value for key, value in p_metrics.items()}, **flags()}
+    diag_row = {"fold": fold, "seed": seed, "protected_block_ids": json.dumps(list(map(int, protected_blocks))), "protected_coordinate_ids": json.dumps(protected), "candidate_count": len(cand), "accepted_count": len(accepted), "protected_rank": rank, "pool_size": len(pool), "accepted_distance_max": accepted_distance_max, "accepted_max_abs_z_max": accepted_max_abs_z_max, "matching_selection": MATCH_SELECTION, **{"protected_" + key: value for key, value in p_metrics.items()}, **flags()}
     selected_rows = []
     for index, row in accepted.iterrows():
         selected_rows.append({"fold": fold, "seed": seed, "control_id": f"N{len(selected_rows)+1:03d}", "protected_block_ids": json.dumps(list(map(int, protected_blocks))), "protected_coordinate_ids": json.dumps(protected), "coordinate_ids": row.coordinate_ids, "rank": rank, "match_distance": float(row.match_distance), "match_max_abs_z": float(row.match_max_abs_z), **{f"N_{key}": float(row[key]) for key in MATCH_FEATURES}, **{f"P_{key}": float(p_metrics[key]) for key in MATCH_FEATURES}, **flags()})
     selected = pd.DataFrame(selected_rows)
     diagnostics_frame = pd.DataFrame([diag_row])
-    payload = {"fold": fold, "seed": seed, "protected_block_ids": list(map(int, protected_blocks)), "protected_coordinate_ids": protected, "rank": rank, "pool": pool, "candidate_count": len(cand), "accepted_count": len(accepted), "controls": [json.loads(x) for x in accepted.coordinate_ids.tolist()], "matching_rule": "nearest train-only standardized structural distance; max absolute z <= 2.5", **flags()}
+    payload = {"fold": fold, "seed": seed, "protected_block_ids": list(map(int, protected_blocks)), "protected_coordinate_ids": protected, "rank": rank, "pool": pool, "candidate_count": len(cand), "accepted_count": len(accepted), "accepted_distance_max": accepted_distance_max, "accepted_max_abs_z_max": accepted_max_abs_z_max, "controls": [json.loads(x) for x in accepted.coordinate_ids.tolist()], "matching_rule": MATCH_SELECTION, "matching_features": list(MATCH_FEATURES), **flags()}
     return selected, diagnostics_frame, payload
 
 
@@ -557,7 +565,7 @@ def build_train_only() -> dict[str, Any]:
     write_csv(OUT / "MATCHING_DIAGNOSTICS.csv", diags_frame)
     write_csv(OUT / "IDENTITY_RESPONSE_CURVES.csv", curves_frame)
     write_csv(OUT / "IDENTITY_MATCHING_PARAMETERS.csv", params_frame)
-    write_json(OUT / "MATCHED_CONTROL_PROVENANCE.json", {"runs": provenance, "minimum_controls": MATCH_MIN, "maximum_controls": MATCH_MAX, "matching_distance_max": MATCH_DISTANCE_MAX, **flags()})
+    write_json(OUT / "MATCHED_CONTROL_PROVENANCE.json", {"runs": provenance, "minimum_controls": MATCH_MIN, "maximum_controls": MATCH_MAX, "matching_selection": MATCH_SELECTION, "matching_distance_cutoff": None, **flags()})
     payload = {"status": "TRAIN_ONLY_DESIGN_READY", "runs": len(provenance), "controls_per_run_min": int(controls_frame.groupby(["fold", "seed"]).control_id.nunique().min()), "common_train_identity_range_min": float(params_frame.common_max_drop_train.min()), "config_sha256": sha256_file(CONFIG_PATH), "split_sha256": split_sha, "device": str(device), "validation_outcome_used": False, **flags()}
     write_json(OUT / "TRAIN_ONLY_DESIGN.json", payload)
     return payload
