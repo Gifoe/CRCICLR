@@ -116,6 +116,9 @@ def source(path: Path) -> Path:
 
 
 def git_head() -> str | None:
+    forced = os.environ.get("PERSIST_EXP3_GIT_COMMIT")
+    if forced:
+        return forced.strip()
     try:
         return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=EXP_ROOT.parents[1], text=True, stderr=subprocess.DEVNULL).strip()
     except Exception:
