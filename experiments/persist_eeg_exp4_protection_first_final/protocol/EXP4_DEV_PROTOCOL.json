@@ -56,7 +56,7 @@
   ],
   "generic_selection": "S2 subject-held-out validation inside model-fit subjects; no outcome S3 labels",
   "git_commit": null,
-  "implementation_id": "persist_eeg_exp4_protection_first_final_v1",
+  "implementation_id": "persist_eeg_exp4_protection_first_v1_hard_projection",
   "no_outer_access_during_development": true,
   "outer_evaluation_authorized_once": false,
   "outer_membership_enumerated": false,
@@ -64,6 +64,11 @@
   "outer_subject_ids_opened": false,
   "outer_subject_ids_present": false,
   "outer_test_used": false,
+  "persist_guard_variant": {
+    "extra_parameters": 0,
+    "mode": "hard complement projection plus minimum-norm frozen-head decision-response correction on U_P",
+    "response_strength": 0.0
+  },
   "primary_endpoint": "subject balanced accuracy on unseen outcome-subject S3",
   "primary_statistics": "paired subject delta Guard-Generic; subject bootstrap CI; exact binomial sign test and deterministic Monte-Carlo sign-flip p for mean",
   "protected_basis_rule": "fold-specific S1/S2 cross-session subject-centroid persistence basis; frozen P01_04 rank-4 rule; no held-out outcome S3 labels",
