@@ -730,7 +730,7 @@ def baseline_only(scope_data: Mapping[str, Any], generic: Mapping[str, Any], dev
             for idx, subject in enumerate(outcome):
                 m = test["sid"] == idx
                 frozen_ba = BASE.metric_ba(test["y"][m], frozen_logits.argmax(1)[m])
-                rows.append({"fold": fold, "subject": subject, "method": method, "seed_aggregation": "mean_logits" if method == "Generic" else "single_seed", "BA": BASE.metric_ba(test["y"][m], pred[m]), "Frozen_BA": frozen_ba, "delta_BA_vs_Frozen": BASE.metric_ba(test["y"][m], pred[m]) - frozen_ba, "macro_F1": BASE.metric_macro_f1(test["y"][m], pred[m]), "accuracy": float(np.mean(pred[m] == test["y"][m])), "coordinate_drift": 0.0, "coordinate_drift_q95": 0.0, "decision_response_drift": 0.0, "complement_adaptation": 0.0, "total_adaptation": 0.0})
+                rows.append({"fold": fold, "subject": subject, "method": method, "seed_aggregation": "mean_logits" if method == "Generic" else "single_seed", "BA": BASE.metric_ba(test["y"][m], pred[m]), "Frozen_BA": frozen_ba, "delta_BA_vs_Frozen": BASE.metric_ba(test["y"][m], pred[m]) - frozen_ba, "macro_F1": BASE.metric_macro_f1(test["y"][m], pred[m]), "accuracy": float(np.mean(pred[m] == test["y"][m])), "coordinate_drift": np.nan, "coordinate_drift_q95": np.nan, "decision_response_drift": np.nan, "complement_adaptation": np.nan, "total_adaptation": np.nan})
     frame = pd.DataFrame(rows)
     write_csv(OUT / "DEV_SUBJECT_RESULTS.csv", frame)
     write_csv(OUT / "DEV_SUBJECT_RESULTS_RAW.csv", pd.DataFrame(seed_rows))
