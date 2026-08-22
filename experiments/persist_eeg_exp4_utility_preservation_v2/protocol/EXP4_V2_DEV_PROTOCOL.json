@@ -1,0 +1,117 @@
+{
+  "anchor": {
+    "backbone": "EEGNet",
+    "dropout": 0.25,
+    "embedding_dim": 32,
+    "epochs": 30,
+    "lr": 0.0003,
+    "reuse_rule": "reuse only hash-verified exact V1 S1-only checkpoint; otherwise deterministic retrain",
+    "sessions": [
+      0
+    ],
+    "weight_decay": 0.0005
+  },
+  "controls": [
+    "Frozen",
+    "Generic",
+    "HistoricalHardP01_04",
+    "DeploymentMatchedHard",
+    "UtilityOnlyGuard",
+    "PersistenceOnlyUtilityGuard",
+    "IdentityUtilityGuard",
+    "PCAUtilityGuard",
+    "RandomUtilityGuard"
+  ],
+  "dataset": "WBCIC/Yang2025/NEMAR nm000348",
+  "decision_dependence": {
+    "definition": "finite centered-logit response under the same anchor-space erasure",
+    "gate": "positive candidate-minus-random response with one-sided sign-flip evidence and Holm correction"
+  },
+  "deployment": "S1-only anchor -> legal non-outcome S2 adapter -> held development-subject S3",
+  "development_subject_count": 41,
+  "experiment": "PERSIST_EEG_EXP4_UTILITY_PRESERVATION_V2",
+  "folds": "existing five deterministic development outcome folds; inner four-way subject-disjoint certification",
+  "generic": {
+    "candidates": [
+      {
+        "epochs": 25,
+        "id": "GEN_LINEAR_LR3E4_E25",
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0005
+      },
+      {
+        "epochs": 25,
+        "id": "GEN_LINEAR_LR1E3_E25",
+        "learning_rate": 0.001,
+        "weight_decay": 0.0005
+      },
+      {
+        "epochs": 40,
+        "id": "GEN_LINEAR_LR3E4_E40",
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0005
+      }
+    ],
+    "selection": "S2 subject-held-out validation within each legal non-outcome training side; no S3 labels"
+  },
+  "historical_exp4_commit": null,
+  "inner_cross_fitting": {
+    "direction_matching": "Hungarian absolute-overlap matching to outer-training basis",
+    "folds": 4,
+    "held_data": "held inner subjects S2 labels only",
+    "unit": "subject"
+  },
+  "method": {
+    "conditional": true,
+    "equation": "h_psi=h0+A_psi(h0)",
+    "lambda": 0.5,
+    "no_coordinate_projection": true,
+    "objective": "CE(raw)+lambda*sum_j w_j ReLU(tau-G_j)",
+    "same_adapter": true,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "tau": 0.0
+  },
+  "outer_access_during_development": false,
+  "outer_command": "refused unless EXP4_V2_FINAL_PROTOCOL_LOCK.json exists and status authorizes one-time access",
+  "outer_subject_ids_present": false,
+  "persistence_basis": {
+    "candidate_count": 8,
+    "center": "pooled legal S1/S2 centroid mean",
+    "centroid_cross_session_covariance": true,
+    "direction_level": true,
+    "max_protected_rank": 4,
+    "source": "all legal non-outcome subjects S1/S2",
+    "whiten": "pooled covariance inverse square root with ridge 1e-4"
+  },
+  "primary_comparison": "UtilityPreservingGuard vs Generic",
+  "primary_endpoint": "subject-balanced accuracy on held development S3",
+  "sealed_outer_subject_count": 10,
+  "source_branch": "codex/persist-eeg-exp4-protection-first-final",
+  "source_commit_at_creation": null,
+  "statistics": {
+    "bootstrap_draws": 10000,
+    "multiplicity": "Holm within each fold candidate family; primary Guard-vs-Generic not diluted",
+    "signflip_draws": 100000,
+    "unit": "subject"
+  },
+  "status": "DEV_PROTOCOL_FROZEN_BEFORE_NEW_DISCOVERY",
+  "terminal_states": [
+    "EXP4_V2_NO_DEPLOYMENT_MATCHED_PROTECTED_DIRECTION",
+    "EXP4_V2_NO_UTILITY_COLLAPSE_HEADROOM",
+    "EXP4_V2_UTILITY_MECHANISM_ONLY",
+    "EXP4_V2_UTILITY_GUARD_NOT_SPECIFIC",
+    "EXP4_V2_UTILITY_GUARD_FAILED",
+    "EXP4_V2_DEV_CONFIRMED_OUTER_LOCKED"
+  ],
+  "utility": {
+    "intervention": "h_minus_j=h0-u_j u_j^T(h0-mu); same frozen head",
+    "positive_gate": "mean>0 and one-sided sign-flip/paired evidence with Holm over 8 directions",
+    "random_directions_per_candidate": 32,
+    "signed": "CE(erase)-CE(raw)-mean(random CE(erase)-CE(raw))",
+    "tau": 0.0
+  }
+}

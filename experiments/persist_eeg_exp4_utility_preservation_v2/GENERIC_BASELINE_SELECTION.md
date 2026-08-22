@@ -1,0 +1,9 @@
+# Generic baseline selection
+
+Generic was selected using S2 subject-held-out validation only. The Guard gap and all S3 outcomes were unavailable to this selection.
+
+| id                   |   learning_rate |   epochs |   weight_decay |   mean_S2_validation_BA | fold_scores                                                            |
+|:---------------------|----------------:|---------:|---------------:|------------------------:|:-----------------------------------------------------------------------|
+| GEN_LINEAR_LR1E3_E25 |          0.001  |       25 |         0.0005 |                0.775375 | [0.765625, 0.8325, 0.74875, 0.72625, 0.80375]                          |
+| GEN_LINEAR_LR3E4_E25 |          0.0003 |       25 |         0.0005 |                0.775    | [0.763125, 0.8331249999999999, 0.745625, 0.7262500000000001, 0.806875] |
+| GEN_LINEAR_LR3E4_E40 |          0.0003 |       40 |         0.0005 |                0.77225  | [0.7593749999999999, 0.831875, 0.744375, 0.721875, 0.80375]            |
