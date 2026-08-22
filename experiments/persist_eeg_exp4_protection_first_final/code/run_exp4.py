@@ -54,7 +54,10 @@ RANK = 4
 BOOTSTRAP_DRAWS = 10_000
 PERMUTATION_DRAWS = 100_000
 EPS = 1e-12
-IMPLEMENTATION_ID = os.environ.get("PERSIST_EXP4_IMPLEMENTATION_ID", "persist_eeg_exp4_protection_first_final_v2_decision_response")
+IMPLEMENTATION_ID = os.environ.get("PERSIST_EXP4_IMPLEMENTATION_ID", "persist_eeg_exp4_protection_first_v3_soft_response")
+RESPONSE_STRENGTH = float(os.environ.get("PERSIST_EXP4_RESPONSE_STRENGTH", "1.0"))
+if not 0.0 <= RESPONSE_STRENGTH <= 1.0:
+    raise ValueError("PERSIST_EXP4_RESPONSE_STRENGTH must be in [0,1]")
 EXPERIMENT_SEED = 20260823
 BLOCKS = (("P01_04", 0, 4), ("P05_08", 4, 8), ("P09_16", 8, 16), ("P17_32", 16, 32))
 PROTECTED_BLOCK = "P01_04"
@@ -192,7 +195,7 @@ def phase_audit() -> dict[str, Any]:
         "anchor": {"backbone": "EEGNet", "training_sessions": [0], "dropout": 0.25, "learning_rate": 0.0003, "weight_decay": 0.0005, "epochs": 30, "batch_size": 64},
         "adapter": {"architecture": "zero-initialized linear residual A(h)=hW+b", "embedding_dim": DIM, "same_parameter_count_all_methods": True, "head": "frozen anchor linear classifier", "training_session": 1},
         "protected_basis_rule": "fold-specific S1/S2 cross-session subject-centroid persistence basis; frozen P01_04 rank-4 rule; no held-out outcome S3 labels",
-        "persist_guard_variant": "hard complement projection plus exact frozen-head decision-response preservation on U_P; minimum-norm complement correction; no extra parameters",
+        "persist_guard_variant": {"mode": "hard complement projection plus minimum-norm frozen-head decision-response correction on U_P", "response_strength": RESPONSE_STRENGTH, "extra_parameters": 0},
         "protected_block": {"name": PROTECTED_BLOCK, "rank": RANK, "source_assignment": "frozen WBCIC actionability v2 protected_utility_gate"},
         "controls": {"random": "three deterministic same-rank orthonormal draws", "pca": "top-rank discovery S1/S2 covariance directions", "persistence": f"frozen non-Protected rank-matched block {PERSISTENCE_CONTROL_BLOCK}", "identity": "top-rank discovery subject-centroid identity covariance directions"},
         "generic_candidates": [
@@ -433,7 +436,7 @@ class LinearAdapter(nn.Module):
         nn.init.zeros_(self.linear.weight)
         nn.init.zeros_(self.linear.bias)
 
-    def forward(self, h: torch.Tensor, basis: torch.Tensor | None = None, response_head: torch.Tensor | None = None) -> torch.Tensor:
+    def forward(self, h: torch.Tensor, basis: torch.Tensor | None = None, response_head: torch.Tensor | None = None, response_strength: float = 1.0) -> torch.Tensor:
         """Apply a row-vector residual update.
 
         ``basis`` gives the protected input/output coordinates.  When
@@ -455,7 +458,7 @@ class LinearAdapter(nn.Module):
                 gram = response_head @ pperp @ response_head.T
                 right_inverse = pperp @ response_head.T @ torch.linalg.pinv(gram)
                 response = response_head @ pperp @ self.linear.weight @ basis
-                delta = delta - (h @ basis) @ response.T @ right_inverse.T
+                delta = delta - float(response_strength) * (h @ basis) @ response.T @ right_inverse.T
         return h + delta
 
 
@@ -466,7 +469,7 @@ def adapter_state_sha(adapter: LinearAdapter) -> str:
     return digest.hexdigest()
 
 
-def fit_adapter(h: np.ndarray, y: np.ndarray, head_weight: np.ndarray, head_bias: np.ndarray, config: Mapping[str, Any], basis: np.ndarray | None, seed: int, device: torch.device, response_guard: bool = False) -> tuple[LinearAdapter, dict[str, Any]]:
+def fit_adapter(h: np.ndarray, y: np.ndarray, head_weight: np.ndarray, head_bias: np.ndarray, config: Mapping[str, Any], basis: np.ndarray | None, seed: int, device: torch.device, response_strength: float = 0.0) -> tuple[LinearAdapter, dict[str, Any]]:
     seed_all(seed)
     adapter = LinearAdapter(h.shape[1]).to(device)
     x = torch.from_numpy(h.astype(np.float32)).to(device)
@@ -482,24 +485,24 @@ def fit_adapter(h: np.ndarray, y: np.ndarray, head_weight: np.ndarray, head_bias
         for start in range(0, n, 256):
             idx = order[start:start + 256]
             opt.zero_grad(set_to_none=True)
-            logits = adapter(x[idx], u, w if response_guard else None) @ w.T + b
+            logits = adapter(x[idx], u, w if response_strength > 0 else None, response_strength) @ w.T + b
             loss = torch.nn.functional.cross_entropy(logits, target[idx])
             if not torch.isfinite(loss):
                 raise FloatingPointError("nonfinite adapter loss")
             loss.backward(); opt.step(); total += float(loss.detach()) * len(idx)
         history.append(total / max(n, 1))
     adapter.eval()
-    return adapter, {"seed": seed, "config": dict(config), "basis_rank": 0 if basis is None else int(basis.shape[1]), "response_guard": bool(response_guard), "adapter_state_sha256": adapter_state_sha(adapter), "history": history}
+    return adapter, {"seed": seed, "config": dict(config), "basis_rank": 0 if basis is None else int(basis.shape[1]), "response_strength": float(response_strength), "adapter_state_sha256": adapter_state_sha(adapter), "history": history}
 
 
 @torch.no_grad()
-def adapter_apply(adapter: LinearAdapter | None, h: np.ndarray, basis: np.ndarray | None, device: torch.device, response_guard: bool = False, head_weight: np.ndarray | None = None) -> np.ndarray:
+def adapter_apply(adapter: LinearAdapter | None, h: np.ndarray, basis: np.ndarray | None, device: torch.device, response_strength: float = 0.0, head_weight: np.ndarray | None = None) -> np.ndarray:
     if adapter is None:
         return h.astype(np.float64)
     x = torch.from_numpy(h.astype(np.float32)).to(device)
     u = torch.from_numpy(basis.astype(np.float32)).to(device) if basis is not None else None
-    w = torch.from_numpy(head_weight.astype(np.float32)).to(device) if (response_guard and head_weight is not None) else None
-    return adapter(x, u, w).detach().cpu().numpy().astype(np.float64)
+    w = torch.from_numpy(head_weight.astype(np.float32)).to(device) if (response_strength > 0 and head_weight is not None) else None
+    return adapter(x, u, w, response_strength).detach().cpu().numpy().astype(np.float64)
 
 
 def metric_ba(y: np.ndarray, pred: np.ndarray) -> float:
@@ -584,7 +587,7 @@ def frozen_method_basis(bases: Mapping[str, np.ndarray], method: str, fold: int,
     raise KeyError(method)
 
 
-def mechanism_metrics(h0: np.ndarray, ha: np.ndarray, adapter: LinearAdapter | None, basis: np.ndarray, head_weight: np.ndarray, method_basis: np.ndarray | None, device: torch.device, response_guard: bool = False) -> dict[str, float]:
+def mechanism_metrics(h0: np.ndarray, ha: np.ndarray, adapter: LinearAdapter | None, basis: np.ndarray, head_weight: np.ndarray, method_basis: np.ndarray | None, device: torch.device, response_strength: float = 0.0) -> dict[str, float]:
     delta = ha - h0; u = basis
     coord = np.linalg.norm(delta @ u, axis=1) / np.maximum(np.linalg.norm(h0 @ u, axis=1), EPS)
     perp = np.eye(DIM) - u @ u.T
@@ -598,11 +601,11 @@ def mechanism_metrics(h0: np.ndarray, ha: np.ndarray, adapter: LinearAdapter | N
         if method_basis is not None:
             pperp = np.eye(DIM) - method_basis @ method_basis.T
             effective = pperp @ weight
-            if response_guard:
+            if response_strength > 0:
                 gram = head_weight @ pperp @ head_weight.T
                 right_inverse = pperp @ head_weight.T @ np.linalg.pinv(gram)
                 response_map = head_weight @ pperp @ weight @ method_basis
-                effective = effective - right_inverse @ response_map @ method_basis.T
+                effective = effective - float(response_strength) * right_inverse @ response_map @ method_basis.T
         before = head_weight @ u
         after = head_weight @ (np.eye(DIM) + effective) @ u
         response = float(np.linalg.norm(after - before) / max(np.linalg.norm(before), EPS))
@@ -623,17 +626,17 @@ def compute_dev(scope: Mapping[str, Any], device: torch.device) -> pd.DataFrame:
         generic, _ = fit_adapter(train["h"], train["y"], weight, bias, selection, None, stable_seed("final-adapter", fold, "Generic"), device); adapters["Generic"] = [(0, generic, None)]
         for method in ("PCAGuard", "PersistenceGuard", "IdentityGuard", "PERSISTGuard"):
             mb = frozen_method_basis(basis_pack, method, fold)
-            adapter, _ = fit_adapter(train["h"], train["y"], weight, bias, selection, mb, stable_seed("final-adapter", fold, method), device, response_guard=(method == "PERSISTGuard")); adapters[method] = [(0, adapter, mb)]
+            adapter, _ = fit_adapter(train["h"], train["y"], weight, bias, selection, mb, stable_seed("final-adapter", fold, method), device, response_strength=(RESPONSE_STRENGTH if method == "PERSISTGuard" else 0.0)); adapters[method] = [(0, adapter, mb)]
         for draw in range(3):
             mb = frozen_method_basis(basis_pack, "RandomGuard", fold, draw)
             adapter, _ = fit_adapter(train["h"], train["y"], weight, bias, selection, mb, stable_seed("final-adapter", fold, "RandomGuard", draw), device); adapters["RandomGuard"].append((draw, adapter, mb))
         frozen_logits = logits_for(test["h"], weight, bias)
         for method, candidates in adapters.items():
             for draw, adapter, mb in candidates:
-                is_response_guard = method == "PERSISTGuard"
-                h_after = adapter_apply(adapter, test["h"], mb, device, response_guard=is_response_guard, head_weight=weight)
+                response_strength = RESPONSE_STRENGTH if method == "PERSISTGuard" else 0.0
+                h_after = adapter_apply(adapter, test["h"], mb, device, response_strength=response_strength, head_weight=weight)
                 logits = logits_for(h_after, weight, bias); pred = logits.argmax(1)
-                mech = mechanism_metrics(test["h"], h_after, adapter, basis_pack["basis"][:, :RANK], weight, mb, device, response_guard=is_response_guard)
+                mech = mechanism_metrics(test["h"], h_after, adapter, basis_pack["basis"][:, :RANK], weight, mb, device, response_strength=response_strength)
                 key_method = method
                 for sid_index, subject in enumerate(outcome):
                     mask = test["sid"] == sid_index
@@ -746,9 +749,9 @@ def freeze_final(scope: Mapping[str, Any], dev: Mapping[str, Any], device: torch
     adapters = {}
     for method in ("Generic", "PCAGuard", "PersistenceGuard", "IdentityGuard", "PERSISTGuard"):
         pack = load_basis(basis_path); mb = frozen_method_basis(pack, method, 999)
-        adapter, meta = fit_adapter(train["h"], train["y"], weight, bias, selection, mb, stable_seed("final-model", method), device, response_guard=(method == "PERSISTGuard"))
+        adapter, meta = fit_adapter(train["h"], train["y"], weight, bias, selection, mb, stable_seed("final-model", method), device, response_strength=(RESPONSE_STRENGTH if method == "PERSISTGuard" else 0.0))
         path = CHECKPOINTS / f"final_{method}.pt"; torch.save({"method": method, "state_dict": adapter.state_dict(), "meta": meta}, path); adapters[method] = {"path": str(path), "sha256": sha256_file(path), "basis": method, "basis_sha256": sha256_file(basis_path)}
-    lock = {"status": "EXP4_DEV_SUCCESS_OUTER_LOCKED", "outer_evaluation_authorized_once": True, "outer_subject_ids_present": False, "outer_test_used": False, "git_commit": git_head(), "development_terminal_state": dev["terminal_state"], "model_checkpoint": str((CHECKPOINTS / "anchor_fold-999.pt").resolve()), "model_checkpoint_sha256": sha256_file(CHECKPOINTS / "anchor_fold-999.pt"), "model_state_sha256": payload["model_state_sha256"], "basis": str(basis_path.resolve()), "basis_sha256": sha256_file(basis_path), "protected_blocks": [PROTECTED_BLOCK], "rank": RANK, "selected_generic_config": selection, "adapter_checkpoints": adapters, "outer_raw_root": str(RAW_ROOT), "outer_evaluation_count": 0, "outer_result_path": str((OUT / "OUTER_SUBJECT_RESULTS.csv").resolve()), "protection_equation": "h_guard=h_anchor+P_perp A_psi(h_anchor)-R[W P_perp W_psi U_P](U_P^T h_anchor), with W R=I and R in range(P_perp)", "no_retraining_after_outer": True, **flags()}
+    lock = {"status": "EXP4_DEV_SUCCESS_OUTER_LOCKED", "outer_evaluation_authorized_once": True, "outer_subject_ids_present": False, "outer_test_used": False, "git_commit": git_head(), "development_terminal_state": dev["terminal_state"], "model_checkpoint": str((CHECKPOINTS / "anchor_fold-999.pt").resolve()), "model_checkpoint_sha256": sha256_file(CHECKPOINTS / "anchor_fold-999.pt"), "model_state_sha256": payload["model_state_sha256"], "basis": str(basis_path.resolve()), "basis_sha256": sha256_file(basis_path), "protected_blocks": [PROTECTED_BLOCK], "rank": RANK, "selected_generic_config": selection, "adapter_checkpoints": adapters, "outer_raw_root": str(RAW_ROOT), "outer_evaluation_count": 0, "outer_result_path": str((OUT / "OUTER_SUBJECT_RESULTS.csv").resolve()), "response_strength": RESPONSE_STRENGTH, "protection_equation": "h_guard=h_anchor+P_perp A_psi(h_anchor)-alpha R[W P_perp W_psi U_P](U_P^T h_anchor), with W R=I and R in range(P_perp)", "no_retraining_after_outer": True, **flags()}
     # The name is deliberately new; no historical AGDI lock is modified.
     write_json(PROTOCOL / "EXP4_FINAL_PROTOCOL_LOCK.json", lock)
     return lock
@@ -798,7 +801,7 @@ def run_outer(device: torch.device) -> dict[str, Any]:
             adapter = None; mb = None
         else:
             payload = torch.load(Path(lock["adapter_checkpoints"][method]["path"]), map_location="cpu", weights_only=False); adapter = LinearAdapter(DIM); adapter.load_state_dict(payload["state_dict"], strict=True); adapter.to(device).eval(); mb = frozen_method_basis(basis_pack, method, 999)
-        h_after = adapter_apply(adapter, arrays["h"], mb, device, response_guard=(method == "PERSISTGuard"), head_weight=weight); logits = logits_for(h_after, weight, bias); pred = logits.argmax(1)
+        h_after = adapter_apply(adapter, arrays["h"], mb, device, response_strength=(RESPONSE_STRENGTH if method == "PERSISTGuard" else 0.0), head_weight=weight); logits = logits_for(h_after, weight, bias); pred = logits.argmax(1)
         for sid_index, subject in enumerate(subjects):
             mask = arrays["sid"] == sid_index; rows.append({"subject": subject, "method": method, "n_S3_trials": int(mask.sum()), "BA": metric_ba(arrays["y"][mask], pred[mask]), "macro_F1": metric_macro_f1(arrays["y"][mask], pred[mask]), "accuracy": float(np.mean(pred[mask] == arrays["y"][mask]))})
     frame = pd.DataFrame(rows); frozen = frame[frame.method == "Frozen"].set_index("subject").BA; generic = frame[frame.method == "Generic"].set_index("subject").BA; guard = frame[frame.method == "PERSISTGuard"].set_index("subject").BA
