@@ -1,0 +1,25 @@
+{
+  "G0_heldout_persistence": false,
+  "G1_train_only_design": false,
+  "G2_identity_equivalence": false,
+  "G3_utility_causal_effect": null,
+  "enter_experiment_4": "NO",
+  "final_label": "NOT_IDENTIFIABLE",
+  "freeze_record": {
+    "code_sha256": "987b1536bdb909ba6a57426160bcd0862b2d8190633e05e51ed386dc0b132ef9",
+    "heldout_authorized": false,
+    "outer_membership_enumerated": false,
+    "outer_test_used": false,
+    "protocol_sha256": "85a92a0d70c9ad6cebdd190bda0c87aee1deb728f4937cbfa81c2ae572aac283",
+    "status": "FROZEN_AFTER_TRAIN_ONLY",
+    "train_only_design_sha256": "8df2a87ad8ea66295fa5b67db289837c2c9f1c37fb3836adeac559549a16da11",
+    "train_only_status": "CONTINUOUS_IDENTITY_MATCHING_INFEASIBLE",
+    "validation_outcome_used": false
+  },
+  "interpretation": "Train-only continuous identity manipulation was not feasible under the frozen protected-block and fixed-control design.",
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "terminal_state": "PROTECTED_PERSISTENCE_NOT_IDENTITY_BEARING_UNDER_OPERATIONAL_METRICS",
+  "theory3_state": "NOT_IDENTIFIABLE",
+  "validation_outcome_used_for_design": false
+}
