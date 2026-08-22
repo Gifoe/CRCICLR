@@ -1,0 +1,91 @@
+{
+  "G0_heldout_persistence": true,
+  "G1_blockwise_controls": true,
+  "G2_identity_equivalence": false,
+  "G2_identity_measurability_rule": "mean_identity_drop_strictly_greater_than_zero_in_both_P_and_N",
+  "G3_utility_causal_effect": false,
+  "enter_experiment_4": "NO",
+  "freeze_record": {
+    "code_sha256": {
+      "code\\experiment3.py": "1ade16e1adcff03c93fd6de25f9fd20de3e521213c36023d63eb76f08796915b"
+    },
+    "frozen_features": [
+      "blockwise_causal_unit",
+      "persistence_certification",
+      "matching_rule",
+      "P_anchored_identity_targets",
+      "identity_metric",
+      "coverage_rule",
+      "task_probe",
+      "bootstrap",
+      "gates"
+    ],
+    "outer_membership_enumerated": false,
+    "outer_test_used": false,
+    "protocol_sha256": "775d189d4252f2b7f843ac28fbce9db8117e8b9d6dafa59a07c605b0bb7b9fcf",
+    "status": "FROZEN_BEFORE_VALIDATION_OUTCOME",
+    "train_only_design_sha256": "c4dcd9423797f9d06da2f61c9406c821c27d38d802b0a301256c69b9ae211d63",
+    "validation_outcome_used": false
+  },
+  "identity_difference": -0.0028747358091787438,
+  "identity_measurable_N": true,
+  "identity_measurable_P": false,
+  "mean_delta_ID_N": 0.0028747358091787438,
+  "mean_delta_ID_P": 0.0,
+  "minimum_measurable_drop_ba": 0.0,
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "primary": {
+    "Delta_H": {
+      "ci95": [
+        -0.0006240111714975841,
+        0.0003498565821256038
+      ],
+      "draws": 10000,
+      "mean": -0.0001092693236714974,
+      "median": 0.0,
+      "n_unique_subjects": 23,
+      "nonnegative_subject_fraction": 0.6956521739130435,
+      "positive_subject_fraction": 0.43478260869565216,
+      "sign_probability": 0.3506,
+      "worst_subject": -0.0033499999999999997
+    },
+    "H_N": {
+      "ci95": [
+        -0.00035571105072463736,
+        0.0006358106884057962
+      ],
+      "draws": 10000,
+      "mean": 0.0001092693236714974,
+      "median": 0.0,
+      "n_unique_subjects": 23,
+      "nonnegative_subject_fraction": 0.5652173913043478,
+      "positive_subject_fraction": 0.30434782608695654,
+      "sign_probability": 0.654,
+      "worst_subject": -0.0016500000000000043
+    },
+    "H_P": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "draws": 10000,
+      "mean": 0.0,
+      "median": 0.0,
+      "n_unique_subjects": 23,
+      "nonnegative_subject_fraction": 1.0,
+      "positive_subject_fraction": 0.0,
+      "sign_probability": 0.0,
+      "worst_subject": 0.0
+    },
+    "gate_G3": false,
+    "outer_membership_enumerated": false,
+    "outer_test_used": false,
+    "primary_dose": "MEDIUM",
+    "run_level_count": 6,
+    "run_level_delta_positive_count": 1
+  },
+  "terminal_state": "IDENTITY_MATCH_FAILED",
+  "utility_not_identity_claim": "PARTIAL",
+  "validation_outcome_used_for_design": false
+}

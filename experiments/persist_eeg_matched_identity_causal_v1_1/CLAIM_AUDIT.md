@@ -14,3 +14,7 @@ V1.1 must use the terminal scientific state and claim specified in its final
 report.  The block-wise redesign does not itself support a causal claim; that
 requires G1, G2 and G3 after the design freeze.  This remains a
 development-resource closure, not an untouched or independent replication.
+
+The causal claim is barred unless G2 passes both parts of the manipulation
+check: the P and matched-N arms each have a strictly positive mean held-out
+identity reduction, and their reductions differ by no more than 0.01 BA.

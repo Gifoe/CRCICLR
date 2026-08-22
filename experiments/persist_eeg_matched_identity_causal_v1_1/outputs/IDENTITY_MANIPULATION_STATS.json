@@ -1,0 +1,47 @@
+{
+  "N": {
+    "ci95": [
+      0.00014666025060386484,
+      0.005996530797101446
+    ],
+    "draws": 10000,
+    "mean": 0.0028747358091787438,
+    "median": 0.0006249999999999962,
+    "n_unique_subjects": 23,
+    "nonnegative_subject_fraction": 0.8260869565217391,
+    "positive_subject_fraction": 0.5652173913043478,
+    "sign_probability": 0.9817,
+    "worst_subject": -0.008799999999999995
+  },
+  "P": {
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "draws": 10000,
+    "mean": 0.0,
+    "median": 0.0,
+    "n_unique_subjects": 23,
+    "nonnegative_subject_fraction": 1.0,
+    "positive_subject_fraction": 0.0,
+    "sign_probability": 0.0,
+    "worst_subject": 0.0
+  },
+  "P_minus_N": {
+    "ci95": [
+      -0.005990404400664251,
+      -0.00014776475694444502
+    ],
+    "draws": 10000,
+    "mean": -0.002874735809178744,
+    "median": -0.0006249999999999962,
+    "n_unique_subjects": 23,
+    "nonnegative_subject_fraction": 0.43478260869565216,
+    "positive_subject_fraction": 0.17391304347826086,
+    "sign_probability": 0.0192,
+    "worst_subject": -0.020524999999999998
+  },
+  "measurable_drop_rule": "mean_identity_drop_strictly_greater_than_zero_in_both_P_and_N",
+  "minimum_measurable_drop_ba": 0.0,
+  "tolerance": 0.01
+}

@@ -79,7 +79,11 @@ the primary gate.
 * G1: at least five of six runs eligible, at least 80% of frozen Protected
   blocks eligible, every eligible block has exact rank/no overlap, train
   persistence evidence and at least 20 MEDIUM controls.
-* G2: validation MEDIUM `|mean(Delta_ID_P)-mean(Delta_ID_N)| <= 0.01 BA`.
+* G2: validation MEDIUM requires both arms to produce measurable identity
+  reduction (`mean(Delta_ID_P) > 0` and `mean(Delta_ID_N) > 0`) and requires
+  `|mean(Delta_ID_P)-mean(Delta_ID_N)| <= 0.01 BA`.  The strict positive-drop
+  clause is necessary: an arm with zero reduction cannot establish a matched
+  identity-removal comparison.
 * G3: mean MEDIUM `Delta_H >= 0.01 BA`, 95% bootstrap lower bound > 0, at
   least 5/6 eligible run means positive, and at least 60% of unique subjects
   nonnegative.  These rules are frozen before validation outcomes.

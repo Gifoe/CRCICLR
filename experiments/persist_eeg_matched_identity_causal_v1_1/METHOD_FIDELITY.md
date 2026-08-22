@@ -7,3 +7,8 @@ candidate with train-only cross-session persistence, uses P-anchored identity
 doses and a symmetric cross-session subject-ID metric, and aggregates controls,
 blocks, runs and subjects without pseudoreplication.  Any post-freeze bug fix
 is logged in `RESULT_LEDGER.md`; semantic changes invalidate the freeze.
+
+The final G2 gate explicitly requires a strictly positive mean held-out
+identity reduction in both Protected and matched Non-Protected arms, in
+addition to the frozen 0.01 BA equivalence tolerance. This correction is
+recorded as a semantic freeze revision and requires a complete final rerun.

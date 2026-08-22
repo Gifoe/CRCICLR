@@ -1,0 +1,87 @@
+{
+  "G0_heldout_persistence": true,
+  "G1_blockwise_controls": true,
+  "G2_identity_equivalence": true,
+  "G3_utility_causal_effect": false,
+  "enter_experiment_4": "NO",
+  "freeze_record": {
+    "code_sha256": {
+      "code\\experiment3.py": "eae86eb7292165d09721b068f5920af3549e3a153bb8f9db87588c26d6abfee6"
+    },
+    "frozen_features": [
+      "blockwise_causal_unit",
+      "persistence_certification",
+      "matching_rule",
+      "P_anchored_identity_targets",
+      "identity_metric",
+      "coverage_rule",
+      "task_probe",
+      "bootstrap",
+      "gates"
+    ],
+    "outer_membership_enumerated": false,
+    "outer_test_used": false,
+    "protocol_sha256": "01950caf51e17ed0309cb4fbf9f930d50025816024f1e33c1600cc1de4ebe258",
+    "status": "FROZEN_BEFORE_VALIDATION_OUTCOME",
+    "train_only_design_sha256": "44e426a18862cf327a99498c03d6267b725abec1850bfbadc0085b0171908f1f",
+    "validation_outcome_used": false
+  },
+  "identity_difference": -0.0028747358091787438,
+  "mean_delta_ID_N": 0.0028747358091787438,
+  "mean_delta_ID_P": 0.0,
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "primary": {
+    "Delta_H": {
+      "ci95": [
+        -0.0006240111714975841,
+        0.0003498565821256038
+      ],
+      "draws": 10000,
+      "mean": -0.0001092693236714974,
+      "median": 0.0,
+      "n_unique_subjects": 23,
+      "nonnegative_subject_fraction": 0.6956521739130435,
+      "positive_subject_fraction": 0.43478260869565216,
+      "sign_probability": 0.3506,
+      "worst_subject": -0.0033499999999999997
+    },
+    "H_N": {
+      "ci95": [
+        -0.00035571105072463736,
+        0.0006358106884057962
+      ],
+      "draws": 10000,
+      "mean": 0.0001092693236714974,
+      "median": 0.0,
+      "n_unique_subjects": 23,
+      "nonnegative_subject_fraction": 0.5652173913043478,
+      "positive_subject_fraction": 0.30434782608695654,
+      "sign_probability": 0.654,
+      "worst_subject": -0.0016500000000000043
+    },
+    "H_P": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "draws": 10000,
+      "mean": 0.0,
+      "median": 0.0,
+      "n_unique_subjects": 23,
+      "nonnegative_subject_fraction": 1.0,
+      "positive_subject_fraction": 0.0,
+      "sign_probability": 0.0,
+      "worst_subject": 0.0
+    },
+    "gate_G3": false,
+    "outer_membership_enumerated": false,
+    "outer_test_used": false,
+    "primary_dose": "MEDIUM",
+    "run_level_count": 6,
+    "run_level_delta_positive_count": 1
+  },
+  "terminal_state": "PROTECTED_CAUSAL_EFFECT_NOT_SUPPORTED",
+  "utility_not_identity_claim": "NO",
+  "validation_outcome_used_for_design": false
+}

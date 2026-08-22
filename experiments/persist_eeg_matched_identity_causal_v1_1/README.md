@@ -37,3 +37,14 @@ BA is used to change matching, dose, alpha, metric, or gate definitions.
 The V1.1 result is intentionally not known until the train-only feasibility
 phase and the frozen final evaluation are run.  No validation outcome may alter
 the control, dose, metric or gate definitions.
+
+## Frozen final result
+
+The server execution is complete.  The train-only design has 6/6 eligible
+runs and 10/10 eligible Protected blocks.  The final terminal state is
+`IDENTITY_MATCH_FAILED`: G0 and G1 pass, but the MEDIUM Protected arm has zero
+mean held-out identity reduction, so the strict G2 matched-manipulation check
+fails.  The primary task endpoint is retained as a diagnostic and does not
+support the utility-not-identity claim.  See `outputs/FINAL_DECISION.json` and
+`outputs/SCIENTIFIC_REPORT.md`; the pre-repair outputs are retained with the
+`*_PRE_SEMANTIC_REPAIR` suffix.
