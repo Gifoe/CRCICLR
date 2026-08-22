@@ -46,7 +46,7 @@ biological sample analysis.
 6. **Persistence pass?** The leading persistence eigenvalues were positive in
    every fold; persistence alone was not the limiting gate.
 7. **Signed-utility pass?** None. Fold-level maximum signed-utility means
-   were approximately `−0.0014` to `+0.0024` CE units; the positive folds did
+   were approximately `−0.0018` to `+0.0024` CE units; the positive folds did
    not pass the Holm utility gate.
 8. **Decision-dependence pass?** Finite centered-logit responses were positive,
    but no direction passed utility and decision gates simultaneously.
