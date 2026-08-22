@@ -1,0 +1,92 @@
+{
+  "adapter": {
+    "architecture": "zero-initialized linear residual A(h)=hW+b",
+    "embedding_dim": 32,
+    "head": "frozen anchor linear classifier",
+    "same_parameter_count_all_methods": true,
+    "training_session": 1
+  },
+  "anchor": {
+    "backbone": "EEGNet",
+    "batch_size": 64,
+    "dropout": 0.25,
+    "epochs": 30,
+    "learning_rate": 0.0003,
+    "training_sessions": [
+      0
+    ],
+    "weight_decay": 0.0005
+  },
+  "controls": {
+    "identity": "top-rank discovery subject-centroid identity covariance directions",
+    "pca": "top-rank discovery S1/S2 covariance directions",
+    "persistence": "frozen non-Protected rank-matched block P05_08",
+    "random": "three deterministic same-rank orthonormal draws"
+  },
+  "dataset": "WBCIC/Yang2025/NEMAR nm000348",
+  "deployment_selection": "sequential S1 anchor -> S2 global adapter update -> unseen-subject S3 evaluation",
+  "development_gate": {
+    "minimum_practical_delta_BA": 0.005,
+    "negative_transfer_rate_reduction": 0.05,
+    "outer_requires_all_controls_and_mechanism": true,
+    "protected_drift_ratio_max": 0.25
+  },
+  "development_subject_count": 41,
+  "experiment": "PERSIST_EEG_EXP4_PROTECTION_FIRST_FINAL",
+  "fold_roles": "existing frozen scope: outcome Fk; discovery/decision F(k+1); model-fit remaining three",
+  "generic_candidates": [
+    {
+      "epochs": 25,
+      "id": "GEN_LINEAR_LR3E4_E25",
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0005
+    },
+    {
+      "epochs": 25,
+      "id": "GEN_LINEAR_LR1E3_E25",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0005
+    },
+    {
+      "epochs": 40,
+      "id": "GEN_LINEAR_LR3E4_E40",
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0005
+    }
+  ],
+  "generic_selection": "S2 subject-held-out validation inside model-fit subjects; no outcome S3 labels",
+  "git_commit": null,
+  "implementation_id": "persist_eeg_exp4_protection_first_v3_soft_response",
+  "no_outer_access_during_development": true,
+  "outer_evaluation_authorized_once": false,
+  "outer_membership_enumerated": false,
+  "outer_subject_count": 10,
+  "outer_subject_ids_opened": false,
+  "outer_subject_ids_present": false,
+  "outer_test_used": false,
+  "persist_guard_variant": {
+    "extra_parameters": 0,
+    "mode": "hard complement projection plus minimum-norm frozen-head decision-response correction on U_P",
+    "response_strength": 0.25
+  },
+  "primary_endpoint": "subject balanced accuracy on unseen outcome-subject S3",
+  "primary_statistics": "paired subject delta Guard-Generic; subject bootstrap CI; exact binomial sign test and deterministic Monte-Carlo sign-flip p for mean",
+  "protected_basis_rule": "fold-specific S1/S2 cross-session subject-centroid persistence basis; frozen P01_04 rank-4 rule; no held-out outcome S3 labels",
+  "protected_block": {
+    "name": "P01_04",
+    "rank": 4,
+    "source_assignment": "frozen WBCIC actionability v2 protected_utility_gate"
+  },
+  "scope": "five frozen subject-disjoint development folds; S3 is outcome only for the fold outcome subjects",
+  "secondary_endpoints": [
+    "macro-F1",
+    "accuracy",
+    "negative transfer relative to Frozen",
+    "protected-coordinate drift",
+    "protected decision-response drift",
+    "complement adaptation"
+  ],
+  "session_protocol": "S1=ses-0, S2=ses-1, S3=ses-2; no trial-level split",
+  "status": "DEV_PROTOCOL_FROZEN_BEFORE_EXP4_PRIMARY_COMPARISON",
+  "validation_outcome_used_for_design": false
+}

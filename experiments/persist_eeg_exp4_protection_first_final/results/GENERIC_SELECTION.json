@@ -1,0 +1,41 @@
+{
+  "candidates": [
+    {
+      "candidate": "GEN_LINEAR_LR3E4_E25",
+      "epochs": 25,
+      "fold_scores": "[0.7258333333333333, 0.7841666666666667, 0.8491666666666666, 0.7625, 0.8125]",
+      "id": "GEN_LINEAR_LR3E4_E25",
+      "learning_rate": 0.0003,
+      "mean_S2_validation_BA": 0.7868333333333334,
+      "weight_decay": 0.0005
+    },
+    {
+      "candidate": "GEN_LINEAR_LR1E3_E25",
+      "epochs": 25,
+      "fold_scores": "[0.7341666666666666, 0.7883333333333333, 0.8508333333333333, 0.7608333333333333, 0.8166666666666667]",
+      "id": "GEN_LINEAR_LR1E3_E25",
+      "learning_rate": 0.001,
+      "mean_S2_validation_BA": 0.7901666666666666,
+      "weight_decay": 0.0005
+    },
+    {
+      "candidate": "GEN_LINEAR_LR3E4_E40",
+      "epochs": 40,
+      "fold_scores": "[0.7316666666666667, 0.7866666666666666, 0.8483333333333334, 0.7633333333333334, 0.815]",
+      "id": "GEN_LINEAR_LR3E4_E40",
+      "learning_rate": 0.0003,
+      "mean_S2_validation_BA": 0.7889999999999999,
+      "weight_decay": 0.0005
+    }
+  ],
+  "outer_membership_enumerated": false,
+  "outer_subject_ids_opened": false,
+  "outer_test_used": false,
+  "selected": {
+    "epochs": 25,
+    "id": "GEN_LINEAR_LR1E3_E25",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0005
+  },
+  "selection_scope": "S2 subject-held-out validation inside model-fit subjects"
+}

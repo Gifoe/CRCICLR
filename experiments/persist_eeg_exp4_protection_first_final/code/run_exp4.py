@@ -54,8 +54,8 @@ RANK = 4
 BOOTSTRAP_DRAWS = 10_000
 PERMUTATION_DRAWS = 100_000
 EPS = 1e-12
-IMPLEMENTATION_ID = os.environ.get("PERSIST_EXP4_IMPLEMENTATION_ID", "persist_eeg_exp4_protection_first_v3_soft_response")
-RESPONSE_STRENGTH = float(os.environ.get("PERSIST_EXP4_RESPONSE_STRENGTH", "1.0"))
+IMPLEMENTATION_ID = os.environ.get("PERSIST_EXP4_IMPLEMENTATION_ID", "persist_eeg_exp4_protection_first_v1_hard_projection")
+RESPONSE_STRENGTH = float(os.environ.get("PERSIST_EXP4_RESPONSE_STRENGTH", "0.0"))
 if not 0.0 <= RESPONSE_STRENGTH <= 1.0:
     raise ValueError("PERSIST_EXP4_RESPONSE_STRENGTH must be in [0,1]")
 EXPERIMENT_SEED = 20260823

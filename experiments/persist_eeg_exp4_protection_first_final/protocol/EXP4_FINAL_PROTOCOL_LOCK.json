@@ -1,0 +1,50 @@
+{
+  "status": "EXP4_FINAL_PROTOCOL_NOT_AUTHORIZED_DEVELOPMENT_GATE_FAILED",
+  "terminal_state": "EXP4_PROTECTION_FAILED",
+  "selected_variant_for_report": "V1_HARD_PROJECTED_GUARD",
+  "selection_reason": "V1 is the simplest prospective formulation and had the highest Guard-minus-Generic development BA among tested variants; it still fails the prespecified performance, negative-transfer, and specificity gates.",
+  "git_commit_selected_variant": "7735c37c3ea859a9cab886510ea1bcb56cb1acc2",
+  "dataset": "WBCIC/Yang2025/NEMAR nm000348",
+  "development_subject_count": 41,
+  "sealed_outer_subject_count": 10,
+  "outer_subject_ids_opened": false,
+  "outer_evaluation_authorized": false,
+  "outer_evaluation_count": 0,
+  "anchor": {
+    "backbone": "EEGNet",
+    "sessions": [0],
+    "dropout": 0.25,
+    "epochs": 30,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0005
+  },
+  "adapter": {
+    "architecture": "zero-initialized linear residual A(h)=hW+b",
+    "session": 1,
+    "learning_rate": 0.001,
+    "epochs": 25,
+    "weight_decay": 0.0005,
+    "head": "frozen anchor linear classifier",
+    "same_parameter_count_as_generic": true
+  },
+  "protected_basis": {
+    "rule": "fold-specific S1/S2 cross-session subject-centroid persistence basis",
+    "block": "P01_04",
+    "rank": 4,
+    "held_out_S3_information_used": false,
+    "utility_source": "frozen WBCIC actionability v2 protected_utility_gate"
+  },
+  "equation": "h_guard=h_anchor+(I-U_P U_P^T)A_psi(h_anchor)",
+  "controls": ["Frozen", "Generic", "RandomGuard", "PCAGuard", "PersistenceGuard", "IdentityGuard", "PERSISTGuard"],
+  "statistics": {
+    "unit": "subject",
+    "primary": "paired S3 balanced-accuracy Guard minus Generic",
+    "bootstrap_draws": 10000,
+    "sign_flip_draws": 100000,
+    "trial_level_pseudoreplication": false
+  },
+  "outer_command": null,
+  "no_retraining_after_outer": true,
+  "note": "This file records a negative terminal decision and deliberately does not authorize outer evaluation."
+}
