@@ -115,6 +115,9 @@ def stable_seed(*parts: Any) -> int:
 
 
 def git_head() -> str | None:
+    forced = os.environ.get("PERSIST_EXP4_V2_GIT_COMMIT") or os.environ.get("PERSIST_EXP4_GIT_COMMIT")
+    if forced:
+        return forced.strip()
     try:
         return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=EXP_ROOT.parents[1], text=True, stderr=subprocess.DEVNULL).strip()
     except Exception:
