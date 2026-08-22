@@ -590,7 +590,10 @@ def compute_headroom(scope_data: Mapping[str, Any], selected: Mapping[int, list[
         for idx, subject in enumerate(outcome):
             m = test["sid"] == idx
             s3_rows.append({"fold": fold, "subject": subject, "delta_BA_generic": BASE.metric_ba(test["y"][m], predg[m]) - BASE.metric_ba(test["y"][m], pred0[m])})
-    frame = pd.DataFrame(rows); write_csv(OUT / "UTILITY_BEFORE_AFTER.csv", frame)
+    frame = pd.DataFrame(rows)
+    if frame.empty:
+        frame = pd.DataFrame(columns=["fold", "subject", "direction", "anchor_G", "generic_G", "delta_G", "generic_constraint_collapse", "n_S2_trials", "adapter_meta"])
+    write_csv(OUT / "UTILITY_BEFORE_AFTER.csv", frame)
     if frame.empty:
         audit_result = {"headroom": False, "reason": "no certified directions"}
     else:
@@ -696,6 +699,56 @@ def evaluate_dev(scope_data: Mapping[str, Any], selected: Mapping[int, list[int]
     return frame, activity
 
 
+def baseline_only(scope_data: Mapping[str, Any], generic: Mapping[str, Any], device: torch.device) -> pd.DataFrame:
+    """Reproduce Frozen/Generic on development S3 after the G1 stop.
+
+    This is an audit of the baseline, not a route back into Guard selection.
+    The held S3 labels are used only to report the predeclared development
+    endpoint; no direction, threshold, or optimizer decision is made from it.
+    """
+    rows: list[dict[str, Any]] = []
+    seed_rows: list[dict[str, Any]] = []
+    for fold in RUNS:
+        legal = all_training_subjects(scope_data, fold)
+        outcome = list(map(str, scope_data["audit_roles"][str(fold)]["outcome"]))
+        model, _ = BASE.load_anchor(CHECKPOINTS / f"anchor_fold-{fold}.pt", device)
+        train = BASE.infer(model, legal, [1], device)
+        test = BASE.infer(model, outcome, [2], device)
+        w = model.head.weight.detach().cpu().numpy().astype(float)
+        b = model.head.bias.detach().cpu().numpy().astype(float)
+        frozen_logits = BASE.logits_for(test["h"], w, b)
+        generic_logits: list[np.ndarray] = []
+        for seed in ADAPTER_SEEDS:
+            adapter, meta = BASE.fit_adapter(train["h"], train["y"], w, b, generic, None, stable_seed("baseline-only", fold, seed), device)
+            transformed = BASE.adapter_apply(adapter, test["h"], None, device)
+            logits = BASE.logits_for(transformed, w, b)
+            generic_logits.append(logits)
+            seed_rows.append({"fold": fold, "method": "Generic", "seed": seed, "adapter_state_sha256": meta.get("adapter_state_sha256"), "mean_S3_BA": float(np.mean([BASE.metric_ba(test["y"][i == test["sid"]], logits[i == test["sid"]].argmax(1)) for i in range(len(outcome))]))})
+        avg_generic = np.mean(generic_logits, axis=0)
+        for method, logits in (("Frozen", frozen_logits), ("Generic", avg_generic)):
+            pred = logits.argmax(1)
+            for idx, subject in enumerate(outcome):
+                m = test["sid"] == idx
+                frozen_ba = BASE.metric_ba(test["y"][m], frozen_logits.argmax(1)[m])
+                rows.append({"fold": fold, "subject": subject, "method": method, "seed_aggregation": "mean_logits" if method == "Generic" else "single_seed", "BA": BASE.metric_ba(test["y"][m], pred[m]), "Frozen_BA": frozen_ba, "delta_BA_vs_Frozen": BASE.metric_ba(test["y"][m], pred[m]) - frozen_ba, "macro_F1": BASE.metric_macro_f1(test["y"][m], pred[m]), "accuracy": float(np.mean(pred[m] == test["y"][m])), "coordinate_drift": 0.0, "coordinate_drift_q95": 0.0, "decision_response_drift": 0.0, "complement_adaptation": 0.0, "total_adaptation": 0.0})
+    frame = pd.DataFrame(rows)
+    write_csv(OUT / "DEV_SUBJECT_RESULTS.csv", frame)
+    write_csv(OUT / "DEV_SUBJECT_RESULTS_RAW.csv", pd.DataFrame(seed_rows))
+    write_csv(OUT / "NEGATIVE_TRANSFER.csv", frame[["fold", "subject", "method", "Frozen_BA", "BA", "delta_BA_vs_Frozen"]])
+    write_csv(OUT / "SEED_ROBUSTNESS.csv", pd.DataFrame(seed_rows))
+    write_csv(OUT / "DEV_METHOD_SUMMARY.csv", summarize(frame))
+    # These controls are intentionally absent after the prospective G1 stop;
+    # explicit status rows prevent an empty file from being mistaken for a
+    # successful null control.
+    write_csv(OUT / "CONTROL_COMPARISON.csv", pd.DataFrame([{"method": m, "status": "NOT_RUN_G1_NO_CERTIFIED_DIRECTION"} for m in ("HistoricalHardP01_04", "DeploymentMatchedHard", "UtilityOnlyGuard", "PersistenceOnlyUtilityGuard", "IdentityUtilityGuard", "PCAUtilityGuard", "RandomUtilityGuard")]))
+    empty_cols = {"fold": [], "subject": [], "method": [], "direction": [], "utility_before": [], "utility_after": [], "utility_delta": [], "utility_collapse": []}
+    write_csv(OUT / "UTILITY_DRIFT.csv", pd.DataFrame(empty_cols))
+    write_csv(OUT / "COORDINATE_DRIFT.csv", pd.DataFrame(columns=["fold", "subject", "method", "coordinate_drift"]))
+    write_csv(OUT / "DECISION_DRIFT.csv", pd.DataFrame(columns=["fold", "subject", "method", "decision_response_drift"]))
+    write_csv(OUT / "CONSTRAINT_ACTIVITY.csv", pd.DataFrame(columns=["fold", "method", "seed", "constraint_active_fraction", "constraint_max_violation"]))
+    return frame
+
+
 def summarize(frame: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for method, g in frame.groupby("method", sort=False):
@@ -706,6 +759,20 @@ def summarize(frame: pd.DataFrame) -> pd.DataFrame:
 
 
 def analyze(frame: pd.DataFrame, selected: Mapping[int, list[int]], headroom: Mapping[str, Any]) -> dict[str, Any]:
+    if not any(selected.values()):
+        summary = summarize(frame) if not frame.empty else pd.DataFrame()
+        if not summary.empty:
+            write_csv(OUT / "DEV_METHOD_SUMMARY.csv", summary)
+        result = {
+            "terminal_state": "EXP4_V2_NO_DEPLOYMENT_MATCHED_PROTECTED_DIRECTION",
+            "reason": "no direction passed persistence + signed utility + decision dependence certification",
+            "headroom": headroom,
+            "baseline_methods": summary.to_dict(orient="records") if not summary.empty else [],
+            "outer_accessed": False,
+            "outer_authorized": False,
+        }
+        write_json(OUT / "STATISTICAL_TESTS.json", result)
+        return result
     if frame.empty:
         terminal = "EXP4_V2_NO_UTILITY_COLLAPSE_HEADROOM" if headroom.get("reason") != "no certified directions" else "EXP4_V2_NO_DEPLOYMENT_MATCHED_PROTECTED_DIRECTION"
         result = {"terminal_state": terminal, "headroom": headroom, "outer_accessed": False}
@@ -824,7 +891,16 @@ def run(phase: str, device: torch.device) -> int:
             _, hr = compute_headroom(s, selected, generic, device)
         else:
             hr = json.loads((OUT / "UTILITY_COLLAPSE_AUDIT.json").read_text(encoding="utf-8"))
-        frame, _ = evaluate_dev(s, selected, generic, hr, device); state = analyze(frame, selected, hr); figures(frame); write_static_reports(state); return 0
+        if not any(selected.values()):
+            frame = baseline_only(s, generic, device)
+        elif not hr.get("headroom", False):
+            # A valid direction exists but the required mechanistic headroom
+            # gate fails.  Baseline-only reporting is still allowed; no Guard
+            # or control is trained after this point.
+            frame = baseline_only(s, generic, device)
+        else:
+            frame, _ = evaluate_dev(s, selected, generic, hr, device)
+        state = analyze(frame, selected, hr); figures(frame); write_static_reports(state); return 0
     if phase == "outer":
         raise RuntimeError("OUTER_FORBIDDEN: this runner does not open sealed subjects without a final protocol lock")
     raise ValueError(phase)
