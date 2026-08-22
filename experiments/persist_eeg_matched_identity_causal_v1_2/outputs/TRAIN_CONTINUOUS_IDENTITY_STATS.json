@@ -1,0 +1,15 @@
+{
+  "alpha_grid_step": 0.02,
+  "eligible_runs": 0,
+  "fallback_used": false,
+  "formula": "0.5*((log(K)-CE_S1_to_S2)+(log(K)-CE_S2_to_S1))",
+  "grid_cost_adjustment": "step_0.02_selected_train_only_before_freeze",
+  "measurable_block_fraction": 0.0,
+  "measurable_blocks": 0,
+  "medium_controls_min": 0,
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "primary_metric": "symmetric_cross_session_subject_id_identity_skill_raw",
+  "protected_blocks": 10,
+  "train_bootstrap_draws": 1000
+}

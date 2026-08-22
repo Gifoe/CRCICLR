@@ -1,0 +1,67 @@
+{
+  "control_membership_reused": true,
+  "dataset": "OpenBMI_nm000273_MI",
+  "fixed_control_rows": 500,
+  "fixed_protected_blocks": 10,
+  "folds": [
+    {
+      "fold": 0,
+      "materialized_rows": 187479,
+      "materialized_subjects": 43,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "paradigms": [
+        "erp",
+        "mi",
+        "ssvep"
+      ],
+      "sessions": [
+        1,
+        2
+      ],
+      "train_subjects": 34,
+      "validation_subjects": 9
+    },
+    {
+      "fold": 1,
+      "materialized_rows": 187479,
+      "materialized_subjects": 43,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "paradigms": [
+        "erp",
+        "mi",
+        "ssvep"
+      ],
+      "sessions": [
+        1,
+        2
+      ],
+      "train_subjects": 34,
+      "validation_subjects": 9
+    },
+    {
+      "fold": 2,
+      "materialized_rows": 187480,
+      "materialized_subjects": 43,
+      "outer_membership_enumerated": false,
+      "outer_test_used": false,
+      "paradigms": [
+        "erp",
+        "mi",
+        "ssvep"
+      ],
+      "sessions": [
+        1,
+        2
+      ],
+      "train_subjects": 34,
+      "validation_subjects": 9
+    }
+  ],
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "split_sha256": "8f12709c53494c205eb3d1a314cdff02f77d70fdebfc0820ac8b122c3c1ae065",
+  "v1_1_root": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP3_MATCHED_CAUSAL_V1_1\\persist_eeg_matched_identity_causal_v1_1",
+  "validation_outcome_used_for_design": false
+}
