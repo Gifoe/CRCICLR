@@ -44,3 +44,14 @@ formula.
   `per_subject_results.csv` delta lookup. It affected only that exported delta
   column, not gate calculations. The lookup now canonicalizes keys to strings.
 - Outcome access before repair: none.
+
+## Baseline reconstruction repair 4
+
+- Static pre-outcome audit found that when B1 selected F16, the independently
+  reconstructed F8 B0 would have reused B1's selected epoch instead of F8's own
+  source-inner-validation epoch.
+- Repair: B0 now always uses the F8 candidate's own frozen source-only epoch;
+  B1 uses the selected candidate's epoch as before.
+- Scientific impact: prevents an avoidably weak B0 and makes the conservative
+  strongest-baseline comparison valid. No outer outcome was accessed and no
+  candidate or epoch was added.

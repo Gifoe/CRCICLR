@@ -422,6 +422,10 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
     source_indices = core.row_indices(data.metadata, roles["source"], (1, 2))
     baseline_config = dict(selection["selected_baseline"]["configuration"])
     baseline_epochs = int(selection["selected_baseline"]["best_epoch"])
+    b0_selection = next(
+        row for row in selection["baseline_candidates"] if row["id"] == "EEGNET_F8"
+    )
+    b0_epochs = int(b0_selection["best_epoch"])
     generic_config = dict(selection["selected_generic"])
     width = dict(selection["selected_dual_width"])
     student_epochs = int(selection["student_best_epoch"])
@@ -474,7 +478,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
             std,
             b0_seed,
             b0_config,
-            fixed_epochs=baseline_epochs,
+            fixed_epochs=b0_epochs,
         )
         b0_checkpoint = _checkpoint(
             b0,
@@ -482,7 +486,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
             "B0_VANILLA_EEGNET",
             {
                 "configuration": b0_config,
-                "epochs": baseline_epochs,
+                "epochs": b0_epochs,
                 "seed": b0_seed,
                 "source_subjects": roles["source"],
                 "source_sessions": [1, 2],
@@ -589,6 +593,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
         "future_evaluation_session": 2,
         "baseline_configuration": baseline_config,
         "baseline_epochs": baseline_epochs,
+        "B0_epochs": b0_epochs,
         "teacher_seed": teacher_seed,
         "B0_seed": b0_seed,
         "generic_adaptation": generic_config,
