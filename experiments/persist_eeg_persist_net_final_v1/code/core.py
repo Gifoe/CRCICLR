@@ -921,7 +921,14 @@ def fit_certificate(
     rank = min(int(cfg["whitening_rank_max"]), numerical_rank)
     if rank < 4:
         raise RuntimeError(f"Insufficient teacher embedding rank: {rank}")
-    active = np.maximum(ev[:rank], max(float(ev[:rank].mean()) * 1e-4, 1e-8))
+    active = np.maximum(
+        ev[:rank],
+        max(
+            float(ev[:rank].mean())
+            * float(cfg["whitening_eigenvalue_mean_floor_relative"]),
+            float(cfg["whitening_eigenvalue_absolute_floor"]),
+        ),
+    )
     up = u[:, :rank]
     whitener = up * np.power(active, -0.5)[None, :]
     dewhitener = np.sqrt(active)[:, None] * up.T
@@ -1198,7 +1205,7 @@ def teacher_targets(
     centered_full = centered_logits_np(full)
     residual = centered_full - protected
     scale = float(np.sqrt(np.mean(exact_centered_logit_sq(centered_full))))
-    scale = max(scale, 1e-4)
+    scale = max(scale, float(protocol()["student_training"]["target_scale_floor"]))
     return {
         "indices": evaluation.indices.astype(np.int64),
         "full": full.astype(np.float32),
@@ -1316,7 +1323,10 @@ def train_dual(
                         raise RuntimeError("Target lookup crossed an unauthorized row")
                     protected_loss = F.mse_loss(centered_logits(lp) / target_scale, tp / target_scale)
                     residual_loss = F.mse_loss(centered_logits(la) / target_scale, tr / target_scale)
-                    x1_np, x2_np = prototype_sampler.sample()
+                    x1_np, x2_np = prototype_sampler.sample(
+                        cell_count=int(train_cfg["prototype_cells_per_batch"]),
+                        trials_per_session=int(train_cfg["prototype_trials_per_session"]),
+                    )
                     cells, per = x1_np.shape[:2]
                     x1 = normalize_tensor(
                         torch.as_tensor(x1_np.reshape(-1, *x1_np.shape[2:]), device=device), mean, std
@@ -1405,10 +1415,12 @@ def adapt_single(
         if name in names:
             p.requires_grad_(True)
     before = {name: p.detach().cpu().clone() for name, p in model.named_parameters()}
+    adaptation_cfg = protocol()["target_adaptation"]
+    adaptation_batch_size = int(adaptation_cfg["batch_size"])
     optimizer = torch.optim.AdamW(
         [p for p in model.parameters() if p.requires_grad],
         lr=float(config["lr"]),
-        weight_decay=1e-4,
+        weight_decay=float(adaptation_cfg["weight_decay"]),
     )
     mean = torch.as_tensor(mean_np, dtype=torch.float32, device=device)
     std = torch.as_tensor(std_np, dtype=torch.float32, device=device)
@@ -1417,8 +1429,8 @@ def adapt_single(
     for _ in range(int(config["epochs"])):
         model.train()
         permutation = torch.randperm(len(y_np), generator=generator)
-        for start in range(0, len(y_np), 32):
-            index = permutation[start : start + 32].numpy()
+        for start in range(0, len(y_np), adaptation_batch_size):
+            index = permutation[start : start + adaptation_batch_size].numpy()
             xb = normalize_tensor(torch.as_tensor(x_np[index], dtype=torch.float32, device=device), mean, std)
             yb = torch.as_tensor(y_np[index], dtype=torch.long, device=device)
             optimizer.zero_grad(set_to_none=True)
@@ -1479,10 +1491,12 @@ def adapt_dual(
         for name, value in model.named_buffers()
         if name.startswith("protected")
     }
+    adaptation_cfg = protocol()["target_adaptation"]
+    adaptation_batch_size = int(adaptation_cfg["batch_size"])
     optimizer = torch.optim.AdamW(
         [p for p in model.parameters() if p.requires_grad],
         lr=float(config["lr"]),
-        weight_decay=1e-4,
+        weight_decay=float(adaptation_cfg["weight_decay"]),
     )
     mean = torch.as_tensor(mean_np, dtype=torch.float32, device=device)
     std = torch.as_tensor(std_np, dtype=torch.float32, device=device)
@@ -1497,8 +1511,8 @@ def adapt_dual(
             model.protected.eval()
             model.protected_head.eval()
         permutation = torch.randperm(len(y_np), generator=generator)
-        for start in range(0, len(y_np), 32):
-            index = permutation[start : start + 32].numpy()
+        for start in range(0, len(y_np), adaptation_batch_size):
+            index = permutation[start : start + adaptation_batch_size].numpy()
             xb = normalize_tensor(torch.as_tensor(x_np[index], dtype=torch.float32, device=device), mean, std)
             yb = torch.as_tensor(y_np[index], dtype=torch.long, device=device)
             optimizer.zero_grad(set_to_none=True)

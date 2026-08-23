@@ -415,8 +415,16 @@ def finalize() -> dict[str, Any]:
     full_subject = per_subject.loc[per_subject.method.eq("A10_FULL_PUD_FREEZE")].set_index("subject_id")
     common = full_subject.index.intersection(baseline_subject.index)
     primary_delta = full_subject.loc[common, "BA"].to_numpy() - baseline_subject.loc[common, "BA"].to_numpy()
-    primary_bootstrap = bootstrap(primary_delta, core.stable_seed("primary-bootstrap"))
-    primary_sign_flip = sign_flip(primary_delta, core.stable_seed("primary-signflip"))
+    primary_bootstrap = bootstrap(
+        primary_delta,
+        core.stable_seed("primary-bootstrap"),
+        int(core.protocol()["statistics"]["bootstrap_draws"]),
+    )
+    primary_sign_flip = sign_flip(
+        primary_delta,
+        core.stable_seed("primary-signflip"),
+        int(core.protocol()["statistics"]["sign_flip_draws"]),
+    )
 
     means = summary.set_index("method").BA
     full_mean = float(means["A10_FULL_PUD_FREEZE"])
@@ -440,7 +448,13 @@ def finalize() -> dict[str, Any]:
     g2 = bool(primary_bootstrap["CI95"][0] > 0.0)
     g3 = bool(np.sum(fold_full.Delta_BA_vs_strongest_baseline > 0) >= 4)
     g4 = bool(np.sum(seed_full.Delta_BA_vs_strongest_baseline > 0) >= 2 and primary_delta.mean() > 0)
-    g5 = bool(full_ntr <= generic_ntr + 1e-12 and full_worst >= generic_worst - 0.0025)
+    g5_tolerance = float(
+        core.protocol()["gate_tolerances"]["G5_worst_quartile_noninferiority"]
+    )
+    g5 = bool(
+        full_ntr <= generic_ntr + 1e-12
+        and full_worst >= generic_worst - g5_tolerance
+    )
     g6_components = {
         method: full_mean - float(means[method])
         for method in ("A7_IDENTITY_PROTECTED", "A8_RANDOM_PROTECTED", "A2_DUAL_CONTROL")
@@ -461,7 +475,7 @@ def finalize() -> dict[str, Any]:
         "G2_UNCERTAINTY": {"pass": g2, "CI95": primary_bootstrap["CI95"], "strict_rule": "lower > 0"},
         "G3_FOLD_CONSISTENCY": {"pass": g3, "positive_folds": int(np.sum(fold_full.Delta_BA_vs_strongest_baseline > 0)), "required": 4},
         "G4_SEED_CONSISTENCY": {"pass": g4, "positive_seeds": int(np.sum(seed_full.Delta_BA_vs_strongest_baseline > 0)), "required": 2},
-        "G5_SAFETY": {"pass": g5, "FULL_NTR": full_ntr, "Generic_NTR": generic_ntr, "FULL_worst_quartile": full_worst, "Generic_worst_quartile": generic_worst},
+        "G5_SAFETY": {"pass": g5, "FULL_NTR": full_ntr, "Generic_NTR": generic_ntr, "FULL_worst_quartile": full_worst, "Generic_worst_quartile": generic_worst, "worst_quartile_noninferiority_tolerance": g5_tolerance},
         "G6_THEORY_SPECIFICITY": {"pass": g6, "FULL_minus_controls": g6_components},
         "G7_PROTECTION_NECESSITY": {"pass": g7, "FULL_minus_all_adapt": g7_delta, "preferred_target": 0.003},
         "G8_MECHANISM": {"pass": g8, "protected_drift_reduction": drift_reduction, "FULL_adaptive_update_l2": adaptive_update},

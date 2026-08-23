@@ -31,7 +31,8 @@
   ],
   "capacity_ratio_max": 1.25,
   "baseline_training": {"max_epochs": 60, "minimum_epochs": 20, "patience": 12, "batch_size": 256},
-  "student_training": {"max_epochs": 40, "minimum_epochs": 15, "patience": 10, "batch_size": 256, "lr": 0.0003, "weight_decay": 0.0005},
+  "student_training": {"max_epochs": 40, "minimum_epochs": 15, "patience": 10, "batch_size": 256, "lr": 0.0003, "weight_decay": 0.0005, "target_scale_floor": 0.0001, "prototype_cells_per_batch": 4, "prototype_trials_per_session": 4},
+  "target_adaptation": {"batch_size": 32, "weight_decay": 0.0001},
   "generic_adaptation_candidates": [
     {"id": "HEAD_LR1E3_E10", "strategy": "head", "lr": 0.001, "epochs": 10},
     {"id": "HEAD_LR3E4_E30", "strategy": "head", "lr": 0.0003, "epochs": 30},
@@ -44,6 +45,8 @@
     "whitening_rank_max": 32,
     "embedding_eigenvalue_relative_threshold": 0.001,
     "embedding_eigenvalue_absolute_floor": 1e-8,
+    "whitening_eigenvalue_mean_floor_relative": 0.0001,
+    "whitening_eigenvalue_absolute_floor": 1e-8,
     "persistence_threshold": 0.05,
     "permutation_draws": 200,
     "persistence_permutation_quantile": 0.95,
@@ -59,7 +62,8 @@
   },
   "primary_methods_three_seeds": ["B0_VANILLA_EEGNET", "B1_STRONG_EEGNET", "B2_STRONG_GENERIC", "A2_DUAL_CONTROL", "A6_PUD_ALL_ADAPT", "A7_IDENTITY_PROTECTED", "A8_RANDOM_PROTECTED", "A10_FULL_PUD_FREEZE"],
   "secondary_methods_seed0": ["A3_P_ONLY", "A4_P_PLUS_U", "A5_P_PLUS_D", "A9_PCA_PROTECTED"],
-  "statistics": {"unit": "subject", "bootstrap_draws": 10000, "seed_aggregation": "subject_mean_before_bootstrap"},
+  "statistics": {"unit": "subject", "bootstrap_draws": 10000, "sign_flip_draws": 100000, "seed_aggregation": "subject_mean_before_bootstrap"},
+  "gate_tolerances": {"G5_worst_quartile_noninferiority": 0.0025},
   "gates": {
     "G1": "FULL minus strongest legal comparable baseline >= 0.0075 BA",
     "G2": "paired subject-bootstrap CI95 lower > 0 preferred; at minimum not materially negative",
