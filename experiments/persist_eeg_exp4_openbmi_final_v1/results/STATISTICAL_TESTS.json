@@ -1,0 +1,31 @@
+{
+  "PERSISTENCE_GUARD": {
+    "bootstrap_95ci": [
+      -0.004499999999999999,
+      0.00949999999999999
+    ],
+    "generic_BA": 0.88225,
+    "internal_holdout_used": false,
+    "mean_BA": 0.8844999999999998,
+    "method": "DGUG_PROTECT",
+    "negative_transfer_rate": 0.325,
+    "outer_test_used": false,
+    "paired_delta_mean": 0.0022500000000000046,
+    "paired_delta_median": 0.0,
+    "subjects": 40,
+    "subjects_favoring": 16
+  },
+  "strongest_generic": {
+    "OUTER_TEST_USED": false,
+    "delta_vs_Generic": 0.0,
+    "internal_holdout_used": false,
+    "mean_BA": 0.8947499999999999,
+    "method": "GENERIC",
+    "negative_transfer_rate": 0.325,
+    "negative_transfer_severity": -0.00375,
+    "representation": "CONFORMER_NORM",
+    "selection_scope": "V8_SEARCH source-fold prospective",
+    "subjects_favoring": 0,
+    "target_future_labels_used_for_fit": false
+  }
+}

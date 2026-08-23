@@ -1,0 +1,7 @@
+representation,method,mean_BA,delta_vs_Generic,negative_transfer_rate,negative_transfer_severity,subjects_favoring,selection_scope,target_future_labels_used_for_fit,internal_holdout_used,OUTER_TEST_USED
+MI_SPECIFIC_EEGNET,NOADAPT,0.88125,-0.001,0.0,0.0,17.0,V8_SEARCH source-fold prospective,False,False,False
+MI_SPECIFIC_EEGNET,GENERIC,0.88225,0.0,0.4,-0.0092499999999999,0.0,V8_SEARCH source-fold prospective,False,False,False
+CONFORMER_NORM,NOADAPT,0.893,-0.0017499999999999,0.0,0.0,13.0,V8_SEARCH source-fold prospective,False,False,False
+CONFORMER_NORM,GENERIC,0.8947499999999999,0.0,0.325,-0.00375,0.0,V8_SEARCH source-fold prospective,False,False,False
+FBCVARIANCE_NORM,NOADAPT,0.8915,,,,,V8_SEARCH cache probe,False,False,False
+HISTORICAL_REFERENCE,ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD,0.8377777778,,,,,historical 54-subject reference; not used for selection,False,False,False
