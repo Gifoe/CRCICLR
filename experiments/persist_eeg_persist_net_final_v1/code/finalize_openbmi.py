@@ -217,6 +217,44 @@ def mechanism_summary(mechanism: pd.DataFrame) -> pd.DataFrame:
     return mechanism.groupby("method", as_index=False)[existing].mean(numeric_only=True)
 
 
+def paired_mechanism_comparison(
+    frame: pd.DataFrame,
+    left_method: str,
+    right_method: str,
+    left_metric: str,
+    right_metric: str | None = None,
+) -> dict[str, Any]:
+    right_metric = right_metric or left_metric
+    left = frame.loc[frame.method.eq(left_method)].set_index("subject_id")[left_metric]
+    right = frame.loc[frame.method.eq(right_method)].set_index("subject_id")[right_metric]
+    common = left.index.intersection(right.index)
+    if len(common) == 0:
+        raise RuntimeError(
+            f"No paired subjects for {left_method}:{left_metric} vs "
+            f"{right_method}:{right_metric}"
+        )
+    left_values = left.loc[common].to_numpy(dtype=float)
+    right_values = right.loc[common].to_numpy(dtype=float)
+    stats = bootstrap(
+        left_values - right_values,
+        core.stable_seed(
+            "mechanism-bootstrap", left_method, right_method, left_metric, right_metric
+        ),
+    )
+    return {
+        "left_method": left_method,
+        "right_method": right_method,
+        "left_metric": left_metric,
+        "right_metric": right_metric,
+        "left_mean": float(np.mean(left_values)),
+        "right_mean": float(np.mean(right_values)),
+        "mean_difference": stats["mean"],
+        "CI95": stats["CI95"],
+        "subjects": int(len(common)),
+        "bootstrap_draws": stats["draws"],
+    }
+
+
 def draw_figures(summary: pd.DataFrame, per_subject: pd.DataFrame, mechanism: pd.DataFrame) -> None:
     core.FIGURES.mkdir(parents=True, exist_ok=True)
     ordered = summary.set_index("method").loc[[m for m in METHOD_ORDER if m in set(summary.method)]].reset_index()
@@ -308,6 +346,50 @@ def finalize() -> dict[str, Any]:
     summary = add_efficiency(method_summary(subject, per_subject, baseline_method), efficiency)
     fold_table, seed_table = fold_seed_tables(subject, baseline_method)
     mechanism = mechanism_summary(mechanism_raw)
+    mechanism_subject = (
+        mechanism_raw.groupby(["method", "subject_id"], as_index=False)
+        .mean(numeric_only=True)
+        .sort_values(["method", "subject_id"])
+    )
+    mechanism_seed0_subject = (
+        mechanism_raw.loc[mechanism_raw.seed.eq(0)]
+        .groupby(["method", "subject_id"], as_index=False)
+        .mean(numeric_only=True)
+        .sort_values(["method", "subject_id"])
+    )
+    mechanism_tests = {
+        "FULL_minus_all_adapt_protected_decision_drift": paired_mechanism_comparison(
+            mechanism_subject,
+            "A10_FULL_PUD_FREEZE",
+            "A6_PUD_ALL_ADAPT",
+            "protected_decision_logit_drift",
+        ),
+        "FULL_minus_identity_protected_erase_harm": paired_mechanism_comparison(
+            mechanism_subject,
+            "A10_FULL_PUD_FREEZE",
+            "A7_IDENTITY_PROTECTED",
+            "protected_branch_erasure_harm_BA",
+        ),
+        "FULL_minus_random_protected_erase_harm": paired_mechanism_comparison(
+            mechanism_subject,
+            "A10_FULL_PUD_FREEZE",
+            "A8_RANDOM_PROTECTED",
+            "protected_branch_erasure_harm_BA",
+        ),
+        "FULL_protected_minus_adaptive_branch_erase_harm": paired_mechanism_comparison(
+            mechanism_subject,
+            "A10_FULL_PUD_FREEZE",
+            "A10_FULL_PUD_FREEZE",
+            "protected_branch_erasure_harm_BA",
+            "adaptive_branch_erasure_harm_BA",
+        ),
+        "FULL_minus_P_only_protected_erase_harm_seed0": paired_mechanism_comparison(
+            mechanism_seed0_subject,
+            "A10_FULL_PUD_FREEZE",
+            "A3_P_ONLY",
+            "protected_branch_erasure_harm_BA",
+        ),
+    }
 
     baseline_subject = per_subject.loc[per_subject.method.eq(baseline_method)].set_index("subject_id")
     full_subject = per_subject.loc[per_subject.method.eq("A10_FULL_PUD_FREEZE")].set_index("subject_id")
@@ -387,6 +469,7 @@ def finalize() -> dict[str, Any]:
     core.write_csv(core.RESULTS / "per_seed_results.csv", seed_table)
     core.write_csv(core.RESULTS / "ablations.csv", summary)
     core.write_csv(core.RESULTS / "mechanism_metrics.csv", mechanism)
+    core.write_csv(core.RESULTS / "mechanism_per_subject.csv", mechanism_subject)
     core.write_csv(core.RESULTS / "efficiency.csv", efficiency)
     core.write_csv(
         core.RESULTS / "baseline_results.csv",
@@ -403,13 +486,15 @@ def finalize() -> dict[str, Any]:
         "fold_deltas": fold_full[["fold", "Delta_BA_vs_strongest_baseline"]].to_dict(orient="records"),
         "seed_deltas": seed_full[["seed", "Delta_BA_vs_strongest_baseline"]].to_dict(orient="records"),
         "cluster_structure": "three seeds averaged within each subject before the primary 40-subject paired bootstrap",
+        "mechanism_subject_bootstrap": mechanism_tests,
         "gates": gates,
     }
     core.write_json(core.RESULTS / "statistics.json", statistics)
     draw_figures(summary, per_subject_out, mechanism)
 
-    erase = mech.protected_branch_erasure_harm_BA.to_dict()
-    pud_vs_p_only = erase.get("A10_FULL_PUD_FREEZE", float("nan")) - erase.get("A3_P_ONLY", float("nan"))
+    pud_vs_p_only = mechanism_tests[
+        "FULL_minus_P_only_protected_erase_harm_seed0"
+    ]["mean_difference"]
     report = {
         "terminal_state": terminal,
         "openbmi_all_gates_pass": all_gates,
@@ -431,6 +516,7 @@ def finalize() -> dict[str, Any]:
         "protected_drift_reduction_vs_all_adapt": drift_reduction,
         "adaptive_update_nonzero": adaptive_update > 0,
         "PUD_minus_P_only_erasure_harm": pud_vs_p_only,
+        "mechanism_subject_bootstrap": mechanism_tests,
         "WBCIC_transfer_result": "PENDING" if openbmi_authorizes_wbcic else "NOT_AUTHORIZED",
         "OpenBMI_internal_holdout_accessed": False,
         "WBCIC_outer_accessed": False,
@@ -485,7 +571,7 @@ paired subject-bootstrap 95% CI=[{100*primary_bootstrap['CI95'][0]:+.3f}, {100*p
 
 1. **Different from P4-SI / Protection-First / Guard?** Yes architecturally: this is source-time functional distillation into an independent pathway with a universal structural freeze, not GRL, coordinate update projection, or prospective routing.
 2. **Did P/U/D train an independent protected task pathway?** Protected functional agreement and nonzero intervention metrics are reported in `results/mechanism_metrics.csv`; gate G8 is **{'PASS' if g8 else 'FAIL'}**. Architectural independence alone is not evidence of benefit.
-3. **More task-consequential than identity/random?** FULL-minus-identity={100*g6_components['A7_IDENTITY_PROTECTED']:+.3f} pp; FULL-minus-random={100*g6_components['A8_RANDOM_PROTECTED']:+.3f} pp. Theory-specificity G6 is **{'PASS' if g6 else 'FAIL'}**.
+3. **More task-consequential than identity/random?** Final performance: FULL-minus-identity={100*g6_components['A7_IDENTITY_PROTECTED']:+.3f} pp and FULL-minus-random={100*g6_components['A8_RANDOM_PROTECTED']:+.3f} pp. Protected-branch erasure-harm differences are {100*mechanism_tests['FULL_minus_identity_protected_erase_harm']['mean_difference']:+.3f} pp versus identity and {100*mechanism_tests['FULL_minus_random_protected_erase_harm']['mean_difference']:+.3f} pp versus random; their subject-bootstrap CIs are in `results/statistics.json`. Theory-specificity G6 is **{'PASS' if g6 else 'FAIL'}**.
 4. **Is freezing better than all-adapt?** FULL-minus-all-adapt={100*g7_delta:+.3f} pp; G7 is **{'PASS' if g7 else 'FAIL'}**.
 5. **Beyond dual-path capacity?** FULL-minus-dual-control={100*g6_components['A2_DUAL_CONTROL']:+.3f} pp. G6 requires this to be positive.
 6. **Stable across fold/seed/subject?** Positive folds={int(np.sum(fold_full.Delta_BA_vs_strongest_baseline > 0))}/5; positive seeds={int(np.sum(seed_full.Delta_BA_vs_strongest_baseline > 0))}/3; G2/G3/G4=`{'PASS' if g2 else 'FAIL'}`/`{'PASS' if g3 else 'FAIL'}`/`{'PASS' if g4 else 'FAIL'}`.
