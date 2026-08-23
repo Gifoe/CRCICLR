@@ -3,6 +3,11 @@
   "base_commit": "47e773142cc8cd098eeeb89103bebe68c525d760",
   "frozen_before_development_outcomes": true,
   "protocol_seed": 20260824,
+  "implementation_lock": {
+    "parameter_initialization": "stable SHA256 fold/seed applied by explicit reset before optimization",
+    "matched_dual_controls": "paired initialization and source minibatch order within fold/seed",
+    "repair_timing": "locked before any outer outcome evaluation"
+  },
   "development": {
     "benchmark": "OpenBMI_MI_S1_to_S2",
     "scope": "V8_SEARCH",

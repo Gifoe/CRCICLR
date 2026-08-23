@@ -374,7 +374,10 @@ def finalize() -> dict[str, Any]:
     )
 
     per_subject_out = per_subject.copy()
-    baseline_map = baseline_subject.BA.to_dict()
+    baseline_map = {
+        str(subject_id): value
+        for subject_id, value in baseline_subject.BA.to_dict().items()
+    }
     per_subject_out["strongest_baseline_method"] = baseline_method
     per_subject_out["Delta_BA_vs_strongest_baseline"] = [
         row.BA - baseline_map.get(str(row.subject_id), np.nan) for row in per_subject_out.itertuples()
@@ -516,4 +519,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -130,6 +130,43 @@ def set_determinism(seed: int) -> None:
         torch.backends.cudnn.allow_tf32 = True
 
 
+def deterministic_reinitialize(model: nn.Module, seed: int) -> None:
+    """Reset every parameterized submodule after applying the stable seed."""
+    set_determinism(seed)
+    for module in model.modules():
+        reset = getattr(module, "reset_parameters", None)
+        if callable(reset):
+            reset()
+
+
+def validate_deterministic_initialization() -> dict[str, Any]:
+    """Unit-check that the training seed controls constructor-time weights."""
+    config = protocol()["baseline_candidates"][0]
+    first = EEGNetClassifier(config)
+    second = EEGNetClassifier(config)
+    third = EEGNetClassifier(config)
+    deterministic_reinitialize(first, stable_seed("initialization-unit", 0))
+    deterministic_reinitialize(second, stable_seed("initialization-unit", 0))
+    deterministic_reinitialize(third, stable_seed("initialization-unit", 1))
+
+    first_state = first.state_dict()
+    second_state = second.state_dict()
+    third_state = third.state_dict()
+    same_seed_exact = all(torch.equal(first_state[key], second_state[key]) for key in first_state)
+    different_seed_changes_parameters = any(
+        not torch.equal(first_state[name], third_state[name])
+        for name, _ in first.named_parameters()
+    )
+    payload = {
+        "same_seed_state_dict_exact": same_seed_exact,
+        "different_seed_changes_parameters": different_seed_changes_parameters,
+        "validated": bool(same_seed_exact and different_seed_changes_parameters),
+    }
+    if not payload["validated"]:
+        raise RuntimeError(f"Deterministic initialization validation failed: {payload}")
+    return payload
+
+
 def subject_sort(values: Iterable[str]) -> list[str]:
     return sorted(map(str, values), key=lambda x: int(x) if x.isdigit() else x)
 
@@ -402,7 +439,9 @@ def row_indices(
     subjects: Sequence[str],
     sessions: Sequence[int] = (1, 2),
 ) -> np.ndarray:
-    mask = metadata.subject_id.astype(str).isin(set(map(str, subjects))).to_numpy()
+    # Arrow-backed pandas booleans may expose a read-only NumPy view.  Copy
+    # before the in-place conjunction; this changes no row-selection rule.
+    mask = metadata.subject_id.astype(str).isin(set(map(str, subjects))).to_numpy(copy=True)
     mask &= metadata.session_id.astype(int).isin(set(map(int, sessions))).to_numpy()
     return np.flatnonzero(mask).astype(np.int64)
 
@@ -725,7 +764,7 @@ def train_single(
     config: Mapping[str, Any],
     fixed_epochs: int | None = None,
 ) -> tuple[EEGNetClassifier, int, list[dict[str, Any]]]:
-    set_determinism(seed)
+    deterministic_reinitialize(model, seed)
     model = model.to(device)
     batch_size = int(protocol()["baseline_training"]["batch_size"])
     loader = make_loader(data, train_indices, batch_size, True, seed)
@@ -1217,7 +1256,7 @@ def train_dual(
     fixed_epochs: int | None = None,
     task_only: bool = False,
 ) -> tuple[DualPathEEGNet, int, list[dict[str, Any]], dict[str, Any]]:
-    set_determinism(seed)
+    deterministic_reinitialize(model, seed)
     model = model.to(device)
     cfg = protocol()
     train_cfg = cfg["student_training"]

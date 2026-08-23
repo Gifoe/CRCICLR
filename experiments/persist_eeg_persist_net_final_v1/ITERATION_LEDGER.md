@@ -10,3 +10,11 @@
 
 Outcome-driven modules, routers, attention additions, and expanded searches
 are forbidden.  Runtime entries will record whether V1.1 was invoked.
+
+V0 repair 1 was a read-only Arrow mask copy fix before any training or outer
+outcome access; see `UPSTREAM_REPAIR_LOG.md`.
+
+V0 repair 2 locks constructor-time initialization and pairs matched-control
+initialization/minibatch order. Repair 3 fixes an output-only subject-ID delta
+lookup. Both were identified before outer outcome evaluation; no scientific
+module, hyperparameter, certificate rule, or gate changed.

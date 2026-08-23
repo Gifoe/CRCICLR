@@ -68,7 +68,9 @@ def preflight(force_cache: bool = False) -> dict[str, Any]:
     started = time.time()
     core.ensure_dirs()
     exact = core.validate_exact_d()
+    initialization = core.validate_deterministic_initialization()
     core.write_json(core.PROTOCOL_DIR / "EXACT_DFINITE_VALIDATION.json", exact)
+    core.write_json(core.PROTOCOL_DIR / "DETERMINISTIC_INITIALIZATION_VALIDATION.json", initialization)
     paths = core.build_authorized_cache(force=force_cache)
     data = core.load_development_data()
     folds = core.outer_folds(data.search_subjects)
@@ -108,6 +110,7 @@ def preflight(force_cache: bool = False) -> dict[str, Any]:
         "metadata_sha256": core.sha256_file(paths.metadata),
         "baseline_parameter_counts": baseline_models,
         "exact_D": exact,
+        "deterministic_initialization": initialization,
         "internal_holdout_accessed": False,
         "outer_test_used": False,
         "runtime_s": time.time() - started,
@@ -489,6 +492,9 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
     source_models: dict[str, core.DualPathEEGNet] = {}
     training_records: dict[str, Any] = {}
 
+    # All matched dual-path methods share initialization and source minibatch
+    # order within a fold/seed.  Their only intended difference is supervision.
+    paired_dual_seed = core.stable_seed("paired-dual-source", fold, seed)
     dual_control = core.DualPathEEGNet(width)
     dual_control, _, history, diagnostics = core.train_dual(
         dual_control,
@@ -499,7 +505,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
         dev,
         mean,
         std,
-        core.stable_seed("A2-source", fold, seed),
+        paired_dual_seed,
         fixed_epochs=student_epochs,
         task_only=True,
     )
@@ -531,7 +537,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
             dev,
             mean,
             std,
-            core.stable_seed(method, fold, seed),
+            paired_dual_seed,
             fixed_epochs=student_epochs,
             task_only=False,
         )
