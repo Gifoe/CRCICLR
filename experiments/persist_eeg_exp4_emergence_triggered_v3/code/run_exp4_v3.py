@@ -502,7 +502,13 @@ def certify_subspaces(scope_data: Mapping[str, Any], device: torch.device) -> No
     rank, direction = _measure_checkpoint(scope_data, 0, device, include_directions=True)
     write_csv(OUT / "SUBSPACE_CERTIFICATION.csv", rank)
     write_csv(OUT / "DIRECTION_CERTIFICATION.csv", direction)
-    selected = {str(fold): [int(r) for r in RANKS if not rank.empty and bool(rank[(rank.fold == fold) & (rank.rank == r)].gate.iloc[0])] for fold in RUNS}
+    selected: dict[str, list[int]] = {}
+    for fold in RUNS:
+        selected[str(fold)] = []
+        for r in RANKS:
+            subset = rank[(rank.fold == fold) & (rank.rank == r)] if not rank.empty else pd.DataFrame()
+            if not subset.empty and bool(subset.iloc[0].gate):
+                selected[str(fold)].append(int(r))
     write_json(OUT / "SUBSPACE_SELECTION.json", {"selected_by_fold": selected, "selection_rule": "training-side rank gate only; no S3", "outer_accessed": False})
     (EXP_ROOT / "SUBSPACE_CERTIFICATION.md").write_text("# Deployment-matched subspace certification\n\nOnly cumulative ranks 1, 2, and 4 were primary hypotheses. Holm correction is applied across these three ranks within each fold. Individual directions are retained as secondary diagnostics.\n\n" + (rank.to_markdown(index=False) if not rank.empty else "No rows.") + "\n", encoding="utf-8")
 
