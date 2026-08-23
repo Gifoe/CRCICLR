@@ -428,6 +428,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
     run_dir.mkdir(parents=True, exist_ok=True)
 
     # All source models are trained before any outcome Session-2 evaluation.
+    teacher_seed = core.stable_seed("B1-refit", fold, seed)
     teacher = core.EEGNetClassifier(baseline_config)
     teacher, _, teacher_history = core.train_single(
         teacher,
@@ -437,7 +438,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
         dev,
         mean,
         std,
-        core.stable_seed("B1-refit", fold, seed),
+        teacher_seed,
         baseline_config,
         fixed_epochs=baseline_epochs,
     )
@@ -445,14 +446,23 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
         teacher,
         run_dir,
         "B1_STRONG_EEGNET",
-        {"configuration": baseline_config, "epochs": baseline_epochs},
+        {
+            "configuration": baseline_config,
+            "epochs": baseline_epochs,
+            "seed": teacher_seed,
+            "source_subjects": roles["source"],
+            "source_sessions": [1, 2],
+            "normalizer_sha256": core.sha256_file(normalizer_path),
+        },
     )
     b0_config = config_by_id("EEGNET_F8")
     if baseline_config["id"] == "EEGNET_F8":
         b0 = teacher
         b0_history = teacher_history
         b0_checkpoint = b1_checkpoint
+        b0_seed = teacher_seed
     else:
+        b0_seed = core.stable_seed("B0-refit", fold, seed)
         b0 = core.EEGNetClassifier(b0_config)
         b0, _, b0_history = core.train_single(
             b0,
@@ -462,7 +472,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
             dev,
             mean,
             std,
-            core.stable_seed("B0-refit", fold, seed),
+            b0_seed,
             b0_config,
             fixed_epochs=baseline_epochs,
         )
@@ -470,7 +480,14 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
             b0,
             run_dir,
             "B0_VANILLA_EEGNET",
-            {"configuration": b0_config, "epochs": baseline_epochs},
+            {
+                "configuration": b0_config,
+                "epochs": baseline_epochs,
+                "seed": b0_seed,
+                "source_subjects": roles["source"],
+                "source_sessions": [1, 2],
+                "normalizer_sha256": core.sha256_file(normalizer_path),
+            },
         )
 
     certificate, teacher_source_eval = core.fit_certificate(
@@ -565,14 +582,26 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
         "outer_outcome_subject_count": len(roles["outcome"]),
         "outer_outcome_subjects_not_used_for_training": not bool(set(roles["source"]) & set(roles["outcome"])),
         "normalizer": str(normalizer_path),
+        "normalizer_sha256": core.sha256_file(normalizer_path),
+        "normalizer_subjects": roles["source"],
+        "source_training_sessions": [1, 2],
+        "target_history_session": 1,
+        "future_evaluation_session": 2,
         "baseline_configuration": baseline_config,
         "baseline_epochs": baseline_epochs,
+        "teacher_seed": teacher_seed,
+        "B0_seed": b0_seed,
         "generic_adaptation": generic_config,
         "dual_width": width,
         "student_epochs": student_epochs,
         "loss": core.protocol()["loss"],
         "certificate_audit": certificate.audit,
         "checkpoint_hashes": checkpoints,
+        "implementation_sha256": {
+            "core.py": core.sha256_file(Path(core.__file__).resolve()),
+            "run_experiment.py": core.sha256_file(Path(__file__).resolve()),
+            "PROTOCOL_FROZEN.json": core.sha256_file(core.PROTOCOL_PATH),
+        },
         "methods": sorted(source_models),
         "target_future_labels_used": False,
         "internal_holdout_accessed": False,
