@@ -123,12 +123,21 @@ def aggregate_subjects(subject: pd.DataFrame) -> pd.DataFrame:
 
 
 def method_summary(subject: pd.DataFrame, per_subject: pd.DataFrame, baseline_method: str) -> pd.DataFrame:
-    baseline = per_subject.loc[per_subject.method.eq(baseline_method)].set_index("subject_id")
     rows = []
     for method in METHOD_ORDER:
         q = per_subject.loc[per_subject.method.eq(method)].copy()
         if q.empty:
             continue
+        raw = subject.loc[subject.method.eq(method)]
+        matched_seeds = set(raw.seed.astype(int).unique().tolist())
+        baseline = (
+            subject.loc[
+                subject.method.eq(baseline_method) & subject.seed.astype(int).isin(matched_seeds)
+            ]
+            .groupby("subject_id", as_index=False)
+            .BA.mean()
+            .set_index("subject_id")
+        )
         q = q.set_index("subject_id")
         common = q.index.intersection(baseline.index)
         delta = q.loc[common, "BA"].to_numpy() - baseline.loc[common, "BA"].to_numpy()
@@ -136,7 +145,6 @@ def method_summary(subject: pd.DataFrame, per_subject: pd.DataFrame, baseline_me
         adaptation = q.adaptation_delta_BA.dropna().to_numpy(dtype=float)
         ntr = float(np.mean(adaptation < -1e-12)) if len(adaptation) else float("nan")
         worst = float(np.mean(np.sort(adaptation)[: max(1, int(math.ceil(len(adaptation) * 0.25)))])) if len(adaptation) else float("nan")
-        raw = subject.loc[subject.method.eq(method)]
         rows.append(
             {
                 "method": method,
@@ -187,9 +195,21 @@ def add_efficiency(summary: pd.DataFrame, efficiency: pd.DataFrame) -> pd.DataFr
 def fold_seed_tables(subject: pd.DataFrame, baseline_method: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     fold = subject.groupby(["method", "fold"], as_index=False).agg(BA=("BA", "mean"), Macro_F1=("macro_f1", "mean"))
     seed = subject.groupby(["method", "seed"], as_index=False).agg(BA=("BA", "mean"), Macro_F1=("macro_f1", "mean"))
-    fold_base = fold.loc[fold.method.eq(baseline_method), ["fold", "BA"]].rename(columns={"BA": "baseline_BA"})
+    fold_baselines = []
+    for row in fold.itertuples():
+        method_seeds = set(
+            subject.loc[
+                subject.method.eq(row.method) & subject.fold.eq(row.fold), "seed"
+            ].astype(int)
+        )
+        matched = subject.loc[
+            subject.method.eq(baseline_method)
+            & subject.fold.eq(row.fold)
+            & subject.seed.astype(int).isin(method_seeds)
+        ]
+        fold_baselines.append(float(matched.BA.mean()))
+    fold["baseline_BA"] = fold_baselines
     seed_base = seed.loc[seed.method.eq(baseline_method), ["seed", "BA"]].rename(columns={"BA": "baseline_BA"})
-    fold = fold.merge(fold_base, on="fold", how="left")
     seed = seed.merge(seed_base, on="seed", how="left")
     fold["Delta_BA_vs_strongest_baseline"] = fold.BA - fold.baseline_BA
     seed["Delta_BA_vs_strongest_baseline"] = seed.BA - seed.baseline_BA
@@ -456,13 +476,27 @@ def finalize() -> dict[str, Any]:
     )
 
     per_subject_out = per_subject.copy()
-    baseline_map = {
-        str(subject_id): value
-        for subject_id, value in baseline_subject.BA.to_dict().items()
-    }
     per_subject_out["strongest_baseline_method"] = baseline_method
+    matched_baseline_maps: dict[str, dict[str, float]] = {}
+    for method in per_subject_out.method.unique():
+        matched_seeds = set(
+            subject.loc[subject.method.eq(method), "seed"].astype(int).unique().tolist()
+        )
+        matched = (
+            subject.loc[
+                subject.method.eq(baseline_method)
+                & subject.seed.astype(int).isin(matched_seeds)
+            ]
+            .groupby("subject_id")
+            .BA.mean()
+        )
+        matched_baseline_maps[str(method)] = {
+            str(subject_id): value for subject_id, value in matched.to_dict().items()
+        }
     per_subject_out["Delta_BA_vs_strongest_baseline"] = [
-        row.BA - baseline_map.get(str(row.subject_id), np.nan) for row in per_subject_out.itertuples()
+        row.BA
+        - matched_baseline_maps[str(row.method)].get(str(row.subject_id), np.nan)
+        for row in per_subject_out.itertuples()
     ]
     core.write_csv(core.RESULTS / "per_subject_results.csv", per_subject_out)
     core.write_csv(core.RESULTS / "per_fold_results.csv", fold_table)
