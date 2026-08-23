@@ -183,8 +183,18 @@ def random_pool(seed_prefix: Any, rank: int) -> list[np.ndarray]: return [random
 
 
 def energy_match(h_train: np.ndarray, candidate: np.ndarray, pool: Sequence[np.ndarray]) -> tuple[np.ndarray, dict[str, Any]]:
-    cand_energy = float(np.mean(np.sum((h_train - erase_np(h_train, candidate, h_train.mean(axis=0))) ** 2, axis=1)))
-    energies = np.asarray([np.mean(np.sum((h_train - erase_np(h_train, u, h_train.mean(axis=0))) ** 2, axis=1)) for u in pool])
+    # For an orthonormal U, removed energy is ||(h-mu)U||^2.  Batch all
+    # random controls in one einsum; the previous per-control Python loop was
+    # mathematically identical but unnecessarily multiplied the large cache
+    # scan by RANDOM_POOL.
+    x = np.asarray(h_train, dtype=np.float64) - np.asarray(h_train, dtype=np.float64).mean(axis=0, keepdims=True)
+    cand = np.asarray(candidate, dtype=np.float64)
+    if cand.ndim == 1:
+        cand = cand[:, None]
+    cand_energy = float(np.mean(np.sum((x @ cand) ** 2, axis=1)))
+    controls = np.stack([np.asarray(u, dtype=np.float64) if np.asarray(u).ndim == 2 else np.asarray(u, dtype=np.float64)[:, None] for u in pool], axis=2)
+    projections = np.einsum("nd,drm->nrm", x, controls, optimize=True)
+    energies = np.mean(np.sum(projections * projections, axis=1), axis=0)
     order = np.argsort(np.abs(energies - cand_energy)); idx = int(order[0]); rel = float(abs(energies[idx] - cand_energy) / max(abs(cand_energy), EPS))
     return pool[idx], {"candidate_energy": cand_energy, "random_energy": float(energies[idx]), "relative_mismatch": rel, "pool_index": idx, "within_tolerance": rel <= ENERGY_TOLERANCE}
 
