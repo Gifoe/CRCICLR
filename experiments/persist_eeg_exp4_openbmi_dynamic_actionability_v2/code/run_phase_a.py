@@ -85,6 +85,9 @@ ETA = 0.05
 PROTECTED_RANK = 8
 IDENTITY_RANK = 4
 EPS = 1e-8
+# Frozen from the preceding V1/V7 audit.  It is reported as context only and
+# is deliberately not re-evaluated or used to authorize Phase B here.
+STRONGEST_FAIR_GENERIC_BA = 0.89475
 
 
 def clean(value: Any) -> Any:
@@ -867,8 +870,10 @@ def run() -> dict[str, Any]:
         "generic_negative_transfer_rate": float(outcome_summary.NegativeTransfer.mean()),
         "subjects_favoring_generic": int(np.sum(outcome_summary.FutureDeltaBA > 0.0)),
         "subjects_harmed_by_generic": int(np.sum(outcome_summary.FutureDeltaBA < 0.0)),
-        "best_dynamic_predictor": min(overall_metrics, key=lambda name: overall_metrics[name]["RMSE"]),
-        "strongest_fair_generic": "Conformer-Norm (V7 anchor, not re-evaluated in Phase A)",
+        "best_audited_predictor": min(overall_metrics, key=lambda name: overall_metrics[name]["RMSE"]),
+        "best_dynamic_incremental_predictor": min(("M_dynamic", "M_gradient", "M_full"), key=lambda name: overall_metrics[name]["RMSE"]),
+        "strongest_fair_generic": "Conformer-Norm (frozen V1/V7 context; not re-evaluated in Phase A)",
+        "strongest_fair_generic_BA_context": STRONGEST_FAIR_GENERIC_BA,
         "phase_b_variants_run": 0,
         "internal_holdout_used": False,
         "outer_test_used": False,
@@ -885,10 +890,12 @@ def run() -> dict[str, Any]:
         f"- Frozen five-fold search subjects evaluated: {len(outcome_summary)}\n"
         f"- No-adaptation BA: {mean_noadapt:.6f}\n"
         f"- Legal Generic trajectory BA: {mean_generic:.6f}\n"
+        f"- Strongest fair Generic context BA (frozen prior audit, not used for this gate): {STRONGEST_FAIR_GENERIC_BA:.5f}\n"
         f"- Mean Future ΔBA: {mean_generic - mean_noadapt:+.6f}\n"
         f"- Dynamic RMSE reduction vs static: {relative_rmse:+.4f}\n"
         f"- Dynamic RMSE-improved folds: {int(sum(improvements))}/5\n"
         f"- Dynamic Spearman: {overall_metrics['M_dynamic']['Spearman']}\n"
+        f"- Best incremental dynamic family: {terminal_report['best_dynamic_incremental_predictor']}\n"
         f"- Negative-transfer AUROC static/dynamic: {nt_auc_static} / {nt_auc_dynamic}\n"
         f"- Gradient-sign audit: {'PASS' if gradient_pass else 'FAIL'}\n"
         f"- First-order utility direction agreement: {utility_direction_agreement}\n\n"

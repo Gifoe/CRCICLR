@@ -9,10 +9,12 @@ The predeclared dynamic actionability gate failed. Dynamic trajectory features d
 - Frozen five-fold search subjects evaluated: 40
 - No-adaptation BA: 0.881250
 - Legal Generic trajectory BA: 0.885000
+- Strongest fair Generic context BA (frozen prior audit, not used for this gate): 0.89475
 - Mean Future ΔBA: +0.003750
 - Dynamic RMSE reduction vs static: -0.0706
 - Dynamic RMSE-improved folds: 2/5
 - Dynamic Spearman: -0.017390181867817593
+- Best incremental dynamic family: M_gradient
 - Negative-transfer AUROC static/dynamic: 0.32352941176470584 / 0.35784313725490197
 - Gradient-sign audit: PASS
 - First-order utility direction agreement: 1.0

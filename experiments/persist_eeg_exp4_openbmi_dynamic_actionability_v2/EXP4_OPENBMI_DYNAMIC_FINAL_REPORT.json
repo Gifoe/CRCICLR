@@ -1,5 +1,6 @@
 {
-  "best_dynamic_predictor": "M0",
+  "best_audited_predictor": "M0",
+  "best_dynamic_incremental_predictor": "M_gradient",
   "final_paper_claim": "Static and dynamic cached feature-head signals did not establish a prospective control bridge in this audit; the result is an actionability boundary, not evidence for a deployable guard.",
   "generic_negative_transfer_rate": 0.15,
   "internal_holdout_used": false,
@@ -76,7 +77,8 @@
     "wbcic_used": false
   },
   "phase_b_variants_run": 0,
-  "strongest_fair_generic": "Conformer-Norm (V7 anchor, not re-evaluated in Phase A)",
+  "strongest_fair_generic": "Conformer-Norm (frozen V1/V7 context; not re-evaluated in Phase A)",
+  "strongest_fair_generic_BA_context": 0.89475,
   "subjects_favoring_generic": 10,
   "subjects_harmed_by_generic": 6,
   "terminal_state": "EXP4_OPENBMI_DYNAMIC_ACTIONABILITY_NOT_SUPPORTED",
