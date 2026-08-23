@@ -598,6 +598,10 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
         "teacher_seed": teacher_seed,
         "B0_seed": b0_seed,
         "generic_adaptation": generic_config,
+        "dual_target_adaptation_seed_rule": (
+            'stable_seed("paired-dual-adapt", fold, seed, subject); '
+            "shared by every matched dual-path method"
+        ),
         "dual_width": width,
         "student_epochs": student_epochs,
         "loss": core.protocol()["loss"],
@@ -622,6 +626,13 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
 
     for subject in roles["outcome"]:
         hx, hy, _, fy, _, future_indices = core.raw_subject(data, subject)
+        # Pair every dual-path comparison on the exact same target-history
+        # minibatch order.  In particular, A6 and A10 start from the same PUD
+        # source model and may differ only in whether the protected path is
+        # target-trainable, not in a method-specific adaptation seed.
+        paired_adaptation_seed = core.stable_seed(
+            "paired-dual-adapt", fold, seed, subject
+        )
         b0_eval = core.evaluate_single(b0, data, future_indices, dev, mean, std, include_features=False)
         subject_rows.append(
             _metrics_row("B0_VANILLA_EEGNET", fold, seed, subject, fy, b0_eval.logits, None, None)
@@ -686,7 +697,7 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
                 dev,
                 mean,
                 std,
-                core.stable_seed(method, "adapt", fold, seed, subject),
+                paired_adaptation_seed,
                 all_adapt=all_adapt,
             )
             after = core.evaluate_dual(adapted, data, future_indices, dev, mean, std)
@@ -725,12 +736,22 @@ def run_fold_seed(fold: int, seed: int, force: bool = False) -> dict[str, Any]:
                     "protected_parameter_update_l2": adaptation["protected_parameter_update_l2"],
                     "adaptive_parameter_update_l2": adaptation["adaptive_parameter_update_l2"],
                     "protected_buffer_update_l2": adaptation["protected_buffer_update_l2"],
+                    "adaptation_seed": paired_adaptation_seed,
                     "target_future_labels_used_for_fit": False,
                     "internal_holdout_used": False,
                     "outer_test_used": False,
                 }
             )
-            adaptation_rows.append({"method": method, "fold": fold, "seed": seed, "subject_id": subject, **adaptation})
+            adaptation_rows.append(
+                {
+                    "method": method,
+                    "fold": fold,
+                    "seed": seed,
+                    "subject_id": subject,
+                    "adaptation_seed": paired_adaptation_seed,
+                    **adaptation,
+                }
+            )
         print(f"[outcome] fold={fold} seed={seed} subject={subject}", flush=True)
 
     subject_frame = pd.DataFrame(subject_rows)

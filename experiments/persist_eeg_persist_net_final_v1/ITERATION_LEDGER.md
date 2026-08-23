@@ -22,3 +22,9 @@ module, hyperparameter, certificate rule, or gate changed.
 Repair 4 makes each single-path baseline use its own source-only selected epoch
 instead of borrowing another candidate's epoch. It was locked before final
 development runs.
+
+Repair 5 pairs target-history minibatch order across all dual-path methods for
+each fold/seed/subject. It was identified by static audit before any outcome
+marker was emitted; five partial source-training jobs were stopped and all 15
+final development jobs are rerun. This is a controlled-comparison repair, not
+an outcome-driven scientific iteration.

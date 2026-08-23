@@ -5,7 +5,7 @@
   "protocol_seed": 20260824,
   "implementation_lock": {
     "parameter_initialization": "stable SHA256 fold/seed applied by explicit reset before optimization",
-    "matched_dual_controls": "paired initialization and source minibatch order within fold/seed",
+    "matched_dual_controls": "paired initialization and source minibatch order within fold/seed; paired target-history minibatch order within fold/seed/subject",
     "repair_timing": "locked before any outer outcome evaluation"
   },
   "development": {

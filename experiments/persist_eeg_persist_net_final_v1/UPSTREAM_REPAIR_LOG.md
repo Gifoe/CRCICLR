@@ -55,3 +55,22 @@ formula.
 - Scientific impact: prevents an avoidably weak B0 and makes the conservative
   strongest-baseline comparison valid. No outer outcome was accessed and no
   candidate or epoch was added.
+
+## Matched target-adaptation repair 5
+
+- Symptom: static pre-outcome audit found that matched dual-path methods used
+  method-specific target-adaptation seeds. In particular, A6 PUD all-adapt and
+  A10 PUD protected-freeze started from the same source checkpoint but saw
+  different target-history minibatch orders.
+- Repair: every dual method for the same `(fold, seed, subject)` now uses
+  `stable_seed("paired-dual-adapt", fold, seed, subject)`. The seed is exported
+  in both the adaptation and mechanism ledgers.
+- Scientific impact: removes an avoidable stochastic confound from the direct
+  freeze-versus-all-adapt and matched-control comparisons. No split, model,
+  loss, optimizer, epoch, certificate, metric, or gate changed.
+- Outcome access before repair: none. Five seed-0 jobs were stopped after
+  source training; a complete scan of 24 runtime log files found zero
+  `[outcome]` markers. No Session-2 outcome result had been produced or read.
+- Rerun scope: all 15 final development runs from the beginning. The completed
+  five source-only selection locks remain valid because this repair affects
+  target adaptation only.
