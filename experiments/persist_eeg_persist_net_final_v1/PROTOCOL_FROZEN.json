@@ -1,0 +1,66 @@
+{
+  "branch": "codex/persist-eeg-persist-net-final-v1",
+  "base_commit": "47e773142cc8cd098eeeb89103bebe68c525d760",
+  "frozen_before_development_outcomes": true,
+  "protocol_seed": 20260824,
+  "development": {
+    "benchmark": "OpenBMI_MI_S1_to_S2",
+    "scope": "V8_SEARCH",
+    "subjects": 40,
+    "outer_folds": 5,
+    "outer_subjects_per_fold": 8,
+    "inner_validation_subjects": 8,
+    "seeds": [0, 1, 2],
+    "history_sessions": [1],
+    "future_session": 2,
+    "internal_holdout_subjects": 14,
+    "internal_holdout_access_authorized": false
+  },
+  "baseline_candidates": [
+    {"id": "EEGNET_F8", "f1": 8, "f2": 16, "embedding_dim": 64, "dropout": 0.25, "lr": 0.0003, "weight_decay": 0.0005},
+    {"id": "EEGNET_F16", "f1": 16, "f2": 32, "embedding_dim": 64, "dropout": 0.5, "lr": 0.0003, "weight_decay": 0.0005}
+  ],
+  "dual_width_candidates": [
+    {"id": "SPLIT_6_12_48", "f1": 6, "f2": 12, "embedding_dim": 48, "dropout": 0.35},
+    {"id": "SPLIT_8_16_48", "f1": 8, "f2": 16, "embedding_dim": 48, "dropout": 0.4}
+  ],
+  "capacity_ratio_max": 1.25,
+  "baseline_training": {"max_epochs": 60, "minimum_epochs": 20, "patience": 12, "batch_size": 256},
+  "student_training": {"max_epochs": 40, "minimum_epochs": 15, "patience": 10, "batch_size": 256, "lr": 0.0003, "weight_decay": 0.0005},
+  "generic_adaptation_candidates": [
+    {"id": "HEAD_LR1E3_E10", "strategy": "head", "lr": 0.001, "epochs": 10},
+    {"id": "HEAD_LR3E4_E30", "strategy": "head", "lr": 0.0003, "epochs": 30},
+    {"id": "TAIL_LR1E4_E10", "strategy": "tail", "lr": 0.0001, "epochs": 10},
+    {"id": "FULL_LR3E5_E10", "strategy": "full", "lr": 0.00003, "epochs": 10}
+  ],
+  "loss": {"lambda_D": 1.0, "lambda_R": 1.0, "lambda_P": 0.1, "task": 1.0},
+  "allowed_loss_grid_if_engineering_pathology": {"lambda_D": [0.5, 1.0], "lambda_R": [0.5, 1.0], "lambda_P": [0.1, 0.5]},
+  "certification": {
+    "whitening_rank_max": 32,
+    "persistence_threshold": 0.05,
+    "permutation_draws": 200,
+    "utility_random_directions": 64,
+    "utility_bootstrap_draws": 10000,
+    "utility_rule": "paired_subject_bootstrap_CI95_lower_gt_0",
+    "decision_definition": "sqrt(mean(sum((delta_logits-mean_class(delta_logits))^2,class)))",
+    "decision_ratio_threshold": 1.0,
+    "rank_cap": null,
+    "identity_used_in_primary_definition": false,
+    "D_flip_used": false
+  },
+  "primary_methods_three_seeds": ["B0_VANILLA_EEGNET", "B1_STRONG_EEGNET", "B2_STRONG_GENERIC", "A2_DUAL_CONTROL", "A6_PUD_ALL_ADAPT", "A7_IDENTITY_PROTECTED", "A8_RANDOM_PROTECTED", "A10_FULL_PUD_FREEZE"],
+  "secondary_methods_seed0": ["A3_P_ONLY", "A4_P_PLUS_U", "A5_P_PLUS_D", "A9_PCA_PROTECTED"],
+  "statistics": {"unit": "subject", "bootstrap_draws": 10000, "seed_aggregation": "subject_mean_before_bootstrap"},
+  "gates": {
+    "G1": "FULL minus strongest legal comparable baseline >= 0.0075 BA",
+    "G2": "paired subject-bootstrap CI95 lower > 0 preferred; at minimum not materially negative",
+    "G3": "at least 4 of 5 fold deltas positive",
+    "G4": "at least 2 of 3 seed deltas positive and pooled mean positive",
+    "G5": "FULL NTR <= strongest Generic NTR and worst-quartile adaptation delta not materially worse",
+    "G6": "FULL > identity, random, and capacity-matched dual control",
+    "G7": "FULL > PUD all-adapt directionally; target >= 0.0030 BA",
+    "G8": "protected decision drift reduced >=50% vs all-adapt and adaptive update nonzero",
+    "G9": "all future-leakage and holdout-purity assertions pass"
+  },
+  "stop_rule": "G1 or G6 or G9 failure => PERSIST_NET_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED; do not enter WBCIC or invent V2/V3/V4"
+}
