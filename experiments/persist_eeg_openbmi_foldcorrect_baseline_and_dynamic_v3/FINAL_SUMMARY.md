@@ -23,7 +23,7 @@
 21. NT AUROC static: 0.5784313725490196
 22. NT AUROC dynamic: 0.6813725490196079
 23. Phase-A corrected terminal state: EXP4_OPENBMI_DYNAMIC_ACTIONABILITY_NOT_SUPPORTED_FOLD_CORRECT
-24. Phase B authorized? YES
+24. Phase B authorized? NO
 25. internal holdout used? NO
 26. historical outer used? NO
 27. WBCIC used? NO

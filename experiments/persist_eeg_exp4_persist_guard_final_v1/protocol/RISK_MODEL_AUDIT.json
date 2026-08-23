@@ -1,0 +1,877 @@
+[
+  {
+    "C": 10.0,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_generic",
+    "source_oof_AUROC": 0.2261904761904762,
+    "source_oof_Brier": 0.39105063320137495,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_confidence",
+    "source_oof_AUROC": 0.2619047619047619,
+    "source_oof_Brier": 0.2617938221942755,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.18452380952380953,
+    "source_oof_Brier": 0.281423295195374,
+    "source_subjects": 31
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.41071428571428575,
+    "source_oof_Brier": 0.3058578468321802,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.5833333333333334,
+    "source_oof_Brier": 0.23817048187679254,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "protected_utility_t0",
+      "decision_coupling_t0"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_static_PUD",
+    "source_oof_AUROC": 0.625,
+    "source_oof_Brier": 0.2347719085943502,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_PERSIST",
+    "source_oof_AUROC": 0.2738095238095238,
+    "source_oof_Brier": 0.3118569053831747,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 0,
+    "random_projection": false,
+    "risk_model": "M_full",
+    "source_oof_AUROC": 0.2857142857142857,
+    "source_oof_Brier": 0.32554935591395695,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 0,
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.34523809523809523,
+    "source_oof_Brier": 0.305710703848266,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_generic",
+    "source_oof_AUROC": 0.6533333333333333,
+    "source_oof_Brier": 0.23154850496883256,
+    "source_subjects": 31
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_confidence",
+    "source_oof_AUROC": 0.6000000000000001,
+    "source_oof_Brier": 0.24936586392680696,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.62,
+    "source_oof_Brier": 0.2314139031936745,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.7200000000000001,
+    "source_oof_Brier": 0.23059867247329588,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.7133333333333333,
+    "source_oof_Brier": 0.22458442857482347,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "protected_utility_t0",
+      "decision_coupling_t0"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_static_PUD",
+    "source_oof_AUROC": 0.7533333333333333,
+    "source_oof_Brier": 0.22018359456674408,
+    "source_subjects": 31
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_PERSIST",
+    "source_oof_AUROC": 0.6133333333333333,
+    "source_oof_Brier": 0.30005320945533553,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 1,
+    "random_projection": false,
+    "risk_model": "M_full",
+    "source_oof_AUROC": 0.6666666666666666,
+    "source_oof_Brier": 0.23699700146850333,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 1,
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.6133333333333333,
+    "source_oof_Brier": 0.2789622862348628,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_generic",
+    "source_oof_AUROC": 0.375,
+    "source_oof_Brier": 0.26294585038147894,
+    "source_subjects": 34
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_confidence",
+    "source_oof_AUROC": 0.4423076923076923,
+    "source_oof_Brier": 0.2524253400765646,
+    "source_subjects": 34
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.4807692307692308,
+    "source_oof_Brier": 0.25516500651214913,
+    "source_subjects": 34
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.5432692307692308,
+    "source_oof_Brier": 0.24959486497058492,
+    "source_subjects": 34
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.6490384615384616,
+    "source_oof_Brier": 0.23531207651699546,
+    "source_subjects": 34
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "protected_utility_t0",
+      "decision_coupling_t0"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_static_PUD",
+    "source_oof_AUROC": 0.6201923076923077,
+    "source_oof_Brier": 0.2458632434049748,
+    "source_subjects": 34
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_PERSIST",
+    "source_oof_AUROC": 0.42307692307692313,
+    "source_oof_Brier": 0.27875907983639175,
+    "source_subjects": 34
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 2,
+    "random_projection": false,
+    "risk_model": "M_full",
+    "source_oof_AUROC": 0.3317307692307693,
+    "source_oof_Brier": 0.29537073571688666,
+    "source_subjects": 34
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 2,
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.3990384615384615,
+    "source_oof_Brier": 0.29315582886258074,
+    "source_subjects": 34
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_generic",
+    "source_oof_AUROC": 0.2615384615384615,
+    "source_oof_Brier": 0.28210320258153,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_confidence",
+    "source_oof_AUROC": 0.5153846153846154,
+    "source_oof_Brier": 0.26044451019228865,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.2615384615384615,
+    "source_oof_Brier": 0.26931365947075997,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.42307692307692313,
+    "source_oof_Brier": 0.2909023381639564,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.4461538461538462,
+    "source_oof_Brier": 0.2697201475135244,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "protected_utility_t0",
+      "decision_coupling_t0"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_static_PUD",
+    "source_oof_AUROC": 0.4076923076923077,
+    "source_oof_Brier": 0.26453428499679166,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_PERSIST",
+    "source_oof_AUROC": 0.6846153846153846,
+    "source_oof_Brier": 0.222837379671822,
+    "source_subjects": 31
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 3,
+    "random_projection": false,
+    "risk_model": "M_full",
+    "source_oof_AUROC": 0.5692307692307692,
+    "source_oof_Brier": 0.24704739079797042,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 3,
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.8692307692307693,
+    "source_oof_Brier": 0.21908552041640453,
+    "source_subjects": 31
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_generic",
+    "source_oof_AUROC": 0.7608695652173914,
+    "source_oof_Brier": 0.20465210408230608,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_confidence",
+    "source_oof_AUROC": 0.7565217391304347,
+    "source_oof_Brier": 0.20151292265780857,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.6956521739130436,
+    "source_oof_Brier": 0.2191181755956714,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.6608695652173913,
+    "source_oof_Brier": 0.23224082611032718,
+    "source_subjects": 33
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.2217391304347826,
+    "source_oof_Brier": 0.2960455600718797,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "protected_utility_t0",
+      "decision_coupling_t0"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_static_PUD",
+    "source_oof_AUROC": 0.7608695652173914,
+    "source_oof_Brier": 0.22678303815230247,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_PERSIST",
+    "source_oof_AUROC": 0.5869565217391304,
+    "source_oof_Brier": 0.24737441909939806,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 4,
+    "random_projection": false,
+    "risk_model": "M_full",
+    "source_oof_AUROC": 0.6956521739130435,
+    "source_oof_Brier": 0.22458314643209054,
+    "source_subjects": 33
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_CE",
+      "history_BA",
+      "history_margin",
+      "history_entropy",
+      "history_confidence",
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement",
+      "sample_count",
+      "protected_functional_retention",
+      "cumulative_protected_damage",
+      "maximum_protected_damage",
+      "damaging_step_fraction",
+      "decision_coupling_degradation",
+      "protected_contribution_change",
+      "task_protected_gradient_conflict",
+      "task_protected_gradient_cosine",
+      "protected_function_slope",
+      "protected_split_disagreement"
+    ],
+    "fold": 4,
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.7304347826086957,
+    "source_oof_Brier": 0.2120921953167119,
+    "source_subjects": 33
+  }
+]

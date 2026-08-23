@@ -1,0 +1,71 @@
+{
+  "Generic_harmed_subjects": 9,
+  "Generic_negative_transfer_rate": 0.225,
+  "PERSIST_beats_confidence_update_performance": false,
+  "PERSIST_beats_identity_AUROC": true,
+  "PERSIST_negative_transfer_rate": 0.175,
+  "PERSIST_risk_AUROC": 0.6129032258064516,
+  "WBCIC_result": "NOT_REACHED",
+  "confidence_AUROC": 0.7275985663082437,
+  "delta_PERSIST_vs_Generic": 0.000999999999999998,
+  "development_gate": "FAIL",
+  "final_PERSIST_Guard_BA": 0.7737499999999999,
+  "final_strongest_clean_Generic_BA": 0.77275,
+  "fold_positive_count": 2,
+  "historical_83_775_legal": false,
+  "holdout_Generic_BA": null,
+  "holdout_PERSIST_BA": null,
+  "holdout_harm_reduction": null,
+  "identity_AUROC": 0.4551971326164875,
+  "internal_holdout_accessed": false,
+  "newly_harmed": 1,
+  "paired_95_CI": [
+    -0.0012562500000000035,
+    0.0034999999999999975
+  ],
+  "rescued_by_PERSIST": 3,
+  "second_backbone_result": "NOT_REACHED",
+  "strongest_justified_claim": "A bounded, source-only decision-grounded guard was evaluated on the authorized development split; its support is exactly the terminal state and metrics reported here.",
+  "strongest_unsupported_claim": "PERSIST-Guard is confirmed on the sealed internal holdout, transfers across backbones, or generalizes to WBCIC.",
+  "terminal_state": "EXP4_PERSIST_GUARD_NOT_SUPPORTED",
+  "three_seed_results": [
+    {
+      "NoAdapt_BA": 0.75725,
+      "PERSIST_Guard_BA": 0.76575,
+      "Strong_Generic_BA": 0.7655,
+      "delta_vs_generic": 0.00024999999999999746,
+      "internal_holdout_used": false,
+      "seed": 0,
+      "subjects": 40
+    },
+    {
+      "NoAdapt_BA": 0.7394999999999999,
+      "PERSIST_Guard_BA": 0.741,
+      "Strong_Generic_BA": 0.7422500000000001,
+      "delta_vs_generic": -0.0012500000000000011,
+      "internal_holdout_used": false,
+      "seed": 1,
+      "subjects": 40
+    },
+    {
+      "NoAdapt_BA": 0.75225,
+      "PERSIST_Guard_BA": 0.755,
+      "Strong_Generic_BA": 0.7537499999999999,
+      "delta_vs_generic": 0.0012500000000000011,
+      "internal_holdout_used": false,
+      "seed": 2,
+      "subjects": 40
+    }
+  ],
+  "three_seed_summary_individual_models": {
+    "NoAdapt_BA_SD": 0.00915264078467705,
+    "NoAdapt_BA_mean": 0.7496666666666667,
+    "PERSIST_Guard_BA_SD": 0.012410513016524898,
+    "PERSIST_Guard_BA_mean": 0.7539166666666667,
+    "Strong_Generic_BA_SD": 0.011625224012178517,
+    "Strong_Generic_BA_mean": 0.7538333333333332,
+    "delta_vs_generic_SD": 0.0012583057392117926,
+    "delta_vs_generic_mean": 8.333333333333246e-05
+  },
+  "worst_quartile_change": 0.002000000000000113
+}

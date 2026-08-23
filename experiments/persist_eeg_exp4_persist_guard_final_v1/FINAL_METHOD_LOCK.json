@@ -1,0 +1,56 @@
+{
+  "READY_FOR_INTERNAL_HOLDOUT": false,
+  "action_grid": [
+    0.0,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "architecture": "StandardEEGNet F1=8,D=2,F2=16,64-d embedding; three-seed ensemble",
+  "evaluation_code_sha256": "d73d5eef427bc2c0c14fc75d3ad8c3eb192dad75a9f8ee79d9bd1be88712d9be",
+  "generic": "source-selected L2 target-history logistic head blended with population head",
+  "generic_C_grid": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "generic_beta_grid": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "internal_holdout_used": false,
+  "protected_bank": "source-only symmetric cross-session covariance eigenvectors passing signed P/U/D criteria",
+  "protected_rank_rule": "up to 8; rank zero defaults to Generic",
+  "risk_C_grid": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "risk_features": [
+    "protected_functional_retention",
+    "cumulative_protected_damage",
+    "maximum_protected_damage",
+    "damaging_step_fraction",
+    "decision_coupling_degradation",
+    "protected_contribution_change",
+    "task_protected_gradient_conflict",
+    "task_protected_gradient_cosine",
+    "protected_function_slope",
+    "protected_split_disagreement"
+  ],
+  "risk_model": "ridge logistic regression",
+  "seed_list": [
+    0,
+    1,
+    2
+  ],
+  "selected_variant": "V2_PERSIST_FIXED_SHRINK",
+  "status": "NOT_AUTHORIZED_FOR_HOLDOUT",
+  "tau_grid": [
+    0.35,
+    0.5,
+    0.65
+  ]
+}
