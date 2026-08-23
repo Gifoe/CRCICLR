@@ -1,0 +1,145 @@
+{
+  "Best_fixed_single_action": "A3_Generic_75pct",
+  "Best_fixed_single_action_BA": 0.77475,
+  "Binary_Generic_NoAdapt_oracle_headroom": 0.003999999999999998,
+  "Clean_Strong_Generic_BA": 0.7727499999999999,
+  "Dfinite_harm_AUROC": 0.4982078853046595,
+  "Dfinite_numeric_validation": {
+    "absolute_error": 0.0,
+    "archived_Exp3_report": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP3_DECISION_GROUNDING_CLOSURE_V1\\experiments\\persist_eeg_exp3_decision_grounding_closure_v1\\EXP3_FINAL_REPORT.json",
+    "archived_Exp3_values": {
+      "M0_RMSE": 0.04597839942134,
+      "M0_minus_MD": 0.014791624471360496,
+      "MD_RMSE": 0.0314928431971294,
+      "MD_beats_MI_positive_runs": 6,
+      "MID_RMSE": 0.0315332767866679,
+      "MI_RMSE": 0.0457441624640147,
+      "decision_control_mean": 0.2467850870938559,
+      "decision_protected_mean": 0.9982230109222217
+    },
+    "archived_values_match_frozen_reference": true,
+    "binary_margin_equivalent": "sqrt(mean(delta_margin^2)/2)",
+    "definition": "sqrt(mean(sum((delta_logits-mean_class(delta_logits))^2, class)))",
+    "numeric_analytic": 0.7125202900831432,
+    "numeric_exact": 0.7125202900831432,
+    "source_code_path": "experiments/persist_eeg_dda_v1/code/persist_dda_v1.py",
+    "source_function": "centered_logit_sq + subject_decision_metrics",
+    "validated": true
+  },
+  "Dfinite_optimal_action_AUROC": 0.625,
+  "Dflip_harm_AUROC": 0.6200716845878136,
+  "Dflip_optimal_action_AUROC": 0.5416666666666667,
+  "Expanded_action_bank_oracle_BA": 0.781,
+  "Expanded_oracle_delta_vs_Generic": 0.008250000000000002,
+  "HEADROOM_SUPPORTED": false,
+  "MECHANISM_SUPPORTED": false,
+  "P_confidence_Pearson": 0.2204201289785812,
+  "P_confidence_Spearman": 0.24202626641651034,
+  "P_confidence_equal_AUROC_explanation": "coincidental metric equality",
+  "P_confidence_prediction_vectors_identical": false,
+  "P_only_AUROC": 0.6845878136200717,
+  "P_plus_U_plus_exact_D_AUROC": 0.6451612903225807,
+  "P_plus_exact_D_AUROC": 0.6200716845878136,
+  "Personalization_headroom": 0.006249999999999978,
+  "Phase_B_authorized": false,
+  "branch": "codex/persist-eeg-exp4-headroom-mechanism-audit-v1",
+  "certified_directions_before_cap_per_fold_seed": [
+    {
+      "fold": 0,
+      "rank_before_cap": 11,
+      "seed": 0
+    },
+    {
+      "fold": 0,
+      "rank_before_cap": 7,
+      "seed": 1
+    },
+    {
+      "fold": 0,
+      "rank_before_cap": 10,
+      "seed": 2
+    },
+    {
+      "fold": 1,
+      "rank_before_cap": 10,
+      "seed": 0
+    },
+    {
+      "fold": 1,
+      "rank_before_cap": 5,
+      "seed": 1
+    },
+    {
+      "fold": 1,
+      "rank_before_cap": 7,
+      "seed": 2
+    },
+    {
+      "fold": 2,
+      "rank_before_cap": 10,
+      "seed": 0
+    },
+    {
+      "fold": 2,
+      "rank_before_cap": 10,
+      "seed": 1
+    },
+    {
+      "fold": 2,
+      "rank_before_cap": 9,
+      "seed": 2
+    },
+    {
+      "fold": 3,
+      "rank_before_cap": 10,
+      "seed": 0
+    },
+    {
+      "fold": 3,
+      "rank_before_cap": 8,
+      "seed": 1
+    },
+    {
+      "fold": 3,
+      "rank_before_cap": 10,
+      "seed": 2
+    },
+    {
+      "fold": 4,
+      "rank_before_cap": 8,
+      "seed": 0
+    },
+    {
+      "fold": 4,
+      "rank_before_cap": 8,
+      "seed": 1
+    },
+    {
+      "fold": 4,
+      "rank_before_cap": 8,
+      "seed": 2
+    }
+  ],
+  "confidence_AUROC": 0.7275985663082437,
+  "confidence_update_P_exact_D_AUROC": 0.5806451612903226,
+  "current_repaired_P_confidence_Pearson": 0.018532903073925994,
+  "current_repaired_P_confidence_Spearman": -0.042026266416510326,
+  "exact_D_adds_beyond_confidence_update": false,
+  "execution_base_commit": "dda0674e8524483be48667ae58e95ebf0403c54e",
+  "fold_positive_oracle_count": 5,
+  "historical_83_775_legal_for_holdout": false,
+  "holdout_materialized": false,
+  "identity_AUROC": 0.4551971326164875,
+  "internal_holdout_accessed": false,
+  "old_Exp4_D_identical_to_Exp3_D": false,
+  "old_rank8_characterization": "CAP_SATURATION_AFTER_OLD_WEAK_P_U_FLIP_QUALIFICATION",
+  "old_vs_exact_D_difference": "Exp4-V1 used the fraction of labels changed after erasing protected contribution; Exp3 used continuous RMS class-centered logit displacement under finite erasure. Flip discards all sub-threshold magnitude information.",
+  "previous_gate_correction": "PREVIOUS_GATE_REPORTING_INCONSISTENCY: the old G label implied mechanism-risk superiority, but its code compared guard BA; PERSIST risk AUROC 0.613 was below confidence 0.728.",
+  "previous_terminal_state_unchanged": "EXP4_PERSIST_GUARD_NOT_SUPPORTED",
+  "selector_development": "NOT_REACHED",
+  "strongest_justified_claim": "The tested five-action family falls below the predeclared oracle-headroom gate, and exact Exp3 decision dependence adds no prospective harm information beyond the strongest confidence/update control; constructive Exp4 development must stop.",
+  "strongest_unsupported_claim": "PERSIST provides a validated prospective action selector, improves the sealed holdout, or outperforms confidence/update controls.",
+  "subjects_ge_1pp_recoverable_gain": 22,
+  "terminal_state": "EXP4_STOP_INSUFFICIENT_ACTION_HEADROOM",
+  "update_magnitude_AUROC": 0.6630824372759856
+}

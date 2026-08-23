@@ -1,0 +1,3562 @@
+[
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.2619047619047619,
+    "source_oof_Brier": 0.2617938221942755,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.7846153846153847,
+    "source_oof_Brier": 0.22335459413578648,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.18452380952380953,
+    "source_oof_Brier": 0.281423295195374,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.8307692307692308,
+    "source_oof_Brier": 0.2139127924403332,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.41071428571428575,
+    "source_oof_Brier": 0.3058578468321802,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.7692307692307693,
+    "source_oof_Brier": 0.20306083783366374,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.5059523809523809,
+    "source_oof_Brier": 0.25197646196566253,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.46923076923076923,
+    "source_oof_Brier": 0.25374329084878405,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.2857142857142857,
+    "source_oof_Brier": 0.2583358064017288,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.7615384615384615,
+    "source_oof_Brier": 0.22806184788087785,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.27976190476190477,
+    "source_oof_Brier": 0.29780471550368753,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.6461538461538461,
+    "source_oof_Brier": 0.2298682962528602,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.6964285714285714,
+    "source_oof_Brier": 0.22661858115117753,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.5615384615384615,
+    "source_oof_Brier": 0.25220992623450234,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.5595238095238095,
+    "source_oof_Brier": 0.24974512980888058,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.7769230769230769,
+    "source_oof_Brier": 0.22729816776841133,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.4226190476190476,
+    "source_oof_Brier": 0.28721180408075686,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.7615384615384616,
+    "source_oof_Brier": 0.18786329134362495,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.5476190476190477,
+    "source_oof_Brier": 0.252735558650826,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.7846153846153846,
+    "source_oof_Brier": 0.2006304670079592,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.38095238095238093,
+    "source_oof_Brier": 0.29643851033750857,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.7923076923076923,
+    "source_oof_Brier": 0.18888977510362195,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.22023809523809523,
+    "source_oof_Brier": 0.26660008915870936,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.7923076923076924,
+    "source_oof_Brier": 0.22126945546711993,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.3630952380952381,
+    "source_oof_Brier": 0.3423157945644878,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.7692307692307693,
+    "source_oof_Brier": 0.190590830915417,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.17261904761904762,
+    "source_oof_Brier": 0.2832917335697937,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.8076923076923078,
+    "source_oof_Brier": 0.1874026228566605,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.2976190476190476,
+    "source_oof_Brier": 0.4157426573441823,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.7615384615384615,
+    "source_oof_Brier": 0.22770300191267748,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.37499999999999994,
+    "source_oof_Brier": 0.266376193095645,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.7000000000000001,
+    "source_oof_Brier": 0.20652431897210888,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.5833333333333333,
+    "source_oof_Brier": 0.28758103029529525,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.44615384615384623,
+    "source_oof_Brier": 0.2449581329735972,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.3630952380952381,
+    "source_oof_Brier": 0.45658823424307693,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 0,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.6538461538461539,
+    "source_oof_Brier": 0.2642240461092669,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.6000000000000001,
+    "source_oof_Brier": 0.24936586392680696,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.25,
+    "source_oof_Brier": 0.31796083766684713,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.62,
+    "source_oof_Brier": 0.2314139031936745,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.5318181818181819,
+    "source_oof_Brier": 0.2505796782335056,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.7200000000000001,
+    "source_oof_Brier": 0.23059867247329588,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.5045454545454545,
+    "source_oof_Brier": 0.2804970362236074,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.39999999999999997,
+    "source_oof_Brier": 0.2529069845808275,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.2818181818181818,
+    "source_oof_Brier": 0.2825017069826967,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.6066666666666667,
+    "source_oof_Brier": 0.2502138765955274,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.5272727272727273,
+    "source_oof_Brier": 0.252997577018137,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.6933333333333334,
+    "source_oof_Brier": 0.2374371156295607,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.7227272727272728,
+    "source_oof_Brier": 0.2070494270189134,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.6133333333333333,
+    "source_oof_Brier": 0.24888530930446795,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.39545454545454545,
+    "source_oof_Brier": 0.26863147113519026,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.6333333333333333,
+    "source_oof_Brier": 0.24321152431220752,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.6272727272727272,
+    "source_oof_Brier": 0.2398526199968431,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.5266666666666666,
+    "source_oof_Brier": 0.2546591501225752,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.4545454545454546,
+    "source_oof_Brier": 0.26448019811685824,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.6466666666666667,
+    "source_oof_Brier": 0.24835695092106924,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.55,
+    "source_oof_Brier": 0.2945587875138649,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.6533333333333333,
+    "source_oof_Brier": 0.22928884703272984,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.10454545454545455,
+    "source_oof_Brier": 0.3103349047057626,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.6466666666666666,
+    "source_oof_Brier": 0.23230405756428305,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.5045454545454546,
+    "source_oof_Brier": 0.30027164075416896,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.84,
+    "source_oof_Brier": 0.16406615033590793,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.39090909090909093,
+    "source_oof_Brier": 0.35042335258494267,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.6733333333333333,
+    "source_oof_Brier": 0.2207571187639312,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.55,
+    "source_oof_Brier": 0.2716259260937351,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.76,
+    "source_oof_Brier": 0.1669802865336256,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.5227272727272728,
+    "source_oof_Brier": 0.3543130241350727,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.6333333333333333,
+    "source_oof_Brier": 0.23867956261399423,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.6,
+    "source_oof_Brier": 0.2777218117887926,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.6133333333333333,
+    "source_oof_Brier": 0.24244180265746915,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.6590909090909091,
+    "source_oof_Brier": 0.23400030280670275,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.7133333333333333,
+    "source_oof_Brier": 0.22558581473319037,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 1,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.5954545454545455,
+    "source_oof_Brier": 0.2614501149034722,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.4423076923076923,
+    "source_oof_Brier": 0.2524253400765646,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.7163461538461537,
+    "source_oof_Brier": 0.22731319515909781,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.4807692307692308,
+    "source_oof_Brier": 0.25516500651214913,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.6923076923076923,
+    "source_oof_Brier": 0.23584211943401132,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.5432692307692308,
+    "source_oof_Brier": 0.24959486497058492,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.4326923076923077,
+    "source_oof_Brier": 0.25542089238802845,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.3942307692307692,
+    "source_oof_Brier": 0.2665831999949214,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.3317307692307692,
+    "source_oof_Brier": 0.2912016392310362,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.27884615384615385,
+    "source_oof_Brier": 0.26046989321817815,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.6634615384615385,
+    "source_oof_Brier": 0.23919925897162642,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.35096153846153844,
+    "source_oof_Brier": 0.2571653383096676,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.5,
+    "source_oof_Brier": 0.2529786657645805,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.5625,
+    "source_oof_Brier": 0.25261063442466947,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.6634615384615384,
+    "source_oof_Brier": 0.23419310093980147,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.3605769230769231,
+    "source_oof_Brier": 0.3263602659885189,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.5528846153846154,
+    "source_oof_Brier": 0.2582907121543788,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.36057692307692313,
+    "source_oof_Brier": 0.28614622590049954,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.6105769230769231,
+    "source_oof_Brier": 0.2524063559421128,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.2692307692307692,
+    "source_oof_Brier": 0.280078365664105,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.6057692307692308,
+    "source_oof_Brier": 0.25529312606143295,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.4038461538461538,
+    "source_oof_Brier": 0.25677528017165,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.6490384615384615,
+    "source_oof_Brier": 0.2401300235473899,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.3557692307692307,
+    "source_oof_Brier": 0.2614416430830408,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.6826923076923077,
+    "source_oof_Brier": 0.2407650868239651,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.36538461538461536,
+    "source_oof_Brier": 0.2669418966311023,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.610576923076923,
+    "source_oof_Brier": 0.2539597072929637,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.42788461538461536,
+    "source_oof_Brier": 0.25897509222199655,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.6778846153846154,
+    "source_oof_Brier": 0.23770939159541424,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.39903846153846156,
+    "source_oof_Brier": 0.2736332290006027,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.6105769230769231,
+    "source_oof_Brier": 0.2631463048490367,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.47115384615384615,
+    "source_oof_Brier": 0.25597906718603114,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.6105769230769231,
+    "source_oof_Brier": 0.26092514547712714,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.3076923076923077,
+    "source_oof_Brier": 0.28341799329501827,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.17307692307692307,
+    "source_oof_Brier": 0.3651912065414986,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.29807692307692313,
+    "source_oof_Brier": 0.29572767528774807,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 2,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.5528846153846154,
+    "source_oof_Brier": 0.2694539625509116,
+    "source_subjects": 34,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.5153846153846154,
+    "source_oof_Brier": 0.26044451019228865,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.6333333333333334,
+    "source_oof_Brier": 0.24581473825108086,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.2615384615384615,
+    "source_oof_Brier": 0.26931365947075997,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.49999999999999994,
+    "source_oof_Brier": 0.3015900210422924,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.42307692307692313,
+    "source_oof_Brier": 0.2909023381639564,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.7933333333333333,
+    "source_oof_Brier": 0.18112300032601816,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.4538461538461539,
+    "source_oof_Brier": 0.26694384653319025,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.4933333333333334,
+    "source_oof_Brier": 0.2590024929821233,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.6384615384615384,
+    "source_oof_Brier": 0.24029636444814068,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.5533333333333333,
+    "source_oof_Brier": 0.2766598640435077,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.7384615384615385,
+    "source_oof_Brier": 0.21028476846911326,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.3066666666666667,
+    "source_oof_Brier": 0.3160842117441221,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.42307692307692313,
+    "source_oof_Brier": 0.2577535049776382,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.7733333333333334,
+    "source_oof_Brier": 0.22616414871218501,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.5769230769230769,
+    "source_oof_Brier": 0.25314469764182285,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.47333333333333333,
+    "source_oof_Brier": 0.32628940326531386,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.6153846153846153,
+    "source_oof_Brier": 0.25603909705723105,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.4266666666666667,
+    "source_oof_Brier": 0.32182092011919855,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.5307692307692308,
+    "source_oof_Brier": 0.28129464031004914,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.4666666666666667,
+    "source_oof_Brier": 0.30241860031930945,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.5230769230769231,
+    "source_oof_Brier": 0.26288535660562984,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.5933333333333334,
+    "source_oof_Brier": 0.25210938647828185,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.49230769230769234,
+    "source_oof_Brier": 0.26803937526772953,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.5066666666666666,
+    "source_oof_Brier": 0.2860082444027437,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.45384615384615384,
+    "source_oof_Brier": 0.2913865231137175,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.4533333333333333,
+    "source_oof_Brier": 0.2839621122841053,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.2923076923076923,
+    "source_oof_Brier": 0.2810765173500445,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.5666666666666667,
+    "source_oof_Brier": 0.2898015691224137,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.3230769230769231,
+    "source_oof_Brier": 0.29035193627119615,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.42666666666666664,
+    "source_oof_Brier": 0.31196979785138873,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.5307692307692308,
+    "source_oof_Brier": 0.26399829909728845,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.5800000000000001,
+    "source_oof_Brier": 0.25934330486237755,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.5153846153846154,
+    "source_oof_Brier": 0.26568559928357527,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.44666666666666666,
+    "source_oof_Brier": 0.2694410338837997,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.3769230769230769,
+    "source_oof_Brier": 0.32597299355256837,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 3,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.44000000000000006,
+    "source_oof_Brier": 0.3200825700397514,
+    "source_subjects": 31,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.7565217391304347,
+    "source_oof_Brier": 0.20151292265780857,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf",
+    "source_oof_AUROC": 0.7032967032967034,
+    "source_oof_Brier": 0.22779797251203524,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.6956521739130436,
+    "source_oof_Brier": 0.2191181755956714,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "update_norm",
+      "gradient_norm",
+      "history_improvement",
+      "split_history_disagreement"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_update",
+    "source_oof_AUROC": 0.598901098901099,
+    "source_oof_Brier": 0.26182880660297325,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.6608695652173913,
+    "source_oof_Brier": 0.23224082611032718,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "identity_projection_norm",
+      "identity_nearest_distance",
+      "identity_confidence"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_identity",
+    "source_oof_AUROC": 0.587912087912088,
+    "source_oof_Brier": 0.2766384096864297,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.37826086956521743,
+    "source_oof_Brier": 0.27859662217311987,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_P",
+    "source_oof_AUROC": 0.3241758241758242,
+    "source_oof_Brier": 0.28810696315034345,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.8304347826086956,
+    "source_oof_Brier": 0.16948382534754217,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dfinite",
+    "source_oof_AUROC": 0.42857142857142855,
+    "source_oof_Brier": 0.2754170497630275,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.48260869565217396,
+    "source_oof_Brier": 0.2571676779025291,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "Djac_t0",
+      "Djac_generic",
+      "Djac_degradation"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Djac",
+    "source_oof_AUROC": 0.42307692307692313,
+    "source_oof_Brier": 0.2657484481243924,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.7782608695652175,
+    "source_oof_Brier": 0.2103125981933185,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "Dflip_t0",
+      "Dflip_generic",
+      "Dflip_degradation"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_Dflip",
+    "source_oof_AUROC": 0.6318681318681318,
+    "source_oof_Brier": 0.25085311525155723,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.5347826086956522,
+    "source_oof_Brier": 0.2556975051689845,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PU",
+    "source_oof_AUROC": 0.3241758241758242,
+    "source_oof_Brier": 0.36442742155137187,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.7434782608695653,
+    "source_oof_Brier": 0.2200635623394418,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PDfinite",
+    "source_oof_AUROC": 0.30219780219780223,
+    "source_oof_Brier": 0.34924709980910396,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.7217391304347827,
+    "source_oof_Brier": 0.21543263052861666,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_PUDfinite",
+    "source_oof_AUROC": 0.46703296703296704,
+    "source_oof_Brier": 0.3058091533747923,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.717391304347826,
+    "source_oof_Brier": 0.213235369119704,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_P",
+    "source_oof_AUROC": 0.6263736263736264,
+    "source_oof_Brier": 0.23786082948328474,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.7652173913043478,
+    "source_oof_Brier": 0.19340542236098918,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_D",
+    "source_oof_AUROC": 0.6373626373626374,
+    "source_oof_Brier": 0.2547802925246715,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.7304347826086958,
+    "source_oof_Brier": 0.20826256291848405,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_PD",
+    "source_oof_AUROC": 0.521978021978022,
+    "source_oof_Brier": 0.28835697170939933,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.7565217391304347,
+    "source_oof_Brier": 0.20282272894831496,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update",
+    "source_oof_AUROC": 0.5879120879120878,
+    "source_oof_Brier": 0.25235470798869714,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.7434782608695653,
+    "source_oof_Brier": 0.20609687468353646,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD",
+    "source_oof_AUROC": 0.43956043956043955,
+    "source_oof_Brier": 0.31479489373103936,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.7782608695652175,
+    "source_oof_Brier": 0.19574723879360256,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 1.0,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "persistence_magnitude",
+      "persistence_split_stability",
+      "U_t0",
+      "U_generic",
+      "U_damage",
+      "Dfinite_t0",
+      "Dfinite_generic",
+      "Dfinite_degradation",
+      "Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": true,
+    "risk_model": "M_random",
+    "source_oof_AUROC": 0.46703296703296704,
+    "source_oof_Brier": 0.2632455449489089,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.5478260869565217,
+    "source_oof_Brier": 0.25753545625955676,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 10.0,
+    "features": [
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_resid_PD",
+    "source_oof_AUROC": 0.41758241758241754,
+    "source_oof_Brier": 0.29263438338911385,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "NegativeTransfer",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.7130434782608696,
+    "source_oof_Brier": 0.2119137632158178,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  },
+  {
+    "C": 0.1,
+    "features": [
+      "history_confidence",
+      "history_entropy",
+      "history_margin",
+      "history_improvement",
+      "update_norm",
+      "gradient_norm",
+      "split_history_disagreement",
+      "resid_persistence_magnitude",
+      "resid_persistence_split_stability",
+      "resid_Dfinite_t0",
+      "resid_Dfinite_generic",
+      "resid_Dfinite_degradation",
+      "resid_Dfinite_change"
+    ],
+    "fold": 4,
+    "outcome": "AlternativePreferred",
+    "random_projection": false,
+    "risk_model": "M_conf_update_PD_resid",
+    "source_oof_AUROC": 0.4725274725274725,
+    "source_oof_Brier": 0.27390077918227473,
+    "source_subjects": 33,
+    "target_future_feature_used": false
+  }
+]
