@@ -1,6 +1,6 @@
 param(
     [string]$Python = "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe",
-    [int]$MaxParallel = 7
+    [int]$MaxParallel = 5
 )
 
 $ErrorActionPreference = "Stop"
@@ -9,8 +9,8 @@ $Runtime = Join-Path $Experiment "runtime"
 $Logs = Join-Path $Runtime "logs"
 New-Item -ItemType Directory -Force -Path $Logs | Out-Null
 
-if ($MaxParallel -lt 1 -or $MaxParallel -gt 8) {
-    throw "MaxParallel must be in 1..8; the RTX 5090 memory audit authorizes at most 8."
+if ($MaxParallel -lt 1 -or $MaxParallel -gt 5) {
+    throw "MaxParallel must be in 1..5; five concurrent F16 selections used about 29.3/32 GB."
 }
 
 foreach ($Fold in 0..4) {

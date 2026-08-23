@@ -42,9 +42,13 @@
   "allowed_loss_grid_if_engineering_pathology": {"lambda_D": [0.5, 1.0], "lambda_R": [0.5, 1.0], "lambda_P": [0.1, 0.5]},
   "certification": {
     "whitening_rank_max": 32,
+    "embedding_eigenvalue_relative_threshold": 0.001,
+    "embedding_eigenvalue_absolute_floor": 1e-8,
     "persistence_threshold": 0.05,
     "permutation_draws": 200,
+    "persistence_permutation_quantile": 0.95,
     "utility_random_directions": 64,
+    "random_energy_matching": "per-trial dewhitened embedding L2 energy",
     "utility_bootstrap_draws": 10000,
     "utility_rule": "paired_subject_bootstrap_CI95_lower_gt_0",
     "decision_definition": "sqrt(mean(sum((delta_logits-mean_class(delta_logits))^2,class)))",

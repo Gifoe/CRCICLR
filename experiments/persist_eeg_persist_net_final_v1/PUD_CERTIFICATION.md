@@ -2,6 +2,8 @@
 
 1. **P**: source-only, class-conditioned subject/session centroids in a
    whitened teacher embedding define the symmetric S1-S2 cross-covariance.
+   Whitening retains at most 32 eigen-directions whose covariance eigenvalue is
+   greater than `max(0.001 * lambda_max, 1e-8)`.
    An individual direction must exceed a 200-draw subject-session permutation
    p95 null and have cross-session correlation >=0.05.
 2. **U**: erase the finite direction while retaining the frozen teacher head.

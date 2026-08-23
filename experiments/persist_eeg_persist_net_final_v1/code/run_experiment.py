@@ -50,11 +50,12 @@ def config_by_id(config_id: str) -> dict[str, Any]:
 def select_dual_width(baseline_params: int) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     rows = []
     eligible = []
+    ratio_max = float(core.protocol()["capacity_ratio_max"])
     for config in core.protocol()["dual_width_candidates"]:
         model = core.DualPathEEGNet(config)
         params = core.parameter_count(model)
         ratio = params / baseline_params
-        row = {**config, "parameters": params, "ratio_vs_B1": ratio, "eligible": ratio <= 1.25}
+        row = {**config, "parameters": params, "ratio_vs_B1": ratio, "eligible": ratio <= ratio_max}
         rows.append(row)
         if row["eligible"]:
             eligible.append(row)

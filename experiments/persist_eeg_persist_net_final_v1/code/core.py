@@ -913,7 +913,10 @@ def fit_certificate(
     ev, u = np.linalg.eigh((cov + cov.T) / 2.0)
     order = np.argsort(ev)[::-1]
     ev, u = ev[order], u[:, order]
-    threshold = max(float(ev[0]) * 1e-3, 1e-8)
+    threshold = max(
+        float(ev[0]) * float(cfg["embedding_eigenvalue_relative_threshold"]),
+        float(cfg["embedding_eigenvalue_absolute_floor"]),
+    )
     numerical_rank = int(np.sum(ev > threshold))
     rank = min(int(cfg["whitening_rank_max"]), numerical_rank)
     if rank < 4:
@@ -967,7 +970,7 @@ def fit_certificate(
             covs.append((left.T @ right + right.T @ left) / (2.0 * max(len(subjects) - 1, 1)))
         cn = np.mean(covs, axis=0)
         null[draw] = np.diag(directions.T @ cn @ directions)
-    null_p95 = np.quantile(null, 0.95, axis=0)
+    null_p95 = np.quantile(null, float(cfg["persistence_permutation_quantile"]), axis=0)
 
     head_weight = teacher.head.weight.detach().cpu().numpy().astype(np.float64)
     full_ce = numpy_cross_entropy(logits, y)
