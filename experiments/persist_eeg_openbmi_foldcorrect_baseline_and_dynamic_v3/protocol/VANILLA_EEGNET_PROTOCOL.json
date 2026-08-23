@@ -1,0 +1,42 @@
+{
+  "DGUG": false,
+  "EA": false,
+  "PCA_head": false,
+  "PUD": false,
+  "anchor_blend": false,
+  "authorized_subjects": 40,
+  "dataset": "OpenBMI / Lee2019 MI",
+  "early_stopping": {
+    "minimum_epoch": 20,
+    "patience": 12
+  },
+  "folds": 5,
+  "future_session_adaptation": false,
+  "internal_holdout_used": false,
+  "logistic_posthoc_head": false,
+  "max_epochs": 60,
+  "meta_controller": false,
+  "outer_test_used": false,
+  "population_head": false,
+  "primary_metric": "mean subject balanced accuracy",
+  "sealed_internal_holdout_subjects": 14,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "source_sessions_primary": [
+    1,
+    2
+  ],
+  "split_source": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\delivery\\persist_eeg_stage0\\SPLIT_FREEZE.json",
+  "target_S1_used": false,
+  "target_S2_labels_used_for_fit_or_selection": false,
+  "target_adaptation": false,
+  "target_session": 2,
+  "target_subject_role": "original outer_test_subjects intersect V8_SEARCH",
+  "test_union_equals_search": true,
+  "training_subject_role": "original train_subjects intersect V8_SEARCH",
+  "validation_subject_role": "original validation_subjects intersect V8_SEARCH",
+  "wbcic_used": false
+}

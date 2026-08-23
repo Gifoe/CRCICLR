@@ -1,0 +1,10 @@
+method,backbone,source_training,target_S1_used,target_adaptation,extra_head,blend,PUD_used,strict_subject_holdout,fold_correct,classification
+Historical inferred old EEGNet reference,historical unknown,historical aggregate,unknown,unknown,unknown,unknown,unknown,unknown,unknown,VANILLA_EEGNET
+Fresh vanilla EEGNet S1+S2 source,StandardEEGNet,train subjects S1+S2,False,False,False,False,False,True,True,VANILLA_EEGNET
+Fresh vanilla EEGNet S1-only source,StandardEEGNet,train subjects S1,False,False,False,False,False,True,True,VANILLA_EEGNET
+Old V2 NoAdapt 88.125,MI-specific cached,old V2,False,False,cached representation,False,False,False,False,INVALID_OLD_RESULT
+Repaired fold-correct cached NoAdapt,MI-specific cached,fold-specific V6/V7 cache,False,False,cached representation,False,False,True,True,CONTROL
+V6 strong anchor,MI-specific backbone,verified V6 fold checkpoints,True,True,adapted EEGNet,False,False,True,True,STRONG_ANCHOR
+Fold-correct Generic,MI-specific cached,fold-specific cache,True,True,residual linear head,False,False,True,True,GENERIC_ADAPTATION
+Conformer-Norm,Conformer,historical V7,True,True,normalization/adaptation,True,False,False,False,STRONG_ANCHOR
+DGUG/PUD,PERSIST,historical,True,True,P/U/D,False,True,False,False,PERSIST_METHOD

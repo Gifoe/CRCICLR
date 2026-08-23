@@ -1,0 +1,26 @@
+{
+  "binary_target": "NegativeTransfer = FutureDeltaBA < 0",
+  "continuous_target": "FutureDeltaBA = Generic_S2_BA - NoAdapt_S2_BA",
+  "dynamic_features": [
+    "delta_P",
+    "delta_U",
+    "delta_D",
+    "trajectory slopes",
+    "trajectory AUC",
+    "maximum utility loss",
+    "maximum D loss",
+    "task gradient",
+    "utility gradient",
+    "predicted utility damage",
+    "gradient cosine",
+    "protected contribution change"
+  ],
+  "predictors": [
+    "M0",
+    "M_static",
+    "M_dynamic",
+    "M_gradient",
+    "M_full"
+  ],
+  "source": "frozen V2 feature lock; no hypothesis changes"
+}

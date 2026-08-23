@@ -1,0 +1,1 @@
+Run with `E:\Anaconda\envs\Benchmark_TTA_Win\python.exe code\run_foldcorrect_dynamic.py` after setting `FOLD_CORRECT_EXPERIMENT`. The old V2 script is imported only for its frozen mathematical feature functions; all numerical outputs are recomputed.

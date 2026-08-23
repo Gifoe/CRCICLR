@@ -1,0 +1,6 @@
+                                          Method              variant  Subjects Source sessions Target S1 used? Target adaptation? Strict unseen subject?       Seed  Mean BA  SD across seeds  Macro-F1  Accuracy      NLL               95% CI     CI_L     CI_U OUTER_TEST_USED
+                  Historical inferred old EEGNet  HISTORICAL_INFERRED        54         unknown         unknown            unknown                unknown historical 0.752970              NaN       NaN       NaN      NaN        not available      NaN      NaN         unknown
+  Fresh vanilla EEGNet source S1+S2 -> target S2    S1S2_SOURCE_TO_S2        40             1+2           False              False                   True      0,1,2 0.749667         0.009153  0.744988  0.749667 0.532317 [0.721833, 0.777169] 0.721833 0.777169           False
+Fresh vanilla EEGNet source S1 only -> target S2 S1_ONLY_SOURCE_TO_S2        40               1           False              False                   True      0,1,2 0.714500         0.005953  0.710899  0.714500 0.592208 [0.688498, 0.740835] 0.688498 0.740835           False
+
+All 40 development subjects are tested exactly once in the frozen original folds. Holdout, historical outer-test, and WBCIC are sealed.
