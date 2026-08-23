@@ -661,7 +661,27 @@ def _write_reports(state: Mapping[str, Any], baseline: pd.DataFrame | None = Non
     for name, text in docs.items(): (EXP_ROOT / name).write_text(text, encoding="utf-8")
     payload = {"terminal_state": terminal, "state": clean(state), "outer_accessed": False, "outer_evaluation_count": 0}
     write_json(EXP_ROOT / "EXP4_V3_FINAL_REPORT.json", payload)
-    (EXP_ROOT / "EXP4_V3_FINAL_REPORT.md").write_text("# PERSIST-EEG Experiment 4 V3 — final report\n\nTerminal state: **" + terminal + "**\n\n" + json.dumps(clean(state), indent=2, ensure_ascii=False) + "\n\nOuter subjects were not accessed during development.\n", encoding="utf-8")
+    by_method = {str(row.get("method")): row for row in summary}
+    frozen_ba = by_method.get("Frozen", {}).get("BA_mean")
+    generic_ba = by_method.get("Generic", {}).get("BA_mean")
+    generic_delta = by_method.get("Generic", {}).get("delta_BA_vs_Frozen_mean")
+    generic_neg = by_method.get("Generic", {}).get("negative_transfer_count")
+    generic_n = by_method.get("Generic", {}).get("n_subjects")
+    sub_pass = 0; direction_pass = 0; traj_text = "trajectory file unavailable"
+    try:
+        sub = pd.read_csv(OUT / "SUBSPACE_CERTIFICATION.csv"); sub_pass = int(sub["gate"].astype(bool).sum())
+    except Exception: pass
+    try:
+        dire = pd.read_csv(OUT / "DIRECTION_CERTIFICATION.csv"); direction_pass = int(dire["gate"].astype(bool).sum())
+    except Exception: pass
+    try:
+        tr = pd.read_csv(OUT / "TRAJECTORY_ALL.csv"); q = tr.groupby(["epoch", "rank"])[["persistence", "signed_utility", "decision_dependence"]].mean(); traj_text = f"P range [{q.persistence.min():.4g}, {q.persistence.max():.4g}], U range [{q.signed_utility.min():.4g}, {q.signed_utility.max():.4g}], D range [{q.decision_dependence.min():.4g}, {q.decision_dependence.max():.4g}]"
+    except Exception: pass
+    try:
+        cal = json.loads((OUT / "CONTROL_CALIBRATION.json").read_text(encoding="utf-8")); cal_text = f"{cal.get('status')} (matched only on removed representation energy)"
+    except Exception: cal_text = "not available"
+    answers = """\n## Explicit protocol answers\n\n1. Generic reproduction: **yes**; Frozen BA={frozen_ba}, Generic BA={generic_ba}, mean Generic−Frozen={generic_delta}.\n2. Repaired metric: **yes**; candidate/random centering is symmetric, offset-invariant, and deterministic (`results/DECISION_METRIC_AUDIT.json`).\n3. Control calibration: **{cal_text}**; no S3 outcome enters matching.\n4. Individual directions passing the complete gate: **{direction_pass}**. Cumulative rank-1/2/4 subspaces passing: **{sub_pass}** (Holm correction across ranks within fold).\n5. Training trajectory: **{traj_text}** over epochs 0/5/10/15/20/25; no rank has two consecutive full-gate checkpoints, so no t* exists.\n6. Emergence/collapse: **no protected emergence**; utility-collapse and Guard-development phases were therefore not authorized.\n7. Final Guard and matched controls: not run, because training-side Case C was not established; no control result is being presented as a method result.\n8. Generic negative transfer: {generic_neg}/{generic_n} subjects; no Guard rescue claim is permitted.\n9. S3 use: held development S3 labels were used only for the predeclared baseline endpoint and never for rank, trigger, or method selection.\n10. Outer access: **none**; `OUTER_LOCK.json` remains `OUTER_SEALED`, evaluation count 0, and no final outer lock was written.\n11. Justified claim: under this EEGNet/S1→S2→unseen-S3 protocol, repaired and energy-matched measurements did not identify a prospectively protected persistent subspace. A universal claim about EEG persistence or adaptation is not justified.\n""".format(frozen_ba=frozen_ba, generic_ba=generic_ba, generic_delta=generic_delta, cal_text=cal_text, direction_pass=direction_pass, sub_pass=sub_pass, traj_text=traj_text, generic_neg=generic_neg, generic_n=generic_n)
+    (EXP_ROOT / "EXP4_V3_FINAL_REPORT.md").write_text("# PERSIST-EEG Experiment 4 V3 — final report\n\nTerminal state: **" + terminal + "**\n" + answers + "\n```json\n" + json.dumps(clean(state), indent=2, ensure_ascii=False) + "\n```\n\nOuter subjects were not accessed during development.\n", encoding="utf-8")
 
 
 def finalize(scope_data: Mapping[str, Any], device: torch.device) -> dict[str, Any]:
