@@ -182,12 +182,13 @@ def random_subspace(seed: int, rank: int) -> np.ndarray:
 def random_pool(seed_prefix: Any, rank: int) -> list[np.ndarray]: return [random_subspace(stable_seed(seed_prefix, rank, i), rank) for i in range(RANDOM_POOL)]
 
 
-def energy_match(h_train: np.ndarray, candidate: np.ndarray, pool: Sequence[np.ndarray]) -> tuple[np.ndarray, dict[str, Any]]:
+def energy_match(h_train: np.ndarray, candidate: np.ndarray, pool: Sequence[np.ndarray], mu: np.ndarray | None = None) -> tuple[np.ndarray, dict[str, Any]]:
     # For an orthonormal U, removed energy is ||(h-mu)U||^2.  Batch all
     # random controls in one einsum; the previous per-control Python loop was
     # mathematically identical but unnecessarily multiplied the large cache
     # scan by RANDOM_POOL.
-    x = np.asarray(h_train, dtype=np.float64) - np.asarray(h_train, dtype=np.float64).mean(axis=0, keepdims=True)
+    center = np.asarray(h_train, dtype=np.float64).mean(axis=0) if mu is None else np.asarray(mu, dtype=np.float64)
+    x = np.asarray(h_train, dtype=np.float64) - center[None, :]
     cand = np.asarray(candidate, dtype=np.float64)
     if cand.ndim == 1:
         cand = cand[:, None]
@@ -431,7 +432,7 @@ def calibrate_controls(scope_data: Mapping[str, Any], device: torch.device) -> N
         arr = _prepare_arrays_with_head(_arrays_from_cache(model, legal, [0, 1], fold, "legal_s01", device), model)
         pack = V2.build_basis(arr, legal, list(range(len(legal)))); w, b = arr["head_weight"], arr["head_bias"]; mu = pack["center"]
         for rank in RANKS:
-            U = pack["basis"][:, :rank]; pool = random_pool(("calibration", fold), rank); matched, info = energy_match(arr["h"], U, pool)
+            U = pack["basis"][:, :rank]; pool = random_pool(("calibration", fold), rank); matched, info = energy_match(arr["h"], U, pool, mu)
             stats = _calibration_rows_for_basis(arr["h"], arr["y"], U, mu, matched, w, b)
             ordinary = np.asarray([np.mean(np.sum((arr["h"] - erase_np(arr["h"], r, mu)) ** 2, axis=1)) for r in pool])
             energy_rows.append({"fold": fold, "rank": rank, "persistence_strength": float(np.sum(pack["eigenvalues"][:rank])), "candidate_energy": info["candidate_energy"], "matched_random_energy": info["random_energy"], "relative_mismatch": info["relative_mismatch"], "within_tolerance": info["within_tolerance"], **stats})
@@ -461,7 +462,7 @@ def _measure_checkpoint(scope_data: Mapping[str, Any], epoch: int, device: torch
             pack = _basis_for_training(tr, train_subjects); mu = pack["center"]
             # Energy calibration is frozen from the inner training side.
             for rank in RANKS:
-                U = pack["basis"][:, :rank]; pool = random_pool(("trajectory", fold, inner, epoch), rank); rU, info = energy_match(tr["h"], U, pool)
+                U = pack["basis"][:, :rank]; pool = random_pool(("trajectory", fold, inner, epoch), rank); rU, info = energy_match(tr["h"], U, pool, mu)
                 for sid, subject in enumerate(held_subjects):
                     m = he["sid"] == sid
                     if not np.any(m): continue
@@ -469,7 +470,7 @@ def _measure_checkpoint(scope_data: Mapping[str, Any], epoch: int, device: torch
                     rank_acc[rank].append({"fold": fold, "inner_fold": inner, "subject": subject, "epoch": epoch, "rank": rank, "persistence": float(np.sum(pack["eigenvalues"][:rank])), "energy_relative_mismatch": info["relative_mismatch"], **row})
             if include_directions:
                 for j in range(CANDIDATE_COUNT):
-                    U = pack["basis"][:, j:j + 1]; pool = random_pool(("direction", fold, inner, epoch), 1); rU, info = energy_match(tr["h"], U, pool)
+                    U = pack["basis"][:, j:j + 1]; pool = random_pool(("direction", fold, inner, epoch), 1); rU, info = energy_match(tr["h"], U, pool, mu)
                     for sid, subject in enumerate(held_subjects):
                         m = he["sid"] == sid
                         if not np.any(m): continue
@@ -649,6 +650,8 @@ def _write_reports(state: Mapping[str, Any], baseline: pd.DataFrame | None = Non
     terminal = str(state.get("terminal_state", "UNKNOWN")); summary = state.get("summary", [])
     docs = {
         "PROTOCOL_SELECTION_AUDIT.md": "# Protocol selection audit\n\nV3 is a new prospective trajectory protocol. It keeps the S1-only EEGNet anchor, the legal 41-subject development cohort, subject-disjoint inner evidence, and the sealed 10-subject outer cohort. No S3 quantity selects a rank, trigger, threshold, or method.\n",
+        "MEASUREMENT_REPAIR_AUDIT.md": "# Measurement repair audit\n\nThe V2 candidate/random decision-dependence asymmetry was repaired. Both paths now use `D(u)=mean(abs(center(z_erased_u)-center(z_raw)))`, with `center(z)=z-mean_class(z)`. See `results/DECISION_METRIC_AUDIT.json`.\n",
+        "GENERIC_REPRODUCTION_AUDIT.md": "# Generic reproduction audit\n\nThe three-seed Generic baseline is reproduced before trajectory interpretation. See `results/GENERIC_REPRODUCTION.csv`, `results/SEED_ROBUSTNESS.csv`, and `results/DEV_METHOD_SUMMARY.csv`; the held S3 outcome is reporting-only and never selects a trajectory checkpoint or rank.\n",
         "FINAL_MODEL_CARD.md": f"# Exp4 V3 model card\n\nTerminal state: **{terminal}**. V3 repairs the decision metric, energy-matches random interventions, tests cumulative deployment-matched ranks 1/2/4, and requires two consecutive training-side checkpoints before declaring emergence. Outer data were not accessed.\n",
         "CLAIM_AUDIT.md": "# Claim audit\n\nClaims are restricted to the development cohort and the predeclared EEGNet representation. A null or non-significant Guard result is not treated as equivalence. No outer claim is made without a final lock.\n",
         "REVIEWER_SELF_AUDIT.md": "# Reviewer self-audit\n\nRemaining risks include finite development subjects, frozen-head dependence, and the fact that trajectory evidence is a mechanism audit rather than an independent test. The protocol does not justify universal EEG invariance claims.\n",
