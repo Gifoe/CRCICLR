@@ -1,0 +1,82 @@
+{
+  "anchor": {
+    "backbone": "EEGNet",
+    "dropout": 0.25,
+    "embedding_dim": 32,
+    "epochs": 30,
+    "lr": 0.0003,
+    "sessions": [
+      0
+    ],
+    "weight_decay": 0.0005
+  },
+  "dataset": "WBCIC/Yang2025/NEMAR nm000348",
+  "decision_metric": {
+    "center": "subtract per-trial class-mean logit",
+    "definition": "mean(|center(z_erased)-center(z_raw)|)",
+    "random_formula_identical": true
+  },
+  "deployment": "S1 anchor -> S2 legal adaptation -> unseen development-subject S3",
+  "development_subject_count": 41,
+  "emergence_rule": {
+    "gate": "persistence>0, signed utility>0, positive subject fraction>=0.55, repaired decision dependence>0, Holm p<0.05",
+    "rank_selection": "smallest passing rank",
+    "stability": "two consecutive checkpoints"
+  },
+  "energy_matching": {
+    "match_quantity": "removed representation energy only",
+    "outcome_matching": false,
+    "random_pool": 256,
+    "tolerance_relative": 0.1
+  },
+  "experiment": "PERSIST_EEG_EXP4_EMERGENCE_TRIGGERED_V3",
+  "generic": {
+    "config": {
+      "epochs": 25,
+      "id": "GEN_LINEAR_LR1E3_E25",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0005
+    },
+    "final_seeds": [
+      0,
+      1,
+      2
+    ],
+    "selection": "V2 S2 held-subject validation; no S3 selection"
+  },
+  "margin": {
+    "alternative": "rho=0.5 only if trajectory shows positive-but-substantially-eroded utility",
+    "primary": "tau=0",
+    "selection_source": "training-side trajectory only"
+  },
+  "outer_access_during_development": false,
+  "outer_command": "refuse unless EXP4_V3_FINAL_PROTOCOL_LOCK.json authorizes one-time evaluation",
+  "outer_subject_count": 10,
+  "outer_subject_ids_present": false,
+  "source_branch": "codex/persist-eeg-exp4-utility-preservation-v2",
+  "source_commit": null,
+  "status": "DEV_PROTOCOL_FROZEN_BEFORE_TRAJECTORY",
+  "subspace_family": {
+    "candidate_directions": 8,
+    "max_rank": 4,
+    "multiplicity": "Holm across rank 1/2/4 per fold",
+    "ranks": [
+      1,
+      2,
+      4
+    ]
+  },
+  "trajectory": {
+    "basis": "recomputed from legal training-side adapted S1/S2 representations",
+    "checkpoints": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25
+    ],
+    "seed": 0,
+    "utility": "inner subject-disjoint S2 labels"
+  }
+}
