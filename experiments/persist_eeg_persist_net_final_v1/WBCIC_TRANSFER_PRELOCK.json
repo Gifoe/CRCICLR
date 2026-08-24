@@ -1,0 +1,89 @@
+{
+  "status": "PRELOCKED_BEFORE_OPENBMI_FINAL_AGGREGATION",
+  "created_local_time": "2026-08-24T12:33:00+08:00",
+  "authorization_rule": "Run WBCIC development only if frozen OpenBMI G1 AND G6 AND G9 pass",
+  "configuration_evidence": {
+    "source": "five OpenBMI source-only nested-selection locks; no OpenBMI outcome metric was read for this transfer choice",
+    "baseline_modal_selection": {
+      "EEGNET_F16": 3,
+      "EEGNET_F8": 2
+    },
+    "dual_width_modal_selection": {
+      "SPLIT_8_16_48": 3,
+      "SPLIT_6_12_48": 2
+    },
+    "generic_modal_selection": {
+      "FULL_LR3E5_E10": 3,
+      "TAIL_LR1E4_E10": 1,
+      "HEAD_LR1E3_E10": 1
+    },
+    "tie_rule": "use original PROTOCOL_FROZEN.json candidate order"
+  },
+  "frozen_transfer_recipe": {
+    "baseline": {
+      "id": "EEGNET_F16",
+      "f1": 16,
+      "f2": 32,
+      "embedding_dim": 64,
+      "dropout": 0.5,
+      "lr": 0.0003,
+      "weight_decay": 0.0005
+    },
+    "dual_path": {
+      "id": "SPLIT_8_16_48",
+      "f1": 8,
+      "f2": 16,
+      "embedding_dim": 48,
+      "dropout": 0.4
+    },
+    "target_adaptation": {
+      "id": "FULL_LR3E5_E10",
+      "strategy": "full",
+      "lr": 0.00003,
+      "epochs": 10,
+      "batch_size": 32,
+      "weight_decay": 0.0001
+    },
+    "loss": {
+      "task": 1.0,
+      "lambda_D": 1.0,
+      "lambda_R": 1.0,
+      "lambda_P": 0.1
+    },
+    "certificate": "exactly PROTOCOL_FROZEN.json certification rules, including exact centered-logit D_finite and no D_flip",
+    "baseline_epoch_rule": "source-only early stopping under the frozen 60/20/12 maximum/minimum/patience rule",
+    "student_epoch_rule": "source-only early stopping under the frozen 40/15/10 maximum/minimum/patience rule",
+    "seeds": [0, 1, 2]
+  },
+  "dataset_necessary_substitutions_only": {
+    "channels": 58,
+    "samples": 1000,
+    "classes": 2,
+    "history_sessions": [1, 2],
+    "future_session": 3,
+    "subject_scope": "41 IDs from the pre-existing development-only scope lock",
+    "outer_folds": 5
+  },
+  "required_external_methods": [
+    "B1_STRONG_EEGNET",
+    "B2_STRONG_GENERIC",
+    "A2_DUAL_CONTROL",
+    "A6_PUD_ALL_ADAPT",
+    "A7_IDENTITY_PROTECTED",
+    "A8_RANDOM_PROTECTED",
+    "A10_FULL_PUD_FREEZE"
+  ],
+  "purity": {
+    "WBCIC_files_opened_while_creating_this_lock": false,
+    "WBCIC_development_loaded": false,
+    "WBCIC_outer_split_opened": false,
+    "WBCIC_outer_subjects_enumerated": false,
+    "WBCIC_outer_raw_or_cache_loaded": false
+  },
+  "forbidden": [
+    "WBCIC outcome-driven architecture or lambda changes",
+    "new target-time router or selector",
+    "opening OUTER_SPLIT_LOCK.json during development",
+    "loading any cache not explicitly restricted to the 41-subject development scope"
+  ]
+}
