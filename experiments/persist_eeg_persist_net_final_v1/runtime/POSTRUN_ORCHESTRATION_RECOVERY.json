@@ -1,0 +1,27 @@
+{
+  "status": "RECOVERED_FINALIZATION_AFTER_NULL_EXIT_CODE_AUDIT",
+  "scientific_rerun_performed": false,
+  "scientific_configuration_changed": false,
+  "original_orchestration_sha256": "82318231bef2809be16ae42fc3b82a23a0e400719fc448100a168bdb78f79266",
+  "original_scheduled_task_status_sha256": "a4ad6a69b64f378629031427921230d543fb0ea20307239a645fc029509179ce",
+  "original_exit_code_values": {
+    "workers": 15,
+    "null": 15,
+    "nonzero": 0
+  },
+  "independent_completion_evidence": {
+    "DONE_json_files": 15,
+    "RUN_COMPLETE_statuses": 15,
+    "SUBJECT_RESULTS_csv_files": 15,
+    "MECHANISM_METRICS_csv_files": 15,
+    "worker_stderr_total_bytes": 0
+  },
+  "recovery_action": "Run the unchanged frozen finalize_openbmi.py once; do not rerun workers. Replay result-only export after documented reporting repairs 8-9",
+  "finalizer_exit_code": 0,
+  "finalizer_stderr_bytes": 0,
+  "final_report_sha256": "a92af1c3fe6f9a91ce60fb5c938e526925ee1d9d9c1cd9ba461d70a9ef5f6150",
+  "root_cause": "PowerShell exposed null ExitCode values for redirected child processes; `$null -ne 0` falsely failed orchestration",
+  "code_repair": "WaitForExit before ExitCode; fail-closed recovery requires RUN_COMPLETE plus empty worker stderr",
+  "WBCIC_started": false,
+  "outer_accessed": false
+}

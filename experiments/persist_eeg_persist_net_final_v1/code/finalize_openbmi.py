@@ -51,6 +51,28 @@ DISPLAY = {
 }
 
 
+def markdown_table(frame: pd.DataFrame, digits: int = 5) -> str:
+    """Render the small final table without pandas' optional tabulate extra."""
+
+    def render(value: Any) -> str:
+        if pd.isna(value):
+            return "nan"
+        if isinstance(value, (float, np.floating)):
+            return f"{float(value):.{digits}f}"
+        return str(value).replace("|", "\\|")
+
+    columns = [str(column) for column in frame.columns]
+    lines = [
+        "| " + " | ".join(columns) + " |",
+        "| " + " | ".join("---" for _ in columns) + " |",
+    ]
+    lines.extend(
+        "| " + " | ".join(render(value) for value in row) + " |"
+        for row in frame.itertuples(index=False, name=None)
+    )
+    return "\n".join(lines)
+
+
 def collect() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, list[dict[str, Any]]]:
     subject_frames = []
     mechanism_frames = []
@@ -425,6 +447,15 @@ def finalize() -> dict[str, Any]:
         core.stable_seed("primary-signflip"),
         int(core.protocol()["statistics"]["sign_flip_draws"]),
     )
+    # Keep the exported main-table FULL row identical to the registered
+    # primary analysis. method_summary() uses a separate deterministic stream
+    # for exploratory method rows; without this assignment the headline and
+    # table showed slightly different Monte Carlo CI endpoints for the same
+    # FULL-vs-baseline contrast.
+    full_row = summary.method.eq("A10_FULL_PUD_FREEZE")
+    summary.loc[full_row, "Delta_BA_vs_strongest_baseline"] = primary_bootstrap["mean"]
+    summary.loc[full_row, "CI95_L"] = primary_bootstrap["CI95"][0]
+    summary.loc[full_row, "CI95_U"] = primary_bootstrap["CI95"][1]
 
     means = summary.set_index("method").BA
     full_mean = float(means["A10_FULL_PUD_FREEZE"])
@@ -613,7 +644,7 @@ paired subject-bootstrap 95% CI=[{100*primary_bootstrap['CI95'][0]:+.3f}, {100*p
 
 ## Main table
 
-{table.to_markdown(index=False, floatfmt='.5f')}
+{markdown_table(table)}
 
 ## Required scientific answers
 

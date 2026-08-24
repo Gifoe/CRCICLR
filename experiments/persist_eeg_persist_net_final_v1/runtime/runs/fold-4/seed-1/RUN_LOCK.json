@@ -1,0 +1,250 @@
+{
+  "B0_epochs": 59,
+  "B0_seed": 1165244140,
+  "baseline_configuration": {
+    "dropout": 0.25,
+    "embedding_dim": 64,
+    "f1": 8,
+    "f2": 16,
+    "id": "EEGNET_F8",
+    "lr": 0.0003,
+    "weight_decay": 0.0005
+  },
+  "baseline_epochs": 59,
+  "certificate_audit": {
+    "D_flip_used": false,
+    "PD_rank": 8,
+    "PUD_PCA_overlap_fraction": 0.244633287191391,
+    "PUD_rank": 5,
+    "PU_rank": 5,
+    "P_rank": 20,
+    "candidate_directions": 32,
+    "class_conditioned_session_pairs": 64,
+    "embedding_dimension": 64,
+    "finite": true,
+    "fold": 4,
+    "identity_rank": 5,
+    "identity_used_in_primary_definition": false,
+    "matched_control_summary": {
+      "PUD_union": {
+        "BA_harm": 0.20453124999999994,
+        "CE_harm": 0.35867820568144604,
+        "D_finite": 1.9410286645785428,
+        "rank": 5
+      },
+      "matched_rank_PCA": {
+        "BA_harm": 0.3453125,
+        "CE_harm": 0.41283541886834274,
+        "D_finite": 2.1760835363468938,
+        "rank": 5
+      },
+      "matched_rank_nonpersistent": {
+        "BA_harm": 0.007343749999999982,
+        "CE_harm": 0.012831895802079227,
+        "D_finite": 0.32065260687743663,
+        "rank": 5
+      },
+      "matched_rank_random": {
+        "BA_harm": 0.08124999999999993,
+        "CE_harm": 0.17237011179990203,
+        "D_finite": 1.2724247436967804,
+        "rank": 5
+      },
+      "per_direction_matched_energy_random_used_for_U_and_D": true
+    },
+    "numerical_rank": 63,
+    "pca_rank": 5,
+    "random_rank": 5,
+    "rank_cap": null,
+    "seed": 1,
+    "source_rows": 6400,
+    "source_subjects": [
+      "1",
+      "2",
+      "5",
+      "6",
+      "7",
+      "9",
+      "10",
+      "14",
+      "15",
+      "16",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "26",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "40",
+      "41",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "53"
+    ],
+    "whitening_error_max_abs": 1.7763568394002505e-15,
+    "whitening_rank": 32
+  },
+  "checkpoint_hashes": {
+    "A2_DUAL_CONTROL": {
+      "parameters": 39244,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\runs\\fold-4\\seed-1\\checkpoints\\A2_DUAL_CONTROL.pt",
+      "sha256": "e7fef7968c85c128d3c8c2c351adfe17c2232f38854fa6ebe4a907e51f70ee31"
+    },
+    "A7_IDENTITY_PROTECTED": {
+      "parameters": 39244,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\runs\\fold-4\\seed-1\\checkpoints\\A7_IDENTITY_PROTECTED.pt",
+      "sha256": "8766414aeb9095872250c00d20cc48653555ecff5414e8459561415b796fb014"
+    },
+    "A8_RANDOM_PROTECTED": {
+      "parameters": 39244,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\runs\\fold-4\\seed-1\\checkpoints\\A8_RANDOM_PROTECTED.pt",
+      "sha256": "a3079f85ca58172cd0f8f70d388f929225df4ef9d608c216c9df110b2e88c1ad"
+    },
+    "B0_VANILLA_EEGNET": {
+      "parameters": 34162,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\runs\\fold-4\\seed-1\\checkpoints\\B1_STRONG_EEGNET.pt",
+      "sha256": "ff4c5a2db968ae77b602ab2167a476898dd149e0de5d7b2bbc26d8c41bb8f56e"
+    },
+    "B1_STRONG_EEGNET": {
+      "parameters": 34162,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\runs\\fold-4\\seed-1\\checkpoints\\B1_STRONG_EEGNET.pt",
+      "sha256": "ff4c5a2db968ae77b602ab2167a476898dd149e0de5d7b2bbc26d8c41bb8f56e"
+    },
+    "PUD_SOURCE": {
+      "parameters": 39244,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\runs\\fold-4\\seed-1\\checkpoints\\PUD_SOURCE.pt",
+      "sha256": "2011c5894380a55ca6a8841adb604b0a46af4339b3a1f74c694df1af6e81dba5"
+    }
+  },
+  "dual_target_adaptation_seed_rule": "stable_seed(\"paired-dual-adapt\", fold, seed, subject); shared by every matched dual-path method",
+  "dual_width": {
+    "dropout": 0.35,
+    "eligible": true,
+    "embedding_dim": 48,
+    "f1": 6,
+    "f2": 12,
+    "id": "SPLIT_6_12_48",
+    "parameters": 39244,
+    "ratio_vs_B1": 1.1487617820970668
+  },
+  "fold": 4,
+  "future_evaluation_session": 2,
+  "generic_adaptation": {
+    "epochs": 10,
+    "id": "HEAD_LR1E3_E10",
+    "lr": 0.001,
+    "strategy": "head"
+  },
+  "implementation_sha256": {
+    "PROTOCOL_FROZEN.json": "f7e2ba6cb5104aa47fecd732e191df7f901fbc646b75e2ccfa54b8bef0a40064",
+    "core.py": "cfe2db95c833a352ad1eed7641c96276c395d0c58124e865fc0280914b16fc64",
+    "run_experiment.py": "a3ebc22ca2fe2b661b11c8516572e162b15eeb9d1531b38086b9f0e78b3d17d0"
+  },
+  "internal_holdout_accessed": false,
+  "lock_created_before_outer_outcome_evaluation": true,
+  "loss": {
+    "lambda_D": 1.0,
+    "lambda_P": 0.1,
+    "lambda_R": 1.0,
+    "task": 1.0
+  },
+  "methods": [
+    "A2_DUAL_CONTROL",
+    "A7_IDENTITY_PROTECTED",
+    "A8_RANDOM_PROTECTED",
+    "PUD_SOURCE"
+  ],
+  "normalizer": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\cache\\NORMALIZER_FOLD_4_SOURCE32.npz",
+  "normalizer_sha256": "2e3dd453c785e34a815b392bbd0d58f57e9d0c37041420cf9f63916769c0550e",
+  "normalizer_subjects": [
+    "1",
+    "2",
+    "5",
+    "6",
+    "7",
+    "9",
+    "10",
+    "14",
+    "15",
+    "16",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "26",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "40",
+    "41",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "53"
+  ],
+  "outer_outcome_subject_count": 8,
+  "outer_outcome_subjects_not_used_for_training": true,
+  "outer_test_used": false,
+  "seed": 1,
+  "source_subjects": [
+    "1",
+    "2",
+    "5",
+    "6",
+    "7",
+    "9",
+    "10",
+    "14",
+    "15",
+    "16",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "26",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "40",
+    "41",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "53"
+  ],
+  "source_training_sessions": [
+    1,
+    2
+  ],
+  "student_epochs": 40,
+  "target_future_labels_used": false,
+  "target_history_session": 1,
+  "teacher_seed": 1165244140
+}

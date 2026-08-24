@@ -1,0 +1,81 @@
+method,fold,seed,subject_id,strategy,trainable_parameter_names,trainable_parameters,parameter_update_l2,adaptation_time_s,adaptation_seed,all_adapt,protected_parameter_update_l2,adaptive_parameter_update_l2,protected_buffer_update_l2
+B2_STRONG_GENERIC,4,0,3,head,"['head.weight', 'head.bias']",130,0.15885534035269938,0.8298394999583252,,,,,
+A2_DUAL_CONTROL,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8357655000290833,587539670.0,False,0.0,0.14837794889636077,0.0
+A6_PUD_ALL_ADAPT,4,0,3,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7986695999861695,587539670.0,True,0.10715337136415806,0.12949438021315154,69.71990222459158
+A7_IDENTITY_PROTECTED,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7693868999485858,587539670.0,False,0.0,0.1528410036756102,0.0
+A8_RANDOM_PROTECTED,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7246227999567054,587539670.0,False,0.0,0.16760105992308394,0.0
+A10_FULL_PUD_FREEZE,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7539604000048712,587539670.0,False,0.0,0.16591756287660403,0.0
+A3_P_ONLY,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8262752000009641,587539670.0,False,0.0,0.1755511718603137,0.0
+A4_P_PLUS_U,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6963004999561235,587539670.0,False,0.0,0.16591756287660403,0.0
+A5_P_PLUS_D,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7944374999497086,587539670.0,False,0.0,0.1748635233662562,0.0
+A9_PCA_PROTECTED,4,0,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.714972999994643,587539670.0,False,0.0,0.16394268355307928,0.0
+B2_STRONG_GENERIC,4,0,8,head,"['head.weight', 'head.bias']",130,0.14968734763912678,0.6090589000377804,,,,,
+A2_DUAL_CONTROL,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6642893999814987,2769392552.0,False,0.0,0.10589769194396628,0.0
+A6_PUD_ALL_ADAPT,4,0,8,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7857700000167824,2769392552.0,True,0.10631522085160688,0.1065922525942659,69.3101876038579
+A7_IDENTITY_PROTECTED,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7317757999990135,2769392552.0,False,0.0,0.09940096936376405,0.0
+A8_RANDOM_PROTECTED,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7472845999873243,2769392552.0,False,0.0,0.1066979297417455,0.0
+A10_FULL_PUD_FREEZE,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7254048999748193,2769392552.0,False,0.0,0.11988295922745429,0.0
+A3_P_ONLY,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.681749600043986,2769392552.0,False,0.0,0.11962855671082248,0.0
+A4_P_PLUS_U,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7265770999947563,2769392552.0,False,0.0,0.11988295922745429,0.0
+A5_P_PLUS_D,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7248318999772891,2769392552.0,False,0.0,0.12166749234781699,0.0
+A9_PCA_PROTECTED,4,0,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7652057999512181,2769392552.0,False,0.0,0.09166676580343171,0.0
+B2_STRONG_GENERIC,4,0,11,head,"['head.weight', 'head.bias']",130,0.20502412005468854,0.6598233000258915,,,,,
+A2_DUAL_CONTROL,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7224246999830939,2131309557.0,False,0.0,0.22357105824664436,0.0
+A6_PUD_ALL_ADAPT,4,0,11,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7178608000394888,2131309557.0,True,0.17740486556856971,0.14305038329874023,69.28788731706628
+A7_IDENTITY_PROTECTED,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7550066999974661,2131309557.0,False,0.0,0.19235010219984294,0.0
+A8_RANDOM_PROTECTED,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.766245600010734,2131309557.0,False,0.0,0.18486890910227632,0.0
+A10_FULL_PUD_FREEZE,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6679338000249118,2131309557.0,False,0.0,0.19324561707865678,0.0
+A3_P_ONLY,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6479793000034988,2131309557.0,False,0.0,0.20842522225132593,0.0
+A4_P_PLUS_U,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.654140800004825,2131309557.0,False,0.0,0.19324561707865678,0.0
+A5_P_PLUS_D,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6291138000087813,2131309557.0,False,0.0,0.19750777515874865,0.0
+A9_PCA_PROTECTED,4,0,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7672266000299715,2131309557.0,False,0.0,0.21364319951503735,0.0
+B2_STRONG_GENERIC,4,0,27,head,"['head.weight', 'head.bias']",130,0.1445603244766641,0.7001041000476107,,,,,
+A2_DUAL_CONTROL,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8254286999581382,1679530569.0,False,0.0,0.1126014495694095,0.0
+A6_PUD_ALL_ADAPT,4,0,27,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7805461999960244,1679530569.0,True,0.09545612300428308,0.1231165577344107,69.28464331886114
+A7_IDENTITY_PROTECTED,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7342732999823056,1679530569.0,False,0.0,0.1229998466996808,0.0
+A8_RANDOM_PROTECTED,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6536213000072166,1679530569.0,False,0.0,0.11476527850091939,0.0
+A10_FULL_PUD_FREEZE,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7050350999925286,1679530569.0,False,0.0,0.1334362900153395,0.0
+A3_P_ONLY,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8374548999709077,1679530569.0,False,0.0,0.12347373491515347,0.0
+A4_P_PLUS_U,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7294865999720059,1679530569.0,False,0.0,0.1334362900153395,0.0
+A5_P_PLUS_D,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7217615999979898,1679530569.0,False,0.0,0.1149729239496552,0.0
+A9_PCA_PROTECTED,4,0,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6933838999830186,1679530569.0,False,0.0,0.12309696771107566,0.0
+B2_STRONG_GENERIC,4,0,28,head,"['head.weight', 'head.bias']",130,0.16538420926641345,0.8590990999946371,,,,,
+A2_DUAL_CONTROL,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9235850000404753,3860100436.0,False,0.0,0.1579691962459621,0.0
+A6_PUD_ALL_ADAPT,4,0,28,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,1.0377182000083849,3860100436.0,True,0.11499549980596174,0.14982950128604072,69.28613129248012
+A7_IDENTITY_PROTECTED,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8185108999605291,3860100436.0,False,0.0,0.1372384490580995,0.0
+A8_RANDOM_PROTECTED,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.5767444000230171,3860100436.0,False,0.0,0.14315261497435952,0.0
+A10_FULL_PUD_FREEZE,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7661153000080958,3860100436.0,False,0.0,0.16190863997550275,0.0
+A3_P_ONLY,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7386458999826573,3860100436.0,False,0.0,0.15653879849619678,0.0
+A4_P_PLUS_U,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7493389999726787,3860100436.0,False,0.0,0.16190863997550275,0.0
+A5_P_PLUS_D,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7243843000032939,3860100436.0,False,0.0,0.17382323299714297,0.0
+A9_PCA_PROTECTED,4,0,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7188160999794491,3860100436.0,False,0.0,0.1459718887193143,0.0
+B2_STRONG_GENERIC,4,0,30,head,"['head.weight', 'head.bias']",130,0.1529530859492591,0.7550266999751329,,,,,
+A2_DUAL_CONTROL,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8785220999852754,516375361.0,False,0.0,0.1258370244440683,0.0
+A6_PUD_ALL_ADAPT,4,0,30,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,1.0191647000028752,516375361.0,True,0.11589046758773779,0.09177917347678356,69.30163491446903
+A7_IDENTITY_PROTECTED,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8767850000294857,516375361.0,False,0.0,0.13899483910324603,0.0
+A8_RANDOM_PROTECTED,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7641290999599732,516375361.0,False,0.0,0.13694623686098586,0.0
+A10_FULL_PUD_FREEZE,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.812863000028301,516375361.0,False,0.0,0.10414002595974771,0.0
+A3_P_ONLY,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9126014999928884,516375361.0,False,0.0,0.1198520547332071,0.0
+A4_P_PLUS_U,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9646142999990843,516375361.0,False,0.0,0.10414002595974771,0.0
+A5_P_PLUS_D,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7995975000085309,516375361.0,False,0.0,0.12314702385698491,0.0
+A9_PCA_PROTECTED,4,0,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8404481000034139,516375361.0,False,0.0,0.10662677144169726,0.0
+B2_STRONG_GENERIC,4,0,38,head,"['head.weight', 'head.bias']",130,0.17584341261348996,0.7442373000085354,,,,,
+A2_DUAL_CONTROL,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9208653999958187,3365316477.0,False,0.0,0.1308938241743031,0.0
+A6_PUD_ALL_ADAPT,4,0,38,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.9233537000254728,3365316477.0,True,0.07359208400961038,0.10675911055087983,69.29584214395038
+A7_IDENTITY_PROTECTED,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7895112000405788,3365316477.0,False,0.0,0.11916774446964182,0.0
+A8_RANDOM_PROTECTED,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7681416000123136,3365316477.0,False,0.0,0.12869047805841036,0.0
+A10_FULL_PUD_FREEZE,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6713377000414766,3365316477.0,False,0.0,0.11338585243234359,0.0
+A3_P_ONLY,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8830161999794655,3365316477.0,False,0.0,0.12829777174506632,0.0
+A4_P_PLUS_U,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8598577000084333,3365316477.0,False,0.0,0.11338585243234359,0.0
+A5_P_PLUS_D,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9154740999802016,3365316477.0,False,0.0,0.12060253686565203,0.0
+A9_PCA_PROTECTED,4,0,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9127922999905422,3365316477.0,False,0.0,0.11836323388048113,0.0
+B2_STRONG_GENERIC,4,0,52,head,"['head.weight', 'head.bias']",130,0.12901980277010616,0.7718015999998897,,,,,
+A2_DUAL_CONTROL,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8904041000059806,688481351.0,False,0.0,0.13368832927392485,0.0
+A6_PUD_ALL_ADAPT,4,0,52,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.936893800040707,688481351.0,True,0.09438428045836438,0.09490598555685646,69.28832153600564
+A7_IDENTITY_PROTECTED,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.819826299964916,688481351.0,False,0.0,0.11191757255520486,0.0
+A8_RANDOM_PROTECTED,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.872484199993778,688481351.0,False,0.0,0.10946105069024671,0.0
+A10_FULL_PUD_FREEZE,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8572058000136167,688481351.0,False,0.0,0.10903997518482347,0.0
+A3_P_ONLY,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7896317000268027,688481351.0,False,0.0,0.11439361662838543,0.0
+A4_P_PLUS_U,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8232037999550812,688481351.0,False,0.0,0.10903997518482347,0.0
+A5_P_PLUS_D,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8674731999635696,688481351.0,False,0.0,0.10390800993547503,0.0
+A9_PCA_PROTECTED,4,0,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.890831500000786,688481351.0,False,0.0,0.10999244607257037,0.0

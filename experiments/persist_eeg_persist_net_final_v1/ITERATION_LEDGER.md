@@ -33,3 +33,15 @@ Repair 6 moves the unchanged frozen run under Windows Task Scheduler after an
 OpenSSH connection reset killed its descendant processes. No outcome marker or
 completed run existed. This is execution-lifetime hardening only; the entire
 15-run development matrix is restarted without inspecting outcomes.
+
+Repair 7 is post-run orchestration hardening: Windows returned null child exit
+codes even though all 15 completion markers and result tables were valid and
+stderr was empty. No training was repeated and no scientific setting changed;
+the unchanged finalizer was run after an explicit completeness audit.
+
+Repair 8 makes the FULL main-table CI reuse the already registered primary
+subject bootstrap instead of displaying a second independently seeded Monte
+Carlo approximation of the same contrast. No statistic or gate was changed.
+
+Repair 9 removes pandas' optional `tabulate` dependency from final Markdown
+rendering. It is a result-only portability fix and does not alter any number.

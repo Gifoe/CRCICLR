@@ -43,14 +43,43 @@ function Reap-Finished {
     foreach ($Entry in $script:Running) {
         $Entry.Process.Refresh()
         if ($Entry.Process.HasExited) {
+            # PowerShell can expose a null ExitCode for a redirected process
+            # until WaitForExit() has completed the native handle bookkeeping.
+            # This occurred for all 15 successful OpenBMI workers in the final
+            # run and made `$null -ne 0` falsely fail orchestration.
+            $Entry.Process.WaitForExit()
             $Finished = Get-Date
             $Code = $Entry.Process.ExitCode
+            $ExitCodeSource = "process_exit_code"
+            if ($null -eq $Code) {
+                $DonePath = Join-Path $Runtime ("runs\fold-{0}\seed-{1}\DONE.json" -f $Entry.Fold, $Entry.Seed)
+                $ErrorBytes = if (Test-Path -LiteralPath $Entry.Error) {
+                    (Get-Item -LiteralPath $Entry.Error).Length
+                }
+                else {
+                    -1
+                }
+                $DoneValid = $false
+                if (Test-Path -LiteralPath $DonePath) {
+                    $DoneState = Get-Content -LiteralPath $DonePath -Raw | ConvertFrom-Json
+                    $DoneValid = $DoneState.status -eq "RUN_COMPLETE"
+                }
+                if ($DoneValid -and $ErrorBytes -eq 0) {
+                    $Code = 0
+                    $ExitCodeSource = "recovered_from_RUN_COMPLETE_and_empty_stderr"
+                }
+                else {
+                    $Code = -999
+                    $ExitCodeSource = "missing_exit_code_without_completion_evidence"
+                }
+            }
             Write-Output ("FINISHED fold={0} seed={1} pid={2} exit={3}" -f $Entry.Fold, $Entry.Seed, $Entry.Process.Id, $Code)
             $script:Ledger += [pscustomobject]@{
                 fold = $Entry.Fold
                 seed = $Entry.Seed
                 pid = $Entry.Process.Id
                 exit_code = $Code
+                exit_code_source = $ExitCodeSource
                 started = $Entry.Started.ToString("o")
                 finished = $Finished.ToString("o")
                 output = $Entry.Output

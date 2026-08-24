@@ -1,0 +1,36 @@
+{
+  "all_checks_passed": true,
+  "cache_sha256": "60d5615f6c403e8a87b2faa11952369861000ad79377b333678945b2d8ef100f",
+  "finite_sample_check": true,
+  "holdout_count": 14,
+  "holdout_eeg_materialized": false,
+  "holdout_labels_materialized": false,
+  "labels": [
+    0,
+    1
+  ],
+  "manifest_exists": true,
+  "manifest_sha256": "29e336c1a2cbee01360027f0033f5e40c37117b16d3b6281d8fd3bc02bd78d7f",
+  "materialized_subjects_equal_search": true,
+  "materialized_subjects_intersect_holdout": false,
+  "metadata_sha256": "3ba900070b71a4681603e1362993dbc699f9d9341d00ae70dbcc65ec74f6762f",
+  "outer_test_used": false,
+  "per_cell_counts": [
+    50
+  ],
+  "predicate_pushdown_used_before_materialization": true,
+  "rows": 8000,
+  "sessions": [
+    1,
+    2
+  ],
+  "signal_dtype": "float32",
+  "signal_shape": [
+    8000,
+    62,
+    1000
+  ],
+  "split_read_for_exclusion_only": true,
+  "split_sha256": "6b771f283efc502957756c60488cd4481794a93acecee39fedd3a9dae1281e97",
+  "subjects": 40
+}

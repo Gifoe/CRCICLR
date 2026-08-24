@@ -91,3 +91,47 @@ formula.
   source-training progress had been emitted.
 - Rerun scope: all 15 final development runs from the beginning. The five
   source-only selection locks remain unchanged.
+
+## Post-run orchestration repair 7
+
+- Symptom: all 15 workers wrote valid `RUN_COMPLETE` markers and complete
+  subject/mechanism tables with empty stderr, but the Task Scheduler wrapper
+  stopped before finalization. PowerShell had serialized every redirected
+  child process `ExitCode` as `null`; the expression `$null -ne 0` then falsely
+  marked every worker as failed.
+- Repair: `run_all_server.ps1` now calls `WaitForExit()` before reading the
+  native exit code. If Windows still returns `null`, it permits a zero-code
+  recovery only when the exact fold/seed `DONE.json` says `RUN_COMPLETE` and
+  that worker's stderr is empty; otherwise it records `-999` and fails closed.
+- Scientific impact: none. No model, data, split, seed, checkpoint, outcome,
+  statistic, gate, or report definition changed. The already completed workers
+  were not rerun. The unchanged frozen finalizer was invoked once after an
+  explicit audit found 15/15 valid completion markers, 15/15 subject tables,
+  15/15 mechanism tables, and zero worker-error bytes.
+- Outcome access before repair: all frozen development outcomes had been
+  produced, but no aggregate performance result had been read and no model
+  change was made. This repair only restores deterministic post-run control
+  flow and records its evidence.
+
+## Reporting consistency repair 8
+
+- Symptom: the headline primary FULL-versus-baseline CI and the FULL row in the
+  main table used two separately seeded 10,000-draw Monte Carlo bootstraps of
+  the same 40 subject-level differences. Both were valid, but their endpoints
+  differed slightly and created an avoidable reporting inconsistency.
+- Repair: the exported FULL table row now reuses the registered primary
+  bootstrap object already used for G2 and the headline. Other exploratory
+  method rows retain their deterministic method-specific streams.
+- Scientific impact: none. Subject differences, point estimate, gate values,
+  pass/fail decisions, model outputs, and the registered primary bootstrap are
+  unchanged. This is a presentation-only deduplication after finalization.
+
+## Reporting portability repair 9
+
+- Symptom: independent local replay of the result-only finalizer reached the
+  Markdown export and failed because pandas treats `tabulate` as an optional
+  dependency. All JSON/CSV/statistical outputs had already completed.
+- Repair: the fixed, small main table now uses an internal deterministic
+  Markdown renderer. No numeric computation or artifact schema changed.
+- Scientific impact: none. The repair only removes an unnecessary optional
+  reporting dependency; the result-only finalizer was rerun without training.

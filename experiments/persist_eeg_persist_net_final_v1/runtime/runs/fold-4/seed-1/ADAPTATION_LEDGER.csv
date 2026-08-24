@@ -1,0 +1,49 @@
+method,fold,seed,subject_id,strategy,trainable_parameter_names,trainable_parameters,parameter_update_l2,adaptation_time_s,adaptation_seed,all_adapt,protected_parameter_update_l2,adaptive_parameter_update_l2,protected_buffer_update_l2
+B2_STRONG_GENERIC,4,1,3,head,"['head.weight', 'head.bias']",130,0.15437075669697486,0.7427922999486327,,,,,
+A2_DUAL_CONTROL,4,1,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7053351000067778,1901337622.0,False,0.0,0.16477078932210884,0.0
+A6_PUD_ALL_ADAPT,4,1,3,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7392658000462689,1901337622.0,True,0.14093695542064832,0.10920934766862314,69.4698473704275
+A7_IDENTITY_PROTECTED,4,1,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.5955897000385448,1901337622.0,False,0.0,0.11336289487033319,0.0
+A8_RANDOM_PROTECTED,4,1,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8369716000161134,1901337622.0,False,0.0,0.13137582473338352,0.0
+A10_FULL_PUD_FREEZE,4,1,3,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7867243000073358,1901337622.0,False,0.0,0.17538374652893787,0.0
+B2_STRONG_GENERIC,4,1,8,head,"['head.weight', 'head.bias']",130,0.16411509480119904,0.7233424999867566,,,,,
+A2_DUAL_CONTROL,4,1,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7721618000068702,704801056.0,False,0.0,0.17095051891464094,0.0
+A6_PUD_ALL_ADAPT,4,1,8,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7164474000455812,704801056.0,True,0.11551523180962936,0.14190884706509532,69.29215387774809
+A7_IDENTITY_PROTECTED,4,1,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6916732999961823,704801056.0,False,0.0,0.13053834537123,0.0
+A8_RANDOM_PROTECTED,4,1,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7622995999990962,704801056.0,False,0.0,0.13660923198744604,0.0
+A10_FULL_PUD_FREEZE,4,1,8,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8067545000230893,704801056.0,False,0.0,0.12722100687956292,0.0
+B2_STRONG_GENERIC,4,1,11,head,"['head.weight', 'head.bias']",130,0.20220514552503607,0.7033699000021443,,,,,
+A2_DUAL_CONTROL,4,1,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7430040999897756,727013261.0,False,0.0,0.2679746814827583,0.0
+A6_PUD_ALL_ADAPT,4,1,11,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.8371839000028558,727013261.0,True,0.19633462511120509,0.11321195741961644,69.29827608158672
+A7_IDENTITY_PROTECTED,4,1,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7084373999969102,727013261.0,False,0.0,0.20513018815754727,0.0
+A8_RANDOM_PROTECTED,4,1,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.5611059999791905,727013261.0,False,0.0,0.19676999168292145,0.0
+A10_FULL_PUD_FREEZE,4,1,11,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.5325001000310294,727013261.0,False,0.0,0.1298878254675938,0.0
+B2_STRONG_GENERIC,4,1,27,head,"['head.weight', 'head.bias']",130,0.14550589233770014,0.6468735000235029,,,,,
+A2_DUAL_CONTROL,4,1,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7097281999886036,1895970996.0,False,0.0,0.20055257332648804,0.0
+A6_PUD_ALL_ADAPT,4,1,27,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.7704446999705397,1895970996.0,True,0.11479745681291705,0.11996446211590091,69.29305466286304
+A7_IDENTITY_PROTECTED,4,1,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6003895999747328,1895970996.0,False,0.0,0.13739699741012715,0.0
+A8_RANDOM_PROTECTED,4,1,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.5812810999923386,1895970996.0,False,0.0,0.16244659337114986,0.0
+A10_FULL_PUD_FREEZE,4,1,27,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6201699000084773,1895970996.0,False,0.0,0.14900394659239322,0.0
+B2_STRONG_GENERIC,4,1,28,head,"['head.weight', 'head.bias']",130,0.12563129682307425,0.5753251999849454,,,,,
+A2_DUAL_CONTROL,4,1,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.5746040000231005,3210130860.0,False,0.0,0.12580177757604963,0.0
+A6_PUD_ALL_ADAPT,4,1,28,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.6165400000172667,3210130860.0,True,0.09995776146810552,0.14398876823222534,69.29237565964029
+A7_IDENTITY_PROTECTED,4,1,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6588422000058927,3210130860.0,False,0.0,0.150595541048207,0.0
+A8_RANDOM_PROTECTED,4,1,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8469271000358276,3210130860.0,False,0.0,0.14216767184290677,0.0
+A10_FULL_PUD_FREEZE,4,1,28,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.717365599994082,3210130860.0,False,0.0,0.16285390251264595,0.0
+B2_STRONG_GENERIC,4,1,30,head,"['head.weight', 'head.bias']",130,0.17558361763410854,0.772712700010743,,,,,
+A2_DUAL_CONTROL,4,1,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8116316000232473,4237414516.0,False,0.0,0.12128390542916147,0.0
+A6_PUD_ALL_ADAPT,4,1,30,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.8900519000017084,4237414516.0,True,0.11030541133777365,0.1170275358215615,69.28438901522702
+A7_IDENTITY_PROTECTED,4,1,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.9144601000007242,4237414516.0,False,0.0,0.16360135707343199,0.0
+A8_RANDOM_PROTECTED,4,1,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.8278951999964193,4237414516.0,False,0.0,0.14144215713811728,0.0
+A10_FULL_PUD_FREEZE,4,1,30,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.925757400051225,4237414516.0,False,0.0,0.15523878946540534,0.0
+B2_STRONG_GENERIC,4,1,38,head,"['head.weight', 'head.bias']",130,0.18404985078273284,0.6836763000464998,,,,,
+A2_DUAL_CONTROL,4,1,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7391494999756105,2568002799.0,False,0.0,0.19267876064957085,0.0
+A6_PUD_ALL_ADAPT,4,1,38,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.8101893000421114,2568002799.0,True,0.10459184309106297,0.13075168371210646,69.28945510338507
+A7_IDENTITY_PROTECTED,4,1,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7876122000161558,2568002799.0,False,0.0,0.15323902742271828,0.0
+A8_RANDOM_PROTECTED,4,1,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7392100000288337,2568002799.0,False,0.0,0.1636180520042353,0.0
+A10_FULL_PUD_FREEZE,4,1,38,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7254227999947034,2568002799.0,False,0.0,0.12105835456916218,0.0
+B2_STRONG_GENERIC,4,1,52,head,"['head.weight', 'head.bias']",130,0.1428282571416171,0.7076063999556936,,,,,
+A2_DUAL_CONTROL,4,1,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6205268999910913,1952942775.0,False,0.0,0.09215046720454483,0.0
+A6_PUD_ALL_ADAPT,4,1,52,head,"['protected_head.weight', 'protected_head.bias', 'adaptive_head.weight', 'adaptive_head.bias']",196,,0.6424224000074901,1952942775.0,True,0.06711868340794624,0.11009332569668971,69.29256689082962
+A7_IDENTITY_PROTECTED,4,1,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7543008999782614,1952942775.0,False,0.0,0.08701313986473015,0.0
+A8_RANDOM_PROTECTED,4,1,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.6606776000116952,1952942775.0,False,0.0,0.09690567568478796,0.0
+A10_FULL_PUD_FREEZE,4,1,52,head,"['adaptive_head.weight', 'adaptive_head.bias']",98,,0.7816190000157803,1952942775.0,False,0.0,0.11640257009007655,0.0
