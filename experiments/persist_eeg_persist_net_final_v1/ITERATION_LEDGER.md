@@ -28,3 +28,8 @@ each fold/seed/subject. It was identified by static audit before any outcome
 marker was emitted; five partial source-training jobs were stopped and all 15
 final development jobs are rerun. This is a controlled-comparison repair, not
 an outcome-driven scientific iteration.
+
+Repair 6 moves the unchanged frozen run under Windows Task Scheduler after an
+OpenSSH connection reset killed its descendant processes. No outcome marker or
+completed run existed. This is execution-lifetime hardening only; the entire
+15-run development matrix is restarted without inspecting outcomes.

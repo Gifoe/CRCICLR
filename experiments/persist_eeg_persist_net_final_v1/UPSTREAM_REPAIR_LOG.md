@@ -74,3 +74,20 @@ formula.
 - Rerun scope: all 15 final development runs from the beginning. The completed
   five source-only selection locks remain valid because this repair affects
   target adaptation only.
+
+## Server orchestration repair 6
+
+- Symptom: the first repaired five-way run was launched as a descendant of an
+  interactive Windows OpenSSH session. When that SSH connection was reset,
+  the OpenSSH job object terminated the orchestrator and all five Python
+  children even though PowerShell `Start-Process` had used a hidden window.
+- Repair: final runs are launched by Windows Task Scheduler using
+  `code/run_scheduled_server.ps1`. The task has an independent lifetime and the
+  wrapper records stdout, stderr, and a machine-readable completion state.
+- Scientific impact: none. No model, split, seed, certificate, optimizer,
+  metric, outcome, or gate changed.
+- Outcome access before repair: none. At interruption, a scan found zero
+  `[outcome]` markers, zero `DONE.json` files, and zero run-error bytes. Only
+  source-training progress had been emitted.
+- Rerun scope: all 15 final development runs from the beginning. The five
+  source-only selection locks remain unchanged.
