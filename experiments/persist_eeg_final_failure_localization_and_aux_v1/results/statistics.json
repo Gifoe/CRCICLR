@@ -1,0 +1,60 @@
+{
+  "phase": "final_closure",
+  "pud_aux": {
+    "WBCIC_outer_accessed": false,
+    "baseline_source": "frozen legal replay_per_subject.csv B0_VANILLA_EEGNET; no retraining",
+    "ci95_l": -0.01725000000000001,
+    "ci95_u": -0.0013333333333333528,
+    "delta": -0.009333333333333332,
+    "fold_BA": {
+      "PUD-Aux": [
+        0.775,
+        0.74375,
+        0.7829166666666666,
+        0.7912500000000001,
+        0.7912499999999999
+      ],
+      "Vanilla": [
+        0.7904166666666667,
+        0.7466666666666666,
+        0.7908333333333334,
+        0.7925,
+        0.8104166666666667
+      ]
+    },
+    "gate": {
+      "G1": false,
+      "G2": false,
+      "G3": false,
+      "G4": false,
+      "G5": true,
+      "G5_identity": true,
+      "G5_random": true,
+      "G6": true,
+      "G7": true
+    },
+    "holdout_accessed": false,
+    "n_subjects": 40,
+    "negative_subjects": 22,
+    "positive_folds": 0,
+    "positive_seeds": 1,
+    "positive_subjects": 13,
+    "pud_aux_BA": 0.7768333333333334,
+    "seed_BA": {
+      "PUD-Aux": [
+        0.7755,
+        0.7665,
+        0.7885
+      ],
+      "Vanilla": [
+        0.78425,
+        0.78625,
+        0.788
+      ]
+    },
+    "success": false,
+    "terminal": "PUD_AUX_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED",
+    "vanilla_BA": 0.7861666666666667,
+    "zero_subjects": 5
+  }
+}

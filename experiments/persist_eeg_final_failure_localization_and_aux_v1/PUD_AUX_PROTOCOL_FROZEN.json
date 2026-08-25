@@ -1,0 +1,26 @@
+{
+  "WBCIC_outer_accessed": false,
+  "architecture": "single-path EEGNet F8/F16 embedding64 dropout0.25 + training-only linear aux head",
+  "controls": [
+    "Vanilla",
+    "Random-Aux",
+    "Identity-Aux",
+    "Full-Teacher-KD-Aux",
+    "P-only-Aux",
+    "PUD-Aux"
+  ],
+  "folds": 5,
+  "internal_holdout_accessed": false,
+  "lambdas": [
+    0.05,
+    0.1,
+    0.25
+  ],
+  "outcome_session": 2,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection": "source-subject inner validation only"
+}

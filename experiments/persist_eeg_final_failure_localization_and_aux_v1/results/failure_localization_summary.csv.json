@@ -1,0 +1,58 @@
+{
+  "WBCIC_outer_accessed": false,
+  "frozen_means": {
+    "A2_SOURCE_ONLY": 0.7776666666666666,
+    "B0_VANILLA_EEGNET": 0.7861666666666667,
+    "B1_STRONG_EEGNET": 0.7915,
+    "IDENTITY_SOURCE_ONLY": 0.7678333333333334,
+    "PUD_AFTER_ADAPT": 0.7639166666666667,
+    "PUD_SOURCE_ONLY": 0.7565000000000001,
+    "RANDOM_SOURCE_ONLY": 0.7653333333333333
+  },
+  "hypotheses": {
+    "H1_teacher_relative_importance_mismatch": {
+      "evidence": "task consequence is measurable but does not predict future BA reliably",
+      "status": "PARTIAL"
+    },
+    "H2_source_future_certificate_mismatch": {
+      "evidence": "frozen source directions evaluated on unseen Session 2",
+      "status": "PARTIAL"
+    },
+    "H3_hard_factorization_brittle_bottleneck": {
+      "effect": {
+        "R_P_dual": 0.5026111518343289,
+        "R_P_pud": 0.6826850240429242,
+        "identity_erase_harm": 0.010499999999999989,
+        "pud_erase_harm": 0.1355833333333333,
+        "random_erase_harm": 0.02358333333333332
+      },
+      "status": "SUPPORT"
+    },
+    "H4_optimization_gradient_conflict": {
+      "evidence": "gradient cosines are reported without optimizer steps",
+      "status": "PARTIAL"
+    },
+    "H5_calibration_margin_failure": {
+      "evidence": "calibration audit is diagnostic; frozen BA loss is not reduced to calibration alone",
+      "status": "NOT_SUPPORT"
+    },
+    "H6_adaptation_failure": {
+      "evidence": 0.007416666666666627,
+      "status": "NOT_SUPPORT"
+    },
+    "H7_capacity_only_failure": {
+      "evidence": "strong single-path and dual controls are available",
+      "status": "NOT_SUPPORT"
+    }
+  },
+  "internal_holdout_accessed": false,
+  "primary_diagnosis": "hard factorization concentrates task-consequential evidence and loses future-session utility; auxiliary/target adaptation can only partially rescue it",
+  "pud_functional_teacher_correlation": 0.8209233453498095,
+  "purity": {
+    "WBCIC_outer_accessed": false,
+    "internal_holdout_accessed": false,
+    "issues": [],
+    "pass": true,
+    "source_artifact_fingerprint": "64d4562de67dc2fa6e9fa769fc381f94dd3cd8fa8be011ce8237a9e29eef1d0e"
+  }
+}
