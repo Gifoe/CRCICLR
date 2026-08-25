@@ -13,7 +13,7 @@ The first Phase-A aggregation attempt produced zero joined subjects and stopped 
 ## Hierarchical-bootstrap implementation acceleration
 
 The first valid hierarchical-bootstrap run was interrupted because the initial implementation repeatedly allocated pandas subsets inside every nested draw. The implementation now pre-indexes the identical fold/run/direction/subject cells as NumPy arrays and computes the same 5,000 draws with the same seed and hierarchy. Statistical units, resampling probabilities, draw count, source scores, outcomes, and terminal rules are unchanged.
-## Phase A protocol repairs
 
-Repaired the B0 join using the frozen replay table; enforced B3 in H3; mapped PUD basis columns to their actual certified coordinate indices; separated consequence transfer from score transfer; replaced direction-subject bootstrap with fold/run/direction/subject hierarchical resampling. No training or checkpoint modification occurred.
+## Parallel-run protocol write guard
 
+After the first Matched-TaskOnly candidate completed successfully, Phase B was authorized to run independent fold/seed jobs concurrently. The static `PHASE_B_MATCHED_PROTOCOL.md` writer now returns when the already-created identical report exists, avoiding a shared temporary-file race. Per-run training inputs, seeds, caches, selections, and outputs remain isolated by fold/seed.
