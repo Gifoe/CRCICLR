@@ -70,8 +70,9 @@ def build_consequence_table() -> tuple[pd.DataFrame, pd.DataFrame]:
     mechanism = pd.read_csv(SOURCE / "results" / "mechanism_raw.csv")
     raw = pd.read_csv(SOURCE / "results" / "source_only_raw.csv")
     replay = pd.read_csv(SOURCE / "results" / "replay_per_subject.csv")
+    adapted_raw = pd.read_csv(SOURCE / "results" / "adapted_authoritative_raw.csv")
     reliance = pd.read_csv(PREVIOUS / "results" / "reliance_metrics.csv")
-    for frame in (mechanism, raw, replay, reliance):
+    for frame in (mechanism, raw, replay, adapted_raw, reliance):
         frame["subject_id"] = frame.subject_id.astype(str)
 
     keys = ["fold", "subject_id"]
@@ -101,7 +102,7 @@ def build_consequence_table() -> tuple[pd.DataFrame, pd.DataFrame]:
     vanilla = performance(replay, "B0_VANILLA_EEGNET", "vanilla_BA")
     dual = performance(raw, "A2_SOURCE_ONLY", "dual_BA")
     pud = performance(raw, "PUD_SOURCE_ONLY", "pud_source_BA")
-    adapted = performance(raw, "PUD_AFTER_ADAPT", "pud_adapted_BA")
+    adapted = performance(adapted_raw, "PUD_AFTER_ADAPT", "pud_adapted_BA")
     table = pud_mechanism.merge(pud_reliance, on=keys, validate="one_to_one")
     for frame in (vanilla, dual, pud, adapted):
         table = table.merge(frame, on=keys, validate="one_to_one")

@@ -196,6 +196,7 @@ def audit_frozen_tables() -> dict[str, Any]:
     files = {
         "source_only_raw": SOURCE / "results" / "source_only_raw.csv",
         "replay_per_subject": SOURCE / "results" / "replay_per_subject.csv",
+        "adapted_authoritative_raw": SOURCE / "results" / "adapted_authoritative_raw.csv",
         "mechanism_raw": SOURCE / "results" / "mechanism_raw.csv",
         "per_subject_results": SOURCE / "results" / "per_subject_results.csv",
         "certificate_transfer": PREVIOUS / "results" / "certificate_transfer.csv",
