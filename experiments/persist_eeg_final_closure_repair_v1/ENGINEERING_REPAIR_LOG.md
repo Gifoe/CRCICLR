@@ -17,3 +17,5 @@ The first valid hierarchical-bootstrap run was interrupted because the initial i
 ## Parallel-run protocol write guard
 
 After the first Matched-TaskOnly candidate completed successfully, Phase B was authorized to run independent fold/seed jobs concurrently. The static `PHASE_B_MATCHED_PROTOCOL.md` writer now returns when the already-created identical report exists, avoiding a shared temporary-file race. Per-run training inputs, seeds, caches, selections, and outputs remain isolated by fold/seed.
+
+A bounded server scheduler waits for all three fold-0 pilot seeds, fails on any traceback, and then runs at most three independent remaining fold/seed processes. This changes wall-clock scheduling only; each job's frozen initialization, minibatch order, source rows, selection, and result files are unchanged.
