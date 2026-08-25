@@ -134,8 +134,26 @@ def expected_subjects() -> tuple[str, ...]:
     return tuple(map(str, protocol()["dataset"]["subject_pool"]))
 
 
-def restore_authorized_labels(data: core.DevelopmentData) -> core.DevelopmentData:
-    meta_path = FINAL / "runtime" / "cache" / "OPENBMI_V8_SEARCH_MI_METADATA.parquet"
+def data_experiment() -> Path:
+    """Resolve the authorized cache from explicit env or frozen RUN_LOCK provenance."""
+    explicit = os.environ.get("PERSIST_DATA_EXPERIMENT", "").strip()
+    candidates: list[Path] = [Path(explicit)] if explicit else []
+    candidates.append(FINAL)
+    lock_path = historical_run_dir(0, 0) / "RUN_LOCK.json"
+    if lock_path.is_file():
+        lock = read_json(lock_path)
+        normalizer = Path(str(lock["normalizer"]))
+        candidates.append(normalizer.parents[2])
+    for candidate in candidates:
+        metadata = candidate / "runtime" / "cache" / "OPENBMI_V8_SEARCH_MI_METADATA.parquet"
+        signal = candidate / "runtime" / "cache" / "OPENBMI_V8_SEARCH_MI_RAW.npy"
+        if metadata.is_file() and signal.is_file():
+            return candidate
+    raise FileNotFoundError("authorized 40-subject cache was not found in explicit, repository, or frozen RUN_LOCK locations")
+
+
+def restore_authorized_labels(data: core.DevelopmentData, source_experiment: Path) -> core.DevelopmentData:
+    meta_path = source_experiment / "runtime" / "cache" / "OPENBMI_V8_SEARCH_MI_METADATA.parquet"
     full = pd.read_parquet(meta_path, columns=["subject_id", "session_id", "label"], engine="pyarrow")
     if len(full) != len(data.metadata):
         raise RuntimeError("authorized metadata row count changed")
@@ -151,10 +169,11 @@ def restore_authorized_labels(data: core.DevelopmentData) -> core.DevelopmentDat
 
 
 def load_authorized_data() -> core.DevelopmentData:
-    data, audit = diag.load_authorized_s2_data(FINAL)
+    source_experiment = data_experiment()
+    data, audit = diag.load_authorized_s2_data(source_experiment)
     if audit.get("pass") is not True:
         raise RuntimeError(f"authorized data audit failed: {audit}")
-    data = restore_authorized_labels(data)
+    data = restore_authorized_labels(data, source_experiment)
     guard_authorized_data(data)
     return data
 
