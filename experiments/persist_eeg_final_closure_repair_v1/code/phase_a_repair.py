@@ -232,6 +232,24 @@ def _hierarchical_bootstrap(
     if source:
         point_pearson = float(np.corrcoef(direction_rows[source], direction_rows[outcome])[0, 1])
         point_spearman = float(stats.spearmanr(direction_rows[source], direction_rows[outcome]).statistic)
+    # Pre-index every nested cell once. Re-filtering pandas frames inside every
+    # draw is equivalent statistically but needlessly turns 5,000 draws into
+    # millions of dataframe allocations.
+    cells: dict[int, dict[int, list[tuple[float | None, np.ndarray]]]] = {}
+    for (fold, run_seed, _direction), cell in subject_rows.groupby(["fold", "seed", "certificate_direction"], sort=True):
+        cells.setdefault(int(fold), {}).setdefault(int(run_seed), []).append(
+            (float(cell[source].iloc[0]) if source else None, cell[outcome].to_numpy(dtype=np.float64))
+        )
+
+    def fast_pearson(first: np.ndarray, second: np.ndarray) -> float:
+        a = first - first.mean()
+        b = second - second.mean()
+        denominator = float(np.linalg.norm(a) * np.linalg.norm(b))
+        return float(np.dot(a, b) / denominator) if denominator > 0 else math.nan
+
+    def fast_spearman(first: np.ndarray, second: np.ndarray) -> float:
+        return fast_pearson(stats.rankdata(first), stats.rankdata(second))
+
     rng = np.random.default_rng(seed)
     samples = np.empty(draws, dtype=np.float64)
     pearsons = np.empty(draws, dtype=np.float64) if source else None
@@ -243,33 +261,31 @@ def _hierarchical_bootstrap(
         units_y: list[float] = []
         for _ in folds:
             fold = int(rng.choice(folds))
-            fold_frame = subject_rows[subject_rows.fold.eq(fold)]
-            seeds = sorted(fold_frame.seed.unique())
+            seeds = sorted(cells[fold])
             run_values: list[float] = []
             for _ in seeds:
                 run_seed = int(rng.choice(seeds))
-                run_frame = fold_frame[fold_frame.seed.eq(run_seed)]
-                directions = sorted(run_frame.certificate_direction.unique())
+                run_cells = cells[fold][run_seed]
                 direction_values: list[float] = []
-                for _ in directions:
-                    direction = int(rng.choice(directions))
-                    cell = run_frame[run_frame.certificate_direction.eq(direction)]
-                    sampled = cell.iloc[rng.integers(0, len(cell), size=len(cell))]
-                    value_y = float(sampled[outcome].mean())
+                for _ in run_cells:
+                    cell_source, cell_outcomes = run_cells[int(rng.integers(0, len(run_cells)))]
+                    value_y = float(cell_outcomes[rng.integers(0, len(cell_outcomes), size=len(cell_outcomes))].mean())
                     direction_values.append(value_y)
                     if source:
-                        units_x.append(float(cell[source].iloc[0]))
+                        units_x.append(float(cell_source))
                         units_y.append(value_y)
                 run_values.append(float(np.mean(direction_values)))
             fold_values.append(float(np.mean(run_values)))
         samples[draw] = float(np.mean(fold_values))
         if source:
-            if len(set(units_x)) < 2 or len(set(units_y)) < 2:
+            xa = np.asarray(units_x, dtype=np.float64)
+            ya = np.asarray(units_y, dtype=np.float64)
+            if np.unique(xa).size < 2 or np.unique(ya).size < 2:
                 pearsons[draw] = math.nan
                 spearmans[draw] = math.nan
             else:
-                pearsons[draw] = float(np.corrcoef(units_x, units_y)[0, 1])
-                spearmans[draw] = float(stats.spearmanr(units_x, units_y).statistic)
+                pearsons[draw] = fast_pearson(xa, ya)
+                spearmans[draw] = fast_spearman(xa, ya)
     result: dict[str, Any] = {
         "n_folds": 5,
         "n_runs": int(direction_rows[["fold", "seed"]].drop_duplicates().shape[0]),
