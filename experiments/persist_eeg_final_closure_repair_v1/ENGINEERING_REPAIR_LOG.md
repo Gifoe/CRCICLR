@@ -23,3 +23,11 @@ A bounded server scheduler waits for all three fold-0 pilot seeds, fails on any 
 ## Post-run aggregation guard
 
 A separate server-side finalizer waits for all 15 valid `RUN_COMPLETE.json` markers and aborts if the bounded scheduler reports a traceback. It then invokes the already-frozen `matched_aux.py --aggregate` entry point exactly once. This prevents connection loss from leaving completed training unaggregated and does not alter any scientific computation.
+
+## Phase B matched repair
+
+Added strict inner_train-only teacher/certificate construction, post-selection outer rebuild, class-centered RMS-matched random targets, exact initialization/minibatch SHA audits, resumable fold/seed caches, and a newly trained Matched-TaskOnly control. Outcome Session-2 labels were evaluated only after each run's selection artifact was frozen.
+
+## Independent final artifact validation
+
+After aggregation, a separate validator rechecks row/method/subject/seed counts, duplicate keys, fold membership, all 15 completion markers, inner and outer initialization SHA matching, nested subject separation, outcome-selection guards, frozen Phase-A hashes, restricted-access flags, gate/terminal consistency, and required final artifacts. It writes only `results/final_validation.json`; no metric or outcome is recomputed for model selection.

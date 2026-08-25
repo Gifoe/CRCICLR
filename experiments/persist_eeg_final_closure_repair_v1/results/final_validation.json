@@ -1,0 +1,37 @@
+{
+  "OpenBMI_internal_holdout_accessed": false,
+  "WBCIC_outer_accessed": false,
+  "checks": {
+    "aggregate_integrity_pass": true,
+    "aggregate_restricted_access_false": true,
+    "all_15_run_markers_pass": true,
+    "eight_subjects_per_method_fold": true,
+    "forty_subjects": true,
+    "inner_initialization_and_order_match": true,
+    "no_duplicate_method_fold_seed_subject": true,
+    "one_outer_fold_per_subject": true,
+    "outer_initialization_and_order_match": true,
+    "phase_a_frozen_hashes_unchanged": true,
+    "reported_positive_folds_match": true,
+    "reported_positive_seeds_match": true,
+    "required_final_artifacts_exist": true,
+    "restricted_flags_false": true,
+    "rows_720": true,
+    "six_methods_120_rows_each": true,
+    "strict_nested_subject_and_outcome_guard": true,
+    "terminal_matches_prefrozen_gates": true,
+    "three_seeds_per_method_subject": true
+  },
+  "methods": {
+    "Full-Teacher-KD-Aux": 120,
+    "Identity-Aux": 120,
+    "Matched-TaskOnly": 120,
+    "P-only-Aux": 120,
+    "PUD-Aux": 120,
+    "Random-Aux": 120
+  },
+  "pass": true,
+  "rows": 720,
+  "subjects": 40,
+  "terminal": "PUD_AUX_MATCHED_NOT_SUPPORTED"
+}
