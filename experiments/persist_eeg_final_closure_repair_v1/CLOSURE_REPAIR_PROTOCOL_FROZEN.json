@@ -1,0 +1,136 @@
+{
+  "schema": "PERSIST_EEG_FINAL_CLOSURE_REPAIR_V1",
+  "frozen_before_phase_a_reaggregation": true,
+  "frozen_before_phase_b_training": true,
+  "repository_base_sha": "3b519a138fe5074858717c70b611926fd3708f75",
+  "branch": "codex/persist-eeg-final-closure-repair-v1",
+  "dataset": {
+    "benchmark": "OpenBMI_MI_S1_to_S2",
+    "pool": "V8_SEARCH",
+    "subject_pool": ["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "14", "15", "16", "19", "20", "21", "22", "23", "26", "27", "28", "30", "31", "32", "33", "34", "35", "38", "40", "41", "43", "44", "45", "46", "47", "48", "49", "50", "52", "53"],
+    "subjects": 40,
+    "source_sessions": [1, 2],
+    "future_evaluation_session": 2,
+    "outer_folds": 5,
+    "seeds": [0, 1, 2],
+    "fold_manifest": "experiments/persist_eeg_persist_net_final_v1/protocol/DEVELOPMENT_FOLDS.json",
+    "folds": [
+      {"fold": 0, "outcome": ["15", "19", "32", "33", "41", "46", "47", "49"], "inner_validation": ["2", "16", "20", "26", "38", "45", "50", "53"]},
+      {"fold": 1, "outcome": ["2", "14", "34", "40", "43", "44", "48", "50"], "inner_validation": ["3", "10", "15", "19", "21", "45", "47", "52"]},
+      {"fold": 2, "outcome": ["9", "10", "16", "21", "22", "31", "45", "53"], "inner_validation": ["8", "11", "19", "33", "34", "38", "46", "47"]},
+      {"fold": 3, "outcome": ["1", "5", "6", "7", "20", "23", "26", "35"], "inner_validation": ["2", "11", "19", "27", "32", "38", "44", "49"]},
+      {"fold": 4, "outcome": ["3", "8", "11", "27", "28", "30", "38", "52"], "inner_validation": ["6", "15", "22", "34", "40", "43", "44", "50"]}
+    ]
+  },
+  "metrics": {
+    "BA": "balanced accuracy over the two MI classes",
+    "macro_f1": "unweighted mean of per-class F1",
+    "protected_branch_erasure_harm_BA": "BA(full logits) - BA(logits with protected contribution removed)",
+    "adaptive_branch_erasure_harm_BA": "BA(full logits) - BA(logits with adaptive contribution removed)",
+    "D_finite": "RMS centered-logit change caused by erasure",
+    "functional_teacher_correlation": "Pearson correlation between learned branch and frozen teacher target centered logits",
+    "R_P": "protected_margin_RMS / (protected_margin_RMS + adaptive_margin_RMS + 1e-12)",
+    "PUD_minus_Vanilla": "future-session subject BA(PUD source-only) - BA(frozen B0 replay)",
+    "PUD_minus_Dual": "future-session subject BA(PUD source-only) - BA(dual task-only)",
+    "adaptation_gain": "future-session subject BA(PUD adapted) - BA(PUD source-only)"
+  },
+  "statistics": {
+    "primary_unit": "subject",
+    "seed_aggregation": "average three frozen/training seeds within subject before subject-level inference",
+    "subject_bootstrap_draws": 10000,
+    "subject_bootstrap_seed": 9173,
+    "correlation_ci": "separate nonparametric subject-bootstrap intervals for Pearson and Spearman",
+    "association_labels": {
+      "SUPPORTED_POSITIVE_ASSOCIATION": "Pearson and Spearman are positive and both 95% bootstrap lower bounds exceed zero",
+      "SUPPORTED_NEGATIVE_ASSOCIATION": "Pearson and Spearman are negative and both 95% bootstrap upper bounds are below zero",
+      "DIRECTIONAL_BUT_UNCERTAIN": "Pearson and Spearman have the same nonzero sign but at least one interval includes zero",
+      "NO_RELIABLE_ASSOCIATION_ESTABLISHED": "point-estimate signs disagree, either estimate is zero/non-finite, or fewer than three independent subjects are available"
+    },
+    "hierarchical_bootstrap": {
+      "draws": 5000,
+      "seed": 24491,
+      "levels": ["outer_fold", "seed_run", "direction", "outcome_subject"],
+      "folds_resampled_with_replacement": true,
+      "conservative_note": "Only five outer folds exist; fold signs and run-level estimates are mandatory."
+    }
+  },
+  "phase_a": {
+    "training_forbidden": true,
+    "optimizer_step_forbidden": true,
+    "authoritative_B0": "experiments/persist_eeg_persist_net_source_only_diagnostic_v1/results/replay_per_subject.csv",
+    "checkpoint_hash_before_after_required": true,
+    "H3_bottleneck_gate": {
+      "B1": "mean paired subject delta R_P(PUD)-R_P(Dual)>0 and CI95 lower>0",
+      "B2": "PUD protected erasure harm exceeds Dual, Random, and Identity; PUD-Dual CI95 lower>0",
+      "B3_STRONG": "Spearman(R_P(PUD), PUD-minus-Vanilla)<0 and subject-bootstrap CI95 upper<0",
+      "B3_PARTIAL": "Spearman point estimate<0 but CI includes zero",
+      "B3_NOT_SUPPORT": "Spearman point estimate>=0",
+      "H3_STRONG": "B1 support AND B2 support AND B3 strong",
+      "H3_CONCENTRATION_ONLY": "B1 and B2 support but B3 is uncertain",
+      "H3_NO_HARM_LINK": "B3 not support; concentration must not be claimed to explain generalization loss"
+    },
+    "certificate_transfer": {
+      "consequence_question": "whether the same source-certified directions remain consequential on future Session 2 on average",
+      "score_question": "whether source U/D/P scores predict the magnitude or ordering of future consequence",
+      "source_score_mappings": ["source_U -> future_CE_harm", "source_D_finite -> future_D_finite", "source_P -> future_BA_harm"],
+      "ordinary_direction_subject_bootstrap_forbidden": true,
+      "consequence_labels": {
+        "DIRECTION_CONSEQUENCE_TRANSFER_SUPPORTED": "hierarchical CI lower bounds exceed zero for both future BA erasure harm and future CE erasure harm",
+        "DIRECTION_CONSEQUENCE_TRANSFER_WEAK": "both point estimates are positive but at least one hierarchical CI includes zero",
+        "DIRECTION_CONSEQUENCE_TRANSFER_NOT_SUPPORTED": "either point estimate is non-positive"
+      },
+      "score_labels": {
+        "CERTIFICATE_SCORE_TRANSFER_POSITIVE": "all three mappings have positive Pearson and Spearman estimates and all hierarchical CI lower bounds exceed zero",
+        "CERTIFICATE_SCORE_TRANSFER_NEGATIVE": "all three mappings have negative Pearson and Spearman estimates and all hierarchical CI upper bounds are below zero",
+        "CERTIFICATE_SCORE_TRANSFER_UNCERTAIN": "all three mappings have the same signed direction but at least one interval includes zero",
+        "CERTIFICATE_SCORE_TRANSFER_NOT_ESTABLISHED": "mapping signs disagree, estimates are non-finite, or neither common positive nor common negative ordering is established"
+      }
+    }
+  },
+  "phase_b": {
+    "models": ["Matched-TaskOnly", "Random-Aux", "Identity-Aux", "Full-Teacher-KD-Aux", "P-only-Aux", "PUD-Aux"],
+    "architecture": "single-path EEGNet F8/F16 embedding64 dropout0.25 task network plus training-only linear two-logit auxiliary head",
+    "inference": "ordinary EEGNet task head only",
+    "lambda_grid": [0.05, 0.1, 0.25],
+    "matched_task_only_lambda": 0.0,
+    "selection_metric": "inner-validation mean subject BA from task head only",
+    "selection_tie_break": "higher BA, then smaller lambda, then earlier best epoch",
+    "inner_teacher_training": "inner_train subjects only; fixed 40 epochs; no inner-validation checkpoint selection",
+    "outer_teacher_training": "all outer-source subjects; fixed 40 epochs after lambda selection",
+    "aux_training": {"max_epochs": 40, "minimum_epochs": 20, "patience": 12, "batch_size": 256, "lr": 0.0003, "weight_decay": 0.0005},
+    "exact_matching": "within fold/seed/stage all methods and lambdas share the same initialized complete AuxNet state, main-state SHA, minibatch seed/order, source rows, optimizer, normalization, task CE, and validation rule",
+    "strict_nested_selection": "inner teacher/certificate/identity/P/PUD/full-KD/random targets use inner_train only; inner_validation is task evaluation only; outer teacher/certificate/targets are rebuilt from all outer-source subjects after selection",
+    "random_target": "deterministic Gaussian logits centered over class first, then RMS matched to PUD functional target on the same legal source subset",
+    "primary_comparison": "PUD-Aux minus Matched-TaskOnly",
+    "historical_reference_BA": 0.7861667,
+    "success_gate": {
+      "M1": "Delta_matched >= 0.005 BA",
+      "M2": "paired subject-bootstrap CI95 lower > 0",
+      "M3": "at least 4 of 5 folds positive",
+      "M4": "at least 2 of 3 seeds positive",
+      "M5": "PUD-Aux > Random-Aux and PUD-Aux > Identity-Aux",
+      "M6": "purity/integrity PASS",
+      "clean_constructive_extra": "PUD-Aux minus historical Vanilla >=0.005 BA with paired 40-subject bootstrap CI lower>0, using the frozen B0 replay only as an external historical reference"
+    }
+  },
+  "holdout_policy": {
+    "OpenBMI_internal_14_subject_holdout_accessed": false,
+    "OpenBMI_internal_holdout_access_authorized": false,
+    "WBCIC_outer_accessed": false,
+    "WBCIC_outer_access_authorized": false,
+    "restricted_loader_guard": "fail hard if any observed subject is outside the exact 40-subject pool or any WBCIC/holdout flag is true"
+  },
+  "terminal_states": [
+    "PUD_AUX_MATCHED_NOT_SUPPORTED",
+    "PUD_AUX_RELATIVE_BENEFIT_ONLY_RECIPE_TAX_REMAINS",
+    "PUD_AUX_CLEAN_CONSTRUCTIVE_SUPPORTED"
+  ],
+  "prohibitions": [
+    "no architecture or PUD definition changes",
+    "no threshold changes after outcome inspection",
+    "no sealed holdout access",
+    "no outcome-label model selection",
+    "no discarded folds or seeds",
+    "no PUD V2/V3 or new constructive family"
+  ]
+}
