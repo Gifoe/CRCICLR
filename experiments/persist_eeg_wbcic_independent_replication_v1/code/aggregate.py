@@ -226,7 +226,7 @@ def build_block_controls() -> tuple[pd.DataFrame, pd.DataFrame]:
         for seed in range(3):
             unit = common.unit_dir("eegnet", fold, seed)
             evaluation = unit / "evaluation" / common.config_slug("ERM", 0.0)
-            embedded = np.load(evaluation / "embeddings.npz", allow_pickle=False)
+            embedded = np.load(evaluation / "embeddings.npz", allow_pickle=True)
             frozen = np.load(unit / "source_freeze" / "erm_persistence_basis.npz", allow_pickle=False)
             checkpoint = torch.load(unit / "checkpoints" / f"{common.config_slug('ERM', 0.0)}.pt", map_location="cpu", weights_only=True)
             weight = checkpoint["state_dict"]["head.weight"].numpy().astype(np.float64)

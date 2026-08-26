@@ -1,0 +1,128 @@
+{
+  "R1": {
+    "P01_04": {
+      "matched_random_BA_harm": 0.008427643816210893,
+      "outcome_subject_seed_rows": 123,
+      "persistent_BA_harm": 0.014424478525088285,
+      "persistent_BA_harm_CI95": [
+        0.005518706409331395,
+        0.02663696488696489
+      ],
+      "persistent_minus_random": 0.005996834708877391,
+      "persistent_minus_random_CI95": [
+        -0.0026775556248460246,
+        0.016740584305645387
+      ]
+    },
+    "P05_08": {
+      "matched_random_BA_harm": 0.0012552075634392726,
+      "outcome_subject_seed_rows": 123,
+      "persistent_BA_harm": 0.00020663956639566106,
+      "persistent_BA_harm_CI95": [
+        -0.003943089430894315,
+        0.004208333333333325
+      ],
+      "persistent_minus_random": -0.0010485679970436113,
+      "persistent_minus_random_CI95": [
+        -0.004363080308291255,
+        0.00212969512195121
+      ]
+    },
+    "reliable_task_supportive_blocks": [
+      "P01_04"
+    ],
+    "status": "R1_PARTIAL_SUPPORT",
+    "strong_blocks": []
+  },
+  "R2": {
+    "RMSE": {
+      "M0": 0.016869971680891747,
+      "MD": 0.011869248060041504,
+      "MI": 0.016505591452931803,
+      "MID": 0.011981327008196527
+    },
+    "RMSE_CI95": {
+      "M0": [
+        0.01009920844899567,
+        0.022645503938785023
+      ],
+      "MD": [
+        0.007396663139864538,
+        0.015954935701068564
+      ],
+      "MI": [
+        0.010148349769739934,
+        0.021979213739295424
+      ],
+      "MID": [
+        0.007475844649032764,
+        0.016113526285695453
+      ]
+    },
+    "RMSE_MI_minus_MD": 0.0046363433928902995,
+    "RMSE_MI_minus_MD_CI95": [
+      0.0012370215139675255,
+      0.007194471398617792
+    ],
+    "positive_runs_MI_error_gt_MD": 10,
+    "relative_improvement_MD_vs_MI": 0.2808953199957442,
+    "run_count": 15,
+    "status": "R2_STRONG_SUPPORT"
+  },
+  "R3": {
+    "alignment": "NEGATIVE_ALIGNMENT",
+    "counterexample_configurations": [],
+    "global_slope": -0.2229631099348063,
+    "global_slope_CI95": [
+      -0.4468570256776035,
+      -0.04690933360553265
+    ],
+    "meaningful_methods": [],
+    "pearson_p": 0.011141514269047196,
+    "pearson_r": -0.21785133963218015,
+    "spearman_p": 1.015930434566918e-05,
+    "spearman_rho": -0.36976149255019714,
+    "status": "R3_MANIPULATION_INCONCLUSIVE"
+  },
+  "competence": {
+    "ERM_mean_S3_BA": 0.7890781288494704,
+    "ERM_mean_S3_macro_F1": 0.7877374156081179,
+    "fold_mean_BA": {
+      "0": 0.815,
+      "1": 0.7860416666666666,
+      "2": 0.789375,
+      "3": 0.7779837436868687,
+      "4": 0.77375
+    },
+    "folds_above_chance": 5,
+    "pass": true,
+    "systematic_data_or_preprocessing_failure": false
+  },
+  "fixed_training_configurations": 150,
+  "identity": {
+    "ERM_mean_chance_normalized_accuracy": 0.09347743700385983,
+    "ERM_mean_identity_accuracy": 0.13034877024008928,
+    "ERM_mean_identity_skill": 0.026673379191163936
+  },
+  "purity": {
+    "OpenBMI_holdout_accessed": false,
+    "configuration_evaluations": 150,
+    "development_subject_hash": "dae8e7ec00cbcf6dcc8c5b25829f2148fd0b5fdf162f75a0cddc18b096af7db4",
+    "development_subjects_loaded": 41,
+    "outcome_S3_used_for_direction_construction": false,
+    "outcome_S3_used_for_identity_probe": false,
+    "outcome_S3_used_for_lambda_selection": false,
+    "outcome_S3_used_for_training": false,
+    "outcome_evaluation_before_source_freeze": false,
+    "pass": true,
+    "run_source_freezes": 15,
+    "schema": "WBCIC_PHASE3_HOLDOUT_PURITY_V1",
+    "sealed_WBCIC_outer_accessed": false,
+    "sealed_WBCIC_outer_enumerated": false,
+    "violations": []
+  },
+  "schema": "WBCIC_PHASE3_FINAL_SUMMARY_V1",
+  "strongest_defensible_conclusion": "At least two predeclared representation-level distinctions reproduce on WBCIC under a frozen EEGNet S1+S2\u2192S3 protocol; effect sizes and uncertainty remain dataset- and protocol-specific.",
+  "terminal_state": "WBCIC_INVARIANCE_MANIPULATION_INCONCLUSIVE",
+  "valid_fold_seed_runs": 15
+}
