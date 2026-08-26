@@ -286,7 +286,7 @@ def load_data(setting: str) -> DataBundle:
 
 
 def row_indices(metadata: pd.DataFrame, subjects: Sequence[str], sessions: Sequence[int]) -> np.ndarray:
-    mask = metadata.subject_id.astype(str).isin(set(map(str, subjects))).to_numpy()
+    mask = metadata.subject_id.astype(str).isin(set(map(str, subjects))).to_numpy(copy=True)
     mask &= metadata.session_id.astype(int).isin(set(map(int, sessions))).to_numpy()
     return np.flatnonzero(mask).astype(np.int64)
 
