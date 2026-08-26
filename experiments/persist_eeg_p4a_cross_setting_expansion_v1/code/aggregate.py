@@ -362,6 +362,62 @@ P4A constructed a frozen cross-dataset, cross-task, and cross-backbone evidence 
     (common.EXP / "P4A_FINAL_REPORT.md").write_text(report, encoding="utf-8")
 
 
+def update_manifests(competence: pd.DataFrame) -> None:
+    p2_protocol = common.P2_ROOT / "STRESS_TEST_PROTOCOL_FROZEN.json"
+    p3_protocol = common.P3_ROOT / "WBCIC_REPLICATION_PROTOCOL_FROZEN.json"
+    settings: dict[str, Any] = {}
+    for setting, spec in common.SETTINGS.items():
+        historical = spec["status"] == "historical"
+        source_root = common.P2_ROOT if setting in {"S1", "S2"} else common.P3_ROOT if setting == "S3" else common.EXP
+        source_protocol = p2_protocol if setting in {"S1", "S2"} else p3_protocol if setting == "S3" else common.PROTOCOL_PATH
+        roles = "model-fit subjects S1+S2; validation subjects S1+S2; held subjects S2" if spec["dataset"] == "OpenBMI" else "model-fit subjects S1+S2; validation subjects S1+S2; held subjects S3"
+        preprocessing = (
+            "OpenBMI MI frozen 1-45 Hz, 250 Hz, 62 channels, 4 s; model-fit-only channel standardization"
+            if spec["task"] == "MI" and spec["dataset"] == "OpenBMI"
+            else "WBCIC frozen P3 Pz-reference, 5-95 Hz, 250 Hz, 58 channels, 4 s, uV/20 clip"
+            if spec["dataset"] == "WBCIC"
+            else "OpenBMI ERP frozen 1-45 Hz, 250 Hz, 62 channels, 0-1 s, no baseline; model-fit-only channel standardization"
+        )
+        settings[setting] = {
+            "source_experiment_path": str(source_root),
+            "source_status": "READ_ONLY_REUSE" if historical else "NEW_P4A",
+            "artifact_tree_base_commit": "1ff8edda656372d8d36a2bcdb7d96311f88f8da6",
+            "protocol_freeze_commit": None if historical else common.read_json(common.EXP / "PROTOCOL_FREEZE_COMMIT.json")["protocol_freeze_commit"],
+            "source_protocol_path": str(source_protocol),
+            "source_protocol_sha256": common.file_sha256(source_protocol),
+            "dataset": spec["dataset"],
+            "task": spec["task"],
+            "backbone": spec["backbone"],
+            "folds": list(common.FOLDS),
+            "seeds": list(common.SEEDS),
+            "session_roles": roles,
+            "subject_count": 40 if spec["dataset"] == "OpenBMI" else 41,
+            "representation_dim": 32 if setting == "S3" else 64,
+            "preprocessing": preprocessing,
+            "outcome_scope": "historically observed held-subject competence" if historical else "ERM competence only; direction utility and invariance outcome delta sealed",
+            "outcome_status": "HISTORICALLY_OBSERVED" if historical else "P4B_DIRECTION_UTILITY_SEALED",
+            "available_artifacts": ["checkpoints", "source embeddings", "source identity", "persistent basis", "source evidence", "matched controls"],
+            "competence": str(competence.set_index("setting_id").loc[setting, "competence"]),
+        }
+    common.write_json(common.EXP / "SETTING_SOURCE_MANIFEST.json", {"schema": "P4A_SETTING_SOURCE_MANIFEST_V1", "settings": settings})
+    common.write_json(
+        common.EXP / "SETTING_MANIFEST.json",
+        {
+            "schema": "P4A_SETTING_MANIFEST_V1",
+            "settings": common.SETTINGS,
+            "folds": list(common.FOLDS),
+            "seeds": list(common.SEEDS),
+            "method_grid": {"ERM": [0.0], "DANN": list(common.LAMBDAS), "CORAL": list(common.LAMBDAS), "MMD": list(common.LAMBDAS)},
+            "actual_model_cube_rows": 900,
+            "actual_evidence_cube_rows": 720,
+            "actual_control_rows": 72000,
+            "competence": competence.set_index("setting_id").competence.to_dict(),
+            "new_direction_future_utility_sealed": True,
+            "new_invariance_outcome_delta_sealed": True,
+        },
+    )
+
+
 def main() -> None:
     common.ensure_dirs()
     common.protocol()
@@ -408,6 +464,7 @@ def main() -> None:
 
     all_new_pass = bool((competence[competence.setting_id.isin(["S4", "S5", "S6"])].competence == "PASS").all())
     terminal = "P4A_CROSS_SETTING_CUBE_COMPLETE" if all_new_pass else "P4A_REPRESENTATION_COMPETENCE_FAILURE"
+    update_manifests(competence)
     write_reports(model, evidence, controls, competence, terminal)
     common.write_json(
         common.RESULTS / "P4A_AGGREGATION_COMPLETE.json",
