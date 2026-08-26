@@ -1,0 +1,35 @@
+{
+  "authorized_subject_count": 40,
+  "authorized_subject_hash": "74543b83e744b8261ba92e70f7cfc2c1efa646d17e7d9f1febe44a4612720aa1",
+  "bandpass_hz": [
+    1,
+    45
+  ],
+  "baseline_correction": null,
+  "channels": 62,
+  "class_imbalance_handling": "inverse-frequency task-loss weights from model-fit rows only",
+  "epoch_seconds": [
+    0.0,
+    1.0
+  ],
+  "event_mapping": {
+    "1": "NonTarget",
+    "2": "Target"
+  },
+  "event_mapping_zero_based_training": {
+    "0": "NonTarget",
+    "1": "Target"
+  },
+  "outcome_driven_choice": false,
+  "provenance": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_stage0\\manifests\\openbmi_trials.parquet",
+  "runtime_storage_dtype": "float16 deterministic cast only",
+  "sampling_rate_hz": 250,
+  "schema": "OPENBMI_ERP_P4A_PREPROCESSING_FROZEN_V1",
+  "sessions": [
+    1,
+    2
+  ],
+  "stage0_dtype": "float32",
+  "training_normalization": "per-channel mean/std from model-fit subjects and S1+S2 only",
+  "trial_exclusion": "none"
+}
