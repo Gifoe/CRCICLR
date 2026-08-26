@@ -1,0 +1,164 @@
+{
+  "G1": {
+    "point": true,
+    "strong": false
+  },
+  "G2": {
+    "MU_ci": [
+      -0.00171453726722187,
+      0.0001757636699252213
+    ],
+    "MU_difference": -0.0005870810163352607,
+    "best_diagnostic": "MC",
+    "ci": [
+      -0.00013421634121587583,
+      1.3095868033291272e-05
+    ],
+    "difference": -4.347739765461968e-05,
+    "point": false,
+    "strong": false
+  },
+  "G3": {
+    "point": true,
+    "strong": false
+  },
+  "G4": false,
+  "G5": true,
+  "H": false,
+  "backbone_prediction": {
+    "eegconformer": {
+      "MIDC_minus_MALLU": -0.0001522928462713476,
+      "ci": [
+        -0.0003972889102850825,
+        -1.6556003425660758e-05
+      ]
+    },
+    "eegnet": {
+      "MIDC_minus_MALLU": -5.596102628533343e-05,
+      "ci": [
+        -0.00011043132820959675,
+        -1.4704148345377816e-05
+      ]
+    }
+  },
+  "backbones": {
+    "eegconformer": {
+      "negative_runs": 8,
+      "policy_delta": 0.0006041666666666718,
+      "policy_delta_ci": [
+        -0.0014999999999999911,
+        0.0028124999999999643
+      ],
+      "pooled_pearson": 0.24826934776208087,
+      "pooled_pearson_ci": [
+        -0.157153846829949,
+        0.5344187660746356
+      ],
+      "pooled_spearman": 0.07307462190765533,
+      "pooled_spearman_ci": [
+        -0.2583239368552288,
+        0.39131360112489594
+      ],
+      "positive_runs": 7,
+      "rho_ci": [
+        -0.2841148279638021,
+        0.32475340697611266
+      ],
+      "rho_mean": 0.03243196507014893,
+      "rho_median": -0.11585365853658537,
+      "tied_runs": 0
+    },
+    "eegnet": {
+      "negative_runs": 4,
+      "policy_delta": 0.0012916666666666651,
+      "policy_delta_ci": [
+        -0.0018229166666666513,
+        0.0036354166666666228
+      ],
+      "pooled_pearson": 0.3557486512402612,
+      "pooled_pearson_ci": [
+        -0.07768013881450107,
+        0.6204603020330187
+      ],
+      "pooled_spearman": 0.13437112901078263,
+      "pooled_spearman_ci": [
+        -0.1891787143597024,
+        0.41546201895760027
+      ],
+      "positive_runs": 11,
+      "rho_ci": [
+        -0.17489763258336588,
+        0.40891445216709726
+      ],
+      "rho_mean": 0.1456666241488346,
+      "rho_median": 0.23636797741318563,
+      "tied_runs": 0
+    }
+  },
+  "direction_cell_count": 240,
+  "fold_consistency": {
+    "0": 0.23955132501845722,
+    "1": -0.07731119622879866,
+    "2": 0.1851516144772424,
+    "3": 0.14191639194471484,
+    "4": -0.04406166216415702
+  },
+  "future_median": 0.0,
+  "policy_fold_consistency": {
+    "0": 0.0007552083333333476,
+    "1": 7.812500000000759e-05,
+    "2": 0.0030208333333333094,
+    "3": 0.0015364583333333202,
+    "4": -0.0006510416666666418
+  },
+  "policy_seed_consistency": {
+    "0": 0.0018124999999999964,
+    "1": 0.0020312500000000014,
+    "2": -0.000999999999999992
+  },
+  "pooled": {
+    "pearson": 0.32168358403431463,
+    "pearson_ci": [
+      -0.017280213634722187,
+      0.5492458423262284
+    ],
+    "spearman": 0.10494518110391772,
+    "spearman_ci": [
+      -0.15252995034056438,
+      0.3327630133550886
+    ]
+  },
+  "pseudo_median": -0.00125,
+  "recommendation": "CLOSE_CONSTRUCTIVE_ROUTE",
+  "run_count": 30,
+  "sanity_checks": {
+    "direction_count_per_run": 8,
+    "mean_future_intact_subject_BA": 0.7345833333333333,
+    "mean_pseudo_intact_subject_BA": 0.73775,
+    "nondegenerate_intact_performance": true,
+    "nonzero_D_finite_cell_proportion": 1.0,
+    "nonzero_U_future_run_proportion": 1.0,
+    "nonzero_U_pseudo_run_proportion": 1.0,
+    "normalized_direction_validation": "PASS (independent validator)",
+    "outer_outcome_after_global_source_freeze": true,
+    "pseudo_target_excluded_from_training_selection": true,
+    "same_direction_SHA_pseudo_future": true
+  },
+  "seed_consistency": {
+    "0": 0.2504450337916377,
+    "1": 0.042017425374338724,
+    "2": -0.025314575337501137
+  },
+  "terminal_state": "NO_ACTIONABLE_SUPPRESSION_HEADROOM",
+  "within_run": {
+    "ci": [
+      -0.14999049160728484,
+      0.3027121220700082
+    ],
+    "mean": 0.08904929460949175,
+    "median": 0.21372603499690046,
+    "negative": 12,
+    "positive": 18,
+    "tied": 0
+  }
+}
