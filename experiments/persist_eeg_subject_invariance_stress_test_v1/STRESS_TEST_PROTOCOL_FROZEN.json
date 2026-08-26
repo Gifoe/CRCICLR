@@ -1,0 +1,163 @@
+{
+  "schema": "PERSIST_EEG_SUBJECT_INVARIANCE_STRESS_TEST_V1",
+  "frozen_before_training": true,
+  "frozen_before_outcome_evaluation": true,
+  "repository_start_branch": "codex/persist-eeg-final-closure-repair-v1",
+  "repository_start_sha": "3366d419cfd5d26e88f5de3d751199d9068b649e",
+  "experiment_branch": "codex/persist-eeg-subject-invariance-stress-test-v1",
+  "scientific_question": "Does reducing source-learned cross-session subject identifiability reliably improve unseen-subject future-session task performance?",
+  "dataset": {
+    "name": "OpenBMI MI",
+    "scope": "V8_SEARCH authorized development pool only",
+    "subject_pool": ["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "14", "15", "16", "19", "20", "21", "22", "23", "26", "27", "28", "30", "31", "32", "33", "34", "35", "38", "40", "41", "43", "44", "45", "46", "47", "48", "49", "50", "52", "53"],
+    "subject_count": 40,
+    "source_sessions": [1, 2],
+    "outcome_session": 2,
+    "trials_per_subject_session": 100,
+    "classes": 2,
+    "channels": 62,
+    "samples": 1000,
+    "sampling_rate_hz": 250,
+    "folds": [
+      {"fold": 0, "outcome": ["15", "19", "32", "33", "41", "46", "47", "49"], "inner_validation": ["2", "16", "20", "26", "38", "45", "50", "53"]},
+      {"fold": 1, "outcome": ["2", "14", "34", "40", "43", "44", "48", "50"], "inner_validation": ["3", "10", "15", "19", "21", "45", "47", "52"]},
+      {"fold": 2, "outcome": ["9", "10", "16", "21", "22", "31", "45", "53"], "inner_validation": ["8", "11", "19", "33", "34", "38", "46", "47"]},
+      {"fold": 3, "outcome": ["1", "5", "6", "7", "20", "23", "26", "35"], "inner_validation": ["2", "11", "19", "27", "32", "38", "44", "49"]},
+      {"fold": 4, "outcome": ["3", "8", "11", "27", "28", "30", "38", "52"], "inner_validation": ["6", "15", "22", "34", "40", "43", "44", "50"]}
+    ],
+    "inner_train_rule": "subject_pool minus outcome minus inner_validation",
+    "restricted_data": ["OpenBMI internal 14-subject holdout", "WBCIC outer", "all WBCIC data"],
+    "restricted_membership_enumerated": false
+  },
+  "backbones": {
+    "eegnet": {
+      "implementation": "authoritative OpenBMI StandardEEGNet",
+      "F1": 8,
+      "D": 2,
+      "F2": 16,
+      "dropout": 0.25,
+      "embedding_dim": 64,
+      "lr": 0.0003,
+      "weight_decay": 0.0005,
+      "batch_size": 512
+    },
+    "eegconformer": {
+      "implementation": "validated OpenBMI CompactEEGConformer from PERSIST-EEG V7",
+      "conv_filters": 40,
+      "temporal_kernel": 25,
+      "pool_kernel": 25,
+      "pool_stride": 10,
+      "transformer_depth": 2,
+      "attention_heads": 4,
+      "feedforward_dim": 160,
+      "embedding_dim": 64,
+      "lr": 0.0003,
+      "weight_decay": 0.0005,
+      "batch_size": 256
+    }
+  },
+  "methods": {
+    "ERM": {"lambda_grid": [0.0], "formula": "L_task"},
+    "DANN": {"lambda_grid": [0.01, 0.1, 1.0], "formula": "L_task + lambda * CE(subject_head(GRL(h)), source_subject_id)", "subject_head": "Linear(64,128)+ReLU+Dropout(0.2)+Linear(128,K_source)", "GRL_coefficient": 1.0},
+    "CORAL": {"lambda_grid": [0.01, 0.1, 1.0], "formula": "L_task + lambda * mean_{s<t}(||Cov_s(h)-Cov_t(h)||_F^2/(4*d^2))"},
+    "MMD": {"lambda_grid": [0.01, 0.1, 1.0], "formula": "L_task + lambda * mean_{s<t} MMD_biased^2(s,t)"}
+  },
+  "mmd_kernel": {
+    "type": "RBF multi-kernel",
+    "formula": "mean_k exp(-||h_i-h_j||^2/(2*sigma_k^2))",
+    "bandwidth_rule": "median nonzero pairwise distance of a deterministic 512-row inner-train sample under the matched initialized backbone",
+    "multipliers": [0.5, 1.0, 2.0],
+    "outcome_information_used": false
+  },
+  "training": {
+    "seeds": [0, 1, 2],
+    "max_epochs": 60,
+    "minimum_epochs": 20,
+    "patience": 12,
+    "task_loss": "ordinary cross entropy without label smoothing",
+    "optimizer": "AdamW",
+    "normalization": "per-channel mean/std from inner-train subjects, Sessions 1+2 only",
+    "early_stopping_metric": "inner-validation mean subject balanced accuracy",
+    "early_stopping_tiebreak": "lower validation NLL, then earlier epoch",
+    "lambda_selection": "highest inner-validation mean subject BA, then smaller lambda, then earlier best epoch",
+    "outcome_evaluation_after_selection_freeze": true,
+    "shared_matching": ["main-network initialization SHA", "preprocessing", "normalizer", "inner train/validation subjects", "optimizer family", "base learning rate", "task CE", "epoch ceiling", "early stopping criterion", "minibatch order seed"]
+  },
+  "identity_probe": {
+    "primary_metric": "symmetric_cross_session_subject_id_identity_skill_raw",
+    "formula": "0.5*((log(K)-CE_S1_to_S2)+(log(K)-CE_S2_to_S1))",
+    "probe": "exact Exp3 standardized ridge multiclass linear classifier",
+    "ridge_alpha": 1.0,
+    "primary_scope": "inner-train source subjects only",
+    "sensitivity_scope": "all 32 outer-source subjects",
+    "probe_rule_shared_across_all_methods_and_backbones": true,
+    "chance_normalized_accuracy": "(symmetric_accuracy-1/K)/(1-1/K)"
+  },
+  "stress_variables": {
+    "identity_suppression": "S_I = I_ERM - I_method",
+    "generalization_change": "Delta_G = BA_method - BA_ERM",
+    "primary_performance_metric": "subject-level balanced accuracy",
+    "secondary_performance_metric": "subject-level macro-F1"
+  },
+  "secondary_direction_audit": {
+    "candidate_rule": "source-only PCA directions ranked by symmetric cross-session subject-mean correlation",
+    "candidate_count": 8,
+    "center": "outer-source trial embedding mean",
+    "erasure": "h_erased = h - ((h-center) dot v) v",
+    "identity": "full Exp3 identity skill minus identity skill after one-direction erasure",
+    "D_finite": "sqrt(mean(sum(center(erased_logits-clean_logits)^2, axis=class)))",
+    "outcome_CE_effect": "mean(CE_erased-CE_clean) over outcome Session-2 trials",
+    "outcome_BA_effect": "mean_subject(BA_clean-BA_erased)",
+    "prediction_models": {
+      "M0": ["persistence", "geometry_strength", "rank"],
+      "MI": ["persistence", "geometry_strength", "rank", "identity_score"],
+      "MD": ["persistence", "geometry_strength", "rank", "D_finite"],
+      "MID": ["persistence", "geometry_strength", "rank", "identity_score", "D_finite"]
+    },
+    "evaluation": "leave-one backbone-fold-seed run out",
+    "ridge_alpha": 1.0
+  },
+  "statistics": {
+    "primary_unit": "subject for performance; fold-seed matched run for identity manipulation; configuration aggregate for visible correlation",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 24491,
+    "hierarchy": ["outer_fold", "seed", "backbone-method-lambda configuration"],
+    "global_tests": ["Spearman(S_I,Delta_G)", "Pearson(S_I,Delta_G)", "hierarchical-bootstrap OLS slope Delta_G~S_I"],
+    "separate_analyses": ["backbone", "method_family"]
+  },
+  "prefrozen_gates": {
+    "meaningful_identity_reduction": "mean S_I >= max(0.05 identity-skill units, 10% of matched ERM |I|) and paired hierarchical CI lower > 0",
+    "S1": "DANN and at least one of CORAL/MMD meet meaningful_identity_reduction at one or more fixed strengths",
+    "strong_counterexample": "meaningful identity reduction and paired BA-delta CI upper <= 0",
+    "weak_counterexample": "meaningful identity reduction, mean BA delta <= 0, and CI includes zero",
+    "S2": "strong or weak counterexamples occur in more than one invariance family; both backbones is stronger evidence",
+    "S3_positive": "cluster-aware slope CI lower > 0",
+    "S3_no_reliable_positive": "cluster-aware slope CI includes zero or negative values",
+    "S3_negative": "cluster-aware slope point < 0 and CI upper < 0",
+    "S4": "qualitative misalignment assessed separately in EEGNet and EEGConformer",
+    "decision_grounding": "RMSE(MD) < RMSE(MI), with run-cluster bootstrap CI reported without requiring significance"
+  },
+  "terminal_states": [
+    "SUBJECT_INVARIANCE_AUDIT_STRONG_MISALIGNMENT_SUPPORTED",
+    "SUBJECT_INVARIANCE_AUDIT_PARTIAL_MISALIGNMENT_SUPPORTED",
+    "SUBJECT_INVARIANCE_AUDIT_NOT_SUPPORTED",
+    "SUBJECT_INVARIANCE_MANIPULATION_INCONCLUSIVE"
+  ],
+  "generic_adaptation": {
+    "status": "optional separate reference only",
+    "excluded_from_source_only_correlation": true
+  },
+  "purity": {
+    "outcome_S2_labels_used_for_training_or_selection": false,
+    "restricted_holdout_accessed": false,
+    "WBCIC_accessed": false,
+    "outcome_directions_or_probes_used_for_selection": false
+  },
+  "engineering_amendment_before_formal_grid": {
+    "reason": "The first fold-0/seed-0 linear-head DANN engineering smoke did not provide a valid high-strength source-identity manipulation; a weak adversary cannot support the requested audit.",
+    "repair": "Use the fixed standard two-layer DANN domain classifier declared above; no lambda, fold, seed, outcome-selection rule, or task architecture changed.",
+    "decision_basis": "source-only identity manipulation diagnostic",
+    "invalidated_smoke_excluded_from_results": true,
+    "frozen_before_formal_grid": true
+  }
+}
