@@ -84,12 +84,13 @@ def main() -> None:
 
     required_model = {
         "setting_id", "dataset", "task", "backbone", "fold", "seed", "method", "lambda",
-        "source_identity", "source_validation_BA", "source_validation_F1", "checkpoint_sha256",
+        "source_identity", "source_identity_raw_accuracy", "source_identity_chance_normalized_accuracy",
+        "source_identity_chance_accuracy", "source_validation_BA", "source_validation_F1", "checkpoint_sha256",
         "training_epoch", "selection_metric", "outcome_status",
     }
     required_evidence = {
         "setting_id", "dataset", "task", "backbone", "fold", "seed", "representation_dim",
-        "identity_full", "identity_direction_effect", "persistence", "geometry_strength", "direction_rank",
+        "identity_full", "identity_chance_accuracy", "identity_direction_effect", "persistence", "geometry_strength", "direction_rank",
         "D_finite", "C_src_CE", "C_src_BA", "C_src_F1", "O_task", "direction_sha256",
         "checkpoint_sha256", "normalizer_sha256", "persistence_basis_sha256", "source_scope_hash", "validation_scope_hash",
     }
@@ -142,6 +143,9 @@ def main() -> None:
     bootstrap = common.read_json(common.RESULTS / "SOURCE_STATISTICS_BOOTSTRAP.json")
     if bootstrap.get("bootstrap_draws") != 10000 or set(bootstrap.get("settings", {})) != exact_settings:
         issues.append("bootstrap_audit_failure")
+    identity_scale = pd.read_csv(common.RESULTS / "identity_scale_diagnostics.csv")
+    if len(identity_scale) != 90 or identity_scale[["I_ERM", "chance_accuracy", "max_observed_direction_reduction", "relative_suppression_denominator"]].isna().any().any():
+        issues.append("identity_scale_diagnostics_failure")
 
     all_new_pass = all(row["status"] == "PASS" for row in recomputed if row["setting_id"] in {"S4", "S5", "S6"})
     terminal = "P4A_CROSS_SETTING_CUBE_COMPLETE" if all_new_pass else "P4A_REPRESENTATION_COMPETENCE_FAILURE"

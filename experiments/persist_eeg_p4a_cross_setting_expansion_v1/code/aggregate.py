@@ -86,6 +86,9 @@ def historical_openbmi(setting: str) -> tuple[list[dict[str, Any]], list[pd.Data
                     "method": method,
                     "lambda": float(lam),
                     "source_identity": float(identity["identity_symmetric"]),
+                    "source_identity_raw_accuracy": float(identity["identity_accuracy_symmetric"]),
+                    "source_identity_chance_normalized_accuracy": float(identity["chance_normalized_identity"]),
+                    "source_identity_chance_accuracy": float(identity["chance_accuracy"]),
                     "source_validation_BA": validation_metrics["BA"],
                     "source_validation_F1": validation_metrics["macro_f1"],
                     "checkpoint_sha256": str(candidate["checkpoint_sha256"]),
@@ -157,6 +160,9 @@ def historical_wbcic() -> tuple[list[dict[str, Any]], list[pd.DataFrame], list[p
                         "method": method,
                         "lambda": float(lam),
                         "source_identity": float(identity["identity_symmetric"]),
+                        "source_identity_raw_accuracy": float(identity["identity_accuracy_symmetric"]),
+                        "source_identity_chance_normalized_accuracy": float(identity["chance_normalized_identity"]),
+                        "source_identity_chance_accuracy": float(identity["chance_accuracy"]),
                         "source_validation_BA": validation_metrics["BA"],
                         "source_validation_F1": validation_metrics["macro_f1"],
                         "checkpoint_sha256": str(candidate["checkpoint_sha256"]),
@@ -212,6 +218,9 @@ def collect_new() -> tuple[list[dict[str, Any]], list[pd.DataFrame], list[pd.Dat
                             "method": method,
                             "lambda": float(lam),
                             "source_identity": float(summary["source_identity"]["identity_symmetric"]),
+                            "source_identity_raw_accuracy": float(summary["source_identity"]["identity_accuracy_symmetric"]),
+                            "source_identity_chance_normalized_accuracy": float(summary["source_identity"]["chance_normalized_identity"]),
+                            "source_identity_chance_accuracy": float(summary["source_identity"]["chance_accuracy"]),
                             "source_validation_BA": float(summary["source_validation_BA"]),
                             "source_validation_F1": float(summary["source_validation_F1"]),
                             "checkpoint_sha256": summary["checkpoint_sha256"],
@@ -367,11 +376,24 @@ def main() -> None:
     model = pd.DataFrame(model_rows).sort_values(["setting_id", "fold", "seed", "method", "lambda"]).reset_index(drop=True)
     evidence = pd.concat(evidence_frames, ignore_index=True).sort_values(["setting_id", "fold", "seed", "direction_rank"]).reset_index(drop=True)
     controls = pd.concat(control_frames, ignore_index=True).sort_values(["setting_id", "fold", "seed", "direction_rank", "control_id"]).reset_index(drop=True)
+    evidence["identity_chance_accuracy"] = [1.0 / len(common.roles_for(str(row.setting_id), int(row.fold))["model_fit"]) for _, row in evidence.iterrows()]
     if len(model) != 900 or len(evidence) != 720 or len(controls) != 72000:
         raise RuntimeError(f"cube cardinality failure model={len(model)} evidence={len(evidence)} controls={len(controls)}")
     common.write_csv(common.RESULTS / "model_setting_cube.csv", model)
     common.write_csv(common.RESULTS / "source_evidence_cube.csv", evidence)
     common.write_csv(common.RESULTS / "matched_geometry_controls.csv", controls)
+    identity_scale = (
+        evidence.groupby(["setting_id", "fold", "seed"], as_index=False)
+        .agg(
+            I_ERM=("identity_full", "first"),
+            chance_accuracy=("identity_chance_accuracy", "first"),
+            max_observed_direction_reduction=("identity_direction_effect", "max"),
+            min_observed_direction_reduction=("identity_direction_effect", "min"),
+        )
+    )
+    identity_scale["relative_suppression_denominator"] = identity_scale.I_ERM.abs()
+    identity_scale["denominator_near_zero"] = identity_scale.relative_suppression_denominator < 1e-6
+    common.write_csv(common.RESULTS / "identity_scale_diagnostics.csv", identity_scale)
     competence, stats = summaries(model, evidence)
     common.write_csv(common.RESULTS / "setting_competence.csv", competence)
     common.write_json(common.RESULTS / "SOURCE_STATISTICS_BOOTSTRAP.json", stats)
