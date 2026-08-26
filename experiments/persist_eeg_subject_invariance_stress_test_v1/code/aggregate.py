@@ -13,6 +13,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.lines import Line2D
 from scipy import stats
 
 import common
@@ -369,7 +370,7 @@ def make_figures(
     common.FIGURES.mkdir(parents=True, exist_ok=True)
     colors = {"DANN": "#d73027", "CORAL": "#4575b4", "MMD": "#1a9850"}
     markers = {0.01: "o", 0.1: "s", 1.0: "^"}
-    fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.3), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.7), sharey=True)
     for ax, backbone in zip(axes, common.BACKBONES):
         part = config[config.backbone == backbone]
         ax.axhline(0, color="0.5", lw=0.8)
@@ -385,12 +386,20 @@ def make_figures(
                 capsize=2,
                 alpha=0.9,
             )
-            ax.annotate(f"{row['method'][0]}:{float(row['lambda']):g}", (row["identity_suppression"], row["BA_delta"]), xytext=(3, 3), textcoords="offset points", fontsize=7)
         ax.set_title("EEGNet" if backbone == "eegnet" else "EEGConformer")
         ax.set_xlabel("Identity suppression vs ERM (skill)")
     axes[0].set_ylabel("Future-session BA change vs ERM")
+    method_handles = [
+        Line2D([0], [0], marker="o", linestyle="none", color=colors[method], label=method, markersize=6)
+        for method in ("DANN", "CORAL", "MMD")
+    ]
+    lambda_handles = [
+        Line2D([0], [0], marker=markers[lam], linestyle="none", color="0.25", label=f"lambda={lam:g}", markersize=6)
+        for lam in (0.01, 0.1, 1.0)
+    ]
+    fig.legend(handles=method_handles + lambda_handles, loc="lower center", ncol=6, frameon=False, bbox_to_anchor=(0.5, 0.0))
     fig.suptitle("Subject identifiability versus future generalization")
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.09, 1, 1))
     fig.savefig(common.FIGURES / "identity_vs_generalization.png", dpi=240)
     fig.savefig(common.FIGURES / "identity_vs_generalization.pdf")
     plt.close(fig)
