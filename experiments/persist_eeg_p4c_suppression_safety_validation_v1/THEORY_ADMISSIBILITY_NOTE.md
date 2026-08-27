@@ -1,0 +1,3 @@
+# Minimal Theory: Nuisance Admissibility
+
+Let `z=A_y y + A_s s + epsilon`, task head `f(z)=Wz`, and subject projection `P_s`. Suppression gives `z'=(I-P_s)z`, hence `Wz'-Wz=-WP_s z`. When `WP_s` is near zero, the subject subspace is approximately decision-decoupled; when it is nonzero, erasure directly removes task-decision-relevant variation. `D_finite`, `O_task`, and `C_src` are empirical views of this coupling, so task entanglement can serve as an invariance veto. This argument does not guarantee that Low-E suppression improves future BA. It supports admissibility, not beneficial actionability.

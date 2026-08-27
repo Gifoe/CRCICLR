@@ -1,0 +1,119 @@
+{
+  "E_task": "(z_D + z_C + z_O)/3",
+  "bootstrap": {
+    "draws": 10000,
+    "hierarchy_pooled": [
+      "setting",
+      "fold",
+      "seed/run",
+      "direction",
+      "outcome_subject"
+    ],
+    "hierarchy_setting": [
+      "fold",
+      "seed/run",
+      "direction",
+      "outcome_subject"
+    ],
+    "seed": 441027
+  },
+  "coverage_gate": {
+    "folds": 3,
+    "run_direction_cells": 6,
+    "seeds": 2
+  },
+  "direction_ranks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "forbidden": [
+    "continuous MINT validation",
+    "MINT refit",
+    "E_task change",
+    "threshold search",
+    "setting rescue",
+    "direction reselection",
+    "retraining",
+    "sealed holdout access",
+    "P4A grid restart"
+  ],
+  "future_utility": {
+    "positive": "beneficial suppression",
+    "primary": "U_BA=BA_erased-BA_intact",
+    "secondary_CE": "U_CE=CE_intact-CE_erased",
+    "secondary_F1": "U_F1=F1_erased-F1_intact",
+    "subject_first": true
+  },
+  "highest_identity": "source-only maximum z_I per run; ties lowest direction rank",
+  "intervention": "h_erased = h - ((h-mu)^T v)v; frozen representation, source center, direction and classifier",
+  "low_E_actionability": {
+    "BENEFICIAL": "pooled U_low>0, CI lower>0, S4/S6 points>=0",
+    "NOT_BENEFICIAL": "pooled U_low<=0 or CI upper<0 or S4/S6 points both<0",
+    "otherwise": "INCONCLUSIVE"
+  },
+  "matched_random": {
+    "controls_not_independent_N": true,
+    "count": 100,
+    "matching": "per-trial displacement norm",
+    "seed": "stable_seed('P4A-control', setting, fold, seed, rank, control_id)",
+    "space": "full representation"
+  },
+  "next_stage": {
+    "FINAL_NEW_MODEL_AUTHORIZATION": "NOT_AUTHORIZED_AT_THIS_STAGE",
+    "not_supported": "NOT_AUTHORIZED",
+    "partial": "CONDITIONAL",
+    "strong": "METHOD_LEVEL_BRIDGE_AUTHORIZATION=AUTHORIZED"
+  },
+  "noop": "U=0",
+  "normalization": "P4B within-setting median/MAD with frozen SD fallback",
+  "normalization_sha256": "dfcbcfcde0536e5c673637ab6b300377b4162e5205ba555c90f73274b1c6720f",
+  "p4b_terminal_preserved": "P4B_IDENTITY_RELIABILITY_CONDITION_NOT_SUPPORTED",
+  "parent_p4b_tip": "8b26c073cea98743f73734cff4f60b58c8e3fe71",
+  "partial_rule": "pooled DeltaRegime>0 and pooled U_high<0; at least 3/4 per-setting direction indicators correct; neither setting reverses both",
+  "regime_rules": {
+    "REGIME_HIGH": "z_I >= high_I_lower and E_task >= high_E_lower",
+    "REGIME_LOW": "z_I >= high_I_lower and E_task <= low_E_upper",
+    "comparison": "inclusive pandas quantiles at 1/3 and 2/3"
+  },
+  "regime_thresholds": {
+    "S4": {
+      "high_E_lower": 0.09591774787628897,
+      "high_I_lower": 0.5660319865054263,
+      "low_E_upper": -0.3883394404197722,
+      "low_I_upper": -0.4574781608872154
+    },
+    "S6": {
+      "high_E_lower": 0.06083290041791606,
+      "high_I_lower": 0.6592193067853278,
+      "low_E_upper": -0.25019715966389716,
+      "low_I_upper": -0.35238255979838146
+    }
+  },
+  "reserved_settings": [
+    "S4",
+    "S6"
+  ],
+  "schema": "P4C_SUPPRESSION_SAFETY_PROTOCOL_V1",
+  "source_cube_sha256": "41c5373bd73f327a652c3d155ffcf90642589f35e48ce0b2a47ee30307443ec0",
+  "source_definitions": {
+    "C": "C_src_CE",
+    "D": "D_finite",
+    "I": "identity_direction_effect",
+    "O": "O_task",
+    "P": "persistence"
+  },
+  "strong_gates": {
+    "G1": "pooled DeltaRegime>0 and CI lower>0",
+    "G2": "pooled U_high<0 and CI upper<0",
+    "G3": "S4 and S6 DeltaRegime>0",
+    "G4": "S4 and S6 U_high<0",
+    "G5": "purity pass"
+  },
+  "timestamp_utc": "2026-08-27T19:10:54.283401+00:00"
+}
