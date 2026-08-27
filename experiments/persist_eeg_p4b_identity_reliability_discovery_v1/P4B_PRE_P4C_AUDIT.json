@@ -1,0 +1,84 @@
+{
+  "DeltaRegime": 0.006690018500513146,
+  "DeltaRegime_CI95": [
+    0.000983032858042108,
+    0.012903471187988244
+  ],
+  "DeltaSlope": -0.00018976877326131838,
+  "DeltaSlope_CI95": [
+    -0.0013514114125233927,
+    0.0030149643464909004
+  ],
+  "MINT_point_better_than_MADD": false,
+  "MINT_point_better_than_MI": false,
+  "OpenBMI_sealed_internal_holdout": "UNTOUCHED",
+  "P4B_FINAL_VALIDATION_sha256": "60daa22756a7f1ab28950dc059073b0671330adbcc75394d29f95583f7a8345e",
+  "P4C_LOCK_exists": false,
+  "P4C_LOCK_status": "NOT_REQUIRED_FOR_NOT_SUPPORTED",
+  "RMSE_MI": 0.007967329055869018,
+  "RMSE_MINT": 0.022863853721427903,
+  "WBCIC_outer_10": "UNTOUCHED_NOT_ENUMERATED",
+  "beta_IxE": 9.48843866306592e-05,
+  "beta_IxE_CI95": [
+    -0.0015074821732454515,
+    0.0006757057062616963
+  ],
+  "discovery_settings": [
+    "S1",
+    "S2",
+    "S3",
+    "S5"
+  ],
+  "influential_run_warning": true,
+  "maximum_run_absolute_influence_share": 0.35559315361933064,
+  "maximum_setting_absolute_influence_share": 0.9921959839291552,
+  "normalization_E_task_assignment_frozen_before_future_access": true,
+  "obvious_single_setting_domination": true,
+  "p4a_lean_hash_consistent": true,
+  "p4b_branch": "codex/persist-eeg-p4b-identity-reliability-discovery-v1",
+  "p4b_remote_tip": "b4d6fcabf4e8e33501d32c9bb1b70625ac93106b",
+  "p4b_terminal": "P4B_IDENTITY_RELIABILITY_CONDITION_NOT_SUPPORTED",
+  "p4b_validated_tip": "b4d6fcabf4e8e33501d32c9bb1b70625ac93106b",
+  "p4b_validator_pass": true,
+  "pass": true,
+  "per_setting_consistency": 0.75,
+  "per_setting_effects": [
+    {
+      "DeltaRegime": 0.0078063725490196,
+      "DeltaSlope": 0.0005201557283302,
+      "beta_IxE": -0.0002600778641651,
+      "primary_effect_direction": true,
+      "setting_id": "S1"
+    },
+    {
+      "DeltaRegime": 0.0027651515151515,
+      "DeltaSlope": 0.0017788094518106,
+      "beta_IxE": -0.0008894047259053,
+      "primary_effect_direction": true,
+      "setting_id": "S2"
+    },
+    {
+      "DeltaRegime": 0.0081548295454545,
+      "DeltaSlope": -0.0001956510242116,
+      "beta_IxE": 9.782551210583217e-05,
+      "primary_effect_direction": false,
+      "setting_id": "S3"
+    },
+    {
+      "DeltaRegime": 0.0103203914141414,
+      "DeltaSlope": 0.0016329510534795,
+      "beta_IxE": -0.0008164755267397,
+      "primary_effect_direction": true,
+      "setting_id": "S5"
+    }
+  ],
+  "post_outcome_protocol_or_threshold_modification": false,
+  "purity_pass": true,
+  "reserved_future_absent_from_p4b": true,
+  "reserved_settings": [
+    "S4",
+    "S6"
+  ],
+  "schema": "P4B_PRE_P4C_AUDIT_V1",
+  "timestamp_utc": "2026-08-27T16:25:30.742567+00:00"
+}
