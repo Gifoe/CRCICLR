@@ -1,0 +1,110 @@
+{
+  "CANONICAL_HEADROOM_METHOD": "DANN",
+  "S_I_abs": "identity_symmetric_ERM - identity_symmetric_method",
+  "competent_method_count": 1,
+  "content_sha256": "c3187be42aaf3ccc1ea00c475b0f0de0bd26a945c2b20c706082acda14958540",
+  "future_BA_F1_CE_accessed_for_selection": false,
+  "headroom_tie_order": [
+    "DANN",
+    "MMD",
+    "CORAL"
+  ],
+  "identity_manipulation_csv_sha256": "b42a5e6b4abd76d83c384436a1c1b98730a4ff4530d0d3fac563f4c421b8bd11",
+  "methods": [
+    {
+      "fraction_S_I_abs_positive": 0.8,
+      "lambda_candidates": [
+        {
+          "competent": true,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.8,
+          "lambda": 0.01,
+          "median_S_I_abs": 0.008514512102197003
+        },
+        {
+          "competent": true,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.8,
+          "lambda": 0.1,
+          "median_S_I_abs": 0.015014013965479966
+        },
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.26666666666666666,
+          "lambda": 1.0,
+          "median_S_I_abs": -0.006735504543431858
+        }
+      ],
+      "lambda_star": 0.1,
+      "median_S_I_abs": 0.015014013965479966,
+      "method": "DANN",
+      "status": "IDENTITY_MANIPULATION_COMPETENT"
+    },
+    {
+      "fraction_S_I_abs_positive": null,
+      "lambda_candidates": [
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.2,
+          "lambda": 0.01,
+          "median_S_I_abs": 0.0
+        },
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.3333333333333333,
+          "lambda": 0.1,
+          "median_S_I_abs": 0.0
+        },
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.3333333333333333,
+          "lambda": 1.0,
+          "median_S_I_abs": 0.0
+        }
+      ],
+      "lambda_star": null,
+      "median_S_I_abs": null,
+      "method": "MMD",
+      "status": "IDENTITY_MANIPULATION_INCOMPETENT"
+    },
+    {
+      "fraction_S_I_abs_positive": null,
+      "lambda_candidates": [
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.3333333333333333,
+          "lambda": 0.01,
+          "median_S_I_abs": -0.001436133192380007
+        },
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.4,
+          "lambda": 0.1,
+          "median_S_I_abs": -0.0003107139950637716
+        },
+        {
+          "competent": false,
+          "completed_runs": 15,
+          "fraction_S_I_abs_positive": 0.4666666666666667,
+          "lambda": 1.0,
+          "median_S_I_abs": -0.0012081678643138805
+        }
+      ],
+      "lambda_star": null,
+      "median_S_I_abs": null,
+      "method": "CORAL",
+      "status": "IDENTITY_MANIPULATION_INCOMPETENT"
+    }
+  ],
+  "schema": "PERSIST_EEG_P4D_CANONICAL_INVARIANCE_CONFIGS_V1",
+  "selection_rule": "largest median S_I_abs among lambdas with median>0 and >=60% positive; ties smaller lambda",
+  "selection_scope": "15 complete prospective source-only runs per lambda",
+  "selection_setting": "S4",
+  "timestamp_utc": "2026-08-27T19:36:14.866536+00:00"
+}
