@@ -1,0 +1,67 @@
+{
+  "competence": {
+    "S1": "COMPETENCE_PASS",
+    "S2": "COMPETENCE_PASS",
+    "S3": "COMPETENCE_PASS",
+    "S4": "COMPETENCE_PASS",
+    "S5": "COMPETENCE_PASS",
+    "S6": "COMPETENCE_PASS"
+  },
+  "direction_future_utility_sealed": true,
+  "erm_rows": 90,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "partial_non_erm_grid_primary_gate": false,
+  "partial_non_erm_grid_status": "OPTIONAL_PARTIAL_INVARIANCE_GRID",
+  "primary_method": "ERM",
+  "schema": "P4A_SETTING_MANIFEST_LEAN_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "settings": {
+    "S1": {
+      "backbone": "EEGNet",
+      "dataset": "OpenBMI",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S2": {
+      "backbone": "EEGConformer",
+      "dataset": "OpenBMI",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S3": {
+      "backbone": "EEGNet",
+      "dataset": "WBCIC",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S4": {
+      "backbone": "EEGConformer",
+      "dataset": "WBCIC",
+      "status": "new",
+      "task": "MI"
+    },
+    "S5": {
+      "backbone": "EEGNet",
+      "dataset": "OpenBMI",
+      "status": "new",
+      "task": "ERP"
+    },
+    "S6": {
+      "backbone": "EEGConformer",
+      "dataset": "OpenBMI",
+      "status": "new",
+      "task": "ERP"
+    }
+  },
+  "source_evidence_rows": 720
+}

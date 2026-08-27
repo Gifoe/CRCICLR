@@ -1,0 +1,2034 @@
+{
+  "schema": "P4A_GRID_PAUSE_SNAPSHOT_V1",
+  "label": "OPTIONAL_PARTIAL_INVARIANCE_GRID",
+  "timestamp_utc": "2026-08-27T08:43:18.419978+00:00",
+  "git": {
+    "branch": "codex/persist-eeg-p4a-cross-setting-expansion-v1",
+    "commit": "4cf2493d9c859e569ef8a3209feae632075e7261",
+    "dirty_status": [
+      "M experiments/persist_eeg_p4a_cross_setting_expansion_v1/ENGINEERING_REPAIR_LOG.md",
+      "?? \"Microsoft Windows [Version 10.0.18363.1556]\\357\\200\\215\"",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/P4A_GRID_PAUSE_SNAPSHOT.json",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/P4A_GRID_PAUSE_SNAPSHOT.md",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/P4A_LEAN_FINAL_REPORT.md",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/P4A_PROTOCOL_AMENDMENT_LEAN_V1.json",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/P4A_PROTOCOL_AMENDMENT_LEAN_V1.md",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/SETTING_COMPETENCE_REPORT_LEAN.md",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/SETTING_MANIFEST_LEAN.json",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/code/aggregate_lean.py",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/code/pause_grid_snapshot.py",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/code/record_lean_amendment.py",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/code/run_lean_pipeline.py",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/code/validate_p4a_lean.py",
+      "?? experiments/persist_eeg_p4a_cross_setting_expansion_v1/results/",
+      "?? p4a_stage.zip"
+    ]
+  },
+  "progress": {
+    "erm_completed": 45,
+    "erm_expected": 45,
+    "grid_completed": 205,
+    "grid_expected": 405,
+    "grid_counts_by_setting": {
+      "S4": 135,
+      "S5": 70,
+      "S6": 0
+    }
+  },
+  "pause_boundary": {
+    "current_running_configuration": null,
+    "current_training_process_count": 0,
+    "current_atomic_job_allowed_to_finish": true,
+    "last_completed_configuration": "S5/fold-2/seed-1/mmd__lambda-0.01",
+    "last_completed_candidate_file": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\candidates\\mmd__lambda-0.01.json",
+    "last_completed_elapsed_seconds": 464.4594600200653,
+    "future_non_erm_launches_stopped_after_grid_count": 205,
+    "stop_rule": "Stop immediately after the in-flight candidate JSON was atomically written; no scientific outcome was consulted."
+  },
+  "scheduler": {
+    "State": "Ready",
+    "LastRunTime": "2026-08-27T16:38:38.0000000+08:00",
+    "LastTaskResult": 1,
+    "NextRunTime": "2099-01-01T00:00:00.0000000+08:00"
+  },
+  "runtime_paths": {
+    "runtime_root": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime",
+    "runs": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs",
+    "logs": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\logs",
+    "grid_stdout": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\logs\\grid_stdout.log",
+    "grid_stderr": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\logs\\grid_stderr.log"
+  },
+  "completed_configuration_ids": [
+    "S4/fold-0/seed-0/coral__lambda-0.01",
+    "S4/fold-0/seed-0/coral__lambda-0.10",
+    "S4/fold-0/seed-0/coral__lambda-1.00",
+    "S4/fold-0/seed-0/dann__lambda-0.01",
+    "S4/fold-0/seed-0/dann__lambda-0.10",
+    "S4/fold-0/seed-0/dann__lambda-1.00",
+    "S4/fold-0/seed-0/erm__lambda-0.00",
+    "S4/fold-0/seed-0/mmd__lambda-0.01",
+    "S4/fold-0/seed-0/mmd__lambda-0.10",
+    "S4/fold-0/seed-0/mmd__lambda-1.00",
+    "S4/fold-0/seed-1/coral__lambda-0.01",
+    "S4/fold-0/seed-1/coral__lambda-0.10",
+    "S4/fold-0/seed-1/coral__lambda-1.00",
+    "S4/fold-0/seed-1/dann__lambda-0.01",
+    "S4/fold-0/seed-1/dann__lambda-0.10",
+    "S4/fold-0/seed-1/dann__lambda-1.00",
+    "S4/fold-0/seed-1/erm__lambda-0.00",
+    "S4/fold-0/seed-1/mmd__lambda-0.01",
+    "S4/fold-0/seed-1/mmd__lambda-0.10",
+    "S4/fold-0/seed-1/mmd__lambda-1.00",
+    "S4/fold-0/seed-2/coral__lambda-0.01",
+    "S4/fold-0/seed-2/coral__lambda-0.10",
+    "S4/fold-0/seed-2/coral__lambda-1.00",
+    "S4/fold-0/seed-2/dann__lambda-0.01",
+    "S4/fold-0/seed-2/dann__lambda-0.10",
+    "S4/fold-0/seed-2/dann__lambda-1.00",
+    "S4/fold-0/seed-2/erm__lambda-0.00",
+    "S4/fold-0/seed-2/mmd__lambda-0.01",
+    "S4/fold-0/seed-2/mmd__lambda-0.10",
+    "S4/fold-0/seed-2/mmd__lambda-1.00",
+    "S4/fold-1/seed-0/coral__lambda-0.01",
+    "S4/fold-1/seed-0/coral__lambda-0.10",
+    "S4/fold-1/seed-0/coral__lambda-1.00",
+    "S4/fold-1/seed-0/dann__lambda-0.01",
+    "S4/fold-1/seed-0/dann__lambda-0.10",
+    "S4/fold-1/seed-0/dann__lambda-1.00",
+    "S4/fold-1/seed-0/erm__lambda-0.00",
+    "S4/fold-1/seed-0/mmd__lambda-0.01",
+    "S4/fold-1/seed-0/mmd__lambda-0.10",
+    "S4/fold-1/seed-0/mmd__lambda-1.00",
+    "S4/fold-1/seed-1/coral__lambda-0.01",
+    "S4/fold-1/seed-1/coral__lambda-0.10",
+    "S4/fold-1/seed-1/coral__lambda-1.00",
+    "S4/fold-1/seed-1/dann__lambda-0.01",
+    "S4/fold-1/seed-1/dann__lambda-0.10",
+    "S4/fold-1/seed-1/dann__lambda-1.00",
+    "S4/fold-1/seed-1/erm__lambda-0.00",
+    "S4/fold-1/seed-1/mmd__lambda-0.01",
+    "S4/fold-1/seed-1/mmd__lambda-0.10",
+    "S4/fold-1/seed-1/mmd__lambda-1.00",
+    "S4/fold-1/seed-2/coral__lambda-0.01",
+    "S4/fold-1/seed-2/coral__lambda-0.10",
+    "S4/fold-1/seed-2/coral__lambda-1.00",
+    "S4/fold-1/seed-2/dann__lambda-0.01",
+    "S4/fold-1/seed-2/dann__lambda-0.10",
+    "S4/fold-1/seed-2/dann__lambda-1.00",
+    "S4/fold-1/seed-2/erm__lambda-0.00",
+    "S4/fold-1/seed-2/mmd__lambda-0.01",
+    "S4/fold-1/seed-2/mmd__lambda-0.10",
+    "S4/fold-1/seed-2/mmd__lambda-1.00",
+    "S4/fold-2/seed-0/coral__lambda-0.01",
+    "S4/fold-2/seed-0/coral__lambda-0.10",
+    "S4/fold-2/seed-0/coral__lambda-1.00",
+    "S4/fold-2/seed-0/dann__lambda-0.01",
+    "S4/fold-2/seed-0/dann__lambda-0.10",
+    "S4/fold-2/seed-0/dann__lambda-1.00",
+    "S4/fold-2/seed-0/erm__lambda-0.00",
+    "S4/fold-2/seed-0/mmd__lambda-0.01",
+    "S4/fold-2/seed-0/mmd__lambda-0.10",
+    "S4/fold-2/seed-0/mmd__lambda-1.00",
+    "S4/fold-2/seed-1/coral__lambda-0.01",
+    "S4/fold-2/seed-1/coral__lambda-0.10",
+    "S4/fold-2/seed-1/coral__lambda-1.00",
+    "S4/fold-2/seed-1/dann__lambda-0.01",
+    "S4/fold-2/seed-1/dann__lambda-0.10",
+    "S4/fold-2/seed-1/dann__lambda-1.00",
+    "S4/fold-2/seed-1/erm__lambda-0.00",
+    "S4/fold-2/seed-1/mmd__lambda-0.01",
+    "S4/fold-2/seed-1/mmd__lambda-0.10",
+    "S4/fold-2/seed-1/mmd__lambda-1.00",
+    "S4/fold-2/seed-2/coral__lambda-0.01",
+    "S4/fold-2/seed-2/coral__lambda-0.10",
+    "S4/fold-2/seed-2/coral__lambda-1.00",
+    "S4/fold-2/seed-2/dann__lambda-0.01",
+    "S4/fold-2/seed-2/dann__lambda-0.10",
+    "S4/fold-2/seed-2/dann__lambda-1.00",
+    "S4/fold-2/seed-2/erm__lambda-0.00",
+    "S4/fold-2/seed-2/mmd__lambda-0.01",
+    "S4/fold-2/seed-2/mmd__lambda-0.10",
+    "S4/fold-2/seed-2/mmd__lambda-1.00",
+    "S4/fold-3/seed-0/coral__lambda-0.01",
+    "S4/fold-3/seed-0/coral__lambda-0.10",
+    "S4/fold-3/seed-0/coral__lambda-1.00",
+    "S4/fold-3/seed-0/dann__lambda-0.01",
+    "S4/fold-3/seed-0/dann__lambda-0.10",
+    "S4/fold-3/seed-0/dann__lambda-1.00",
+    "S4/fold-3/seed-0/erm__lambda-0.00",
+    "S4/fold-3/seed-0/mmd__lambda-0.01",
+    "S4/fold-3/seed-0/mmd__lambda-0.10",
+    "S4/fold-3/seed-0/mmd__lambda-1.00",
+    "S4/fold-3/seed-1/coral__lambda-0.01",
+    "S4/fold-3/seed-1/coral__lambda-0.10",
+    "S4/fold-3/seed-1/coral__lambda-1.00",
+    "S4/fold-3/seed-1/dann__lambda-0.01",
+    "S4/fold-3/seed-1/dann__lambda-0.10",
+    "S4/fold-3/seed-1/dann__lambda-1.00",
+    "S4/fold-3/seed-1/erm__lambda-0.00",
+    "S4/fold-3/seed-1/mmd__lambda-0.01",
+    "S4/fold-3/seed-1/mmd__lambda-0.10",
+    "S4/fold-3/seed-1/mmd__lambda-1.00",
+    "S4/fold-3/seed-2/coral__lambda-0.01",
+    "S4/fold-3/seed-2/coral__lambda-0.10",
+    "S4/fold-3/seed-2/coral__lambda-1.00",
+    "S4/fold-3/seed-2/dann__lambda-0.01",
+    "S4/fold-3/seed-2/dann__lambda-0.10",
+    "S4/fold-3/seed-2/dann__lambda-1.00",
+    "S4/fold-3/seed-2/erm__lambda-0.00",
+    "S4/fold-3/seed-2/mmd__lambda-0.01",
+    "S4/fold-3/seed-2/mmd__lambda-0.10",
+    "S4/fold-3/seed-2/mmd__lambda-1.00",
+    "S4/fold-4/seed-0/coral__lambda-0.01",
+    "S4/fold-4/seed-0/coral__lambda-0.10",
+    "S4/fold-4/seed-0/coral__lambda-1.00",
+    "S4/fold-4/seed-0/dann__lambda-0.01",
+    "S4/fold-4/seed-0/dann__lambda-0.10",
+    "S4/fold-4/seed-0/dann__lambda-1.00",
+    "S4/fold-4/seed-0/erm__lambda-0.00",
+    "S4/fold-4/seed-0/mmd__lambda-0.01",
+    "S4/fold-4/seed-0/mmd__lambda-0.10",
+    "S4/fold-4/seed-0/mmd__lambda-1.00",
+    "S4/fold-4/seed-1/coral__lambda-0.01",
+    "S4/fold-4/seed-1/coral__lambda-0.10",
+    "S4/fold-4/seed-1/coral__lambda-1.00",
+    "S4/fold-4/seed-1/dann__lambda-0.01",
+    "S4/fold-4/seed-1/dann__lambda-0.10",
+    "S4/fold-4/seed-1/dann__lambda-1.00",
+    "S4/fold-4/seed-1/erm__lambda-0.00",
+    "S4/fold-4/seed-1/mmd__lambda-0.01",
+    "S4/fold-4/seed-1/mmd__lambda-0.10",
+    "S4/fold-4/seed-1/mmd__lambda-1.00",
+    "S4/fold-4/seed-2/coral__lambda-0.01",
+    "S4/fold-4/seed-2/coral__lambda-0.10",
+    "S4/fold-4/seed-2/coral__lambda-1.00",
+    "S4/fold-4/seed-2/dann__lambda-0.01",
+    "S4/fold-4/seed-2/dann__lambda-0.10",
+    "S4/fold-4/seed-2/dann__lambda-1.00",
+    "S4/fold-4/seed-2/erm__lambda-0.00",
+    "S4/fold-4/seed-2/mmd__lambda-0.01",
+    "S4/fold-4/seed-2/mmd__lambda-0.10",
+    "S4/fold-4/seed-2/mmd__lambda-1.00",
+    "S5/fold-0/seed-0/coral__lambda-0.01",
+    "S5/fold-0/seed-0/coral__lambda-0.10",
+    "S5/fold-0/seed-0/coral__lambda-1.00",
+    "S5/fold-0/seed-0/dann__lambda-0.01",
+    "S5/fold-0/seed-0/dann__lambda-0.10",
+    "S5/fold-0/seed-0/dann__lambda-1.00",
+    "S5/fold-0/seed-0/erm__lambda-0.00",
+    "S5/fold-0/seed-0/mmd__lambda-0.01",
+    "S5/fold-0/seed-0/mmd__lambda-0.10",
+    "S5/fold-0/seed-0/mmd__lambda-1.00",
+    "S5/fold-0/seed-1/coral__lambda-0.01",
+    "S5/fold-0/seed-1/coral__lambda-0.10",
+    "S5/fold-0/seed-1/coral__lambda-1.00",
+    "S5/fold-0/seed-1/dann__lambda-0.01",
+    "S5/fold-0/seed-1/dann__lambda-0.10",
+    "S5/fold-0/seed-1/dann__lambda-1.00",
+    "S5/fold-0/seed-1/erm__lambda-0.00",
+    "S5/fold-0/seed-1/mmd__lambda-0.01",
+    "S5/fold-0/seed-1/mmd__lambda-0.10",
+    "S5/fold-0/seed-1/mmd__lambda-1.00",
+    "S5/fold-0/seed-2/coral__lambda-0.01",
+    "S5/fold-0/seed-2/coral__lambda-0.10",
+    "S5/fold-0/seed-2/coral__lambda-1.00",
+    "S5/fold-0/seed-2/dann__lambda-0.01",
+    "S5/fold-0/seed-2/dann__lambda-0.10",
+    "S5/fold-0/seed-2/dann__lambda-1.00",
+    "S5/fold-0/seed-2/erm__lambda-0.00",
+    "S5/fold-0/seed-2/mmd__lambda-0.01",
+    "S5/fold-0/seed-2/mmd__lambda-0.10",
+    "S5/fold-0/seed-2/mmd__lambda-1.00",
+    "S5/fold-1/seed-0/coral__lambda-0.01",
+    "S5/fold-1/seed-0/coral__lambda-0.10",
+    "S5/fold-1/seed-0/coral__lambda-1.00",
+    "S5/fold-1/seed-0/dann__lambda-0.01",
+    "S5/fold-1/seed-0/dann__lambda-0.10",
+    "S5/fold-1/seed-0/dann__lambda-1.00",
+    "S5/fold-1/seed-0/erm__lambda-0.00",
+    "S5/fold-1/seed-0/mmd__lambda-0.01",
+    "S5/fold-1/seed-0/mmd__lambda-0.10",
+    "S5/fold-1/seed-0/mmd__lambda-1.00",
+    "S5/fold-1/seed-1/coral__lambda-0.01",
+    "S5/fold-1/seed-1/coral__lambda-0.10",
+    "S5/fold-1/seed-1/coral__lambda-1.00",
+    "S5/fold-1/seed-1/dann__lambda-0.01",
+    "S5/fold-1/seed-1/dann__lambda-0.10",
+    "S5/fold-1/seed-1/dann__lambda-1.00",
+    "S5/fold-1/seed-1/erm__lambda-0.00",
+    "S5/fold-1/seed-1/mmd__lambda-0.01",
+    "S5/fold-1/seed-1/mmd__lambda-0.10",
+    "S5/fold-1/seed-1/mmd__lambda-1.00",
+    "S5/fold-1/seed-2/coral__lambda-0.01",
+    "S5/fold-1/seed-2/coral__lambda-0.10",
+    "S5/fold-1/seed-2/coral__lambda-1.00",
+    "S5/fold-1/seed-2/dann__lambda-0.01",
+    "S5/fold-1/seed-2/dann__lambda-0.10",
+    "S5/fold-1/seed-2/dann__lambda-1.00",
+    "S5/fold-1/seed-2/erm__lambda-0.00",
+    "S5/fold-1/seed-2/mmd__lambda-0.01",
+    "S5/fold-1/seed-2/mmd__lambda-0.10",
+    "S5/fold-1/seed-2/mmd__lambda-1.00",
+    "S5/fold-2/seed-0/coral__lambda-0.01",
+    "S5/fold-2/seed-0/coral__lambda-0.10",
+    "S5/fold-2/seed-0/coral__lambda-1.00",
+    "S5/fold-2/seed-0/dann__lambda-0.01",
+    "S5/fold-2/seed-0/dann__lambda-0.10",
+    "S5/fold-2/seed-0/dann__lambda-1.00",
+    "S5/fold-2/seed-0/erm__lambda-0.00",
+    "S5/fold-2/seed-0/mmd__lambda-0.01",
+    "S5/fold-2/seed-0/mmd__lambda-0.10",
+    "S5/fold-2/seed-0/mmd__lambda-1.00",
+    "S5/fold-2/seed-1/coral__lambda-0.01",
+    "S5/fold-2/seed-1/coral__lambda-0.10",
+    "S5/fold-2/seed-1/coral__lambda-1.00",
+    "S5/fold-2/seed-1/dann__lambda-0.01",
+    "S5/fold-2/seed-1/dann__lambda-0.10",
+    "S5/fold-2/seed-1/dann__lambda-1.00",
+    "S5/fold-2/seed-1/erm__lambda-0.00",
+    "S5/fold-2/seed-1/mmd__lambda-0.01",
+    "S5/fold-2/seed-2/erm__lambda-0.00",
+    "S5/fold-3/seed-0/erm__lambda-0.00",
+    "S5/fold-3/seed-1/erm__lambda-0.00",
+    "S5/fold-3/seed-2/erm__lambda-0.00",
+    "S5/fold-4/seed-0/erm__lambda-0.00",
+    "S5/fold-4/seed-1/erm__lambda-0.00",
+    "S5/fold-4/seed-2/erm__lambda-0.00",
+    "S6/fold-0/seed-0/erm__lambda-0.00",
+    "S6/fold-0/seed-1/erm__lambda-0.00",
+    "S6/fold-0/seed-2/erm__lambda-0.00",
+    "S6/fold-1/seed-0/erm__lambda-0.00",
+    "S6/fold-1/seed-1/erm__lambda-0.00",
+    "S6/fold-1/seed-2/erm__lambda-0.00",
+    "S6/fold-2/seed-0/erm__lambda-0.00",
+    "S6/fold-2/seed-1/erm__lambda-0.00",
+    "S6/fold-2/seed-2/erm__lambda-0.00",
+    "S6/fold-3/seed-0/erm__lambda-0.00",
+    "S6/fold-3/seed-1/erm__lambda-0.00",
+    "S6/fold-3/seed-2/erm__lambda-0.00",
+    "S6/fold-4/seed-0/erm__lambda-0.00",
+    "S6/fold-4/seed-1/erm__lambda-0.00",
+    "S6/fold-4/seed-2/erm__lambda-0.00"
+  ],
+  "incomplete_grid_configuration_ids": [
+    "S5/fold-2/seed-1/mmd__lambda-0.10",
+    "S5/fold-2/seed-1/mmd__lambda-1.00",
+    "S5/fold-2/seed-2/coral__lambda-0.01",
+    "S5/fold-2/seed-2/coral__lambda-0.10",
+    "S5/fold-2/seed-2/coral__lambda-1.00",
+    "S5/fold-2/seed-2/dann__lambda-0.01",
+    "S5/fold-2/seed-2/dann__lambda-0.10",
+    "S5/fold-2/seed-2/dann__lambda-1.00",
+    "S5/fold-2/seed-2/mmd__lambda-0.01",
+    "S5/fold-2/seed-2/mmd__lambda-0.10",
+    "S5/fold-2/seed-2/mmd__lambda-1.00",
+    "S5/fold-3/seed-0/coral__lambda-0.01",
+    "S5/fold-3/seed-0/coral__lambda-0.10",
+    "S5/fold-3/seed-0/coral__lambda-1.00",
+    "S5/fold-3/seed-0/dann__lambda-0.01",
+    "S5/fold-3/seed-0/dann__lambda-0.10",
+    "S5/fold-3/seed-0/dann__lambda-1.00",
+    "S5/fold-3/seed-0/mmd__lambda-0.01",
+    "S5/fold-3/seed-0/mmd__lambda-0.10",
+    "S5/fold-3/seed-0/mmd__lambda-1.00",
+    "S5/fold-3/seed-1/coral__lambda-0.01",
+    "S5/fold-3/seed-1/coral__lambda-0.10",
+    "S5/fold-3/seed-1/coral__lambda-1.00",
+    "S5/fold-3/seed-1/dann__lambda-0.01",
+    "S5/fold-3/seed-1/dann__lambda-0.10",
+    "S5/fold-3/seed-1/dann__lambda-1.00",
+    "S5/fold-3/seed-1/mmd__lambda-0.01",
+    "S5/fold-3/seed-1/mmd__lambda-0.10",
+    "S5/fold-3/seed-1/mmd__lambda-1.00",
+    "S5/fold-3/seed-2/coral__lambda-0.01",
+    "S5/fold-3/seed-2/coral__lambda-0.10",
+    "S5/fold-3/seed-2/coral__lambda-1.00",
+    "S5/fold-3/seed-2/dann__lambda-0.01",
+    "S5/fold-3/seed-2/dann__lambda-0.10",
+    "S5/fold-3/seed-2/dann__lambda-1.00",
+    "S5/fold-3/seed-2/mmd__lambda-0.01",
+    "S5/fold-3/seed-2/mmd__lambda-0.10",
+    "S5/fold-3/seed-2/mmd__lambda-1.00",
+    "S5/fold-4/seed-0/coral__lambda-0.01",
+    "S5/fold-4/seed-0/coral__lambda-0.10",
+    "S5/fold-4/seed-0/coral__lambda-1.00",
+    "S5/fold-4/seed-0/dann__lambda-0.01",
+    "S5/fold-4/seed-0/dann__lambda-0.10",
+    "S5/fold-4/seed-0/dann__lambda-1.00",
+    "S5/fold-4/seed-0/mmd__lambda-0.01",
+    "S5/fold-4/seed-0/mmd__lambda-0.10",
+    "S5/fold-4/seed-0/mmd__lambda-1.00",
+    "S5/fold-4/seed-1/coral__lambda-0.01",
+    "S5/fold-4/seed-1/coral__lambda-0.10",
+    "S5/fold-4/seed-1/coral__lambda-1.00",
+    "S5/fold-4/seed-1/dann__lambda-0.01",
+    "S5/fold-4/seed-1/dann__lambda-0.10",
+    "S5/fold-4/seed-1/dann__lambda-1.00",
+    "S5/fold-4/seed-1/mmd__lambda-0.01",
+    "S5/fold-4/seed-1/mmd__lambda-0.10",
+    "S5/fold-4/seed-1/mmd__lambda-1.00",
+    "S5/fold-4/seed-2/coral__lambda-0.01",
+    "S5/fold-4/seed-2/coral__lambda-0.10",
+    "S5/fold-4/seed-2/coral__lambda-1.00",
+    "S5/fold-4/seed-2/dann__lambda-0.01",
+    "S5/fold-4/seed-2/dann__lambda-0.10",
+    "S5/fold-4/seed-2/dann__lambda-1.00",
+    "S5/fold-4/seed-2/mmd__lambda-0.01",
+    "S5/fold-4/seed-2/mmd__lambda-0.10",
+    "S5/fold-4/seed-2/mmd__lambda-1.00",
+    "S6/fold-0/seed-0/coral__lambda-0.01",
+    "S6/fold-0/seed-0/coral__lambda-0.10",
+    "S6/fold-0/seed-0/coral__lambda-1.00",
+    "S6/fold-0/seed-0/dann__lambda-0.01",
+    "S6/fold-0/seed-0/dann__lambda-0.10",
+    "S6/fold-0/seed-0/dann__lambda-1.00",
+    "S6/fold-0/seed-0/mmd__lambda-0.01",
+    "S6/fold-0/seed-0/mmd__lambda-0.10",
+    "S6/fold-0/seed-0/mmd__lambda-1.00",
+    "S6/fold-0/seed-1/coral__lambda-0.01",
+    "S6/fold-0/seed-1/coral__lambda-0.10",
+    "S6/fold-0/seed-1/coral__lambda-1.00",
+    "S6/fold-0/seed-1/dann__lambda-0.01",
+    "S6/fold-0/seed-1/dann__lambda-0.10",
+    "S6/fold-0/seed-1/dann__lambda-1.00",
+    "S6/fold-0/seed-1/mmd__lambda-0.01",
+    "S6/fold-0/seed-1/mmd__lambda-0.10",
+    "S6/fold-0/seed-1/mmd__lambda-1.00",
+    "S6/fold-0/seed-2/coral__lambda-0.01",
+    "S6/fold-0/seed-2/coral__lambda-0.10",
+    "S6/fold-0/seed-2/coral__lambda-1.00",
+    "S6/fold-0/seed-2/dann__lambda-0.01",
+    "S6/fold-0/seed-2/dann__lambda-0.10",
+    "S6/fold-0/seed-2/dann__lambda-1.00",
+    "S6/fold-0/seed-2/mmd__lambda-0.01",
+    "S6/fold-0/seed-2/mmd__lambda-0.10",
+    "S6/fold-0/seed-2/mmd__lambda-1.00",
+    "S6/fold-1/seed-0/coral__lambda-0.01",
+    "S6/fold-1/seed-0/coral__lambda-0.10",
+    "S6/fold-1/seed-0/coral__lambda-1.00",
+    "S6/fold-1/seed-0/dann__lambda-0.01",
+    "S6/fold-1/seed-0/dann__lambda-0.10",
+    "S6/fold-1/seed-0/dann__lambda-1.00",
+    "S6/fold-1/seed-0/mmd__lambda-0.01",
+    "S6/fold-1/seed-0/mmd__lambda-0.10",
+    "S6/fold-1/seed-0/mmd__lambda-1.00",
+    "S6/fold-1/seed-1/coral__lambda-0.01",
+    "S6/fold-1/seed-1/coral__lambda-0.10",
+    "S6/fold-1/seed-1/coral__lambda-1.00",
+    "S6/fold-1/seed-1/dann__lambda-0.01",
+    "S6/fold-1/seed-1/dann__lambda-0.10",
+    "S6/fold-1/seed-1/dann__lambda-1.00",
+    "S6/fold-1/seed-1/mmd__lambda-0.01",
+    "S6/fold-1/seed-1/mmd__lambda-0.10",
+    "S6/fold-1/seed-1/mmd__lambda-1.00",
+    "S6/fold-1/seed-2/coral__lambda-0.01",
+    "S6/fold-1/seed-2/coral__lambda-0.10",
+    "S6/fold-1/seed-2/coral__lambda-1.00",
+    "S6/fold-1/seed-2/dann__lambda-0.01",
+    "S6/fold-1/seed-2/dann__lambda-0.10",
+    "S6/fold-1/seed-2/dann__lambda-1.00",
+    "S6/fold-1/seed-2/mmd__lambda-0.01",
+    "S6/fold-1/seed-2/mmd__lambda-0.10",
+    "S6/fold-1/seed-2/mmd__lambda-1.00",
+    "S6/fold-2/seed-0/coral__lambda-0.01",
+    "S6/fold-2/seed-0/coral__lambda-0.10",
+    "S6/fold-2/seed-0/coral__lambda-1.00",
+    "S6/fold-2/seed-0/dann__lambda-0.01",
+    "S6/fold-2/seed-0/dann__lambda-0.10",
+    "S6/fold-2/seed-0/dann__lambda-1.00",
+    "S6/fold-2/seed-0/mmd__lambda-0.01",
+    "S6/fold-2/seed-0/mmd__lambda-0.10",
+    "S6/fold-2/seed-0/mmd__lambda-1.00",
+    "S6/fold-2/seed-1/coral__lambda-0.01",
+    "S6/fold-2/seed-1/coral__lambda-0.10",
+    "S6/fold-2/seed-1/coral__lambda-1.00",
+    "S6/fold-2/seed-1/dann__lambda-0.01",
+    "S6/fold-2/seed-1/dann__lambda-0.10",
+    "S6/fold-2/seed-1/dann__lambda-1.00",
+    "S6/fold-2/seed-1/mmd__lambda-0.01",
+    "S6/fold-2/seed-1/mmd__lambda-0.10",
+    "S6/fold-2/seed-1/mmd__lambda-1.00",
+    "S6/fold-2/seed-2/coral__lambda-0.01",
+    "S6/fold-2/seed-2/coral__lambda-0.10",
+    "S6/fold-2/seed-2/coral__lambda-1.00",
+    "S6/fold-2/seed-2/dann__lambda-0.01",
+    "S6/fold-2/seed-2/dann__lambda-0.10",
+    "S6/fold-2/seed-2/dann__lambda-1.00",
+    "S6/fold-2/seed-2/mmd__lambda-0.01",
+    "S6/fold-2/seed-2/mmd__lambda-0.10",
+    "S6/fold-2/seed-2/mmd__lambda-1.00",
+    "S6/fold-3/seed-0/coral__lambda-0.01",
+    "S6/fold-3/seed-0/coral__lambda-0.10",
+    "S6/fold-3/seed-0/coral__lambda-1.00",
+    "S6/fold-3/seed-0/dann__lambda-0.01",
+    "S6/fold-3/seed-0/dann__lambda-0.10",
+    "S6/fold-3/seed-0/dann__lambda-1.00",
+    "S6/fold-3/seed-0/mmd__lambda-0.01",
+    "S6/fold-3/seed-0/mmd__lambda-0.10",
+    "S6/fold-3/seed-0/mmd__lambda-1.00",
+    "S6/fold-3/seed-1/coral__lambda-0.01",
+    "S6/fold-3/seed-1/coral__lambda-0.10",
+    "S6/fold-3/seed-1/coral__lambda-1.00",
+    "S6/fold-3/seed-1/dann__lambda-0.01",
+    "S6/fold-3/seed-1/dann__lambda-0.10",
+    "S6/fold-3/seed-1/dann__lambda-1.00",
+    "S6/fold-3/seed-1/mmd__lambda-0.01",
+    "S6/fold-3/seed-1/mmd__lambda-0.10",
+    "S6/fold-3/seed-1/mmd__lambda-1.00",
+    "S6/fold-3/seed-2/coral__lambda-0.01",
+    "S6/fold-3/seed-2/coral__lambda-0.10",
+    "S6/fold-3/seed-2/coral__lambda-1.00",
+    "S6/fold-3/seed-2/dann__lambda-0.01",
+    "S6/fold-3/seed-2/dann__lambda-0.10",
+    "S6/fold-3/seed-2/dann__lambda-1.00",
+    "S6/fold-3/seed-2/mmd__lambda-0.01",
+    "S6/fold-3/seed-2/mmd__lambda-0.10",
+    "S6/fold-3/seed-2/mmd__lambda-1.00",
+    "S6/fold-4/seed-0/coral__lambda-0.01",
+    "S6/fold-4/seed-0/coral__lambda-0.10",
+    "S6/fold-4/seed-0/coral__lambda-1.00",
+    "S6/fold-4/seed-0/dann__lambda-0.01",
+    "S6/fold-4/seed-0/dann__lambda-0.10",
+    "S6/fold-4/seed-0/dann__lambda-1.00",
+    "S6/fold-4/seed-0/mmd__lambda-0.01",
+    "S6/fold-4/seed-0/mmd__lambda-0.10",
+    "S6/fold-4/seed-0/mmd__lambda-1.00",
+    "S6/fold-4/seed-1/coral__lambda-0.01",
+    "S6/fold-4/seed-1/coral__lambda-0.10",
+    "S6/fold-4/seed-1/coral__lambda-1.00",
+    "S6/fold-4/seed-1/dann__lambda-0.01",
+    "S6/fold-4/seed-1/dann__lambda-0.10",
+    "S6/fold-4/seed-1/dann__lambda-1.00",
+    "S6/fold-4/seed-1/mmd__lambda-0.01",
+    "S6/fold-4/seed-1/mmd__lambda-0.10",
+    "S6/fold-4/seed-1/mmd__lambda-1.00",
+    "S6/fold-4/seed-2/coral__lambda-0.01",
+    "S6/fold-4/seed-2/coral__lambda-0.10",
+    "S6/fold-4/seed-2/coral__lambda-1.00",
+    "S6/fold-4/seed-2/dann__lambda-0.01",
+    "S6/fold-4/seed-2/dann__lambda-0.10",
+    "S6/fold-4/seed-2/dann__lambda-1.00",
+    "S6/fold-4/seed-2/mmd__lambda-0.01",
+    "S6/fold-4/seed-2/mmd__lambda-0.10",
+    "S6/fold-4/seed-2/mmd__lambda-1.00"
+  ],
+  "checkpoints": [
+    {
+      "configuration_id": "S4/fold-0/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "4d418aedae8c0bf9b59e82550a187ef2074d465adf78c87f64b08a59928f0654",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "c4cec395d6f9864bc5882dff3f1456ea25ac0f8ea265cada7e48c4480e9a300f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "934fab0dc1d9d4561fa59246493bab4f1127e049296a9fb1b92c584a4bf4b22f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "e236e6c6ab4823465efb196c928740985fdd5b8ea07e8fda235e0e51c6f73e68",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "70610c35cb2ea6fcd17e405c47342721c3486412e21f9d7615adc7e6618f659b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "2fc5fe93e1559b544d967a63e3095fbfedcf132bce227fa757de8885f0446c75",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "6f96b58b8428bf10bd776254d0055f77856b58b83341acb41eae40edd08bd7d3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "6031e0b60cb76c6314d5e793ae3c4b5f9eabc20fb5a4f4e36e5d76c1be8b7a64",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "d614ff580a5b7e3443a67381d34ea7b32c546ec4d8d4c2d0bff5ea2f10ee7443",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "93d455d7a6875499dbc8b925e4c733370455fea2d04ccad6867aab8a27d45c6e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "23d0cd5fd41f1fb54d73dd6ba10ae14588e9ce752e972ba5af39fa6f1bda6844",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "b8516e823f734cfcfbe9afdecfc40a68eb14253bd197ec5d4e9ce9933b979870",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "0453a7019c59da1e008a8cf8f18f93a3a3f18c0824deed24031429d7bcb7ef8f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "6e170cd2e3696567cf5e59d6e254d3b1e41477d4bf9e63146129bf3f8b836866",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "86d2d9ba87ceebbc4303b96eb3d1f877c5f4a20526179e98c8d0adcc045a5b16",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "76f60cfb474d9afbafc31070b65fe0d48d29dba7f0b9d70feae878359c2407cd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "51476bbeb54ca17ed57c5ade63af154799a5d9b649b85e451178a573df7c30ed",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "57404fca9369f2b844b7a4a4e27652870c83e7bbcc0098a9b7e5bb7c08358f31",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "cecd96497cf726eb58cf9ca28d2db832c472d72597e12c55d76f28b64dac9eae",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "7374882984e2899e848650cea2aedc3be4cf0f0bdd415e746479f0d707efa877",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "41c21ea21ad203d7c018ccd92dbc6631aa37fb0a899ff38d612bdd753ddc8fdb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "2b14e9b4020dfc71ec6507f6d93ee23ee2b8768f11bea3451c4bee89ff41cf43",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "470dfaa74b06321d5a3fbee137ba076c7e6dbbd9dca4cb6c6cc116b114d285b2",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "628558dca47080d97a869b77536a04b281c6f213566039b45b0cff90537d4d0e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "5cd4f1120904eec196605d2d559f36e0c1c7f21d2861a61e514ff75e4dd5462c",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "1da458884c4dd9a3abe74706cf2770527120998bfe7d0f82544ef52900f2458a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "a4aef7a25a602d182885d48431643b6483d12e7300ae05d78e572fb87945774e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "8b7d786c1a5234dae7f73ecf8f97467860b9f5fca08d79f07963e567f906eb3b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "a42c8154b5ad4a2bf1385f4cb6dae25de3ee96011964cb9a56c70917dc2602cb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-0/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-0\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "28cb0bb8a9a1065ab8c3e6425ec1816b4c1a475f511783251655afe0d44667b4",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "bb1015c038d397600d0463f72ddc900d30a4949228fafa7ce74802348bd42b39",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "a3bc30c2d7898f64e64e31f73a6700cbeedee1003692b5d59841aed5e3ba3599",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "135f8c72d0e3e7681aa75fce47c3a6e689ed341cdfcedc1ede205410538a637b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "3bc786621ab577e380e3655c4d5ebd2f11fc9aa99ad82395ca75a2e7982cc6c2",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "821e33c66fe87946f12f0ae2ed3b6dac6c19a575c39a8db39ac49a6707e6d4a0",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "4fb6586078d4e44782c84fcb508dd950e3b743fc3e4e5f38952c67691f5b45fc",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "0db7ee1b77ddf9a2e98d0be75bf835a1dd9a08b3594bb1cbce24dd7b5ee89cc5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "c2cd5552ba7331d6944edeb71c6c22fb9eb5fd323337761ee91293c94213b9c8",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "f6e3df6b12ae75490c426ae7fdfcdd78950a5537657be8217e751f737a4e0b18",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "901de757f6e299fa923f6db80cd134f829f262a3850f14de1e82f1d9c493e29b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "d4228c2510a3a3dfae900d141aa7a0c86c735d05576a2c5d7a59b19e31b71059",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "7b6c2acb888a9be6f4ae4151d14851684f33b85f11efbbbf0148e274938227b5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "1d785f0e2e640556f51d6a70cac8ba0199dbfbd67bd7a69b8a344e0165419385",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "12d4187fc7a2cf712d83392f4087638a31675793f50d93e78b12aa91c741d623",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "44679a217336c7e55a897f366f094014be1ec2aca486aa3fa0e52b1121e67dd3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "78ef32914ca168a985dc9616add3eb9807cf0aeaf300d9415c0383ef3c6b33d7",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "3b060792ce65828869ab129f2871ec17ded1d7b2bd0df645a818e0e7e38d91fc",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "77090752a75c63e4bd1361e5c787501f89d5a5f15181766499c4074c68d98b98",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "4610a9d2a4465d8b9604c14329c8fb9e8bc5be8fa392c427fff40d6d531780a9",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "d322c83d2dbda0c55e93f5ccce2d1994a457acac24225ee22fc902813381e273",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "425a2c08cf35761b6c449df4b88b66b95012860ba83db245c909b38b8a95156f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "aa58f2f0136df98876ee62c2ec7de8f90823b5fa22a25ad2e3baf7d75d14bb54",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "62baf8ab87d30cd2bf31000cfc9bea9b8fc2a7785e45fe1008b4fe33b4b40d94",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "d15f27f9230ed4fc9bc40419ec3586a705910085cb49b42eef18e6d5f537415e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "478c734708ab0acc6290072bf8b1f831f4c2f090ecc076c913c2b8181a3c9d15",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "34abf20e28405b7e6ba0d3c2113fb53f4bc536628b7165296a0dd816ed958700",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "54f1290b477c4e9dd91631b9d0f8f33c15476a13189a5a09dd59d0e87f2d96fd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "a375ef14c68a9cf7c00c35a33119d4d1018bca781815d0b4988ca8c864c071a1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "8968d1bdc94cd125ff1eeaf6e7561e0f129399a334a1bce60a7d20385cc4fb1f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-1/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-1\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "383c77fab02f0fb23ba9500a761e56341c925f40233da64740429a322f9a013a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "2f5613935264fcc62bd038dfcb8bc992f3845f209b55a329f327a226cfd50151",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "42d472338d759d2089e09ca736025a2101e7c01270e2ee6e90202b1eef3827dd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "01bb286c16b6c9986e8468f2970a59a62809c69a11f9e6d8cd579cbc1c4a5013",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "72c47e309234c6ad93cbf99f8844084191f21fb2a311f1b696d4d4253684c5f6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "93d4a3c3fb87f7ef01d0a7562863ad5550c80cb013eb581bb8c70b77bc9428ec",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "b9a293192de3d18a1f3841e804249fa14822cba91dad88ff725524026735efd3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "b28cdf472f863b15eb3cf9e12169386a38f2f842aefcd227225fcb151bff1338",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "9897410145c2eaa4809bf5a402a9da149d7d2e7b8bff2e3edbef8f8657dcf5b7",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "ac7ca68d73630e2c4fb9586b8ac099f631c190877f86183082c6885fd7a347f6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "71a0ea02f32116c2b18cef60249668ca3fcf659c63e204835cde37d8176f2151",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "75e095bcb79b6f098fec09978576026f05cf84700803d22f6cfe43a90485bcdb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "0b8b98ea31ab6f435621db7f5ebb2627218bd0e81ae73fe2c11d81b1d43e032e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "fb424caa7bf1446a7db8f4ed8126e6d061ecf09e3c60fda4cafed025eaf2cf2b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "ccbd036b34cbfa627029cf6eb70ad76df47609826ffb1185439d4d98bde75492",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "bfb71d86068b1b260f234d3385dd056cc4d16b413b7633603f034dbbdba16157",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "69b439a087a4b45f6b38f53f64498791abf5f5fc6d6f5c55b7046504124e0e17",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "dcf4d82c4549b87e5458d1bdbcacc28b62a1548d3ff3a0c7bd3d18c21dd4a48f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "f06f837a2193b3e2e54f0aeb6bf1e2d3e497188ec15479e25472da599578f664",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "f59ed96c24ce33a1ef61ff75d85ad1f8226f76074967ee63e32ad6917b843b02",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "f446ced8ff8e101b77b4324684d87e20e0a656150d0a8f5258b9e38b9a9dee47",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "2dd81ed594475b452789e566cb85bc6a490bdeb2f564ee9236879bb4718421eb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "935b2d78abfb5e221ae37250754bad05d38253ebfe3865c9d32c75df0d608eb1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "e425e116bd9faf6ff414d75d15196e31dd16f0e38a2e38cb77601fd5d3162360",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "56101d44643d3782c0e088ebb8c039acf36e22158b4054e2622066698f96a6a6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "b3ffbb74c21d5044bd6c69ac98097cb38bd7616a7e9e5fd0038676f8c0bd5c6e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "154fa62296e41fb95c3774859470ac2eeb504921edc69e37d43aace9a5504a78",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "2bca5a99603da2f6f7d7b5a572953c766820d1dca9a42c647ab7e4587d581f24",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "a8d6b8cd468110f3d5c29f73a0a3fa7bd55cec479bc6bf4b953cb7b5b3a86a81",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "15779af686a19d26ab4d7b542ce0fc4a7fc579e1d2a197f3fc370b8ef5c5f014",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-2/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-2\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "a205c467bf9f9f4ffa48bd99040ea0b5a9879641b140ea16d2cc69c7111b1915",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "aba93435d8c9c82502a95af8139c14c47aa4e08a55f4e725ed773508ac88f0e3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "3cd53284d56465bad7bdff148e7992df690c866f9c8c71d3243e71209ba57414",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "568d393b850badbae78a5cde1b9a3890f8aae33097d1cd231e76a484b00134b6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "9cf17a3d7a7cc4b5a5234c1c608a1820fe2b2abb37844237e8342d67f2b2b678",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "239e6b035196fb44081e203c7cb37bf1881193ad592aa2e59c5bbbe7e2ac2c14",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "51835deee0afd8db437499ac7c7715dfa34efc6f3c2d4a117f6363598c55a2a4",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "f266e3a9ad3b0387a4a1fb82be493a1ca5923b21b8ec9f42812a7bd44baca84c",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "12260bae192f79519fe88004347c9bdf0d4f5da4e14d8207526e913a0a21283b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "9b6358ea4724beca6274caea08f0bf0dc19390139cc45c6309ab4f5718c3ab5f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "e6b40e096500c52dd6f984cf560154beeab5df190bd3a214369c649f2effcb66",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "564798bcf609ad9fb5f98b8eb8934baa4f298c9a4a84eca1a25d95844630d4b5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "3029a8ba3b0071cca9e5617a4f6eed6948904d35049662d374a7f17d8be8dfbd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "455b99b056b30c92b8d3e7600dc3cf88be41df171f2c6856c333a1dd6c97be56",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "4a7116056923539d2fb25d01c783297ef763f5cf3ab9fffea768a6967c658ec1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "cf3fa8a4c584fadbbb676ccb8ff9346cb8805be56f12535c421a5c0c937b1dba",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "a385c53190787a7577c6611aaee4a3620e31b16b37862fa8e489ad6d3caa0e22",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "d25def1c1331f050624e18a3f22d1c69f3f0e4fc7a58f8fad92b2a51bd17a466",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "0a0d67037103f48ebd61982060ca7886fa0d84b2956efa191c29fd3331f61b96",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "c0baa5fb41b5669de7234196b592554c7496ece574fd8836cc6bbf71f0e7b004",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "45ecc00ad07fe0b320c40cda62291bb9ed6a8e67bb70742b60852cebcfc58933",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "f524d770dc9cca86de689f6690e6eec558c02aaa472b43028a8749cc9c905baa",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "8888de73ee8c6100d3cbd16fe5580030e243419d61e8aa3a2b5155b177cd0312",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "b23695e287839a6a80a39eecde8f8d74692a37cc1aa19a2598ee95249ac991e5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "a03b37d58f4cef787f23477c993e5c8c2dc4c6045ecd2005fe1135253f6ac5d3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "fe1d88fdb428736d34fe6de5e1938fc3a6f45772b230e46b36bfff392b4dd06d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "52e7a558a6369f612054edf7f780850f5b9d2f149c6fa292fee89cbc3a9df193",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "03ee450cb91f93a9274e633c1bd3ffb3515ac8fd58acbbd26db485a24900ee45",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "a654927f60599359e67c3fc2b48cffe56864cda51e17de57a83065abdc216a50",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "21189fe72ef37f63bf9357371c6deb59918eefe1bd58a0e055e64a0ab44d9ee5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-3/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-3\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "5092f25e0fed1d0e08cbf4dce40ba07581d4295dbfbd7054a34cfc1a4302525d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "1e4c3bdaae9103006a8ad9877325fb1b43a717cc9600ee6667b38a925d1f6c73",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "284bf8406651bbda1e1e0ff5df5a970fbb240c546b814a0fae98a42b1ba2f05f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "d22d4e35273357f3c389b2ffc484bd6cc4b1933d7f85957b2aeb1624accd7623",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "752a83e56acc3bbc883a21e4931da85afd9abe87369948e66b5170d0b3986186",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "513a8a4e8ea2c1ebcd6d4d8d5257b87505a0c0a5e53122172c68c2db7d6a1019",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "d254f146135f686497d5637ef9ea437cc2d5462f4d47247d52f8e1c400b47141",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "1b88c1b16b28f157da97e86fa280b0264aa45a68e61fa90d1e5ce7e85c9338cd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "34dcb5ce0b6ed845653efa34b58479bca09a08399e8751f18ba62b8535172a9b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "86d9c8be663914a3346bc5faf06816ae77666d84f7df03d66dbaa083a1d5469a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "abd1fcb3c59ff229ae0e4dd71e1787579467dc6481909402f4232e853802c59d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "13b1803caebae3268ec02f0ae952a02761c1d1daa0afd600b72f328323828978",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "875eff45fe2ab1191b93078dc4f961d4b944da49aa3ebfb5d7fbbd2726b743ba",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "79b441c374d66af3c8d4978d332a91f4037e5b5c80942b4c69cc0e7c15fdea73",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "76bf6c2fc627883ae8a4fa5de5be0864805d6e56e2a8b6107ebea80c199fbe8d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "838c3cb85716177b4868b614767602d0b126c300ddc5bd2552983fc9b7ce02d2",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "9fa5948250672b2a72ebaa26ae2d91adf9a5542fc2d51d395ec8284e39f00e1c",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "992c39d4ccc73176d5f289bcff4e48daf9be874ecb4dccbd429ee37dd0123254",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "6cb8b6229b27747ca96c5f0bd9f44512bdc82a9a04f66e8c9785450c30dcb893",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "5a2021e6b9079bde08bdae806aedfefc510142c1498867507c4249f93786119d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "c15f6d16c7a40e3fb696c08845115d554a31a421eca4d1f7463a1c9825666ca6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "62d08825d4d9b8c728d6e511209e33bab1385d7f2088ac3a3cbaf5bdf03d0910",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "2f31b94aab25be8afe2e6bdc7f23a57740c8e6b75edc69bcb22d8b9c27d32a55",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "b99bf5e9ee684180c7690533249442b8f5949a8b318f18d380ace819c9932f4e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "e94323995a69c075e2d0f18c9d1511555b7e226ae80ec6703e0c0772a8a6da5b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "9f4bee38ee4d50b437af154951e664e12e443461d24da56928bd266922e2eec3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "a436714ec1fb074d238f1d7e73f8c625910221a7a0bdbc2411369cb324d34cdc",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "493944f150623aad4208d279ccaf5fa28719591d1d8825bf8f7a7fb8853662ba",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "e022a38cc7cf6330d07effa8aba95fc7c7e1457e14a108892f0cb50736de7f83",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "d57ac35751a482a4c1929b7ed23ca5cd9af09a79fbaa26b064f89e0fd5927f77",
+      "exists": true
+    },
+    {
+      "configuration_id": "S4/fold-4/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S4\\fold-4\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "f75a11792f1c6569885873b7b98fe654cfa78582dba41585483f606ef6dc7ad6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "c6c992b93470678837ed5fe208f16f739ba75289dce7c5043d79dd40f1419d3d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "f7aee5c6a0c21c70746dc35ef6846ca591c900f1268c50ef628f9ba2fa9eacf8",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "def8e6c5abaf435654076dbdae05dc7ac3e9c9cc2517601f3c3ef983d0a88b3c",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "88ceca9f45a637ce20741204712bc1f176262f6a0e7f153ccc0154f88448632c",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "cef67ab3d6dabd5e38568a04bfe72d73ed49b1c75e46d53928b3f0a63cfe57e9",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "97dd61296e88df419da09d69b851affdddd253e343064e91d4b50300a886029d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "5372fd0650d79572a7179162e35636dc732cad2a3c24d87c9c09814c9dfe3ca9",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "36a278f8c99e3e87d813eb7acd3b101d98046f424fb7e1888d171e7cb9ef34de",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "20a0d233f00bec2ec3572768d410a7aa7d4026fc707625765192f752e6b2f6c0",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "b0ea04dc1c34224dd73c9404457ff7c9d34ff162516474fa57ac8957b5b7fd9a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "9cce82c412c928d054899b8928cc04e232ab7c47ca31016ff03e0f38dcd40c23",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "d7dce8a77e8ce8ced0191a5a61bd0809dcea0814ea4839fb24f40ba8e3b08b58",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "b80155a96b97c042585f297987000946188c8e6b092157637883be44915e15f6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "eacd40f6b470e3b43790f8cd57853b040c303f59004187f437e626a1958e96c8",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "bf32e03fb32be9ef808e577dd8b8562a4cbce2a8a89c5431b02dba620eb58be3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "68df38ba580d8268fc902019553805c10222a746e2223581e006249a49bc63fd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "46edb532298dec2312366e31c2a259b49913ee7a4aa6eebc82ab5ecf3e24627b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "20a11a46c2c7b37e1e393b034107aed083fd2ae37384ba540106add4d1fd9b3d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "968ce91799900abcbb5cf40805eecddc48a38d14792524eef7a1c7a3bbe81090",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "d47839eaa5f75ffa197384c5d7623b976e449a808fddeee0a9b5dd3d8576e8e0",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "c936dfc7973420b2a445f9cc163fe81c0fee82b1149104eb0190b06f99551845",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "33a76a5adbe8700b8e55f1c3d175ff5927267c278af373d09572ebfd35a86c5d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "37d55487d58f19999320c5fa00d99ffb32d2d8da513fdb283e9d8ee7638ac78e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "004280f49bb3caef0f1fc961e8ed6e77195a20a50f9e0615bb765d55c92c2e22",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "6ee693ab88326e0b5f2f422528079005d4a03f269d7fb77e5d938765bdfc0856",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "668cd517b1c5db1f79ac8689e8e556dc8b2bc5ad4636e75dc4079cd6d4f641b7",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "a9dcc8e782634e0c2bd123c98144dbb15f8687a1481b4504b07dfdf7abe7b78d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "a7c9a5b3683937b5c9864a1477a1f3dab6a7ce507b76cb0c0533e671dac53ecc",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "bbba3f925142bf5fb2e26026efafabd4959aa8a16cd7f4c354564a65d5ab2c5a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-0/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-0\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "de094388285230d40fa455f4a7ed99684a67a567671bdfb0ef899aa85b096af5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "41f9b6acb35607c6f568e51be044e1461b5c276414ffcd2f703df4713ccdae0b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "692e4ceeb726fba220e41fc5feee877173012b1814827ef462c307979aa00f16",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "e867dd5ecb9d045c41a8b671007171e45b6f5f6190763dd1a7dd7b261da3b668",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "20ea154bab934ba5cf652bac845bb59aa4e17975fa9f7926ab788971dec7d20f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "1a8f5b245126995ee83874661b0e226e11cef0bdc34f225792b342119088f57d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "c4904f5a77552dfc74a2e7753b5924c8d3b4ab760b40a1d97f4f802d20c17be2",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "193f7e23c1090743299402cafa104f53a321b587d0c3ae2629e9c3e24d543784",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "d2ef37aac7ab38880ed65f006d91b6bb6f6d75df8530d69a0e351a8b7e52e861",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "1f87f891d293b3198c9c76a8ba19e1fea9bfbf4b93b8199666a35a3088795ad3",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "c9021cae22256cb1d3bfe8e003fc299d42fcffb50cc4e5cdfcce3a09ae73e0c7",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "1397da1342b985659d9fb642b2888b32475aaf4ec21c38b275077fef40a3f281",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "effec57f229b03b50affee07ccb31d694aff7a517663eab06fa4d14b871c2519",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "1dbd5d951d8e8a3bbac2031d4ab5d4124fc5c6e2b5bbcc03b57686bf6ba3198e",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "93ab67be932fd3afa8f763f2851a7759744903823ce93374ed576e7fd71f3d05",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "d00f3a97355716b5263e037da8e7ffc3538aaef2acf980bd3730a0a3b1ad6cd1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "061066dec2daa1286fd2deef6306566b70496d82e5811ea3c0c277d13c3d4473",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "ed60649abb0584d60f7588ca9067bc38f3e3d1de33ccef0afb5de5143759f9a6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "bca14a40516435be0cbf6e0eb464cf0bc003b4151551cdbb65f7fc4fbb1426a4",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "01cf9c945cd978aa7a04a5dea405ebca91786c0251d395faf012d69419e206bb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-1/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-1\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "2c48450e6b4fcd65e9207a7088d7f11240c10306737f54f2aba263030e0032c8",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "ea57e6d0e323e157db5df389c985b175b5024013ca2d9b2ddc3c5137a71f0dec",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "023c744a1ffeb107e9c446d2d41fc31a2e8481055e62e7a581a3ab6e539c9d81",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "cbe4f19ee2efa8dcc5ce48e807abd20da7a61195721b638589eaa77cd1ca3cfb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "17219d55fc2d312e396158c68fc0df0b1f982fd50edcaa8273beaf3437f4e83f",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "03228d524cd5d864553b205dc7b499bca367a16d31a869e1531a046191e3b1ed",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "1b493fc9c8ace6cd30e9d61993c6eb183c4101423c5bdbd2727641b58a68f0d1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "49722036981a23d65c3081fab5515509b7359f3eb7874fe9cc67c4e64f7d0731",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "efa98651255829eec0d89734cd1c8c07c1b755c8ff6d57cd40539554ef830ef8",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "87705c71a37fa2d0380426c29f891ea6b34b4b924657daf303bc73492c8aeeff",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-1/seed-2/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-1\\seed-2\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "5dc590ad3406a9c1cd04f249b471010429a2b07fa36530e5a090ad98f7297fe1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "b5273f11737742a0e5abf7db6054443f6653a14204f9775868527724a7585983",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "e83557606ade73e1e6783af64593a5772ef3bc405efbce21571ff07f048bd7da",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "6d5c03eb0e883ab06e22d26839978b600c73eb404e4f882b90e8030e2a444272",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "4f871d6ad42a6a88745986f3624c0a1258dfb34087d1049c5289a14491017659",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "8815a5a3ee05b96d337294651a4bf4e1068fafa4a60c8be473e6420408bbdee5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "0d46553ff271b26e186a9b5948795a8cb914d0f135822d8f0954852a33b53387",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "2b441261b2478649128768610086d0f5fa1a37769832463ca1d4399eec394c0d",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "bddc9ffcd5075a57b4efb369c890331135bd7b1020b18315ba4a318310e29270",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/mmd__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\mmd__lambda-0.10.pt",
+      "declared_sha256": "3bd28097b8a71001d2854287d4271d7f61192ad7c3319fe1e9bff09d7ce49728",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-0/mmd__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-0\\checkpoints\\mmd__lambda-1.00.pt",
+      "declared_sha256": "0c36bead8dd097ba157cce2481e85430d314a4186d99e3fba345707349953ce7",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/coral__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\coral__lambda-0.01.pt",
+      "declared_sha256": "0382dad363e3fdf8493e1b0b01d91febb7cf6a96a58450767eadf77fdb4aac8b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/coral__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\coral__lambda-0.10.pt",
+      "declared_sha256": "4519280884a6f5dfff79a76bab4b60a1067f2e4263f7f8b5c81e47d6f1e5774b",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/coral__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\coral__lambda-1.00.pt",
+      "declared_sha256": "a151aa96be2f755a10ebd09911b1c59d312b6290c5acafd51c8dab850f62f0eb",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/dann__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\dann__lambda-0.01.pt",
+      "declared_sha256": "9577e56da4175eab81918ac7a441fc8f5223f7a88f5bcc274c6dc506cdd751e1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/dann__lambda-0.10",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\dann__lambda-0.10.pt",
+      "declared_sha256": "5521089a376657120062ab451213d29ba09612bc11ee5757fa3ce150c8e515a5",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/dann__lambda-1.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\dann__lambda-1.00.pt",
+      "declared_sha256": "5754335bba8aa65952e2c7d85ccf7340246cf55a11babccef94529bf61572d35",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "dbad57bf4ee27fe58f3886a866247414130ef8ddc8ed1ad2fbfec6b0b9d47fea",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-1/mmd__lambda-0.01",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-1\\checkpoints\\mmd__lambda-0.01.pt",
+      "declared_sha256": "0b0ca7529f7adf38f5ede6329c94ea602685bdcb10621518f520e6a65534a33a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-2/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-2\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "a5560ff78bf8b5c4a7a51fc49c19078c078cb6d932bf285facf4642ffff29d60",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-3/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-3\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "c1b9c2278e6857eae320e5d95a6da4d63a8070d87aee9768df82de6d760ab835",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-3/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-3\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "d4b36d6c5d628447330ca214764c860a6c1edc8321c74ca8d6e8371ac7ba2af6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-3/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-3\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "f8dc4d695c5d73c98c277f58c74ea3aaf7551153a7fdaef945ad2d63620b6a2a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-4/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-4\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "b3d3948703b430a3166a36cd4e92ec3d1a626d7efcc86238fd98c446bbc1a6be",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-4/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-4\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "517b9eb4b597561b33f2567ddf444006fcda061a28f1b4771ba8c8f0e6481dbf",
+      "exists": true
+    },
+    {
+      "configuration_id": "S5/fold-4/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S5\\fold-4\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "be3df130268b414f8628990d36bba78e7318711f5717f75e5693fa8d241e78c1",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-0/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-0\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "ce84697119875aadde1d1d516addbebccb8e014dca3c76e0154afdf122868b07",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-0/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-0\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "712904f8c9b22c7be56622e17f4dd3b4c3b9263ad362076d7f9509de127b9968",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-0/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-0\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "fab2369773a58d9dd6d16bbb8307a05a9bc56af7b76050c88c605ca6cccf5b4a",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-1/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-1\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "cb3c2c86140d2a8b0c00aeed51aa53392d8a50bf41f9ded1ab9d343181f031ca",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-1/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-1\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "150516ee27b31f1b9ed3ee06fc8fc89f38967b2da690ef56f04b66f7990cd8d2",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-1/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-1\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "4b02683d21a8a5e23a0e470f94c843556677d7b216a8b90e7cacf115a6f4c508",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-2/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-2\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "63d2f005208c37b5e4d1870c519054ffda00316fdd455308dbf8a75005d963aa",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-2/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-2\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "1040bb9d4dc9572c3d4f1964903bd7c45045ef8cf2bba4316537fe618029d9f2",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-2/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-2\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "c7ae1ca34dc222bf6136dc1476d8dfd737c70eedc513933e34b4948ce57447fd",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-3/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-3\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "79a7b9397a0dbd0bd61f8989673266108ae72ea5abc1feb8bb57a3c274a452a7",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-3/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-3\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "097fae939af041a45f1f0fe48072bd1f9686c352cde261c6a68a6c094e418af6",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-3/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-3\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "dd206bbb0602edad251e1c012a9a8f13a61b96be2c1efd619fb066d3848788ae",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-4/seed-0/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-4\\seed-0\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "477ae2a4634f3da03682c75026720fa1f44f84087b7970acc59abd46d17ddc5c",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-4/seed-1/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-4\\seed-1\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "a0529317957b01ccf0c0b5db674318f86b147c49ea69cb4d8f73ea571362c177",
+      "exists": true
+    },
+    {
+      "configuration_id": "S6/fold-4/seed-2/erm__lambda-0.00",
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\runtime\\runs\\S6\\fold-4\\seed-2\\checkpoints\\erm__lambda-0.00.pt",
+      "declared_sha256": "3de79f94646436a12cbb96c966489e2a325b8e217e123da86059f0b060affec9",
+      "exists": true
+    }
+  ],
+  "hashes": {
+    "P4A_PROTOCOL_FROZEN.json": "73732e3cc82d13b1a9c3e2b4f816433838c991a7df5933b3bb414338e48f5618",
+    "SETTING_MANIFEST.json": "a3b6a6d10f580f9df56bea5c3655f5bc71c1e960166f20f9f63138822645a6c7",
+    "SETTING_SOURCE_MANIFEST.json": "dfe21a46ed8e35c9e4f65fb79e42f9b94863443e751dae9fa1b6d278c627bba0",
+    "PROTOCOL_FREEZE_COMMIT.json": "c7093ee8cc54c3a13e8bb61023c350aa8da2fec2ff14da038a3661debe2892cf",
+    "OUTCOME_ACCESS_LEDGER.md": "59971cc2665ac97cb79cd02b281eba21b04de5a518c3f34cf2e9506507776399",
+    "runtime/logs/grid_stdout.log": "7f37dc34b5e3aa992a2c6928badfc43d333e9741392e0c19b490e9d6b571c07e",
+    "completed_configuration_set": "3087498ab8cde51b810f0558ab19375b27edc984ccea8d4935d9809f39868c4d",
+    "incomplete_grid_configuration_set": "8bd1eb18f44bebb1b0f9c2b74ed78383f7086c1e1009f36132b63cfe55b6bccc"
+  },
+  "purity": {
+    "partial_grid_excluded_from_p4b_hypothesis_selection": true,
+    "invariance_outcome_deltas_remain_sealed": true,
+    "direction_level_future_utilities_remain_sealed": true,
+    "openbmi_internal_holdout_untouched": true,
+    "wbcic_outer_holdout_untouched_not_enumerated": true
+  }
+}
