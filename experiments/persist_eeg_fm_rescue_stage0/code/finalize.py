@@ -40,6 +40,7 @@ def make_table(task,dvi,scaa,scst):
 
 def figures(table,scaa,scst):
     c.FIGURES.mkdir(exist_ok=True)
+    hist_corr=pd.read_csv(HIST_SCAA/'UTILITY_TRANSFER_CORRELATION.csv')
     fms=table[table.Model.isin(c.FMS)];fig,ax=plt.subplots(figsize=(8,4.5));x=np.arange(len(fms));ax.bar(x-.2,fms['I RMSE'],.4,label='Identity model');ax.bar(x+.2,fms['D RMSE'],.4,label='Decision model');ax.set_xticks(x,[f"{r.Dataset}\n{r.Model}" for r in fms.itertuples()]);ax.set_ylabel('held-run RMSE');ax.legend();fig.tight_layout();fig.savefig(c.FIGURES/'d_vs_i_fm.png',dpi=220);fig.savefig(c.FIGURES/'d_vs_i_fm.pdf');plt.close(fig)
     new=pd.read_csv(c.RESULTS/'FM_SCAA_PER_SUBJECT.csv');hist=pd.read_csv(HIST_SCAA/'PER_SUBJECT_UTILITY.csv');fig,axes=plt.subplots(1,4,figsize=(13,3.5),sharex=False,sharey=False)
     for ax,model in zip(axes,('EEGNet','EEGConformer','CBraMod','LaBraM')):

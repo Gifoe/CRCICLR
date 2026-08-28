@@ -93,3 +93,12 @@ The globally selected source-validation recipes and S1-only head recipes were re
 - Prediction: no scientific value changes; the resumed process enters CPU-only SCAA statistics without loading 60 anchors and then proceeds to SCST.
 - Result: pending isolated continuation.
 - Keep/reject: KEEP as deterministic checkpoint/resume engineering; refresh the `run_primary.py` hash before continuation.
+
+## V11 finalizer historical-table dependency repair
+
+- Diagnosis: finalization wrote the frozen no-trigger decision and then stopped while drawing the admissibility matrix because `figures()` referenced the committed historical SCAA correlation table through a local variable that existed only in `make_table()`.
+- Change: load the same committed `UTILITY_TRANSFER_CORRELATION.csv` inside `figures()` before constructing the historical utility-transferability cells.
+- Evidence available before change: NameError traceback, committed historical table, and completed frozen FM results. The repair does not inspect or branch on any new outcome.
+- Prediction: report/figure generation completes with the already frozen historical evidence; all FM metrics, gates, triggers, and terminals remain byte-for-byte unchanged.
+- Result: pending finalization rerun.
+- Keep/reject: KEEP as reporting-only dependency injection; refresh the `finalize.py` protocol hash.
