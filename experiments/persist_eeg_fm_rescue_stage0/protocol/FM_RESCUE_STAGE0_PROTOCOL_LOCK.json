@@ -1,0 +1,186 @@
+{
+  "D_vs_I": {
+    "bootstrap": "10,000 fold-within-dataset resamples; all seeds grouped; fold ids synchronized across FMs of the same dataset",
+    "consequence": "held-out outcome-subject CE increase after direction erasure",
+    "decision": "exact centered clean-vs-erased task-logit RMS on model-fit trials",
+    "directions": 8,
+    "fit": "ridge alpha=1; leave-one-fold-out with all three seeds held together",
+    "identity": "symmetric cross-session identity-skill drop after direction erasure on validation subjects",
+    "models": {
+      "M0": [
+        "persistence",
+        "geometry_strength",
+        "rank"
+      ],
+      "MD": [
+        "M0",
+        "decision"
+      ],
+      "MI": [
+        "M0",
+        "identity"
+      ],
+      "MID": [
+        "M0",
+        "identity",
+        "decision"
+      ]
+    },
+    "primary": "RMSE_I-RMSE_D",
+    "source_definition": "cross-session persistent directions from model-fit subjects"
+  },
+  "FMs": [
+    "CBraMod",
+    "LaBraM"
+  ],
+  "S2_or_S3_accessed_before_freeze": false,
+  "SCAA": {
+    "S1_split": "within-class chronological 70/30",
+    "adapter": "classification head only; encoder and normalization frozen",
+    "bootstrap": 10000,
+    "certificate": "Delta2>0",
+    "constructive_requires_task_competent_FMs": true,
+    "dataset": "WBCIC",
+    "not_materially_worse_than_anchor_tolerance_BA": 0.01,
+    "pooled_sign_evidence": "subject-grouped across FMs; 10,000 bootstrap CI lower > 0.5",
+    "roles": {
+      "S1": 0,
+      "S2": 1,
+      "S3": 2
+    },
+    "selected_lr": {
+      "CBraMod": 0.001,
+      "LaBraM": 0.001
+    },
+    "threshold_search": false
+  },
+  "SCST": {
+    "alpha_grid": [
+      0.0,
+      0.015625,
+      0.03125,
+      0.046875,
+      0.0625,
+      0.078125,
+      0.09375,
+      0.109375,
+      0.125,
+      0.140625,
+      0.15625,
+      0.171875,
+      0.1875,
+      0.203125,
+      0.21875,
+      0.234375,
+      0.25
+    ],
+    "alpha_max": 0.25,
+    "bootstrap_unit": "source subject grouped across folds and seeds",
+    "definition": "Repair-2 fixed/source-support-constrained class-conditional residual transport in bank-session diagonally standardized space",
+    "fold_seed_units": true,
+    "gates": {
+      "FM_task_competence": true,
+      "advantage_over_norm_matched_random_mean_min": 0,
+      "advantage_over_random_subject_bootstrap_CI_lower_strictly_positive": true,
+      "class_accuracy_loss_max": 0.02,
+      "class_true_log_probability_change_min": -0.05,
+      "independent_probe_BA_min": 0.55,
+      "independent_session_3NN_ratio_max": 1.25,
+      "off_manifold_excess_vs_random_max": 0.02,
+      "stability_matched_minus_mismatched_mean_min": 0,
+      "stability_subject_bootstrap_CI_lower_strictly_positive": true,
+      "subject_fidelity_relative_improvement_mean_min": 0,
+      "subject_fidelity_subject_bootstrap_CI_lower_strictly_positive": true
+    },
+    "layer": "final encoder 200-D",
+    "source_support_radius": "bank-session same-class subject centroids; q95 leave-one-subject-out mean-3NN distance"
+  },
+  "code_hashes": {
+    "code/common.py": "732f8ef59f6eb11d3cc24339389efceaa66be707790f55f4883d0952e0574f44",
+    "code/finalize.py": "487d842f2407b6592a797ebe22842afe77280ee664888f00b422c2e4df8ea756",
+    "code/freeze_inputs.py": "09814bdf4b4c77e18fdde21d1d8c692ed016acd8cf3cdbc1230c1d378252005b",
+    "code/freeze_protocol.py": "78bf2a1d982177456643a5500b4f1a7ae362a90345beec01bc423212660a485b",
+    "code/run_primary.py": "a3b8ade0a636edf8386e6d5629f15861363613ebf370c496e1df34f6b818e6dc",
+    "code/train_and_select.py": "03139330e5421f5c78694541f881796e80acf9bf3293b4084d8ceca3e9bb09f1",
+    "code/validate.py": "24658847852ad3fd7b29dcf9e891e2f0c8c683d80b88e79112d1c8fa884922b4"
+  },
+  "competence": {
+    "clearly_above_chance": true,
+    "specialist_anchors": {
+      "OpenBMI": 0.7719166667,
+      "WBCIC": 0.7884300821
+    },
+    "thresholds": {
+      "OpenBMI": 0.7519166667,
+      "WBCIC": 0.7684300821
+    }
+  },
+  "confirmatory_trigger": "only overall strong constructive candidate or mixed with one strong predeclared route",
+  "created_at_code_commit": "471e2742333f09ed80a892250b43a683c9015c45",
+  "data_access_lock_sha256": "b47f72b855df290ddf80594d631c7e314cfeee466ad3f54894907a74b48c9946",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "fine_tuning": "all encoder, official downstream projector where applicable, and head parameters; official pretrained initialization",
+  "fm_input_protocol_amendment_sha256": "8fd1f47035278721d29fe975196e701f617dc0610107a9ceec71d26d45b48aa1",
+  "fm_input_protocol_lock_sha256": "11508137d7562bba3bf9a8d1f9226eeade51780f4a240b5b86c32b0fb397a8fa",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "frozen_before_primary_outcomes": true,
+  "matched_controls_trigger": "any strong constructive rescue signal",
+  "optimizer": {
+    "batch_size": 128,
+    "downstream_lr": "0.001*sqrt(batch_size/256)",
+    "encoder_lr": "selected_anchor_lr",
+    "label_smoothing": 0.1,
+    "max_epochs": 20,
+    "minimum_epochs": 8,
+    "name": "AdamW",
+    "patience": 5,
+    "precision": "BF16",
+    "weight_decay": 0.05
+  },
+  "primary_outcomes_accessed_before_freeze": false,
+  "representation": "LaBraM official final encoder mean pool (200-D); CBraMod official BCIC-IV-2a all_patch_reps downstream penultimate projection (200-D), fixed by pre-outcome competence repair; no layer search",
+  "rescue_gates": "exactly Sections 15,19,22 of task prompt",
+  "schema": "FM_RESCUE_STAGE0_PROTOCOL_LOCK_V1",
+  "sealed": {
+    "OpenBMI_holdout": "UNTOUCHED_UNENUMERATED_UNEVALUATED",
+    "STEEGFORMER": "NOT_ACCESSED",
+    "WBCIC_outer10": "UNTOUCHED_UNENUMERATED_UNEVALUATED"
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selected_anchor_lr": {
+    "CBraMod/OpenBMI": 0.0003,
+    "CBraMod/WBCIC": 0.0003,
+    "LaBraM/OpenBMI": 0.0005,
+    "LaBraM/WBCIC": 0.0005
+  },
+  "source_sessions": {
+    "OpenBMI": [
+      1,
+      2
+    ],
+    "WBCIC": [
+      0,
+      1
+    ]
+  },
+  "statistics": {
+    "bootstrap_draws": 10000,
+    "primary_unit": "subject or historical run",
+    "seeds_independent_people": false,
+    "trials_independent": false
+  },
+  "task_head": "LaBraM: new Linear(200,2); CBraMod: official all_patch_reps Linear(C*4*200,800)-ELU-dropout-Linear(800,200)-ELU-dropout projector plus new Linear(200,2)"
+}

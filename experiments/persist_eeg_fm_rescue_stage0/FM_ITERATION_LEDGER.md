@@ -44,3 +44,7 @@
 - Prediction: prevents a correlated-row or task-weak false-positive rescue; no directional outcome prediction.
 - Result: pending primary run.
 - Keep/reject: KEEP and include in the pre-outcome protocol hash lock.
+
+## V0 decision
+
+The globally selected source-validation recipes and S1-only head recipes were retained. No layer, channel, outcome, S2 or S3 search occurred. The primary protocol is now frozen.
