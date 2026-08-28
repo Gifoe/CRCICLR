@@ -84,3 +84,12 @@ The globally selected source-validation recipes and S1-only head recipes were re
 - Prediction: exactly the same grouped-subject estimand, stable seed, 10,000 draws, correlation statistic, sign bootstrap, gates, and terminal without pandas `.loc` allocation/API dependence.
 - Result: pending repaired primary continuation.
 - Keep/reject: KEEP as a scientifically equivalent engineering compatibility repair; refresh the `run_primary.py` hash before continuation.
+
+## V10 representation-stage resume isolation
+
+- Diagnosis: the repaired SCAA NumPy bootstrap was entered only after a fresh process unnecessarily reloaded all 60 FM anchors; CPython then repeated the same native access violation before SCST. All representation caches and task tables had already completed deterministically.
+- Change: reuse the task/representation stage only after validating exactly 60 unique `(dataset, model, fold, seed)` task rows, four unique summaries, and every one of the 210 expected role caches. Otherwise the original extraction path runs. This isolates downstream CPU statistics from cumulative PyTorch/FM native state.
+- Evidence available before change: cache/task table existence and key counts, execution stage markers, and the repeated Windows APPCRASH code. No task, D>I, SCAA numeric values or SCST result was inspected.
+- Prediction: no scientific value changes; the resumed process enters CPU-only SCAA statistics without loading 60 anchors and then proceeds to SCST.
+- Result: pending isolated continuation.
+- Keep/reject: KEEP as deterministic checkpoint/resume engineering; refresh the `run_primary.py` hash before continuation.

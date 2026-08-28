@@ -74,6 +74,25 @@ def build_representations(lock:dict)->pd.DataFrame:
     c.write_csv(c.RESULTS/"FM_TASK_PERFORMANCE.csv",summary); return summary
 
 
+def resume_or_build_representations(lock:dict)->pd.DataFrame:
+    run_path=c.RESULTS/"FM_TASK_PERFORMANCE_PER_RUN.csv";summary_path=c.RESULTS/"FM_TASK_PERFORMANCE.csv"
+    if run_path.is_file() and summary_path.is_file():
+        runs=pd.read_csv(run_path);summary=pd.read_csv(summary_path)
+        if len(runs)!=len(c.FMS)*len(c.DATASETS)*len(c.FOLDS)*len(c.SEEDS) or runs[["dataset","model","fold","seed"]].duplicated().any(): raise RuntimeError("incomplete task-performance resume artifacts")
+        if len(summary)!=len(c.FMS)*len(c.DATASETS) or summary[["dataset","model"]].duplicated().any(): raise RuntimeError("incomplete task-performance summary")
+        missing=[]
+        for fm in c.FMS:
+            for dataset in c.DATASETS:
+                roles=("model_fit","validation","outcome","outcome_all") if dataset=="WBCIC" else ("model_fit","validation","outcome")
+                for fold in c.FOLDS:
+                    for seed in c.SEEDS:
+                        missing.extend(str(rep_path(fm,dataset,fold,seed,role)) for role in roles if not rep_path(fm,dataset,fold,seed,role).is_file())
+        if missing: raise RuntimeError(f"missing representation resume artifacts: {len(missing)}")
+        print("[representations] resuming from validated complete cache and task tables",flush=True)
+        return summary
+    return build_representations(lock)
+
+
 def identity_skill(features:np.ndarray,subjects:np.ndarray,sessions:np.ndarray,pair:tuple[int,int])->float:
     ordered=c.subject_sort(np.unique(subjects.astype(str))); code={s:i for i,s in enumerate(ordered)}; values=[]
     for tr_session,ev_session in (pair,pair[::-1]):
@@ -323,7 +342,7 @@ def run_scst()->tuple[pd.DataFrame,dict]:
 
 
 def main():
-    lock=verify_lock();c.prepare_inputs("WBCIC",include_future=True);task=build_representations(lock);d,ds=resume_or_run_d_vs_i();scaa,ss=resume_or_run_scaa(lock);scst,ts=run_scst();c.write_json(c.RUNTIME/"PRIMARY_COMPLETE.json",{"complete":True,"D":ds,"SCAA":ss,"SCST":ts});print("FM_RESCUE_PRIMARY_COMPLETE",flush=True)
+    lock=verify_lock();c.prepare_inputs("WBCIC",include_future=True);task=resume_or_build_representations(lock);d,ds=resume_or_run_d_vs_i();scaa,ss=resume_or_run_scaa(lock);scst,ts=run_scst();c.write_json(c.RUNTIME/"PRIMARY_COMPLETE.json",{"complete":True,"D":ds,"SCAA":ss,"SCST":ts});print("FM_RESCUE_PRIMARY_COMPLETE",flush=True)
 
 
 if __name__=="__main__":main()
