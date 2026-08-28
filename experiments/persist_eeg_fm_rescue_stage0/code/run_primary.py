@@ -202,25 +202,33 @@ def centroids(rep):
 
 
 def scst_unit(fm,dataset,fold,seed):
-    src=load_rep(fm,dataset,fold,seed,"model_fit");val=load_rep(fm,dataset,fold,seed,"validation");a,b=c.SOURCE_SESSIONS[dataset];cs=centroids(src);cv=centroids(val);subjects=c.subject_sort(np.unique(src["subjects"].astype(str)));vsubjects=c.subject_sort(np.unique(val["subjects"].astype(str)));labels=sorted(np.unique(src["labels"]).astype(int));pop={(y,ses):np.mean([cs[(sub,y,ses)] for sub in subjects],axis=0) for y in labels for ses in (a,b)};res={(sub,y,ses):cs[(sub,y,ses)]-pop[(y,ses)] for sub in subjects for y in labels for ses in (a,b)}
+    src=load_rep(fm,dataset,fold,seed,"model_fit");val=load_rep(fm,dataset,fold,seed,"validation");a,b=c.SOURCE_SESSIONS[dataset]
+    # Exact Repair-2-compatible source-bank feature scaling, defined without
+    # validation or outcome statistics.
+    bank=src["sessions"].astype(int)==a;center=src["features"][bank].mean(0);scale=src["features"][bank].std(0);scale[scale<1e-6]=1.0
+    src={**src,"features":((src["features"]-center)/scale).astype(np.float32)};val={**val,"features":((val["features"]-center)/scale).astype(np.float32)}
+    cs=centroids(src);cv=centroids(val);subjects=c.subject_sort(np.unique(src["subjects"].astype(str)));vsubjects=c.subject_sort(np.unique(val["subjects"].astype(str)));labels=sorted(np.unique(src["labels"]).astype(int));pop={(y,ses):np.mean([cs[(sub,y,ses)] for sub in subjects],axis=0) for y in labels for ses in (a,b)};res={(sub,y,ses):cs[(sub,y,ses)]-pop[(y,ses)] for sub in subjects for y in labels for ses in (a,b)}
+    validation_bank=val["sessions"].astype(int)==a;validation_eval=val["sessions"].astype(int)==b
+    probe=LogisticRegression(C=1.0,class_weight="balanced",solver="lbfgs",max_iter=2000,random_state=c.stable_seed("scst-class-probe",fm,dataset,fold,seed)).fit(val["features"][validation_bank],val["labels"][validation_bank])
+    probe_ba=float(balanced_accuracy_score(val["labels"][validation_eval],probe.predict(val["features"][validation_eval])))
     stable=[]
     for sub in subjects:
         x=np.concatenate([res[(sub,y,a)] for y in labels]);z=np.concatenate([res[(sub,y,b)] for y in labels]);stable.append(float(np.dot(x,z)/(max(np.linalg.norm(x)*np.linalg.norm(z),EPS))))
-    model=c.load_anchor(fm,dataset,fold,seed,torch.device("cuda"));w=model.head.weight.detach().cpu().numpy().astype(np.float64);bias=model.head.bias.detach().cpu().numpy().astype(np.float64);del model;torch.cuda.empty_cache();rng=np.random.default_rng(c.stable_seed("scst",fm,dataset,fold,seed));aff=[];aff_source=[];rand_adv=[];class_loss=[];tlp=[];knn_transport=[];knn_clean=[];off=[];offr=[]
+    rng=np.random.default_rng(c.stable_seed("scst",fm,dataset,fold,seed));aff=[];aff_source=[];rand_adv=[];class_loss=[];tlp=[];knn_transport=[];knn_clean=[];off=[];offr=[]
     for y in labels:
-        support=np.stack([cs[(sub,y,a)] for sub in subjects]);radius=support_radius(support);real=np.stack([cs[(sub,y,b)] for sub in subjects]+[cv[(sub,y,b)] for sub in vsubjects]);knn=NearestNeighbors(n_neighbors=3).fit(real)
+        support=np.stack([cs[(sub,y,a)] for sub in subjects]);radius=support_radius(support);real=np.stack([cs[(sub,y,b)] for sub in subjects]+[cv[(sub,y,b)] for sub in vsubjects]);knn=NearestNeighbors(n_neighbors=3).fit(real);loo=NearestNeighbors(n_neighbors=4).fit(real);loo_dist=loo.kneighbors(real,return_distance=True)[0][:,1:].mean(1);threshold=float(np.quantile(loo_dist,.95))
         for source in subjects:
             targets=[t for t in subjects if t!=source];q=np.repeat(cs[(source,y,b)][None,:],len(targets),0);target=np.stack([cs[(t,y,b)] for t in targets]);delta=np.stack([res[(t,y,a)]-res[(source,y,a)] for t in targets]);alpha=solve_alpha(q,delta,support,radius);transport=q+alpha[:,None]*delta
             random=[]
             for d in delta:
-                r=rng.normal(size=len(d));r-=r.dot(d)*d/max(d.dot(d),EPS);r*=np.linalg.norm(d)/max(np.linalg.norm(r),EPS);random.append(r)
+                r=rng.normal(size=len(d));r*=np.linalg.norm(d)/max(np.linalg.norm(r),EPS);random.append(r)
             random=np.asarray(random);rand=q+alpha[:,None]*random;clean_dist=np.linalg.norm(q-target,axis=1);trans_dist=np.linalg.norm(transport-target,axis=1);rand_dist=np.linalg.norm(rand-target,axis=1);improvement=clean_dist-trans_dist;aff.extend(improvement.tolist());aff_source.append(float(np.mean(improvement)));rand_adv.extend((rand_dist-trans_dist).tolist())
-            dk=knn.kneighbors(transport,return_distance=True)[0].mean(1);ck=knn.kneighbors(q,return_distance=True)[0].mean(1);rk=knn.kneighbors(rand,return_distance=True)[0].mean(1);knn_transport.extend(dk.tolist());knn_clean.extend(ck.tolist());thr=float(np.quantile(knn.kneighbors(real,return_distance=True)[0].mean(1),.95));off.extend((dk>thr).tolist());offr.extend((rk>thr).tolist())
-            trials=np.flatnonzero((src["subjects"].astype(str)==source)&(src["labels"]==y)&(src["sessions"]==b));clean=src["features"][trials].astype(np.float64);cleanlog=clean@w.T+bias
+            dk=knn.kneighbors(transport,return_distance=True)[0].mean(1);ck=knn.kneighbors(q,return_distance=True)[0].mean(1);rk=knn.kneighbors(rand,return_distance=True)[0].mean(1);knn_transport.extend(dk.tolist());knn_clean.extend(ck.tolist());off.extend((dk>threshold).tolist());offr.extend((rk>threshold).tolist())
+            trials=np.flatnonzero((src["subjects"].astype(str)==source)&(src["labels"]==y)&(src["sessions"]==b));clean=src["features"][trials].astype(np.float64);clean_pred=probe.predict(clean);clean_prob=probe.predict_proba(clean)[:,list(probe.classes_).index(y)];clean_acc=float(np.mean(clean_pred==y));clean_logp=np.log(np.clip(clean_prob,1e-12,1))
             for j,t in enumerate(targets):
-                moved=clean+alpha[j]*delta[j];logit=moved@w.T+bias;class_loss.append(float(np.mean(cleanlog.argmax(1)==y)-np.mean(logit.argmax(1)==y)));pc=np.exp(cleanlog-cleanlog.max(1,keepdims=True));pc/=pc.sum(1,keepdims=True);pt=np.exp(logit-logit.max(1,keepdims=True));pt/=pt.sum(1,keepdims=True);tlp.append(float(np.mean(np.log(np.clip(pt[:,y],1e-12,1))-np.log(np.clip(pc[:,y],1e-12,1)))))
+                trial_delta=np.repeat(delta[j][None,:],len(clean),axis=0);trial_alpha=solve_alpha(clean,trial_delta,support,radius);moved=clean+trial_alpha[:,None]*trial_delta;pred=probe.predict(moved);prob=probe.predict_proba(moved)[:,list(probe.classes_).index(y)];class_loss.append(float(clean_acc-np.mean(pred==y)));tlp.append(float(np.mean(np.log(np.clip(prob,1e-12,1))-clean_logp)))
     arr=np.asarray(aff_source);rngb=np.random.default_rng(c.stable_seed("scst-boot",fm,dataset,fold,seed));boot=[float(np.mean(rngb.choice(arr,len(arr),replace=True))) for _ in range(10000)]
-    return {"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"residual_stability":float(np.mean(stable)),"affinity_improvement":float(np.mean(aff)),"affinity_CI_low":float(np.quantile(boot,.025)),"advantage_over_random":float(np.mean(rand_adv)),"class_accuracy_loss":float(np.mean(class_loss)),"class_true_log_probability_change":float(np.mean(tlp)),"independent_session_3NN_ratio":float(np.mean(knn_transport)/max(np.mean(knn_clean),EPS)),"off_manifold_rate":float(np.mean(off)),"random_off_manifold_rate":float(np.mean(offr)),"off_manifold_excess_vs_random":float(np.mean(off)-np.mean(offr))}
+    return {"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"independent_probe_BA":probe_ba,"residual_stability":float(np.mean(stable)),"affinity_improvement":float(np.mean(aff)),"affinity_CI_low":float(np.quantile(boot,.025)),"advantage_over_random":float(np.mean(rand_adv)),"class_accuracy_loss":float(np.mean(class_loss)),"class_true_log_probability_change":float(np.mean(tlp)),"independent_session_3NN_ratio":float(np.mean(knn_transport)/max(np.mean(knn_clean),EPS)),"off_manifold_rate":float(np.mean(off)),"random_off_manifold_rate":float(np.mean(offr)),"off_manifold_excess_vs_random":float(np.mean(off)-np.mean(offr))}
 
 
 def run_scst()->tuple[pd.DataFrame,dict]:
