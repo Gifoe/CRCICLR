@@ -133,17 +133,40 @@ def run_d_vs_i()->tuple[pd.DataFrame,dict]:
         rms={name:float(np.sqrt(mean_squared_error(q[q.regression==name].truth,q[q.regression==name].prediction))) for name in specs}
         summary.append({"dataset":dataset,"model":fm,"D_RMSE":rms["MD"],"I_RMSE":rms["MI"],"M0_RMSE":rms["M0"],"MID_RMSE":rms["MID"],"RMSE_I_minus_D":rms["MI"]-rms["MD"],"D_better":rms["MD"]<rms["MI"]})
     predictions=pd.DataFrame(pred);c.write_csv(c.RESULTS/"FM_D_VS_I_PREDICTIONS.csv",predictions);result=pd.DataFrame(summary);c.write_csv(c.RESULTS/"FM_D_VS_I.csv",result)
+    stats=summarize_d(predictions,result)
+    return result,stats
+
+
+def summarize_d(predictions:pd.DataFrame,result:pd.DataFrame)->dict:
     run_d=[]
     for (dataset,fm,run),g in predictions.groupby(["dataset","model","run"]):
         vals={name:float(np.sqrt(mean_squared_error(v.truth,v.prediction))) for name,v in g.groupby("regression")};run_d.append({"dataset":dataset,"model":fm,"run":run,"difference":vals["MI"]-vals["MD"]})
     rd=pd.DataFrame(run_d);rng=np.random.default_rng(c.stable_seed("d-i-bootstrap"));boot=[]
+    # Pre-aggregate the two synchronized FM rows for every dataset/fold.  This
+    # is algebraically identical to the former per-draw DataFrame filtering,
+    # but avoids repeated native allocations on Windows during 10k draws.
+    grouped=rd.groupby(["dataset","run"],as_index=False).difference.mean()
+    by_dataset={dataset:g.sort_values("run").difference.to_numpy(dtype=np.float64) for dataset,g in grouped.groupby("dataset")}
     for _ in range(10000):
         values=[]
-        for dataset in sorted(rd.dataset.unique()):
-            groups=sorted(rd[rd.dataset==dataset].run.unique());sample=rng.choice(groups,len(groups),replace=True);values.extend(float(rd[(rd.dataset==dataset)&(rd.run==r)].difference.mean()) for r in sample)
+        for dataset in sorted(by_dataset):
+            fold_values=by_dataset[dataset];values.extend(fold_values[rng.integers(0,len(fold_values),len(fold_values))])
         boot.append(float(np.mean(values)))
     obs=float(rd.difference.mean());stats={"settings_D_better":int(result.D_better.sum()),"settings":len(result),"pooled_fold_mean_RMSE_I_minus_D":obs,"pooled_run_mean_RMSE_I_minus_D":obs,"bootstrap_group":"fold within dataset; all seeds held together; fold ids synchronized across FMs of the same dataset","bootstrap_ci95":[float(np.quantile(boot,.025)),float(np.quantile(boot,.975))],"bootstrap_draws":10000,"terminal":"FM_D_GT_I_REPLICATED" if int(result.D_better.sum())>=3 and np.quantile(boot,.025)>0 else "FM_D_GT_I_NOT_REPLICATED"}
-    c.write_json(c.RESULTS/"FM_D_VS_I_STATISTICS.json",stats);return result,stats
+    c.write_json(c.RESULTS/"FM_D_VS_I_STATISTICS.json",stats);return stats
+
+
+def resume_or_run_d_vs_i()->tuple[pd.DataFrame,dict]:
+    result_path=c.RESULTS/"FM_D_VS_I.csv";pred_path=c.RESULTS/"FM_D_VS_I_PREDICTIONS.csv";cells_path=c.RESULTS/"FM_D_VS_I_CELLS.csv";stats_path=c.RESULTS/"FM_D_VS_I_STATISTICS.json"
+    if stats_path.is_file(): return pd.read_csv(result_path),c.read_json(stats_path)
+    if result_path.is_file() and pred_path.is_file() and cells_path.is_file():
+        result=pd.read_csv(result_path);predictions=pd.read_csv(pred_path);cells=pd.read_csv(cells_path)
+        expected_cells=len(c.FMS)*len(c.DATASETS)*len(c.FOLDS)*len(c.SEEDS)*8
+        if len(result)!=len(c.FMS)*len(c.DATASETS) or len(cells)!=expected_cells or len(predictions)!=expected_cells*4: raise RuntimeError("incomplete D>I resume artifacts")
+        if predictions[["dataset","model","run","cell_index","regression"]].duplicated().any(): raise RuntimeError("duplicate D>I resume keys")
+        print("[D>I] resuming statistics from validated complete cell/prediction tables",flush=True)
+        return result,summarize_d(predictions,result)
+    return run_d_vs_i()
 
 
 def bootstrap_corr(x,y,seed):
@@ -280,7 +303,7 @@ def run_scst()->tuple[pd.DataFrame,dict]:
 
 
 def main():
-    lock=verify_lock();c.prepare_inputs("WBCIC",include_future=True);task=build_representations(lock);d,ds=run_d_vs_i();scaa,ss=run_scaa(lock);scst,ts=run_scst();c.write_json(c.RUNTIME/"PRIMARY_COMPLETE.json",{"complete":True,"D":ds,"SCAA":ss,"SCST":ts});print("FM_RESCUE_PRIMARY_COMPLETE",flush=True)
+    lock=verify_lock();c.prepare_inputs("WBCIC",include_future=True);task=build_representations(lock);d,ds=resume_or_run_d_vs_i();scaa,ss=run_scaa(lock);scst,ts=run_scst();c.write_json(c.RUNTIME/"PRIMARY_COMPLETE.json",{"complete":True,"D":ds,"SCAA":ss,"SCST":ts});print("FM_RESCUE_PRIMARY_COMPLETE",flush=True)
 
 
 if __name__=="__main__":main()

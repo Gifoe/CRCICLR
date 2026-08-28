@@ -66,3 +66,12 @@ The globally selected source-validation recipes and S1-only head recipes were re
 - Prediction: API compatibility only; no directional metric prediction.
 - Result: pending repaired primary run.
 - Keep/reject: KEEP as an engineering compatibility repair and refresh only the `run_primary.py` protocol hash before rerun.
+
+## V8 native-crash bootstrap/resume repair
+
+- Diagnosis: all 60 D>I fold-seed units and the complete cell, prediction, and four-setting summary tables were written, then CPython 3.11 crashed in `python311.dll` with `0xC0000005` before the D>I bootstrap JSON and before SCAA began. The three D tables were not numerically inspected.
+- Change: pre-aggregate the already specified two-FM synchronized value for each `(dataset, fold)` and perform the same 10,000 hierarchical draws with NumPy indexing instead of repeated pandas boolean allocations. Add a resume path that requires exactly 480 cells, 1,920 regression predictions, four setting rows, and no duplicate keys before producing the unchanged statistic.
+- Evidence available before change: file existence/row structure, execution log, Windows APPCRASH event, and source review. No D>I values, S2/S3 utility, or SCST result was inspected.
+- Prediction: identical resampling estimand, seed, draw count, grouping, CI quantiles, and terminal; lower allocation pressure allows the fresh process to continue into SCAA/SCST.
+- Result: pending repaired primary continuation.
+- Keep/reject: KEEP as a scientifically equivalent engineering recovery; refresh the `run_primary.py` hash before continuation.
