@@ -13,3 +13,16 @@
   `+0.01524`, competence pass `True`.
 - Decision: `freeze head-only recipe; no last-block repair`.
 - S2/S3 utility inspected: NO.
+
+## Post-lock engineering compatibility repair 001
+
+- The first frozen utility execution completed all 30 feature/adaptation units,
+  then failed before writing or displaying any utility value.
+- Failure: the server pandas version rejects
+  `pd.to_numeric(..., errors="ignore")` during deterministic row sorting.
+- Repair: replace only that sorting expression with an integer temporary
+  subject-sort column, sort by the same backbone/subject/seed keys, and remove
+  the temporary column.
+- Adapter, trainable parameters, S1 split, LR, epochs, checkpoints, subjects,
+  folds, backbones, S2/S3 evaluation, statistics, and certificate are unchanged.
+- No utility result was persisted, printed, read, or used to choose this repair.

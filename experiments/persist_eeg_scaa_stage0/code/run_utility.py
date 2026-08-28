@@ -142,7 +142,9 @@ def main() -> None:
                 torch.cuda.empty_cache()
                 print(f"[utility] {backbone} fold={fold} seed={seed}", flush=True)
 
-    frame = pd.DataFrame(rows).sort_values(["backbone", "subject_id", "seed"], key=lambda s: pd.to_numeric(s, errors="ignore"))
+    frame = pd.DataFrame(rows)
+    frame["_subject_sort"] = frame.subject_id.astype(int)
+    frame = frame.sort_values(["backbone", "_subject_sort", "seed"]).drop(columns="_subject_sort")
     if len(frame) != 41 * 2 * 3:
         raise RuntimeError(f"expected 246 subject/backbone/seed rows, found {len(frame)}")
     if frame.groupby(["backbone", "subject_id"]).seed.nunique().ne(3).any():

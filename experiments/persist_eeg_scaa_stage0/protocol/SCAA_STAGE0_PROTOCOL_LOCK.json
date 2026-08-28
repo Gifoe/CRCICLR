@@ -247,12 +247,24 @@
     "code/common.py": "f6261e5b8533f65bce2f4abd599d6ea8851cfd98128d05cedd5e4ac70f35da07",
     "code/freeze_protocol.py": "71889ec43a30ae5a62371e6b07baca35419dd9052da2d3fbfa3e4c8625b2b509",
     "code/run_competence.py": "5c5d6509c7e0c7feb3fb7cf59b51da24e336da00b7638ee3ffe313f113116ae1",
-    "code/run_utility.py": "74cdf12800884835e5954a973eb8f79186b0f0314348ce4e042a72fef7e7581a",
+    "code/run_utility.py": "7d67579b5445fb9c8e24865cd7b8ad87095fe9d1138f8c5863964d2be971b410",
     "code/validate.py": "74945f895418c795e25a502069321d563de86f8e9824e40a5a87203734c7857f"
   },
   "created_at_code_commit": "fb13f1e082c7f9b5a23645e47958f6b3ba536778",
   "data_access_lock_sha256": "339e806c59fafafdfe1906ceef455d9f2592d8fb5ca6a32dc029831661c5b548",
   "dataset": "WBCIC / NEMAR nm000348",
+  "engineering_amendments": [
+    {
+      "id": "POST_LOCK_COMPATIBILITY_REPAIR_001",
+      "failure_stage": "deterministic dataframe sorting after all units; before any utility artifact, value display, or value inspection",
+      "diagnosis": "server pandas rejects to_numeric(errors='ignore')",
+      "old_run_utility_sha256": "74cdf12800884835e5954a973eb8f79186b0f0314348ce4e042a72fef7e7581a",
+      "new_run_utility_sha256": "7d67579b5445fb9c8e24865cd7b8ad87095fe9d1138f8c5863964d2be971b410",
+      "repair": "sort with a temporary integer subject column, preserving backbone/subject/seed order",
+      "scientific_protocol_changed": false,
+      "outcome_value_used_to_choose_repair": false
+    }
+  ],
   "development_subject_count": 41,
   "development_subjects": [
     "1",
