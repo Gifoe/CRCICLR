@@ -142,6 +142,8 @@ def bootstrap_corr(x,y,seed):
     for _ in range(10000):
         idx=rng.integers(0,n,n);v=spearmanr(x[idx],y[idx]).statistic
         if np.isfinite(v):vals.append(v)
+    if not vals:
+        return [float("nan"),float("nan")]
     return [float(np.quantile(vals,.025)),float(np.quantile(vals,.975))]
 
 
@@ -169,8 +171,8 @@ def run_scaa(lock:dict)->tuple[pd.DataFrame,dict]:
     for _ in range(10000):
         sample=rng.choice(ids,len(ids),replace=True);xb=np.concatenate([wide[fm].loc[sample].Delta_S2 for fm in c.FMS]);yb=np.concatenate([wide[fm].loc[sample].Delta_S3 for fm in c.FMS]);v=spearmanr(xb,yb).statistic
         if np.isfinite(v):boots.append(v)
-    allg=subject;sel=allg.Delta_S2>0;always=float(np.mean(allg.Delta_S3<0));gate=float(np.mean(allg.loc[sel,"Delta_S3"]<0));pooled={"Spearman":rho,"CI95":[float(np.quantile(boots,.025)),float(np.quantile(boots,.975))],"sign_concordance":float(np.mean(np.sign(x)==np.sign(y))),"always_adapt_harm":always,"S2_gate_harm":gate,"relative_harm_reduction":(always-gate)/always if always else None,"coverage":float(sel.mean())}
-    individual_positive=all(summary.Spearman>0);strong=individual_positive and pooled["CI95"][0]>0 and pooled["sign_concordance"]>=.65 and pooled["relative_harm_reduction"]>=.25 and pooled["coverage"]>=.25 and all(summary.S2_gated_S3_BA>=summary.anchor_S3_BA-.01)
+    allg=subject;sel=allg.Delta_S2>0;always=float(np.mean(allg.Delta_S3<0));gate=float(np.mean(allg.loc[sel,"Delta_S3"]<0)) if sel.any() else None;relative=(always-gate)/always if always>0 and gate is not None else None;pooled={"Spearman":rho,"CI95":[float(np.quantile(boots,.025)),float(np.quantile(boots,.975))],"sign_concordance":float(np.mean(np.sign(x)==np.sign(y))),"always_adapt_harm":always,"S2_gate_harm":gate,"relative_harm_reduction":relative,"coverage":float(sel.mean())}
+    individual_positive=all(summary.Spearman>0);strong=individual_positive and pooled["CI95"][0]>0 and pooled["sign_concordance"]>=.65 and relative is not None and relative>=.25 and pooled["coverage"]>=.25 and all(summary.S2_gated_S3_BA>=summary.anchor_S3_BA-.01)
     one_strong=sum((summary.Spearman_CI_low>0)&(summary.sign_concordance>=.65)&(summary.relative_harm_reduction>=.25)&(summary.coverage>=.25))==1
     pooled["terminal"]="FM_HISTORY_UTILITY_RESCUE_CANDIDATE" if strong else ("FM_HISTORY_UTILITY_ARCHITECTURE_DEPENDENT" if one_strong else "FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED")
     c.write_json(c.RESULTS/"FM_SCAA_STATISTICS.json",pooled);return summary,pooled
@@ -201,6 +203,19 @@ def centroids(rep):
     return out
 
 
+def cosine(a,b):
+    a=np.asarray(a,np.float64);b=np.asarray(b,np.float64)
+    return float(np.dot(a,b)/max(np.linalg.norm(a)*np.linalg.norm(b),EPS))
+
+
+def subject_ci(frame,value,seed):
+    per=frame.groupby("source_subject",as_index=False)[value].mean();values=per[value].to_numpy(np.float64)
+    if len(values)<4 or not np.isfinite(values).all():
+        return float(np.nanmean(values)),float("nan"),float("nan")
+    rng=np.random.default_rng(seed);draws=rng.integers(0,len(values),size=(10000,len(values)));dist=values[draws].mean(1)
+    return float(values.mean()),float(np.quantile(dist,.025)),float(np.quantile(dist,.975))
+
+
 def scst_unit(fm,dataset,fold,seed):
     src=load_rep(fm,dataset,fold,seed,"model_fit");val=load_rep(fm,dataset,fold,seed,"validation");a,b=c.SOURCE_SESSIONS[dataset]
     # Exact Repair-2-compatible source-bank feature scaling, defined without
@@ -211,10 +226,11 @@ def scst_unit(fm,dataset,fold,seed):
     validation_bank=val["sessions"].astype(int)==a;validation_eval=val["sessions"].astype(int)==b
     probe=LogisticRegression(C=1.0,class_weight="balanced",solver="lbfgs",max_iter=2000,random_state=c.stable_seed("scst-class-probe",fm,dataset,fold,seed)).fit(val["features"][validation_bank],val["labels"][validation_bank])
     probe_ba=float(balanced_accuracy_score(val["labels"][validation_eval],probe.predict(val["features"][validation_eval])))
-    stable=[]
+    source_metrics={sub:{"stability_effect":[],"affinity_improvement":[],"advantage_over_random":[],"class_accuracy_change":[],"class_true_log_probability_change":[]} for sub in subjects}
     for sub in subjects:
-        x=np.concatenate([res[(sub,y,a)] for y in labels]);z=np.concatenate([res[(sub,y,b)] for y in labels]);stable.append(float(np.dot(x,z)/(max(np.linalg.norm(x)*np.linalg.norm(z),EPS))))
-    rng=np.random.default_rng(c.stable_seed("scst",fm,dataset,fold,seed));aff=[];aff_source=[];rand_adv=[];class_loss=[];tlp=[];knn_transport=[];knn_clean=[];off=[];offr=[]
+        for y in labels:
+            base=res[(sub,y,a)];matched=cosine(base,res[(sub,y,b)]);mismatch=float(np.mean([cosine(base,res[(other,y,b)]) for other in subjects if other!=sub]));source_metrics[sub]["stability_effect"].append(matched-mismatch)
+    rng=np.random.default_rng(c.stable_seed("scst",fm,dataset,fold,seed));knn_transport=[];knn_clean=[];off=[];offr=[]
     for y in labels:
         support=np.stack([cs[(sub,y,a)] for sub in subjects]);radius=support_radius(support);real=np.stack([cs[(sub,y,b)] for sub in subjects]+[cv[(sub,y,b)] for sub in vsubjects]);knn=NearestNeighbors(n_neighbors=3).fit(real);loo=NearestNeighbors(n_neighbors=4).fit(real);loo_dist=loo.kneighbors(real,return_distance=True)[0][:,1:].mean(1);threshold=float(np.quantile(loo_dist,.95))
         for source in subjects:
@@ -222,23 +238,31 @@ def scst_unit(fm,dataset,fold,seed):
             random=[]
             for d in delta:
                 r=rng.normal(size=len(d));r*=np.linalg.norm(d)/max(np.linalg.norm(r),EPS);random.append(r)
-            random=np.asarray(random);rand=q+alpha[:,None]*random;clean_dist=np.linalg.norm(q-target,axis=1);trans_dist=np.linalg.norm(transport-target,axis=1);rand_dist=np.linalg.norm(rand-target,axis=1);improvement=clean_dist-trans_dist;aff.extend(improvement.tolist());aff_source.append(float(np.mean(improvement)));rand_adv.extend((rand_dist-trans_dist).tolist())
+            random=np.asarray(random);rand=q+alpha[:,None]*random;clean_dist=np.linalg.norm(q-target,axis=1);trans_dist=np.linalg.norm(transport-target,axis=1);rand_dist=np.linalg.norm(rand-target,axis=1);relative=(clean_dist-trans_dist)/np.maximum(clean_dist,EPS);random_relative=(clean_dist-rand_dist)/np.maximum(clean_dist,EPS);source_metrics[source]["affinity_improvement"].extend(relative.tolist());source_metrics[source]["advantage_over_random"].extend((relative-random_relative).tolist())
             dk=knn.kneighbors(transport,return_distance=True)[0].mean(1);ck=knn.kneighbors(q,return_distance=True)[0].mean(1);rk=knn.kneighbors(rand,return_distance=True)[0].mean(1);knn_transport.extend(dk.tolist());knn_clean.extend(ck.tolist());off.extend((dk>threshold).tolist());offr.extend((rk>threshold).tolist())
             trials=np.flatnonzero((src["subjects"].astype(str)==source)&(src["labels"]==y)&(src["sessions"]==b));clean=src["features"][trials].astype(np.float64);clean_pred=probe.predict(clean);clean_prob=probe.predict_proba(clean)[:,list(probe.classes_).index(y)];clean_acc=float(np.mean(clean_pred==y));clean_logp=np.log(np.clip(clean_prob,1e-12,1))
             for j,t in enumerate(targets):
-                trial_delta=np.repeat(delta[j][None,:],len(clean),axis=0);trial_alpha=solve_alpha(clean,trial_delta,support,radius);moved=clean+trial_alpha[:,None]*trial_delta;pred=probe.predict(moved);prob=probe.predict_proba(moved)[:,list(probe.classes_).index(y)];class_loss.append(float(clean_acc-np.mean(pred==y)));tlp.append(float(np.mean(np.log(np.clip(prob,1e-12,1))-clean_logp)))
-    arr=np.asarray(aff_source);rngb=np.random.default_rng(c.stable_seed("scst-boot",fm,dataset,fold,seed));boot=[float(np.mean(rngb.choice(arr,len(arr),replace=True))) for _ in range(10000)]
-    return {"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"independent_probe_BA":probe_ba,"residual_stability":float(np.mean(stable)),"affinity_improvement":float(np.mean(aff)),"affinity_CI_low":float(np.quantile(boot,.025)),"advantage_over_random":float(np.mean(rand_adv)),"class_accuracy_loss":float(np.mean(class_loss)),"class_true_log_probability_change":float(np.mean(tlp)),"independent_session_3NN_ratio":float(np.mean(knn_transport)/max(np.mean(knn_clean),EPS)),"off_manifold_rate":float(np.mean(off)),"random_off_manifold_rate":float(np.mean(offr)),"off_manifold_excess_vs_random":float(np.mean(off)-np.mean(offr))}
+                trial_delta=np.repeat(delta[j][None,:],len(clean),axis=0);trial_alpha=solve_alpha(clean,trial_delta,support,radius);moved=clean+trial_alpha[:,None]*trial_delta;pred=probe.predict(moved);prob=probe.predict_proba(moved)[:,list(probe.classes_).index(y)];source_metrics[source]["class_accuracy_change"].append(float(np.mean(pred==y)-clean_acc));source_metrics[source]["class_true_log_probability_change"].append(float(np.mean(np.log(np.clip(prob,1e-12,1))-clean_logp)))
+    subject_rows=[]
+    for source,values in source_metrics.items():
+        subject_rows.append({"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"source_subject":source,**{key:float(np.mean(value)) for key,value in values.items()}})
+    sub=pd.DataFrame(subject_rows);st,stlo,sthi=subject_ci(sub,"stability_effect",c.stable_seed("scst-unit-stability",fm,dataset,fold,seed));af,aflo,afhi=subject_ci(sub,"affinity_improvement",c.stable_seed("scst-unit-affinity",fm,dataset,fold,seed));ra,ralo,rahi=subject_ci(sub,"advantage_over_random",c.stable_seed("scst-unit-random",fm,dataset,fold,seed))
+    unit={"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"independent_probe_BA":probe_ba,"residual_stability":st,"stability_CI_low":stlo,"stability_CI_high":sthi,"affinity_improvement":af,"affinity_CI_low":aflo,"affinity_CI_high":afhi,"advantage_over_random":ra,"advantage_over_random_CI_low":ralo,"advantage_over_random_CI_high":rahi,"class_accuracy_change":float(sub.class_accuracy_change.mean()),"class_accuracy_loss":float(-sub.class_accuracy_change.mean()),"class_true_log_probability_change":float(sub.class_true_log_probability_change.mean()),"manifold_transport_mean":float(np.mean(knn_transport)),"manifold_clean_mean":float(np.mean(knn_clean)),"independent_session_3NN_ratio":float(np.mean(knn_transport)/max(np.mean(knn_clean),EPS)),"off_manifold_rate":float(np.mean(off)),"random_off_manifold_rate":float(np.mean(offr)),"off_manifold_excess_vs_random":float(np.mean(off)-np.mean(offr)),"source_subjects":len(sub)}
+    return unit,subject_rows
 
 
 def run_scst()->tuple[pd.DataFrame,dict]:
-    rows=[]
+    rows=[];subject_rows=[]
     for fm in c.FMS:
         for dataset in c.DATASETS:
             for fold in c.FOLDS:
                 for seed in c.SEEDS:
-                    rows.append(scst_unit(fm,dataset,fold,seed));print(f"[SCST] {fm} {dataset} fold={fold} seed={seed}",flush=True)
-    per=pd.DataFrame(rows);c.write_csv(c.RESULTS/"FM_SCST_PER_FOLD.csv",per);summary=per.groupby(["dataset","model"],as_index=False).agg(residual_stability=("residual_stability","mean"),affinity_improvement=("affinity_improvement","mean"),affinity_CI_low=("affinity_CI_low","mean"),advantage_over_random=("advantage_over_random","mean"),class_accuracy_loss=("class_accuracy_loss","mean"),class_true_log_probability_change=("class_true_log_probability_change","mean"),independent_session_3NN_ratio=("independent_session_3NN_ratio","mean"),off_manifold_excess_vs_random=("off_manifold_excess_vs_random","mean"));summary["valid"]=(summary.affinity_improvement>0)&(summary.affinity_CI_low>0)&(summary.advantage_over_random>0)&(summary.class_accuracy_loss<=.02)&(summary.class_true_log_probability_change>=-.05)&(summary.independent_session_3NN_ratio<=1.25)&(summary.off_manifold_excess_vs_random<=.02);c.write_csv(c.RESULTS/"FM_SCST_SUMMARY.csv",summary)
+                    unit,cells=scst_unit(fm,dataset,fold,seed);rows.append(unit);subject_rows.extend(cells);print(f"[SCST] {fm} {dataset} fold={fold} seed={seed}",flush=True)
+    per=pd.DataFrame(rows);subjects=pd.DataFrame(subject_rows);c.write_csv(c.RESULTS/"FM_SCST_PER_FOLD.csv",per);c.write_csv(c.RESULTS/"FM_SCST_PER_SOURCE_SUBJECT.csv",subjects);task=pd.read_csv(c.RESULTS/"FM_TASK_PERFORMANCE.csv");summaries=[]
+    for (dataset,fm),units in per.groupby(["dataset","model"]):
+        cells=subjects[(subjects.dataset==dataset)&(subjects.model==fm)];st,stlo,sthi=subject_ci(cells,"stability_effect",c.stable_seed("scst-summary-stability",fm,dataset));af,aflo,afhi=subject_ci(cells,"affinity_improvement",c.stable_seed("scst-summary-affinity",fm,dataset));ra,ralo,rahi=subject_ci(cells,"advantage_over_random",c.stable_seed("scst-summary-random",fm,dataset));class_change=float(cells.groupby("source_subject").class_accuracy_change.mean().mean());logp=float(cells.groupby("source_subject").class_true_log_probability_change.mean().mean());ratio=float(units.manifold_transport_mean.mean()/max(units.manifold_clean_mean.mean(),EPS));off=float(units.off_manifold_rate.mean()-units.random_off_manifold_rate.mean());task_ok=bool(task[(task.dataset==dataset)&(task.model==fm)].competent.iloc[0]);probe_ok=bool(units.independent_probe_BA.mean()>=.55);gate_stability=bool(st>0 and stlo>0);gate_subject=bool(af>0 and aflo>0 and ra>0 and ralo>0);gate_class=bool(-class_change<=.02 and logp>=-.05);gate_manifold=bool(ratio<=1.25 and off<=.02)
+        summaries.append({"dataset":dataset,"model":fm,"FM_task_competent":task_ok,"independent_probe_BA":float(units.independent_probe_BA.mean()),"residual_stability":st,"stability_CI_low":stlo,"stability_CI_high":sthi,"affinity_improvement":af,"affinity_CI_low":aflo,"affinity_CI_high":afhi,"advantage_over_random":ra,"advantage_over_random_CI_low":ralo,"advantage_over_random_CI_high":rahi,"class_accuracy_change":class_change,"class_accuracy_loss":-class_change,"class_true_log_probability_change":logp,"independent_session_3NN_ratio":ratio,"off_manifold_excess_vs_random":off,"gate_FM_task_competence":task_ok,"gate_independent_probe_competence":probe_ok,"gate_stability":gate_stability,"gate_subject_fidelity":gate_subject,"gate_class_fidelity":gate_class,"gate_manifold":gate_manifold,"valid":bool(task_ok and probe_ok and gate_stability and gate_subject and gate_class and gate_manifold)})
+    summary=pd.DataFrame(summaries);c.write_csv(c.RESULTS/"FM_SCST_SUMMARY.csv",summary)
     w=summary[summary.dataset=="WBCIC"];op=summary[summary.dataset=="OpenBMI"];strong=bool(w.valid.all() and op.valid.all());one=bool(w.valid.sum()==1);terminal="FM_SCST_RESCUE_CANDIDATE" if strong else ("FM_SCST_ARCHITECTURE_DEPENDENT" if one else "FM_SCST_RESCUE_NOT_SUPPORTED");stats={"terminal":terminal,"WBCIC_both_pass":bool(w.valid.all()),"OpenBMI_both_pass":bool(op.valid.all())};c.write_json(c.RESULTS/"FM_SCST_STATISTICS.json",stats);return summary,stats
 
 
