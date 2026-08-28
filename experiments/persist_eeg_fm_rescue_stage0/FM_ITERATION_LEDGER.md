@@ -75,3 +75,12 @@ The globally selected source-validation recipes and S1-only head recipes were re
 - Prediction: identical resampling estimand, seed, draw count, grouping, CI quantiles, and terminal; lower allocation pressure allows the fresh process to continue into SCAA/SCST.
 - Result: pending repaired primary continuation.
 - Keep/reject: KEEP as a scientifically equivalent engineering recovery; refresh the `run_primary.py` hash before continuation.
+
+## V9 pandas-2 grouped SCAA bootstrap repair
+
+- Diagnosis: all 30 SCAA fold-seed adaptation units and complete seed-level, subject-level, and per-FM summary tables were written, then pandas 2.x raised an internal `Index` context-manager `TypeError` during pooled subject resampling. SCST had not started, and SCAA values were not inspected.
+- Change: align both FM tables once by the frozen common subject IDs, convert `Delta_S2`/`Delta_S3` to NumPy arrays, and apply one shared integer subject-resample vector to both FMs on every draw. Add a resume path requiring unique model-subject and model-fold-seed-subject keys, both FMs, and exactly three seed rows per subject row.
+- Evidence available before change: traceback, output-file existence/row structure, and source review. No SCAA numeric result or SCST output was inspected.
+- Prediction: exactly the same grouped-subject estimand, stable seed, 10,000 draws, correlation statistic, sign bootstrap, gates, and terminal without pandas `.loc` allocation/API dependence.
+- Result: pending repaired primary continuation.
+- Keep/reject: KEEP as a scientifically equivalent engineering compatibility repair; refresh the `run_primary.py` hash before continuation.

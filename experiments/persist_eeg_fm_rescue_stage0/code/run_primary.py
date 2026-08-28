@@ -194,16 +194,24 @@ def run_scaa(lock:dict)->tuple[pd.DataFrame,dict]:
                     rows.append(rec)
                 print(f"[SCAA] {fm} fold={fold} seed={seed}",flush=True)
     frame=pd.DataFrame(rows);c.write_csv(c.RESULTS/"FM_SCAA_PER_SUBJECT_SEED.csv",frame);subject=frame.groupby(["model","subject_id"],as_index=False).agg(Delta_S2=("Delta_S2","mean"),Delta_S3=("Delta_S3","mean"),anchor_S3_BA=("anchor_S3_BA","mean"),adapted_S3_BA=("adapted_S3_BA","mean"));c.write_csv(c.RESULTS/"FM_SCAA_PER_SUBJECT.csv",subject)
+    return summarize_scaa(subject)
+
+
+def summarize_scaa(subject:pd.DataFrame)->tuple[pd.DataFrame,dict]:
     sums=[]
     for fm,g in subject.groupby("model"):
         pear=float(pearsonr(g.Delta_S2,g.Delta_S3).statistic);rho=float(spearmanr(g.Delta_S2,g.Delta_S3).statistic);ci=bootstrap_corr(g.Delta_S2.to_numpy(),g.Delta_S3.to_numpy(),c.stable_seed("scaa-boot",fm));sel=g.Delta_S2>0;always_harm=float(np.mean(g.Delta_S3<0));gate_harm=float(np.mean(g.loc[sel,"Delta_S3"]<0)) if sel.any() else None;coverage=float(sel.mean());gate_ba=float(np.mean(np.where(sel,g.adapted_S3_BA,g.anchor_S3_BA)))
         sums.append({"model":fm,"subjects":len(g),"Pearson":pear,"Spearman":rho,"Spearman_CI_low":ci[0],"Spearman_CI_high":ci[1],"sign_concordance":float(np.mean(np.sign(g.Delta_S2)==np.sign(g.Delta_S3))),"sign_binomial_p":float(binomtest(int(np.sum(np.sign(g.Delta_S2)==np.sign(g.Delta_S3))),len(g),.5,alternative="greater").pvalue),"always_adapt_harm":always_harm,"S2_gate_harm":gate_harm,"relative_harm_reduction":(always_harm-gate_harm)/always_harm if always_harm>0 and gate_harm is not None else None,"coverage":coverage,"anchor_S3_BA":float(g.anchor_S3_BA.mean()),"always_adapt_S3_BA":float(g.adapted_S3_BA.mean()),"S2_gated_S3_BA":gate_ba})
     summary=pd.DataFrame(sums);c.write_csv(c.RESULTS/"FM_SCAA_SUMMARY.csv",summary)
-    wide={fm:g.set_index("subject_id") for fm,g in subject.groupby("model")};ids=sorted(set.intersection(*(set(x.index) for x in wide.values())),key=int);x=np.concatenate([wide[fm].loc[ids].Delta_S2 for fm in c.FMS]);y=np.concatenate([wide[fm].loc[ids].Delta_S3 for fm in c.FMS]);rho=float(spearmanr(x,y).statistic);rng=np.random.default_rng(c.stable_seed("scaa-pooled"));boots=[]
+    wide={fm:g.set_index("subject_id") for fm,g in subject.groupby("model")};ids=sorted(set.intersection(*(set(x.index) for x in wide.values())),key=int)
+    aligned={}
+    for fm in c.FMS:
+        g=wide[fm].reindex(ids);aligned[fm]=(g.Delta_S2.to_numpy(dtype=np.float64),g.Delta_S3.to_numpy(dtype=np.float64))
+    x=np.concatenate([aligned[fm][0] for fm in c.FMS]);y=np.concatenate([aligned[fm][1] for fm in c.FMS]);rho=float(spearmanr(x,y).statistic);rng=np.random.default_rng(c.stable_seed("scaa-pooled"));boots=[]
     for _ in range(10000):
-        sample=rng.choice(ids,len(ids),replace=True);xb=np.concatenate([wide[fm].loc[sample].Delta_S2 for fm in c.FMS]);yb=np.concatenate([wide[fm].loc[sample].Delta_S3 for fm in c.FMS]);v=spearmanr(xb,yb).statistic
+        sample=rng.integers(0,len(ids),len(ids));xb=np.concatenate([aligned[fm][0][sample] for fm in c.FMS]);yb=np.concatenate([aligned[fm][1][sample] for fm in c.FMS]);v=spearmanr(xb,yb).statistic
         if np.isfinite(v):boots.append(v)
-    sign_by_subject=np.asarray([np.mean([np.sign(wide[fm].loc[s].Delta_S2)==np.sign(wide[fm].loc[s].Delta_S3) for fm in c.FMS]) for s in ids],np.float64);sign_boot=[]
+    sign_by_subject=np.mean(np.vstack([np.sign(aligned[fm][0])==np.sign(aligned[fm][1]) for fm in c.FMS]),axis=0).astype(np.float64);sign_boot=[]
     for _ in range(10000):sign_boot.append(float(np.mean(rng.choice(sign_by_subject,len(sign_by_subject),replace=True))))
     sign_ci=[float(np.quantile(sign_boot,.025)),float(np.quantile(sign_boot,.975))];allg=subject;sel=allg.Delta_S2>0;always=float(np.mean(allg.Delta_S3<0));gate=float(np.mean(allg.loc[sel,"Delta_S3"]<0)) if sel.any() else None;relative=(always-gate)/always if always>0 and gate is not None else None;pooled={"Spearman":rho,"CI95":[float(np.quantile(boots,.025)),float(np.quantile(boots,.975))],"sign_concordance":float(sign_by_subject.mean()),"sign_concordance_CI95":sign_ci,"always_adapt_harm":always,"S2_gate_harm":gate,"relative_harm_reduction":relative,"coverage":float(sel.mean())}
     task=pd.read_csv(c.RESULTS/"FM_TASK_PERFORMANCE.csv");competent={fm:bool(task[(task.dataset=="WBCIC")&(task.model==fm)].competent.iloc[0]) for fm in c.FMS};summary["FM_task_competent"]=summary.model.map(competent)
@@ -212,6 +220,18 @@ def run_scaa(lock:dict)->tuple[pd.DataFrame,dict]:
     one_strong=int(individual_strong.sum())==1
     pooled["FM_task_competence"]=competent;pooled["terminal"]="FM_HISTORY_UTILITY_RESCUE_CANDIDATE" if strong else ("FM_HISTORY_UTILITY_ARCHITECTURE_DEPENDENT" if one_strong else "FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED");c.write_csv(c.RESULTS/"FM_SCAA_SUMMARY.csv",summary)
     c.write_json(c.RESULTS/"FM_SCAA_STATISTICS.json",pooled);return summary,pooled
+
+
+def resume_or_run_scaa(lock:dict)->tuple[pd.DataFrame,dict]:
+    seed_path=c.RESULTS/"FM_SCAA_PER_SUBJECT_SEED.csv";subject_path=c.RESULTS/"FM_SCAA_PER_SUBJECT.csv";summary_path=c.RESULTS/"FM_SCAA_SUMMARY.csv";stats_path=c.RESULTS/"FM_SCAA_STATISTICS.json"
+    if stats_path.is_file(): return pd.read_csv(summary_path),c.read_json(stats_path)
+    if seed_path.is_file() and subject_path.is_file():
+        seed=pd.read_csv(seed_path);subject=pd.read_csv(subject_path)
+        if subject[["model","subject_id"]].duplicated().any() or seed[["model","fold","seed","subject_id"]].duplicated().any(): raise RuntimeError("duplicate SCAA resume keys")
+        if set(subject.model)!=set(c.FMS) or len(seed)!=len(subject)*len(c.SEEDS): raise RuntimeError("incomplete SCAA resume artifacts")
+        print("[SCAA] resuming statistics from validated complete subject tables",flush=True)
+        return summarize_scaa(subject)
+    return run_scaa(lock)
 
 
 def support_distance(query,support):
@@ -303,7 +323,7 @@ def run_scst()->tuple[pd.DataFrame,dict]:
 
 
 def main():
-    lock=verify_lock();c.prepare_inputs("WBCIC",include_future=True);task=build_representations(lock);d,ds=resume_or_run_d_vs_i();scaa,ss=run_scaa(lock);scst,ts=run_scst();c.write_json(c.RUNTIME/"PRIMARY_COMPLETE.json",{"complete":True,"D":ds,"SCAA":ss,"SCST":ts});print("FM_RESCUE_PRIMARY_COMPLETE",flush=True)
+    lock=verify_lock();c.prepare_inputs("WBCIC",include_future=True);task=build_representations(lock);d,ds=resume_or_run_d_vs_i();scaa,ss=resume_or_run_scaa(lock);scst,ts=run_scst();c.write_json(c.RUNTIME/"PRIMARY_COMPLETE.json",{"complete":True,"D":ds,"SCAA":ss,"SCST":ts});print("FM_RESCUE_PRIMARY_COMPLETE",flush=True)
 
 
 if __name__=="__main__":main()
