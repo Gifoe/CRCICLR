@@ -26,8 +26,8 @@
     "EEGNet",
     "EEGConformer"
   ],
-  "created_from_commit": "46b8ecf2c39b0e32045cad9d78ca12327f0a3f0d",
-  "created_utc": "2026-08-28T14:33:25.687506+00:00",
+  "created_from_commit": "6398186d1717a84e8d1120c49f7274a4c47d5ed5",
+  "created_utc": "2026-08-28T14:38:50.476967+00:00",
   "cross_validation": {
     "classifier": "sklearn LogisticRegression, L2, C=1, solver=liblinear, max_iter=2000, random_state=0",
     "constant_fallback": "training-fold prevalence if no features or a training fold contains one class",
@@ -104,7 +104,7 @@
     "preprocessing": "continuous predictors standardized using training fold mean and SD only; backbone is a binary indicator",
     "uncertainty": "10000 subject bootstrap resamples; both backbone rows resampled as one cluster"
   },
-  "data_access_lock_sha256": "db0e445c0723f64e73ed7d902844c8c8fa2fdb718d8a6c5763e198dbb8d72d38",
+  "data_access_lock_sha256": "49469e237cfabd9d5349079b185b1f5139de3b519740cdb65365d52a7bae7e20",
   "development_subjects": [
     "1",
     "2",
@@ -421,7 +421,7 @@
   ],
   "frozen_code_hashes": {
     "code/analyze.py": "a0546dd3b98542991dc161654be7d8229badf5589ba6f8ee0c8248f7dbe99781",
-    "code/common.py": "fe32bd73f5c30e6ecee1af4cddc9bd62b1db44e56ee2688b6a8b29cc91d9b9cc",
+    "code/common.py": "9e59ac4f25d8cfbed3e532a81d2e4c65d733fe0f99c885e197b5e144c3562ddb",
     "code/extract_features.py": "6257b9d33b98d71d70754ed0ed469c2b4ad6d583346296a68f9452d68343460d",
     "code/plot_publication.py": "62d4a835c0b3d5e5d809ec130d4950ee57b42c22c2c607201b8a785e4a746e21",
     "code/validate.py": "305cbd7f5c96c539eee84566ecad98607ad8039f37c578da7f65a3931a72a0ff"
@@ -463,13 +463,13 @@
   },
   "stage0_authorization_preserved": "SCAA_DEVELOPMENT_NOT_AUTHORIZED",
   "stage0_provenance_hashes": {
-    "SCAA_STAGE0_FINAL_REPORT.json": "999fbf0378d51e6f041f595c419eb41681f202b1902f9237cc99a5d65581852d",
-    "protocol/ADAPTATION_RECIPE_SELECTION.json": "0787a04c14bb77b762877df967425af5029837148fa4b27805e9fb0e4bd4ddeb",
-    "protocol/DATA_ACCESS_LOCK.json": "339e806c59fafafdfe1906ceef455d9f2592d8fb5ca6a32dc029831661c5b548",
-    "protocol/SCAA_STAGE0_PROTOCOL_LOCK.json": "025d956c806d5639c1337a70455bf4b13c8ae687cb42c4471c12c99957deb59a",
-    "results/PER_SUBJECT_SEED_UTILITY.csv": "3a5534e3b1843ac951220c76c70b7942e833c66dcdd650b8822e4c17f2e71a32",
-    "results/PER_SUBJECT_UTILITY.csv": "3258910045b861684abfea2d82b96de0126863e39194ba02352594fb902930c8",
-    "results/VALIDATION.json": "0d1ef5ab5b13f69d0428691dec0f8e82af79301d349a4be2fc7fd10a10a9919f"
+    "SCAA_STAGE0_FINAL_REPORT.json": "7587cc84ab4757af5a9e23fc9bf913ea156138adfee740559eb21e75e1dc7bae",
+    "protocol/ADAPTATION_RECIPE_SELECTION.json": "0440d653f01499572918d5412ea23f0b8efd1d8e756bb5cf64a29458f05cac1e",
+    "protocol/DATA_ACCESS_LOCK.json": "2fbfedf19c190fa89c0b5601110e6b634742b22c0a804e7b4fdf7341ddeb2394",
+    "protocol/SCAA_STAGE0_PROTOCOL_LOCK.json": "3e3c21880759e9abea035543602aa326bb553fbdfe05e3f40e4b5be7e5e46c27",
+    "results/PER_SUBJECT_SEED_UTILITY.csv": "63a306b4a9195a730f51fa93457528de0e7364abbaf613d8ede87c3ba1fdf11d",
+    "results/PER_SUBJECT_UTILITY.csv": "e27dfe7305934201bbed243c299acacbde23c538e542d0caa81d1ebc330d83b6",
+    "results/VALIDATION.json": "032625a110b59019209f2594f3f13f11aaf6027417cec7ba8e989a1a7c06ee03"
   },
   "stage0_terminal_preserved": "TARGET_HISTORY_UTILITY_TRANSFER_PARTIAL",
   "stage0_validated_tip": "46b8ecf2c39b0e32045cad9d78ca12327f0a3f0d",

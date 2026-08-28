@@ -112,6 +112,12 @@ def write_text(path: Path, value: str) -> None:
 
 
 def sha256(path: Path) -> str:
+    if path.suffix.lower() in {".py", ".md", ".json", ".csv", ".txt"}:
+        # Git checkouts on the Windows server may materialize CRLF while the
+        # local worktree uses LF. Canonicalize text line endings so a protocol
+        # lock identifies content rather than checkout policy.
+        payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        return hashlib.sha256(payload).hexdigest()
     digest = hashlib.sha256()
     with path.open("rb") as stream:
         for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):

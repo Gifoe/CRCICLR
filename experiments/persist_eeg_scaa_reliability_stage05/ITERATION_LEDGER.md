@@ -8,3 +8,6 @@ Before any Stage-0.5 S3 association was computed, the definition was repaired to
 
 No feature, fold, outcome, model, threshold rule, or adapter was changed after S3 association became visible in this experiment.
 
+## Pre-extraction engineering repair
+
+The first server lock verification detected that Git's Windows checkout policy materialized CRLF while the local lock creator hashed LF bytes. Before feature extraction or any Stage-0.5 S3 association, text hashing was changed to canonicalize CRLF/CR to LF. This changes only cross-platform integrity verification; all scientific definitions remain identical.
