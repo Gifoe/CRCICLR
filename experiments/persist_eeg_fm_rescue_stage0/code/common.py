@@ -245,6 +245,10 @@ def prepare_inputs(dataset: str, include_future: bool = False, chunk: int = 24) 
         # is in millivolts/20, a documented 1e3 metadata/cache mismatch.  The
         # pre-outcome amendment therefore uses x20,000 (q99 ~33 uV).
         x *= (1e6 if dataset == "OpenBMI" else 20000.0)
+        if dataset == "WBCIC":
+            # Preserve the historical preprocessing's intended +/-250 uV
+            # artifact bound after correcting the 1e3 scale mismatch.
+            np.clip(x, -250.0, 250.0, out=x)
         if sos is not None: x = sosfiltfilt(sos, x, axis=-1).astype(np.float32)
         x = resample_poly(x, 4, 5, axis=-1).astype(np.float32)
         if x.shape[-1] != 800: raise RuntimeError(x.shape)
