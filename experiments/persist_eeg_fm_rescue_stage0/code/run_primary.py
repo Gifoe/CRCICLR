@@ -130,10 +130,13 @@ def run_d_vs_i()->tuple[pd.DataFrame,dict]:
     run_d=[]
     for (dataset,fm,run),g in predictions.groupby(["dataset","model","run"]):
         vals={name:float(np.sqrt(mean_squared_error(v.truth,v.prediction))) for name,v in g.groupby("regression")};run_d.append({"dataset":dataset,"model":fm,"run":run,"difference":vals["MI"]-vals["MD"]})
-    rd=pd.DataFrame(run_d);rng=np.random.default_rng(c.stable_seed("d-i-bootstrap")); groups=sorted(rd.run.unique());boot=[]
+    rd=pd.DataFrame(run_d);rng=np.random.default_rng(c.stable_seed("d-i-bootstrap"));boot=[]
     for _ in range(10000):
-        sample=rng.choice(groups,len(groups),replace=True);boot.append(float(np.mean([rd[rd.run==r].difference.mean() for r in sample])))
-    obs=float(rd.difference.mean());stats={"settings_D_better":int(result.D_better.sum()),"settings":len(result),"pooled_fold_mean_RMSE_I_minus_D":obs,"pooled_run_mean_RMSE_I_minus_D":obs,"bootstrap_group":"fold; all seeds held together; fold ids synchronized across FM-dataset settings","bootstrap_ci95":[float(np.quantile(boot,.025)),float(np.quantile(boot,.975))],"bootstrap_draws":10000,"terminal":"FM_D_GT_I_REPLICATED" if int(result.D_better.sum())>=3 and np.quantile(boot,.025)>0 else "FM_D_GT_I_NOT_REPLICATED"}
+        values=[]
+        for dataset in sorted(rd.dataset.unique()):
+            groups=sorted(rd[rd.dataset==dataset].run.unique());sample=rng.choice(groups,len(groups),replace=True);values.extend(float(rd[(rd.dataset==dataset)&(rd.run==r)].difference.mean()) for r in sample)
+        boot.append(float(np.mean(values)))
+    obs=float(rd.difference.mean());stats={"settings_D_better":int(result.D_better.sum()),"settings":len(result),"pooled_fold_mean_RMSE_I_minus_D":obs,"pooled_run_mean_RMSE_I_minus_D":obs,"bootstrap_group":"fold within dataset; all seeds held together; fold ids synchronized across FMs of the same dataset","bootstrap_ci95":[float(np.quantile(boot,.025)),float(np.quantile(boot,.975))],"bootstrap_draws":10000,"terminal":"FM_D_GT_I_REPLICATED" if int(result.D_better.sum())>=3 and np.quantile(boot,.025)>0 else "FM_D_GT_I_NOT_REPLICATED"}
     c.write_json(c.RESULTS/"FM_D_VS_I_STATISTICS.json",stats);return result,stats
 
 

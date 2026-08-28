@@ -21,7 +21,7 @@
 ## V3 seed-grouping statistical repair
 
 - Diagnosis: pre-primary static review found that the draft D>I runner used fold-by-seed as the leave-one-run-out and bootstrap group. That permits the same fold under other random seeds to remain in the regression training data and violates the explicit rule that seeds are not independent people.
-- Change: all three seeds are now held out together by fold; the ridge comparison is leave-one-fold-out; the 10,000 bootstrap resamples five fold groups and synchronizes each sampled fold across all FM-dataset settings.
+- Change: all three seeds are now held out together by fold; the ridge comparison is leave-one-fold-out; the 10,000 hierarchical bootstrap resamples folds independently within dataset and synchronizes each sampled fold across the two FMs of that dataset.
 - Evidence available before change: source-validation training logs only. No held-out FM task BA, D>I consequence, S2/S3 utility, FM SCST, or sealed-resource result was generated or inspected.
 - Prediction: wider and more defensible D>I uncertainty; no directional outcome prediction.
 - Result: pending primary run.
