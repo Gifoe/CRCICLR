@@ -113,7 +113,7 @@ def run_d_vs_i()->tuple[pd.DataFrame,dict]:
                     full_i=identity_skill(val["features"],val["subjects"],val["sessions"],pair);clean_src=src["features"].astype(np.float64)@w.T+b;clean_out=out["features"].astype(np.float64)@w.T+b;clean_ce=ce(clean_out,out["labels"])
                     for j,(v,m) in enumerate(zip(basis.T,meta)):
                         es=erase(src["features"],center,v);ev=erase(val["features"],center,v);eo=erase(out["features"],center,v);esl=es@w.T+b;eol=eo@w.T+b;delta=esl-clean_src;delta-=delta.mean(1,keepdims=True)
-                        cells.append({"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"run":f"f{fold}s{seed}","direction":j,"persistence":m["persistence"],"geometry_strength":m["geometry_strength"],"rank":m["rank"],"identity":full_i-identity_skill(ev,val["subjects"],val["sessions"],pair),"decision":float(np.sqrt(np.mean(np.sum(delta*delta,axis=1)))),"consequence":float(np.mean(ce(eol,out["labels"])-clean_ce))})
+                        cells.append({"dataset":dataset,"model":fm,"fold":fold,"seed":seed,"run":f"f{fold}","direction":j,"persistence":m["persistence"],"geometry_strength":m["geometry_strength"],"rank":m["rank"],"identity":full_i-identity_skill(ev,val["subjects"],val["sessions"],pair),"decision":float(np.sqrt(np.mean(np.sum(delta*delta,axis=1)))),"consequence":float(np.mean(ce(eol,out["labels"])-clean_ce))})
                     print(f"[D>I] {fm} {dataset} fold={fold} seed={seed}",flush=True)
     frame=pd.DataFrame(cells);c.write_csv(c.RESULTS/"FM_D_VS_I_CELLS.csv",frame);pred=[];summary=[]
     specs={"M0":["persistence","geometry_strength","rank"],"MI":["persistence","geometry_strength","rank","identity"],"MD":["persistence","geometry_strength","rank","decision"],"MID":["persistence","geometry_strength","rank","identity","decision"]}
@@ -133,7 +133,7 @@ def run_d_vs_i()->tuple[pd.DataFrame,dict]:
     rd=pd.DataFrame(run_d);rng=np.random.default_rng(c.stable_seed("d-i-bootstrap")); groups=sorted(rd.run.unique());boot=[]
     for _ in range(10000):
         sample=rng.choice(groups,len(groups),replace=True);boot.append(float(np.mean([rd[rd.run==r].difference.mean() for r in sample])))
-    obs=float(rd.difference.mean());stats={"settings_D_better":int(result.D_better.sum()),"settings":len(result),"pooled_run_mean_RMSE_I_minus_D":obs,"bootstrap_ci95":[float(np.quantile(boot,.025)),float(np.quantile(boot,.975))],"bootstrap_draws":10000,"terminal":"FM_D_GT_I_REPLICATED" if int(result.D_better.sum())>=3 and np.quantile(boot,.025)>0 else "FM_D_GT_I_NOT_REPLICATED"}
+    obs=float(rd.difference.mean());stats={"settings_D_better":int(result.D_better.sum()),"settings":len(result),"pooled_fold_mean_RMSE_I_minus_D":obs,"pooled_run_mean_RMSE_I_minus_D":obs,"bootstrap_group":"fold; all seeds held together; fold ids synchronized across FM-dataset settings","bootstrap_ci95":[float(np.quantile(boot,.025)),float(np.quantile(boot,.975))],"bootstrap_draws":10000,"terminal":"FM_D_GT_I_REPLICATED" if int(result.D_better.sum())>=3 and np.quantile(boot,.025)>0 else "FM_D_GT_I_NOT_REPLICATED"}
     c.write_json(c.RESULTS/"FM_D_VS_I_STATISTICS.json",stats);return result,stats
 
 
