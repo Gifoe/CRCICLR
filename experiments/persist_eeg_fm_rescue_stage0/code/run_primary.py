@@ -36,7 +36,13 @@ def rep_path(fm:str,dataset:str,fold:int,seed:int,role:str)->Path:
 
 def save_rep(path:Path,value:dict)->None:
     path.parent.mkdir(parents=True,exist_ok=True); temp=path.with_suffix(".npz.part")
-    with temp.open("wb") as f: np.savez_compressed(f,**value)
+    # Subject identifiers arrive from pandas as object arrays.  Persist them as
+    # fixed-width Unicode so the cache remains loadable with allow_pickle=False.
+    safe={}
+    for key,item in value.items():
+        array=np.asarray(item)
+        safe[key]=array.astype(str) if array.dtype.kind=="O" else array
+    with temp.open("wb") as f: np.savez_compressed(f,**safe)
     temp.replace(path)
 
 

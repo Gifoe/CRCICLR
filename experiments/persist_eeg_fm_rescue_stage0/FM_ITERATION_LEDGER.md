@@ -48,3 +48,12 @@
 ## V0 decision
 
 The globally selected source-validation recipes and S1-only head recipes were retained. No layer, channel, outcome, S2 or S3 search occurred. The primary protocol is now frozen.
+
+## V6 representation-cache serialization repair
+
+- Diagnosis: the first primary invocation stopped before producing any task-performance, D>I, SCAA, or SCST result because pandas subject identifiers were cached as NumPy object arrays while the frozen loader correctly required `allow_pickle=False`.
+- Change: normalize object-valued cache fields to fixed-width Unicode inside `save_rep`; discard only the three incomplete caches created by the failed invocation so they are deterministically regenerated. The loader remains `allow_pickle=False`.
+- Evidence available before change: Python traceback, cache key/dtype inspection, and the already frozen source-validation/S1-only selections. No primary outcome file existed or was inspected.
+- Prediction: identical numerical representations and labels, with subject IDs serialized safely; no metric or terminal can change except that primary computation can proceed.
+- Result: pending repaired primary run.
+- Keep/reject: KEEP as a pre-outcome engineering repair and refresh the protocol code hash before rerun.
