@@ -1,0 +1,37 @@
+# FM Rescue Stage-0 final report
+
+Overall terminal: `FM_ACTIONABILITY_GAP_PERSISTS`.
+D>I: `FM_D_GT_I_REPLICATED`. History utility: `FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED`. SCST: `FM_SCST_RESCUE_NOT_SUPPORTED`.
+
+## Forty-two required answers
+
+1. **1_CBraMod_checkpoint**: `"pretrained_weights.pth SHA256 0792cb808c14e6b7a2bb2ce1dff379bc47bc54c49a779825bdfeb33bf8157178"`
+2. **2_LaBraM_checkpoint**: `"labram-base.pth SHA256 7c50583826afac76c4ab18f43d958df40496c8229accc09ed6a227c9bb57c37c"`
+3. **3_STEEGFormer_triggered**: `false`
+4. **4_official_checkpoints_public_loadable**: `true`
+5. **5_preprocessing**: `"4 s, 200 Hz; OpenBMI x1e6 to uV plus 40-Hz low-pass; WBCIC cache x20,000 to uV plus frozen +/-250 uV bound; LaBraM /100 official scale"`
+6. **6_channel_mapping**: `"OpenBMI 62/62 and WBCIC 58/58 maximal legal channels; LaBraM official standard_1020 indices"`
+7. **7_sealed_resources_untouched**: `true`
+8. **8_target_absent_from_anchor_training**: `true`
+9. **9_task_BA**: `{"CBraMod": {"OpenBMI": 0.731, "WBCIC": 0.7505245323841429}, "LaBraM": {"OpenBMI": 0.6590416666666666, "WBCIC": 0.7535907895961287}}`
+10. **10_competence**: `{"CBraMod": {"OpenBMI": false, "WBCIC": false}, "LaBraM": {"OpenBMI": false, "WBCIC": false}}`
+11. **11_OpenBMI_CBraMod_D_I**: `{"D_RMSE": 0.0077696892201609, "I_RMSE": 0.0079685555618548}`
+12. **12_OpenBMI_LaBraM_D_I**: `{"D_RMSE": 0.0246823315430667, "I_RMSE": 0.0255278575900279}`
+13. **13_WBCIC_CBraMod_D_I**: `{"D_RMSE": 0.0136892263301752, "I_RMSE": 0.0131298618818882}`
+14. **14_WBCIC_LaBraM_D_I**: `{"D_RMSE": 0.0256981518014088, "I_RMSE": 0.044546047838359}`
+15. **15_pooled_D_gt_I**: `{"bootstrap_ci95": [0.0015182696574353323, 0.007750354750502083], "bootstrap_draws": 10000, "bootstrap_group": "fold within dataset; all seeds held together; fold ids synchronized across FMs of the same dataset", "pooled_fold_mean_RMSE_I_minus_D": 0.004793170611277115, "pooled_run_mean_RMSE_I_minus_D": 0.004793170611277115, "settings": 4, "settings_D_better": 3, "terminal": "FM_D_GT_I_REPLICATED"}`
+16. **16_19_per_FM_SCAA**: `{"CBraMod": {"Spearman": 0.3929071181559959, "CI": [0.0571614925797153, 0.652850442342916], "sign": 0.5121951219512195}, "LaBraM": {"Spearman": 0.3870671996166107, "CI": [0.0445900184075054, 0.6683435273488657], "sign": 0.5609756097560976}}`
+17. **20_26_pooled_SCAA**: `{"CI95": [0.11693532227816325, 0.5841411239045584], "FM_task_competence": {"CBraMod": false, "LaBraM": false}, "S2_gate_harm": 0.3076923076923077, "Spearman": 0.37157081440031, "always_adapt_harm": 0.3902439024390244, "coverage": 0.47560975609756095, "relative_harm_reduction": 0.2115384615384615, "sign_concordance": 0.5365853658536586, "sign_concordance_CI95": [0.4146341463414634, 0.6585365853658537], "terminal": "FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED"}`
+18. **27_30_SCST_ratios**: `{"OpenBMI/CBraMod": 1.1311343562795984, "OpenBMI/LaBraM": 1.2373860232439695, "WBCIC/CBraMod": 1.1172447618980812, "WBCIC/LaBraM": 1.3056123738964396}`
+19. **31_SCST_gates**: `{"OpenBMI/CBraMod": false, "OpenBMI/LaBraM": false, "WBCIC/CBraMod": false, "WBCIC/LaBraM": false}`
+20. **32_history_utility**: `"FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED"`
+21. **33_SCST**: `"FM_SCST_RESCUE_NOT_SUPPORTED"`
+22. **34_architecture_dependent**: `false`
+23. **35_preprocessing_control**: `"NOT_TRIGGERED"`
+24. **36_random_init_control**: `"NOT_TRIGGERED"`
+25. **37_STEEGFormer_confirmation**: `"NOT_TRIGGERED"`
+26. **38_actionability_gap_persists**: `true`
+27. **39_constructive_next_task_authorized**: `false`
+28. **40_strongest_justified_claim**: `"Under the frozen Stage-0 protocol, D>I replicated but neither constructive route passed; incomplete FM task competence limits a universal foundation-model claim."`
+29. **41_strongest_unsupported_claim**: `"Pretraining universally makes identity suppression, target-history gating, or subject transport prospectively useful."`
+30. **42_final_terminal**: `"FM_ACTIONABILITY_GAP_PERSISTS"`
