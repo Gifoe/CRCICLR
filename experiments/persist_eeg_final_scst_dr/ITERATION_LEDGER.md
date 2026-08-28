@@ -10,8 +10,13 @@
 - Prediction before run: valid transport must beat no-transport and norm-matched
   random directions on target-subject affinity while preserving an independent
   class probe and avoiding excess off-manifold rate.
-- Actual result: pending Stage-0 execution.
-- Decision: pending.
+- Actual result: validated `TRANSPORT_NOT_SUBJECT_FAITHFUL`.  Residual stability
+  passed in every setting/layer, but alpha=1 target-affinity improvement was
+  negative for both WBCIC backbones and the centroid-manifold distance ratio was
+  1.76–2.68.  Several pre-embedding class gates also failed.
+- Decision: do not train.  Authorize one magnitude-only repair because the
+  directions were stable and beat norm-matched random controls, which diagnoses
+  overshoot/session-scale mismatch rather than arbitrary directionality.
 
 ### V0 engineering repair E1 (before any metric)
 
@@ -22,7 +27,7 @@
   candidate layer, or gate had been observed.
 - Proposed change before rerun: request an explicit writable NumPy copy for the
   subject mask.  No protocol, data role, estimator, control, or threshold changes.
-- Actual result: pending rerun.
+- Actual result: fixed; all 40 units subsequently completed.
 - Decision: retained as a pure execution repair; Stage-0 hashes must be refrozen.
 
 ### V0 engineering repair E2 (before any completed unit)
@@ -34,6 +39,24 @@
 - Proposed change before rerun: stack all target-subject queries within each
   source-subject/class cell and call the exact same frozen kNN/probe estimators in
   matrix batches.  Preserve every pair, seed, transport, control, and output row.
-- Actual result: pending rerun.
+- Actual result: fixed; 40 units completed in minutes with identical estimators.
 - Decision: implementation-only acceleration; no partial unit or metric was
   inspected, and Stage-0 hashes must be refrozen again.
+
+## V0.1 — magnitude-only transport repair (scientific repair 1/2)
+
+- Previous failure: alpha=1 overshot target-subject structure on WBCIC and moved
+  all candidates too far from the clean centroid manifold.
+- Diagnosis: every residual-stability gate passed and SCST retained a large
+  positive advantage over norm-matched random transport.  Exact quadratic
+  interpolation of source-only distances predicts positive target affinity at
+  alpha 0.25 and 0.5 for all four final embeddings.
+- Proposed change before run: evaluate the global, prelocked alpha candidates
+  `{0.25, 0.5}` with the same two layers, folds, seed, centroids, controls,
+  independent class probe, manifold test, and gates.  A single alpha must support
+  all four settings; prefer 0.5 if both pass.
+- Prediction before run: smaller alpha should retain positive target affinity,
+  repair the WBCIC sign, reduce off-manifold displacement, and weakly improve
+  class preservation.  Failure ends transport development.
+- Actual result: pending.
+- Decision: pending.

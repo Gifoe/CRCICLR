@@ -1,4 +1,14 @@
-# Transport layer audit
+# SCST-DR transport validity report
+
+## Terminal
+
+`TRANSPORT_NOT_SUBJECT_FAITHFUL`
+
+This is a source-only Stage-0 result.  No outcome-subject future-session metric,
+OpenBMI internal holdout, WBCIC Session 3 development outcome, or WBCIC outer
+subject was used.
+
+## Layer audit
 
 | setting_id              | dataset   | backbone     | layer           |   independent_probe_BA |   stability_effect_mean |   stability_CI_low |   stability_CI_high |   subject_affinity_improvement_mean |   subject_affinity_CI_low |   subject_affinity_CI_high |   subject_advantage_over_random_mean |   subject_advantage_over_random_CI_low |   subject_advantage_over_random_CI_high |   class_accuracy_change |   class_accuracy_CI_low |   class_accuracy_CI_high |   class_logp_change |   class_logp_CI_low |   class_logp_CI_high |   manifold_knn_ratio_to_clean |   scst_off_manifold_rate |   random_off_manifold_rate |   off_manifold_excess_over_random | gate_competence   | gate_stability   | gate_subject_fidelity   | gate_class_fidelity   | gate_manifold   | all_gates_pass   |
 |:------------------------|:----------|:-------------|:----------------|-----------------------:|------------------------:|-------------------:|--------------------:|------------------------------------:|--------------------------:|---------------------------:|-------------------------------------:|---------------------------------------:|----------------------------------------:|------------------------:|------------------------:|-------------------------:|--------------------:|--------------------:|---------------------:|------------------------------:|-------------------------:|---------------------------:|----------------------------------:|:------------------|:-----------------|:------------------------|:----------------------|:----------------|:-----------------|
@@ -11,4 +21,11 @@
 | WBCIC_MI_EEGCONFORMER   | WBCIC     | EEGConformer | pre_embedding   |                0.77890 |                 0.61251 |            0.44544 |             0.76054 |                            -0.14004 |                  -0.37188 |                    0.03069 |                              0.56069 |                                0.48322 |                                 0.62845 |                -0.00696 |                -0.04723 |                  0.03709 |            -0.05766 |            -0.12341 |              0.01123 |                       2.51211 |                  0.23330 |                    0.76412 |                          -0.53082 | True              | True             | False                   | False                 | False           | False            |
 | WBCIC_MI_EEGCONFORMER   | WBCIC     | EEGConformer | final_embedding |                0.77676 |                 0.62275 |            0.46114 |             0.76366 |                            -0.06437 |                  -0.23651 |                    0.07101 |                              0.56375 |                                0.48814 |                                 0.63310 |                -0.00292 |                -0.04624 |                  0.04334 |            -0.05915 |            -0.13063 |              0.01608 |                       2.36158 |                  0.21419 |                    0.77410 |                          -0.55992 | True              | True             | False                   | False                 | False           | False            |
 
-Deterministic selections: `{}`. Future performance was not computed.
+Selected passing layers: `{}`.
+
+The gate is conjunctive.  A setting/layer passes only when the independent task
+probe is competent, matched subject-class residuals are more stable than
+mismatched residuals with a subject-bootstrap CI above zero, target-subject
+affinity improves and beats norm-matched random transport, class accuracy/log
+probability remain within the frozen tolerances, and the centroid support test
+does not show excess off-manifold behavior.

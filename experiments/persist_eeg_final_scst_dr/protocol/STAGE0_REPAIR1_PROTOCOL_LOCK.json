@@ -1,0 +1,52 @@
+{
+  "schema": "PERSIST_EEG_SCST_DR_STAGE0_REPAIR1_PROTOCOL_V1",
+  "repair_number": 1,
+  "allowed_by_original_protocol": true,
+  "frozen_before_repair1_metric_access": true,
+  "v0_terminal": "TRANSPORT_NOT_SUBJECT_FAITHFUL",
+  "v0_validation_pass": true,
+  "diagnosis": {
+    "residual_stability_supported_in_all_setting_layers": true,
+    "advantage_over_norm_random_supported_in_all_setting_layers": true,
+    "alpha_1_target_affinity_failed_on_both_wbcic_backbones": true,
+    "alpha_1_manifold_ratio_range": [1.7645, 2.6779],
+    "mechanistic_interpretation": "session-stable direction with excessive transport magnitude / session-scale mismatch, not absent directionality"
+  },
+  "repair": {
+    "only_change": "transport magnitude",
+    "global_alpha_candidates": [0.25, 0.5],
+    "same_alpha_required_for_all_settings": true,
+    "selection_data": "Stage-0 source/development resources only",
+    "selection_rule": "an alpha is eligible only if every competent setting has a passing predeclared layer; prefer alpha=0.5 if both are eligible",
+    "failure_terminal_rule": "if no alpha is eligible, assign a specific gate failure only when at least one retained setting cannot pass that gate at any frozen alpha/layer, in order subject fidelity, class fidelity, manifold; otherwise TRANSPORT_NOT_IDENTIFIABLE",
+    "candidate_layers_unchanged": ["pre_embedding", "final_embedding"],
+    "layer_preference_unchanged": "final_embedding",
+    "centroids_unchanged": true,
+    "controls_unchanged": true,
+    "class_probe_unchanged": true,
+    "manifold_metric_unchanged": true,
+    "gates_unchanged": true,
+    "folds_unchanged": [0, 1, 2, 3, 4],
+    "seed_unchanged": 0,
+    "v0_stability_and_control_rows_inherited_without_recomputation": true,
+    "repair1_rows_only": ["scst_alpha_0.25", "scst_alpha_0.50"],
+    "unit_scope_hashes_must_equal_v0": true
+  },
+  "analytic_source_only_check_before_lock": {
+    "alpha_0_25_mean_affinity_improvement_final_embedding": {
+      "OPENBMI_MI_EEGNET": 0.12788,
+      "OPENBMI_MI_EEGCONFORMER": 0.15722,
+      "WBCIC_MI_EEGNET": 0.08195,
+      "WBCIC_MI_EEGCONFORMER": 0.09657
+    },
+    "alpha_0_50_mean_affinity_improvement_final_embedding": {
+      "OPENBMI_MI_EEGNET": 0.18505,
+      "OPENBMI_MI_EEGCONFORMER": 0.26197,
+      "WBCIC_MI_EEGNET": 0.09312,
+      "WBCIC_MI_EEGCONFORMER": 0.11514
+    },
+    "derivation": "exact quadratic distance interpolation from V0 clean distance, alpha=1 distance, and delta norm; no new representation or future outcome access"
+  },
+  "future_or_outer_performance_access_allowed": false,
+  "if_repair1_fails": "terminate transport validity; do not train SCST-DR"
+}
