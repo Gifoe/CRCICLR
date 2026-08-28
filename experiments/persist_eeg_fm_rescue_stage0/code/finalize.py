@@ -19,7 +19,7 @@ def fm_value(frame,dataset,model,column):
 
 def make_table(task,dvi,scaa,scst):
     hist_corr=pd.read_csv(HIST_SCAA/"UTILITY_TRANSFER_CORRELATION.csv");hist_sign=pd.read_csv(HIST_SCAA/"SIGN_CONCORDANCE.csv");hist_harm=pd.read_csv(HIST_SCAA/"HARM_AND_COVERAGE.csv")
-    hist_task={('OpenBMI','EEGNet'):.75,('OpenBMI','EEGConformer'):.7719166667,('WBCIC','EEGNet'):.7884300821,('WBCIC','EEGConformer'):.78}
+    hist_task={('OpenBMI','EEGNet'):.754916666666667,('OpenBMI','EEGConformer'):.771916666666666,('WBCIC','EEGNet'):.789118779255974,('WBCIC','EEGConformer'):.784797569187813}
     hist_d={('OpenBMI','EEGNet'):(.0314928,.0457442),('WBCIC','EEGNet'):(.0118692,.0165056)}
     hist_knn={('OpenBMI','EEGNet'):1.1628472962,('OpenBMI','EEGConformer'):1.1493719487,('WBCIC','EEGNet'):1.3079565485,('WBCIC','EEGConformer'):1.3407995963}
     rows=[]
@@ -79,6 +79,8 @@ def main():
     report={'schema':'FM_RESCUE_FINAL_REPORT_V1','branch':'codex/persist-eeg-fm-rescue-stage0','answers':answers,'D_terminal':dstats['terminal'],'SCAA_terminal':sstats['terminal'],'SCST_terminal':tstats['terminal'],'overall_terminal':overall,'STEEGFORMER_triggered':False,'confound_controls_triggered':False,'constructive_route_authorized':False,'sealed_resources_untouched':True}
     c.write_json(c.EXP/'FM_RESCUE_FINAL_REPORT.json',report)
     c.write_json(c.RESULTS/'FM_RESCUE_FINAL_REPORT.json',report)
+    competence=task.copy();competence['margin_to_threshold']=competence.task_BA-competence.competence_threshold
+    c.write_text(c.EXP/'FM_TASK_COMPETENCE.md','# FM task competence\n\nHeld-out development outcome subjects remained absent from anchor training. Competence is assessed once against the predeclared specialist-minus-0.02 thresholds.\n\n'+competence.to_markdown(index=False,floatfmt='.6f'))
     md=['# FM Rescue Stage-0 final report','',f'Overall terminal: `{overall}`.',f'D>I: `{dstats["terminal"]}`. History utility: `{sstats["terminal"]}`. SCST: `{tstats["terminal"]}`.','', '## Forty-two required answers','']
     for i,(k,v) in enumerate(answers.items(),1):md.append(f'{i}. **{k}**: `{json.dumps(c.clean(v),ensure_ascii=False)}`')
     c.write_text(c.EXP/'FM_RESCUE_FINAL_REPORT.md','\n'.join(md));c.write_text(c.EXP/'D_VS_I_FM_REPORT.md',f'# D versus I\n\nTerminal: `{dstats["terminal"]}`. Settings favoring D: {dstats["settings_D_better"]}/4; pooled run difference {dstats["pooled_run_mean_RMSE_I_minus_D"]:.6f}, 95% CI {dstats["bootstrap_ci95"]}.')

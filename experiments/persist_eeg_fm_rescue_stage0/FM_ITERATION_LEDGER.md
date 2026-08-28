@@ -18,6 +18,15 @@
 - Result: pending primary run.
 - Keep/reject: KEEP and include in the pre-outcome protocol hash lock.
 
+## V4 compact-report provenance repair
+
+- Diagnosis: the draft unified table contained rounded placeholder specialist task BAs and the competence Markdown would otherwise remain a pre-freeze placeholder after outcome completion.
+- Change: replaced placeholders with exact historical ERM/SCAA anchor means from the committed OpenBMI and WBCIC result tables, and made finalization write the actual FM task BA, frozen threshold, pass/fail, and margin.
+- Evidence available before change: committed historical specialist results and current source-validation logs only; no FM primary outcome was inspected.
+- Prediction: reporting-only correction; no effect on any FM metric or terminal.
+- Result: pending finalization.
+- Keep/reject: KEEP and include in the pre-outcome protocol hash lock.
+
 ## V3 seed-grouping statistical repair
 
 - Diagnosis: pre-primary static review found that the draft D>I runner used fold-by-seed as the leave-one-run-out and bootstrap group. That permits the same fold under other random seeds to remain in the regression training data and violates the explicit rule that seeds are not independent people.
