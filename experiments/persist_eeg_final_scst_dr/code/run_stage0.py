@@ -169,80 +169,103 @@ def run_layer(
     subject_rows: list[dict[str, Any]] = []
     class_rows: list[dict[str, Any]] = []
     manifold_rows: list[dict[str, Any]] = []
+    # Batch all target-subject queries for each source-subject/class cell.  This
+    # is numerically equivalent to the original pair loop but avoids thousands
+    # of one-row sklearn calls.
     for source_subject in subjects:
-        for target_subject in subjects:
-            if source_subject == target_subject:
-                continue
-            for label in labels:
-                clean_centroid = centroids[(source_subject, label, s_eval)]
-                target_centroid = centroids[(target_subject, label, s_eval)]
-                delta = residual[(target_subject, label, s_bank)] - residual[(source_subject, label, s_bank)]
-                delta_unconditional = unconditional[target_subject] - unconditional[source_subject]
-                delta_wrong = residual[(target_subject, 1 - label, s_bank)] - residual[(source_subject, 1 - label, s_bank)]
-                permuted_target = permutation[target_subject]
-                delta_permuted = residual[(permuted_target, label, s_bank)] - residual[(source_subject, label, s_bank)]
+        target_subjects = [subject for subject in subjects if subject != source_subject]
+        for label in labels:
+            clean_centroid = centroids[(source_subject, label, s_eval)]
+            target_centroids = np.stack([centroids[(target_subject, label, s_eval)] for target_subject in target_subjects])
+            deltas = np.stack([
+                residual[(target_subject, label, s_bank)] - residual[(source_subject, label, s_bank)]
+                for target_subject in target_subjects
+            ])
+            unconditional_deltas = np.stack([
+                unconditional[target_subject] - unconditional[source_subject] for target_subject in target_subjects
+            ])
+            wrong_deltas = np.stack([
+                residual[(target_subject, 1 - label, s_bank)] - residual[(source_subject, 1 - label, s_bank)]
+                for target_subject in target_subjects
+            ])
+            permuted_deltas = np.stack([
+                residual[(permutation[target_subject], label, s_bank)] - residual[(source_subject, label, s_bank)]
+                for target_subject in target_subjects
+            ])
+            random_deltas = []
+            for target_subject, delta in zip(target_subjects, deltas):
                 rng = np.random.default_rng(c.stable_seed("stage0-norm-random", setting, fold, layer, source_subject, target_subject, label))
                 random_delta = rng.normal(size=len(delta))
                 random_delta *= np.linalg.norm(delta) / max(np.linalg.norm(random_delta), 1e-12)
-                transports = {
-                    "no_transport": clean_centroid,
-                    "scst": clean_centroid + delta,
-                    "norm_matched_random": clean_centroid + random_delta,
-                    "unconditional_subject_transport": clean_centroid + delta_unconditional,
-                    "wrong_class": clean_centroid + delta_wrong,
-                    "subject_permutation": clean_centroid + delta_permuted,
-                    "same_class_mixup": 0.5 * clean_centroid + 0.5 * target_centroid,
-                }
-                clean_distance = float(np.linalg.norm(clean_centroid - target_centroid))
-                for method, transported in transports.items():
-                    distance = float(np.linalg.norm(transported - target_centroid))
+                random_deltas.append(random_delta)
+            random_deltas = np.stack(random_deltas)
+            clean_batch = np.broadcast_to(clean_centroid, target_centroids.shape)
+            centroid_transports = {
+                "no_transport": clean_batch,
+                "scst": clean_batch + deltas,
+                "norm_matched_random": clean_batch + random_deltas,
+                "unconditional_subject_transport": clean_batch + unconditional_deltas,
+                "wrong_class": clean_batch + wrong_deltas,
+                "subject_permutation": clean_batch + permuted_deltas,
+                "same_class_mixup": 0.5 * clean_batch + 0.5 * target_centroids,
+            }
+            clean_distances = np.linalg.norm(clean_batch - target_centroids, axis=1)
+            delta_norms = np.linalg.norm(deltas, axis=1)
+            for method, transported in centroid_transports.items():
+                distances = np.linalg.norm(transported - target_centroids, axis=1)
+                manifold_distances = mean_knn(manifold_model[label], transported)
+                for index, target_subject in enumerate(target_subjects):
                     subject_rows.append({
                         "setting_id": setting, "fold": fold, "layer": layer,
                         "source_subject": source_subject, "target_subject": target_subject,
                         "class_label": label, "method": method,
-                        "target_distance": distance,
-                        "clean_target_distance": clean_distance,
-                        "relative_target_affinity_improvement": (clean_distance - distance) / max(clean_distance, 1e-12),
-                        "delta_norm": float(np.linalg.norm(delta)),
+                        "target_distance": float(distances[index]),
+                        "clean_target_distance": float(clean_distances[index]),
+                        "relative_target_affinity_improvement": float((clean_distances[index] - distances[index]) / max(clean_distances[index], 1e-12)),
+                        "delta_norm": float(delta_norms[index]),
                     })
-                    manifold_distance = float(mean_knn(manifold_model[label], transported[None, :])[0])
                     manifold_rows.append({
                         "setting_id": setting, "fold": fold, "layer": layer,
                         "source_subject": source_subject, "target_subject": target_subject,
                         "class_label": label, "method": method,
-                        "knn_distance": manifold_distance,
-                        "off_manifold": bool(manifold_distance > manifold_threshold[label]),
+                        "knn_distance": float(manifold_distances[index]),
+                        "off_manifold": bool(manifold_distances[index] > manifold_threshold[label]),
                         "real_support_q95": manifold_threshold[label],
                     })
 
-                source_trial_mask = (
-                    (source["subjects"].astype(str) == source_subject)
-                    & (source["sessions"].astype(int) == int(s_eval))
-                    & (source["labels"].astype(int) == int(label))
-                )
-                trial = z_source[source_trial_mask]
-                class_transports = {
-                    "no_transport": trial,
-                    "scst": trial + delta,
-                    "norm_matched_random": trial + random_delta,
-                    "unconditional_subject_transport": trial + delta_unconditional,
-                    "same_class_mixup": 0.5 * trial + 0.5 * target_centroid,
-                }
-                clean_probability, clean_prediction = class_probability(probe, trial, label)
-                clean_logp = np.log(np.clip(clean_probability, 1e-12, 1.0))
-                for method, transported in class_transports.items():
-                    probability, prediction = class_probability(probe, transported, label)
+            source_trial_mask = (
+                (source["subjects"].astype(str) == source_subject)
+                & (source["sessions"].astype(int) == int(s_eval))
+                & (source["labels"].astype(int) == int(label))
+            )
+            trial = z_source[source_trial_mask]
+            clean_probability, clean_prediction = class_probability(probe, trial, label)
+            clean_logp = np.log(np.clip(clean_probability, 1e-12, 1.0))
+            trial_batch = np.broadcast_to(trial[None, :, :], (len(target_subjects), len(trial), trial.shape[1]))
+            class_transports = {
+                "no_transport": trial_batch,
+                "scst": trial_batch + deltas[:, None, :],
+                "norm_matched_random": trial_batch + random_deltas[:, None, :],
+                "unconditional_subject_transport": trial_batch + unconditional_deltas[:, None, :],
+                "same_class_mixup": 0.5 * trial_batch + 0.5 * target_centroids[:, None, :],
+            }
+            for method, transported in class_transports.items():
+                probability, prediction = class_probability(probe, transported.reshape(-1, transported.shape[-1]), label)
+                probability = probability.reshape(len(target_subjects), len(trial))
+                prediction = prediction.reshape(len(target_subjects), len(trial))
+                for index, target_subject in enumerate(target_subjects):
+                    transported_accuracy = float(np.mean(prediction[index] == label))
                     class_rows.append({
                         "setting_id": setting, "fold": fold, "layer": layer,
                         "source_subject": source_subject, "target_subject": target_subject,
                         "class_label": label, "method": method,
                         "independent_probe_BA": probe_ba,
                         "clean_accuracy": float(np.mean(clean_prediction == label)),
-                        "transported_accuracy": float(np.mean(prediction == label)),
-                        "accuracy_change": float(np.mean(prediction == label) - np.mean(clean_prediction == label)),
+                        "transported_accuracy": transported_accuracy,
+                        "accuracy_change": transported_accuracy - float(np.mean(clean_prediction == label)),
                         "clean_true_probability": float(clean_probability.mean()),
-                        "transported_true_probability": float(probability.mean()),
-                        "true_log_probability_change": float(np.mean(np.log(np.clip(probability, 1e-12, 1.0)) - clean_logp)),
+                        "transported_true_probability": float(probability[index].mean()),
+                        "true_log_probability_change": float(np.mean(np.log(np.clip(probability[index], 1e-12, 1.0)) - clean_logp)),
                         "trial_count": int(len(trial)),
                     })
 

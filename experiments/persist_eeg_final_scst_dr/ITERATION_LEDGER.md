@@ -24,3 +24,16 @@
   subject mask.  No protocol, data role, estimator, control, or threshold changes.
 - Actual result: pending rerun.
 - Decision: retained as a pure execution repair; Stage-0 hashes must be refrozen.
+
+### V0 engineering repair E2 (before any completed unit)
+
+- Failure: the corrected run reached metric computation, but pairwise sklearn
+  calls accumulated 335 CPU-seconds without completing a unit.
+- Diagnosis: one-row kNN and class-probe calls caused Python/sklearn dispatch
+  overhead; the frozen mathematical queries themselves are batchable.
+- Proposed change before rerun: stack all target-subject queries within each
+  source-subject/class cell and call the exact same frozen kNN/probe estimators in
+  matrix batches.  Preserve every pair, seed, transport, control, and output row.
+- Actual result: pending rerun.
+- Decision: implementation-only acceleration; no partial unit or metric was
+  inspected, and Stage-0 hashes must be refrozen again.
