@@ -15,10 +15,24 @@ def main() -> None:
     freeze = c.read_json(freeze_path)
     if freeze.get("pass") is not True or freeze.get("frozen_before_repair2_outcomes") is not True:
         issues.append("repair2_freeze")
+    engineering_path = c.EXP / "protocol" / "STAGE0_REPAIR2_E1_ENGINEERING_FREEZE.json"
+    engineering = c.read_json(engineering_path) if engineering_path.is_file() else {}
+    allowed = set(engineering.get("allowed_changed_files", []))
+    analysis_mutable = {"ITERATION_LEDGER.md", "REPAIR_LOG.md"}
     for relative, expected in freeze.get("file_sha256", {}).items():
         path = c.EXP / relative
+        if relative in analysis_mutable:
+            continue
+        if relative in allowed:
+            expected = engineering.get("changed_file_sha256", {}).get(relative)
         if not path.is_file() or c.sha256(path) != expected:
             issues.append(f"post_freeze_hash_changed:{relative}")
+    for name, expected in engineering.get("pre_fix_result_sha256", {}).items():
+        path = c.RESULTS / name
+        if not path.is_file() or c.sha256(path) != expected:
+            issues.append(f"e1_numeric_hash_changed:{name}")
+    if "pending" in (c.EXP / "REPAIR_LOG.md").read_text(encoding="utf-8").lower():
+        issues.append("repair_log_pending")
 
     sealed = c.read_json(c.EXP / "protocol" / "SEALED_RESOURCE_AUDIT.json")
     if sealed.get("pass") is not True or sealed.get("outer_evaluation_authorized") is not False:

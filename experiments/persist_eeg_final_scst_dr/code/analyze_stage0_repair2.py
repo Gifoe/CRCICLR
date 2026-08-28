@@ -17,6 +17,24 @@ import common as c
 import run_stage0_repair2 as repair
 
 
+def verify_analysis_freeze() -> dict[str, Any]:
+    original = c.read_json(c.EXP / "protocol" / "PRE_STAGE0_REPAIR2_FREEZE.json")
+    engineering_path = c.EXP / "protocol" / "STAGE0_REPAIR2_E1_ENGINEERING_FREEZE.json"
+    if not engineering_path.is_file():
+        return repair.verify_repair2_freeze()
+    engineering = c.read_json(engineering_path)
+    if engineering.get("pass") is not True or engineering.get("scientific_change") is not False:
+        raise RuntimeError("invalid Repair-2 E1 engineering freeze")
+    allowed = set(engineering.get("allowed_changed_files", []))
+    for relative, expected in original.get("file_sha256", {}).items():
+        path = c.EXP / relative
+        if relative in allowed:
+            expected = engineering["changed_file_sha256"].get(relative)
+        if not path.is_file() or c.sha256(path) != expected:
+            raise RuntimeError(f"Repair-2 E1 frozen input changed: {relative}")
+    return engineering
+
+
 def load_units(name: str) -> pd.DataFrame:
     paths = sorted((c.RUNTIME / "stage0_repair2_units").glob(f"*/fold-*/{name}"))
     expected = len(c.SETTINGS) * 5
@@ -203,8 +221,8 @@ def make_figures(summary: pd.DataFrame, alpha: pd.DataFrame) -> None:
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(7.4, 4.8), constrained_layout=True)
-    for row in ordered.itertuples():
-        ax.scatter(row.subject_affinity_improvement_mean, row.class_accuracy_change, s=82, label=row.setting_id)
+    for setting, row in ordered.iterrows():
+        ax.scatter(row.subject_affinity_improvement_mean, row.class_accuracy_change, s=82, label=setting)
     ax.axvline(0, color="black", lw=0.8)
     ax.axhline(-0.02, color="#b2182b", ls="--", lw=0.9)
     ax.set_xlabel("Target-subject affinity improvement")
@@ -217,7 +235,7 @@ def make_figures(summary: pd.DataFrame, alpha: pd.DataFrame) -> None:
 
 
 def main() -> None:
-    repair.verify_repair2_freeze()
+    engineering = verify_analysis_freeze()
     stability = pd.read_csv(c.RESULTS / "TRANSPORT_STABILITY.csv")
     subject = load_units("SUBJECT_FIDELITY.csv")
     class_fidelity = load_units("CLASS_FIDELITY.csv")
@@ -269,6 +287,9 @@ def main() -> None:
             "summary": summary.to_dict(orient="records"),
         },
     )
+    for name, expected in engineering.get("pre_fix_result_sha256", {}).items():
+        if c.sha256(c.RESULTS / name) != expected:
+            raise RuntimeError(f"E1 presentation fix changed numerical result hash: {name}")
     make_figures(summary, alpha)
 
     alpha_table = alpha[(alpha.scope == "setting")].to_markdown(index=False, floatfmt=".5f")
@@ -308,6 +329,19 @@ ratio and subject-level bootstrap unit, were retained.
     if pending not in ledger:
         raise RuntimeError("Repair-2 pending ledger block is absent or already resolved")
     c.write_text(ledger_path, ledger.replace(pending, replacement, 1))
+    repair_log_path = c.EXP / "REPAIR_LOG.md"
+    repair_log = repair_log_path.read_text(encoding="utf-8")
+    verification = "- Before/after verification: pending rerun."
+    if verification not in repair_log:
+        raise RuntimeError("Repair E1 verification marker is absent")
+    c.write_text(
+        repair_log_path,
+        repair_log.replace(
+            verification,
+            "- Before/after verification: PASS; all seven compact numerical output hashes were byte-identical after the plotting-only rerun.",
+            1,
+        ),
+    )
     print(terminal, flush=True)
 
 
