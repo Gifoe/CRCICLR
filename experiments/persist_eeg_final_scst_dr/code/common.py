@@ -198,7 +198,9 @@ def fold_roles(setting_id: str, fold: int) -> dict[str, tuple[str, ...]]:
 def row_indices(metadata: pd.DataFrame, subjects: Iterable[str], sessions: Iterable[int]) -> np.ndarray:
     subject_set = set(map(str, subjects))
     session_set = set(map(int, sessions))
-    mask = metadata.subject_id.astype(str).isin(subject_set).to_numpy()
+    # Arrow-backed pandas columns can expose a read-only NumPy view.  The mask
+    # is updated in-place below, so request an explicit writable copy.
+    mask = metadata.subject_id.astype(str).isin(subject_set).to_numpy(copy=True)
     mask &= metadata.session_id.astype(int).isin(session_set).to_numpy()
     return np.flatnonzero(mask).astype(np.int64)
 

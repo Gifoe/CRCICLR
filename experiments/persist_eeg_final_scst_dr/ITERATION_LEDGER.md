@@ -13,3 +13,14 @@
 - Actual result: pending Stage-0 execution.
 - Decision: pending.
 
+### V0 engineering repair E1 (before any metric)
+
+- Failure: the first launch stopped before representation extraction because an
+  Arrow-backed Pandas boolean mask was read-only and `mask &= ...` raised
+  `ValueError`.
+- Diagnosis: writable-array assumption in `row_indices`; no scientific value,
+  candidate layer, or gate had been observed.
+- Proposed change before rerun: request an explicit writable NumPy copy for the
+  subject mask.  No protocol, data role, estimator, control, or threshold changes.
+- Actual result: pending rerun.
+- Decision: retained as a pure execution repair; Stage-0 hashes must be refrozen.
