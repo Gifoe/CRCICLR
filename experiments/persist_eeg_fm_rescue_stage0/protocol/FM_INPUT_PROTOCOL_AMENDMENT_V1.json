@@ -1,0 +1,38 @@
+{
+  "schema": "FM_INPUT_PROTOCOL_AMENDMENT_V1",
+  "supersedes_only": [
+    "WBCIC unit interpretation",
+    "CBraMod downstream pooling/head",
+    "training duration"
+  ],
+  "frozen_before_primary_outcomes": true,
+  "evidence_scope": "source-validation only; no outcome subject performance and no WBCIC S2/S3 utility",
+  "diagnosis": {
+    "WBCIC": "The source-only cache after the metadata-declared x20 transform had median absolute amplitude 0.00311 uV and q99 0.03308 uV, approximately 1000x below physiological scale. This demonstrates a metadata/cache unit mismatch.",
+    "CBraMod": "Official mean pooling was loadable but source-validation BA remained 0.50-0.52. The official BCIC-IV-2a release defaults to the all_patch_reps downstream classifier and a separate higher downstream learning rate."
+  },
+  "repair": {
+    "WBCIC_unit_transform": "cache x 20000 = microvolts (metadata x20 plus audited 1000x correction); expected source-only q99 approximately 33 uV",
+    "CBraMod_downstream": "official all_patch_reps projector: flatten final tokens -> Linear(C*4*200,800) -> ELU -> Dropout(0.1) -> Linear(800,200) -> ELU -> Dropout(0.1) -> Linear(200,2)",
+    "primary_CBraMod_representation": "fixed 200-D penultimate vector of the official downstream projector",
+    "optimizer": "official multi-LR: searched encoder LR and downstream LR 0.001*sqrt(batch/256)",
+    "maximum_epochs": 20,
+    "minimum_epochs": 8,
+    "patience": 5
+  },
+  "unchanged": [
+    "subjects",
+    "folds",
+    "seeds",
+    "labels",
+    "session roles",
+    "channels",
+    "200 Hz resampling",
+    "4-second window",
+    "FM checkpoints",
+    "outcome definitions",
+    "all rescue gates"
+  ],
+  "outcomes_inspected": false,
+  "S2_or_S3_utility_inspected": false
+}

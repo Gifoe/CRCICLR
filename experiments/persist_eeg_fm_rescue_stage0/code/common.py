@@ -38,9 +38,9 @@ SOURCE_SESSIONS = {"OpenBMI": (1, 2), "WBCIC": (0, 1)}
 FUTURE_SESSION = {"OpenBMI": None, "WBCIC": 2}
 LR_GRIDS = {"CBraMod": (1e-4, 3e-4), "LaBraM": (1e-4, 5e-4)}
 WEIGHT_DECAY = 0.05
-MAX_EPOCHS = 12
-MIN_EPOCHS = 4
-PATIENCE = 3
+MAX_EPOCHS = 20
+MIN_EPOCHS = 8
+PATIENCE = 5
 BATCH_SIZE = 128
 LABEL_SMOOTHING = 0.1
 COMPETENCE_THRESHOLDS = {"OpenBMI": 0.7519166667, "WBCIC": 0.7684300821}
@@ -240,7 +240,11 @@ def prepare_inputs(dataset: str, include_future: bool = False, chunk: int = 24) 
     for start in range(0, len(pending), chunk):
         idx = pending[start:start + chunk]
         x = np.asarray(data.raw[idx], dtype=np.float32)
-        x *= (1e6 if dataset == "OpenBMI" else 20.0)
+        # The WBCIC metadata says microvolts/20, but the source-only runtime
+        # audit found a q99 of only 0.033 uV after x20.  The materialized cache
+        # is in millivolts/20, a documented 1e3 metadata/cache mismatch.  The
+        # pre-outcome amendment therefore uses x20,000 (q99 ~33 uV).
+        x *= (1e6 if dataset == "OpenBMI" else 20000.0)
         if sos is not None: x = sosfiltfilt(sos, x, axis=-1).astype(np.float32)
         x = resample_poly(x, 4, 5, axis=-1).astype(np.float32)
         if x.shape[-1] != 800: raise RuntimeError(x.shape)
@@ -266,7 +270,16 @@ class FMTask(nn.Module):
             root = FM_RUNTIME / "CBraMod"; sys.path.insert(0, str(root))
             from models.cbramod import CBraMod
             self.encoder = CBraMod(); payload = torch.load(root / "pretrained_weights" / "pretrained_weights.pth", map_location="cpu", weights_only=True)
-            self.encoder.load_state_dict(payload, strict=True); self.encoder.proj_out = nn.Identity(); self.head = nn.Linear(200, 2)
+            self.encoder.load_state_dict(payload, strict=True); self.encoder.proj_out = nn.Identity()
+            # Official BCIC-IV-2a default: all_patch_reps three-layer
+            # classifier.  We expose its 200-D penultimate vector as the
+            # documented downstream representation and retain the last linear
+            # layer as the adaptable task head.
+            self.task_projector = nn.Sequential(
+                nn.Linear(len(channels(dataset)) * 4 * 200, 4 * 200), nn.ELU(), nn.Dropout(.1),
+                nn.Linear(4 * 200, 200), nn.ELU(), nn.Dropout(.1),
+            )
+            self.head = nn.Linear(200, 2)
             nn.init.trunc_normal_(self.head.weight, std=.02); nn.init.zeros_(self.head.bias); self.input_chans = None
         elif fm == "LaBraM":
             root = FM_RUNTIME / "LaBraM"; sys.path.insert(0, str(root)); import modeling_finetune
@@ -279,12 +292,12 @@ class FMTask(nn.Module):
                 if not key.startswith("head."): cleaned[key] = value
             self.encoder.load_state_dict(cleaned, strict=False); self.head = nn.Linear(200, 2)
             nn.init.trunc_normal_(self.head.weight, std=.02); nn.init.zeros_(self.head.bias)
-            self.input_chans = labram_input_chans(dataset)
+            self.input_chans = labram_input_chans(dataset); self.task_projector = nn.Identity()
         else: raise KeyError(fm)
 
     def forward_features(self, x: torch.Tensor) -> torch.Tensor:
         if self.fm == "CBraMod":
-            tokens = self.encoder(x); return tokens.mean(dim=(1, 2))
+            tokens = self.encoder(x); return self.task_projector(tokens.flatten(1))
         return self.encoder.forward_features(x / 100.0, input_chans=self.input_chans)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -342,13 +355,15 @@ def train_anchor(fm: str, dataset: str, fold: int, seed: int, lr: float, output:
     done = np.load(preprocessed_mask_path(dataset), allow_pickle=False)
     if not done[train_idx].all() or not done[val_idx].all(): raise RuntimeError("source-validation preprocessing incomplete")
     set_seed(stable_seed("fm-anchor", fm, dataset, fold, seed)); model = FMTask(fm, dataset, stable_seed("head", fm, dataset, fold, seed)).to(device)
-    opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=WEIGHT_DECAY, betas=(.9,.999)); criterion = nn.CrossEntropyLoss(label_smoothing=LABEL_SMOOTHING)
+    encoder_params=list(model.encoder.parameters()); downstream_params=list(model.task_projector.parameters())+list(model.head.parameters())
+    head_lr=1e-3*math.sqrt(BATCH_SIZE/256.0)
+    opt = torch.optim.AdamW([{"params":encoder_params,"lr":lr},{"params":downstream_params,"lr":head_lr}], weight_decay=WEIGHT_DECAY, betas=(.9,.999)); criterion = nn.CrossEntropyLoss(label_smoothing=LABEL_SMOOTHING)
     xall = input_array(dataset); labels = data.metadata.label.to_numpy(np.int64); best = -np.inf; best_epoch=-1; best_state=None; stale=0; history=[]
     rng = np.random.default_rng(stable_seed("order", fm, dataset, fold, seed));
     for epoch in range(MAX_EPOCHS):
         model.train(); order=train_idx.copy(); rng.shuffle(order); losses=[]
         warm = min(1.0, (epoch+1)/2.0); cosine = .5*(1+math.cos(math.pi*epoch/MAX_EPOCHS)); now_lr=lr*warm*(.1+.9*cosine)
-        for group in opt.param_groups: group["lr"] = now_lr
+        opt.param_groups[0]["lr"] = now_lr; opt.param_groups[1]["lr"] = head_lr*warm*(.1+.9*cosine)
         for start in range(0,len(order),BATCH_SIZE):
             idx=order[start:start+BATCH_SIZE]; x=torch.from_numpy(np.asarray(xall[idx],dtype=np.float32)).to(device).reshape(len(idx),len(channels(dataset)),4,200); y=torch.as_tensor(labels[idx],device=device)
             opt.zero_grad(set_to_none=True)
@@ -361,7 +376,7 @@ def train_anchor(fm: str, dataset: str, fold: int, seed: int, lr: float, output:
         else: stale += 1
         print(f"[train] {fm} {dataset} fold={fold} seed={seed} lr={lr:g} epoch={epoch+1} valBA={score:.5f} best={best:.5f}",flush=True)
         if epoch+1 >= MIN_EPOCHS and stale >= PATIENCE: break
-    record={"fm":fm,"dataset":dataset,"fold":fold,"seed":seed,"lr":lr,"weight_decay":WEIGHT_DECAY,"best_epoch":best_epoch,
+    record={"fm":fm,"dataset":dataset,"fold":fold,"seed":seed,"lr":lr,"downstream_head_lr":head_lr,"weight_decay":WEIGHT_DECAY,"best_epoch":best_epoch,
             "validation_mean_subject_BA":float(best),"train_rows":len(train_idx),"validation_rows":len(val_idx),"history":history,
             "target_seen_by_anchor":False,"future_session_used":False}
     output.parent.mkdir(parents=True,exist_ok=True); temp=output.with_suffix(".pt.part"); torch.save({"complete":True,"state_dict":best_state,"record":record},temp); os.replace(temp,output)
