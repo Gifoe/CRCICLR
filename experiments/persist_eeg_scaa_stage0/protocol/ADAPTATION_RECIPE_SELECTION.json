@@ -1,0 +1,35 @@
+{
+  "S1_split": "within-class chronological first 70% train / final 30% validation",
+  "S2_or_S3_utility_accessed": false,
+  "adapter": "classifier_head_only_supervised",
+  "cells_per_candidate": 246,
+  "checkpoint_rule": "highest S1-validation BA, then lower NLL, then earlier epoch",
+  "competence_gate_pass": true,
+  "feature_encoder_frozen": true,
+  "global_recipe_across_subjects_backbones_seeds": true,
+  "last_block_switch_used": false,
+  "lr_candidates": [
+    0.0001,
+    0.0003,
+    0.001
+  ],
+  "maximum_epochs": 50,
+  "minimum_epochs": 10,
+  "patience": 8,
+  "schema": "SCAA_STAGE0_ADAPTATION_RECIPE_SELECTION_V1",
+  "selected_before_S2_or_S3_utility": true,
+  "selected_lr": 0.001,
+  "selected_summary": {
+    "S1_validation_BA_delta": 0.015243902439024386,
+    "adapted_S1_validation_BA": 0.7716124661246613,
+    "adapted_S1_validation_NLL": 0.4571330643336962,
+    "anchor_S1_validation_BA": 0.7563685636856369,
+    "catastrophic_fraction": 0.0,
+    "cells": 246.0,
+    "lr": 0.001,
+    "median_best_epoch": 21.0,
+    "parameter_relative_change": 0.23237294134328035,
+    "prediction_change_rate": 0.07161246612466125
+  },
+  "weight_decay": 0.0001
+}
