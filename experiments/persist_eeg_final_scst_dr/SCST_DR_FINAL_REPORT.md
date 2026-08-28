@@ -4,82 +4,70 @@
 
 `FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED`
 
-The constructive method was stopped at the validated Stage-0 terminal
-`TRANSPORT_OFF_MANIFOLD`.  No SCST-DR continuation model, matched continuation
-baseline, future-session performance analysis, mechanism analysis, final model
-lock, or sealed-outer evaluation was run.
+Repair-2 ended at `TRANSPORT_VALIDITY_NOT_SUPPORTED`.  The validator passed with 20/20 units
+and 2/4 settings satisfying every frozen gate.  This is a validated scientific
+failure, not a runtime failure.  The protocol forbids Repair-3, SCST training,
+future-performance inspection, and sealed outer evaluation.
 
-## What the repair established
+## Four-setting result
 
-V0 showed stable residual direction but alpha=1 overshoot.  The only authorized
-scientific repair prelocked one global magnitude from {0.25, 0.50} without
-changing layers, folds, seed, representations, centroids, controls, probes,
-manifold estimator, bootstrap, or gates.  Alpha=0.25 repaired target-subject and
-class fidelity at the final embedding in all four settings.  It still produced
-3NN-to-clean manifold ratios of 1.34457 (WBCIC EEGNet) and 1.36594 (WBCIC
-EEGConformer), above the frozen 1.25 maximum.  Alpha=0.50 violated the manifold
-gate in every setting (ratios 1.33823-1.73031 across candidate layers).
+| setting_id              |   fraction_alpha_zero |   alpha_mean |   alpha_median |   fraction_alpha_max |   subject_affinity_improvement_mean |   subject_affinity_CI_low |   subject_advantage_over_random_mean |   subject_advantage_over_random_CI_low |   class_accuracy_change |   class_logp_change |   manifold_knn_ratio_to_clean |   scst_off_manifold_rate |   random_off_manifold_rate | all_gates_pass   |
+|:------------------------|----------------------:|-------------:|---------------:|---------------------:|------------------------------------:|--------------------------:|-------------------------------------:|---------------------------------------:|------------------------:|--------------------:|------------------------------:|-------------------------:|---------------------------:|:-----------------|
+| OPENBMI_MI_EEGNET       |               0.00326 |      0.24855 |        0.25000 |              0.99112 |                             0.12636 |                   0.11697 |                              0.16422 |                                0.15404 |                 0.00000 |            -0.00000 |                       1.16285 |                  0.00000 |                    0.00145 | True             |
+| OPENBMI_MI_EEGCONFORMER |               0.02192 |      0.24420 |        0.25000 |              0.97536 |                             0.15324 |                   0.14343 |                              0.18610 |                                0.17496 |                 0.00617 |             0.00627 |                       1.14937 |                  0.00000 |                    0.00145 | True             |
+| WBCIC_MI_EEGNET         |               0.04046 |      0.23632 |        0.25000 |              0.91942 |                             0.08492 |                   0.05452 |                              0.13895 |                                0.11756 |                 0.00549 |             0.00369 |                       1.30796 |                  0.01670 |                    0.05888 | False            |
+| WBCIC_MI_EEGCONFORMER   |               0.04167 |      0.23698 |        0.25000 |              0.92855 |                             0.09679 |                   0.06777 |                              0.15603 |                                0.13524 |                 0.02353 |             0.01600 |                       1.34080 |                  0.01119 |                    0.05337 | False            |
 
-The binary off-manifold rate relative to a norm-matched random perturbation was
-not the failing component.  The failure is the absolute distance from real
-same-class centroid support.  Passing subject affinity and class-probe gates is
-therefore insufficient to certify the counterfactual representation.
+## Required 31 answers
 
-## Final-embedding frozen-gate results
-
-| setting_id              |   alpha |   stability_effect_mean |   stability_CI_low |   subject_affinity_improvement_mean |   subject_affinity_CI_low |   class_accuracy_change |   class_logp_change |   manifold_knn_ratio_to_clean | gate_subject_fidelity   | gate_class_fidelity   | gate_manifold   | all_gates_pass   |
-|:------------------------|--------:|------------------------:|-------------------:|------------------------------------:|--------------------------:|------------------------:|--------------------:|------------------------------:|:------------------------|:----------------------|:----------------|:-----------------|
-| OPENBMI_MI_EEGNET       | 0.25000 |                 0.60379 |            0.53463 |                             0.12715 |                   0.11755 |                 0.00651 |             0.00708 |                       1.16425 | True                    | True                  | True            | True             |
-| OPENBMI_MI_EEGCONFORMER | 0.25000 |                 0.72534 |            0.66970 |                             0.15539 |                   0.14596 |                 0.00633 |             0.01107 |                       1.15192 | True                    | True                  | True            | True             |
-| WBCIC_MI_EEGNET         | 0.25000 |                 0.57082 |            0.40886 |                             0.08184 |                   0.04240 |                 0.02003 |             0.01299 |                       1.34457 | True                    | True                  | False           | False            |
-| WBCIC_MI_EEGCONFORMER   | 0.25000 |                 0.62275 |            0.46114 |                             0.09641 |                   0.06448 |                 0.02303 |             0.01377 |                       1.36594 | True                    | True                  | False           | False            |
-| OPENBMI_MI_EEGNET       | 0.50000 |                 0.60379 |            0.53463 |                             0.18394 |                   0.16467 |                 0.00660 |             0.00311 |                       1.37808 | True                    | True                  | False           | False            |
-| OPENBMI_MI_EEGCONFORMER | 0.50000 |                 0.72534 |            0.66970 |                             0.25854 |                   0.23959 |                 0.00674 |             0.01110 |                       1.36382 | True                    | True                  | False           | False            |
-| WBCIC_MI_EEGNET         | 0.50000 |                 0.57082 |            0.40886 |                             0.09278 |                   0.00344 |                 0.02422 |             0.00970 |                       1.65370 | True                    | True                  | False           | False            |
-| WBCIC_MI_EEGCONFORMER   | 0.50000 |                 0.62275 |            0.46114 |                             0.11467 |                   0.03543 |                 0.02336 |             0.00772 |                       1.67549 | True                    | True                  | False           | False            |
-
-## Required answers
-
-1. **Legal development resources:** OpenBMI 40 development subjects and WBCIC
-   41 development subjects, using only frozen model-fit/validation roles and
-   legal source Sessions 1/2.
-2. **Sealed resources:** untouched and unenumerated.  OpenBMI internal 14 and
-   WBCIC outer 10 were not opened.
-3. **Residual stability:** supported in every setting/layer with subject-level
-   bootstrap lower bounds above zero.
-4. **Target-subject fidelity:** supported at `final_embedding` for both reduced
-   alphas in all four settings.
-5. **Class preservation:** supported at `final_embedding` for both reduced
-   alphas by the independent probe gates.
-6. **On-manifold validity:** not supported.  Although better than the random
-   control on binary outlier rate, absolute 3NN support distance failed.
-7. **Selected layer:** none; no layer/global-alpha combination passed all gates.
-8. **Representation drift:** not applicable because training was prohibited.
-9. **Strongest matched ERM:** not run as a continuation baseline.
-10. **SCST future-session BA:** not run.
-11. **Paired BA delta:** not run.
-12. **BA uncertainty:** not run.
-13. **Settings favoring SCST:** not evaluated.
-14. **SCST versus Mixup:** not evaluated as trained methods.
-15. **SCST versus random perturbation:** not evaluated as trained methods.
-16. **Class conditioning:** source-side class fidelity is supported; a training
+1. **Frozen before outcomes:** yes; protocol commit `ad86b25`, pre-outcome hash
+   freeze commit `2ca4440`.
+2. **Sealed resources:** untouched and unenumerated.
+3. **Alpha-star distribution:** setting summaries are in the table; all medians
+   are 0.25, zero fractions are 0.00326-0.04167, and alpha-max fractions are
+   0.91942-0.99112.  Full class/subject strata are preserved in
+   `results/STAGE0_REPAIR2_ALPHA_DISTRIBUTION.csv`.
+4. **Target-subject affinity:** positive with CI lower above zero in all four.
+5. **Versus matched random:** positive with CI lower above zero in all four.
+6. **Class fidelity:** passed in all four.
+7. **Independent 3NN ratios:** OpenBMI EEGNet 1.16285; OpenBMI EEGConformer
+   1.14937; WBCIC EEGNet 1.30796; WBCIC EEGConformer 1.34080.
+8. **All four <=1.25:** no; both WBCIC settings failed.
+9. **Binary off-manifold rates:** SCST rates were 0, 0, 0.01670, and 0.01119;
+   matched-random rates were 0.00145, 0.00145, 0.05888, and 0.05337.
+10. **Transport validity supported:** no.
+11. **Exact failure:** the two WBCIC 3NN ratios exceeded 1.25 despite every
+    other gate passing.
+12. **Trainable scope:** not selected; training was prohibited.
+13. **Bank staleness:** not applicable because no model was trained.
+14. **Matched ERM future BA:** not run.
+15. **SCST-DR future BA:** not run.
+16. **Delta BA:** not run.
+17. **Subject-level CI:** not run.
+18. **Positive primary settings:** not evaluated as trained methods.
+19. **SCST versus Mixup:** not run.
+20. **SCST versus random augmentation:** not run.
+21. **Class conditioning:** Stage-0 class compatibility is supported; a training
     contribution is not established.
-17. **Decision consistency:** not evaluated.
-18. **Subject identity:** not evaluated after training.
-19. **Transport decision sensitivity:** not evaluated after training.
-20. **I retained / D_T down / G up:** not supported.
-21. **Outer authorization:** denied by Stage 0.
-22. **Outer confirmation:** not opened.
-23. **Supported claim:** reduced residual transport is directionally
-    subject-faithful and class-compatible on source data, but not certified as
-    manifold-valid across datasets.
-24. **Unsupported claim:** no generalization, decision-robustness, or
-    subject-invariance conclusion is justified.
-25. **Final state:** `FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED`.
+22. **Decision consistency:** not run.
+23. **Subject identity I:** not run after training.
+24. **Decision sensitivity D_T:** not run.
+25. **I retained / D_T down / G up:** not supported.
+26. **Outer authorized:** no.
+27. **OpenBMI outer confirmation:** not opened.
+28. **WBCIC outer confirmation:** not opened.
+29. **Strongest supported claim:** source residual directions are stable and
+    constrained transport is subject-faithful, better than norm-matched random,
+    and class-compatible, but is not manifold-valid across datasets.
+30. **Unsupported stronger claim:** no SCST-DR generalization, mechanism, or
+    superiority claim is justified.
+31. **Terminal:** Repair-2 `TRANSPORT_VALIDITY_NOT_SUPPORTED`; final
+    `FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED`.
 
 ## Most serious limitation
 
-The proposed arithmetic changes the target-subject and class-probe diagnostics
-in the desired direction but does not stay sufficiently close to real WBCIC
-same-class representation support.  Training on those points would test an
-uncertified latent augmentation, not the stated subject-transport mechanism.
+The source-support rule rarely reduced centroid steps: at least 91.9% reached
+alpha=0.25 in every setting.  It consequently did not enforce enough support on
+the independent WBCIC geometry to satisfy the predeclared 1.25 criterion.  Any
+further reduction, radius change, k change, setting exclusion, or outcome-aware
+selection would be a new hypothesis, not an implementation repair.

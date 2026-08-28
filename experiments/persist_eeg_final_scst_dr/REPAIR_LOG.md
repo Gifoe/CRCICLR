@@ -14,3 +14,10 @@
   all seven pre-fix numerical outputs.  The repaired analyzer required exact
   SHA256 equality for every file; rerun passed, generated the figures, and did
   not change any numerical result or terminal.
+
+### E1 verification complete
+
+- Before/after verification: `STAGE0_REPAIR2_E1_ENGINEERING_FREEZE.json` locked
+  the seven pre-fix numerical outputs; analyzer rerun required exact SHA256
+  equality for every file.  The rerun passed, generated figures, and did not
+  alter any numerical result or terminal.

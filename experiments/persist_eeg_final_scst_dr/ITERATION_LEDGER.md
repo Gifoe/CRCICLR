@@ -83,3 +83,13 @@
   fidelity, and binary off-manifold gates passed in all four settings.
 - Decision: stop the constructive transport line permanently.  Do not create
   Repair-3, train SCST, inspect future performance, or open outer resources.
+
+### V0.2 validated outcome
+
+- Actual result: validator pass with 20/20 units and 2/4 all-gate settings.
+  OpenBMI ratios were 1.16285 and 1.14937; WBCIC ratios were 1.30796 and
+  1.34080, above the unchanged 1.25 limit.  Subject affinity, advantage over
+  matched random, class fidelity, and binary off-manifold gates passed in all
+  four settings.
+- Decision: `TRANSPORT_VALIDITY_NOT_SUPPORTED`.  Stop the transport line permanently.  Do not
+  create Repair-3, train SCST, inspect future performance, or open outer.

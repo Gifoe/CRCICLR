@@ -1,24 +1,36 @@
 # Reproducibility
 
-- Parent commit: `57d5e4f1ae0a7c80d95ca27983fedad2ec3f690c`
-- Server Python: `D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe`
-- Development folds: the existing frozen OpenBMI 40-subject and WBCIC
-  41-subject five-fold protocols.
-- Model seed: historical ERM seed 0 for all folds/settings.
-- Bootstrap: deterministic subject-cluster bootstrap, 10,000 resamples.
+- Parent experiment commit: `57d5e4f1ae0a7c80d95ca27983fedad2ec3f690c`.
+- Server Python: `D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\python.exe`.
+- Development folds: frozen OpenBMI 40-subject and WBCIC 41-subject five-fold
+  protocols; historical ERM seed 0.
+- Repair-2 layer: `final_embedding` only.
+- Repair-2 alpha solver: fixed grid 0..0.25 in 1/64 increments; largest
+  Session-1 source-support-admissible value.
+- Independent validity: Session 2 only; subject-cluster bootstrap with 10,000
+  deterministic resamples.
 - Runtime features are not committed.  Compact metrics, hashes, reports, and
   figures are committed.
 
-`protocol/PRE_STAGE0_FREEZE.json` records the exact code/protocol hashes before
-transport outcomes.  `results/STAGE0_VALIDATION.json` independently checks the
-freeze, cardinalities, gates, and sealed-resource state.
+`protocol/STAGE0_REPAIR2_PROTOCOL_LOCK.json` freezes the scientific protocol.
+`protocol/PRE_STAGE0_REPAIR2_FREEZE.json` hashes the lock and execution code
+before outcomes.  All 20 units verify their historical feature scope, scaling,
+probe BA, and V0 hash.  `protocol/STAGE0_REPAIR2_E1_ENGINEERING_FREEZE.json`
+locks the seven numerical outputs produced before the presentation-only E1
+figure fix and requires byte-identical values after rerun.
 
-## Repair-1 hash lock
+`results/STAGE0_REPAIR2_VALIDATION.json` reports validator pass, 20 units, 2/4
+all-gate settings, no future-session access, and sealed resources untouched.
+Repair-2 result SHA256: `88257bb74c50636a0bf084f905178906253f43736af4bf58178539c659fd3c80`.
+Repair-2 validation SHA256: `311d993373f3b385308b73c902830b4a84f1ae8c144fbeff856a13b6e5991b1c`.
 
-`protocol/PRE_STAGE0_REPAIR1_FREEZE.json` hashes the magnitude-only lock, all
-three Repair-1 execution/analysis/validation programs, the unchanged common
-implementation, and the validated V0 compact results before any Repair-1 unit
-was computed.  Each of 40 Repair-1 units verifies its feature-scope, scaling
-center, scaling scale, probe BA, and V0 unit hash before writing metrics.  The
-raw pair-level Repair-1 CSVs remain under `runtime/stage0_repair1_units` and are
-not committed; compact summaries, reports, and figures are committed.
+Commands:
+
+```powershell
+& $python code\freeze_stage0_repair2.py
+& $python code\run_stage0_repair2.py
+& $python code\analyze_stage0_repair2.py
+& $python code\validate_stage0_repair2.py
+& $python code\finalize_stage0_repair2_failure.py
+& $python code\validate_final_closure.py
+```
