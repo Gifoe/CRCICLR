@@ -21,7 +21,7 @@
 ## V4 compact-report provenance repair
 
 - Diagnosis: the draft unified table contained rounded placeholder specialist task BAs and the competence Markdown would otherwise remain a pre-freeze placeholder after outcome completion.
-- Change: replaced placeholders with exact historical ERM/SCAA anchor means from the committed OpenBMI and WBCIC result tables, and made finalization write the actual FM task BA, frozen threshold, pass/fail, and margin.
+- Change: replaced placeholders with exact historical ERM/SCAA anchor means from the committed OpenBMI and WBCIC result tables, made finalization write the actual FM task BA, frozen threshold, pass/fail, and margin, and made historical utility-transferability cells follow the committed Spearman CI-lower > 0 evidence instead of a hand-coded value.
 - Evidence available before change: committed historical specialist results and current source-validation logs only; no FM primary outcome was inspected.
 - Prediction: reporting-only correction; no effect on any FM metric or terminal.
 - Result: pending finalization.
@@ -33,5 +33,14 @@
 - Change: all three seeds are now held out together by fold; the ridge comparison is leave-one-fold-out; the 10,000 hierarchical bootstrap resamples folds independently within dataset and synchronizes each sampled fold across the two FMs of that dataset.
 - Evidence available before change: source-validation training logs only. No held-out FM task BA, D>I consequence, S2/S3 utility, FM SCST, or sealed-resource result was generated or inspected.
 - Prediction: wider and more defensible D>I uncertainty; no directional outcome prediction.
+- Result: pending primary run.
+- Keep/reject: KEEP and include in the pre-outcome protocol hash lock.
+
+## V5 SCAA grouped-evidence gate repair
+
+- Diagnosis: pre-primary gate review found that the draft pooled SCAA sign gate checked only the 0.65 point estimate and did not enforce meaningful grouped evidence above 0.5. It also did not explicitly prevent a task-weak FM from authorizing constructive rescue.
+- Change: pooled sign concordance is now formed per subject with both FM rows held together, uses 10,000 subject bootstrap resamples, and requires CI lower > 0.5 for a strong rescue. Strong rescue also requires both WBCIC FMs to pass the frozen task-competence threshold; an architecture-dependent label requires the individually positive FM to be competent.
+- Evidence available before change: task prompt, frozen competence thresholds, and source-validation logs only. No held-out FM task BA, S2/S3 utility, or other primary outcome was generated or inspected.
+- Prediction: prevents a correlated-row or task-weak false-positive rescue; no directional outcome prediction.
 - Result: pending primary run.
 - Keep/reject: KEEP and include in the pre-outcome protocol hash lock.

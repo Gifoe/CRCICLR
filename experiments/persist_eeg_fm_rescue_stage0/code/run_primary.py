@@ -174,10 +174,14 @@ def run_scaa(lock:dict)->tuple[pd.DataFrame,dict]:
     for _ in range(10000):
         sample=rng.choice(ids,len(ids),replace=True);xb=np.concatenate([wide[fm].loc[sample].Delta_S2 for fm in c.FMS]);yb=np.concatenate([wide[fm].loc[sample].Delta_S3 for fm in c.FMS]);v=spearmanr(xb,yb).statistic
         if np.isfinite(v):boots.append(v)
-    allg=subject;sel=allg.Delta_S2>0;always=float(np.mean(allg.Delta_S3<0));gate=float(np.mean(allg.loc[sel,"Delta_S3"]<0)) if sel.any() else None;relative=(always-gate)/always if always>0 and gate is not None else None;pooled={"Spearman":rho,"CI95":[float(np.quantile(boots,.025)),float(np.quantile(boots,.975))],"sign_concordance":float(np.mean(np.sign(x)==np.sign(y))),"always_adapt_harm":always,"S2_gate_harm":gate,"relative_harm_reduction":relative,"coverage":float(sel.mean())}
-    individual_positive=all(summary.Spearman>0);strong=individual_positive and pooled["CI95"][0]>0 and pooled["sign_concordance"]>=.65 and relative is not None and relative>=.25 and pooled["coverage"]>=.25 and all(summary.S2_gated_S3_BA>=summary.anchor_S3_BA-.01)
-    one_strong=sum((summary.Spearman_CI_low>0)&(summary.sign_concordance>=.65)&(summary.relative_harm_reduction>=.25)&(summary.coverage>=.25))==1
-    pooled["terminal"]="FM_HISTORY_UTILITY_RESCUE_CANDIDATE" if strong else ("FM_HISTORY_UTILITY_ARCHITECTURE_DEPENDENT" if one_strong else "FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED")
+    sign_by_subject=np.asarray([np.mean([np.sign(wide[fm].loc[s].Delta_S2)==np.sign(wide[fm].loc[s].Delta_S3) for fm in c.FMS]) for s in ids],np.float64);sign_boot=[]
+    for _ in range(10000):sign_boot.append(float(np.mean(rng.choice(sign_by_subject,len(sign_by_subject),replace=True))))
+    sign_ci=[float(np.quantile(sign_boot,.025)),float(np.quantile(sign_boot,.975))];allg=subject;sel=allg.Delta_S2>0;always=float(np.mean(allg.Delta_S3<0));gate=float(np.mean(allg.loc[sel,"Delta_S3"]<0)) if sel.any() else None;relative=(always-gate)/always if always>0 and gate is not None else None;pooled={"Spearman":rho,"CI95":[float(np.quantile(boots,.025)),float(np.quantile(boots,.975))],"sign_concordance":float(sign_by_subject.mean()),"sign_concordance_CI95":sign_ci,"always_adapt_harm":always,"S2_gate_harm":gate,"relative_harm_reduction":relative,"coverage":float(sel.mean())}
+    task=pd.read_csv(c.RESULTS/"FM_TASK_PERFORMANCE.csv");competent={fm:bool(task[(task.dataset=="WBCIC")&(task.model==fm)].competent.iloc[0]) for fm in c.FMS};summary["FM_task_competent"]=summary.model.map(competent)
+    individual_positive=all(summary.Spearman>0);strong=all(competent.values()) and individual_positive and pooled["CI95"][0]>0 and pooled["sign_concordance"]>=.65 and sign_ci[0]>.5 and relative is not None and relative>=.25 and pooled["coverage"]>=.25 and all(summary.S2_gated_S3_BA>=summary.anchor_S3_BA-.01)
+    individual_strong=(summary.FM_task_competent)&(summary.Spearman_CI_low>0)&(summary.sign_concordance>=.65)&(summary.relative_harm_reduction>=.25)&(summary.coverage>=.25)&(summary.S2_gated_S3_BA>=summary.anchor_S3_BA-.01)
+    one_strong=int(individual_strong.sum())==1
+    pooled["FM_task_competence"]=competent;pooled["terminal"]="FM_HISTORY_UTILITY_RESCUE_CANDIDATE" if strong else ("FM_HISTORY_UTILITY_ARCHITECTURE_DEPENDENT" if one_strong else "FM_HISTORY_UTILITY_RESCUE_NOT_SUPPORTED");c.write_csv(c.RESULTS/"FM_SCAA_SUMMARY.csv",summary)
     c.write_json(c.RESULTS/"FM_SCAA_STATISTICS.json",pooled);return summary,pooled
 
 
