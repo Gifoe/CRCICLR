@@ -29,3 +29,8 @@ mismatched residuals with a subject-bootstrap CI above zero, target-subject
 affinity improves and beats norm-matched random transport, class accuracy/log
 probability remain within the frozen tolerances, and the centroid support test
 does not show excess off-manifold behavior.
+
+
+## Magnitude-only Repair 1
+
+Final repair terminal: `TRANSPORT_OFF_MANIFOLD`.  See `STAGE0_REPAIR1_REPORT.md`.

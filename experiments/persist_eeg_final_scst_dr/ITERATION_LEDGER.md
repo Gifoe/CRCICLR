@@ -58,5 +58,5 @@
 - Prediction before run: smaller alpha should retain positive target affinity,
   repair the WBCIC sign, reduce off-manifold displacement, and weakly improve
   class preservation.  Failure ends transport development.
-- Actual result: pending.
-- Decision: pending.
+- Actual result: validated `TRANSPORT_OFF_MANIFOLD`; eligible global alphas `[]` and selected alpha `None`.
+- Decision: reject the residual transport hypothesis, stop model training, and do not open outer resources.
