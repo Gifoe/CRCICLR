@@ -60,3 +60,21 @@
   class preservation.  Failure ends transport development.
 - Actual result: validated `TRANSPORT_OFF_MANIFOLD`; eligible global alphas `[]` and selected alpha `None`.
 - Decision: reject the residual transport hypothesis, stop model training, and do not open outer resources.
+
+## V0.2 — source-support-constrained transport (scientific repair 2/2)
+
+- Previous failure: fixed alpha=0.25 retained subject/class fidelity but exceeded
+  the unchanged 1.25 clean-manifold ratio on both WBCIC backbones.
+- Diagnosis before run: a global step ignores local source support; the low
+  WBCIC binary outlier rate but elevated mean 3NN distance is consistent with
+  locally unsupported magnitudes rather than an arbitrary direction.
+- Proposed change before run: retain the exact residual direction and
+  `final_embedding`, cap every step at 0.25, and choose the largest value on the
+  fixed 1/64 grid admitted by a Session-1-only same-class 3NN radius.  Session 2
+  remains an independent validity test.  Random directions match the realized
+  constrained transport norm exactly.
+- Prediction before run: WBCIC manifold ratios should fall below 1.25 while
+  target-subject affinity remains strictly positive and above matched random.
+  Failure of any retained setting ends the transport line permanently.
+- Actual result: pending.
+- Decision: pending.
