@@ -27,10 +27,12 @@ not permissible to train SCST-DR or open sealed resources after that result.
 
 ## Final status
 
-`FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED`.  V0 failed subject fidelity at alpha=1.  The prelocked
-magnitude-only repair restored subject/class fidelity at alpha=0.25 but failed
-the WBCIC absolute manifold gate.  Stage 1 and sealed outer evaluation were not
-authorized.  See `SCST_DR_FINAL_REPORT.md`.
+`FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED`.  V0 failed subject fidelity at
+alpha=1.  Repair-1 restored subject/class fidelity at alpha=0.25 but failed the
+WBCIC absolute manifold gate.  The final source-support-constrained Repair-2
+passed 2/4 settings; both WBCIC 3NN ratios remained above the unchanged 1.25
+limit.  SCST training and sealed outer evaluation were not authorized.  See
+`STAGE0_REPAIR2_REPORT.md` and `SCST_DR_FINAL_REPORT.md`.
 
 Repair and closure commands:
 
@@ -39,6 +41,10 @@ Repair and closure commands:
 & $python code\run_stage0_repair1.py
 & $python code\analyze_stage0_repair1.py
 & $python code\validate_stage0_repair1.py
-& $python code\finalize_stage0_failure.py
+& $python code\freeze_stage0_repair2.py
+& $python code\run_stage0_repair2.py
+& $python code\analyze_stage0_repair2.py
+& $python code\validate_stage0_repair2.py
+& $python code\finalize_stage0_repair2_failure.py
 & $python code\validate_final_closure.py
 ```

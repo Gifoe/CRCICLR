@@ -10,4 +10,7 @@
 - Fix declared before rerun: iterate over `ordered.iterrows()` and use the index
   as the label.  Add an engineering refreeze that records every pre-fix numeric
   output hash and requires exact equality after rerun.
-- Before/after verification: pending rerun.
+- Before/after verification: `STAGE0_REPAIR2_E1_ENGINEERING_FREEZE.json` locked
+  all seven pre-fix numerical outputs.  The repaired analyzer required exact
+  SHA256 equality for every file; rerun passed, generated the figures, and did
+  not change any numerical result or terminal.

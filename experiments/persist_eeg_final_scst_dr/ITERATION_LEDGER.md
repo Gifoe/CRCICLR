@@ -76,5 +76,10 @@
 - Prediction before run: WBCIC manifold ratios should fall below 1.25 while
   target-subject affinity remains strictly positive and above matched random.
   Failure of any retained setting ends the transport line permanently.
-- Actual result: pending.
-- Decision: pending.
+- Actual result: validated `TRANSPORT_VALIDITY_NOT_SUPPORTED`; 20/20 units
+  completed and 2/4 settings passed every gate.  OpenBMI 3NN ratios were
+  1.16285 and 1.14937.  WBCIC ratios were 1.30796 and 1.34080, above the frozen
+  1.25 maximum, although subject affinity, matched-random advantage, class
+  fidelity, and binary off-manifold gates passed in all four settings.
+- Decision: stop the constructive transport line permanently.  Do not create
+  Repair-3, train SCST, inspect future performance, or open outer resources.
