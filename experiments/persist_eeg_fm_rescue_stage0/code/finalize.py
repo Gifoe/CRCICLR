@@ -51,7 +51,9 @@ def figures(table,scaa,scst):
     hist_ratio={'OpenBMI/EEGNet':1.1628472962,'OpenBMI/EEGConformer':1.1493719487,'WBCIC/EEGNet':1.3079565485,'WBCIC/EEGConformer':1.3407995963};labels=list(hist_ratio);values=list(hist_ratio.values());
     for r in scst.itertuples():labels.append(f'{r.dataset}/{r.model}');values.append(r.independent_session_3NN_ratio)
     fig,ax=plt.subplots(figsize=(10,4.5));ax.bar(np.arange(len(values)),values);ax.axhline(1.25,color='red',ls='--',label='frozen gate 1.25');ax.set_xticks(np.arange(len(values)),labels,rotation=35,ha='right');ax.set_ylabel('independent-session 3NN / clean');ax.legend();fig.tight_layout();fig.savefig(c.FIGURES/'scst_manifold_fm.png',dpi=220);fig.savefig(c.FIGURES/'scst_manifold_fm.pdf');plt.close(fig)
-    models=['EEGNet','EEGConformer']+list(c.FMS);matrix=np.zeros((len(models),5));matrix[:,:2]=1;matrix[:2,2]=[0,1];matrix[:2,3]=[0,0];matrix[:2,4]=0
+    models=['EEGNet','EEGConformer']+list(c.FMS);matrix=np.zeros((len(models),5));matrix[:,:2]=1
+    for i,m in enumerate(('EEGNet','EEGConformer')):matrix[i,2]=float(hist_corr[(hist_corr.scope==m)&(hist_corr.method=='spearman')].CI95_low.iloc[0]>0)
+    matrix[:2,3]=[0,0];matrix[:2,4]=0
     for i,m in enumerate(c.FMS,2):matrix[i,2]=float(scaa[scaa.model==m].Spearman_CI_low.iloc[0]>0);matrix[i,3]=float(scst[scst.model==m].valid.all());matrix[i,4]=0
     fig,ax=plt.subplots(figsize=(8,3.5));im=ax.imshow(matrix,vmin=0,vmax=1,cmap='Blues');ax.set_xticks(range(5),['Encoded/Identifiable','Consequential','Utility-transferable','Transport-valid','Prospectively actionable'],rotation=25,ha='right');ax.set_yticks(range(len(models)),models);fig.colorbar(im,ax=ax,ticks=[0,1]);fig.tight_layout();fig.savefig(c.FIGURES/'admissibility_matrix_fm.png',dpi=220);fig.savefig(c.FIGURES/'admissibility_matrix_fm.pdf');plt.close(fig)
 
