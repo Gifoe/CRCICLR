@@ -79,7 +79,7 @@ def identity_skill(features:np.ndarray,subjects:np.ndarray,sessions:np.ndarray,p
     for tr_session,ev_session in (pair,pair[::-1]):
         tr=np.flatnonzero(sessions.astype(int)==tr_session); ev=np.flatnonzero(sessions.astype(int)==ev_session)
         ytr=np.asarray([code[s] for s in subjects[tr].astype(str)]); yev=np.asarray([code[s] for s in subjects[ev].astype(str)])
-        clf=LogisticRegression(C=1.0,max_iter=1000,solver="lbfgs",multi_class="auto").fit(features[tr],ytr); p=np.clip(clf.predict_proba(features[ev]),1e-12,1)
+        clf=LogisticRegression(C=1.0,max_iter=1000,solver="lbfgs").fit(features[tr],ytr); p=np.clip(clf.predict_proba(features[ev]),1e-12,1)
         ce=-np.log(p[np.arange(len(ev)),yev]); values.append(math.log(len(ordered))-float(ce.mean()))
     return float(np.mean(values))
 

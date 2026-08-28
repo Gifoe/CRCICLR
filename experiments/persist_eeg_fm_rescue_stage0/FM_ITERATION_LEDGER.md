@@ -57,3 +57,12 @@ The globally selected source-validation recipes and S1-only head recipes were re
 - Prediction: identical numerical representations and labels, with subject IDs serialized safely; no metric or terminal can change except that primary computation can proceed.
 - Result: pending repaired primary run.
 - Keep/reject: KEEP as a pre-outcome engineering repair and refresh the protocol code hash before rerun.
+
+## V7 scikit-learn API compatibility repair
+
+- Diagnosis: after all representations were cached and task-performance output was written but not inspected, D>I stopped before its first fitted cell because the installed scikit-learn version no longer accepts the deprecated `multi_class="auto"` constructor argument.
+- Change: remove only `multi_class="auto"` from the identity-probe `LogisticRegression`; current scikit-learn's default behavior is equivalent for this multiclass `lbfgs` fit. All `C`, solver, iterations, folds, seeds, features, labels, and outcome definitions remain frozen.
+- Evidence available before change: exception type and installed API behavior. No task-BA values, D>I cell, S2/S3 utility, or SCST result was inspected; D>I/SCAA/SCST output files did not exist.
+- Prediction: API compatibility only; no directional metric prediction.
+- Result: pending repaired primary run.
+- Keep/reject: KEEP as an engineering compatibility repair and refresh only the `run_primary.py` protocol hash before rerun.
