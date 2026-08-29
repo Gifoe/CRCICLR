@@ -22,3 +22,14 @@
 - Future utility inspected: no.
 - Result: forward smoke test passed with a 248-dimensional representation.
 
+## 2026-08-29 — frozen representation compatibility
+
+- Problem: Stage-0 NPZ archives stored subject identifiers as NumPy object
+  arrays, while the new reader initially rejected all pickled arrays.
+- Evidence available: source-only load traceback; no future utility accessed.
+- Change: allow loading these trusted repository-generated archives, then
+  immediately cast subject identifiers to Unicode.
+- Prediction: the exact frozen numeric features become auditable without any
+  recomputation or value change.
+- Future utility inspected: no.
+- Result: pending full source-only revalidation.

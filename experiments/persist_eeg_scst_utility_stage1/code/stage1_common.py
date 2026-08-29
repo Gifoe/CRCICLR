@@ -214,7 +214,10 @@ def save_rep(path: Path, value: dict[str, np.ndarray]) -> None:
 
 
 def load_rep(path: Path) -> dict[str, np.ndarray]:
-    with np.load(path, allow_pickle=False) as values:
+    # Frozen Stage-0 archives stored subject strings as object arrays. These are
+    # trusted local artifacts created by this repository; convert them to plain
+    # Unicode immediately so object values never propagate downstream.
+    with np.load(path, allow_pickle=True) as values:
         out = {key: values[key] for key in values.files}
     if out.get("subjects", np.empty(0)).dtype == object:
         out["subjects"] = out["subjects"].astype("U")
