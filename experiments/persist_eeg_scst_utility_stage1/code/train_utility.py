@@ -242,13 +242,14 @@ def aggregate(model: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", required=True, choices=("ATCNet-CleanRoom", "ATCNet-Official", "EEGNeX"))
+    parser.add_argument("--model", required=True, choices=("ATCNet-CleanRoom", "ATCNet-Official", "EEGNeX", "EEGNet", "EEGConformer"))
     args = parser.parse_args()
     lock_path = c.PROTOCOL / "SCST_STAGE1_TRAINING_LOCK.json"
     if not lock_path.is_file():
         raise RuntimeError("SCST_STAGE1_TRAINING_LOCK_MISSING")
     lock = c.read_json(lock_path)
-    if lock.get("future_utility_accessed_before_lock") is not False or args.model not in lock.get("eligible_models", []):
+    authorized = set(lock.get("eligible_models", [])) | set(lock.get("fixed_negative_controls", []))
+    if lock.get("future_utility_accessed_before_lock") is not False or args.model not in authorized:
         raise RuntimeError("MODEL_NOT_PROSPECTIVELY_AUTHORIZED")
     device = torch.device("cuda")
     for fold in c.FOLDS:

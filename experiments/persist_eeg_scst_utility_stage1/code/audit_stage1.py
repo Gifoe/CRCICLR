@@ -15,7 +15,7 @@ import stage1_common as c
 
 ALPHA_GRID = np.arange(17, dtype=np.float64) / 64.0
 EPS = 1e-12
-MODELS = ("ATCNet-CleanRoom", "ATCNet-Official", "EEGNeX")
+MODELS = ("ATCNet-CleanRoom", "ATCNet-Official", "EEGNeX", "EEGNet", "EEGConformer")
 
 
 def source_rep_path(model: str, dataset: str, fold: int, seed: int, role: str) -> Path:
@@ -278,13 +278,16 @@ def audit_unit(model: str, dataset: str, fold: int, seed: int) -> tuple[dict[str
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--models", nargs="+", default=list(MODELS), choices=MODELS)
+    parser.add_argument("--datasets", nargs="+", default=list(c.DATASETS), choices=c.DATASETS)
+    parser.add_argument("--output-tag", default="")
     args = parser.parse_args()
+    suffix = f"_{args.output_tag}" if args.output_tag else ""
     c.ensure_dirs()
     units: list[dict[str, object]] = []
     subjects: list[dict[str, object]] = []
     task_rows: list[dict[str, object]] = []
     for model in args.models:
-        for dataset in c.DATASETS:
+        for dataset in args.datasets:
             for fold in c.FOLDS:
                 for seed in c.SEEDS:
                     unit, rows = audit_unit(model, dataset, fold, seed)
@@ -296,9 +299,9 @@ def main() -> None:
     unit_frame = pd.DataFrame(units)
     task_frame = pd.DataFrame(task_rows)
     subject_frame = pd.DataFrame(subjects)
-    c.write_csv(c.RESULTS / "STAGE1_ADMISSIBILITY_PER_FOLD.csv", unit_frame)
-    c.write_csv(c.RESULTS / "MODEL_COMPETENCE_PER_FOLD.csv", task_frame)
-    c.write_csv(c.RUNTIME / "STAGE1_SOURCE_SUBJECT_METRICS.csv", subject_frame)
+    c.write_csv(c.RESULTS / f"STAGE1_ADMISSIBILITY_PER_FOLD{suffix}.csv", unit_frame)
+    c.write_csv(c.RESULTS / f"MODEL_COMPETENCE_PER_FOLD{suffix}.csv", task_frame)
+    c.write_csv(c.RUNTIME / f"STAGE1_SOURCE_SUBJECT_METRICS{suffix}.csv", subject_frame)
 
     summary_rows: list[dict[str, object]] = []
     for (model, dataset), group in unit_frame.groupby(["model", "dataset"], sort=True):
@@ -356,8 +359,8 @@ def main() -> None:
             }
         )
     summary = pd.DataFrame(summary_rows)
-    c.write_csv(c.RESULTS / "STAGE1_ADMISSIBILITY.csv", summary)
-    c.write_csv(c.RESULTS / "MODEL_COMPETENCE.csv", task_frame.groupby(["model", "dataset"], as_index=False).agg(BA=("BA", "mean"), macro_F1=("macro_F1", "mean"), NLL=("NLL", "mean"), threshold=("threshold", "first"), competent=("competent", "all")))
+    c.write_csv(c.RESULTS / f"STAGE1_ADMISSIBILITY{suffix}.csv", summary)
+    c.write_csv(c.RESULTS / f"MODEL_COMPETENCE{suffix}.csv", task_frame.groupby(["model", "dataset"], as_index=False).agg(BA=("BA", "mean"), macro_F1=("macro_F1", "mean"), NLL=("NLL", "mean"), threshold=("threshold", "first"), competent=("competent", "all")))
     print(summary.to_string(index=False), flush=True)
 
 

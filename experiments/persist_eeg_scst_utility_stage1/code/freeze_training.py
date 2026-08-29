@@ -27,6 +27,7 @@ def main() -> None:
         "schema": "SCST_STAGE1_TRAINING_LOCK_V1",
         "git_sha_before_lock": c.git_head(),
         "eligible_models": sorted(eligible),
+        "fixed_negative_controls": ["EEGNet", "EEGConformer"],
         "input_preprocessing": "per-trial per-channel temporal mean removal and standard-deviation scaling",
         "representations": "frozen anchor final pre-classifier feature; official ATCNet concatenates all five window features",
         "competence_thresholds": c.THRESHOLDS,
