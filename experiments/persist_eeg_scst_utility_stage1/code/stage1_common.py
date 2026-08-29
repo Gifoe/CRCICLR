@@ -298,7 +298,10 @@ def model_features(model: str, net: nn.Module, x: torch.Tensor) -> torch.Tensor:
             window = conv[..., idx : idx + net.Tw]
             attended = attention(window)
             outputs.append(tcn(attended)[..., -1])
-        return torch.stack(outputs, dim=0).mean(0)
+        # Concatenating all five window features preserves the mature model's
+        # exact classifier factorization while exposing one vector for the
+        # geometry audit (5 * F2 dimensions with default settings).
+        return torch.cat(outputs, dim=1)
     if kind == "braindecode_eegnex":
         value = net.block_1(x)
         value = net.block_2(value)
@@ -310,16 +313,20 @@ def model_features(model: str, net: nn.Module, x: torch.Tensor) -> torch.Tensor:
     raise KeyError(model)
 
 
+def feature_logits(model: str, net: nn.Module, h: torch.Tensor) -> torch.Tensor:
+    if model_kind(model) == "braindecode_atcnet":
+        chunks = h.split(net.F2, dim=1)
+        if len(chunks) != len(net.final_layer):
+            raise RuntimeError("ATCNet window-feature decomposition mismatch")
+        return torch.stack([head(value) for head, value in zip(net.final_layer, chunks)], dim=0).mean(0)
+    if model_kind(model) == "braindecode_eegnex":
+        return net.final_layer(h)
+    return net.head(h)
+
+
 def model_logits(model: str, net: nn.Module, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
     h = model_features(model, net, x)
-    if model_kind(model) == "braindecode_atcnet":
-        # Re-use the official forward for exact max-norm classifier semantics.
-        z = net(x)
-    elif model_kind(model) == "braindecode_eegnex":
-        z = net.final_layer(h)
-    else:
-        z = net.head(h)
-    return h, z
+    return h, feature_logits(model, net, h)
 
 
 def infer_model(model: str, net: nn.Module, raw: np.ndarray, metadata: pd.DataFrame, indices: np.ndarray, mean: np.ndarray | None, std: np.ndarray | None, device: torch.device, batch_size: int = 128) -> dict[str, np.ndarray]:
