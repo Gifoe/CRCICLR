@@ -1,0 +1,57 @@
+{
+  "schema": "CBRAMOD_FROZEN_DECODER_RESCUE_V1",
+  "terminal": "CBRAMOD_COMPETENCE_NOT_RECOVERED",
+  "datasets": [
+    {
+      "dataset": "OpenBMI",
+      "BA": 0.7320833333333333,
+      "minimum_fold_BA": 0.671875,
+      "folds": 5,
+      "seeds": 3,
+      "threshold": 0.7519166667,
+      "competent": false,
+      "geometry_preserved": true
+    },
+    {
+      "dataset": "WBCIC",
+      "BA": 0.7487440559277871,
+      "minimum_fold_BA": 0.69375,
+      "folds": 5,
+      "seeds": 3,
+      "threshold": 0.7684300821,
+      "competent": false,
+      "geometry_preserved": true
+    }
+  ],
+  "selection": [
+    {
+      "dataset": "OpenBMI",
+      "recipe_id": 38,
+      "architecture": "H2",
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "dropout": 0.4,
+      "mean_validation_BA": 0.7306250000000001,
+      "mean_validation_NLL": 0.5976893695187954,
+      "minimum_fold_BA": 0.70125,
+      "median_best_epoch": 2.0,
+      "final_epochs": 2
+    },
+    {
+      "dataset": "WBCIC",
+      "recipe_id": 38,
+      "architecture": "H2",
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "dropout": 0.4,
+      "mean_validation_BA": 0.7571094709659408,
+      "mean_validation_NLL": 0.5532707153848984,
+      "minimum_fold_BA": 0.700625,
+      "median_best_epoch": 4.0,
+      "final_epochs": 4
+    }
+  ],
+  "representation_changed": false,
+  "scst_geometry_requires_recompute": false,
+  "future_session_accessed": false
+}

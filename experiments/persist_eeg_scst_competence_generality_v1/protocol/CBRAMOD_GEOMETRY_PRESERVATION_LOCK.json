@@ -1,0 +1,746 @@
+{
+  "anchor_files": [
+    {
+      "bytes": 178967557,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-0/seed-0.pt",
+      "sha256": "5075a9c5d4946ce6b9158d2b585934a669c0f23b8662f87ee921e9392d4a84c6"
+    },
+    {
+      "bytes": 178967563,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-0/seed-1.pt",
+      "sha256": "616aad26e473cc38375ef7419e089d979b38410e17b24adfbf711635f113b971"
+    },
+    {
+      "bytes": 178967179,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-0/seed-2.pt",
+      "sha256": "473fd75bd81cc883801efcf5a64a3bec930ea3bc269b81656a523049bbf20328"
+    },
+    {
+      "bytes": 178967557,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-1/seed-0.pt",
+      "sha256": "41848c2e1eb35298ca3f37ea73f1e564113844d163885cc977ab90adaa8d7ab0"
+    },
+    {
+      "bytes": 178967051,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-1/seed-1.pt",
+      "sha256": "a22b702b41694ddcee88f82aa33caec5e84128e37d7ff83ea95c6578f733018b"
+    },
+    {
+      "bytes": 178966987,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-1/seed-2.pt",
+      "sha256": "b9130466a9c04afb95bd64c5970f23379d6098220eb6fce4f886d6f21f57b469"
+    },
+    {
+      "bytes": 178967621,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-2/seed-0.pt",
+      "sha256": "c1255c0fe416132ff06b5bbcd19c0a36b877f418050e5b9c1bc5658e5e475755"
+    },
+    {
+      "bytes": 178967307,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-2/seed-1.pt",
+      "sha256": "2110cdeea8e472b6e59e4348c711b5a602fe245f2599cac30309d41324137376"
+    },
+    {
+      "bytes": 178967243,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-2/seed-2.pt",
+      "sha256": "88844cd90ca3f1b9f4083e2255131e794fa7b0ac996b97a02b0e616b09c15d3a"
+    },
+    {
+      "bytes": 178967493,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-3/seed-0.pt",
+      "sha256": "5aee298981f1a4533ffa0f473e2d0cccf5bda882767d931c24872fa74cc17daa"
+    },
+    {
+      "bytes": 178967115,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-3/seed-1.pt",
+      "sha256": "3b99c4bd9f40d90481389e244f7f903ab39c71b37dabf26b39ace9bf8231397d"
+    },
+    {
+      "bytes": 178967243,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-3/seed-2.pt",
+      "sha256": "f8bbd5f2a29676716e02ccc287e6ca451586b2eb4b71bda344f958b0f8d40664"
+    },
+    {
+      "bytes": 178967493,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-4/seed-0.pt",
+      "sha256": "d63a685190b18322af67b5bb76694084635719af409c76c9225473ca3598b62a"
+    },
+    {
+      "bytes": 178967243,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-4/seed-1.pt",
+      "sha256": "83dc2320ee2fcb327488ec846bfea3afbc055862361fc242ec644ad71c6c7a23"
+    },
+    {
+      "bytes": 178967243,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/OpenBMI/fold-4/seed-2.pt",
+      "sha256": "07977566c2afac25f8ce03938b9e61b1614efb381d2fea56df77aa2bcfbcfd85"
+    },
+    {
+      "bytes": 168727429,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-0/seed-0.pt",
+      "sha256": "ce2ac0fee25ac750bb3f3535002c906ebf92beb4ff323e4387d607b499e53bae"
+    },
+    {
+      "bytes": 168727051,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-0/seed-1.pt",
+      "sha256": "eab13e5f0f9fda8e8721769ae610eacec4dc38849f9c48a754c70aeaf67cb71e"
+    },
+    {
+      "bytes": 168726987,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-0/seed-2.pt",
+      "sha256": "3ed1da1f6528fe649fd3f2d6a10581fe8c3eb60f54344cfe2c7e4d5fb7092094"
+    },
+    {
+      "bytes": 168727493,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-1/seed-0.pt",
+      "sha256": "36e6f2b62da9456a6a383c72332747411f2cbc51be078b526301e54bbd24e671"
+    },
+    {
+      "bytes": 168727115,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-1/seed-1.pt",
+      "sha256": "2e99e20282683e3bf9a63221880a8eca955d8447d1af45f252a74e1aae8ccf4d"
+    },
+    {
+      "bytes": 168726987,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-1/seed-2.pt",
+      "sha256": "1103289f2ea8032693c9b52b1fb2fb79200e4d4958f49364937f72f62da6c843"
+    },
+    {
+      "bytes": 168727493,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-2/seed-0.pt",
+      "sha256": "c6f0162b4ec9a6f5d61de6a9cc8b882800a742231c5304b15d0c3acfa82779a5"
+    },
+    {
+      "bytes": 168726923,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-2/seed-1.pt",
+      "sha256": "3a974280dda0026fbac04bfaeba626f5fffb2fd6eb18d5d3a356b6ecba9667b2"
+    },
+    {
+      "bytes": 168726987,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-2/seed-2.pt",
+      "sha256": "788ac6789f7196dbd95d43f99cdcd714f0e189bfa8d0fd1c717957b0dda80682"
+    },
+    {
+      "bytes": 168727429,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-3/seed-0.pt",
+      "sha256": "5abb682dabf2598c61f7ac1454bbb42d8aecd2a4b3616a54021c70b028eb9a4b"
+    },
+    {
+      "bytes": 168726987,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-3/seed-1.pt",
+      "sha256": "f63c3e2cddd1fcb6654897018322042833f15518675255b1039da9ff5d311536"
+    },
+    {
+      "bytes": 168727051,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-3/seed-2.pt",
+      "sha256": "d80cd3d01bfa7a2f24baf505dd04f476b607418bd1d68a6a49ee5f8964dedb70"
+    },
+    {
+      "bytes": 168727557,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-4/seed-0.pt",
+      "sha256": "31c460d0635ed13b00b95b93c14afd4ef451f2f8d5db4c03ac9ee5d783680f83"
+    },
+    {
+      "bytes": 168726923,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-4/seed-1.pt",
+      "sha256": "a46e2e34e42f9279a006bf7313e037312ded0507af874dcf26a8105b62aaa235"
+    },
+    {
+      "bytes": 168726923,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/anchors/CBraMod/WBCIC/fold-4/seed-2.pt",
+      "sha256": "219080b10c3cc80d1e902c98fab3887d90bb555130f953302df53d544d557399"
+    }
+  ],
+  "anchor_manifest_sha256": "12e3b1f0a9de2e276a3acaf10762568b4d4b14b7d80fc506421d548d51f221d2",
+  "base_commit": "b44eada2f8cae9374485cd85c86df833a889ebb0",
+  "branch": "codex/persist-eeg-scst-competence-generality-v1",
+  "channel_mapping": {
+    "OpenBMI": "62/62",
+    "WBCIC": "58/58"
+  },
+  "created_before_new_competence_outcomes": true,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "frozen_manifold_threshold": 1.25,
+  "preprocessing_files": [
+    {
+      "bytes": 8128,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/OPENBMI_FM_INPUT_MASK.npy",
+      "sha256": "ee0774b3c1cb141c11ffd2856fbd03567c2a2b304ff7ccfb0f22e10c7bd26e6e"
+    },
+    {
+      "bytes": 793600128,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/OPENBMI_FM_INPUT_UV_200HZ.npy",
+      "sha256": "136d0a7a6bdf8ea2c59f71a883e08d5df8d91619813ecd58b355539fc11dd2c1"
+    },
+    {
+      "bytes": 24719,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/WBCIC_FM_INPUT_MASK.npy",
+      "sha256": "bf3d0d1f927781f78a07e90da1807da61c745b001b8ed476beaabe3003dccf01"
+    },
+    {
+      "bytes": 2282044928,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/WBCIC_FM_INPUT_UV_200HZ.npy",
+      "sha256": "7de5471bd283fc53e784bd19b8537113e5ad97190252f0786e4907f42d5b9e2b"
+    }
+  ],
+  "preprocessing_manifest_sha256": "d9c49f0e8d5e4653cb532f3dea9e11a0c8fdb6eeed1670ae3f8a0971359ca43c",
+  "previous_scst_gates": {
+    "OpenBMI": {
+      "class_fidelity": true,
+      "independent_session_3nn_ratio": 1.1311343562795984,
+      "manifold_valid": true,
+      "random_control_advantage": true,
+      "residual_stability": true,
+      "subject_fidelity": true
+    },
+    "WBCIC": {
+      "class_fidelity": true,
+      "independent_session_3nn_ratio": 1.1172447618980812,
+      "manifold_valid": true,
+      "random_control_advantage": true,
+      "residual_stability": true,
+      "subject_fidelity": true
+    }
+  },
+  "representation_definition": "frozen 200-D CBraMod task-projector penultimate output",
+  "representation_files": [
+    {
+      "bytes": 1237875,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-0/model_fit.npz",
+      "sha256": "62383d2891f64b95f5f3a4e2540d8cb8705d9f98d45fcf54e527003369282422"
+    },
+    {
+      "bytes": 416340,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-0/outcome.npz",
+      "sha256": "fa35fcebea3a346da828426a0a5b196c188ea419f09511a41a14b8b4fceb2890"
+    },
+    {
+      "bytes": 440281,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-0/validation.npz",
+      "sha256": "0b0828fa29ce163cec434ad8694c23759580f93742f1e66c72ca1db4f3b91787"
+    },
+    {
+      "bytes": 1493474,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-1/model_fit.npz",
+      "sha256": "f6881e4109f64b2fe913c4dc44c849bfc02b797042a019401ac3be2a916d4770"
+    },
+    {
+      "bytes": 507996,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-1/outcome.npz",
+      "sha256": "69a3066c445f1c179c7039c5f3c0c0afe37c1f884a6e464382d9a42bb7e40e7d"
+    },
+    {
+      "bytes": 521065,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-1/validation.npz",
+      "sha256": "32502ea10b7dc2967095ba50331c2712d57013e80814dcf83c87b6a53aa3ba82"
+    },
+    {
+      "bytes": 1257195,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-2/model_fit.npz",
+      "sha256": "fbd770dd5bae85aaf316207994321bec806dd5b35c470b4f70653514dba262db"
+    },
+    {
+      "bytes": 422336,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-2/outcome.npz",
+      "sha256": "19ca688b3982d481a2eed6a5a9417c4d9a8af94d9f13c7c78a679af975156c80"
+    },
+    {
+      "bytes": 446166,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-0/seed-2/validation.npz",
+      "sha256": "a2ad9d611059126a95e18df9098ec5dd27cb2258d95476cb3366088dedcc29ca"
+    },
+    {
+      "bytes": 1350408,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-0/model_fit.npz",
+      "sha256": "bf0ce8286efbfe77d19107fe2286d044a2cf0e77f384a211988a97eeaf98e771"
+    },
+    {
+      "bytes": 462526,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-0/outcome.npz",
+      "sha256": "e421e9694eb6b5976da2f85a734631c6977d483850e8581c0cb89be19af9b705"
+    },
+    {
+      "bytes": 445764,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-0/validation.npz",
+      "sha256": "8285cc03e195e2498e359dbefebdedd2617dcce715c6286dedc0d776f84988ab"
+    },
+    {
+      "bytes": 1205437,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-1/model_fit.npz",
+      "sha256": "242a15ac8f7bbd1d17f1b189b38e4b0aff1b9a1b6a875a712fcd7152274b425a"
+    },
+    {
+      "bytes": 419245,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-1/outcome.npz",
+      "sha256": "13e619f5d0448f364333b3d0107ab1b30256b9ae4ed4ff876aef2737e6213285"
+    },
+    {
+      "bytes": 393905,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-1/validation.npz",
+      "sha256": "8fef4c1efa380ccef2b6f5536121fee1372bbf3d29d0b85d4ddc8bf7e773e83d"
+    },
+    {
+      "bytes": 1401101,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-2/model_fit.npz",
+      "sha256": "6165914dba4fd70ef19999b98fe098edc886abed366e9f61829c8b10799a475f"
+    },
+    {
+      "bytes": 481834,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-2/outcome.npz",
+      "sha256": "6ca45bcd471044927218547ba67f16a758d464ea4508436250fdd4d3af84e075"
+    },
+    {
+      "bytes": 457668,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-1/seed-2/validation.npz",
+      "sha256": "c99800dc285f8d252555a3a48217e15a0c0ea60746d92ce352da27be77fde583"
+    },
+    {
+      "bytes": 1372268,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-0/model_fit.npz",
+      "sha256": "f6b42a0f5ef0c571a21963e83bca159b1b64bf9fdf0f1c0598a9a82897c69368"
+    },
+    {
+      "bytes": 473019,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-0/outcome.npz",
+      "sha256": "207d39d703f88d6a88450463c38df95cf05dc82519245571752fba922a1ac5c1"
+    },
+    {
+      "bytes": 459395,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-0/validation.npz",
+      "sha256": "7b84dee5acdd5cee4c192ae65951bcbcc257c0d266aba39f2beeeed149730131"
+    },
+    {
+      "bytes": 1458349,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-1/model_fit.npz",
+      "sha256": "598cd38c9bd4ab67e694d2283d35f7605e2579de2b1fc81dfe54f59b5da67952"
+    },
+    {
+      "bytes": 507165,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-1/outcome.npz",
+      "sha256": "11a7a62c984b125506b2ee89172db65c258cd59094d25fc3444777467f1ae11d"
+    },
+    {
+      "bytes": 492883,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-1/validation.npz",
+      "sha256": "ac947c088fbd0dfb7754c785f50eac1d96f0497ca9c380e3d9c5e2d68dd74266"
+    },
+    {
+      "bytes": 1427677,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-2/model_fit.npz",
+      "sha256": "baf07e43400fc9372b5ace959af6577c5ec255864eb80eb0cc84020f9d3ac9ab"
+    },
+    {
+      "bytes": 502188,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-2/outcome.npz",
+      "sha256": "25feed9d8b3828f0f2516747ea9747ef193d5533dddff08b3385f3078ab7c6e1"
+    },
+    {
+      "bytes": 477003,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-2/seed-2/validation.npz",
+      "sha256": "a56d3430b358c3540d6bf37a9215d7afea38f20463b08c97bbd123258c530de9"
+    },
+    {
+      "bytes": 1249311,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-0/model_fit.npz",
+      "sha256": "75bcb907e511eec07085fdcf818cc4ffde248fc599fbdfcc563b55f76c606e28"
+    },
+    {
+      "bytes": 420393,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-0/outcome.npz",
+      "sha256": "56a36c980cf33d5298e69c845d1c22dce358d216470ee77199fd00988c78b63b"
+    },
+    {
+      "bytes": 459321,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-0/validation.npz",
+      "sha256": "0d3dccc31e75b60a1204dbd0cffc4dbb107c0a580b3cd7406c538cf3d1079c89"
+    },
+    {
+      "bytes": 1275424,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-1/model_fit.npz",
+      "sha256": "7cd0ec4b369be2a72fd01704d4df6e098fb63ee170707f27f98b6b781a00df32"
+    },
+    {
+      "bytes": 425052,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-1/outcome.npz",
+      "sha256": "fa3f43d6731ad5e6225607e816519ddd96ae28e9cdf6ef406bfc43fcb68a5a12"
+    },
+    {
+      "bytes": 438540,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-1/validation.npz",
+      "sha256": "c7fd5006c70fa2ba9596ac0a71d435f7164a3be194ebb6d7681cd5e22f0b47ee"
+    },
+    {
+      "bytes": 1092562,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-2/model_fit.npz",
+      "sha256": "4f393c2c11fddad59c11d675bc50d2849805ae6b2dc589bc54cfacc65f326a2d"
+    },
+    {
+      "bytes": 369351,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-2/outcome.npz",
+      "sha256": "2cc65e003082e9de072fae3f69802316de1b5f71ba81b165d7416d48aba50e84"
+    },
+    {
+      "bytes": 377525,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-3/seed-2/validation.npz",
+      "sha256": "2c3e7ac611edd893f8f5015ae21d6039ea4fb942ab54300dfec2d554ed80b5f4"
+    },
+    {
+      "bytes": 1375266,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-0/model_fit.npz",
+      "sha256": "40c0a8da7b2b7a84f84d692ef8d2ec99595292c1a8a73a898c7cb29c1fd8f261"
+    },
+    {
+      "bytes": 459503,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-0/outcome.npz",
+      "sha256": "3c70c1b04ecc14614b053f555dba1b25ef7162cc4e07e7dbcf774516651ba41d"
+    },
+    {
+      "bytes": 453013,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-0/validation.npz",
+      "sha256": "662185f591704c74cb08507142bad21af0a15754918b1560f74784f4eb29da8d"
+    },
+    {
+      "bytes": 1310004,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-1/model_fit.npz",
+      "sha256": "39b2362140cd2e6a1fceb9bf09e5d3be69bfcd5fa76d2e5e39054243d55cc165"
+    },
+    {
+      "bytes": 454788,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-1/outcome.npz",
+      "sha256": "7a23994c9dcf9a6358d326b7d7f9f34557e7d5cd627925f4dad7c65a94bda9eb"
+    },
+    {
+      "bytes": 445046,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-1/validation.npz",
+      "sha256": "67d7cfc56bc50160a3c740802e7eb967b5dbb1861bbd70126ba9bc0796953a2b"
+    },
+    {
+      "bytes": 1459233,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-2/model_fit.npz",
+      "sha256": "1527f7d57173d75038bb6151c8c6ad972dd287eaefa7bbddfbc3fc4949737ae1"
+    },
+    {
+      "bytes": 489606,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-2/outcome.npz",
+      "sha256": "de0696a6fecfd8efe055d5791fa7455619fc7d2b6f23927c2cf60e57562721b4"
+    },
+    {
+      "bytes": 481243,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/OpenBMI/fold-4/seed-2/validation.npz",
+      "sha256": "1b018af3cc7dba8a17c6839bd1bebe324f2834b0632ed1b3249237c381163924"
+    },
+    {
+      "bytes": 2174292,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-0/model_fit.npz",
+      "sha256": "4523da2f4a71c51aa579afabc44692f6df7bf02e7807e7b0f22984c365bce5ee"
+    },
+    {
+      "bytes": 838202,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-0/outcome.npz",
+      "sha256": "95863980728af72d4844aeea14baa68cae31ed6bf3b95ef907088541dc8b6e21"
+    },
+    {
+      "bytes": 1255498,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-0/outcome_all.npz",
+      "sha256": "f0e85f415b5c5bb9d4886b9a57a9642a98eb6b0c11e8fec964f2201cc0e9333f"
+    },
+    {
+      "bytes": 761450,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-0/validation.npz",
+      "sha256": "c89d2ee295761d7642e1c9e0be22eedb16b4ca089ca3376672fbc12877f1f8e3"
+    },
+    {
+      "bytes": 2042054,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-1/model_fit.npz",
+      "sha256": "53d60e4e2b282b67281793c954759930b0363b3823ace6655655d4a43222d3af"
+    },
+    {
+      "bytes": 813503,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-1/outcome.npz",
+      "sha256": "7af2ca973b72d513a07a03b5d8ba5e60b87da36eddb48a902b12eb137ccbba3c"
+    },
+    {
+      "bytes": 1220119,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-1/outcome_all.npz",
+      "sha256": "0ac8536864be2b92405b8ba37e699d386b81300472f1241d5eec1ca044c0e1c1"
+    },
+    {
+      "bytes": 726112,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-1/validation.npz",
+      "sha256": "6f61725a25ce02fb73d874a9346e396cbd31f02a1dc60d3883766cea47c23785"
+    },
+    {
+      "bytes": 1777642,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-2/model_fit.npz",
+      "sha256": "31dae9dad4b94d77df4faca21670aee2fd9b7706cd3ee9ea52450f0e4122c62f"
+    },
+    {
+      "bytes": 716442,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-2/outcome.npz",
+      "sha256": "8395e3652fc04ae0f77debc7ca8aeaf134bc34536c12cf89e761d07229ee2fca"
+    },
+    {
+      "bytes": 1070916,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-2/outcome_all.npz",
+      "sha256": "e19974b89b032f8e2e190c9a85561bdf6cf779c3f599c1399c9298b5de50c237"
+    },
+    {
+      "bytes": 632664,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-0/seed-2/validation.npz",
+      "sha256": "8bdd4869b5c5121221fe164f309731c17d25bb2920dcf436eab547a2cae128cb"
+    },
+    {
+      "bytes": 2037044,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-0/model_fit.npz",
+      "sha256": "7e43d04cfcf790c4c3111e72fd8de70caf270f291beacc83893681af1b46c045"
+    },
+    {
+      "bytes": 689514,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-0/outcome.npz",
+      "sha256": "ca7d9ef0f6fa37c78c096effb6af60f9f4ba2fce75cefb45239aa67f437c9f4e"
+    },
+    {
+      "bytes": 1024651,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-0/outcome_all.npz",
+      "sha256": "8f808b89f097acb784bfba54625c5c1ca0683c8a747680ced09ec96a0cfbb868"
+    },
+    {
+      "bytes": 661847,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-0/validation.npz",
+      "sha256": "bfde06548d7d138c98cdacc1a84eaef41d213cadf50774fdcd18fc5b4529719c"
+    },
+    {
+      "bytes": 1460251,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-1/model_fit.npz",
+      "sha256": "7648ec9e9a9135556a7056fb21664332fe676fc13951103373743041a6fda850"
+    },
+    {
+      "bytes": 498463,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-1/outcome.npz",
+      "sha256": "057efd141144cc451e4731dafdb5f39e79a5bd0f7e25a160431b402e6ddd2708"
+    },
+    {
+      "bytes": 755494,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-1/outcome_all.npz",
+      "sha256": "1e48837e46a9fab6e4d11c2c5c369b877271a4c3dc07c57e02e2f433c8ee1538"
+    },
+    {
+      "bytes": 463701,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-1/validation.npz",
+      "sha256": "dca0e053f0084d618e57470bd9a1af563e2a9dc892903717b1a6ff08db39bd52"
+    },
+    {
+      "bytes": 1945488,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-2/model_fit.npz",
+      "sha256": "24a3229e76e1efb09d5fdf97aff7a9b9927d0659ce01abf3375628e49bfcbbb3"
+    },
+    {
+      "bytes": 660433,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-2/outcome.npz",
+      "sha256": "5779092853ae2bd46fe4ce92ee548cf27a8bdd3ce4205229201c57e94c4eabb5"
+    },
+    {
+      "bytes": 988344,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-2/outcome_all.npz",
+      "sha256": "c3eb47f444f3ad737b4d7db93a0c03dd194f61c428fb2645b92e7cf3cb905acd"
+    },
+    {
+      "bytes": 618800,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-1/seed-2/validation.npz",
+      "sha256": "0d3e5a94c274ac01117086cdbf38aa270cbaad38630bbb7575ef7a3d9c834d28"
+    },
+    {
+      "bytes": 2135326,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-0/model_fit.npz",
+      "sha256": "a6ed7386d3559a6c3275c9b8fbe7bfa115a3431f9731dabac52f2ef27911618c"
+    },
+    {
+      "bytes": 659721,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-0/outcome.npz",
+      "sha256": "1203ca878c188701cf10d0d7e25061531e18837e01ff1cc81d329c395c887b94"
+    },
+    {
+      "bytes": 988319,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-0/outcome_all.npz",
+      "sha256": "5f65ac24fa584b40554c8bccc25f8952a385e6c6581446042d3eee5bb1f73be3"
+    },
+    {
+      "bytes": 664545,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-0/validation.npz",
+      "sha256": "956bf04770b7021f4d6de69b97b2dfbb82f257dcbf109afd84e715feadf82673"
+    },
+    {
+      "bytes": 2195235,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-1/model_fit.npz",
+      "sha256": "5e9949a44322f3338eda51aa1c9e0691642bdbe56715766c40221c2a5d8aa759"
+    },
+    {
+      "bytes": 685753,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-1/outcome.npz",
+      "sha256": "3b6b2dbc68e81d54f58bf1a6220f6b0702e3e1a28abe7c10685341dc241869e1"
+    },
+    {
+      "bytes": 1022696,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-1/outcome_all.npz",
+      "sha256": "dcfdde20a01916c87e491cb2269ad732f8b15d1b62f62484f2b433d12ea5bd40"
+    },
+    {
+      "bytes": 693522,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-1/validation.npz",
+      "sha256": "5f3c3ca5b95e5a7fa9a15e4b76dbdc17d5ee3924f3f822a18ba9c95ea27ccde2"
+    },
+    {
+      "bytes": 2008147,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-2/model_fit.npz",
+      "sha256": "6508d8839a2ccc9988f9513239ba1cb12555d7c7d82f49df4a8a9526b9b79cce"
+    },
+    {
+      "bytes": 644134,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-2/outcome.npz",
+      "sha256": "b22c48d40a02a03a584276c4747e605f9c820044bd29a07437f234c9a1a87878"
+    },
+    {
+      "bytes": 966293,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-2/outcome_all.npz",
+      "sha256": "dfb657a9f430edc79f43581e23c79ec55340eddc6955a406b2c96826e4ba0076"
+    },
+    {
+      "bytes": 635199,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-2/seed-2/validation.npz",
+      "sha256": "ab13239d3bd6b566caccf2d236b327840f80fcc70a53d6f568b1dd679b2a20d1"
+    },
+    {
+      "bytes": 2478563,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-0/model_fit.npz",
+      "sha256": "b47c19996f6862ed3380781ca4cfac2c1613af9a611d425bf32db91c4430f7c2"
+    },
+    {
+      "bytes": 803209,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-0/outcome.npz",
+      "sha256": "4668078f5916be700b7b797060ef912f9346a2efb402c66786ecacb9f5b20828"
+    },
+    {
+      "bytes": 1203439,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-0/outcome_all.npz",
+      "sha256": "180e7a05cd5709972dd42c969960fd06db2e3a8b50ce5bd068fbd760e3ae3b5f"
+    },
+    {
+      "bytes": 805615,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-0/validation.npz",
+      "sha256": "8ef252b451a4dca71d2b5cb59749c8956c9f3d4ed73e335215122c4d17c8e2f7"
+    },
+    {
+      "bytes": 2128025,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-1/model_fit.npz",
+      "sha256": "2e755146642a8d03f177a2599bbe4a05139a8ad1e91d58680308dcafcd041e25"
+    },
+    {
+      "bytes": 663718,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-1/outcome.npz",
+      "sha256": "d63294e754b96afebc1abe6101d668f40b69ef461c763b3d93fb81ca0964435b"
+    },
+    {
+      "bytes": 999733,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-1/outcome_all.npz",
+      "sha256": "44f1566a0422d3733af31a3a5c717bff04e38c64ad66dedc401c5c51e784bfcc"
+    },
+    {
+      "bytes": 696578,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-1/validation.npz",
+      "sha256": "82c1f85bdf0242a185645121c59c6d49d9c2e8d048efcf7b91fc62f385b9bfe1"
+    },
+    {
+      "bytes": 1877739,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-2/model_fit.npz",
+      "sha256": "c5b274bcf11acfc1befc101658da9ea7d04269bf3fe8e203fdaac6a20b2ee806"
+    },
+    {
+      "bytes": 643952,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-2/outcome.npz",
+      "sha256": "66b28c48006399ce74a465b44af8357c617e83d670e6233f0fcaff1f840baf97"
+    },
+    {
+      "bytes": 958873,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-2/outcome_all.npz",
+      "sha256": "e403bab79ddc0489e327b3fcdc4921dbde0df1162f5fdd4991c24b8dada8a3e5"
+    },
+    {
+      "bytes": 626690,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-3/seed-2/validation.npz",
+      "sha256": "c8cc674fe2f606482cbf35e9b724e1a78fd2ae3f99ba9ef3633def9ad4b70fc3"
+    },
+    {
+      "bytes": 2189132,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-0/model_fit.npz",
+      "sha256": "5833d21a7ae12928ed3dea3d24e7382faebe35060cc4ee1061a3d2ce3738e098"
+    },
+    {
+      "bytes": 800053,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-0/outcome.npz",
+      "sha256": "46fd3192ffbea145cdb15bfb080dfbd8c86ec7502fc4f453c3798cadd05adc41"
+    },
+    {
+      "bytes": 1192835,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-0/outcome_all.npz",
+      "sha256": "3334895289ff698131b9675e7399fd51fa75afa21f6780b118b6024270b7bc45"
+    },
+    {
+      "bytes": 874050,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-0/validation.npz",
+      "sha256": "0201e7fafcf2f025184708ac16bd7d3e2022390cbab73df5973a31302db4cc91"
+    },
+    {
+      "bytes": 1883194,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-1/model_fit.npz",
+      "sha256": "139385ddbf0955f1f6fe4c880202d052f0b0177f837090299dec8b49fe71c716"
+    },
+    {
+      "bytes": 654689,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-1/outcome.npz",
+      "sha256": "6b805c816717e9351d598d3315950b1013700f5ad8ef8652e95ce2871c896ade"
+    },
+    {
+      "bytes": 973709,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-1/outcome_all.npz",
+      "sha256": "9978a9efe759a52fdfc600239e709c586633f4aeae9d76578a6eeb5693c28246"
+    },
+    {
+      "bytes": 741826,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-1/validation.npz",
+      "sha256": "53e4b77933ddd8fee123d6494eefc9c0b3d119ab7babb493ac01f328a0be5a92"
+    },
+    {
+      "bytes": 2029194,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-2/model_fit.npz",
+      "sha256": "f0ecfa7057f26dac5bb7631de0c3ec355d38746d7c39994b890b987e9c998154"
+    },
+    {
+      "bytes": 689119,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-2/outcome.npz",
+      "sha256": "919ce84845de0d2cc82e5eca90200cdba51cd6bf05996b88c4e1e206cbb562ec"
+    },
+    {
+      "bytes": 1025101,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-2/outcome_all.npz",
+      "sha256": "5211184cfb27c7515e9938c3b7d2aacf9c246dfafc5fa9cdff4dc861bf720434"
+    },
+    {
+      "bytes": 792688,
+      "path": "experiments/persist_eeg_fm_rescue_stage0/runtime/representations/CBraMod/WBCIC/fold-4/seed-2/validation.npz",
+      "sha256": "e16146a55c7aefd4e982722657a977f68dfcd43c0b2b2d8307db52efd4d76bc4"
+    }
+  ],
+  "representation_manifest_sha256": "1c08f60d5d07ad8e2e85992a4715cbdcec7611374022a7e037a90c9de2baba89",
+  "schema": "CBRAMOD_GEOMETRY_PRESERVATION_LOCK_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ]
+}

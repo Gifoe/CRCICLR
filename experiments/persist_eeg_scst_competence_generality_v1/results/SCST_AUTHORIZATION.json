@@ -1,0 +1,33 @@
+{
+  "schema": "SCST_ADMISSIBILITY_AUTHORIZATION_V1",
+  "level1_SCST_DISCOVERY_TRAINING_AUTHORIZED": false,
+  "level2_SCST_GENERAL_METHOD_DEVELOPMENT_AUTHORIZED": false,
+  "eligible_models": [],
+  "terminals": [
+    {
+      "model": "CBraMod-R1",
+      "terminal": "CBRAMOD_COMPETENCE_NOT_RECOVERED",
+      "competent_both_datasets": false,
+      "admissible_both_datasets": false
+    },
+    {
+      "model": "ATCNet",
+      "terminal": "SPECIALIST_COMPETENT_NOT_ADMISSIBLE",
+      "competent_both_datasets": true,
+      "admissible_both_datasets": false
+    },
+    {
+      "model": "EEGInceptionMI",
+      "terminal": "SPECIALIST_NOT_COMPETENT",
+      "competent_both_datasets": false,
+      "admissible_both_datasets": false
+    },
+    {
+      "model": "FBCNet",
+      "terminal": "SPECIALIST_NOT_COMPETENT",
+      "competent_both_datasets": false,
+      "admissible_both_datasets": false
+    }
+  ],
+  "sealed_resources_untouched": true
+}

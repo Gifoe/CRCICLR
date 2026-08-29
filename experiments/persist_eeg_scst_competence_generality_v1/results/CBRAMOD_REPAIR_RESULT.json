@@ -1,0 +1,55 @@
+{
+  "schema": "CBRAMOD_LIMITED_REPRESENTATION_REPAIR_V1",
+  "family": "R1_last_encoder_block_plus_task_projector_and_head",
+  "selection": [
+    {
+      "dataset": "OpenBMI",
+      "config": "R1_lr1e-5",
+      "mean_validation_BA": 0.7190000000000001,
+      "mean_validation_NLL": 0.6106107353927326,
+      "minimum_fold_BA": 0.690625,
+      "id": "R1_lr1e-5",
+      "encoder_lr": 1e-05,
+      "downstream_lr": 0.0003,
+      "weight_decay": 0.01
+    },
+    {
+      "dataset": "WBCIC",
+      "config": "R1_lr3e-5",
+      "mean_validation_BA": 0.7539913805136795,
+      "mean_validation_NLL": 0.5267431839896777,
+      "minimum_fold_BA": 0.6940625,
+      "id": "R1_lr3e-5",
+      "encoder_lr": 3e-05,
+      "downstream_lr": 0.0003,
+      "weight_decay": 0.01
+    }
+  ],
+  "datasets": [
+    {
+      "model": "CBraMod-R1",
+      "type": "FM",
+      "dataset": "OpenBMI",
+      "BA": 0.726125,
+      "NLL": 0.5878401061907129,
+      "threshold": 0.7519166667,
+      "folds": 5,
+      "seeds": 3,
+      "competent": false
+    },
+    {
+      "model": "CBraMod-R1",
+      "type": "FM",
+      "dataset": "WBCIC",
+      "BA": 0.7463331588498046,
+      "NLL": 0.5391198446150205,
+      "threshold": 0.7684300821,
+      "folds": 5,
+      "seeds": 3,
+      "competent": false
+    }
+  ],
+  "terminal": "CBRAMOD_COMPETENCE_NOT_RECOVERED",
+  "requires_complete_scst_reaudit": true,
+  "future_session_used": false
+}
