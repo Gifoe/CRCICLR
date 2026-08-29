@@ -261,7 +261,48 @@ class LockedReanalysisTests(unittest.TestCase):
 
     def test_manifest_publication_stays_staged_on_prepublication_failure(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
-            output = Path(temporary) / "manifest.csv"
+            root = Path(temporary)
+            stress_root = root / "stress"
+            stress_root.mkdir()
+            artifact = stress_root / "artifact.bin"
+            artifact.write_bytes(b"x")
+            row = {
+                "protocol_id": analysis.PROTOCOL_ID,
+                "source_alias": "OPENBMI_STRESS_HISTORICAL",
+                "role": "direction_table",
+                "backbone": "eegnet",
+                "fold": "0",
+                "seed": "0",
+                "method": "ERM",
+                "lambda": "0.0",
+                "relative_path": "artifact.bin",
+                "bytes": "1",
+                "sha256": analysis.sha256_file(artifact),
+            }
+            manifest = root / "reserved-keyword-manifest.csv"
+            pd.DataFrame([row], columns=analysis.MANIFEST_COLUMNS).to_csv(manifest, index=False)
+            binding = {
+                "expected_manifest_artifact_count": 1,
+                "expected_manifest_counts_by_alias": {"OPENBMI_STRESS_HISTORICAL": 1},
+                "expected_manifest_counts_by_role": {"direction_table": 1},
+            }
+            expected_spec = {column: row[column] for column in analysis.MANIFEST_COLUMNS if column not in {"bytes", "sha256"}}
+            with (
+                mock.patch.object(analysis, "artifact_specs", return_value=[expected_spec]),
+                mock.patch.object(analysis, "implementation_binding", return_value=binding),
+            ):
+                verified, hash_index = analysis.verify_manifest(
+                    analysis.SourceRoots(stress_root, root / "unused-wbcic"),
+                    manifest,
+                    include_hash_index=True,
+                )
+            self.assertEqual(verified["status"], "PASS")
+            self.assertEqual(
+                hash_index[("OPENBMI_STRESS_HISTORICAL", "artifact.bin")],
+                row["sha256"],
+            )
+
+            output = root / "manifest.csv"
             rows = [{column: "" for column in analysis.MANIFEST_COLUMNS}]
             with mock.patch.object(
                 analysis,
@@ -272,6 +313,76 @@ class LockedReanalysisTests(unittest.TestCase):
                     analysis.write_manifest_atomic(output, rows)
             self.assertFalse(output.exists())
             self.assertTrue(output.with_name(f".{output.name}.staging").exists())
+
+            repository = root / "repository"
+            locked_paths = [
+                repository / analysis.CANONICAL_REPOSITORY_PATHS[key]
+                for key in ("protocol", "manifest", "implementation", "rationale", "test")
+            ]
+            for path in locked_paths:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(path.name, encoding="utf-8")
+            manifest_path = repository / analysis.CANONICAL_REPOSITORY_PATHS["manifest"]
+            frozen_commit = "a" * 40
+            repaired_commit = "b" * 40
+            audit_path = repository / analysis.IMPLEMENTATION_REPAIR_AUDIT_PATH
+            audit_path.parent.mkdir(parents=True, exist_ok=True)
+            repaired_paths = {
+                analysis.CANONICAL_REPOSITORY_PATHS["implementation"],
+                analysis.CANONICAL_REPOSITORY_PATHS["test"],
+            }
+            audit_path.write_text(
+                json.dumps(
+                    {
+                        "protocol_id": analysis.PROTOCOL_ID,
+                        "status": "AUDITED_IMPLEMENTATION_ONLY_REPAIR_BEFORE_OUTCOME_RECONSTRUCTION",
+                        "failure_phase": "verify_manifest",
+                        "scientific_outcomes_loaded": False,
+                        "staging_directory_created": False,
+                        "result_directory_created": False,
+                        "scientific_semantics_changed": False,
+                        "manifest_content_changed": False,
+                        "initial_freeze_commit": frozen_commit,
+                        "manifest_sha256": analysis.sha256_file(manifest_path),
+                        "changed_files": sorted(
+                            repaired_paths | {analysis.IMPLEMENTATION_REPAIR_AUDIT_PATH}
+                        ),
+                    }
+                ),
+                encoding="utf-8",
+            )
+            frozen_paths = {
+                analysis.CANONICAL_REPOSITORY_PATHS["protocol"],
+                analysis.CANONICAL_REPOSITORY_PATHS["manifest"],
+                analysis.CANONICAL_REPOSITORY_PATHS["rationale"],
+            }
+
+            def fake_git_output(_repository: Path, *args: str) -> str:
+                if args[0] == "ls-files":
+                    return args[-1]
+                if args[0] == "status":
+                    return ""
+                if args[:4] == ("log", "-1", "--format=%H", frozen_commit):
+                    return frozen_commit
+                if args[:3] == ("log", "-1", "--format=%H"):
+                    return frozen_commit if args[-1] in frozen_paths else repaired_commit
+                if args == ("rev-parse", "HEAD"):
+                    return repaired_commit
+                if args == ("rev-parse", "@{upstream}"):
+                    return repaired_commit
+                if args == ("diff", "--name-only", f"{frozen_commit}..{repaired_commit}"):
+                    return "\n".join(sorted(repaired_paths | {analysis.IMPLEMENTATION_REPAIR_AUDIT_PATH}))
+                raise AssertionError(f"unexpected git invocation: {args}")
+
+            with (
+                mock.patch.object(analysis, "git_output", side_effect=fake_git_output),
+                mock.patch.object(analysis, "git_is_ancestor", return_value=True),
+            ):
+                repair_binding = analysis.verify_git_lock(repository, locked_paths)
+            self.assertEqual(
+                repair_binding["binding_mode"],
+                "AUDITED_IMPLEMENTATION_ONLY_REPAIR",
+            )
 
     def test_matched_float64_d_finite(self) -> None:
         clean = np.zeros((2, 2), dtype=np.float64)

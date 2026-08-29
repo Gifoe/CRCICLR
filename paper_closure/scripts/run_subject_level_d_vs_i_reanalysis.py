@@ -32,6 +32,9 @@ CANONICAL_REPOSITORY_PATHS: Mapping[str, str] = {
     "rationale": "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md",
     "output_directory": "paper_closure/statistics/subject_level_d_vs_i",
 }
+IMPLEMENTATION_REPAIR_AUDIT_PATH = (
+    "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_IMPLEMENTATION_REPAIR_AUDIT.json"
+)
 REQUIRED_OUTPUT_FILES: tuple[str, ...] = (
     "paper_closure/statistics/subject_level_d_vs_i/subject_observations.csv",
     "paper_closure/statistics/subject_level_d_vs_i/subject_summary.csv",
@@ -510,6 +513,14 @@ def write_manifest_atomic(output: Path, rows: Sequence[Mapping[str, Any]]) -> st
     return digest
 
 
+def manifest_metadata_tuples(frame: pd.DataFrame, columns: Sequence[str]) -> list[tuple[str, ...]]:
+    """Read manifest metadata positionally so reserved column names remain exact."""
+    return [
+        tuple(str(value) for value in row)
+        for row in frame.loc[:, list(columns)].itertuples(index=False, name=None)
+    ]
+
+
 def create_manifest(roots: SourceRoots, output: Path) -> dict[str, Any]:
     if output.exists():
         raise RuntimeError(f"refusing to overwrite an existing pre-outcome manifest: {output}")
@@ -563,10 +574,7 @@ def verify_manifest(
     expected_metadata = [
         tuple(str(row[column]) for column in metadata_columns) for row in expected
     ]
-    recorded_metadata = [
-        tuple(str(getattr(row, column)) for column in metadata_columns)
-        for row in recorded.itertuples(index=False)
-    ]
+    recorded_metadata = manifest_metadata_tuples(recorded, metadata_columns)
     if len(recorded) != len(expected):
         raise RuntimeError(f"manifest row count {len(recorded)} != expected {len(expected)}")
     if len(set(recorded_metadata)) != len(recorded_metadata):
@@ -661,21 +669,133 @@ def git_output(repository: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
+def git_is_ancestor(repository: Path, ancestor: str, descendant: str) -> bool:
+    result = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+        cwd=repository,
+        check=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+    if result.returncode not in {0, 1}:
+        raise RuntimeError(
+            "git ancestry check failed: "
+            f"ancestor={ancestor} descendant={descendant} stderr={result.stderr.strip()}"
+        )
+    return result.returncode == 0
+
+
 def verify_git_lock(repository: Path, paths: Sequence[Path]) -> dict[str, Any]:
     relative = [path.resolve().relative_to(repository.resolve()).as_posix() for path in paths]
+    expected_relative = {
+        CANONICAL_REPOSITORY_PATHS[key]
+        for key in ("protocol", "manifest", "implementation", "test", "rationale")
+    }
+    if set(relative) != expected_relative:
+        raise RuntimeError(f"locked path set changed: {sorted(relative)}")
     for item in relative:
         git_output(repository, "ls-files", "--error-unmatch", "--", item)
     dirty = git_output(repository, "status", "--porcelain=v1", "--", *relative)
     if dirty:
         raise RuntimeError(f"locked files are not clean: {dirty}")
     commits = {item: git_output(repository, "log", "-1", "--format=%H", "--", item) for item in relative}
-    if any(not value for value in commits.values()) or len(set(commits.values())) != 1:
-        raise RuntimeError(f"protocol, implementation, and manifest were not frozen in one commit: {commits}")
+    if any(not value for value in commits.values()):
+        raise RuntimeError(f"one or more locked files have no commit: {commits}")
+    head = git_output(repository, "rev-parse", "HEAD")
+    upstream = git_output(repository, "rev-parse", "@{upstream}")
+    if head != upstream:
+        raise RuntimeError(f"execution HEAD is not the pushed upstream commit: head={head} upstream={upstream}")
+    if len(set(commits.values())) == 1:
+        return {
+            "status": "PASS",
+            "binding_mode": "SINGLE_FREEZE_COMMIT",
+            "lock_commit": next(iter(commits.values())),
+            "head_at_execution": head,
+            "upstream_at_execution": upstream,
+            "locked_file_commits": commits,
+        }
+
+    frozen_paths = {
+        CANONICAL_REPOSITORY_PATHS["protocol"],
+        CANONICAL_REPOSITORY_PATHS["manifest"],
+        CANONICAL_REPOSITORY_PATHS["rationale"],
+    }
+    repaired_paths = {
+        CANONICAL_REPOSITORY_PATHS["implementation"],
+        CANONICAL_REPOSITORY_PATHS["test"],
+    }
+    frozen_commits = {commits[item] for item in frozen_paths}
+    repaired_commits = {commits[item] for item in repaired_paths}
+    if len(frozen_commits) != 1 or len(repaired_commits) != 1:
+        raise RuntimeError(f"locked-file commit pattern is not an audited repair: {commits}")
+    frozen_commit = next(iter(frozen_commits))
+    repaired_commit = next(iter(repaired_commits))
+    if frozen_commit == repaired_commit or not git_is_ancestor(repository, frozen_commit, repaired_commit):
+        raise RuntimeError(
+            f"implementation repair does not descend from the frozen manifest commit: {commits}"
+        )
+    initial_commits = {
+        item: git_output(repository, "log", "-1", "--format=%H", frozen_commit, "--", item)
+        for item in relative
+    }
+    if set(initial_commits.values()) != {frozen_commit}:
+        raise RuntimeError(
+            "the initial freeze commit did not bind all five locked files together: "
+            f"{initial_commits}"
+        )
+
+    audit_relative = IMPLEMENTATION_REPAIR_AUDIT_PATH
+    audit_path = repository / audit_relative
+    git_output(repository, "ls-files", "--error-unmatch", "--", audit_relative)
+    audit_dirty = git_output(repository, "status", "--porcelain=v1", "--", audit_relative)
+    if audit_dirty:
+        raise RuntimeError(f"implementation repair audit is not clean: {audit_dirty}")
+    audit_commit = git_output(repository, "log", "-1", "--format=%H", "--", audit_relative)
+    if audit_commit != repaired_commit or head != repaired_commit:
+        raise RuntimeError(
+            "implementation, regression test, repair audit, and execution HEAD must share the repair commit"
+        )
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    changed_files = {
+        item
+        for item in git_output(
+            repository,
+            "diff",
+            "--name-only",
+            f"{frozen_commit}..{repaired_commit}",
+        ).splitlines()
+        if item
+    }
+    required_false = (
+        "scientific_outcomes_loaded",
+        "staging_directory_created",
+        "result_directory_created",
+        "scientific_semantics_changed",
+        "manifest_content_changed",
+    )
+    if (
+        audit.get("protocol_id") != PROTOCOL_ID
+        or audit.get("status") != "AUDITED_IMPLEMENTATION_ONLY_REPAIR_BEFORE_OUTCOME_RECONSTRUCTION"
+        or audit.get("failure_phase") != "verify_manifest"
+        or any(audit.get(field) is not False for field in required_false)
+        or audit.get("initial_freeze_commit") != frozen_commit
+        or audit.get("manifest_sha256") != sha256_file(repository / CANONICAL_REPOSITORY_PATHS["manifest"])
+        or set(audit.get("changed_files", [])) != repaired_paths | {audit_relative}
+        or changed_files != repaired_paths | {audit_relative}
+    ):
+        raise RuntimeError(f"implementation repair audit binding failed: {audit}")
     return {
         "status": "PASS",
-        "lock_commit": next(iter(commits.values())),
-        "head_at_execution": git_output(repository, "rev-parse", "HEAD"),
+        "binding_mode": "AUDITED_IMPLEMENTATION_ONLY_REPAIR",
+        "lock_commit": repaired_commit,
+        "initial_freeze_commit": frozen_commit,
+        "head_at_execution": head,
+        "upstream_at_execution": upstream,
         "locked_file_commits": commits,
+        "initial_locked_file_commits": initial_commits,
+        "repair_changed_files": sorted(changed_files),
+        "implementation_repair_audit": audit_relative,
     }
 
 

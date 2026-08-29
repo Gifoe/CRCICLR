@@ -1,0 +1,21 @@
+{
+  "protocol_id": "PERSIST_EEG_SUBJECT_LEVEL_D_VS_I_REANALYSIS_V1",
+  "status": "AUDITED_IMPLEMENTATION_ONLY_REPAIR_BEFORE_OUTCOME_RECONSTRUCTION",
+  "repair_timestamp": "2026-08-29T14:32:40.7354059+08:00",
+  "failure_phase": "verify_manifest",
+  "failure_type": "AttributeError",
+  "failure_summary": "pandas.DataFrame.itertuples renamed the reserved manifest column lambda, while verification attempted getattr(row, 'lambda')",
+  "scientific_outcomes_loaded": false,
+  "staging_directory_created": false,
+  "result_directory_created": false,
+  "scientific_semantics_changed": false,
+  "manifest_content_changed": false,
+  "initial_freeze_commit": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+  "manifest_sha256": "acc0507b258f3e9168ce7a1e63f15a43969ea02bcbdda1efdbd87d60a1ea493b",
+  "repair": "Read the already-recorded manifest metadata positionally with itertuples(index=False, name=None); add a reserved-keyword regression test and an executable audited-repair git binding without changing any feature, fold, direction, aggregation, seed, gate, dataset, input hash, or result path.",
+  "changed_files": [
+    "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py",
+    "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py",
+    "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_IMPLEMENTATION_REPAIR_AUDIT.json"
+  ]
+}
