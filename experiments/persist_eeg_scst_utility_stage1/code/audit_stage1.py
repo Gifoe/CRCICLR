@@ -298,7 +298,7 @@ def main() -> None:
     subject_frame = pd.DataFrame(subjects)
     c.write_csv(c.RESULTS / "STAGE1_ADMISSIBILITY_PER_FOLD.csv", unit_frame)
     c.write_csv(c.RESULTS / "MODEL_COMPETENCE_PER_FOLD.csv", task_frame)
-    c.write_csv(RUNTIME / "STAGE1_SOURCE_SUBJECT_METRICS.csv", subject_frame)
+    c.write_csv(c.RUNTIME / "STAGE1_SOURCE_SUBJECT_METRICS.csv", subject_frame)
 
     summary_rows: list[dict[str, object]] = []
     for (model, dataset), group in unit_frame.groupby(["model", "dataset"], sort=True):

@@ -33,3 +33,14 @@
   recomputation or value change.
 - Future utility inspected: no.
 - Result: pending full source-only revalidation.
+
+## 2026-08-29 — audit output namespace repair
+
+- Problem: all source-only audit units completed, but the aggregator referenced
+  `RUNTIME` without the common-module namespace and failed before writing the
+  combined subject table.
+- Evidence available: source-only traceback after all units; no future utility.
+- Change: write through `stage1_common.RUNTIME`.
+- Prediction: identical deterministic unit calculations aggregate successfully.
+- Future utility inspected: no.
+- Result: pending deterministic rerun.
