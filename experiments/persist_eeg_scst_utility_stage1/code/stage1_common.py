@@ -60,6 +60,10 @@ P3 = load_module(
     "stage1_p3_common",
     REPO / "experiments" / "persist_eeg_wbcic_independent_replication_v1" / "code" / "common.py",
 )
+P4A = load_module(
+    "stage1_p4a_common",
+    REPO / "experiments" / "persist_eeg_p4a_cross_setting_expansion_v1" / "code" / "common.py",
+)
 OLD_MODELS = load_module(
     "stage1_old_specialist_models",
     REPO / "experiments" / "persist_eeg_scst_competence_generality_v1" / "code" / "specialist_models.py",
@@ -283,7 +287,9 @@ def build_model(model: str, channels: int, n_times: int = 1000) -> nn.Module:
     if kind == "historical_eegnet":
         return P3.StandardEEGNet() if hasattr(P3, "StandardEEGNet") else P2.StandardEEGNet()
     if kind == "historical_eegconformer":
-        return P3.CompactEEGConformer() if hasattr(P3, "CompactEEGConformer") else P2.CompactEEGConformer()
+        # WBCIC's frozen historical control is P4A setting S4 (58 channels),
+        # not the 62-channel OpenBMI P2 implementation.
+        return P4A.build_model("S4", stable_seed("stage1-eegconformer-build", channels, n_times))
     raise KeyError(model)
 
 

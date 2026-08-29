@@ -14,7 +14,7 @@ import torch.nn as nn
 import stage1_common as c
 
 
-MODELS = ("ATCNet-Official", "EEGNeX")
+MODELS = ("ATCNet-Official", "EEGNeX", "EEGNet", "EEGConformer")
 RECIPES = (
     {"id": "official_a", "lr": 1e-3, "weight_decay": 1e-3, "max_epochs": 30, "batch_size": 192},
     {"id": "official_b", "lr": 3e-4, "weight_decay": 1e-2, "max_epochs": 36, "batch_size": 192},
