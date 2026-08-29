@@ -1,0 +1,251 @@
+{
+  "analyses": {
+    "OPENBMI_EQUAL_CONFIG_SECONDARY": {
+      "analysis": "OPENBMI_EQUAL_CONFIG_SECONDARY",
+      "analysis_role": "MANDATORY_GRID_WEIGHTING_SENSITIVITY",
+      "backbones": {
+        "eegconformer": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": -0.000491457451417034,
+          "subjects_favoring_MD": 21
+        },
+        "eegnet": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": 0.002781487602968303,
+          "subjects_favoring_MD": 26
+        }
+      },
+      "biological_subject_count": 40,
+      "bootstrap_draws": 0,
+      "dataset": "OPENBMI_STRESS",
+      "gate": "POINT_ONLY_MANDATORY_SENSITIVITY",
+      "mean_subject_Delta_MI_minus_MD": 0.0011450150757756343,
+      "mean_subject_RMSE_M0": 0.05244959683879082,
+      "mean_subject_RMSE_MD": 0.05140541894913606,
+      "mean_subject_RMSE_MI": 0.0525504340249117,
+      "mean_subject_RMSE_MID": 0.05147678628298802,
+      "median_subject_Delta_MI_minus_MD": 0.0017459167484955782,
+      "refitted_subject_bootstrap_CI95": null,
+      "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+      "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+      "subjects_favoring_MD": 24,
+      "subjects_favoring_MI": 16,
+      "subjects_tied": 0,
+      "training_weight_mode": "EQUAL_CONFIGURATION"
+    },
+    "OPENBMI_EQUAL_FAMILY_PRIMARY": {
+      "analysis": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+      "analysis_role": "PRIMARY_OPENBMI",
+      "backbones": {
+        "eegconformer": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": -0.0005724003912414082,
+          "refitted_subject_bootstrap_CI95": [
+            -0.0026098639290645454,
+            0.0009602819394583025
+          ],
+          "subjects_favoring_MD": 20
+        },
+        "eegnet": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": 0.0023242805024069058,
+          "refitted_subject_bootstrap_CI95": [
+            -0.0010302914041725524,
+            0.005156597505538903
+          ],
+          "subjects_favoring_MD": 26
+        }
+      },
+      "biological_subject_count": 40,
+      "bootstrap_draws": 10000,
+      "dataset": "OPENBMI_STRESS",
+      "gate": "PARTIAL",
+      "mean_subject_Delta_MI_minus_MD": 0.0008759400555827489,
+      "mean_subject_RMSE_M0": 0.048910838418977934,
+      "mean_subject_RMSE_MD": 0.048320458206425464,
+      "mean_subject_RMSE_MI": 0.049196398262008216,
+      "mean_subject_RMSE_MID": 0.04843080892602482,
+      "median_subject_Delta_MI_minus_MD": 0.001422417118580527,
+      "refitted_subject_bootstrap_CI95": [
+        -0.0013511038370143198,
+        0.00253199192230868
+      ],
+      "rejected_degenerate_bootstrap_draws": 1,
+      "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+      "subject_aggregation_mode": "EQUAL_METHOD_FAMILY",
+      "subjects_favoring_MD": 23,
+      "subjects_favoring_MI": 17,
+      "subjects_tied": 0,
+      "training_weight_mode": "EQUAL_METHOD_FAMILY"
+    },
+    "OPENBMI_ERM_ONLY_SENSITIVITY": {
+      "analysis": "OPENBMI_ERM_ONLY_SENSITIVITY",
+      "analysis_role": "MANDATORY_DIRECT_WBCIC_SCOPE_SENSITIVITY",
+      "backbones": {
+        "eegconformer": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": -0.0033414969570042226,
+          "subjects_favoring_MD": 11
+        },
+        "eegnet": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": -0.000863967602265627,
+          "subjects_favoring_MD": 18
+        }
+      },
+      "biological_subject_count": 40,
+      "bootstrap_draws": 0,
+      "dataset": "OPENBMI_STRESS",
+      "gate": "POINT_ONLY_MANDATORY_SENSITIVITY",
+      "mean_subject_Delta_MI_minus_MD": -0.002102732279634925,
+      "mean_subject_RMSE_M0": 0.03913220351275396,
+      "mean_subject_RMSE_MD": 0.0419043275817815,
+      "mean_subject_RMSE_MI": 0.039801595302146574,
+      "mean_subject_RMSE_MID": 0.042107140800602155,
+      "median_subject_Delta_MI_minus_MD": -0.0016029278723631727,
+      "refitted_subject_bootstrap_CI95": null,
+      "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+      "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+      "subjects_favoring_MD": 12,
+      "subjects_favoring_MI": 28,
+      "subjects_tied": 0,
+      "training_weight_mode": "UNIFORM"
+    },
+    "WBCIC_ERM_PRIMARY": {
+      "analysis": "WBCIC_ERM_PRIMARY",
+      "analysis_role": "PRIMARY_WBCIC",
+      "backbones": {
+        "eegnet": {
+          "biological_subject_count": 41,
+          "mean_subject_Delta_MI_minus_MD": 0.0009652461167173931,
+          "refitted_subject_bootstrap_CI95": [
+            -0.002276369313073281,
+            0.004503752786273626
+          ],
+          "subjects_favoring_MD": 21
+        }
+      },
+      "biological_subject_count": 41,
+      "bootstrap_draws": 10000,
+      "dataset": "WBCIC_REPLICATION",
+      "gate": "PARTIAL",
+      "mean_subject_Delta_MI_minus_MD": 0.0009652461167173931,
+      "mean_subject_RMSE_M0": 0.026073456259607275,
+      "mean_subject_RMSE_MD": 0.02486549759981933,
+      "mean_subject_RMSE_MI": 0.025830743716536722,
+      "mean_subject_RMSE_MID": 0.02508458365245846,
+      "median_subject_Delta_MI_minus_MD": 0.00027092781432525633,
+      "refitted_subject_bootstrap_CI95": [
+        -0.002276369313073281,
+        0.004503752786273626
+      ],
+      "rejected_degenerate_bootstrap_draws": 1,
+      "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+      "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+      "subjects_favoring_MD": 21,
+      "subjects_favoring_MI": 20,
+      "subjects_tied": 0,
+      "training_weight_mode": "UNIFORM"
+    }
+  },
+  "cross_dataset_estimand_note": "OpenBMI equal-family full-grid and WBCIC ERM are predeclared dataset-specific estimands; OpenBMI ERM-only is the mandatory direct-scope sensitivity.",
+  "cross_dataset_terminal": "CROSS_DATASET_PARTIAL",
+  "datasets": {
+    "OPENBMI_STRESS": {
+      "analysis": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+      "analysis_role": "PRIMARY_OPENBMI",
+      "backbones": {
+        "eegconformer": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": -0.0005724003912414082,
+          "refitted_subject_bootstrap_CI95": [
+            -0.0026098639290645454,
+            0.0009602819394583025
+          ],
+          "subjects_favoring_MD": 20
+        },
+        "eegnet": {
+          "biological_subject_count": 40,
+          "mean_subject_Delta_MI_minus_MD": 0.0023242805024069058,
+          "refitted_subject_bootstrap_CI95": [
+            -0.0010302914041725524,
+            0.005156597505538903
+          ],
+          "subjects_favoring_MD": 26
+        }
+      },
+      "biological_subject_count": 40,
+      "bootstrap_draws": 10000,
+      "dataset": "OPENBMI_STRESS",
+      "gate": "PARTIAL",
+      "mandatory_sensitivity_analyses": [
+        "OPENBMI_EQUAL_CONFIG_SECONDARY",
+        "OPENBMI_ERM_ONLY_SENSITIVITY"
+      ],
+      "mean_subject_Delta_MI_minus_MD": 0.0008759400555827489,
+      "mean_subject_RMSE_M0": 0.048910838418977934,
+      "mean_subject_RMSE_MD": 0.048320458206425464,
+      "mean_subject_RMSE_MI": 0.049196398262008216,
+      "mean_subject_RMSE_MID": 0.04843080892602482,
+      "median_subject_Delta_MI_minus_MD": 0.001422417118580527,
+      "primary_analysis": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+      "refitted_subject_bootstrap_CI95": [
+        -0.0013511038370143198,
+        0.00253199192230868
+      ],
+      "rejected_degenerate_bootstrap_draws": 1,
+      "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+      "subject_aggregation_mode": "EQUAL_METHOD_FAMILY",
+      "subjects_favoring_MD": 23,
+      "subjects_favoring_MI": 17,
+      "subjects_tied": 0,
+      "training_weight_mode": "EQUAL_METHOD_FAMILY"
+    },
+    "WBCIC_REPLICATION": {
+      "analysis": "WBCIC_ERM_PRIMARY",
+      "analysis_role": "PRIMARY_WBCIC",
+      "backbones": {
+        "eegnet": {
+          "biological_subject_count": 41,
+          "mean_subject_Delta_MI_minus_MD": 0.0009652461167173931,
+          "refitted_subject_bootstrap_CI95": [
+            -0.002276369313073281,
+            0.004503752786273626
+          ],
+          "subjects_favoring_MD": 21
+        }
+      },
+      "biological_subject_count": 41,
+      "bootstrap_draws": 10000,
+      "dataset": "WBCIC_REPLICATION",
+      "gate": "PARTIAL",
+      "mandatory_sensitivity_analyses": [],
+      "mean_subject_Delta_MI_minus_MD": 0.0009652461167173931,
+      "mean_subject_RMSE_M0": 0.026073456259607275,
+      "mean_subject_RMSE_MD": 0.02486549759981933,
+      "mean_subject_RMSE_MI": 0.025830743716536722,
+      "mean_subject_RMSE_MID": 0.02508458365245846,
+      "median_subject_Delta_MI_minus_MD": 0.00027092781432525633,
+      "primary_analysis": "WBCIC_ERM_PRIMARY",
+      "refitted_subject_bootstrap_CI95": [
+        -0.002276369313073281,
+        0.004503752786273626
+      ],
+      "rejected_degenerate_bootstrap_draws": 1,
+      "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+      "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+      "subjects_favoring_MD": 21,
+      "subjects_favoring_MI": 20,
+      "subjects_tied": 0,
+      "training_weight_mode": "UNIFORM"
+    }
+  },
+  "estimand_scope": "held-subject intervention-consequence prediction for held algorithmic runs within the frozen intervention bank",
+  "exp3_status": "RUN_LEVEL_ALGORITHMIC_ONLY_SUBJECT_RECONSTRUCTION_UNAVAILABLE",
+  "openbmi_both_backbone_points_positive": false,
+  "pre_outcome_lock_commit": "d40d64812982044324bab2030b40ed5cc5100d3b",
+  "protocol_id": "PERSIST_EEG_SUBJECT_LEVEL_D_VS_I_REANALYSIS_V1",
+  "sealed_or_outer_accessed": false,
+  "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED",
+  "statistical_unit": "biological subject"
+}

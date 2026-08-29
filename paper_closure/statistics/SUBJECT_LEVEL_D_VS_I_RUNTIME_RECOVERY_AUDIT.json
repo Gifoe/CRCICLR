@@ -1,0 +1,59 @@
+{
+  "protocol_id": "PERSIST_EEG_SUBJECT_LEVEL_D_VS_I_REANALYSIS_V1",
+  "status": "AUDITED_RUNTIME_DEPENDENCY_RECOVERY_COMPLETE_NO_FURTHER_RERUN_AUTHORIZED",
+  "pre_outcome_lock_commit": "d40d64812982044324bab2030b40ed5cc5100d3b",
+  "initial_failure": {
+    "preserved_state": "paper_closure/statistics/subject_level_d_vs_i_failed_runtime_audit/EXECUTION_STATE.json",
+    "error_type": "RuntimeError",
+    "error": "PyTorch is required only to read the frozen head checkpoints",
+    "phase": "reconstruct_openbmi_before_first_frozen_head_checkpoint_was_loaded",
+    "first_manifest_verified_embedding_archive_opened": true,
+    "outcome_arrays_may_have_been_loaded_into_memory": true,
+    "effect_rows_called": false,
+    "d_vs_i_statistics_computed": false,
+    "scientific_result_files_written": false,
+    "canonical_result_directory_created": false,
+    "staging_files_at_failure": [
+      "EXECUTION_STATE.json"
+    ]
+  },
+  "recovery_decision": {
+    "failure_was_a_runtime_dependency_error": true,
+    "failure_state_preserved_before_recovery": true,
+    "code_changed": false,
+    "protocol_changed": false,
+    "manifest_changed": false,
+    "data_scope_changed": false,
+    "statistical_semantics_changed": false,
+    "hyperparameters_or_features_changed": false,
+    "outcome_based_selection_occurred": false,
+    "same_canonical_command_arguments_used": true,
+    "only_change": "Use an existing server Python environment that can import the frozen checkpoint reader and all locked analysis dependencies."
+  },
+  "recovery_environment": {
+    "environment_label": "gpu-baseline-v1",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128",
+    "pandas": "3.0.5",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.9.0",
+    "locked_tests": "9/9 PASS",
+    "manifest_verification": "PASS",
+    "representative_frozen_checkpoint_read": "PASS"
+  },
+  "completed_recovery": {
+    "canonical_result_directory": "paper_closure/statistics/subject_level_d_vs_i",
+    "execution_state": "COMPLETE_VALIDATION_PASS",
+    "validation_status": "PASS",
+    "atomic_one_shot_publication": true,
+    "cross_dataset_terminal": "CROSS_DATASET_PARTIAL",
+    "no_sealed_or_outer_access": true,
+    "sign_flip_test": "NOT_PERFORMED_EXCHANGEABILITY_NOT_ESTABLISHED"
+  },
+  "authorization_after_recovery": {
+    "further_subject_level_d_vs_i_rerun": false,
+    "outer_or_sealed_evaluation": false,
+    "post_outcome_model_or_estimand_selection": false
+  }
+}

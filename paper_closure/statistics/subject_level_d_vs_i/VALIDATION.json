@@ -1,0 +1,478 @@
+{
+  "atomic_one_shot_publication": true,
+  "bootstrap": {
+    "analyses": [
+      "OPENBMI_EQUAL_FAMILY_PRIMARY",
+      "WBCIC_ERM_PRIMARY"
+    ],
+    "complete_ridge_refit_each_draw": true,
+    "draws_per_primary_analysis": 10000,
+    "seed": 2026082901,
+    "sign_flip_test_performed": false,
+    "unit": "fold-stratified biological-subject cluster"
+  },
+  "canonical_invocation": {
+    "repository_paths": {
+      "implementation": "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py",
+      "manifest": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_INPUT_MANIFEST.csv",
+      "output_directory": "paper_closure/statistics/subject_level_d_vs_i",
+      "protocol": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_REANALYSIS_LOCK.json",
+      "rationale": "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md",
+      "test": "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py"
+    },
+    "status": "PASS"
+  },
+  "double_cross_fit_splits": {
+    "analyses": {
+      "OPENBMI_EQUAL_CONFIG_SECONDARY": {
+        "dataset": "OPENBMI_STRESS",
+        "held_seed_outcomes_used_for_fit": false,
+        "held_subject_outcomes_used_for_fit": false,
+        "other_backbones_used": false,
+        "other_historical_folds_used": false,
+        "peer_subject_count_max": 7,
+        "peer_subject_count_min": 7,
+        "split_count": 240,
+        "test_direction_cells": 80,
+        "training_direction_cells": 160
+      },
+      "OPENBMI_EQUAL_FAMILY_PRIMARY": {
+        "dataset": "OPENBMI_STRESS",
+        "held_seed_outcomes_used_for_fit": false,
+        "held_subject_outcomes_used_for_fit": false,
+        "other_backbones_used": false,
+        "other_historical_folds_used": false,
+        "peer_subject_count_max": 7,
+        "peer_subject_count_min": 7,
+        "split_count": 240,
+        "test_direction_cells": 80,
+        "training_direction_cells": 160
+      },
+      "OPENBMI_ERM_ONLY_SENSITIVITY": {
+        "dataset": "OPENBMI_STRESS",
+        "held_seed_outcomes_used_for_fit": false,
+        "held_subject_outcomes_used_for_fit": false,
+        "other_backbones_used": false,
+        "other_historical_folds_used": false,
+        "peer_subject_count_max": 7,
+        "peer_subject_count_min": 7,
+        "split_count": 240,
+        "test_direction_cells": 8,
+        "training_direction_cells": 16
+      },
+      "WBCIC_ERM_PRIMARY": {
+        "dataset": "WBCIC_REPLICATION",
+        "held_seed_outcomes_used_for_fit": false,
+        "held_subject_outcomes_used_for_fit": false,
+        "other_backbones_used": false,
+        "other_historical_folds_used": false,
+        "peer_subject_count_max": 8,
+        "peer_subject_count_min": 7,
+        "split_count": 123,
+        "test_direction_cells": 8,
+        "training_direction_cells": 16
+      }
+    },
+    "status": "PASS"
+  },
+  "git_lock": {
+    "binding_mode": "AUDITED_IMPLEMENTATION_ONLY_REPAIR",
+    "head_at_execution": "d40d64812982044324bab2030b40ed5cc5100d3b",
+    "implementation_repair_audit": "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_IMPLEMENTATION_REPAIR_AUDIT.json",
+    "initial_freeze_commit": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+    "initial_locked_file_commits": {
+      "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_INPUT_MANIFEST.csv": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+      "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_REANALYSIS_LOCK.json": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+      "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+      "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+      "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md": "b96d7165ac73de3efd14b5ea7ba1550d629187a1"
+    },
+    "lock_commit": "d40d64812982044324bab2030b40ed5cc5100d3b",
+    "locked_file_commits": {
+      "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_INPUT_MANIFEST.csv": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+      "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_REANALYSIS_LOCK.json": "b96d7165ac73de3efd14b5ea7ba1550d629187a1",
+      "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py": "d40d64812982044324bab2030b40ed5cc5100d3b",
+      "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py": "d40d64812982044324bab2030b40ed5cc5100d3b",
+      "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md": "b96d7165ac73de3efd14b5ea7ba1550d629187a1"
+    },
+    "repair_changed_files": [
+      "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py",
+      "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py",
+      "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_IMPLEMENTATION_REPAIR_AUDIT.json"
+    ],
+    "status": "PASS",
+    "upstream_at_execution": "d40d64812982044324bab2030b40ed5cc5100d3b"
+  },
+  "implementation_sha256": "02f6b1351fc5d5be6e067174543182b9683074c59aa07cf02e9dd4001c5c9266",
+  "input_manifest": {
+    "artifact_count": 1388,
+    "artifact_count_by_alias": {
+      "OPENBMI_STRESS_HISTORICAL": 1264,
+      "WBCIC_REPLICATION_HISTORICAL": 124
+    },
+    "artifact_count_by_role": {
+      "direction_table": 315,
+      "embedding_archive": 315,
+      "evaluation_guard": 315,
+      "frozen_direction_basis": 15,
+      "frozen_global_protocol": 2,
+      "frozen_head_checkpoint": 315,
+      "historical_aggregate_code": 2,
+      "historical_common_code": 2,
+      "historical_unit_runner": 2,
+      "lambda_selection_freeze": 45,
+      "source_freeze_guard": 15,
+      "unit_protocol": 45
+    },
+    "duplicate_rows": 0,
+    "failures": [],
+    "manifest_sha256": "acc0507b258f3e9168ce7a1e63f15a43969ea02bcbdda1efdbd87d60a1ea493b",
+    "metadata_bound_to_executable_scope": true,
+    "status": "PASS"
+  },
+  "no_sealed_or_outer_access": true,
+  "protocol_binding": {
+    "implementation_binding": {
+      "aggregate_atol": 5e-08,
+      "aggregate_rtol": 5e-06,
+      "analyses": [
+        {
+          "dataset": "OPENBMI_STRESS",
+          "methods": [
+            "ERM",
+            "DANN",
+            "CORAL",
+            "MMD"
+          ],
+          "name": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+          "role": "PRIMARY_OPENBMI",
+          "subject_aggregation_mode": "EQUAL_METHOD_FAMILY",
+          "training_weight_mode": "EQUAL_METHOD_FAMILY"
+        },
+        {
+          "dataset": "OPENBMI_STRESS",
+          "methods": [
+            "ERM",
+            "DANN",
+            "CORAL",
+            "MMD"
+          ],
+          "name": "OPENBMI_EQUAL_CONFIG_SECONDARY",
+          "role": "MANDATORY_GRID_WEIGHTING_SENSITIVITY",
+          "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+          "training_weight_mode": "EQUAL_CONFIGURATION"
+        },
+        {
+          "dataset": "OPENBMI_STRESS",
+          "methods": [
+            "ERM"
+          ],
+          "name": "OPENBMI_ERM_ONLY_SENSITIVITY",
+          "role": "MANDATORY_DIRECT_WBCIC_SCOPE_SENSITIVITY",
+          "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+          "training_weight_mode": "UNIFORM"
+        },
+        {
+          "dataset": "WBCIC_REPLICATION",
+          "methods": [
+            "ERM"
+          ],
+          "name": "WBCIC_ERM_PRIMARY",
+          "role": "PRIMARY_WBCIC",
+          "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+          "training_weight_mode": "UNIFORM"
+        }
+      ],
+      "bootstrap_analyses": [
+        "OPENBMI_EQUAL_FAMILY_PRIMARY",
+        "WBCIC_ERM_PRIMARY"
+      ],
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 2026082901,
+      "canonical_repository_paths": {
+        "implementation": "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py",
+        "manifest": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_INPUT_MANIFEST.csv",
+        "output_directory": "paper_closure/statistics/subject_level_d_vs_i",
+        "protocol": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_REANALYSIS_LOCK.json",
+        "rationale": "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md",
+        "test": "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py"
+      },
+      "ci_alpha": 0.05,
+      "configurations": [
+        {
+          "lambda": 0.0,
+          "method": "ERM"
+        },
+        {
+          "lambda": 0.01,
+          "method": "DANN"
+        },
+        {
+          "lambda": 0.1,
+          "method": "DANN"
+        },
+        {
+          "lambda": 1.0,
+          "method": "DANN"
+        },
+        {
+          "lambda": 0.01,
+          "method": "CORAL"
+        },
+        {
+          "lambda": 0.1,
+          "method": "CORAL"
+        },
+        {
+          "lambda": 1.0,
+          "method": "CORAL"
+        },
+        {
+          "lambda": 0.01,
+          "method": "MMD"
+        },
+        {
+          "lambda": 0.1,
+          "method": "MMD"
+        },
+        {
+          "lambda": 1.0,
+          "method": "MMD"
+        }
+      ],
+      "cross_dataset_terminals": [
+        "CROSS_DATASET_SUPPORTED_CONDITIONAL",
+        "CROSS_DATASET_PARTIAL",
+        "CROSS_DATASET_NOT_SUPPORTED",
+        "CROSS_DATASET_POINT_CI_DIRECTION_CONFLICT"
+      ],
+      "dataset_gate_labels": [
+        "SUPPORTED_CONDITIONAL",
+        "PARTIAL",
+        "NOT_SUPPORTED",
+        "REVERSED",
+        "POINT_CI_DIRECTION_CONFLICT"
+      ],
+      "expected_analysis_rows": {
+        "OPENBMI_EQUAL_CONFIG_SECONDARY": 19200,
+        "OPENBMI_EQUAL_FAMILY_PRIMARY": 19200,
+        "OPENBMI_ERM_ONLY_SENSITIVITY": 1920,
+        "WBCIC_ERM_PRIMARY": 984
+      },
+      "expected_manifest_artifact_count": 1388,
+      "expected_manifest_counts_by_alias": {
+        "OPENBMI_STRESS_HISTORICAL": 1264,
+        "WBCIC_REPLICATION_HISTORICAL": 124
+      },
+      "expected_manifest_counts_by_role": {
+        "direction_table": 315,
+        "embedding_archive": 315,
+        "evaluation_guard": 315,
+        "frozen_direction_basis": 15,
+        "frozen_global_protocol": 2,
+        "frozen_head_checkpoint": 315,
+        "historical_aggregate_code": 2,
+        "historical_common_code": 2,
+        "historical_unit_runner": 2,
+        "lambda_selection_freeze": 45,
+        "source_freeze_guard": 15,
+        "unit_protocol": 45
+      },
+      "expected_reconstructed_rows": {
+        "OPENBMI_STRESS": 19200,
+        "WBCIC_REPLICATION": 984
+      },
+      "expected_split_counts": {
+        "OPENBMI_EQUAL_CONFIG_SECONDARY": 240,
+        "OPENBMI_EQUAL_FAMILY_PRIMARY": 240,
+        "OPENBMI_ERM_ONLY_SENSITIVITY": 240,
+        "WBCIC_ERM_PRIMARY": 123
+      },
+      "models": {
+        "M0": [
+          "persistence",
+          "geometry_strength",
+          "rank_feature"
+        ],
+        "MD": [
+          "persistence",
+          "geometry_strength",
+          "rank_feature",
+          "D_finite"
+        ],
+        "MI": [
+          "persistence",
+          "geometry_strength",
+          "rank_feature",
+          "identity_score"
+        ],
+        "MID": [
+          "persistence",
+          "geometry_strength",
+          "rank_feature",
+          "identity_score",
+          "D_finite"
+        ]
+      },
+      "numerical_equivalence_atol": 1e-10,
+      "primary_analyses": {
+        "OPENBMI_STRESS": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+        "WBCIC_REPLICATION": "WBCIC_ERM_PRIMARY"
+      },
+      "required_output_files": [
+        "paper_closure/statistics/subject_level_d_vs_i/subject_observations.csv",
+        "paper_closure/statistics/subject_level_d_vs_i/subject_summary.csv",
+        "paper_closure/statistics/subject_level_d_vs_i/subject_backbone_summary.csv",
+        "paper_closure/statistics/subject_level_d_vs_i/SUBJECT_LEVEL_D_VS_I_SUMMARY.json",
+        "paper_closure/statistics/subject_level_d_vs_i/SUBJECT_LEVEL_D_VS_I_REPORT.md",
+        "paper_closure/statistics/subject_level_d_vs_i/VALIDATION.json"
+      ],
+      "ridge_alpha": 1.0,
+      "standardization_min_std": 1e-08
+    },
+    "status": "PASS"
+  },
+  "protocol_id": "PERSIST_EEG_SUBJECT_LEVEL_D_VS_I_REANALYSIS_V1",
+  "protocol_sha256": "65cd6c8b2e630001ee7d660e3aa8fd75261c5c8a35dbe85211aa0103cdb94fbf",
+  "rationale_sha256": "a4d496b461dac0f7c0e484c596eba5c17490c35e6c2ba7f6f878457585767cc6",
+  "reconstructed_grid": {
+    "datasets": {
+      "OPENBMI_STRESS": {
+        "backbones": [
+          "eegnet",
+          "eegconformer"
+        ],
+        "biological_subjects": 40,
+        "directions_per_configuration": 8,
+        "duplicate_cells": 0,
+        "fold_subject_counts": {
+          "0": 8,
+          "1": 8,
+          "2": 8,
+          "3": 8,
+          "4": 8
+        },
+        "formal_configurations": 10,
+        "missing_cartesian_cells": 0,
+        "predictors_constant_within_cell": true,
+        "rows": 19200,
+        "seeds": 3,
+        "subject_trial_counts_constant_across_configurations": true
+      },
+      "WBCIC_REPLICATION": {
+        "backbones": [
+          "eegnet"
+        ],
+        "biological_subjects": 41,
+        "directions_per_configuration": 8,
+        "duplicate_cells": 0,
+        "fold_subject_counts": {
+          "0": 9,
+          "1": 8,
+          "2": 8,
+          "3": 8,
+          "4": 8
+        },
+        "formal_configurations": 1,
+        "missing_cartesian_cells": 0,
+        "predictors_constant_within_cell": true,
+        "rows": 984,
+        "seeds": 3,
+        "subject_trial_counts_constant_across_configurations": true
+      }
+    },
+    "status": "PASS"
+  },
+  "reconstruction_integrity": {
+    "OPENBMI_STRESS": {
+      "D_finite_logit_semantics": "matched_float64_intact_and_erased_source_logits",
+      "analysis_logit_semantics": "matched_float64_intact_and_erased",
+      "formal_configuration_index_arrays_identical_within_fold": true,
+      "max_historical_D_finite_abs_difference": 4.440892098500626e-16,
+      "max_historical_aggregate_abs_difference": 9.974659986866641e-17,
+      "max_legacy_to_float64_D_finite_abs_difference": 0.003816830780684125,
+      "max_legacy_to_float64_aggregate_abs_difference": 0.00035300375114261096,
+      "outcome_fold_partition_subjects": 40,
+      "source_outcome_subject_disjoint": true
+    },
+    "WBCIC_REPLICATION": {
+      "D_finite_logit_semantics": "matched_float64_intact_and_erased_source_logits",
+      "analysis_logit_semantics": "matched_float64_intact_and_erased",
+      "formal_configuration_index_arrays_identical_within_fold": true,
+      "max_historical_D_finite_abs_difference": 2.220446049250313e-16,
+      "max_historical_aggregate_abs_difference": 9.454242944073599e-17,
+      "max_legacy_to_float64_D_finite_abs_difference": 0.0,
+      "max_legacy_to_float64_aggregate_abs_difference": 0.0,
+      "outcome_fold_partition_subjects": 41,
+      "source_outcome_subject_disjoint": true
+    },
+    "aggregate_atol": 5e-08,
+    "aggregate_rtol": 5e-06
+  },
+  "scope": {
+    "analysis_rows": {
+      "OPENBMI_EQUAL_CONFIG_SECONDARY": 19200,
+      "OPENBMI_EQUAL_FAMILY_PRIMARY": 19200,
+      "OPENBMI_ERM_ONLY_SENSITIVITY": 1920,
+      "WBCIC_ERM_PRIMARY": 984
+    },
+    "datasets": {
+      "OPENBMI_STRESS": {
+        "backbones_per_subject": 2,
+        "biological_subjects": 40,
+        "biological_subjects_by_analysis": {
+          "OPENBMI_EQUAL_CONFIG_SECONDARY": 40,
+          "OPENBMI_EQUAL_FAMILY_PRIMARY": 40,
+          "OPENBMI_ERM_ONLY_SENSITIVITY": 40
+        },
+        "folds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "predicted_rows": 40320,
+        "reconstructed_rows": 19200
+      },
+      "WBCIC_REPLICATION": {
+        "backbones_per_subject": 1,
+        "biological_subjects": 41,
+        "biological_subjects_by_analysis": {
+          "WBCIC_ERM_PRIMARY": 41
+        },
+        "folds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "predicted_rows": 984,
+        "reconstructed_rows": 984
+      }
+    },
+    "status": "PASS"
+  },
+  "status": "PASS",
+  "test_sha256": "b148d2d10ec6e5c39d0f75000bfb556f42c2371a135a9c16670c1521f71fc278",
+  "uniform_refit_equivalence": {
+    "OPENBMI_EQUAL_FAMILY_PRIMARY": {
+      "absolute_differences": {
+        "OVERALL": 2.168404344971009e-19,
+        "eegconformer": 5.421010862427522e-19,
+        "eegnet": 8.673617379884035e-19
+      },
+      "status": "PASS",
+      "tolerance": 1e-10
+    },
+    "WBCIC_ERM_PRIMARY": {
+      "absolute_differences": {
+        "OVERALL": 7.589415207398531e-19,
+        "eegnet": 7.589415207398531e-19
+      },
+      "status": "PASS",
+      "tolerance": 1e-10
+    }
+  }
+}
