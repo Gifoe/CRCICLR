@@ -1,0 +1,158 @@
+{
+  "analysis": {
+    "bootstrap_resamples": 2000,
+    "intervention_regularization": "reuse_raw_probe_C_for_all_matched_conditions",
+    "linear_probe_batch_size": 2048,
+    "linear_probe_epochs": 5,
+    "logistic_c_grid": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "pair_samples_per_subject_condition": 128,
+    "permutation_resamples": 1000,
+    "random_erasure_repetitions": 20,
+    "rank_sensitivity": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ]
+  },
+  "config_path": "configs/persist_eeg_stage0/stage0.yaml",
+  "config_sha256": "67a680a7f34cfd254b6f1aaf524c62824689d611f0177d34f02bf9ce183776f2",
+  "features": {
+    "bands": {
+      "alpha": [
+        8.0,
+        13.0
+      ],
+      "beta": [
+        13.0,
+        30.0
+      ],
+      "delta": [
+        1.0,
+        4.0
+      ],
+      "low_gamma": [
+        30.0,
+        45.0
+      ],
+      "theta": [
+        4.0,
+        8.0
+      ]
+    },
+    "covariance_shrinkage": "oas",
+    "views": [
+      "spectral",
+      "temporal",
+      "covariance",
+      "combined"
+    ]
+  },
+  "forbidden": [
+    "test-subject tuning or statistics",
+    "trial-level ML splits",
+    "per-subject normalization",
+    "per-trial z-scoring",
+    "foundation models",
+    "post-result gate changes",
+    "performance-based subject exclusion"
+  ],
+  "frozen_at_utc": "2026-08-10T20:06:07.878545+00:00",
+  "gates": {
+    "A": {
+      "eegnet_ci_lower": 0.55,
+      "eegnet_macro_auroc": 0.7,
+      "eegnet_pair_auroc": 0.7,
+      "eegnet_pairs_required": 2,
+      "permutation_p": 0.01,
+      "secondary_ci_lower": 0.5,
+      "secondary_macro_auroc": 0.65
+    },
+    "B": {
+      "eegnet_macro_auroc": 0.65,
+      "eegnet_macro_ci_lower": 0.55,
+      "paradigms_ci_above_chance_required": 2,
+      "secondary_macro_auroc": 0.6
+    },
+    "C": {
+      "maximum_other_harm": -0.01,
+      "selectivity_fraction_removed": 0.5,
+      "utility_delta": 0.02,
+      "utility_paradigms_required": 2
+    },
+    "D": {
+      "maximum_other_harm": -0.01,
+      "primary_mi_delta": 0.01,
+      "verification_auroc": 0.65,
+      "verification_ci_lower": 0.5
+    }
+  },
+  "preprocessing": {
+    "bandpass_hz": [
+      1.0,
+      45.0
+    ],
+    "cache_dtype": "float32",
+    "notch_hz": 60,
+    "notch_policy": "only_if_line_frequency_is_inside_passband",
+    "per_subject_normalization": false,
+    "per_trial_normalization": false,
+    "target_sampling_rate": 250,
+    "unit": "V"
+  },
+  "primary_metrics": {
+    "erasure_benefit": "paired_balanced_accuracy_difference",
+    "event_task": "balanced_accuracy",
+    "session_persistence": "AUROC",
+    "subject_persistence": "AUROC"
+  },
+  "protocol_version": 1,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sha256": "47acec74a7650734a5fed4dadffb7582c06c944f821c38f418762d491f2adbc6",
+  "split_sha256": "10fd13efcff4987dd22c2d9304761cd0df3964c148c6795f9b9eb3cdfbb0a204",
+  "training": {
+    "balanced_epoch_strategy": "shortest_task_full_pass_with_cyclic_full_coverage",
+    "batch_size_fallbacks": [
+      64,
+      32,
+      16
+    ],
+    "convtransformer": {
+      "d_model": 64,
+      "dropout": 0.1,
+      "learning_rate": 0.0003,
+      "max_epochs": 80,
+      "mlp_ratio": 2,
+      "n_blocks": 2,
+      "n_heads": 4,
+      "optimizer": "AdamW",
+      "patience": 10,
+      "weight_decay": 0.0001
+    },
+    "eegnet": {
+      "learning_rate": 0.001,
+      "max_epochs": 100,
+      "optimizer": "AdamW",
+      "patience": 12,
+      "weight_decay": 0.0001
+    },
+    "embedding_dim": 128,
+    "equal_paradigm_weighting": true,
+    "initial_batch_size": 64,
+    "num_workers": 0
+  }
+}

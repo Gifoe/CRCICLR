@@ -1,0 +1,365 @@
+{
+  "protocol_id": "PERSIST_EEG_SUBJECT_LEVEL_D_VS_I_REANALYSIS_V1",
+  "status": "FROZEN_BEFORE_SUBJECT_LEVEL_OUTCOME_RECONSTRUCTION",
+  "classification": "A_REQUIRED_VALIDITY_REPAIR",
+  "freeze_date": "2026-08-29",
+  "scientific_question": "Across biological outcome subjects, does a source-side Decision Dependence model have lower doubly cross-fitted intervention-consequence prediction error than the matched Subject Identity model?",
+  "rationale_path": "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md",
+  "implementation_path": "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py",
+  "test_path": "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py",
+  "input_manifest_path": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_INPUT_MANIFEST.csv",
+  "data_scopes": {
+    "OPENBMI_STRESS": {
+      "resource": "OpenBMI 40-subject already-observed development resource",
+      "expected_biological_subjects": 40,
+      "outcome_session": "Session 2",
+      "frozen_folds": 5,
+      "backbones": [
+        "eegnet",
+        "eegconformer"
+      ],
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "configurations": [
+        "ERM:0.00",
+        "DANN:0.01",
+        "DANN:0.10",
+        "DANN:1.00",
+        "CORAL:0.01",
+        "CORAL:0.10",
+        "CORAL:1.00",
+        "MMD:0.01",
+        "MMD:0.10",
+        "MMD:1.00"
+      ],
+      "directions_per_configuration_run": 8,
+      "expected_subject_observation_rows": 19200,
+      "forbidden_resources": [
+        "OpenBMI internal-14",
+        "OpenBMI policy holdout-12",
+        "any invalidated_smoke runtime"
+      ]
+    },
+    "WBCIC_REPLICATION": {
+      "resource": "WBCIC 41-subject already-observed development resource",
+      "expected_biological_subjects": 41,
+      "outcome_session": "Session 3",
+      "frozen_folds": 5,
+      "backbones": [
+        "eegnet"
+      ],
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "configurations": [
+        "ERM:0.00"
+      ],
+      "directions_per_configuration_run": 8,
+      "expected_subject_observation_rows": 984,
+      "forbidden_resources": [
+        "WBCIC outer-10",
+        "any non-development subject"
+      ]
+    }
+  },
+  "artifact_policy": {
+    "retained_artifacts_only": true,
+    "retraining_allowed": false,
+    "encoder_or_head_refitting_allowed": false,
+    "direction_reselection_allowed": false,
+    "configuration_selection_allowed": false,
+    "sealed_or_outer_access_allowed": false,
+    "input_hash_verification_required": true,
+    "protocol_implementation_manifest_rationale_and_tests_must_share_one_clean_git_commit": true,
+    "manifest_overwrite_allowed": false,
+    "result_output_overwrite_allowed": false,
+    "result_publication": "write to a new staging directory and rename only after validation passes",
+    "historical_npz_object_array_policy": "historical pandas subject arrays require pickle loading; permit it only after the exact archive bytes pass the committed SHA-256 manifest"
+  },
+  "consequence_reconstruction": {
+    "outcome": "per-subject mean cross-entropy increase after one frozen source-defined direction is erased",
+    "formula": "C_sj = mean_trial_in_subject_s[CE(erased_logits_j,y)-CE(intact_logits,y)]",
+    "subject_weighting": "equal biological-subject weighting",
+    "openbmi_direction_rule": "exact deterministic reconstruction of the historical source-only SVD pool and persistence ranking",
+    "wbcic_direction_rule": "load the historical pre-outcome frozen ERM persistence basis",
+    "head_rule": "use the retained frozen task-head checkpoint; no retraining; recompute both intact and erased logits through that head in float64",
+    "openbmi_numerical_repair": "the historical OpenBMI table mixed stored lower-precision intact logits with float64 erased logits; reproduce that legacy aggregate only as an integrity check, but use matched float64 intact/erased logits for every locked estimate",
+    "source_D_finite_repair": "recompute both intact and erased source logits through the same frozen head in float64 and use that corrected D_finite in every locked MI-versus-MD fit",
+    "integrity_check": "legacy-semantics trial-weighted consequence and source D_finite reconstructions must match the historical direction table within atol=5e-8 and rtol=5e-6; failure stops"
+  },
+  "prediction_models": {
+    "ridge_alpha": 1.0,
+    "standardization": "training rows only; population standard deviation; features with SD below 1e-8 set to 1",
+    "intercept_unpenalized": true,
+    "M0": [
+      "persistence",
+      "geometry_strength",
+      "rank_feature"
+    ],
+    "MI": [
+      "persistence",
+      "geometry_strength",
+      "rank_feature",
+      "identity_score"
+    ],
+    "MD": [
+      "persistence",
+      "geometry_strength",
+      "rank_feature",
+      "D_finite"
+    ],
+    "MID": [
+      "persistence",
+      "geometry_strength",
+      "rank_feature",
+      "identity_score",
+      "D_finite"
+    ],
+    "primary_comparison": "MI versus MD",
+    "M0_and_MID_role": "descriptive sensitivity only"
+  },
+  "analysis_variants": {
+    "OPENBMI_EQUAL_FAMILY_PRIMARY": {
+      "scope": "complete formal ten-configuration grid",
+      "backbone_fit_scope": "same backbone only",
+      "held_run": "seed within backbone",
+      "training_cell_weights": "equal method-family total weight; ERM, DANN, CORAL, and MMD each contribute 25%; weights rescaled to mean one before weighted standardization and ridge fitting",
+      "subject_error_aggregation": "compute RMSE and MI-minus-MD within each method family, average the four deltas within backbone, then average the two backbone deltas within subject",
+      "role": "PRIMARY_OPENBMI"
+    },
+    "OPENBMI_EQUAL_CONFIG_SECONDARY": {
+      "scope": "complete formal ten-configuration grid",
+      "backbone_fit_scope": "same backbone only",
+      "held_run": "seed within backbone",
+      "training_cell_weights": "one per configuration-direction cell",
+      "subject_error_aggregation": "pool the exact historical configuration grid within backbone, then average the two backbone deltas within subject",
+      "role": "MANDATORY_GRID_WEIGHTING_SENSITIVITY"
+    },
+    "OPENBMI_ERM_ONLY_SENSITIVITY": {
+      "scope": "ERM directions only",
+      "backbone_fit_scope": "same backbone only",
+      "held_run": "seed within backbone",
+      "training_cell_weights": "uniform",
+      "subject_error_aggregation": "pool three held-seed predictions within backbone, then average backbone deltas within subject",
+      "role": "MANDATORY_DIRECT_WBCIC_SCOPE_SENSITIVITY"
+    },
+    "WBCIC_ERM_PRIMARY": {
+      "scope": "frozen ERM direction bank",
+      "backbone_fit_scope": "EEGNet",
+      "held_run": "seed",
+      "training_cell_weights": "uniform",
+      "subject_error_aggregation": "pool three held-seed predictions within subject",
+      "role": "PRIMARY_WBCIC"
+    }
+  },
+  "cross_validation": {
+    "design": "within-historical-outcome-fold double cross-fitting",
+    "why_cross_fold_pooling_is_forbidden": "a subject held out as outcome in one historical fold re-enters source/model-fit roles in other historical folds",
+    "historical_fold_rule": "use only the subject's unique historical outcome fold; the encoder and source directions for that fold excluded every outcome-fold subject",
+    "simultaneous_holdouts": [
+      "one biological outcome subject",
+      "one complete algorithmic run"
+    ],
+    "algorithmic_run_openbmi": "seed within one backbone, with configurations and directions nested inside the held run; the other backbone never enters this fit",
+    "algorithmic_run_wbcic": "seed, with all eight ERM directions nested inside the held run",
+    "training_rule": "within the same historical outcome fold and same backbone, fit on the other outcome subjects and the other seeds only",
+    "training_target": "equal-peer-subject mean C_sj within each retained training direction/configuration/run cell",
+    "test_rule": "predict every cell in the held run for the held biological subject",
+    "other_historical_folds_allowed_in_fit": false,
+    "held_subject_outcomes_allowed_in_fit": false,
+    "held_run_outcomes_allowed_in_fit": false,
+    "expected_splits_openbmi": 240,
+    "expected_splits_wbcic": 123,
+    "hyperparameter_selection": "none"
+  },
+  "primary_estimand": {
+    "cell_error": "prediction minus C_sj",
+    "within_subject_backbone_rmse": "RMSE over all doubly cross-fitted held-run predictions, frozen directions, seeds, and configurations for one subject and backbone",
+    "openbmi_method_family_aggregation": "for the primary, compute family-specific RMSE differences and average ERM/DANN/CORAL/MMD equally within subject and backbone",
+    "openbmi_backbone_aggregation": "compute Delta_s,b within each backbone without cross-backbone training, then average the two backbone deltas within subject",
+    "wbcic_backbone_aggregation": "single EEGNet delta per subject",
+    "dataset_point_estimate": "unweighted mean Delta_s over biological subjects",
+    "positive_direction": "greater than zero favors Decision Dependence",
+    "statistical_unit": "biological subject",
+    "independence_rule": "seeds, folds, configurations, directions, trials, runs, and backbone rows are repeated measurements and never independent inferential units"
+  },
+  "uncertainty": {
+    "confidence_interval": "percentile fold-stratified nonparametric biological-subject cluster bootstrap with the complete double-cross-fit ridge procedure refit in every draw",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 2026082901,
+    "fold_stratification": "resample the original number of biological subjects with replacement inside each historical outcome fold",
+    "openbmi_backbone_coupling": "the same resampled subject multiplicity is carried through both backbones",
+    "duplicate_id_rule": "all bootstrap copies of the held subject ID are excluded from its peer target",
+    "degenerate_draw_rule": "if any positively weighted held ID leaves zero peer weight in its fold, reject the entire draw and continue until 10000 valid draws",
+    "sign_flip_test": "NOT_PERFORMED; exchangeability is not established for overlapping peer fits",
+    "alpha": 0.05,
+    "multiplicity": "one primary MI-minus-MD comparison per dataset; dataset results reported separately; no pooled confirmatory p-value"
+  },
+  "decision_gates": {
+    "dataset_supported_conditional": "mean Delta_s > 0 and refitted subject-bootstrap 95% CI lower bound > 0",
+    "dataset_partial": "mean Delta_s > 0 but CI includes 0",
+    "dataset_not_supported": "mean Delta_s <= 0 and CI includes 0",
+    "dataset_reversed": "mean Delta_s <= 0 and refitted subject-bootstrap 95% CI upper bound < 0",
+    "dataset_point_ci_direction_conflict": "POINT_CI_DIRECTION_CONFLICT if mean Delta_s > 0 with CI upper bound < 0, or mean Delta_s <= 0 with CI lower bound > 0; report the contradiction and do not map it to support, partial support, non-support, or reversal",
+    "openbmi_across_two_backbones_wording": "allowed only if both backbone-specific primary point estimates are positive",
+    "cross_dataset_strong_support": "both dataset primaries meet dataset_supported_conditional and the OpenBMI two-backbone wording gate passes",
+    "cross_dataset_partial_support": "both point estimates are positive but at least one dataset does not meet dataset_supported_conditional or the OpenBMI two-backbone wording gate fails",
+    "cross_dataset_not_supported": "either dataset point estimate is nonpositive",
+    "cross_dataset_point_ci_direction_conflict": "if either dataset primary is POINT_CI_DIRECTION_CONFLICT, use CROSS_DATASET_POINT_CI_DIRECTION_CONFLICT before all other cross-dataset gates",
+    "cross_dataset_estimand_wording": "OpenBMI equal-family full-grid and WBCIC ERM are two predeclared dataset-specific estimands, not an exactly matched intervention-bank replication; OpenBMI ERM-only is the mandatory direct-scope sensitivity"
+  },
+  "implementation_binding": {
+    "canonical_repository_paths": {
+      "protocol": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_REANALYSIS_LOCK.json",
+      "manifest": "paper_closure/protocol/SUBJECT_LEVEL_D_VS_I_INPUT_MANIFEST.csv",
+      "implementation": "paper_closure/scripts/run_subject_level_d_vs_i_reanalysis.py",
+      "test": "paper_closure/scripts/test_subject_level_d_vs_i_reanalysis.py",
+      "rationale": "paper_closure/statistics/SUBJECT_LEVEL_D_VS_I_REANALYSIS_RATIONALE.md",
+      "output_directory": "paper_closure/statistics/subject_level_d_vs_i"
+    },
+    "required_output_files": [
+      "paper_closure/statistics/subject_level_d_vs_i/subject_observations.csv",
+      "paper_closure/statistics/subject_level_d_vs_i/subject_summary.csv",
+      "paper_closure/statistics/subject_level_d_vs_i/subject_backbone_summary.csv",
+      "paper_closure/statistics/subject_level_d_vs_i/SUBJECT_LEVEL_D_VS_I_SUMMARY.json",
+      "paper_closure/statistics/subject_level_d_vs_i/SUBJECT_LEVEL_D_VS_I_REPORT.md",
+      "paper_closure/statistics/subject_level_d_vs_i/VALIDATION.json"
+    ],
+    "dataset_gate_labels": [
+      "SUPPORTED_CONDITIONAL",
+      "PARTIAL",
+      "NOT_SUPPORTED",
+      "REVERSED",
+      "POINT_CI_DIRECTION_CONFLICT"
+    ],
+    "cross_dataset_terminals": [
+      "CROSS_DATASET_SUPPORTED_CONDITIONAL",
+      "CROSS_DATASET_PARTIAL",
+      "CROSS_DATASET_NOT_SUPPORTED",
+      "CROSS_DATASET_POINT_CI_DIRECTION_CONFLICT"
+    ],
+    "configurations": [
+      {"method": "ERM", "lambda": 0.0},
+      {"method": "DANN", "lambda": 0.01},
+      {"method": "DANN", "lambda": 0.1},
+      {"method": "DANN", "lambda": 1.0},
+      {"method": "CORAL", "lambda": 0.01},
+      {"method": "CORAL", "lambda": 0.1},
+      {"method": "CORAL", "lambda": 1.0},
+      {"method": "MMD", "lambda": 0.01},
+      {"method": "MMD", "lambda": 0.1},
+      {"method": "MMD", "lambda": 1.0}
+    ],
+    "models": {
+      "M0": ["persistence", "geometry_strength", "rank_feature"],
+      "MI": ["persistence", "geometry_strength", "rank_feature", "identity_score"],
+      "MD": ["persistence", "geometry_strength", "rank_feature", "D_finite"],
+      "MID": ["persistence", "geometry_strength", "rank_feature", "identity_score", "D_finite"]
+    },
+    "analyses": [
+      {
+        "name": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+        "dataset": "OPENBMI_STRESS",
+        "methods": ["ERM", "DANN", "CORAL", "MMD"],
+        "training_weight_mode": "EQUAL_METHOD_FAMILY",
+        "subject_aggregation_mode": "EQUAL_METHOD_FAMILY",
+        "role": "PRIMARY_OPENBMI"
+      },
+      {
+        "name": "OPENBMI_EQUAL_CONFIG_SECONDARY",
+        "dataset": "OPENBMI_STRESS",
+        "methods": ["ERM", "DANN", "CORAL", "MMD"],
+        "training_weight_mode": "EQUAL_CONFIGURATION",
+        "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+        "role": "MANDATORY_GRID_WEIGHTING_SENSITIVITY"
+      },
+      {
+        "name": "OPENBMI_ERM_ONLY_SENSITIVITY",
+        "dataset": "OPENBMI_STRESS",
+        "methods": ["ERM"],
+        "training_weight_mode": "UNIFORM",
+        "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+        "role": "MANDATORY_DIRECT_WBCIC_SCOPE_SENSITIVITY"
+      },
+      {
+        "name": "WBCIC_ERM_PRIMARY",
+        "dataset": "WBCIC_REPLICATION",
+        "methods": ["ERM"],
+        "training_weight_mode": "UNIFORM",
+        "subject_aggregation_mode": "POOLED_CONFIGURATION_GRID",
+        "role": "PRIMARY_WBCIC"
+      }
+    ],
+    "primary_analyses": {
+      "OPENBMI_STRESS": "OPENBMI_EQUAL_FAMILY_PRIMARY",
+      "WBCIC_REPLICATION": "WBCIC_ERM_PRIMARY"
+    },
+    "bootstrap_analyses": [
+      "OPENBMI_EQUAL_FAMILY_PRIMARY",
+      "WBCIC_ERM_PRIMARY"
+    ],
+    "ridge_alpha": 1.0,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 2026082901,
+    "ci_alpha": 0.05,
+    "standardization_min_std": 1e-08,
+    "aggregate_atol": 5e-08,
+    "aggregate_rtol": 5e-06,
+    "numerical_equivalence_atol": 1e-10,
+    "expected_reconstructed_rows": {
+      "OPENBMI_STRESS": 19200,
+      "WBCIC_REPLICATION": 984
+    },
+    "expected_analysis_rows": {
+      "OPENBMI_EQUAL_FAMILY_PRIMARY": 19200,
+      "OPENBMI_EQUAL_CONFIG_SECONDARY": 19200,
+      "OPENBMI_ERM_ONLY_SENSITIVITY": 1920,
+      "WBCIC_ERM_PRIMARY": 984
+    },
+    "expected_split_counts": {
+      "OPENBMI_EQUAL_FAMILY_PRIMARY": 240,
+      "OPENBMI_EQUAL_CONFIG_SECONDARY": 240,
+      "OPENBMI_ERM_ONLY_SENSITIVITY": 240,
+      "WBCIC_ERM_PRIMARY": 123
+    },
+    "expected_manifest_artifact_count": 1388,
+    "expected_manifest_counts_by_alias": {
+      "OPENBMI_STRESS_HISTORICAL": 1264,
+      "WBCIC_REPLICATION_HISTORICAL": 124
+    },
+    "expected_manifest_counts_by_role": {
+      "direction_table": 315,
+      "embedding_archive": 315,
+      "evaluation_guard": 315,
+      "frozen_direction_basis": 15,
+      "frozen_global_protocol": 2,
+      "frozen_head_checkpoint": 315,
+      "historical_aggregate_code": 2,
+      "historical_common_code": 2,
+      "historical_unit_runner": 2,
+      "lambda_selection_freeze": 45,
+      "source_freeze_guard": 15,
+      "unit_protocol": 45
+    }
+  },
+  "required_outputs": [
+    "paper_closure/statistics/subject_level_d_vs_i/subject_observations.csv",
+    "paper_closure/statistics/subject_level_d_vs_i/subject_summary.csv",
+    "paper_closure/statistics/subject_level_d_vs_i/subject_backbone_summary.csv",
+    "paper_closure/statistics/subject_level_d_vs_i/SUBJECT_LEVEL_D_VS_I_SUMMARY.json",
+    "paper_closure/statistics/subject_level_d_vs_i/SUBJECT_LEVEL_D_VS_I_REPORT.md",
+    "paper_closure/statistics/subject_level_d_vs_i/VALIDATION.json"
+  ],
+  "exp3_policy": {
+    "subject_level_reconstruction": "NOT_POSSIBLE_FROM_RETAINED_ARTIFACTS",
+    "reason": "per-subject intervention outcomes and runtime embeddings/checkpoints were not retained",
+    "required_reporting": "retain the exact Exp3 run-level result but label its interval and sign-flip test algorithmic/run-level, not subject-population inference"
+  },
+  "binding_outcome_rule": "Any weakening, reversal, or uncertainty must shrink the manuscript claim; prior run-level results cannot override this subject-level analysis.",
+  "stop_rule": "Run this protocol once. Do not alter features, alpha, folds, directions, aggregation, seeds, gates, or datasets after outcome reconstruction. Implementation-only repairs require a documented discrepancy and a new audit commit; no alternative scientific analysis may be substituted."
+}

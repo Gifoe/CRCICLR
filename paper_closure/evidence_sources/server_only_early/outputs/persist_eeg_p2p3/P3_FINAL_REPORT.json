@@ -1,0 +1,80 @@
+{
+  "status": "P3_TRAJECTORY_CLAIM_NOT_SUPPORTED",
+  "clauses": {
+    "event_learning": true,
+    "broad_compression": false,
+    "best_nonrandom_persistence": true,
+    "best_useful_long": true,
+    "low_rank_concentration": false,
+    "multi_seed_consistency": false
+  },
+  "statistics": {
+    "mi_event_epoch0_to_best": {
+      "mean": 0.19022222222222224,
+      "median": 0.19038888888888889,
+      "ci95": [
+        0.1727773148148148,
+        0.2074453703703703
+      ],
+      "p_two_sided": 0.0,
+      "probability_negative": 0.0,
+      "resamples": 10000
+    },
+    "ssvep_event_epoch0_to_best": {
+      "mean": 0.6495,
+      "median": 0.6495,
+      "ci95": [
+        0.6344074074074074,
+        0.6639814814814814
+      ],
+      "p_two_sided": 0.0,
+      "probability_negative": 0.0,
+      "resamples": 10000
+    },
+    "long_epoch0_to_best": {
+      "mean": 0.1557005328896605,
+      "median": 0.1556962001470872,
+      "ci95": [
+        0.14057923116801696,
+        0.17081971345124422
+      ],
+      "p_two_sided": 0.0,
+      "probability_negative": 0.0,
+      "resamples": 10000
+    },
+    "mi_utility_early_to_best": {
+      "mean": -0.02142592592592592,
+      "median": -0.02148148148148149,
+      "ci95": [
+        -0.0378162037037037,
+        -0.0048879629629629525
+      ],
+      "p_two_sided": 0.0104,
+      "probability_negative": 0.9948,
+      "resamples": 10000
+    },
+    "ssvep_utility_early_to_best": {
+      "mean": 0.0034074074074074063,
+      "median": 0.00355555555555556,
+      "ci95": [
+        -0.003518981481481475,
+        0.009796296296296287
+      ],
+      "p_two_sided": 0.317,
+      "probability_negative": 0.1585,
+      "resamples": 10000
+    }
+  },
+  "best_cross_session_long_auroc": 0.7584030357507964,
+  "mean_UL_rank": {
+    "epoch0": 2.8,
+    "best": 4.88
+  },
+  "compression_negative_seeds": 0,
+  "checkpoint_runs": 171,
+  "notes": [
+    "Curves need not be monotonic; no checkpoints or seeds were removed.",
+    "Cross-paradigm Long is diagnostic only; compression gate uses cross-session.",
+    "P3 erasure utility was evaluated on epoch0, early, middle and best as prelocked."
+  ]
+}

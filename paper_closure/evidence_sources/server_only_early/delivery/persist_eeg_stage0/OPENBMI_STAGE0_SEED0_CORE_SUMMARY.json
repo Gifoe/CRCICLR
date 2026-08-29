@@ -1,0 +1,107 @@
+{
+  "completed_core_artifacts": [
+    "verification.csv",
+    "verification_subject_metrics.csv",
+    "verification_predictions.parquet",
+    "event_subject_metrics.csv",
+    "erasure_deltas.csv",
+    "random_erasure_summary.csv"
+  ],
+  "cross_paradigm_long_raw_auroc": {
+    "convtransformer": {
+      "erp-ssvep": 0.588089,
+      "mi-erp": 0.625016,
+      "mi-ssvep": 0.64277
+    },
+    "eegnet": {
+      "erp-ssvep": 0.663187,
+      "mi-erp": 0.694847,
+      "mi-ssvep": 0.678939
+    },
+    "handcrafted": {
+      "erp-ssvep": 0.841708,
+      "mi-erp": 0.821044,
+      "mi-ssvep": 0.878912
+    }
+  },
+  "cross_session_medium_raw_auroc": {
+    "convtransformer": {
+      "erp": 0.556435,
+      "mi": 0.629276,
+      "ssvep": 0.635567
+    },
+    "eegnet": {
+      "erp": 0.559602,
+      "mi": 0.641122,
+      "ssvep": 0.641202
+    },
+    "handcrafted": {
+      "erp": 0.965802,
+      "mi": 0.985354,
+      "ssvep": 0.982121
+    }
+  },
+  "dataset": "OpenBMI offline/train only",
+  "event_raw_balanced_accuracy": {
+    "convtransformer": {
+      "erp": 0.529819,
+      "mi": 0.626574,
+      "ssvep": 0.598241
+    },
+    "eegnet": {
+      "erp": 0.649963,
+      "mi": 0.739444,
+      "ssvep": 0.924537
+    },
+    "handcrafted": {
+      "erp": 0.576242,
+      "mi": 0.6525,
+      "ssvep": 0.518611
+    }
+  },
+  "folds": 5,
+  "generated_at_utc": "2026-08-11T10:57:37.605784+00:00",
+  "official_gate_decision": "NOT_EVALUATED; frozen evaluator expects multi-seed COMPLETE.json files",
+  "random_erasure_balanced_accuracy": {
+    "convtransformer": {
+      "erp": 0.529195,
+      "mi": 0.629097,
+      "ssvep": 0.600088
+    },
+    "eegnet": {
+      "erp": 0.650108,
+      "mi": 0.739764,
+      "ssvep": 0.923728
+    },
+    "handcrafted": {
+      "erp": 0.57619,
+      "mi": 0.652686,
+      "ssvep": 0.515836
+    }
+  },
+  "seed": 0,
+  "skipped_as_repeated_or_diagnostic": [
+    "rank_sensitivity.csv",
+    "closed_set_subject_diagnostics.csv",
+    "negative_control_diagnostics.csv",
+    "variance_decomposition.csv"
+  ],
+  "status": "PARTIAL_CORE_ONLY",
+  "subject_erasure_delta_balanced_accuracy": {
+    "convtransformer": {
+      "erp": -7.4e-05,
+      "mi": -0.021209,
+      "ssvep": -0.022745
+    },
+    "eegnet": {
+      "erp": 1e-05,
+      "mi": -0.0476,
+      "ssvep": -0.010436
+    },
+    "handcrafted": {
+      "erp": 0.000343,
+      "mi": -0.001727,
+      "ssvep": 0.004
+    }
+  }
+}

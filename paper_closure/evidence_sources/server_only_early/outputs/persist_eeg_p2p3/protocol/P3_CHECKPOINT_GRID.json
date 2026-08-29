@@ -1,0 +1,15 @@
+{
+  "all_nonmonotonic_points_retained": true,
+  "analysis_grid_formula": {
+    "best": "validation-selected best epoch",
+    "early": "nearest completed epoch to 10% of actual final completed epoch, minimum epoch1",
+    "epoch0": "random-init checkpoint",
+    "epoch1": "first completed epoch",
+    "final": "last completed training epoch",
+    "late": "nearest completed epoch to 75% of actual final completed epoch",
+    "middle": "nearest completed epoch to 50% of actual final completed epoch"
+  },
+  "selection_uses_test": false,
+  "status": "LOCKED_BEFORE_TRAINING",
+  "storage": "save init and every completed epoch; extract embeddings only for locked analysis grid"
+}

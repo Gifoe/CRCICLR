@@ -1,0 +1,42 @@
+{
+  "resamples": 10000,
+  "unit": "held-out subject",
+  "rows": [
+    {
+      "task": "mi",
+      "comparison": "erase_UL_minus_raw",
+      "n_subjects": 54,
+      "mean": -0.049074074074074076,
+      "ci95": [
+        -0.0688888888888889,
+        -0.02944212962962965
+      ],
+      "p_two_sided": 0.0,
+      "sign_probability": 0.0
+    },
+    {
+      "task": "erp",
+      "comparison": "erase_UL_minus_raw",
+      "n_subjects": 54,
+      "mean": -0.0010187447544727554,
+      "ci95": [
+        -0.0031818238377170284,
+        0.0010069185038557153
+      ],
+      "p_two_sided": 0.3288,
+      "sign_probability": 0.1643
+    },
+    {
+      "task": "ssvep",
+      "comparison": "erase_UL_minus_raw",
+      "n_subjects": 54,
+      "mean": -0.0162962962962963,
+      "ci95": [
+        -0.02805787037037038,
+        -0.006851851851851852
+      ],
+      "p_two_sided": 0.0,
+      "sign_probability": 0.0
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "status": "COMPLETE",
+  "completed_at_utc": "2026-08-13T16:52:49.532767+00:00",
+  "assertions": {
+    "training_complete_25": true,
+    "best_embeddings_complete_25": true,
+    "p2_complete_25": true,
+    "p3_selection_25": true,
+    "p3_embedding_count_matches_grid": true,
+    "p3_analysis_count_matches_grid": true,
+    "p3_embedding_complete_and_finite": true,
+    "p3_analysis_complete": true,
+    "all_formal_reports_present": true,
+    "five_figures_present": true,
+    "p4_not_started": true,
+    "no_external_dataset_output": true,
+    "aggregate_csv_nonempty": true,
+    "aggregate_numeric_values_finite": true,
+    "decision_consistent": true,
+    "adaptations_test_data_false": true
+  },
+  "counts": {
+    "training_runs": 25,
+    "best_embeddings": 25,
+    "p2_runs": 25,
+    "p3_checkpoint_selections": 25,
+    "p3_expected_unique_checkpoints": 171,
+    "p3_embeddings": 171,
+    "p3_analyses": 171,
+    "figures": 5
+  },
+  "decisions": {
+    "final": "GO_PERSIST_UTILITY_NO_TRAJECTORY_CLAIM",
+    "p4_configuration": "P4_CONFIG_UTILITY_ONLY",
+    "p2": "P2_PASS_MULTI_SEED_PERSISTENCE_UTILITY",
+    "p3": "P3_TRAJECTORY_CLAIM_NOT_SUPPORTED",
+    "medium": "MEDIUM_WEAK_OR_REDUNDANT",
+    "p4_training_started": false,
+    "external_dataset_run": false
+  },
+  "report_sha256": {
+    "P2_FINAL_REPORT.json": "81be6ce556e5f2f1d5c89d40f4670b71ec18eb4c821de22eef8a6cbd81141e45",
+    "P3_FINAL_REPORT.json": "bfc5239701b4a24b9b68d862c7e87aa0fc7af7c8a60da55e373ddd725264ef00",
+    "P2P3_FINAL_DECISION.json": "342a2c9a57b662fbd32c11e3736515b7adfaf4854b5edf2c3d50c0ef331d8935"
+  }
+}

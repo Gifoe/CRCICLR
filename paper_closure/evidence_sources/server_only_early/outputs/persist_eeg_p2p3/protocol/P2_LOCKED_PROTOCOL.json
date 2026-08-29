@@ -1,0 +1,134 @@
+{
+  "backbone": {
+    "architecture": "frozen EEGNet",
+    "balanced_epoch_strategy": "shortest_task_full_pass_with_cyclic_full_coverage",
+    "batch_size": 64,
+    "checkpoint_selection": "maximum validation macro balanced accuracy after minimum full task coverage",
+    "early_stopping_patience": 12,
+    "embedding_dim": 128,
+    "equal_paradigm_weighting": true,
+    "learning_rate": 0.001,
+    "max_epochs": 100,
+    "only_variable_across_runs": "random seed",
+    "optimizer": "AdamW",
+    "weight_decay": 0.0001
+  },
+  "bootstrap_resamples": 10000,
+  "bootstrap_unit": "hierarchical paired: seed then held-out subject",
+  "environment": {
+    "cuda": "12.8",
+    "cuda_available": true,
+    "cudnn": 91900,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "deterministic_algorithms": true,
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "logical_cpu_count": 32,
+    "platform": "Windows-10-10.0.18363-SP0",
+    "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+    "tf32_cudnn": true,
+    "tf32_matmul": true,
+    "torch": "2.11.0+cu128"
+  },
+  "event_probe": {
+    "batch_size": 2048,
+    "c_grid": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "epochs": 5,
+    "implementation": "StandardScaler plus class-balanced averaged SGDClassifier log_loss L2",
+    "refit_after_every_intervention": true,
+    "selection": "raw outer-train train/validation only, then fixed and reused for all matched interventions"
+  },
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gates": {
+    "A": {
+      "ci95_upper_lt": 0.0,
+      "mi_mean_delta_max": -0.02,
+      "negative_seeds_min": 4,
+      "real_below_random_lower_5pct": true
+    },
+    "B": {
+      "borderline_if_nonzero_ci": true,
+      "long_verification_mean_drop_min": 0.03
+    },
+    "C": {
+      "abs_mi_minus_abs_erp_min": 0.015,
+      "bootstrap_mi_lt_erp": true
+    },
+    "D": {
+      "real_UL_distinct_from_random": true
+    },
+    "E": {
+      "residualized_refit_mi_effect_remains": true
+    }
+  },
+  "locked_at_utc": "2026-08-13T00:28:50.961555+00:00",
+  "manifest_sha256": "29e336c1a2cbee01360027f0033f5e40c37117b16d3b6281d8fd3bc02bd78d7f",
+  "manifest_source": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_stage0\\manifests\\openbmi_trials.parquet",
+  "old_seed0_inputs": [
+    {
+      "checkpoint_sha256": "b2918500a9539c948f5cec9015308af64aac393b2322bbcc7fb66cf9df9b8ff9",
+      "embedding_sha256": "467a04b17472ed8e2a003f43f66a4612ed20f4e8316649552e9c5f4176568318",
+      "fold": 0
+    },
+    {
+      "checkpoint_sha256": "2504d625a4529d5a7dbf941f9739f6df07f4ecb6c739b80da38249e59bcd931c",
+      "embedding_sha256": "41d1cf49be83c7b66a509d6c7b41c6df487dca50bca889f8c940afec336ca1da",
+      "fold": 1
+    },
+    {
+      "checkpoint_sha256": "10fdee95570d333d41e15e4b8a0152e68bdfbd667d53fbe70478794a3002e14c",
+      "embedding_sha256": "635552ef0caaf56183f9a04c11ac1b646985100d994751158a82ba5a65f038a2",
+      "fold": 2
+    },
+    {
+      "checkpoint_sha256": "613fd7a7246260f19d74fb3391e6c748e3fda4b00610ab5d99b58886d68f67e7",
+      "embedding_sha256": "243fac3756a5317d4fd44ae0b26349c7cd5d1f180d5e9e5cf710f840a017d531",
+      "fold": 3
+    },
+    {
+      "checkpoint_sha256": "da9fc1fa7bb88a2601588627fc13174156c827905abb618bd4b91b42b1dea5ed",
+      "embedding_sha256": "1364ffc19921a488518ff4d052d4c5ee5333231fd568463a8fa8308e78c72a48",
+      "fold": 4
+    }
+  ],
+  "random_control_draws_per_fold_task_seed": 50,
+  "random_control_reason": "prelocked allowed minimum because 25 fold-seed runs x 3 tasks x 5 probe epochs makes 100 draws computationally extreme",
+  "scope": "OpenBMI offline/train only; EEGNet seed 0-4; no external dataset; no P4 training",
+  "seed0_fullprobe_agreement_rule": "aggregate MI delta(erase U_L - raw) <= -0.02; otherwise FULL_PROBE_PROTOCOL_DISAGREEMENT and stop",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "source_hashes": {
+    "event.py": "52dd3880df17aa5ec73deb03e7e27e311810170f560583230741165f3a311456",
+    "subspace.py": "da56c449c1ea2d07ef9efb12f48129fa858ee1e42eac8900753cdcab0e90ba3f",
+    "training.py": "092a6b9c4392b923b8dc70154ceb3589148c67c24be20b45ddd6cfe7f8dd8f43",
+    "verification.py": "af56a0c5a61e4cb4606938a51136416d88e42d708f16536dfd840738ffeaef2b"
+  },
+  "split_sha256": "8f12709c53494c205eb3d1a314cdff02f77d70fdebfc0820ac8b122c3c1ae065",
+  "split_source": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\delivery\\persist_eeg_stage0\\SPLIT_FREEZE.json",
+  "status": "LOCKED_BEFORE_SEEDS_1_TO_4",
+  "subspaces": {
+    "PCA": "outer-train embeddings only, same rank as U_L",
+    "U_L": "outer-train subject centroids after paradigm/session condition centering; k90 capped at 16 and dimension/4",
+    "U_LM": "orthonormalized concatenated span via QR",
+    "U_M": "locked Stage-0B outer-train subject-session-paradigm centroid construction; k90 capped at 16",
+    "random": "outer-train-independent Gaussian orthogonal basis, same rank as U_L",
+    "test_subjects_used_for_fit": false
+  }
+}
