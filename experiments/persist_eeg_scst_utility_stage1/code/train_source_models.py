@@ -111,6 +111,7 @@ def main() -> None:
     parser.add_argument("--datasets", nargs="+", choices=c.DATASETS, default=list(c.DATASETS))
     args = parser.parse_args()
     c.ensure_dirs()
+    run_tag = "__".join(value.lower().replace("-", "_") for value in args.models)
     device = torch.device("cuda")
     all_runs: list[dict[str, object]] = []
     selections: list[dict[str, object]] = []
@@ -159,16 +160,16 @@ def main() -> None:
                     print(f"[source-outcome] {model_name} {dataset} f={fold} s={seed} BA={score['BA']:.5f}", flush=True)
                     del net
                     torch.cuda.empty_cache()
-            c.write_csv(c.RUNTIME / "SOURCE_TRAINING_RUNS.csv", pd.DataFrame(all_runs))
-            c.write_csv(c.RESULTS / "SOURCE_SELECTION.csv", pd.DataFrame(selections))
-            c.write_csv(c.RESULTS / "SOURCE_COMPETENCE_PER_FOLD.csv", pd.DataFrame(competence))
+            c.write_csv(c.RUNTIME / f"SOURCE_TRAINING_RUNS_{run_tag}.csv", pd.DataFrame(all_runs))
+            c.write_csv(c.RESULTS / f"SOURCE_SELECTION_{run_tag}.csv", pd.DataFrame(selections))
+            c.write_csv(c.RESULTS / f"SOURCE_COMPETENCE_PER_FOLD_{run_tag}.csv", pd.DataFrame(competence))
     frame = pd.DataFrame(competence)
     summary = frame.groupby(["model", "dataset"], as_index=False).agg(
         BA=("BA", "mean"), macro_F1=("macro_F1", "mean"), NLL=("NLL", "mean"),
         threshold=("threshold", "first"), folds=("fold", "nunique"), seeds=("seed", "nunique"), parameters=("parameters", "first"),
     )
     summary["competent"] = summary.BA >= summary.threshold
-    c.write_csv(c.RESULTS / "SOURCE_COMPETENCE.csv", summary)
+    c.write_csv(c.RESULTS / f"SOURCE_COMPETENCE_{run_tag}.csv", summary)
     print(summary.to_string(index=False), flush=True)
 
 
