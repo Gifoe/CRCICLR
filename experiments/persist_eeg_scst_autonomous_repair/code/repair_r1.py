@@ -107,8 +107,8 @@ def _low_rank_local_displacement(bank: BuresBank, position: int, target: str) ->
     rank = int(np.searchsorted(cumulative, 0.90, side="left") + 1)
     rank = max(1, min(8, rank, bank.dim))
     basis = vec[:, order[:rank]]
-    source_small = c._sym(basis.T @ source_cov @ basis)
-    target_small = c._sym(basis.T @ target_cov @ basis)
+    source_small = _bures_sym(basis.T @ source_cov @ basis)
+    target_small = _bures_sym(basis.T @ target_cov @ basis)
     local_map = bures_map(source_small, target_small, bank.pool_floor)
     centered = anchor - source_mean
     low_rank = basis @ (local_map @ (basis.T @ centered))
