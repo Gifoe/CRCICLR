@@ -1,0 +1,62 @@
+{
+  "authorized_development": {
+    "OpenBMI": [
+      1,
+      2
+    ],
+    "WBCIC": [
+      0,
+      1
+    ]
+  },
+  "created_at_git_sha": "eade4879bf008ed12f433f93b0623fed37250aa6",
+  "dataset_roots": {
+    "OpenBMI": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\cache",
+    "WBCIC": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_wbcic_independent_replication_v1\\runtime\\cache"
+  },
+  "forbidden": [
+    "WBCIC outer 10",
+    "OpenBMI sealed/outer",
+    "any reserved outer"
+  ],
+  "outer_or_sealed_opened": false,
+  "prospective_discovery": {
+    "WBCIC": [
+      2
+    ]
+  },
+  "s3_sample_opened_before_lock": false,
+  "schema": "ME_HARD_SCST_DATA_ACCESS_LOCK_V1",
+  "split_hashes": {
+    "OpenBMI/fold-0/model_fit": "f59fd7eb00fa4df2c978c1330892de5ad657afadbc88ecf9be8293c742d9dae8",
+    "OpenBMI/fold-0/outcome": "37cab5724ac57de532496a10220e32aab175b0d2e2a545c8f3e932a2dff64282",
+    "OpenBMI/fold-0/validation": "2dca50d44d9b31c340ba68a511f96c93bc1a36a7a757d4d92ccc5bfdf497b3b5",
+    "OpenBMI/fold-1/model_fit": "2d5cce88a4ebce97075b861cd67caf686a4d678321ca6e4f447b837df6676f9b",
+    "OpenBMI/fold-1/outcome": "6f9a582b60ce157e1e1f536af9ebd2b1073d8af9148e65e9a8a2a58220e1f2b4",
+    "OpenBMI/fold-1/validation": "537e99c6de121306116341815d15df530aaa10c79e4bfbb6d6f9b70276817f59",
+    "OpenBMI/fold-2/model_fit": "d3c5089acf595802119ad82f820df2d265a8c5955b67e9a09c5308c88c7c690b",
+    "OpenBMI/fold-2/outcome": "1479cccd43b6dfe1ba9618de1b304f638282555dd07386cdaeabe2e62a31849d",
+    "OpenBMI/fold-2/validation": "28e90d4bd2469a887c0248310e7d376cae9bbe91f15399ff7f60c0ff6f50368b",
+    "OpenBMI/fold-3/model_fit": "fd04a14839ecfebb7fab3a882d2d53984432b77278b53fc8cf48546d74a76475",
+    "OpenBMI/fold-3/outcome": "61a5e321a527f6d1eadef444a8f540e5d28676bed576bd8eb24b65720ce00da1",
+    "OpenBMI/fold-3/validation": "56030efdff75f5c288f041f4bdd50c235cd1bd19fc80d9ce38a87f7d5cae01b6",
+    "OpenBMI/fold-4/model_fit": "38a57cfae92f7523f415dde6521a4355e92cb13448b5cb9e615bfd3b44fa2609",
+    "OpenBMI/fold-4/outcome": "98dfdecb9eef05688e04a0d0e3cc3ab125ca1e493340f0926da812b1bed44fd6",
+    "OpenBMI/fold-4/validation": "8a67d9d3ad3cfa990cf23c56ffcb6f08fe94dff7451fb6b3fa7f618bfad1182e",
+    "WBCIC/fold-0/model_fit": "baf2f9a92f3e4b65f73b009763e58689f715ab63824cd364359014a58bb95e58",
+    "WBCIC/fold-0/outcome": "bae26737ad8f700ead92ca56a0324f07c883740e30b9321bcb1bf9c653939fb9",
+    "WBCIC/fold-0/validation": "33f87a0b9977134dff1aaa6ecda6c1eadb7d0bc0d123c6b6d787f11adec9e775",
+    "WBCIC/fold-1/model_fit": "f6f433a9139a56e5e37df0b17a89bd9f4efd7f92e27afbdd7c0fb7629d6853d8",
+    "WBCIC/fold-1/outcome": "33f87a0b9977134dff1aaa6ecda6c1eadb7d0bc0d123c6b6d787f11adec9e775",
+    "WBCIC/fold-1/validation": "6c2e5cea82aa793f6fe93159f97f11ea5b5090287da9e5b67eadff2fb389527e",
+    "WBCIC/fold-2/model_fit": "b220a30676b9c40db56b05bb00c4660b59b5dd67bbd18b4c8a835efcb4bd6126",
+    "WBCIC/fold-2/outcome": "6c2e5cea82aa793f6fe93159f97f11ea5b5090287da9e5b67eadff2fb389527e",
+    "WBCIC/fold-2/validation": "9cd1fa982464640be7e2c05778b09997aa442d16fc0452f075080d421d698895",
+    "WBCIC/fold-3/model_fit": "7a7fc95be9c7fc7fa0fc8857de5001e59445ccf443af00f978ce80cc2789489a",
+    "WBCIC/fold-3/outcome": "9cd1fa982464640be7e2c05778b09997aa442d16fc0452f075080d421d698895",
+    "WBCIC/fold-3/validation": "48155eb9394013e052344fb268ae3220f17b4d98ead63c75241ec75fa9a50800",
+    "WBCIC/fold-4/model_fit": "df1ddca2b126d1776b50ad19baa9d6f3caef9bf711be698458f08b2fa6db7458",
+    "WBCIC/fold-4/outcome": "48155eb9394013e052344fb268ae3220f17b4d98ead63c75241ec75fa9a50800",
+    "WBCIC/fold-4/validation": "bae26737ad8f700ead92ca56a0324f07c883740e30b9321bcb1bf9c653939fb9"
+  }
+}
