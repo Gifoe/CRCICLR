@@ -1,0 +1,148 @@
+{
+  "deltas": [
+    {
+      "CI95_L": -0.0001829268292682915,
+      "CI95_U": 5.081300813013509e-07,
+      "backbone": "EEGNeX",
+      "comparison": "SubjectBalancedERM-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": -8.130081300812925e-05,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 0
+    },
+    {
+      "CI95_L": -0.00020243493892224156,
+      "CI95_U": 0.0011197246394574476,
+      "backbone": "EEGNeX",
+      "comparison": "Mixup-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.0004685010417943436,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 9
+    },
+    {
+      "CI95_L": -0.0015656585774400601,
+      "CI95_U": 0.0013008206683825902,
+      "backbone": "EEGNeX",
+      "comparison": "GroupDRO-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": -0.00016290803611551934,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 8
+    },
+    {
+      "CI95_L": 2.05294766515591e-05,
+      "CI95_U": 0.0008952281733872559,
+      "backbone": "EEGNeX",
+      "comparison": "ProspectiveOnly-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.0004676839481962741,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 8
+    },
+    {
+      "CI95_L": -0.0001830289659680505,
+      "CI95_U": 0.0007521346570249689,
+      "backbone": "EEGNeX",
+      "comparison": "RandomEffectOnly-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.00028465498222822087,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 9
+    },
+    {
+      "CI95_L": -0.00028445070882868385,
+      "CI95_U": 0.0006507129141643222,
+      "backbone": "EEGNeX",
+      "comparison": "AdversarialMixed-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.00018302896596807217,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 7
+    },
+    {
+      "CI95_L": -0.0004674796747967372,
+      "CI95_U": 0.0003460391387833695,
+      "backbone": "EEGNeX",
+      "comparison": "PERSIST-RE-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": -6.087347305632369e-05,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 7
+    }
+  ],
+  "method_summary": [
+    {
+      "BA": 0.7853247947052334,
+      "CI95_L": 0.7410047927646363,
+      "CI95_U": 0.8281432492748295,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "ERM",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7852434938922253,
+      "CI95_L": 0.7404138783347632,
+      "CI95_U": 0.8289156478530868,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "SubjectBalancedERM",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7857932957470278,
+      "CI95_L": 0.740401729174327,
+      "CI95_U": 0.8288880939249091,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "Mixup",
+      "subjects": 41
+    },
+    {
+      "BA": 0.785161886669118,
+      "CI95_L": 0.7406918382563223,
+      "CI95_U": 0.8279562957061732,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "GroupDRO",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7857924786534297,
+      "CI95_L": 0.7410653189729133,
+      "CI95_U": 0.8281014421702004,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "ProspectiveOnly",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7856094496874617,
+      "CI95_L": 0.739841105936185,
+      "CI95_U": 0.8286706831923847,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "RandomEffectOnly",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7855078236712016,
+      "CI95_L": 0.7401417555255955,
+      "CI95_U": 0.8283769022960331,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "AdversarialMixed",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7852639212321771,
+      "CI95_L": 0.7394504407198594,
+      "CI95_U": 0.8271866880132369,
+      "backbone": "EEGNeX",
+      "dataset": "WBCIC",
+      "method": "PERSIST-RE",
+      "subjects": 41
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "ATCNet-Official": "exploratory_only_not_authorized",
+  "EEGNeX": "exploratory_only_not_authorized",
+  "branch": "codex/persist-eeg-persist-re-final",
+  "comparisons": {
+    "OpenBMI": {
+      "GroupDRO": {
+        "CI95_L": -0.0008333333333333,
+        "CI95_U": 0.0002499999999999,
+        "comparison": "GroupDRO-ERM",
+        "dataset": "OpenBMI",
+        "delta_BA": -0.0002916666666666,
+        "fold_seed_units": 15,
+        "positive_fold_seed_units": 3
+      },
+      "ProspectiveOnly": {
+        "CI95_L": -0.0005416666666666,
+        "CI95_U": 0.0003333333333333,
+        "comparison": "ProspectiveOnly-ERM",
+        "dataset": "OpenBMI",
+        "delta_BA": -8.333333333334359e-05,
+        "fold_seed_units": 15,
+        "positive_fold_seed_units": 4
+      },
+      "RandomEffectOnly": {
+        "CI95_L": -0.0005,
+        "CI95_U": 0.000375,
+        "comparison": "RandomEffectOnly-ERM",
+        "dataset": "OpenBMI",
+        "delta_BA": -4.166666666667318e-05,
+        "fold_seed_units": 15,
+        "positive_fold_seed_units": 5
+      }
+    },
+    "WBCIC": {
+      "GroupDRO": {
+        "CI95_L": -0.0002434938922253,
+        "CI95_U": 0.0008333333333333,
+        "comparison": "GroupDRO-ERM",
+        "dataset": "WBCIC",
+        "delta_BA": 0.0002441067124238,
+        "fold_seed_units": 15,
+        "positive_fold_seed_units": 4
+      },
+      "ProspectiveOnly": {
+        "CI95_L": -4.065040650406327e-05,
+        "CI95_U": 0.0007317073170731,
+        "comparison": "ProspectiveOnly-ERM",
+        "dataset": "WBCIC",
+        "delta_BA": 0.0002845528455284,
+        "fold_seed_units": 15,
+        "positive_fold_seed_units": 6
+      },
+      "RandomEffectOnly": {
+        "CI95_L": 8.130081300814008e-05,
+        "CI95_U": 0.0008130081300813,
+        "comparison": "RandomEffectOnly-ERM",
+        "dataset": "WBCIC",
+        "delta_BA": 0.0003861788617886,
+        "fold_seed_units": 15,
+        "positive_fold_seed_units": 8
+      }
+    }
+  },
+  "cross_architecture_status": "NOT_AUTHORIZED_SOURCE_GATE_FAILED",
+  "decision_heterogeneity": "source-only mechanism artifact; see results/DECISION_HETEROGENEITY.csv",
+  "git_head_at_generation": "02e7e0c1176da30748675bb3667dd60f1ea151b2",
+  "identity_probe": "source-only mechanism artifact; see results/IDENTITY_PROBE.csv",
+  "method": "PERSIST-RE",
+  "outer_status": "UNTOUCHED",
+  "sealed_status": "UNTOUCHED",
+  "selected_recipes": {
+    "OpenBMI": {
+      "dataset": "OpenBMI",
+      "id": "re_r1_lr0.001_lp0.5",
+      "lambda_P": 0.5,
+      "lambda_R": 0.001,
+      "mean_validation_BA": 0.7448750000000001,
+      "minimum_fold_BA": 0.705625,
+      "rank": 1,
+      "recipe": "re_r1_lr0.001_lp0.5",
+      "selected_before_outcome": true
+    },
+    "WBCIC": {
+      "dataset": "WBCIC",
+      "id": "re_r1_lr0.001_lp1",
+      "lambda_P": 1.0,
+      "lambda_R": 0.001,
+      "mean_validation_BA": 0.7922084729201563,
+      "minimum_fold_BA": 0.7324999999999999,
+      "rank": 1,
+      "recipe": "re_r1_lr0.001_lp1",
+      "selected_before_outcome": true
+    }
+  },
+  "source": {
+    "OpenBMI": {
+      "CI95_L": -0.0004166666666666,
+      "CI95_U": 0.000375,
+      "comparison": "PERSIST-RE-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -2.775557561562892e-18,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 5
+    },
+    "WBCIC": {
+      "CI95_L": -6.0975609756090846e-05,
+      "CI95_U": 0.0005284552845528,
+      "comparison": "PERSIST-RE-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.0002032520325203,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 6
+    }
+  },
+  "source_gate": {
+    "OpenBMI_delta_ge_0_002": false,
+    "OpenBMI_full_gt_GroupDRO": true,
+    "OpenBMI_full_gt_Mixup": true,
+    "OpenBMI_full_gt_ProspectiveOnly": true,
+    "OpenBMI_full_gt_RandomEffectOnly": true,
+    "OpenBMI_paired_ci_lower_gt_zero": false,
+    "WBCIC_delta_ge_0_002": false,
+    "WBCIC_full_gt_GroupDRO": false,
+    "WBCIC_full_gt_Mixup": true,
+    "WBCIC_full_gt_ProspectiveOnly": false,
+    "WBCIC_full_gt_RandomEffectOnly": false,
+    "WBCIC_paired_ci_lower_gt_zero": false,
+    "centered_effects_near_zero": true,
+    "future_session_used_during_source": false,
+    "pooled_non_negative_subject_fraction": 0.8518518518518519,
+    "pooled_non_negative_subjects_ge_0_60": true,
+    "population_only_inference": true,
+    "random_effect_non_degenerate": true,
+    "source_gate_pass": false
+  },
+  "strongest_supported_claim": "The implementation enforces decision-level random-effect quarantine and population-only inference; no utility improvement is supported by the CleanRoom source gate.",
+  "strongest_unsupported_claim": "PERSIST-RE is not supported as a future-session utility method on these source resources.",
+  "terminal": "PERSIST_RE_SOURCE_NOT_SUPPORTED"
+}

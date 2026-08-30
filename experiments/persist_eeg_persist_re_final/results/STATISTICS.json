@@ -1,0 +1,260 @@
+{
+  "deltas": [
+    {
+      "CI95_L": 0.0,
+      "CI95_U": 0.0,
+      "comparison": "SubjectBalancedERM-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": 0.0,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 0
+    },
+    {
+      "CI95_L": -0.0004166666666666874,
+      "CI95_U": 0.0002499999999999919,
+      "comparison": "Mixup-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -8.333333333334359e-05,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 3
+    },
+    {
+      "CI95_L": -0.0008333333333333526,
+      "CI95_U": 0.0002499999999999808,
+      "comparison": "GroupDRO-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -0.0002916666666666762,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 3
+    },
+    {
+      "CI95_L": -0.0005416666666666792,
+      "CI95_U": 0.0003333333333333299,
+      "comparison": "ProspectiveOnly-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -8.333333333334359e-05,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 4
+    },
+    {
+      "CI95_L": -0.0005000000000000171,
+      "CI95_U": 0.0003750000000000031,
+      "comparison": "RandomEffectOnly-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -4.166666666667318e-05,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 5
+    },
+    {
+      "CI95_L": -0.0005416666666666847,
+      "CI95_U": 0.0002916666666666623,
+      "comparison": "AdversarialMixed-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -0.00012500000000000843,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 4
+    },
+    {
+      "CI95_L": -0.0004166666666666735,
+      "CI95_U": 0.0003750000000000059,
+      "comparison": "PERSIST-RE-ERM",
+      "dataset": "OpenBMI",
+      "delta_BA": -2.7755575615628915e-18,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 5
+    },
+    {
+      "CI95_L": -0.00010162601626016495,
+      "CI95_U": 0.00010162601626015141,
+      "comparison": "SubjectBalancedERM-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": -5.415722071342227e-18,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 2
+    },
+    {
+      "CI95_L": -0.00022357723577234935,
+      "CI95_U": 0.0005081300813008329,
+      "comparison": "Mixup-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.00012195121951220335,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 6
+    },
+    {
+      "CI95_L": -0.00024349389222537332,
+      "CI95_U": 0.0008333333333333039,
+      "comparison": "GroupDRO-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.00024410671242388685,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 4
+    },
+    {
+      "CI95_L": -4.065040650406327e-05,
+      "CI95_U": 0.0007317073170731822,
+      "comparison": "ProspectiveOnly-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.00028455284552846726,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 6
+    },
+    {
+      "CI95_L": 8.130081300814008e-05,
+      "CI95_U": 0.0008130081300813141,
+      "comparison": "RandomEffectOnly-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.0003861788617886349,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 8
+    },
+    {
+      "CI95_L": -4.0650406504038966e-05,
+      "CI95_U": 0.0006097560975609681,
+      "comparison": "AdversarialMixed-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.0002439024390244013,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 6
+    },
+    {
+      "CI95_L": -6.0975609756090846e-05,
+      "CI95_U": 0.0005284552845528578,
+      "comparison": "PERSIST-RE-ERM",
+      "dataset": "WBCIC",
+      "delta_BA": 0.0002032520325203353,
+      "fold_seed_units": 15,
+      "positive_fold_seed_units": 6
+    }
+  ],
+  "method_summary": [
+    {
+      "BA": 0.7673333333333334,
+      "CI95_L": 0.7397083333333334,
+      "CI95_U": 0.7945416666666667,
+      "dataset": "OpenBMI",
+      "method": "ERM",
+      "subjects": 40
+    },
+    {
+      "BA": 0.7673333333333334,
+      "CI95_L": 0.7407072916666666,
+      "CI95_U": 0.7945,
+      "dataset": "OpenBMI",
+      "method": "SubjectBalancedERM",
+      "subjects": 40
+    },
+    {
+      "BA": 0.76725,
+      "CI95_L": 0.740375,
+      "CI95_U": 0.7935010416666668,
+      "dataset": "OpenBMI",
+      "method": "Mixup",
+      "subjects": 40
+    },
+    {
+      "BA": 0.7670416666666666,
+      "CI95_L": 0.7402062500000001,
+      "CI95_U": 0.7942083333333333,
+      "dataset": "OpenBMI",
+      "method": "GroupDRO",
+      "subjects": 40
+    },
+    {
+      "BA": 0.76725,
+      "CI95_L": 0.740540625,
+      "CI95_U": 0.7938354166666667,
+      "dataset": "OpenBMI",
+      "method": "ProspectiveOnly",
+      "subjects": 40
+    },
+    {
+      "BA": 0.7672916666666667,
+      "CI95_L": 0.7407916666666667,
+      "CI95_U": 0.7944593750000001,
+      "dataset": "OpenBMI",
+      "method": "RandomEffectOnly",
+      "subjects": 40
+    },
+    {
+      "BA": 0.7672083333333333,
+      "CI95_L": 0.7403322916666666,
+      "CI95_U": 0.7941677083333334,
+      "dataset": "OpenBMI",
+      "method": "AdversarialMixed",
+      "subjects": 40
+    },
+    {
+      "BA": 0.7673333333333334,
+      "CI95_L": 0.7413333333333332,
+      "CI95_U": 0.79454375,
+      "dataset": "OpenBMI",
+      "method": "PERSIST-RE",
+      "subjects": 40
+    },
+    {
+      "BA": 0.7857374269722597,
+      "CI95_L": 0.7437912964211301,
+      "CI95_U": 0.8263988642398988,
+      "dataset": "WBCIC",
+      "method": "ERM",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7857374269722597,
+      "CI95_L": 0.7433238678146832,
+      "CI95_U": 0.8248533342525638,
+      "dataset": "WBCIC",
+      "method": "SubjectBalancedERM",
+      "subjects": 41
+    },
+    {
+      "BA": 0.785859378191772,
+      "CI95_L": 0.7434503947583446,
+      "CI95_U": 0.826557615312334,
+      "dataset": "WBCIC",
+      "method": "Mixup",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7859815336846836,
+      "CI95_L": 0.7432556175184867,
+      "CI95_U": 0.8258108504922989,
+      "dataset": "WBCIC",
+      "method": "GroupDRO",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7860219798177881,
+      "CI95_L": 0.7445157392654329,
+      "CI95_U": 0.8260273522081955,
+      "dataset": "WBCIC",
+      "method": "ProspectiveOnly",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7861236058340485,
+      "CI95_L": 0.7435304265228582,
+      "CI95_U": 0.8262669776729173,
+      "dataset": "WBCIC",
+      "method": "RandomEffectOnly",
+      "subjects": 41
+    },
+    {
+      "BA": 0.7859813294112841,
+      "CI95_L": 0.7437125566858683,
+      "CI95_U": 0.8267480287616946,
+      "dataset": "WBCIC",
+      "method": "AdversarialMixed",
+      "subjects": 41
+    },
+    {
+      "BA": 0.78594067900478,
+      "CI95_L": 0.7442430547044165,
+      "CI95_U": 0.8258195091310209,
+      "dataset": "WBCIC",
+      "method": "PERSIST-RE",
+      "subjects": 41
+    }
+  ]
+}
