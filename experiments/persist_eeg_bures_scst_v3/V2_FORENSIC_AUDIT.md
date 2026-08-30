@@ -1,0 +1,20 @@
+# V2 forensic audit
+
+Artifact-backed audit summary:
+
+```json
+{
+  "final_head_parameter_distance_mean": 0.0005103138243106918,
+  "hard_random_matching_empty": false,
+  "hard_random_whitened_norm_mismatch_mean": 6.42638074188737e-08,
+  "matching_quantities_regenerable": true,
+  "nearest_self_rate_mean": 1.0,
+  "prediction_disagreement_mean": 0.00016358024691358021,
+  "source_cache_units": 30,
+  "top3_self_rate_mean": 1.0,
+  "top5_self_rate_mean": 1.0,
+  "v2_result_unchanged": true
+}
+```
+
+A nearest-neighbor self-inclusion rate of 1.0 is a validity limitation of V2. V2 S3 was not rerun.
