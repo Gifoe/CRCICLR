@@ -1,0 +1,53 @@
+# Discovery report
+
+{
+  "bootstrap_draws": 10000,
+  "comparisons": [
+    {
+      "CI95_L": -0.0010975609756097597,
+      "CI95_U": 0.0013817032109715245,
+      "comparison": "ME-HardSCST-ERM",
+      "delta_BA": 0.00012154060934549811,
+      "positive_folds": 4
+    },
+    {
+      "CI95_L": -0.0008947195532561244,
+      "CI95_U": 0.001624794694916661,
+      "comparison": "ME-HardSCST-Mixup",
+      "delta_BA": 0.0002841422353617566,
+      "positive_folds": 4
+    },
+    {
+      "CI95_L": -0.001018877802414384,
+      "CI95_U": 0.0013817032109715085,
+      "comparison": "ME-HardSCST-V1-RandomTransport",
+      "delta_BA": 0.0001215406093454954,
+      "positive_folds": 3
+    },
+    {
+      "CI95_L": -0.0002439024390243769,
+      "CI95_U": 0.00024390243902438233,
+      "comparison": "ME-HardSCST-Dynamic-ClassConditional-Uniform-NoKL",
+      "delta_BA": 0.0,
+      "positive_folds": 2
+    },
+    {
+      "CI95_L": -0.0002032520325203326,
+      "CI95_U": 0.00020325203252031637,
+      "comparison": "ME-HardSCST-Factorized-Uniform-NoKL",
+      "delta_BA": -5.415722071342227e-18,
+      "positive_folds": 2
+    },
+    {
+      "CI95_L": 0.0,
+      "CI95_U": 0.0,
+      "comparison": "ME-HardSCST-Factorized-HardRandom",
+      "delta_BA": 0.0,
+      "positive_folds": 0
+    }
+  ],
+  "diagnostic_gate": true,
+  "discovery_supported": false,
+  "outer_or_sealed_opened": false,
+  "terminal_if_stop": "ME_HARD_SCST_NOT_SUPPORTED"
+}

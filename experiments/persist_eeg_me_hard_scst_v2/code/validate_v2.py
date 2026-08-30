@@ -25,7 +25,7 @@ def main()->None:
     checks["v1_negative_preserved"]=report.get("immutable_v1_terminal")=="SCST_UTILITY_NOT_SUPPORTED_IN_NEAR_ADMISSIBLE_SPACE"
     checks["v1_reproduced"]=c.read_json(c.RESULTS/"V1_REPRODUCTION.json").get("artifact_backed_reproduction_pass") is True
     source=pd.read_csv(c.RESULTS/"SOURCE_RECIPE_SEARCH.csv")
-    checks["source_grid"]=len(source)==24 and (source.units==15).all()
+    checks["source_grid"]=bool(len(source)==24 and (source.units==15).all())
     checks["outer_unopened"]=report.get("outer_resource_status")=="NOT_OPENED"
     if report["terminal"]=="ME_HARD_SCST_MECHANISM_NOT_REALIZED":
         checks["s3_stop_obeyed"]=c.read_json(c.RESULTS/"SOURCE_DECISION.json").get("s3_opened") is False

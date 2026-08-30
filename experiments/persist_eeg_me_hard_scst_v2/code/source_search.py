@@ -352,7 +352,9 @@ def aggregate() -> None:
     if frame.empty:
         raise RuntimeError("NO_SOURCE_RESULTS")
     baseline = frame[frame.method == "ERM"][["dataset", "fold", "seed", "scope", "BA"]].rename(columns={"BA": "ERM_BA"})
-    recipes = frame[frame.method == "ME-HardSCST"].merge(baseline, on=["dataset", "fold", "seed", "scope"], validate="one_to_one")
+    # Each fold/seed/scope has one ERM row and six ME-HardSCST q/lambda
+    # rows; the baseline therefore joins many recipes to one control.
+    recipes = frame[frame.method == "ME-HardSCST"].merge(baseline, on=["dataset", "fold", "seed", "scope"], validate="many_to_one")
     recipes["delta_BA"] = recipes.BA - recipes.ERM_BA
     grouped = recipes.groupby(["scope", "q", "lambda_H", "dataset"], as_index=False).agg(
         BA=("BA", "mean"), ERM_BA=("ERM_BA", "mean"), delta_BA=("delta_BA", "mean"),

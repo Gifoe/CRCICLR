@@ -1,0 +1,39 @@
+{
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "grid_rows": 24,
+  "outer_or_sealed_opened": false,
+  "recipes": 12,
+  "s3_opened": false,
+  "schema": "ME_HARD_SCST_SOURCE_DECISION_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selected": {
+    "OpenBMI_delta_BA": 0.0002499999999999,
+    "WBCIC_delta_BA": 0.0001797138047137,
+    "bank_stability_min": 1.0,
+    "coverage_min": 0.9639092242630264,
+    "hardness_CI95_L_min": 0.0056348209828818,
+    "lambda_H": 1.0,
+    "minimum_development_delta": 0.0001797138047137,
+    "q": 0.5,
+    "scope": "A",
+    "semantic_pass_min": 0.9591555909833556
+  },
+  "selection_rule": "maximize min(OpenBMI_delta,WBCIC_delta); mechanism gates; positive minimum; ties A, lower lambda, q=0.50",
+  "source_gate_pass": true,
+  "source_results_sha256": "8b4692dfd7c325350afb38af075c41d8b417793b49142c49757109ab96b240c7",
+  "terminal_if_stop": null
+}

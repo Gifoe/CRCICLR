@@ -1,0 +1,137 @@
+{
+  "artifact_backed_methods": [
+    "ERM",
+    "Mixup",
+    "RandomTransport",
+    "SCST-NoConsistency",
+    "Full-SCST"
+  ],
+  "artifact_backed_reproduction_pass": true,
+  "biological_subjects": 41,
+  "checks": {
+    "CI95_L": {
+      "absolute_error": 1.626016260262899e-07,
+      "expected": -0.00126,
+      "pass": true,
+      "regenerated": -0.0012601626016260263
+    },
+    "CI95_U": {
+      "absolute_error": 3.794037939917373e-08,
+      "expected": 0.001831,
+      "pass": true,
+      "regenerated": 0.0018309620596206008
+    },
+    "ERM": {
+      "absolute_error": 1.4141414139690056e-07,
+      "expected": 0.805164,
+      "pass": true,
+      "regenerated": 0.8051641414141414
+    },
+    "Full-SCST": {
+      "absolute_error": 2.6237989658728367e-07,
+      "expected": 0.80541,
+      "pass": true,
+      "regenerated": 0.8054097376201034
+    },
+    "Full-SCST-ERM": {
+      "absolute_error": 4.037940379426051e-07,
+      "expected": 0.000246,
+      "pass": true,
+      "regenerated": 0.0002455962059620574
+    },
+    "Mixup": {
+      "absolute_error": 1.928225342728851e-07,
+      "expected": 0.806176,
+      "pass": true,
+      "regenerated": 0.8061761928225343
+    },
+    "RandomTransport": {
+      "absolute_error": 3.717664449620628e-07,
+      "expected": 0.806949,
+      "pass": true,
+      "regenerated": 0.806949371766445
+    },
+    "SCST-NoConsistency": {
+      "absolute_error": 4.124168515584614e-07,
+      "expected": 0.806014,
+      "pass": true,
+      "regenerated": 0.8060144124168516
+    },
+    "consistency_contribution": {
+      "absolute_error": 3.252032518052733e-07,
+      "expected": -0.000605,
+      "pass": true,
+      "regenerated": -0.0006046747967481947
+    },
+    "positive_folds": {
+      "absolute_error": 0.0,
+      "expected": 2,
+      "pass": true,
+      "regenerated": 2
+    }
+  },
+  "code_path_recovered": true,
+  "comparisons": {
+    "Full-SCST-ERM": {
+      "CI95_L": -0.0012601626016260263,
+      "CI95_U": 0.0018309620596206008,
+      "delta_BA": 0.0002455962059620574,
+      "positive_folds": 2
+    },
+    "Mixup-ERM": {
+      "CI95_L": -0.00053687279297036,
+      "CI95_U": 0.0026829268292682842,
+      "delta_BA": 0.00101205140839287,
+      "positive_folds": 3
+    },
+    "RandomTransport-ERM": {
+      "CI95_L": 0.00012195121951218169,
+      "CI95_U": 0.003414634146341453,
+      "delta_BA": 0.0017852303523035124,
+      "positive_folds": 5
+    },
+    "SCST-NoConsistency-ERM": {
+      "CI95_L": -0.0006571815718157074,
+      "CI95_U": 0.0023983739837398522,
+      "delta_BA": 0.0008502710027100354,
+      "positive_folds": 3
+    }
+  },
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "future_or_outer_data_opened": false,
+  "regenerated": {
+    "CI95_L": -0.0012601626016260263,
+    "CI95_U": 0.0018309620596206008,
+    "ERM": 0.8051641414141414,
+    "Full-SCST": 0.8054097376201034,
+    "Full-SCST-ERM": 0.0002455962059620574,
+    "Full-SCST-Mixup": -0.0007664552024309046,
+    "Full-SCST-RandomTransport": -0.0015396341463416174,
+    "Mixup": 0.8061761928225343,
+    "RandomTransport": 0.806949371766445,
+    "SCST-NoConsistency": 0.8060144124168516,
+    "consistency_contribution": -0.0006046747967481947,
+    "positive_folds": 2
+  },
+  "rows": 615,
+  "schema": "ME_HARD_SCST_V2_V1_REPRODUCTION_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "shuffle_same_class": {
+    "artifact_available": false,
+    "code_path_available": false,
+    "immutable_report_value": 0.805928,
+    "status": "HISTORICAL_PROMPT_ONLY_NOT_REGENERATED"
+  },
+  "source_artifact": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_scst_utility_stage1\\results\\SCST_PER_SUBJECT_ATCNet-CleanRoom.csv",
+  "source_sha256": "906ebf07d6eaeff6a75408c082356e4ad2ec40136257178c5808f204ce55f9ab"
+}
