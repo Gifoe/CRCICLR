@@ -1,0 +1,270 @@
+{
+  "affinity": {
+    "OpenBMI": {
+      "checks": {
+        "class_fidelity": false,
+        "coverage": false,
+        "displacement": true,
+        "target_affinity_ci_lower_positive": true
+      },
+      "class_fidelity_mean": 0.1960920138888889,
+      "coverage_mean": 0.3369861111111111,
+      "median_displacement_ratio": 0.47728076204657555,
+      "subjects": 40,
+      "target_distance_ci95_l": 0.263145915259106,
+      "target_distance_mean": 0.28379485903884216,
+      "target_nll_ci95_l": 1.9318574132472315,
+      "target_nll_mean": 2.090836703395894
+    },
+    "WBCIC": {
+      "checks": {
+        "class_fidelity": false,
+        "coverage": false,
+        "displacement": true,
+        "target_affinity_ci_lower_positive": true
+      },
+      "class_fidelity_mean": 0.22445859037736104,
+      "coverage_mean": 0.3599998638177337,
+      "median_displacement_ratio": 0.5798990726470947,
+      "subjects": 41,
+      "target_distance_ci95_l": 0.35949697412695353,
+      "target_distance_mean": 0.3736024108030049,
+      "target_nll_ci95_l": 2.8794350958805754,
+      "target_nll_mean": 3.1062469210612194
+    }
+  },
+  "candidate_survival_guard": true,
+  "candidate_survival_mean": 0.3486281889557527,
+  "future_or_outer_opened": false,
+  "match_audit": {
+    "alpha_mismatch_max": 0.0,
+    "matched_pairs": 94642,
+    "mean_euclidean_norm_mismatch": 0.0,
+    "mean_whitened_norm_mismatch": 0.0,
+    "per_anchor_count_match": true,
+    "rows": 878256
+  },
+  "method": "R2-LowRank-Local-OT",
+  "outer_or_sealed_opened": false,
+  "recipe_rows": [
+    {
+      "by_dataset": {
+        "OpenBMI": {
+          "ci95_l": -0.004821428571428568,
+          "ci95_u": -0.0010119047619047453,
+          "delta": -0.0029563492063491926,
+          "n_subjects": 28,
+          "vs_mixup_delta": -0.007003968253968258,
+          "vs_random_ci95_l": -0.0011607142857143085,
+          "vs_random_delta": 1.984126984126105e-05
+        },
+        "WBCIC": {
+          "ci95_l": -0.0034126324217787886,
+          "ci95_u": 0.0004422579453067061,
+          "delta": -0.0015069393118173726,
+          "n_subjects": 41,
+          "vs_mixup_delta": -0.003786236347211965,
+          "vs_random_ci95_l": 5.064192056063028e-05,
+          "vs_random_delta": 0.0010465768799102027
+        }
+      },
+      "checks": {
+        "OpenBMI_ci_lower_vs_erm_positive": false,
+        "OpenBMI_ci_lower_vs_random_positive": false,
+        "OpenBMI_delta_ge_002": false,
+        "OpenBMI_mean_vs_mixup_positive": false,
+        "WBCIC_ci_lower_vs_erm_positive": false,
+        "WBCIC_ci_lower_vs_random_positive": true,
+        "WBCIC_delta_ge_002": false,
+        "WBCIC_mean_vs_mixup_positive": false
+      },
+      "lambda_T": 0.25,
+      "pass": false,
+      "q": 0.25,
+      "subject_nonnegative_fraction": 0.36231884057971014
+    },
+    {
+      "by_dataset": {
+        "OpenBMI": {
+          "ci95_l": -0.005158730158730136,
+          "ci95_u": -0.0003968253968253875,
+          "delta": -0.002757936507936487,
+          "n_subjects": 28,
+          "vs_mixup_delta": -0.0068055555555555525,
+          "vs_random_ci95_l": -0.0007672784391534373,
+          "vs_random_delta": 0.00021825396825396668
+        },
+        "WBCIC": {
+          "ci95_l": -0.0047326927814732795,
+          "ci95_u": -0.00020900057485423316,
+          "delta": -0.002444772932577816,
+          "n_subjects": 41,
+          "vs_mixup_delta": -0.004724069967972408,
+          "vs_random_ci95_l": -0.0005627361008458738,
+          "vs_random_delta": 0.00010874325914975913
+        }
+      },
+      "checks": {
+        "OpenBMI_ci_lower_vs_erm_positive": false,
+        "OpenBMI_ci_lower_vs_random_positive": false,
+        "OpenBMI_delta_ge_002": false,
+        "OpenBMI_mean_vs_mixup_positive": false,
+        "WBCIC_ci_lower_vs_erm_positive": false,
+        "WBCIC_ci_lower_vs_random_positive": false,
+        "WBCIC_delta_ge_002": false,
+        "WBCIC_mean_vs_mixup_positive": false
+      },
+      "lambda_T": 0.5,
+      "pass": false,
+      "q": 0.25,
+      "subject_nonnegative_fraction": 0.42028985507246375
+    },
+    {
+      "by_dataset": {
+        "OpenBMI": {
+          "ci95_l": -0.006666666666666642,
+          "ci95_u": 0.0007738095238095815,
+          "delta": -0.002876984126984093,
+          "n_subjects": 28,
+          "vs_mixup_delta": -0.006924603174603159,
+          "vs_random_ci95_l": -0.00144510582010578,
+          "vs_random_delta": 9.920634920636075e-05
+        },
+        "WBCIC": {
+          "ci95_l": -0.006387041143138713,
+          "ci95_u": -0.0007269647696477115,
+          "delta": -0.0035460293996879516,
+          "n_subjects": 41,
+          "vs_mixup_delta": -0.005825326435082543,
+          "vs_random_ci95_l": -0.0020880211327365963,
+          "vs_random_delta": -0.0009925132079603763
+        }
+      },
+      "checks": {
+        "OpenBMI_ci_lower_vs_erm_positive": false,
+        "OpenBMI_ci_lower_vs_random_positive": false,
+        "OpenBMI_delta_ge_002": false,
+        "OpenBMI_mean_vs_mixup_positive": false,
+        "WBCIC_ci_lower_vs_erm_positive": false,
+        "WBCIC_ci_lower_vs_random_positive": false,
+        "WBCIC_delta_ge_002": false,
+        "WBCIC_mean_vs_mixup_positive": false
+      },
+      "lambda_T": 1.0,
+      "pass": false,
+      "q": 0.25,
+      "subject_nonnegative_fraction": 0.4057971014492754
+    },
+    {
+      "by_dataset": {
+        "OpenBMI": {
+          "ci95_l": -0.004960317460317438,
+          "ci95_u": -0.0009920634920634924,
+          "delta": -0.0030158730158729996,
+          "n_subjects": 28,
+          "vs_mixup_delta": -0.007063492063492065,
+          "vs_random_ci95_l": -0.0012136243386243319,
+          "vs_random_delta": -3.968253968254588e-05
+        },
+        "WBCIC": {
+          "ci95_l": -0.0033769093372752208,
+          "ci95_u": 0.0004085571158741716,
+          "delta": -0.0015069393118173672,
+          "n_subjects": 41,
+          "vs_mixup_delta": -0.0037862363472119594,
+          "vs_random_ci95_l": 7.340341080176033e-05,
+          "vs_random_delta": 0.001046576879910208
+        }
+      },
+      "checks": {
+        "OpenBMI_ci_lower_vs_erm_positive": false,
+        "OpenBMI_ci_lower_vs_random_positive": false,
+        "OpenBMI_delta_ge_002": false,
+        "OpenBMI_mean_vs_mixup_positive": false,
+        "WBCIC_ci_lower_vs_erm_positive": false,
+        "WBCIC_ci_lower_vs_random_positive": true,
+        "WBCIC_delta_ge_002": false,
+        "WBCIC_mean_vs_mixup_positive": false
+      },
+      "lambda_T": 0.25,
+      "pass": false,
+      "q": 0.5,
+      "subject_nonnegative_fraction": 0.37681159420289856
+    },
+    {
+      "by_dataset": {
+        "OpenBMI": {
+          "ci95_l": -0.0053968253968253565,
+          "ci95_u": -0.0006547619047618644,
+          "delta": -0.002996031746031715,
+          "n_subjects": 28,
+          "vs_mixup_delta": -0.007043650793650781,
+          "vs_random_ci95_l": -0.001117807539682542,
+          "vs_random_delta": -1.984126984126105e-05
+        },
+        "WBCIC": {
+          "ci95_l": -0.004861624373819497,
+          "ci95_u": -0.00025006159152499895,
+          "delta": -0.0025264843557526533,
+          "n_subjects": 41,
+          "vs_mixup_delta": -0.004805781391147245,
+          "vs_random_ci95_l": -0.0006638231912622263,
+          "vs_random_delta": 2.7031835974921932e-05
+        }
+      },
+      "checks": {
+        "OpenBMI_ci_lower_vs_erm_positive": false,
+        "OpenBMI_ci_lower_vs_random_positive": false,
+        "OpenBMI_delta_ge_002": false,
+        "OpenBMI_mean_vs_mixup_positive": false,
+        "WBCIC_ci_lower_vs_erm_positive": false,
+        "WBCIC_ci_lower_vs_random_positive": false,
+        "WBCIC_delta_ge_002": false,
+        "WBCIC_mean_vs_mixup_positive": false
+      },
+      "lambda_T": 0.5,
+      "pass": false,
+      "q": 0.5,
+      "subject_nonnegative_fraction": 0.4057971014492754
+    },
+    {
+      "by_dataset": {
+        "OpenBMI": {
+          "ci95_l": -0.007043650793650745,
+          "ci95_u": 0.00029761904761910614,
+          "delta": -0.0032539682539682036,
+          "n_subjects": 28,
+          "vs_mixup_delta": -0.007301587301587269,
+          "vs_random_ci95_l": -0.001736193783068761,
+          "vs_random_delta": -0.0002777777777777498
+        },
+        "WBCIC": {
+          "ci95_l": -0.006585365853658547,
+          "ci95_u": -0.0009397737537981502,
+          "delta": -0.0037899318387123447,
+          "n_subjects": 41,
+          "vs_mixup_delta": -0.006069228874106937,
+          "vs_random_ci95_l": -0.002268244778407393,
+          "vs_random_delta": -0.0012364156469847694
+        }
+      },
+      "checks": {
+        "OpenBMI_ci_lower_vs_erm_positive": false,
+        "OpenBMI_ci_lower_vs_random_positive": false,
+        "OpenBMI_delta_ge_002": false,
+        "OpenBMI_mean_vs_mixup_positive": false,
+        "WBCIC_ci_lower_vs_erm_positive": false,
+        "WBCIC_ci_lower_vs_random_positive": false,
+        "WBCIC_delta_ge_002": false,
+        "WBCIC_mean_vs_mixup_positive": false
+      },
+      "lambda_T": 1.0,
+      "pass": false,
+      "q": 0.5,
+      "subject_nonnegative_fraction": 0.4057971014492754
+    }
+  ],
+  "schema": "SCST_AUTONOMOUS_R2_GATE_V1",
+  "source_gate_pass": false,
+  "terminal_if_stop": "R2_SOURCE_GATE_FAILED"
+}
