@@ -56,8 +56,11 @@ def build_cache(fold: int, seed: int, device: torch.device, *, lock_verified: bo
         return train, train_sessions, outcome, outcome_sessions
     raw, metadata, _ = c.load_development_data("WBCIC")
     role = c.roles("WBCIC", fold)
-    source_subjects = tuple(sorted(set(role["model_fit"]) | set(role["validation"])))
-    train_idx = c.S1.row_indices(metadata, source_subjects, (0, 1))
+    # The discovery bank is fit strictly on the WBCIC model-fit partition
+    # from session 0.  Validation subjects/session 1 are reserved for the
+    # source-only gate and must not influence candidate geometry here.
+    source_subjects = tuple(sorted(role["model_fit"]))
+    train_idx = c.S1.row_indices(metadata, source_subjects, (c.SOURCE_TRAIN_SESSION["WBCIC"],))
     outcome_idx = c.discovery_indices(fold, lock_verified=lock_verified)
     if np.intersect1d(train_idx, outcome_idx).size:
         raise RuntimeError("DISCOVERY_TRAIN_OUTCOME_OVERLAP")
@@ -90,8 +93,8 @@ def regate(features: np.ndarray, labels: np.ndarray, subjects: np.ndarray, indic
     feature_tensor = torch.from_numpy(features).to(device)
     radius = _support_radius(feature_tensor, labels)
     support_pass = np.zeros((n, budget), bool); semantic_pass = np.zeros((n, budget), bool)
-    for start in range(0, n, 32):
-        stop = min(n, start + 32)
+    for start in range(0, n, 128):
+        stop = min(n, start + 128)
         candidates = feature_tensor[start:stop, None] + torch.from_numpy(offsets[start:stop]).to(device)
         distance = torch.cdist(candidates.reshape(-1, dim).float(), feature_tensor.float())
         values, near = distance.topk(3, largest=False)
@@ -154,7 +157,7 @@ def train_method(method: str, fold: int, seed: int, train: Cache, sessions: np.n
     v1_noise = v1_random_delta(train, sessions, fold, seed) if method == "V1-RandomTransport" else None
     order_rng = np.random.default_rng(c.stable_seed("me-hard-discovery-order", fold, seed))
     method_rng = np.random.default_rng(c.stable_seed("me-hard-discovery-method", method, fold, seed))
-    geometry = random = None; final_audit = []
+    geometry = random = None; final_audit = []; matching_rows = []
     for epoch in range(c.EPOCHS):
         net.train()
         if dynamic:
@@ -176,7 +179,7 @@ def train_method(method: str, fold: int, seed: int, train: Cache, sessions: np.n
                 geometry = build_geometry(teacher_features, train.labels, train.subjects, train.indices, "WBCIC-discovery", fold, seed, device, factorized=factorized)
                 if method in ("Factorized-HardRandom", "ME-HardSCST"):
                     random = random_geometry(geometry, teacher_features, train.labels, train.subjects, train.indices, fold, seed, device)
-        epoch_order = order_rng.permutation(len(train.labels)); final_audit = []
+        epoch_order = order_rng.permutation(len(train.labels)); final_audit = []; matching_rows = []
         for start in range(0, len(train.labels), c.BATCH_SIZE):
             positions = epoch_order[start:start+c.BATCH_SIZE]
             y = torch.as_tensor(train.labels[positions], dtype=torch.long, device=device)
@@ -204,6 +207,16 @@ def train_method(method: str, fold: int, seed: int, train: Cache, sessions: np.n
                             if count:
                                 rng=np.random.default_rng(c.stable_seed("match",method,fold,seed,epoch,int(train.indices[positions[local]])))
                                 matched[torch.as_tensor(rng.choice(left.cpu().numpy(),count,replace=False),device=device)]=True
+                            if epoch == c.EPOCHS-1 and method == "ME-HardSCST":
+                                structured_norm = geometry.whitened_norm[positions[local]]
+                                random_norm = random.whitened_norm[positions[local]]
+                                matching_rows.append({
+                                    "model":"ATCNet-CleanRoom","fold":fold,"seed":seed,"subject_id":str(train.subjects[positions[local]]),
+                                    "alpha_match":True,"candidate_count_match":geometry.offsets.shape[1]==random.offsets.shape[1],
+                                    "structured_valid":int(len(left)),"random_valid":int(len(right)),"matched_valid":int(count),
+                                    "valid_count_match":True,
+                                    "whitened_norm_error":float(np.max(np.abs(structured_norm-random_norm))),
+                                })
                         valid = valid & matched
                     candidate_logits = net.head((h[:,None]+offsets).flatten(0,1))
                     if method in ("Dynamic-ClassConditional-Uniform-NoKL", "Factorized-Uniform-NoKL"):
@@ -226,7 +239,9 @@ def train_method(method: str, fold: int, seed: int, train: Cache, sessions: np.n
     frame["median_valid_candidates"]=float(clean.valid_count.median()) if len(clean) else 0.0
     frame["semantic_pass_rate"]=float(clean.semantic_pass_rate.mean()) if len(clean) else (1.0 if not dynamic else 0.0)
     frame["bank_stability"]=float(np.mean(bank_stability)) if bank_stability else 1.0
-    directory.mkdir(parents=True,exist_ok=True); c.write_csv(result_path,frame); torch.save({"state_dict":{k:v.detach().cpu() for k,v in net.state_dict().items()}},directory/"model.pt")
+    directory.mkdir(parents=True,exist_ok=True); c.write_csv(result_path,frame)
+    if method == "ME-HardSCST": c.write_csv(directory/"matching.csv",pd.DataFrame(matching_rows))
+    torch.save({"state_dict":{k:v.detach().cpu() for k,v in net.state_dict().items()}},directory/"model.pt")
     del net,teacher;torch.cuda.empty_cache();return frame
 
 
@@ -243,6 +258,8 @@ def aggregate() -> dict:
         values=(subject["ME-HardSCST"]-subject[control]).to_numpy(float);draws=values[rng.integers(0,len(values),size=(10000,len(values)))].mean(1);fold_delta=pivot.groupby("fold").apply(lambda x:float((x["ME-HardSCST"]-x[control]).mean()),include_groups=False)
         comparisons.append({"comparison":f"ME-HardSCST-{control}","delta_BA":float(values.mean()),"CI95_L":float(np.quantile(draws,.025)),"CI95_U":float(np.quantile(draws,.975)),"positive_folds":int((fold_delta>0).sum())})
     c.write_csv(c.RESULTS/"DISCOVERY_SUMMARY.csv",pd.DataFrame(summary));c.write_csv(c.RESULTS/"CONTROL_COMPARISON.csv",pd.DataFrame(comparisons))
+    matching_files=sorted((c.RUNTIME/"discovery_units"/"ME-HardSCST").rglob("matching.csv"))
+    if matching_files:c.write_csv(c.RESULTS/"HARD_RANDOM_MATCHING.csv",pd.concat([pd.read_csv(path) for path in matching_files],ignore_index=True))
     lookup={row["comparison"]:row for row in comparisons};erm=lookup["ME-HardSCST-ERM"];hard=lookup["ME-HardSCST-Factorized-HardRandom"];uniform=lookup["ME-HardSCST-Factorized-Uniform-NoKL"]
     me=frame[frame.method=="ME-HardSCST"];source=c.read_json(c.RESULTS/"SOURCE_DECISION.json")["selected"]
     diagnostic=bool(np.isfinite(me[["coverage_ge2","semantic_pass_rate","bank_stability"]]).all().all() and me.coverage_ge2.mean()>=.5 and me.median_valid_candidates.median()>=2 and me.semantic_pass_rate.mean()>=float(source["semantic_pass_min"])-.05)
@@ -261,4 +278,3 @@ def main()->None:
 
 
 if __name__=="__main__":main()
-

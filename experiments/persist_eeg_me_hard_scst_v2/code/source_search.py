@@ -180,8 +180,10 @@ def build_geometry(features: np.ndarray, labels: np.ndarray, subjects: np.ndarra
     radius = _support_radius(feature_tensor, labels)
     support_pass = np.zeros((n, offsets.shape[1]), bool)
     semantic_pass = np.zeros_like(support_pass)
-    for start in range(0, n, 32):
-        stop = min(n, start + 32)
+    # Exact same all-training-point 3NN query, vectorized in larger chunks to
+    # use the 32-GB server GPU efficiently without changing any neighbor.
+    for start in range(0, n, 128):
+        stop = min(n, start + 128)
         candidate = feature_tensor[start:stop, None, :] + torch.from_numpy(offsets[start:stop]).to(device)
         flat = candidate.reshape(-1, dim)
         distance = torch.cdist(flat.float(), feature_tensor.float())
@@ -350,7 +352,9 @@ def aggregate() -> None:
     if frame.empty:
         raise RuntimeError("NO_SOURCE_RESULTS")
     baseline = frame[frame.method == "ERM"][["dataset", "fold", "seed", "scope", "BA"]].rename(columns={"BA": "ERM_BA"})
-    recipes = frame[frame.method == "ME-HardSCST"].merge(baseline, on=["dataset", "fold", "seed", "scope"], validate="one_to_one")
+    # Each fold/seed/scope has one ERM row and six ME-HardSCST q/lambda
+    # rows; the baseline therefore joins many recipes to one control.
+    recipes = frame[frame.method == "ME-HardSCST"].merge(baseline, on=["dataset", "fold", "seed", "scope"], validate="many_to_one")
     recipes["delta_BA"] = recipes.BA - recipes.ERM_BA
     grouped = recipes.groupby(["scope", "q", "lambda_H", "dataset"], as_index=False).agg(
         BA=("BA", "mean"), ERM_BA=("ERM_BA", "mean"), delta_BA=("delta_BA", "mean"),
@@ -358,6 +362,25 @@ def aggregate() -> None:
         hardness_gap=("hardness_gap", "mean"), hardness_gap_CI95_L=("hardness_gap_CI95_L", "mean"),
         semantic_pass_rate=("semantic_pass_rate", "mean"), bank_stability=("bank_stability", "mean"), units=("BA", "size"),
     )
+    # Replace the mean of unit-level lower bounds with one biological-subject
+    # bootstrap across the full fold/seed grid. Repeated anchors and fold/seed
+    # appearances are averaged within each biological subject before draws.
+    for row_index, row in grouped.iterrows():
+        tag = f"q{float(row.q):.2f}_l{float(row.lambda_H):.2f}"
+        root = c.RUNTIME / "source_units" / str(row.scope) / tag / str(row.dataset)
+        audit_files = sorted(root.rglob("anchor_audit.csv"))
+        audit = pd.concat([pd.read_csv(path) for path in audit_files], ignore_index=True)
+        audit = audit[audit.clean_correct.astype(bool)].copy()
+        audit["hardness_gap_subject"] = audit.tail_hardness - audit.uniform_hardness
+        subject_values = audit.groupby("subject_id").hardness_gap_subject.mean().dropna().to_numpy(np.float64)
+        if not len(subject_values):
+            grouped.loc[row_index, ["hardness_gap", "hardness_gap_CI95_L"]] = np.nan
+            continue
+        rng = np.random.default_rng(c.stable_seed("source-grid-hardness-bootstrap", row.scope, row.q, row.lambda_H, row.dataset))
+        draws = subject_values[rng.integers(0, len(subject_values), size=(10_000, len(subject_values)))].mean(1)
+        grouped.loc[row_index, "hardness_gap"] = float(subject_values.mean())
+        grouped.loc[row_index, "hardness_gap_CI95_L"] = float(np.quantile(draws, .025))
+        grouped.loc[row_index, "hardness_gap_CI95_U"] = float(np.quantile(draws, .975))
     c.write_csv(c.RESULTS / "SOURCE_RECIPE_SEARCH.csv", grouped)
     c.write_csv(c.RESULTS / "CANDIDATE_COVERAGE.csv", recipes[["dataset", "fold", "seed", "scope", "q", "lambda_H", "coverage_ge2", "median_valid_candidates", "semantic_pass_rate"]])
     c.write_csv(c.RESULTS / "HARDNESS_DISTRIBUTION.csv", recipes[["dataset", "fold", "seed", "scope", "q", "lambda_H", "hardness_gap", "hardness_gap_CI95_L"]])

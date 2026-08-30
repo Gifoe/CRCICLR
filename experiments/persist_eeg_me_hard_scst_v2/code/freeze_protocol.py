@@ -8,7 +8,7 @@ import v2_common as c
 
 
 CODE_FILES = (
-    "candidate_engine.py", "discovery.py", "freeze_protocol.py", "mixed_effects.py",
+    "candidate_engine.py", "confirmation.py", "discovery.py", "freeze_protocol.py", "mixed_effects.py",
     "source_search.py", "training_components.py", "v2_common.py",
 )
 
