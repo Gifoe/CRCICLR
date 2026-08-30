@@ -1,0 +1,44 @@
+{
+  "SCST_POSITIVE": false,
+  "bootstrap_draws": 10000,
+  "comparisons": [
+    {
+      "CI95_L": -0.00053687279297036,
+      "CI95_U": 0.0026829268292682842,
+      "comparison": "Mixup-ERM",
+      "delta_BA": 0.00101205140839287,
+      "folds": 5,
+      "model": "ATCNet-CleanRoom",
+      "positive_folds": 3
+    },
+    {
+      "CI95_L": 0.00012195121951218169,
+      "CI95_U": 0.003414634146341453,
+      "comparison": "RandomTransport-ERM",
+      "delta_BA": 0.0017852303523035124,
+      "folds": 5,
+      "model": "ATCNet-CleanRoom",
+      "positive_folds": 5
+    },
+    {
+      "CI95_L": -0.0006571815718157074,
+      "CI95_U": 0.0023983739837398522,
+      "comparison": "SCST-NoConsistency-ERM",
+      "delta_BA": 0.0008502710027100354,
+      "folds": 5,
+      "model": "ATCNet-CleanRoom",
+      "positive_folds": 3
+    },
+    {
+      "CI95_L": -0.0012601626016260263,
+      "CI95_U": 0.0018309620596206008,
+      "comparison": "Full-SCST-ERM",
+      "delta_BA": 0.0002455962059620574,
+      "folds": 5,
+      "model": "ATCNet-CleanRoom",
+      "positive_folds": 2
+    }
+  ],
+  "full_scst_minus_random": -0.001539634146341455,
+  "model": "ATCNet-CleanRoom"
+}
