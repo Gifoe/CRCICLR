@@ -1,0 +1,80 @@
+{
+  "schema": "SCST_AUTONOMOUS_REPAIR_FINAL_REPORT_V1",
+  "scope": {
+    "datasets": ["OpenBMI_session1_to_session2", "WBCIC_S1_to_S2"],
+    "folds": [0, 1, 2, 3, 4],
+    "seeds": [0, 1, 2],
+    "source_units_per_round": 30,
+    "future_or_outer_opened": false,
+    "outer_or_sealed_opened": false,
+    "s3_opened": false
+  },
+  "decision": {
+    "round_terminals": [
+      "R1_SOURCE_GATE_FAILED",
+      "R2_SOURCE_GATE_FAILED",
+      "R3_SOURCE_GATE_FAILED"
+    ],
+    "terminal": "SCST_CONSTRUCTIVE_SEARCH_EXHAUSTED",
+    "future_architecture_status": "NOT_RUN_SOURCE_GATE"
+  },
+  "rounds": [
+    {
+      "round": "R1",
+      "method": "R1-TaskProtected-Bures",
+      "class_fidelity": {"OpenBMI": 0.3129895833, "WBCIC": 0.3263749983},
+      "coverage": {"OpenBMI": 0.4036666667, "WBCIC": 0.4095274475},
+      "candidate_survival": 0.4161611671,
+      "target_distance_ci95_lower": {"OpenBMI": 0.2157636062, "WBCIC": 0.3231461537},
+      "target_nll_ci95_lower": {"OpenBMI": 3.2090889804, "WBCIC": 4.5135538690},
+      "source_gate_pass": false
+    },
+    {
+      "round": "R2",
+      "method": "R2-LowRank-Local-OT",
+      "class_fidelity": {"OpenBMI": 0.1960920139, "WBCIC": 0.2244585904},
+      "coverage": {"OpenBMI": 0.3369861111, "WBCIC": 0.3599998638},
+      "candidate_survival": 0.3486281890,
+      "target_distance_ci95_lower": {"OpenBMI": 0.2631459153, "WBCIC": 0.3594969741},
+      "target_nll_ci95_lower": {"OpenBMI": 1.9318574132, "WBCIC": 2.8794350959},
+      "source_gate_pass": false
+    },
+    {
+      "round": "R3",
+      "method": "R3-TaskProtected-Local-OT",
+      "class_fidelity": {"OpenBMI": 0.1969835069, "WBCIC": 0.2328908431},
+      "coverage": {"OpenBMI": 0.3403819444, "WBCIC": 0.3675384374},
+      "candidate_survival": 0.3541724052,
+      "target_distance_ci95_lower": {"OpenBMI": 0.2256534470, "WBCIC": 0.3198364798},
+      "target_nll_ci95_lower": {"OpenBMI": 1.9748029844, "WBCIC": 3.0321355833},
+      "utility": {
+        "recipes": 6,
+        "all_recipes_pass": false,
+        "primary_delta_vs_erm_range": {
+          "OpenBMI": [-0.0029166667, -0.0022420635],
+          "WBCIC": [-0.0035866798, -0.0015475897]
+        },
+        "structured_minus_matched_random_range": {
+          "OpenBMI": [-0.0003670635, 0.0003075397],
+          "WBCIC": [-0.0012708385, 0.0007682512]
+        }
+      },
+      "source_gate_pass": false
+    }
+  ],
+  "strongest_claim": "Within the tested OpenBMI/WBCIC source-only development protocol, none of the three specified SCST repair operators met the frozen semantic-validity and utility gates; no positive utility or outer/sealed generalization claim is supported.",
+  "artifacts": {
+    "compact_results": [
+      "results/R1_GATE.json",
+      "results/R2_GATE.json",
+      "results/R3_GATE.json",
+      "results/R3_STATISTICS.json",
+      "results/R3_SOURCE_PER_SUBJECT.csv",
+      "results/R3_SOURCE_PER_FOLD.csv",
+      "results/R3_METHOD_SUMMARY.csv",
+      "results/R3_GEOMETRY_PER_SUBJECT.csv",
+      "results/R3_MATCH_AUDIT.csv"
+    ],
+    "figure": "figures/repair_round_summary.png"
+  }
+}
