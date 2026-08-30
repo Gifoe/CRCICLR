@@ -1,0 +1,44 @@
+{
+  "SCST_POSITIVE": false,
+  "bootstrap_draws": 10000,
+  "comparisons": [
+    {
+      "CI95_L": -0.0024390243902439207,
+      "CI95_U": 0.0004878048780487566,
+      "comparison": "Mixup-ERM",
+      "delta_BA": -0.0009756097560975727,
+      "folds": 5,
+      "model": "EEGNet",
+      "positive_folds": 1
+    },
+    {
+      "CI95_L": -0.0014736619241192575,
+      "CI95_U": 0.0011348238482384568,
+      "comparison": "RandomTransport-ERM",
+      "delta_BA": -0.00016598915989161404,
+      "folds": 5,
+      "model": "EEGNet",
+      "positive_folds": 3
+    },
+    {
+      "CI95_L": -0.002032520325203261,
+      "CI95_U": 0.0010162601626016198,
+      "comparison": "SCST-NoConsistency-ERM",
+      "delta_BA": -0.00048780487804878634,
+      "folds": 5,
+      "model": "EEGNet",
+      "positive_folds": 2
+    },
+    {
+      "CI95_L": -0.001829268292682931,
+      "CI95_U": 0.00089430894308943,
+      "comparison": "Full-SCST-ERM",
+      "delta_BA": -0.0004471544715447041,
+      "folds": 5,
+      "model": "EEGNet",
+      "positive_folds": 3
+    }
+  ],
+  "full_scst_minus_random": -0.0002811653116530901,
+  "model": "EEGNet"
+}
