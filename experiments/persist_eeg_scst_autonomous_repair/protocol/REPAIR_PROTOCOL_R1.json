@@ -1,0 +1,39 @@
+{
+  "schema": "SCST_AUTONOMOUS_REPAIR_PROTOCOL_R1_V1",
+  "round": "Repair-R1",
+  "parent_v3_terminal": "BURES_SCST_TRANSPORT_NOT_REALIZED",
+  "hypothesis": "task-semantic contamination in Bures subject transport",
+  "method": "R1-TaskProtected-Bures-Subject-Transport",
+  "protected_subspace": "source-training two-class centroid difference, one normalized direction",
+  "operator": "delta_subject - d*(d^T*delta_subject)",
+  "clean_representation_change": false,
+  "primary_recipes": [
+    {"q": 0.25, "lambda_T": 0.25},
+    {"q": 0.25, "lambda_T": 0.50},
+    {"q": 0.25, "lambda_T": 1.00},
+    {"q": 0.50, "lambda_T": 0.25},
+    {"q": 0.50, "lambda_T": 0.50},
+    {"q": 0.50, "lambda_T": 1.00}
+  ],
+  "alpha_ladder": [0.25, 0.5, 0.75, 1.0],
+  "implemented_alpha_ladder": [0.25, 0.5, 0.75, 1.0],
+  "source_data": ["OpenBMI session-1 to session-2", "WBCIC S1 to S2"],
+  "folds": [0, 1, 2, 3, 4],
+  "seeds": [0, 1, 2],
+  "bootstrap_draws": 10000,
+  "future_or_outer_opened": false,
+  "outer_or_sealed_opened": false,
+  "selection_rule": "all six recipes are evaluated; select only if every preregistered source gate passes",
+  "source_acceptance": {
+    "delta_each_dataset": 0.002,
+    "paired_ci_lower_vs_erm": 0.0,
+    "paired_ci_lower_vs_random": 0.0,
+    "mean_delta_vs_mixup": 0.0,
+    "nonnegative_subject_fraction": 0.60,
+    "target_affinity_ci_lower": 0.0,
+    "class_fidelity": 0.90,
+    "coverage": 0.50,
+    "median_displacement_ratio": 0.15,
+    "candidate_survival_upper": 0.95
+  }
+}
