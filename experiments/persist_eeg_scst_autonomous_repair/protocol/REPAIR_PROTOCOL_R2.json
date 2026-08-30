@@ -1,0 +1,48 @@
+{
+  "schema": "SCST_AUTONOMOUS_REPAIR_PROTOCOL_R2_V1",
+  "round": "Repair-R2",
+  "parent_terminal": "R1_SOURCE_GATE_FAILED",
+  "parent_failure_signature": "global target-conditional map had positive affinity and displacement but low class fidelity/coverage and no utility advantage",
+  "hypothesis": "global Gaussian/Bures distribution model mismatch; a local low-rank target-conditional OT map may preserve class-safe structure",
+  "method": "R2-LowRank-Local-OT-Subject-Transport",
+  "local_neighborhood": {
+    "same_class": true,
+    "cross_fit_half": "opposite half of the anchor",
+    "nearest_rows": 12,
+    "minimum_rows_each_side": 2
+  },
+  "local_pca": {
+    "variance_threshold": 0.90,
+    "rank_cap": 8,
+    "orthogonal_residual": "unchanged"
+  },
+  "regularization": "reuse audited BuresBank shrinkage covariance and pool floor",
+  "primary_recipes": [
+    {"q": 0.25, "lambda_T": 0.25},
+    {"q": 0.25, "lambda_T": 0.50},
+    {"q": 0.25, "lambda_T": 1.00},
+    {"q": 0.50, "lambda_T": 0.25},
+    {"q": 0.50, "lambda_T": 0.50},
+    {"q": 0.50, "lambda_T": 1.00}
+  ],
+  "alpha_ladder": [0.25, 0.50, 0.75, 1.00],
+  "source_data": ["OpenBMI session-1 to session-2", "WBCIC S1 to S2"],
+  "folds": [0, 1, 2, 3, 4],
+  "seeds": [0, 1, 2],
+  "bootstrap_draws": 10000,
+  "future_or_outer_opened": false,
+  "outer_or_sealed_opened": false,
+  "selection_rule": "all six recipes are evaluated; select only if one same recipe satisfies every source gate",
+  "source_acceptance": {
+    "delta_each_dataset": 0.002,
+    "paired_ci_lower_vs_erm": 0.0,
+    "paired_ci_lower_vs_random": 0.0,
+    "mean_delta_vs_mixup": 0.0,
+    "nonnegative_subject_fraction": 0.60,
+    "target_affinity_ci_lower": 0.0,
+    "class_fidelity": 0.90,
+    "coverage": 0.50,
+    "median_displacement_ratio": 0.15,
+    "candidate_survival_upper": 0.95
+  }
+}

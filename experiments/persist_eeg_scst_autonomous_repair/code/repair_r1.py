@@ -24,7 +24,7 @@ if str(V3_CODE) not in sys.path:
     sys.path.insert(0, str(V3_CODE))
 
 import common as c  # noqa: E402
-from bures import BuresBank, anchor_excluded_neighbors, matched_random_displacement  # noqa: E402
+from bures import BuresBank, _cov as _bures_cov, _sym as _bures_sym, anchor_excluded_neighbors, bures_map, matched_random_displacement  # noqa: E402
 from source_v3 import (  # noqa: E402
     AdapterHead,
     Geometry,
@@ -64,6 +64,57 @@ RECIPES = tuple((q, lam) for q in (0.25, 0.50) for lam in (0.25, 0.50, 1.00))
 ALPHA_LADDER = np.asarray((1.00, 0.75, 0.50, 0.25), np.float32)
 WARMUP_EPOCHS = int(c.WARMUP_EPOCHS)
 STAGE2_EPOCHS = int(c.STAGE2_EPOCHS)
+
+
+def _low_rank_local_displacement(bank: BuresBank, position: int, target: str) -> np.ndarray:
+    """Compute a frozen local low-rank target-conditional OT displacement.
+
+    This helper is unused by Repair-R1 itself; Repair-R2 calls it through the
+    same audited source-only bank.  It is kept here so the cross-fit and
+    covariance implementation has one tested location.
+    """
+    position = int(position)
+    source = str(bank.subjects[position])
+    label = int(bank.labels[position])
+    opposite = 1 - int(bank.half[position])
+    src_idx = bank._cell_positions.get((source, label, opposite), np.asarray([], np.int64))
+    tgt_idx = bank._cell_positions.get((str(target), label, opposite), np.asarray([], np.int64))
+    if len(src_idx) < 2 or len(tgt_idx) < 2:
+        return np.zeros(bank.dim, np.float32)
+    anchor = bank.features[position]
+    source_values = bank.features[src_idx]
+    target_values = bank.features[tgt_idx]
+    source_order = np.argsort(np.linalg.norm(source_values - anchor[None, :], axis=1), kind="stable")
+    target_order = np.argsort(np.linalg.norm(target_values - anchor[None, :], axis=1), kind="stable")
+    local_k = min(12, len(source_order), len(target_order))
+    if local_k < 2:
+        return np.zeros(bank.dim, np.float32)
+    source_local = source_values[source_order[:local_k]].astype(np.float64)
+    target_local = target_values[target_order[:local_k]].astype(np.float64)
+    source_mean = source_local.mean(0)
+    target_mean = target_local.mean(0)
+    source_cov = _bures_sym(_bures_cov(source_local, source_mean, bank.dim, bank.pool_floor))
+    target_cov = _bures_sym(_bures_cov(target_local, target_mean, bank.dim, bank.pool_floor))
+    pooled = np.vstack((source_local - source_mean[None, :], target_local - target_mean[None, :]))
+    pooled_cov = _bures_sym(_bures_cov(pooled, pooled.mean(0), bank.dim, bank.pool_floor))
+    eig, vec = np.linalg.eigh(pooled_cov)
+    eig = np.maximum(np.asarray(eig, np.float64), 0.0)
+    order = np.argsort(eig)[::-1]
+    total = float(eig.sum())
+    if not np.isfinite(total) or total <= 1e-12:
+        return (target_mean - anchor).astype(np.float32)
+    cumulative = np.cumsum(eig[order]) / total
+    rank = int(np.searchsorted(cumulative, 0.90, side="left") + 1)
+    rank = max(1, min(8, rank, bank.dim))
+    basis = vec[:, order[:rank]]
+    source_small = c._sym(basis.T @ source_cov @ basis)
+    target_small = c._sym(basis.T @ target_cov @ basis)
+    local_map = bures_map(source_small, target_small, bank.pool_floor)
+    centered = anchor - source_mean
+    low_rank = basis @ (local_map @ (basis.T @ centered))
+    residual = centered - basis @ (basis.T @ centered)
+    endpoint = target_mean + low_rank + residual
+    return (endpoint - anchor).astype(np.float32)
 
 
 def _task_direction(features: np.ndarray, labels: np.ndarray) -> np.ndarray:
@@ -138,6 +189,8 @@ def _geometry(
             structured = bank.displacement(position, str(target)).astype(np.float32)
             if mode == "protected":
                 direction = _protected(structured, task_direction)
+            elif mode == "local":
+                direction = _low_rank_local_displacement(bank, position, str(target))
             elif mode == "random":
                 if reference_directions is None:
                     raise RuntimeError("R1_RANDOM_NEEDS_REFERENCE")
@@ -416,7 +469,23 @@ def _gate(frame: pd.DataFrame, geometry: pd.DataFrame, match: pd.DataFrame) -> d
             affinity[dataset] = {"subjects": 0, "checks": {"target_affinity_ci_lower_positive": False, "coverage": False, "class_fidelity": False, "displacement": False}}
     candidate_survival = float(geometry.coverage.mean()) if len(geometry) and "coverage" in geometry else 0.0
     match_summary = {"rows": int(match.rows.sum()) if len(match) else 0, "matched_pairs": int(match.matched_pairs.sum()) if len(match) else 0, "mean_euclidean_norm_mismatch": float(np.nanmean(match.mean_euclidean_norm_mismatch)) if len(match) else None, "mean_whitened_norm_mismatch": float(np.nanmean(match.mean_whitened_norm_mismatch)) if len(match) else None, "alpha_mismatch_max": float(np.nanmax(match.alpha_mismatch_max)) if len(match) else None, "per_anchor_count_match": bool(match.per_anchor_count_match.all()) if len(match) else False}
-    source_pass = bool(any(row["pass"] for row in recipe_rows) and all(any(row["checks"].get(f"{dataset}_delta_ge_002", False) for row in recipe_rows) for dataset in c.DATASETS) and subject_fraction >= 0.60 and all(value["checks"]["target_affinity_ci_lower_positive"] and value["checks"]["coverage"] and value["checks"]["class_fidelity"] and value["checks"]["displacement"] for value in affinity.values()))
+    # A source gate must be satisfied by one *same* primary recipe.  The
+    # previous implementation combined per-dataset deltas from different
+    # recipes, which could report a pass for a recipe that never passed all
+    # preregistered checks jointly.  Keep the scientific thresholds unchanged
+    # and require the existing row-level checks to hold for one recipe.
+    source_pass = bool(
+        any(row["pass"] for row in recipe_rows)
+        and subject_fraction >= 0.60
+        and all(
+            value["checks"]["target_affinity_ci_lower_positive"]
+            and value["checks"]["coverage"]
+            and value["checks"]["class_fidelity"]
+            and value["checks"]["displacement"]
+            for value in affinity.values()
+        )
+        and candidate_survival <= 0.95
+    )
     return {"schema": "SCST_AUTONOMOUS_R1_GATE_V1", "method": PRIMARY, "recipe_rows": recipe_rows, "subject_nonnegative_fraction": subject_fraction, "affinity": affinity, "candidate_survival_mean": candidate_survival, "candidate_survival_guard": bool(candidate_survival <= 0.95), "match_audit": match_summary, "source_gate_pass": source_pass, "future_or_outer_opened": False, "outer_or_sealed_opened": False, "terminal_if_stop": "R1_SOURCE_GATE_PASSED" if source_pass else "R1_SOURCE_GATE_FAILED"}
 
 
