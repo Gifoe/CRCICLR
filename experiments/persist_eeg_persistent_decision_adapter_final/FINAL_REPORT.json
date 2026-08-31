@@ -1,0 +1,35 @@
+{
+  "atcnet_positive_fold_count": 0,
+  "atcnet_wbcic_s2_delta_ci": null,
+  "branch": "codex/persist-eeg-persistent-decision-adapter-final",
+  "correct_vs_shuffled": {
+    "OpenBMI": "\u0394BA=+0.0097, 95% CI [-0.0104, +0.0288], n=40",
+    "WBCIC": "\u0394BA=+0.0035, 95% CI [-0.0056, +0.0127], n=41"
+  },
+  "correct_vs_wrong": {
+    "OpenBMI": "\u0394BA=-0.0014, 95% CI [-0.0153, +0.0114], n=40",
+    "WBCIC": "\u0394BA=+0.0018, 95% CI [-0.0051, +0.0096], n=41"
+  },
+  "cross_backbone_status": "NOT_RUN_ATCNET_SOURCE_GATE_FAILED",
+  "eegnex_delta_ci": null,
+  "exact_terminal": "PERSIST_PDA_SOURCE_NOT_SUPPORTED",
+  "final_commit": "pending_delivery",
+  "ordinary_subject_adapter_comparison": {
+    "OpenBMI": "\u0394BA=-0.0135, 95% CI [-0.0309, +0.0032], n=40",
+    "WBCIC": "\u0394BA=-0.0013, 95% CI [-0.0048, +0.0020], n=41"
+  },
+  "outer_status": "SEALED_NOT_INSPECTED",
+  "selected_recipe": {
+    "id": "pda_r1_lx0.5_lp0.01",
+    "lambda_P": 0.01,
+    "lambda_X": 0.5,
+    "rank": 1
+  },
+  "single_session_comparison": {
+    "OpenBMI": "\u0394BA=+0.0763, 95% CI [+0.0581, +0.0943], n=40",
+    "WBCIC": "\u0394BA=+0.0079, 95% CI [+0.0012, +0.0162], n=41"
+  },
+  "source_openbmi_delta_ci": "\u0394BA=-0.0436, 95% CI [-0.0618, -0.0267], n=40",
+  "source_wbcic_delta_ci": "\u0394BA=-0.0118, 95% CI [-0.0204, -0.0036], n=41",
+  "strongest_supported_claim": "PERSIST-PDA source gate failed on both OpenBMI and WBCIC; future-session utility is unsupported."
+}
