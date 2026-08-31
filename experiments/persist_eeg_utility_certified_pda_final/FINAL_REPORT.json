@@ -1,0 +1,104 @@
+{
+  "EEGNeX": null,
+  "OpenBMI_source": {
+    "CI95_L": -0.002583333333333346,
+    "CI95_U": 0.0005833333333333385,
+    "comparison": "u_pda-population",
+    "dataset": "OpenBMI",
+    "delta_BA": -0.0009166666666666629,
+    "paired_subject_unit": true,
+    "positive_subject_fraction": 0.075,
+    "subjects": 40
+  },
+  "WBCIC_S2_ATCNet": null,
+  "WBCIC_source": {
+    "CI95_L": -0.023849778270509985,
+    "CI95_U": 0.0026328323889299597,
+    "comparison": "u_pda-population",
+    "dataset": "WBCIC",
+    "delta_BA": -0.00712326517204565,
+    "paired_subject_unit": true,
+    "positive_subject_fraction": 0.17073170731707318,
+    "subjects": 41
+  },
+  "alpha_distribution": {
+    "0.0": 171,
+    "0.25": 33,
+    "0.5": 12,
+    "0.75": 24,
+    "1.0": 3
+  },
+  "branch": "codex/persist-eeg-utility-certified-pda-final",
+  "correct_vs_shuffled": {
+    "CI95_L": -0.010475994513031547,
+    "CI95_U": 0.0024897119341563867,
+    "comparison": "correct_adapter-shuffled_adapter",
+    "dataset": "POOLED",
+    "delta_BA": -0.0024096936442615413,
+    "paired_subject_unit": true,
+    "positive_subject_fraction": 0.1728395061728395,
+    "subjects": 81
+  },
+  "correct_vs_wrong": {
+    "CI95_L": -0.010665637860082304,
+    "CI95_U": 0.001872427983539093,
+    "comparison": "correct_adapter-wrong_adapter",
+    "dataset": "POOLED",
+    "delta_BA": -0.0029492455418381335,
+    "paired_subject_unit": true,
+    "positive_subject_fraction": 0.14814814814814814,
+    "subjects": 81
+  },
+  "cross_backbone_status": "NOT_AUTHORIZED_SOURCE_GATE_FAILED",
+  "exact_terminal": "U_PDA_SOURCE_NOT_SUPPORTED",
+  "final_commit": "see git tip",
+  "oracle_personalization_headroom_mean_BA": 0.011435756744398716,
+  "outer_status": "SEALED_NOT_INSPECTED",
+  "previous_pda_association": {
+    "auroc_future_gain_gt_0": 0.5722222222222222,
+    "n": 243,
+    "negative_historical_mean_future_gain": -0.031370104990794644,
+    "pearson_r": 0.3393313797361781,
+    "positive_historical_mean_future_gain": -0.007749999999999998,
+    "spearman_r": 0.242767681687971
+  },
+  "selected_recipe": {
+    "certificate": "one-SE U-PDA",
+    "id": "upda_r1_l20.001_one_se",
+    "l2": 0.001,
+    "rank": 1
+  },
+  "strongest_supported_claim": "True CE U-PDA certificate was implemented, but the predeclared source gate failed on OpenBMI and WBCIC; prospective utility is unsupported.",
+  "u_pda_vs_always_on": {
+    "OpenBMI": {
+      "CI95_L": 0.002833333333333328,
+      "CI95_U": 0.025500000000000002,
+      "comparison": "u_pda-persistent_ce",
+      "dataset": "OpenBMI",
+      "delta_BA": 0.01341666666666666,
+      "paired_subject_unit": true,
+      "positive_subject_fraction": 0.625,
+      "subjects": 40
+    },
+    "WBCIC": {
+      "CI95_L": 0.003008130081300819,
+      "CI95_U": 0.024787252607374546,
+      "comparison": "u_pda-persistent_ce",
+      "dataset": "WBCIC",
+      "delta_BA": 0.012101092223043449,
+      "paired_subject_unit": true,
+      "positive_subject_fraction": 0.5853658536585366,
+      "subjects": 41
+    }
+  },
+  "u_pda_vs_random_gate": {
+    "CI95_L": -0.012060169597206623,
+    "CI95_U": 0.001173229205636642,
+    "comparison": "u_pda-random_gate",
+    "dataset": "POOLED",
+    "delta_BA": -0.0036444693852101077,
+    "paired_subject_unit": true,
+    "positive_subject_fraction": 0.2345679012345679,
+    "subjects": 81
+  }
+}

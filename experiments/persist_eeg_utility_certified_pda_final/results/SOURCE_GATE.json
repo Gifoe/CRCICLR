@@ -1,0 +1,25 @@
+{
+  "OpenBMI_ci_lower_gt_zero": false,
+  "OpenBMI_delta_ge_0_003": false,
+  "U_PDA_gt_always_on": true,
+  "U_PDA_gt_random_pooled_ci": false,
+  "WBCIC_ci_lower_gt_zero": false,
+  "WBCIC_delta_ge_0_003": false,
+  "alpha_not_all_one": true,
+  "alpha_not_all_zero": true,
+  "alpha_positive_subjects_future_gain_positive": false,
+  "correct_gt_shuffled_pooled_ci": false,
+  "correct_gt_wrong_pooled_ci": false,
+  "no_future_labels_in_fit": true,
+  "no_future_session_in_fit": true,
+  "population_checkpoint_unchanged": true,
+  "primary_method": "u_pda",
+  "selected_recipe": {
+    "certificate": "one-SE U-PDA",
+    "id": "upda_r1_l20.001_one_se",
+    "l2": 0.001,
+    "rank": 1
+  },
+  "source_gate_pass": false,
+  "terminal": "U_PDA_SOURCE_NOT_SUPPORTED"
+}
