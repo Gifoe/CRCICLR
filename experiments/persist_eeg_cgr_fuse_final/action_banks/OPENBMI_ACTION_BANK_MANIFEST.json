@@ -1,0 +1,14 @@
+{
+  "schema": "CGRFUSE_OPENBMI_COMPLETE_SIX_RUN_ACTION_BANK_V1",
+  "run_definition": "3 outer folds x 2 seeds; complete-case sample intersection",
+  "raw_sample_count": 10400,
+  "complete_sample_count": 2600,
+  "excluded_incomplete_sample_count": 7800,
+  "actions": [
+    "KEEP",
+    "AMPLIFY",
+    "GEOMETRY"
+  ],
+  "historical_i003_audit_uses_unfiltered_variable-run cache": true,
+  "OUTER_TEST_USED": false
+}

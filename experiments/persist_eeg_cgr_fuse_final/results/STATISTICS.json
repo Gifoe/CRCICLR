@@ -1,0 +1,69 @@
+{
+  "terminal": "CGRFUSE_SOURCE_NOT_SUPPORTED",
+  "selected_recipe": {
+    "eta": 0.5,
+    "lambda_safe": 0.5,
+    "kappa": 0.5
+  },
+  "minimum_delta_vs_STRONGEST_KEEP": -0.000853658536585349,
+  "source_minimum_support": false,
+  "old_i003_baselines_BA": {
+    "OpenBMI": 0.8146153846153845,
+    "WBCIC": 0.7651921655580192
+  },
+  "old_i003_constraint_satisfied_in_search": true,
+  "bootstrap_draws": 10000,
+  "datasets": [
+    {
+      "dataset": "OpenBMI",
+      "eta": 0.5,
+      "lambda_safe": 0.5,
+      "kappa": 0.5,
+      "mean_BA": 0.8576923076923079,
+      "delta_vs_STRONGEST_KEEP": -0.0007692307692307699,
+      "bootstrap_CI95_L": -0.0030769230769230795,
+      "bootstrap_CI95_U": 0.0015384615384615313,
+      "median_subject_delta_BA": 0.0,
+      "positive_subject_fraction": 0.23076923076923078,
+      "nonnegative_subject_fraction": 0.6923076923076923,
+      "positive_fold_fraction": 0.4,
+      "unsafe_intervention_rate": 0.023474178403755867,
+      "rescue_precision": 0.014084507042253521,
+      "action_rate": 0.08192307692307692,
+      "nonkeep_mass": 0.02665791531664617,
+      "stable_fraction": 0.6257692307692307,
+      "mean_mu_amp": 0.013214494633812487,
+      "mean_mu_geo": -0.04324227389503339,
+      "OUTER_TEST_USED": false,
+      "search_stage": "final_five_bootstrap_heads",
+      "delta_vs_OLD_I003": 0.043076923076923346,
+      "terminal": "CGRFUSE_SOURCE_NOT_SUPPORTED"
+    },
+    {
+      "dataset": "WBCIC",
+      "eta": 0.5,
+      "lambda_safe": 0.5,
+      "kappa": 0.5,
+      "mean_BA": 0.7654397634885439,
+      "delta_vs_STRONGEST_KEEP": -0.000853658536585349,
+      "bootstrap_CI95_L": -0.0034146341463414474,
+      "bootstrap_CI95_U": 0.0015853658536585501,
+      "median_subject_delta_BA": 0.0,
+      "positive_subject_fraction": 0.2926829268292683,
+      "nonnegative_subject_fraction": 0.7317073170731707,
+      "positive_fold_fraction": 0.4,
+      "unsafe_intervention_rate": 0.028894472361809045,
+      "rescue_precision": 0.031407035175879394,
+      "action_rate": 0.097096852890949,
+      "nonkeep_mass": 0.037197547087436465,
+      "stable_fraction": 0.47096852890949015,
+      "mean_mu_amp": -0.0052112694342145325,
+      "mean_mu_geo": -0.014268018055137317,
+      "OUTER_TEST_USED": false,
+      "search_stage": "final_five_bootstrap_heads",
+      "delta_vs_OLD_I003": 0.00024759793052475665,
+      "terminal": "CGRFUSE_SOURCE_NOT_SUPPORTED"
+    }
+  ],
+  "OUTER_TEST_USED": false
+}

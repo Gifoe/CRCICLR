@@ -1,0 +1,21 @@
+{
+  "repair_id": "R1",
+  "type": "engineering_only",
+  "scientific_method_changed": false,
+  "actions": ["KEEP", "AMPLIFY", "GEOMETRY"],
+  "erase_status": "historical_diagnostic_only",
+  "recipe_grid_unchanged": {
+    "eta": [0.5, 1.0, 2.0],
+    "lambda_safe": [0.5, 1.0],
+    "kappa": [0.0, 0.5]
+  },
+  "changes": [
+    "merge historical ERASE logits for I003 audit",
+    "remove ERASE from primary feature matrix",
+    "correct complete-subject fold assignment",
+    "compare BA to STRONGEST_KEEP BA in support gate",
+    "emit merged protocol CSV aliases"
+  ],
+  "s2_accessed": false,
+  "outer_accessed": false
+}
