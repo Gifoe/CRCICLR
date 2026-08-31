@@ -1,0 +1,110 @@
+{
+  "terminal": "CGRSTACK_SOURCE_NOT_SUPPORTED",
+  "selected_method": "CGR-Fuse-R1",
+  "source_minimum_support": false,
+  "random_control_gate": true,
+  "bootstrap_draws": 10000,
+  "datasets": [
+    {
+      "dataset": "OpenBMI",
+      "method": "B12_CGRFUSE_R1",
+      "BA": 0.6219444444444444,
+      "macro_f1": 0.5924855607846033,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.0005555555555555499,
+      "median_subject_delta_BA": 0.0,
+      "bootstrap_CI95_L": -0.0006481481481481549,
+      "bootstrap_CI95_U": 0.0017592592592592547,
+      "positive_subject_fraction": 0.14814814814814814,
+      "nonnegative_subject_fraction": 0.9444444444444444,
+      "subjects": 54,
+      "actual_decision_change_rate": 0.006666666666666667,
+      "unsafe_decision_change_rate": 0.4583333333333333,
+      "soft_fusion_mass": 0.017361111111111112,
+      "rescue_precision": 0.5416666666666666,
+      "OUTER_TEST_USED": false
+    },
+    {
+      "dataset": "WBCIC",
+      "method": "B12_CGRFUSE_R1",
+      "BA": 0.5088950480413895,
+      "macro_f1": 0.4101232680549143,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.0,
+      "median_subject_delta_BA": 0.0,
+      "bootstrap_CI95_L": 0.0,
+      "bootstrap_CI95_U": 0.0,
+      "positive_subject_fraction": 0.0,
+      "nonnegative_subject_fraction": 1.0,
+      "subjects": 41,
+      "actual_decision_change_rate": 0.0,
+      "unsafe_decision_change_rate": 0.0,
+      "soft_fusion_mass": 0.0,
+      "rescue_precision": 0.0,
+      "OUTER_TEST_USED": false
+    }
+  ],
+  "oracle": [
+    {
+      "dataset": "OpenBMI",
+      "oracle": "H0_BEST_INDIVIDUAL_EXPERT",
+      "BA": 0.9939814814814815,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.3725925925925927
+    },
+    {
+      "dataset": "OpenBMI",
+      "oracle": "H1_BEST_EXPERT_FAMILY",
+      "BA": 0.7637962962962962,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.14240740740740743
+    },
+    {
+      "dataset": "OpenBMI",
+      "oracle": "H2_FINE_CONVEX_KEEP_ALL",
+      "BA": 0.7336111111111111,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.11222222222222233
+    },
+    {
+      "dataset": "OpenBMI",
+      "oracle": "H3_BEST_KEEP_OR_ALL",
+      "BA": 0.7336111111111111,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.11222222222222233
+    },
+    {
+      "dataset": "OpenBMI",
+      "oracle": "H4_GROUP_KEEP_OR_ALL",
+      "BA": 0.7336111111111111,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.11222222222222233
+    },
+    {
+      "dataset": "WBCIC",
+      "oracle": "H0_BEST_INDIVIDUAL_EXPERT",
+      "BA": 1.0,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.4911049519586105
+    },
+    {
+      "dataset": "WBCIC",
+      "oracle": "H1_BEST_EXPERT_FAMILY",
+      "BA": 0.6752426706085243,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.16634762256713476
+    },
+    {
+      "dataset": "WBCIC",
+      "oracle": "H2_FINE_CONVEX_KEEP_ALL",
+      "BA": 0.5898731214584874,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.08097807341709784
+    },
+    {
+      "dataset": "WBCIC",
+      "oracle": "H3_BEST_KEEP_OR_ALL",
+      "BA": 0.5898731214584874,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.08097807341709784
+    },
+    {
+      "dataset": "WBCIC",
+      "oracle": "H4_GROUP_KEEP_OR_ALL",
+      "BA": 0.5898731214584874,
+      "delta_vs_STRONGEST_KEEP_STACK": 0.08097807341709784
+    }
+  ],
+  "S2_accessed": false,
+  "outer_accessed": false,
+  "elapsed_seconds": 48.92040038108826
+}
