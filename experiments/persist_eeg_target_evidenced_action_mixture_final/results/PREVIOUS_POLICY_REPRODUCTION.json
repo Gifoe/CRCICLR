@@ -1,0 +1,143 @@
+{
+  "status": "PREVIOUS_POLICY_REPRODUCTION_PASS",
+  "source": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_prospective_action_policy_v2\\outputs\\holdout\\DEVELOPMENT_HOLDOUT_POLICY_RESULTS.csv",
+  "cache_root": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\experiments\\persist_eeg_router\\outputs\\cache",
+  "holdout_subjects": 12,
+  "holdout_rows": 9200,
+  "regenerated": {
+    "M0_KEEP": {
+      "mean_subject_delta_BA": 0.0,
+      "bootstrap_CI95_L": 0.0,
+      "bootstrap_CI95_U": 0.0,
+      "positive_subject_fraction": 0.0,
+      "nonnegative_subject_fraction": 1.0,
+      "positive_run_fraction": 0.0,
+      "action_rate": 0.0,
+      "unsafe_intervention_rate": 0.0,
+      "rescue_precision": 0.0,
+      "mean_effect_when_intervene": 0.0,
+      "subjects": 12,
+      "runs": 46,
+      "OUTER_TEST_USED": 0
+    },
+    "I003_CROSS_RUN_FULL": {
+      "mean_subject_delta_BA": 0.008472222222222218,
+      "bootstrap_CI95_L": 0.0035416666666666543,
+      "bootstrap_CI95_U": 0.013749999999999998,
+      "positive_subject_fraction": 0.9166666666666666,
+      "nonnegative_subject_fraction": 0.9166666666666666,
+      "positive_run_fraction": 0.5217391304347826,
+      "action_rate": 0.08065217391304348,
+      "unsafe_intervention_rate": 0.44070080862533695,
+      "rescue_precision": 0.5592991913746631,
+      "mean_effect_when_intervene": 0.11859838274932614,
+      "subjects": 12,
+      "runs": 46,
+      "OUTER_TEST_USED": 0
+    },
+    "I003_CROSS_RUN_PROTECTED_SAFE": {
+      "mean_subject_delta_BA": 0.007326388888888896,
+      "bootstrap_CI95_L": 0.00368055555555556,
+      "bootstrap_CI95_U": 0.010834201388888905,
+      "positive_subject_fraction": 0.9166666666666666,
+      "nonnegative_subject_fraction": 0.9166666666666666,
+      "positive_run_fraction": 0.6086956521739131,
+      "action_rate": 0.0325,
+      "unsafe_intervention_rate": 0.3879598662207358,
+      "rescue_precision": 0.6120401337792643,
+      "mean_effect_when_intervene": 0.22408026755852842,
+      "subjects": 12,
+      "runs": 46,
+      "OUTER_TEST_USED": 0
+    },
+    "ORACLE_FULL_MENU": {
+      "mean_subject_delta_BA": 0.11201388888888887,
+      "bootstrap_CI95_L": 0.07784722222222222,
+      "bootstrap_CI95_U": 0.14368142361111105,
+      "positive_subject_fraction": 1.0,
+      "nonnegative_subject_fraction": 1.0,
+      "positive_run_fraction": 1.0,
+      "action_rate": 0.10489130434782609,
+      "unsafe_intervention_rate": 0.0,
+      "rescue_precision": 1.0,
+      "mean_effect_when_intervene": 1.0,
+      "subjects": 12,
+      "runs": 46,
+      "OUTER_TEST_USED": 0
+    }
+  },
+  "committed_comparison": {
+    "M0_KEEP": {
+      "present": 1,
+      "max_abs_difference": 0.0,
+      "differences": {
+        "mean_subject_delta_BA": 0.0,
+        "bootstrap_CI95_L": 0.0,
+        "bootstrap_CI95_U": 0.0,
+        "action_rate": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "rescue_precision": 0.0
+      }
+    },
+    "I003_CROSS_RUN_FULL": {
+      "present": 1,
+      "max_abs_difference": 9.8879238130678e-17,
+      "differences": {
+        "mean_subject_delta_BA": 1.734723475976807e-17,
+        "bootstrap_CI95_L": 5.421010862427522e-17,
+        "bootstrap_CI95_U": 9.8879238130678e-17,
+        "action_rate": 8.326672684688674e-17,
+        "unsafe_intervention_rate": 5.551115123125783e-17,
+        "rescue_precision": 0.0
+      }
+    },
+    "I003_CROSS_RUN_PROTECTED_SAFE": {
+      "present": 1,
+      "max_abs_difference": 9.627715291671279e-17,
+      "differences": {
+        "mean_subject_delta_BA": 9.627715291671279e-17,
+        "bootstrap_CI95_L": 6.028164079019405e-17,
+        "bootstrap_CI95_U": 5.204170427930421e-18,
+        "action_rate": 0.0,
+        "unsafe_intervention_rate": 0.0,
+        "rescue_precision": 0.0
+      }
+    },
+    "ORACLE_FULL_MENU": {
+      "present": 1,
+      "max_abs_difference": 9.71445146547012e-17,
+      "differences": {
+        "mean_subject_delta_BA": 6.938893903907228e-17,
+        "bootstrap_CI95_L": 1.3877787807814457e-17,
+        "bootstrap_CI95_U": 5.551115123125783e-17,
+        "action_rate": 9.71445146547012e-17,
+        "unsafe_intervention_rate": 0.0,
+        "rescue_precision": 0.0
+      }
+    }
+  },
+  "audit": {
+    "six_run_definition": "fold x seed x subject rows from frozen OOF cache",
+    "action_logits": "keep/counterfactual/geometry OOF logits",
+    "leave_one_run_consensus": "manifest_index group, current run excluded",
+    "exploration_holdout_subjects": {
+      "exploration": 40,
+      "development_holdout": 12
+    },
+    "action_menu": {
+      "full": [
+        "amplify",
+        "geometry",
+        "erase"
+      ],
+      "protected_safe": [
+        "amplify",
+        "geometry"
+      ]
+    },
+    "bootstrap_unit": "biological subject, then mean over available runs",
+    "unsafe_definition": "selected action changes a correct KEEP prediction to an incorrect prediction",
+    "oracle_headroom": "subject-balanced BA of per-sample best action minus KEEP",
+    "OUTER_TEST_USED": 0
+  }
+}

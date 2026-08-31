@@ -1,0 +1,3 @@
+# Method
+
+Per-sample frozen logits, margins, probabilities, confidence, entropy, prediction flips, action disagreement, and leave-one-run consensus are combined with a five-block leave-one-block-out target context. The context encoder is a deterministic two-layer `phi/rho` DeepSets map with hidden width 32 or 64. Regret models estimate `CE_KEEP - CE_action`; uncertainty is the bootstrap prediction spread with a training residual floor. The final mixture is exactly `q_KEEP=1`, `q_a=exp(beta*max(mu-kappa*sigma,0))`, normalized, with exact KEEP fallback when every conservative gain is non-positive. No test-time gradient or label is used.

@@ -1,0 +1,104 @@
+{
+  "terminal": "TEA_SOURCE_NOT_SUPPORTED",
+  "source_gate": {
+    "pass": 0,
+    "reasons": [
+      "OpenBMI: delta < +0.005",
+      "OpenBMI: rescue precision < 0.65",
+      "OpenBMI: recovered headroom < 0.12",
+      "WBCIC: preregistered S0->S1 transition unavailable"
+    ],
+    "criteria": {
+      "delta": 0.005,
+      "ci_lower": 0,
+      "positive_subject_fraction": 0.6,
+      "action_rate": 0.02,
+      "unsafe": 0.3,
+      "rescue_precision": 0.65,
+      "recovered_headroom": 0.12
+    }
+  },
+  "selected_recipe": null,
+  "control_recipe_for_diagnostics": {
+    "width": 32,
+    "beta": 1.0,
+    "kappa": 0.5
+  },
+  "openbmi_tea": {
+    "policy_id": "B9_TEA_EEG",
+    "mean_subject_delta_BA": 0.0024479166666666646,
+    "bootstrap_CI95_L": 0.0012393229166666555,
+    "bootstrap_CI95_U": 0.0037395833333333296,
+    "positive_subject_fraction": 0.65,
+    "nonnegative_subject_fraction": 0.75,
+    "positive_run_fraction": 0.3924050632911392,
+    "action_rate": 0.09424050632911392,
+    "unsafe_intervention_rate": 0.04667562122229684,
+    "rescue_precision": 0.0819341840161182,
+    "mean_effect_when_intervene": 0.035258562793821356,
+    "subjects": 40,
+    "runs": 158,
+    "OUTER_TEST_USED": 0,
+    "vs_B1_UNIFORM_ACTION_ENSEMBLE_delta": 0.017246835443037976,
+    "vs_B1_UNIFORM_ACTION_ENSEMBLE_CI95_L": 0.013386075949367093,
+    "vs_B1_UNIFORM_ACTION_ENSEMBLE_CI95_U": 0.021170886075949368,
+    "vs_B3_ENTROPY_ONLY_delta": 0.024462025316455697,
+    "vs_B3_ENTROPY_ONLY_CI95_L": 0.019587816455696214,
+    "vs_B3_ENTROPY_ONLY_CI95_U": 0.029494462025316456,
+    "vs_B6_RANDOM_MATCHED_GATE_delta": 0.030031645569620253,
+    "vs_B6_RANDOM_MATCHED_GATE_CI95_L": 0.02534810126582279,
+    "vs_B6_RANDOM_MATCHED_GATE_CI95_U": 0.035031645569620254,
+    "vs_B5_OLD_I003_CROSS_RUN_delta": -0.005791139240506329,
+    "vs_B5_OLD_I003_CROSS_RUN_CI95_L": -0.008196202531645566,
+    "vs_B5_OLD_I003_CROSS_RUN_CI95_U": -0.003481012658227847,
+    "recovered_oracle_headroom": 0.04585365853658533
+  },
+  "wbcic_source_status": "MATCHED_PROXY_ONLY_NO_CANONICAL_S0_S1_ACTION_BANK",
+  "oracle": {
+    "openbmi": {
+      "dataset": "OpenBMI_DEVELOPMENT_EXPLORATION",
+      "actions": [
+        "amplify",
+        "geometry"
+      ],
+      "rows": 31600,
+      "subjects": 40,
+      "best_per_sample_action_oracle": 0.053385416666666664,
+      "best_per_session_action_oracle": 0.0016770833333333353,
+      "best_convex_mixture_oracle": 0.0,
+      "protected_safe_oracle_gain": 0.053385416666666664,
+      "full_menu_oracle_gain": 0.053385416666666664,
+      "uniform_action_ensemble_gain": -0.014583333333333342,
+      "best_fixed_action": "amplify",
+      "best_fixed_gain": -0.015979166666666666,
+      "oracle_ci95": [
+        0.04448958333333334,
+        0.06242760416666666
+      ],
+      "OUTER_TEST_USED": 0
+    },
+    "wbcic": {
+      "dataset": "WBCIC_S3_MATCHED_PROXY",
+      "actions": [
+        "amplify",
+        "geometry"
+      ],
+      "rows": 8195,
+      "subjects": 41,
+      "best_per_sample_action_oracle": 0.11355028948016756,
+      "best_per_session_action_oracle": 0.010609756097560982,
+      "best_convex_mixture_oracle": 0.00584349593495935,
+      "protected_safe_oracle_gain": 0.11355028948016756,
+      "full_menu_oracle_gain": 0.11355028948016756,
+      "uniform_action_ensemble_gain": 0.004014227642276425,
+      "best_fixed_action": "amplify",
+      "best_fixed_gain": -0.019534983986203493,
+      "oracle_ci95": [
+        0.09133909983986203,
+        0.13609756097560977
+      ],
+      "OUTER_TEST_USED": 0
+    }
+  },
+  "OUTER_TEST_USED": 0
+}

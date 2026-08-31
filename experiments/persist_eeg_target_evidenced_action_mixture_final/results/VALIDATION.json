@@ -1,0 +1,44 @@
+{
+  "required_files": {
+    "pass": true,
+    "missing": []
+  },
+  "s2_tables": [
+    {
+      "name": "WBCIC_S2_ATCNET.csv",
+      "rows": 1,
+      "opened": false
+    },
+    {
+      "name": "WBCIC_S2_EEGNEX.csv",
+      "rows": 1,
+      "opened": false
+    }
+  ],
+  "context_columns": {
+    "pass": true,
+    "forbidden": [],
+    "rows": 400
+  },
+  "source_gate": {
+    "pass": 0,
+    "reasons": [
+      "OpenBMI: delta < +0.005",
+      "OpenBMI: rescue precision < 0.65",
+      "OpenBMI: recovered headroom < 0.12",
+      "WBCIC: preregistered S0->S1 transition unavailable"
+    ],
+    "criteria": {
+      "delta": 0.005,
+      "ci_lower": 0,
+      "positive_subject_fraction": 0.6,
+      "action_rate": 0.02,
+      "unsafe": 0.3,
+      "rescue_precision": 0.65,
+      "recovered_headroom": 0.12
+    }
+  },
+  "scientific_terminal": "TEA_SOURCE_NOT_SUPPORTED",
+  "pass": true,
+  "errors": []
+}
