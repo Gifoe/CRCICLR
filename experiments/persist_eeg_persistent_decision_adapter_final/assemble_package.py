@@ -282,8 +282,7 @@ Historical terminals are preserved and not reinterpreted.
 
 Server branch: `codex/persist-eeg-persistent-decision-adapter-final`.
 Base source commit at implementation start: `f744f3ab764d4ad7d8a7d76fb08b538c055e97ef`.
-Current assembly commit placeholder: `{sha}` (updated in the protocol lock at
-delivery). Code tree hash: `{tree}`. The source data partition hashes are
+Assembly source commit recorded in the protocol locks: `{sha}`. Code tree hash: `{tree}`. The source data partition hashes are
 recorded in `protocol/PERSIST_PDA_SOURCE_LOCK.json`; no representation arrays
 are included in Git. Bootstrap uses 10,000 deterministic draws per paired
 biological-subject comparison.
@@ -306,7 +305,7 @@ transfer and mechanism gate on these frozen representations. Exact terminal:
 `{gate['terminal']}`.
 """)
     final_json = {
-        "branch": "codex/persist-eeg-persistent-decision-adapter-final", "final_commit": "pending_delivery", "selected_recipe": selected,
+        "branch": "codex/persist-eeg-persistent-decision-adapter-final", "final_commit": "see delivery tip in GitHub", "selected_recipe": selected,
         "source_openbmi_delta_ci": metric_line(stats, "OpenBMI", "full_pda-population"),
         "source_wbcic_delta_ci": metric_line(stats, "WBCIC", "full_pda-population"),
         "ordinary_subject_adapter_comparison": {ds: metric_line(stats, ds, "full_pda-ordinary_adapter") for ds in c.DATASETS},
