@@ -560,6 +560,9 @@ def choose_fusion(dataset: str, fold: int, labels: np.ndarray, subjects: np.ndar
     table["best_robust_loss"] = best_loss
     table["SE_subject_best_candidate"] = best_se
     table["one_SE_threshold"] = threshold
+    table["baseline_discovery_BA"] = base_metrics["BA"]
+    table["inv_discovery_BA"] = inv_metrics["BA"]
+    table["geo_discovery_BA"] = geo_metrics["BA"]
     return selection, table, {"base": base_metrics, "inv": inv_metrics, "geo": geo_metrics}
 
 
@@ -747,9 +750,9 @@ def write_reports(canonical_audit: dict[str, Any], summary: pd.DataFrame, diagno
     for dataset in DATASETS:
         row = summary_map[dataset]
         lines.append(f"| {dataset} | {row['canonical_seed0_BA']:.6f} | {row['cde_seed0_BA']:.6f} | {row['delta_pp']:+.3f} | [{row['paired_CI95_L_pp']:+.3f}, {row['paired_CI95_U_pp']:+.3f}] |")
-    lines += ["", "## Selected alpha per fold", "", "| Dataset | Fold | alpha_inv | alpha_geo | selected discovery BA |", "|---|---:|---:|---:|---:|"]
+    lines += ["", "## Selected alpha per fold", "", "| Dataset | Fold | alpha_inv | alpha_geo | INV discovery BA | GEO discovery BA |", "|---|---:|---:|---:|---:|---:|"]
     for _, row in selections[selections.selected == True].sort_values(["dataset", "fold"]).iterrows():  # noqa: E712
-        lines.append(f"| {row.dataset} | {int(row.fold)} | {row.alpha_inv:.2f} | {row.alpha_geo:.2f} | {row.selected_mean_subject_BA:.6f} |")
+        lines.append(f"| {row.dataset} | {int(row.fold)} | {row.alpha_inv:.2f} | {row.alpha_geo:.2f} | {row.inv_discovery_BA:.6f} | {row.geo_discovery_BA:.6f} |")
     lines += ["", "The selected-alpha table above records the selected candidate BA; branch BA and all outcome diagnostics are in `BRANCH_DIAGNOSTICS.csv`.", "", "## Outcome mechanism diagnostics", "", "| Dataset | INV BA | GEO BA | INV→base disagreement | GEO→base disagreement | INV→GEO disagreement | CDE rescue | CDE corruption |", "|---|---:|---:|---:|---:|---:|---:|---:|"]
     for _, row in diagnostics.sort_values(["dataset", "fold"]).iterrows():
         lines.append(f"| {row.dataset} fold {int(row.fold)} | {row.inv_BA:.6f} | {row.geo_BA:.6f} | {row.inv_vs_base_disagreement_rate:.4f} | {row.geo_vs_base_disagreement_rate:.4f} | {row.inv_vs_geo_disagreement_rate:.4f} | {row.cde_rescue_rate_on_base_errors:.4f} | {row.cde_corruption_rate_on_base_correct:.4f} |")
@@ -847,9 +850,12 @@ def main() -> None:
     for dataset in DATASETS:
         ds_delta = pd.DataFrame(bootstrap_subjects[dataset])
         paired[dataset] = bootstrap_paired(ds_delta.delta_BA.to_numpy(float), dataset)
-        ds_fold = fold_frame[fold_frame.dataset == dataset]
+        # Aggregate over biological subjects, not by unweighted fold means.
+        # The frozen canonical seed-0 reference uses this same subject-level
+        # aggregation and folds have unequal subject counts.
+        ds_subject = subject_frame[subject_frame.dataset == dataset]
         def ba(control: str) -> float:
-            return float(ds_fold[ds_fold.control == control].mean_subject_BA.mean())
+            return float(ds_subject[ds_subject.control == control].BA.mean())
         canonical_ba = ba("B0_CANONICAL_SEED0")
         cde_ba = ba("B4_SELECTED_CDE")
         b3_ba = ba("B3_EQUAL_CONSERVATIVE")
