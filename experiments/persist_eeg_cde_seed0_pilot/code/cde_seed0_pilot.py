@@ -412,7 +412,7 @@ def train_inv(block: FeatureBlock, baseline_head: nn.Linear, run_name: str, data
     subject_targets = torch.as_tensor(np.asarray([subject_to_index[str(x)] for x in block.subjects], dtype=np.int64), dtype=torch.long, device=device)
     discriminator = SubjectDiscriminator(len(subject_names)).to(device)
     optimizer = torch.optim.AdamW(list(adapter.parameters()) + list(discriminator.parameters()), lr=ADAPTER_LR, weight_decay=ADAPTER_WEIGHT_DECAY)
-    labels_t = torch.as_tensor(np.asarray(block.labels, dtype=np.int64), dtype=torch.long, device=device)
+    labels_t = torch.as_tensor(np.array(block.labels, dtype=np.int64, copy=True), dtype=torch.long, device=device)
     for epoch in range(1, ADAPTER_EPOCHS + 1):
         adapter.train(); discriminator.train()
         losses = []
@@ -441,7 +441,7 @@ def train_geo(block: FeatureBlock, baseline_head: nn.Linear, run_name: str, data
     set_seed(stable_seed("cde-adapter", run_name, dataset, fold, "GEO"))
     adapter = ResidualAdapter(baseline_head).to(device)
     optimizer = torch.optim.AdamW(adapter.parameters(), lr=ADAPTER_LR, weight_decay=ADAPTER_WEIGHT_DECAY)
-    labels_t = torch.as_tensor(np.asarray(block.labels, dtype=np.int64), dtype=torch.long, device=device)
+    labels_t = torch.as_tensor(np.array(block.labels, dtype=np.int64, copy=True), dtype=torch.long, device=device)
     for epoch in range(1, ADAPTER_EPOCHS + 1):
         adapter.train()
         losses = []
@@ -572,7 +572,13 @@ def load_checkpoint(ctx: FoldContext, device: torch.device) -> tuple[canonical.V
         raise RuntimeError(f"missing canonical seed0 refit checkpoint: {path}")
     partial_path = canonical.RUNTIME / "partial" / f"{ctx.dataset.lower()}_fold-{ctx.fold}_seed-0.json"
     partial = json.loads(partial_path.read_text(encoding="utf-8-sig"))
-    state = torch.load(path, map_location=device)
+    try:
+        # These checkpoints are produced by the trusted canonical runner and
+        # intentionally contain NumPy normalizer arrays.  PyTorch 2.6
+        # defaults to weights_only=True, which rejects that trusted payload.
+        state = torch.load(path, map_location=device, weights_only=False)
+    except TypeError:  # compatibility with older torch releases
+        state = torch.load(path, map_location=device)
     if partial.get("checkpoint_sha256") and partial["checkpoint_sha256"] != sha256_file(path):
         raise RuntimeError(f"canonical checkpoint hash mismatch: {path}")
     model = canonical.VanillaEEGNet(ctx.data.batch(ctx.outcome_idx[:1]).shape[1]).to(device)

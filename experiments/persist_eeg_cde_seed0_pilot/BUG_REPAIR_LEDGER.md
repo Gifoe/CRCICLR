@@ -13,3 +13,9 @@ validation performed after the repair.
   `PERSIST_WBCIC_CACHE` at a non-existent path inside the canonical repository.
   It was corrected to the frozen source-only WBCIC cache path.  No outcome
   values were read, and no scientific parameter was changed.
+- The first OpenBMI development fold stopped before equivalence because
+  PyTorch 2.6 defaulted `torch.load` to `weights_only=True` and rejected the
+  trusted canonical payload's NumPy normalizer arrays.  The loader now passes
+  `weights_only=False` (with an older-version fallback), and labels are copied
+  before tensor conversion.  No outcome metric was read and no scientific
+  parameter was changed.
