@@ -1,0 +1,186 @@
+{
+  "deliverables": [
+    "results/BASELINE_SUMMARY.csv",
+    "results/PER_SUBJECT_RESULTS.csv",
+    "results/TRIAL_PREDICTIONS.csv",
+    "results/PER_FOLD_RESULTS.csv",
+    "results/SEED_SUMMARY.csv",
+    "results/CANONICAL_BASELINE_STATISTICS.json",
+    "FINAL_BASELINE_REPORT.md",
+    "FINAL_BASELINE_REPORT.json",
+    "CANONICAL_PROTOCOL.md",
+    "BASELINE_LEGALITY_AUDIT.md",
+    "BASELINE_PROVENANCE_AUDIT.md",
+    "HISTORICAL_REFERENCE_AUDIT.md"
+  ],
+  "fold_means_primary": {
+    "OpenBMI": [
+      0.8218181818181818,
+      0.8336363636363638,
+      0.8118181818181818,
+      0.8245454545454544,
+      0.85
+    ],
+    "WBCIC": [
+      0.8166666666666667,
+      0.7925,
+      0.79875,
+      0.7884517045454547,
+      0.78875
+    ]
+  },
+  "outer_status": {
+    "OpenBMI_internal_holdout_accessed": false,
+    "WBCIC_outer_10_accessed": false
+  },
+  "payload_count": 30,
+  "protocol": "CANONICAL_VANILLA_EEGNET_BASELINE_V1",
+  "seed_means_secondary": {
+    "OpenBMI": [
+      0.8190740740740741,
+      0.7918518518518517,
+      0.8198148148148148
+    ],
+    "WBCIC": [
+      0.7862985033259424,
+      0.7839586412909585,
+      0.739205007390983
+    ]
+  },
+  "status": "CANONICAL BASELINE STATUS",
+  "summary": {
+    "bootstrap_draws": 10000,
+    "datasets": {
+      "OpenBMI": {
+        "primary_three_seed_probability_mean": {
+          "NLL": 0.39511502770074713,
+          "accuracy": 0.8279629629629629,
+          "best_epoch": 30.728395061728396,
+          "bootstrap_CI95_L": 0.8014814814814815,
+          "bootstrap_CI95_U": 0.8535185185185185,
+          "dataset": "OpenBMI",
+          "difference_vs_historical_pp": 5.6062962962962875,
+          "fold": "all",
+          "folds": 5,
+          "historical_reference_BA": 0.7719,
+          "macro_F1": 0.8227131752831764,
+          "mean_NLL": 0.39511502770074713,
+          "mean_accuracy": 0.8279629629629629,
+          "mean_best_epoch": 30.728395061728396,
+          "mean_macro_F1": 0.8227131752831764,
+          "mean_subject_BA": 0.8279629629629629,
+          "median_subject_BA": 0.8200000000000001,
+          "n_discovery_subjects": 9,
+          "n_model_fit_subjects": 34,
+          "n_outcome_subjects": 11,
+          "n_subjects": 54,
+          "seed": "all",
+          "seeds": 3,
+          "subject_SD": 0.0969025892838944,
+          "summary_type": "primary_three_seed_probability_mean"
+        },
+        "secondary_mean_single_seed_aggregate": {
+          "NLL": 0.4344115118858749,
+          "accuracy": 0.8102469135802468,
+          "best_epoch": 30.728395061728396,
+          "bootstrap_CI95_L": null,
+          "bootstrap_CI95_U": null,
+          "dataset": "OpenBMI",
+          "difference_vs_historical_pp": 3.834691358024689,
+          "fold": "all",
+          "folds": 5,
+          "historical_reference_BA": 0.7719,
+          "macro_F1": 0.8041158843729495,
+          "mean_NLL": 0.4344115118858749,
+          "mean_accuracy": 0.8102469135802468,
+          "mean_best_epoch": 30.728395061728396,
+          "mean_macro_F1": 0.8041158843729495,
+          "mean_subject_BA": 0.8102469135802469,
+          "median_subject_BA": 0.8,
+          "n_discovery_subjects": 9,
+          "n_model_fit_subjects": 34,
+          "n_outcome_subjects": 11,
+          "n_subjects": 162,
+          "seed": "all",
+          "seeds": 3,
+          "subject_SD": 0.015934895550484423,
+          "summary_type": "secondary_mean_single_seed_aggregate"
+        }
+      },
+      "WBCIC": {
+        "primary_three_seed_probability_mean": {
+          "NLL": 0.4198840440313244,
+          "accuracy": 0.7975109443402125,
+          "best_epoch": 20.69918699186992,
+          "bootstrap_CI95_L": 0.7537860310421286,
+          "bootstrap_CI95_U": 0.8391493902439024,
+          "dataset": "WBCIC",
+          "difference_vs_historical_pp": 0.9102771618625272,
+          "fold": "all",
+          "folds": 5,
+          "historical_reference_BA": 0.7884,
+          "macro_F1": 0.7961572692485723,
+          "mean_NLL": 0.4198840440313244,
+          "mean_accuracy": 0.7975109443402125,
+          "mean_best_epoch": 20.69918699186992,
+          "mean_macro_F1": 0.7961572692485723,
+          "mean_subject_BA": 0.7975027716186253,
+          "median_subject_BA": 0.8400000000000001,
+          "n_discovery_subjects": 8,
+          "n_model_fit_subjects": 25,
+          "n_outcome_subjects": 8,
+          "n_subjects": 41,
+          "seed": "all",
+          "seeds": 3,
+          "subject_SD": 0.14335073119150274,
+          "summary_type": "primary_three_seed_probability_mean"
+        },
+        "secondary_mean_single_seed_aggregate": {
+          "NLL": 0.4424411423050627,
+          "accuracy": 0.7698269751928288,
+          "best_epoch": 20.69918699186992,
+          "bootstrap_CI95_L": null,
+          "bootstrap_CI95_U": null,
+          "dataset": "WBCIC",
+          "difference_vs_historical_pp": -1.8579282664038632,
+          "fold": "all",
+          "folds": 5,
+          "historical_reference_BA": 0.7884,
+          "macro_F1": 0.7578746956339057,
+          "mean_NLL": 0.4424411423050627,
+          "mean_accuracy": 0.7698269751928288,
+          "mean_best_epoch": 20.69918699186992,
+          "mean_macro_F1": 0.7578746956339057,
+          "mean_subject_BA": 0.7698207173359614,
+          "median_subject_BA": 0.8,
+          "n_discovery_subjects": 8,
+          "n_model_fit_subjects": 25,
+          "n_outcome_subjects": 8,
+          "n_subjects": 123,
+          "seed": "all",
+          "seeds": 3,
+          "subject_SD": 0.02653978165249234,
+          "summary_type": "secondary_mean_single_seed_aggregate"
+        }
+      }
+    },
+    "primary_definition": "average the three seed probabilities per trial, then compute subject BA",
+    "primary_unit": "biological subject",
+    "run_counts": {
+      "OpenBMI": 15,
+      "WBCIC": 15
+    },
+    "schema": "CANONICAL_VANILLA_EEGNET_BASELINE_V1",
+    "secondary_definition": "mean of three single-seed aggregate subject BA values"
+  },
+  "terminal": "CANONICAL_EEGNET_BASELINE_ESTABLISHED",
+  "validity_answers": {
+    "all_non_outcome_subjects_refit": true,
+    "outcome_future_labels_excluded": true,
+    "outcome_history_adaptation_excluded": true,
+    "raw_openbmi_eegnet": true,
+    "same_wbcic_outer_logic": true,
+    "trial_predictions_paired_comparison_ready": true,
+    "wbcic_sealed_outer_untouched": true
+  }
+}
