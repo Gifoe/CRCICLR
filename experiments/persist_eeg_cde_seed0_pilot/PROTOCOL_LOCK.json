@@ -1,0 +1,90 @@
+{
+  "schema": "PERSIST_CDE_SEED0_PILOT_V1",
+  "pilot_name": "PERSIST-CDE-S0",
+  "branch": "codex/persist-eeg-cde-seed0-pilot",
+  "seed": 0,
+  "datasets": ["OpenBMI", "WBCIC"],
+  "folds": [0, 1, 2, 3, 4],
+  "canonical_seed0_baseline_BA": {
+    "OpenBMI": 0.8190740740740741,
+    "WBCIC": 0.7862985033259424
+  },
+  "backbone": {
+    "name": "VanillaEEGNet",
+    "F1": 8,
+    "D": 2,
+    "F2": 16,
+    "dropout": 0.25,
+    "embedding_dim": 64,
+    "classifier": "Linear(64,2)",
+    "backbone_frozen_during_adapter_training": true
+  },
+  "adapters": {
+    "architecture": "LayerNorm(64)->Linear(64,16)->GELU->Linear(16,64)",
+    "residual_scale": 0.25,
+    "last_linear_zero_initialized": true,
+    "heads_initialized_from_baseline": true,
+    "INV": {
+      "subject_discriminator": "Linear(64,64)->ReLU->Linear(64,n_train_subjects)",
+      "gradient_reversal_coefficient": 0.10,
+      "subject_adversarial_weight": 0.10,
+      "kl_weight": 0.25
+    },
+    "GEO": {
+      "penalty": "class_conditional_subject_CORAL",
+      "coral_weight": 0.10,
+      "kl_weight": 0.25,
+      "minimum_subject_class_cell": 2
+    }
+  },
+  "adapter_training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "epochs": 15,
+    "early_stopping": false,
+    "subject_balanced_batches": true,
+    "outcome_data_repeated_or_synthetic": false
+  },
+  "fusion": {
+    "formula": "l0 + alpha_inv*(l_inv-l0) + alpha_geo*(l_geo-l0)",
+    "alpha_inv_values": [0.0, 0.05, 0.10, 0.20, 0.30],
+    "alpha_geo_values": [0.0, 0.05, 0.10, 0.20, 0.30],
+    "alpha_sum_max": 0.30,
+    "selection_loss": "mean_subject_CE + CVaR25(max(subject_CE_candidate-subject_CE_base,0))",
+    "one_se_rule": "ROBUST_LOSS <= best + SE_subject(best); then minimal alpha sum, alpha_inv, alpha_geo",
+    "competence_gate": "branch BA >= baseline BA - 5pp; otherwise corresponding alpha forced to zero"
+  },
+  "controls": {
+    "B0": "CANONICAL_SEED0",
+    "B1": "INV_ONLY diagnostic alpha_inv=1",
+    "B2": "GEO_ONLY diagnostic alpha_geo=1",
+    "B3": "EQUAL_CONSERVATIVE alpha_inv=0.10 alpha_geo=0.10",
+    "B4": "SELECTED_CDE discovery-frozen weights"
+  },
+  "evaluation": {
+    "primary_unit": "biological subject",
+    "delta": "subject BA(CDE)-subject BA(canonical seed0)",
+    "bootstrap": "10000-draw paired biological-subject bootstrap",
+    "checkpoint_equivalence_required_before_final_refit": true,
+    "outcome_scored_once_for_final_controls": true
+  },
+  "forbidden": [
+    "seed 1 or seed 2",
+    "WBCIC sealed outer 10",
+    "OpenBMI sealed/internal holdout",
+    "outcome-driven selection or tuning",
+    "full OOF/action-bank generation",
+    "router, sample-specific gate, subject-specific gate",
+    "target-subject adaptation",
+    "backbone or architecture search",
+    "coefficient, epoch, width or residual-scale search"
+  ],
+  "terminal_rules": {
+    "positive": "OpenBMI delta_pp > 0 AND WBCIC delta_pp > 0",
+    "mixed": "one positive and one negative with negative absolute delta_pp < 0.5",
+    "negative": "both <= 0 OR any dataset delta_pp <= -1.0; otherwise conservative negative",
+    "recommend_seed1_seed2": "YES only for positive two-dataset seed-0 signal; otherwise NO"
+  }
+}
