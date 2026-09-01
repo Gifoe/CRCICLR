@@ -885,7 +885,7 @@ def main() -> None:
     for _, row in summary_frame.iterrows():
         ds = row.dataset
         selected = selection_frame[(selection_frame.dataset == ds) & (selection_frame.selected == True)].sort_values("fold")  # noqa: E712
-        print(f"{ds}: canonical seed0 BA={row.canonical_seed0_BA:.9f} CDE seed0 BA={row.cde_seed0_BA:.9f} delta_pp={row.delta_pp:+.4f} paired_CI=[{row.paired_CI95_L_pp:+.4f},{row.paired_CI95_U_pp:+.4f}] INV BA={row.INV_BA:.9f} GEO BA={row.GEO_BA:.9f} selected_alpha_per_fold=" + ",".join(f"({x.alpha_inv:.2f},{x.alpha_geo:.2f})" for _, x in selected), flush=True)
+        print(f"{ds}: canonical seed0 BA={row.canonical_seed0_BA:.9f} CDE seed0 BA={row.cde_seed0_BA:.9f} delta_pp={row.delta_pp:+.4f} paired_CI=[{row.paired_CI95_L_pp:+.4f},{row.paired_CI95_U_pp:+.4f}] INV BA={row.INV_BA:.9f} GEO BA={row.GEO_BA:.9f} selected_alpha_per_fold=" + ",".join(f"({x.alpha_inv:.2f},{x.alpha_geo:.2f})" for _, x in selected.iterrows()), flush=True)
     print("sealed status = WBCIC_outer_10_untouched; OpenBMI_sealed_holdout_untouched", flush=True)
     print("checkpoint equivalence status = PASS", flush=True)
     print(f"recommend_run_seed1_seed2 = {'YES' if classification_from_deltas({r.dataset: r.to_dict() for _, r in summary_frame.iterrows()}) == TERMINAL_POSITIVE else 'NO'}", flush=True)

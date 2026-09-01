@@ -19,3 +19,7 @@ validation performed after the repair.
   `weights_only=False` (with an older-version fallback), and labels are copied
   before tensor conversion.  No outcome metric was read and no scientific
   parameter was changed.
+
+## Post-run reporting repair
+
+- The first completed 10-fold run failed only in the terminal summary print: a pandas DataFrame was iterated over as column labels instead of with `iterrows()`, producing `ValueError: too many values to unpack`. The fix changes only this reporting iteration; it does not alter training, checkpoint loading, selection, or any outcome value. Existing result artifacts, checkpoint-equivalence rows, and summary files were checked before this repair.
