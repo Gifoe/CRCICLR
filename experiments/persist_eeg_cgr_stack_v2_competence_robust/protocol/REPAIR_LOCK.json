@@ -1,0 +1,16 @@
+{
+  "schema": "PERSIST_EEG_CPV2_REPAIR_LOCK_V1",
+  "repair_pass": 1,
+  "defect": "EEGNet embedding input dimension multiplied the already-flattened probe width by 16",
+  "observed_error": "mat1 and mat2 shapes cannot be multiplied (192x496 and 7936x64)",
+  "repair": "use the probed flattened feature dimension directly",
+  "scientific_protocol_changed": false,
+  "expert_family_changed": false,
+  "partition_salts_changed": false,
+  "lambda_grid_changed": false,
+  "statistical_unit_changed": false,
+  "additional_repair_pass_authorized": false,
+  "local_protocol_tests_after_repair": 22,
+  "server_source_run_before_repair": true,
+  "server_source_run_after_repair": false
+}
