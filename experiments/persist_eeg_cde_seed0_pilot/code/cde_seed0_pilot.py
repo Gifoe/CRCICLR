@@ -47,7 +47,7 @@ os.environ.setdefault("CANONICAL_REPO", str(REPO))
 os.environ.setdefault("PERSIST_STAGE0_REPO", r"D:\nips-temp\TotalP\P1\persist_eeg_stage0_repo_full")
 os.environ.setdefault(
     "PERSIST_WBCIC_CACHE",
-    str(REPO / "experiments" / "persist_eeg_wbcic_independent_replication_v1" / "runtime" / "cache"),
+    r"D:\nips-temp\TotalP\P1\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\experiments\persist_eeg_wbcic_independent_replication_v1\runtime\cache",
 )
 sys.path.insert(0, str(CANONICAL_EXP / "code"))
 import canonical_eegnet_runner as canonical  # noqa: E402
