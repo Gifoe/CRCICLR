@@ -266,7 +266,9 @@ class StandardEEGNet(nn.Module):
             probe = torch.zeros(2, self.channels, 1000)
             width = self._features_without_embedding(probe).shape[-1]
         self.representation_dim = 64 if self.channels >= 60 else 32
-        self.embedding = nn.Sequential(nn.Linear(16 * width, self.representation_dim), nn.ELU(), nn.LayerNorm(self.representation_dim))
+        # ``width`` is already the flattened feature dimension returned by the
+        # probe (the 16-channel factor is included in it).
+        self.embedding = nn.Sequential(nn.Linear(width, self.representation_dim), nn.ELU(), nn.LayerNorm(self.representation_dim))
         self.head = nn.Linear(self.representation_dim, 2)
 
     def _features_without_embedding(self, x: torch.Tensor) -> torch.Tensor:
