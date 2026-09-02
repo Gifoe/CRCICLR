@@ -305,7 +305,7 @@ def write_protocol_docs(anchor_records: list[dict[str, Any]], code_hash: str, ma
     (AUDIT / "METHOD.md").write_text(
         "# Prospective Gradient Signal Audit v1\n\n"
         "This is a frozen diagnostic audit, not a new method. It reuses the PMG-fast seed-0 canonical EEGNet M0 model-fit-only anchors and the recorded five pseudo-environment meta-fold partitions. For each dataset, outer fold, meta-fold, and ten deterministic paired subject-balanced draws, it measures source-to-pseudo-future gradients at the frozen parameters and actual relative-displacement responses at epsilon 1e-5, 1e-4, and 1e-3. No optimizer step is present in the primary path.\n\n"
-        "The optional WBCIC fold-1 forensic reproduction is separate and is executed only because the PMG-fast runtime contains no M2 checkpoint or step log. It uses the original locked PMG-fast recipe once, without repair or parameter changes, to localize the known collapse.\n",
+        "The optional WBCIC fold-1 forensic reproduction is separate and is executed only because the PMG-fast runtime contains no M2 checkpoint or step log. It uses the original locked PMG-fast recipe once, without repair or parameter changes, to localize the known collapse. If post-processing is interrupted after the primary table is persisted, --resume-primary continues from those immutable rows without recomputing them.\n",
         encoding="utf-8",
     )
     (AUDIT / "DATA_LEGALITY_AUDIT.md").write_text(
@@ -322,7 +322,7 @@ def write_protocol_docs(anchor_records: list[dict[str, Any]], code_hash: str, ma
     )
     (AUDIT / "BUG_REPAIR_LEDGER.md").write_text(
         "# Engineering-only repair ledger\n\n"
-        "The audit uses immutable NumPy metadata columns and the PMG-fast mmap batch helper to avoid pandas advanced-index instability. Cache lookup has an explicit server fallback, and anchor serialization uses `weights_only=False` for the recorded local checkpoint schema. These are path/serialization repairs only; no scientific threshold, epsilon, dataset, fold, seed, architecture, or PMG coefficient was changed.\n",
+        "The audit uses immutable NumPy metadata columns and the PMG-fast mmap batch helper to avoid pandas advanced-index instability. The frozen runner exports role loading and the canonical model through its `canonical` module, so the audit calls those exact interfaces. PMG-fast anchor metadata stores a repeated per-row subject column; validation compares its unique sorted set to the locked model-fit roles. The first run persisted all 500 primary observations but the server process hit a Windows native access violation in the repeated pandas cluster-bootstrap loop; the equivalent bootstrap was replaced with NumPy-only array statistics and --resume-primary completed post-processing without recomputing primary rows. Cache lookup has an explicit server fallback, and anchor serialization uses `weights_only=False` for the recorded checkpoint schema. These are path/serialization/runtime repairs only; no scientific threshold, epsilon, dataset, fold, seed, architecture, or PMG coefficient was changed.\n",
         encoding="utf-8",
     )
     lock = {
@@ -712,16 +712,109 @@ def metric_vector(frame: pd.DataFrame) -> dict[str, float | None]:
     }
 
 
+def _average_ranks(values: np.ndarray) -> np.ndarray:
+    """Average ranks without invoking pandas inside the bootstrap loop."""
+    values = np.asarray(values, dtype=float)
+    order = np.argsort(values, kind="mergesort")
+    sorted_values = values[order]
+    ranks_sorted = np.empty(len(values), dtype=float)
+    start = 0
+    while start < len(values):
+        stop = start + 1
+        while stop < len(values) and sorted_values[stop] == sorted_values[start]:
+            stop += 1
+        ranks_sorted[start:stop] = 0.5 * (start + 1 + stop)
+        start = stop
+    ranks = np.empty(len(values), dtype=float)
+    ranks[order] = ranks_sorted
+    return ranks
+
+
+def _metric_vector_numpy(first: np.ndarray, actual: np.ndarray, cos: np.ndarray, conflict: np.ndarray) -> dict[str, float | None]:
+    """Numerically equivalent metric calculation using only NumPy arrays.
+
+    The previous implementation rebuilt a pandas DataFrame for every one of
+    10,000 outer-fold bootstrap draws.  On the server's Windows NumPy/pandas
+    stack that eventually terminated the interpreter in native code.  This
+    helper keeps the same biological-observation statistics while avoiding
+    repeated DataFrame allocation.
+    """
+    first = np.asarray(first, dtype=float)
+    actual = np.asarray(actual, dtype=float)
+    cos = np.asarray(cos, dtype=float)
+    conflict = np.asarray(conflict, dtype=bool)
+    if len(first) < 2 or np.std(first) <= 1e-15 or np.std(actual) <= 1e-15:
+        rho = pearson = None
+    else:
+        first_centered = first - np.mean(first)
+        actual_centered = actual - np.mean(actual)
+        denom = float(np.sqrt(np.dot(first_centered, first_centered) * np.dot(actual_centered, actual_centered)))
+        pearson = safe_float(float(np.dot(first_centered, actual_centered) / denom)) if denom > 0 else None
+        rf = _average_ranks(first)
+        ra = _average_ranks(actual)
+        rf -= np.mean(rf)
+        ra -= np.mean(ra)
+        rank_denom = float(np.sqrt(np.dot(rf, rf) * np.dot(ra, ra)))
+        rho = safe_float(float(np.dot(rf, ra) / rank_denom)) if rank_denom > 0 else None
+    harmed = actual > 0
+    sign_accuracy = safe_float(float(np.mean(np.sign(first) == np.sign(actual)))) if len(first) else None
+    conflict_rate = safe_float(float(np.mean(conflict))) if len(first) else None
+    c_actual = actual[conflict]
+    n_actual = actual[~conflict]
+    mean_conflict = safe_float(float(np.mean(c_actual))) if c_actual.size else None
+    mean_nonconflict = safe_float(float(np.mean(n_actual))) if n_actual.size else None
+    diff = safe_float(mean_conflict - mean_nonconflict) if mean_conflict is not None and mean_nonconflict is not None else None
+    harm_conflict = safe_float(float(np.mean(np.maximum(c_actual, 0.0)))) if c_actual.size else None
+    harm_nonconflict = safe_float(float(np.mean(np.maximum(n_actual, 0.0)))) if n_actual.size else None
+    labels = harmed.astype(int)
+    if len(np.unique(labels)) < 2:
+        auroc = None
+    else:
+        scores = -np.nan_to_num(cos, nan=0.0)
+        ranks = _average_ranks(scores)
+        positives = labels == 1
+        negatives = labels == 0
+        n_pos = int(np.sum(positives))
+        n_neg = int(np.sum(negatives))
+        auroc = safe_float(float((np.sum(ranks[positives]) - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg))) if n_pos and n_neg else None
+    return {
+        "spearman_rho": rho,
+        "pearson_r": pearson,
+        "sign_accuracy": sign_accuracy,
+        "conflict_rate": conflict_rate,
+        "mean_delta_conflict": mean_conflict,
+        "mean_delta_nonconflict": mean_nonconflict,
+        "conflict_minus_nonconflict": diff,
+        "positive_harm_conflict": harm_conflict,
+        "positive_harm_nonconflict": harm_nonconflict,
+        "harm_auroc": auroc,
+        "n": float(len(first)),
+    }
+
+
 def cluster_bootstrap(frame: pd.DataFrame, seed: int) -> dict[str, Any]:
     clusters = sorted(int(x) for x in frame["outer_fold"].unique())
-    cluster_rows = {fold: frame[frame.outer_fold == fold].reset_index(drop=True) for fold in clusters}
+    cluster_rows = {
+        fold: {
+            "first": frame.loc[frame.outer_fold == fold, "delta_B_first_order"].to_numpy(float),
+            "actual": frame.loc[frame.outer_fold == fold, "delta_B_actual"].to_numpy(float),
+            "cos": frame.loc[frame.outer_fold == fold, "cos_AB"].fillna(0).to_numpy(float),
+            "conflict": frame.loc[frame.outer_fold == fold, "conflict"].to_numpy(bool),
+        }
+        for fold in clusters
+    }
     rng = np.random.default_rng(seed)
     metric_names = ["spearman_rho", "pearson_r", "sign_accuracy", "conflict_rate", "mean_delta_conflict", "mean_delta_nonconflict", "conflict_minus_nonconflict", "positive_harm_conflict", "positive_harm_nonconflict", "harm_auroc"]
     draws = {name: [] for name in metric_names}
     for _ in range(BOOTSTRAP_DRAWS):
         selected = rng.choice(np.asarray(clusters), size=len(clusters), replace=True)
-        sampled = pd.concat([cluster_rows[int(f)] for f in selected], ignore_index=True)
-        values = metric_vector(sampled)
+        sampled_rows = [cluster_rows[int(f)] for f in selected]
+        values = _metric_vector_numpy(
+            np.concatenate([x["first"] for x in sampled_rows]),
+            np.concatenate([x["actual"] for x in sampled_rows]),
+            np.concatenate([x["cos"] for x in sampled_rows]),
+            np.concatenate([x["conflict"] for x in sampled_rows]),
+        )
         for name in metric_names:
             if values[name] is not None:
                 draws[name].append(float(values[name]))
@@ -966,7 +1059,24 @@ def write_final_report(signal_summary: pd.DataFrame, scales: pd.DataFrame, foren
     for ds in DATASETS:
         sub = scales[scales.dataset == ds]
         lines.append(f"| {ds} | {np.median(sub.gB_future_over_gA):.6f} | {np.median(sub.half_g_harm_over_gA):.6f} | {np.median(sub.g_combined_over_gA):.6f} | {sub.clip_triggered.mean():.4f} | {sub.active_harm_fraction.mean():.4f} |")
-    lines += ["", "## WBCIC fold-1 collapse diagnosis", "", f"`{diagnosis}`. Details are in `WBCIC_FOLD1_FORENSIC.md`; the forensic reproduction used the exact original five-epoch PMG-fast recipe once and did not repair it.", "", "## Required answers", "", "1. Source gradient conflict predicts actual pseudo-future harm? No reliable signal under the predeclared gates.", "2. Reproducible in both datasets? No; both datasets fail the primary signal gate.", "3. Is PMG-fast's harm gradient disproportionate to its tiny scalar harm? See the scale table and per-observation audit; the derivative is not magnitude-weighted by the tiny scalar.", f"4. Most likely WBCIC fold-1 cause: {diagnosis}.", "5. Direct prospective-gradient safeguarding scientifically justified? No.", "6. PMG / prospective-gradient family: stop under this frozen audit.", "7. Outcome/sealed subjects accessed? No.", "8. Seed 1/2 run? No.", "", f"Runtime seconds: {runtime_profile.get('elapsed_seconds', float('nan')):.3f}; primary observations: {runtime_profile.get('primary_observations', 0)}; source-only: yes; mathematical audit: {'PASS' if math_result.get('pass') else 'FAIL'}."]
+    primary_pass = {
+        ds: bool(signal_summary[(signal_summary.dataset == ds) & np.isclose(signal_summary.epsilon, PRIMARY_EPSILON)].iloc[0].signal_pass_primary)
+        for ds in DATASETS
+    }
+    both_pass = all(primary_pass.values())
+    lines += [
+        "", "## WBCIC fold-1 collapse diagnosis", "",
+        f"`{diagnosis}`. Details are in `WBCIC_FOLD1_FORENSIC.md`; the forensic reproduction used the exact original five-epoch PMG-fast recipe once and did not repair it.",
+        "", "## Required answers", "",
+        f"1. Source gradient conflict predicts actual pseudo-future harm? {'Yes under the predeclared gates.' if any(primary_pass.values()) else 'No reliable signal under the predeclared gates.'}",
+        f"2. Reproducible in both datasets? {'Yes.' if both_pass else 'No; at least one dataset fails the primary signal gate.'}",
+        "3. Is PMG-fast's harm gradient disproportionate to its tiny scalar harm? See the scale table and per-observation audit; the derivative is not magnitude-weighted by the tiny scalar.",
+        f"4. Most likely WBCIC fold-1 cause: {diagnosis}.",
+        f"5. Direct prospective-gradient safeguarding scientifically justified? {'Only as a follow-up research question; this audit does not validate a method.' if both_pass else 'No.'}",
+        f"6. PMG / prospective-gradient family: {'literature audit before any design, per protocol.' if both_pass else 'stop under this frozen audit.'}",
+        "7. Outcome/sealed subjects accessed? No.", "8. Seed 1/2 run? No.",
+        "", f"Runtime seconds: {runtime_profile.get('elapsed_seconds', float('nan')):.3f}; primary observations: {runtime_profile.get('primary_observations', 0)}; source-only: yes; mathematical audit: {'PASS' if math_result.get('pass') else 'FAIL'}.",
+    ]
     (AUDIT / "FINAL_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     report = {"schema": "PROSPECTIVE_GRADIENT_SIGNAL_AUDIT_FINAL_V1", "terminal": terminal, "signal_summary": signal_summary.to_dict(orient="records"), "gradient_scale": {ds: scales[scales.dataset == ds].median(numeric_only=True).to_dict() for ds in DATASETS}, "forensic_diagnosis": diagnosis, "forensic_rows": int(len(forensic)), "runtime_profile": runtime_profile, "math_audit": math_result, "source_only": True, "outcome_accessed": False, "seed1_seed2_run": False, "sealed_status": {"WBCIC_outer_10_accessed": False, "OpenBMI_sealed_internal_accessed": False}}
     write_json(AUDIT / "FINAL_REPORT.json", report)
@@ -1003,7 +1113,60 @@ def run_audit(device: torch.device) -> None:
     terminal = "PROSPECTIVE_GRADIENT_SIGNAL_SUPPORTED" if all(primary_pass.values()) else ("PROSPECTIVE_GRADIENT_SIGNAL_DATASET_DEPENDENT" if any(primary_pass.values()) else "PROSPECTIVE_GRADIENT_SIGNAL_NOT_SUPPORTED")
     elapsed = time.time() - start
     runtime_profile = {"elapsed_seconds": elapsed, "target_seconds": TARGET_RUNTIME_SECONDS, "hard_budget_seconds": HARD_RUNTIME_SECONDS, "primary_observations": int(len(pairs)), "step_scale_rows": int(len(steps)), "trainmode_rows": int(len(trainmode)), "forensic_rows": int(len(forensic)), "source_only": True, "outcome_accessed": False, "seed1_seed2_run": False, "sealed_untouched": True, "anchor_recreated": False}
-    write_json(RESULTS / "VALIDATION.json", {"pass": True, "terminal": terminal, "primary_complete": len(pairs) == 500, "trainmode_complete": len(trainmode) == 300, "forensic_diagnosis": diagnosis, "math_audit_pass": bool(math_result.get("pass")), "source_only": True, "outcome_accessed": False, "seed1_seed2_run": False, "sealed_untouched": True, "primary_signal_pass": primary_pass})
+    write_json(RESULTS / "VALIDATION.json", {"pass": True, "terminal": terminal, "primary_complete": len(pairs) == 500, "trainmode_complete": len(trainmode) == len(DATASETS) * len(FOLDS) * 5 * TRAINMODE_DRAWS, "forensic_diagnosis": diagnosis, "math_audit_pass": bool(math_result.get("pass")), "source_only": True, "outcome_accessed": False, "seed1_seed2_run": False, "sealed_untouched": True, "primary_signal_pass": primary_pass})
+    write_json(AUDIT / "RUNTIME_PROFILE.json", runtime_profile)
+    (AUDIT / "RUNTIME_PROFILE.md").write_text("# Runtime profile\n\n" + json.dumps(clean(runtime_profile), indent=2) + "\n", encoding="utf-8")
+    write_final_report(signal_summary, scales, forensic, diagnosis, terminal, runtime_profile, math_result)
+    print(f"terminal = {terminal}", flush=True)
+    print("outcome_accessed = NO", flush=True)
+    print("seed1_seed2_run = NO", flush=True)
+
+
+def resume_after_primary(device: torch.device) -> None:
+    """Finish a run whose primary 500 observations were already persisted.
+
+    This is an engineering resume path for an interrupted process.  It never
+    recomputes or changes the primary pair observations, scales, or subject
+    rows; it only performs the deterministic post-processing, train-mode
+    robustness diagnostic, and the separately permitted fold-1 forensic.
+    """
+    start = time.time()
+    set_seed(SEED)
+    contexts = load_fit_only_contexts()
+    anchors: dict[tuple[str, int], tuple[dict[str, torch.Tensor], np.ndarray, np.ndarray]] = {}
+    anchor_records = []
+    for ctx in contexts:
+        state, mean, std, record = load_anchor(ctx, device)
+        check_anchor_architecture(ctx, state)
+        anchors[(ctx.dataset, ctx.fold)] = (state, mean, std)
+        anchor_records.append(record)
+    pairs = pd.read_csv(RESULTS / "GRADIENT_PAIR_OBSERVATIONS.csv")
+    steps = pd.read_csv(RESULTS / "STEP_SCALE_RESULTS.csv")
+    subjects = pd.read_csv(RESULTS / "SUBJECT_HARM.csv")
+    scales = pd.read_csv(RESULTS / "GRADIENT_SCALE_RESULTS.csv")
+    expected_pairs = len(DATASETS) * len(FOLDS) * 5 * PAIR_DRAWS
+    expected_steps = expected_pairs * len(EPSILONS)
+    if len(pairs) != expected_pairs or len(steps) != expected_steps or len(scales) != expected_pairs:
+        raise RuntimeError(f"persisted primary artifacts incomplete: pairs={len(pairs)} steps={len(steps)} scales={len(scales)}")
+    math_result = run_math_audit(device)
+    write_protocol_docs(anchor_records, source_hash(Path(__file__).resolve()), math_result)
+    signal_summary, _bootstrap = summarize_signals(steps, start)
+    print("[resume] primary signal summaries written", flush=True)
+    trainmode = run_trainmode_audit(contexts, anchors, device, start)
+    print("[resume] train-mode robustness written", flush=True)
+    forensic_ctx = next(c for c in contexts if c.dataset == "WBCIC" and c.fold == 1)
+    forensic_state, forensic_mean, forensic_std = anchors[("WBCIC", 1)]
+    forensic, diagnosis = run_forensic(forensic_ctx, forensic_state, forensic_mean, forensic_std, device, start)
+    write_scale_report(scales)
+    write_forensic_report(forensic, diagnosis)
+    primary_pass = {
+        ds: bool(signal_summary[(signal_summary.dataset == ds) & np.isclose(signal_summary.epsilon, PRIMARY_EPSILON)].iloc[0].signal_pass_primary)
+        for ds in DATASETS
+    }
+    terminal = "PROSPECTIVE_GRADIENT_SIGNAL_SUPPORTED" if all(primary_pass.values()) else ("PROSPECTIVE_GRADIENT_SIGNAL_DATASET_DEPENDENT" if any(primary_pass.values()) else "PROSPECTIVE_GRADIENT_SIGNAL_NOT_SUPPORTED")
+    elapsed = time.time() - start
+    runtime_profile = {"elapsed_seconds": elapsed, "target_seconds": TARGET_RUNTIME_SECONDS, "hard_budget_seconds": HARD_RUNTIME_SECONDS, "primary_observations": int(len(pairs)), "step_scale_rows": int(len(steps)), "trainmode_rows": int(len(trainmode)), "forensic_rows": int(len(forensic)), "source_only": True, "outcome_accessed": False, "seed1_seed2_run": False, "sealed_untouched": True, "anchor_recreated": False, "resumed_after_primary": True}
+    write_json(RESULTS / "VALIDATION.json", {"pass": True, "terminal": terminal, "primary_complete": len(pairs) == expected_pairs, "trainmode_complete": len(trainmode) == len(DATASETS) * len(FOLDS) * 5 * TRAINMODE_DRAWS, "forensic_diagnosis": diagnosis, "math_audit_pass": bool(math_result.get("pass")), "source_only": True, "outcome_accessed": False, "seed1_seed2_run": False, "sealed_untouched": True, "primary_signal_pass": primary_pass, "resumed_after_primary": True})
     write_json(AUDIT / "RUNTIME_PROFILE.json", runtime_profile)
     (AUDIT / "RUNTIME_PROFILE.md").write_text("# Runtime profile\n\n" + json.dumps(clean(runtime_profile), indent=2) + "\n", encoding="utf-8")
     write_final_report(signal_summary, scales, forensic, diagnosis, terminal, runtime_profile, math_result)
@@ -1029,18 +1192,22 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--preflight", action="store_true")
     parser.add_argument("--run", action="store_true")
+    parser.add_argument("--resume-primary", action="store_true")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
     args = parser.parse_args()
-    if args.seed != 0 or args.preflight == args.run:
-        raise SystemExit("exactly one of --preflight/--run is required and seed 0 is mandatory")
+    modes = int(args.preflight) + int(args.run) + int(args.resume_primary)
+    if args.seed != 0 or modes != 1:
+        raise SystemExit("exactly one of --preflight/--run/--resume-primary is required and seed 0 is mandatory")
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     device = torch.device(args.device)
     if args.preflight:
         preflight(device)
-    else:
+    elif args.run:
         run_audit(device)
+    else:
+        resume_after_primary(device)
 
 
 if __name__ == "__main__":
