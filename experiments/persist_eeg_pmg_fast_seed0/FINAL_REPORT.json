@@ -1,0 +1,199 @@
+{
+  "discovery_summary": [
+    {
+      "BA": 0.8022222222222222,
+      "NLL": 0.4554787351375677,
+      "accuracy": 0.8022222222222222,
+      "adapt_epochs": 0.0,
+      "anchor_epoch": 30.8,
+      "dataset": "OpenBMI",
+      "finite": 1.0,
+      "fold": 2.0,
+      "macro_F1": 0.7964108260236041,
+      "model": "M0",
+      "source_examples": 0.0,
+      "updates": 0.0
+    },
+    {
+      "BA": 0.788888888888889,
+      "NLL": 0.4718800536682111,
+      "accuracy": 0.788888888888889,
+      "adapt_epochs": 5.0,
+      "anchor_epoch": 30.8,
+      "dataset": "OpenBMI",
+      "finite": 1.0,
+      "fold": 2.0,
+      "macro_F1": 0.7805129858261113,
+      "model": "M1",
+      "source_examples": 34432.0,
+      "updates": 538.0
+    },
+    {
+      "BA": 0.7875555555555556,
+      "NLL": 0.4850472277646455,
+      "accuracy": 0.7875555555555556,
+      "adapt_epochs": 5.0,
+      "anchor_epoch": 30.8,
+      "dataset": "OpenBMI",
+      "finite": 1.0,
+      "fold": 2.0,
+      "macro_F1": 0.7790579421330714,
+      "model": "M2",
+      "source_examples": 34432.0,
+      "updates": 538.0
+    },
+    {
+      "BA": 0.7960793876262626,
+      "NLL": 0.41369222844345577,
+      "accuracy": 0.7960779914529914,
+      "adapt_epochs": 0.0,
+      "anchor_epoch": 24.0,
+      "dataset": "WBCIC",
+      "finite": 1.0,
+      "fold": 2.0,
+      "macro_F1": 0.7947287651031572,
+      "model": "M0",
+      "source_examples": 0.0,
+      "updates": 0.0
+    },
+    {
+      "BA": 0.7895932765151514,
+      "NLL": 0.4185988175713553,
+      "accuracy": 0.7895918803418803,
+      "adapt_epochs": 5.0,
+      "anchor_epoch": 24.0,
+      "dataset": "WBCIC",
+      "finite": 1.0,
+      "fold": 2.0,
+      "macro_F1": 0.7881623054356947,
+      "model": "M1",
+      "source_examples": 49344.0,
+      "updates": 771.0
+    },
+    {
+      "BA": 0.7349543876262625,
+      "NLL": 0.4660759941186047,
+      "accuracy": 0.7349529914529914,
+      "adapt_epochs": 5.0,
+      "anchor_epoch": 24.0,
+      "dataset": "WBCIC",
+      "finite": 1.0,
+      "fold": 2.0,
+      "macro_F1": 0.700337614845763,
+      "model": "M2",
+      "source_examples": 49344.0,
+      "updates": 771.0
+    }
+  ],
+  "go_no_go": {
+    "ba_anchor_ok": false,
+    "ba_erm_ok": false,
+    "harm_reduced_both": false,
+    "harm_reduction_at_least_one_10pct": false,
+    "harm_reduction_fraction": {
+      "OpenBMI": -0.009932051422670618,
+      "WBCIC": 0.07770739601564813
+    },
+    "no_ba_loss_over_0_5pp_both": false,
+    "one_dataset_erm_win": false
+  },
+  "math_audit": {
+    "checks": {
+      "disjoint_A_B": true,
+      "every_subject_future": true,
+      "first_order_no_graph": true,
+      "g_A_detached": true,
+      "harm_nonnegative": true,
+      "identical_start": true,
+      "outcome_not_in_env": true,
+      "seed_only_zero": true,
+      "virtual_parameters_only": true,
+      "zero_harm_when_improved": true
+    },
+    "g_prime_finite": true,
+    "pass": true,
+    "schema": "PMG_FAST_MATH_AUDIT_V1"
+  },
+  "outcome_accessed": false,
+  "prospective_harm_summary": [
+    {
+      "dataset": "OpenBMI",
+      "fold": 2.0,
+      "fraction_harmed": 0.40319327731092436,
+      "mean_delta_future_loss": -0.0003070404026813868,
+      "mean_gradient_cosine": 0.13578207597136496,
+      "mean_positive_harm": 0.0005927577286082156,
+      "model": "M0",
+      "worst25_positive_harm": 0.0023467926308512687
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 2.0,
+      "fraction_harmed": 0.45512605042016807,
+      "mean_delta_future_loss": -0.00013264223557560382,
+      "mean_gradient_cosine": 0.034682961255311964,
+      "mean_positive_harm": 0.0005955189228558741,
+      "model": "M1",
+      "worst25_positive_harm": 0.0023504582233726977
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 2.0,
+      "fraction_harmed": 0.4329411764705882,
+      "mean_delta_future_loss": -0.00031655478385128394,
+      "mean_gradient_cosine": 0.09461801126599312,
+      "mean_positive_harm": 0.0006014336474208521,
+      "model": "M2",
+      "worst25_positive_harm": 0.0023426273837685585
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2.0,
+      "fraction_harmed": 0.4963333333333333,
+      "mean_delta_future_loss": 5.506725671390679e-07,
+      "mean_gradient_cosine": 0.02086698293685913,
+      "mean_positive_harm": 9.488072463621694e-05,
+      "model": "M0",
+      "worst25_positive_harm": 0.0003672715897361437
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2.0,
+      "fraction_harmed": 0.35933333333333334,
+      "mean_delta_future_loss": -1.1713330323497455e-05,
+      "mean_gradient_cosine": 0.06778210978154674,
+      "mean_positive_harm": 7.797805693310996e-05,
+      "model": "M1",
+      "worst25_positive_harm": 0.0002931511650482813
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2.0,
+      "fraction_harmed": 0.384,
+      "mean_delta_future_loss": -4.09173466420422e-05,
+      "mean_gradient_cosine": 0.22272069498896602,
+      "mean_positive_harm": 7.191858518247803e-05,
+      "model": "M2",
+      "worst25_positive_harm": 0.0002632640612622102
+    }
+  ],
+  "runtime_profile": {
+    "anchor_folds_completed": 10,
+    "elapsed_seconds": 2242.2029457092285,
+    "expected_folds": 10,
+    "hard_budget_seconds": 7200.0,
+    "outcome_scoring_started": false,
+    "projected_over_120_minutes": false,
+    "seed1_seed2_run": false,
+    "source_only": true,
+    "target_seconds": 5400.0
+  },
+  "sealed_status": {
+    "OpenBMI_sealed_internal_accessed": false,
+    "WBCIC_outer_10_accessed": false
+  },
+  "seed1_seed2_run": false,
+  "source_only": true,
+  "terminal": "PMG_FAST_NOT_SUPPORTED",
+  "title": "PERSIST-PMG fast seed-0 mechanism pilot"
+}
