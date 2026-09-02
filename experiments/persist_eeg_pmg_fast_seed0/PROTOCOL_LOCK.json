@@ -1,0 +1,70 @@
+{
+  "architecture": {
+    "F1": 8,
+    "F2": 16,
+    "depth_multiplier": 2,
+    "dropout": 0.25,
+    "embedding": 64,
+    "source": "canonical_eegnet_runner.VanillaEEGNet"
+  },
+  "branch_expected": "codex/persist-eeg-pmg-fast-seed0",
+  "created_before_training_and_outcome": true,
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "forbidden": [
+    "seed 1/2",
+    "WBCIC sealed outer ten",
+    "OpenBMI sealed/internal holdout",
+    "outcome scoring",
+    "target adaptation",
+    "router",
+    "task-specific priors",
+    "scientific tuning",
+    "PMG-V2"
+  ],
+  "gates": {
+    "anchor_loss_tolerance_BA": 0.002,
+    "erm_tolerance_BA": 0.001,
+    "harm_reduction_both": true,
+    "harm_reduction_fraction_at_least_one": 0.1,
+    "one_dataset_erm_margin_BA": 0.003
+  },
+  "models": [
+    "M0_CANONICAL_MODEL_FIT_ANCHOR",
+    "M1_MATCHED_ERM_REFINE",
+    "M2_PMG_FAST"
+  ],
+  "outcome_accessed": false,
+  "schema": "PERSIST_PMG_FAST_SEED0_PROTOCOL_LOCK_V1",
+  "sealed_cohorts_accessed": false,
+  "seed": 0,
+  "source_roles": {
+    "discovery": "discovery subjects only",
+    "fit": "model_fit subjects only",
+    "outcome": "never constructed"
+  },
+  "training": {
+    "adapt_epochs": 5,
+    "alpha_inner": 0.0001,
+    "batch_size": 64,
+    "create_graph": false,
+    "first_order": true,
+    "gradient_clip": 5.0,
+    "lambda_KD": 0.1,
+    "lambda_meta": 1.0,
+    "learning_rate": 0.0001,
+    "meta_folds": 5,
+    "mu_harm": 0.5,
+    "optimizer": "AdamW",
+    "weight_decay": 0.0005
+  }
+}
