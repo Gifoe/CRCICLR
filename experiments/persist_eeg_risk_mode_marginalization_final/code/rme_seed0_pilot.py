@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import gc
 import hashlib
 import json
 import math
@@ -140,6 +141,61 @@ class Block:
     subjects: np.ndarray
     trial_uids: np.ndarray
     sessions: np.ndarray
+
+
+def metadata_column(data: canonical.DatasetData, column: str, indices: np.ndarray | None = None, dtype: Any | None = None) -> np.ndarray:
+    """Read frozen metadata through cached NumPy columns, avoiding pandas iloc churn.
+
+    The first seed-0 pilot hit a pandas ``SystemError`` after several OpenBMI
+    folds while repeatedly materializing ``metadata.iloc[indices]``.  Metadata
+    is immutable for this run, so caching the columns is an equivalent,
+    memory-stable engineering path; it does not alter sample order or values.
+    """
+    cache = getattr(data, "_rme_metadata_arrays", None)
+    if cache is None:
+        cache = {}
+        setattr(data, "_rme_metadata_arrays", cache)
+    key = (column, str(dtype) if dtype is not None else "object")
+    if key not in cache:
+        if dtype is None:
+            if column in {"subject_id", "trial_uid", "_signal_path"}:
+                cache[key] = data.metadata[column].astype(str).to_numpy(copy=True)
+            else:
+                cache[key] = data.metadata[column].to_numpy(copy=True)
+        else:
+            cache[key] = data.metadata[column].to_numpy(dtype=dtype, copy=True)
+    values = cache[key]
+    if indices is None:
+        return values
+    return values[np.asarray(indices, dtype=np.int64)]
+
+
+def install_safe_dataset_batch() -> None:
+    """Replace the canonical cache lookup with an equivalent NumPy-column path.
+
+    OpenBMI stores signals in per-shard mmap files and the canonical helper
+    used a chained pandas advanced-index operation for every minibatch.  The
+    replacement keeps the canonical shard/cache semantics exactly while
+    avoiding that unstable operation.  WBCIC's raw mmap path is unchanged.
+    """
+    def safe_batch(data: canonical.DatasetData, indices: np.ndarray) -> np.ndarray:
+        idx = np.asarray(indices, dtype=np.int64)
+        if data.raw is not None:
+            return np.asarray(data.raw[idx], dtype=np.float32)
+        paths = metadata_column(data, "_signal_path", idx)
+        offsets = metadata_column(data, "_cache_index", idx, np.int64)
+        values = []
+        for path, offset in zip(paths, offsets):
+            key = str(path)
+            if key not in data.arrays:
+                data.arrays[key] = np.load(data.cache_root / key, mmap_mode="r", allow_pickle=False)
+            values.append(np.asarray(data.arrays[key][int(offset)], dtype=np.float32))
+        return np.stack(values, axis=0)
+
+    canonical.DatasetData.batch = safe_batch
+
+
+install_safe_dataset_batch()
 
 
 def probabilities(logits: np.ndarray) -> np.ndarray:
@@ -308,7 +364,7 @@ def fit_model_fit_only(ctx: FoldContext, mean: np.ndarray, std: np.ndarray, devi
         for start in range(0, len(order), canonical.BATCH_SIZE):
             part = order[start:start + canonical.BATCH_SIZE]
             xb = canonical.prepare_batch(ctx.data, part, mean, std, device)
-            yb = torch.as_tensor(ctx.data.metadata.iloc[part].label.to_numpy(np.int64, copy=True), dtype=torch.long, device=device)
+            yb = torch.as_tensor(metadata_column(ctx.data, "label", part, np.int64), dtype=torch.long, device=device)
             opt.zero_grad(set_to_none=True); loss = F.cross_entropy(model(xb), yb); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0); opt.step()
         print(f"[development-anchor] {ctx.dataset} fold={ctx.fold} epoch={epoch}/{ctx.best_epoch}", flush=True)
     model.eval()
@@ -323,15 +379,16 @@ def predict_model(model: nn.Module, data: canonical.DatasetData, indices: np.nda
             part = indices[start:start + BATCH_SIZE]
             xb = canonical.prepare_batch(data, part, mean, std, device)
             parts.append(model(xb).float().cpu().numpy())
-    frame = data.metadata.iloc[indices]
-    return Block(np.asarray(indices, dtype=np.int64), np.concatenate(parts, axis=0), frame.label.to_numpy(np.int64), frame.subject_id.astype(str).to_numpy(), frame.trial_uid.astype(str).to_numpy(), frame.session_id.to_numpy(np.int64))
+    idx = np.asarray(indices, dtype=np.int64)
+    return Block(idx, np.concatenate(parts, axis=0), metadata_column(data, "label", idx, np.int64), metadata_column(data, "subject_id", idx), metadata_column(data, "trial_uid", idx), metadata_column(data, "session_id", idx, np.int64))
 
 
 def subject_order(data: canonical.DatasetData, indices: np.ndarray, seed: int) -> np.ndarray:
-    frame = data.metadata.iloc[indices]
     pools: dict[str, dict[int, list[int]]] = {}
     rng = np.random.default_rng(seed)
-    for pos, (sub, lab) in enumerate(zip(frame.subject_id.astype(str), frame.label.astype(int))):
+    subs = metadata_column(data, "subject_id", indices)
+    labs = metadata_column(data, "label", indices, int)
+    for pos, (sub, lab) in enumerate(zip(subs, labs)):
         pools.setdefault(str(sub), {0: [], 1: []})[int(lab)].append(int(indices[pos]))
     subs = subject_sort(pools)
     for sub in subs:
@@ -354,8 +411,8 @@ def subject_order(data: canonical.DatasetData, indices: np.ndarray, seed: int) -
 
 
 def base_sample_weights(data: canonical.DatasetData, indices: np.ndarray) -> np.ndarray:
-    frame = data.metadata.iloc[indices]
-    subs = frame.subject_id.astype(str).to_numpy(); labs = frame.label.astype(int).to_numpy()
+    subs = metadata_column(data, "subject_id", indices)
+    labs = metadata_column(data, "label", indices, int)
     counts: dict[tuple[str, int], int] = {}
     for s, y in zip(subs, labs): counts[(str(s), int(y))] = counts.get((str(s), int(y)), 0) + 1
     nsub = max(1, len(set(subs)))
@@ -382,8 +439,8 @@ def train_risk_model(anchor_state: dict[str, torch.Tensor], ctx: FoldContext, tr
     for p in anchor.parameters(): p.requires_grad_(False)
     params = [p for p in model.parameters() if p.requires_grad]
     opt = torch.optim.AdamW(model.parameters(), lr=ADAPTER_LR, weight_decay=ADAPTER_WEIGHT_DECAY)
-    frame = ctx.data.metadata.iloc[train_idx]
-    subs = frame.subject_id.astype(str).to_numpy(); labs = frame.label.to_numpy(np.int64)
+    subs = metadata_column(ctx.data, "subject_id", train_idx)
+    labs = metadata_column(ctx.data, "label", train_idx, np.int64)
     base_w = base_sample_weights(ctx.data, train_idx)
     q_ratio = np.ones(len(train_idx), dtype=np.float32)
     if q is not None:
@@ -396,7 +453,7 @@ def train_risk_model(anchor_state: dict[str, torch.Tensor], ctx: FoldContext, tr
         for start in range(0, len(order), BATCH_SIZE):
             part = order[start:start + BATCH_SIZE]; pos = np.asarray([index_pos[int(x)] for x in part], dtype=np.int64)
             xb = canonical.prepare_batch(ctx.data, part, mean, std, device)
-            yb = torch.as_tensor(np.array(ctx.data.metadata.iloc[part].label.to_numpy(np.int64), copy=True), dtype=torch.long, device=device)
+            yb = torch.as_tensor(metadata_column(ctx.data, "label", part, np.int64), dtype=torch.long, device=device)
             wu = torch.as_tensor(base_w[pos], dtype=torch.float32, device=device); wr = wu * torch.as_tensor(q_ratio[pos], dtype=torch.float32, device=device)
             with torch.no_grad(): p_anchor = F.softmax(anchor(xb).float(), dim=1)
             logits = model(xb).float(); lu = weighted_ce(logits, yb, wu) + lambda_kd * F.kl_div(F.log_softmax(logits, dim=1), p_anchor, reduction="batchmean")
@@ -414,6 +471,16 @@ def train_risk_model(anchor_state: dict[str, torch.Tensor], ctx: FoldContext, tr
             for p in params:
                 n = p.numel(); p.grad = gupd[offset:offset + n].reshape_as(p).detach().clone(); offset += n
             torch.nn.utils.clip_grad_norm_(params, 5.0); opt.step()
+        # Drop the final minibatch autograd graph before allocator cleanup.
+        # Keeping these Python locals alive across epochs can retain a large
+        # CUDA activation graph and eventually trigger a native Windows
+        # access violation in long source-only runs.  This is a resource-only
+        # fix; it does not alter any tensor values or update rule.
+        del xb, yb, wu, wr, p_anchor, logits, lu, lr, gu, gr, guv, grv, rv, gupd
+        gc.collect()
+        if device.type == "cuda":
+            torch.cuda.synchronize(device)
+            torch.cuda.empty_cache()
         print(f"[train] {ctx.dataset} fold={ctx.fold} tag={tag} epoch={epoch}/{ADAPTER_EPOCHS} conflicts={conflicts}", flush=True)
     del anchor
     if torch.cuda.is_available(): torch.cuda.empty_cache()
@@ -423,15 +490,18 @@ def train_risk_model(anchor_state: dict[str, torch.Tensor], ctx: FoldContext, tr
 def subject_gradients(model: canonical.VanillaEEGNet, ctx: FoldContext, indices: np.ndarray, mean: np.ndarray, std: np.ndarray, stage: str, device: torch.device) -> tuple[list[dict[str, Any]], np.ndarray, list[str]]:
     model.eval()
     params = [p for name, p in model.named_parameters() if name.startswith("embedding.") or name.startswith("head.")]
-    frame = ctx.data.metadata.iloc[indices]
     rows: list[dict[str, Any]] = []; vectors: list[np.ndarray] = []; subjects: list[str] = []
-    for subject in subject_sort(frame.subject_id.astype(str).unique()):
-        subject_indices = indices[frame.subject_id.astype(str).to_numpy() == subject]
-        sessions = sorted(set(ctx.data.metadata.iloc[subject_indices].session_id.astype(int)))
+    all_subjects = metadata_column(ctx.data, "subject_id", indices)
+    all_sessions = metadata_column(ctx.data, "session_id", indices, int)
+    all_labels = metadata_column(ctx.data, "label", indices, int)
+    for subject in subject_sort(np.unique(all_subjects)):
+        subject_indices = indices[all_subjects == subject]
+        subject_sessions = all_sessions[all_subjects == subject]
+        sessions = sorted(set(subject_sessions.astype(int)))
         session_vectors: list[np.ndarray] = []; class_cov: dict[str, list[int]] = {}
         for session in sessions:
-            sess_idx = subject_indices[ctx.data.metadata.iloc[subject_indices].session_id.to_numpy(int) == int(session)]
-            labels = ctx.data.metadata.iloc[sess_idx].label.to_numpy(int)
+            sess_idx = subject_indices[subject_sessions == int(session)]
+            labels = all_labels[(all_subjects == subject) & (all_sessions == int(session))]
             if set(labels) != {0, 1}:
                 continue
             logits_parts: list[torch.Tensor] = []
@@ -554,11 +624,11 @@ def bootstrap(delta: np.ndarray, dataset: str) -> dict[str, Any]:
 
 def train_groupdro(anchor_state: dict[str, torch.Tensor], ctx: FoldContext, train_idx: np.ndarray, mean: np.ndarray, std: np.ndarray, device: torch.device) -> canonical.VanillaEEGNet:
     # Fixed, diagnostic GroupDRO control: exponent one, no tuning.
-    model = canonical.VanillaEEGNet(ctx.data.batch(train_idx[:1]).shape[1]).to(device); model.load_state_dict(anchor_state, strict=True); opt = torch.optim.AdamW(model.parameters(), lr=ADAPTER_LR, weight_decay=ADAPTER_WEIGHT_DECAY); frame = ctx.data.metadata.iloc[train_idx]; subs = frame.subject_id.astype(str).to_numpy(); sub_names = subject_sort(np.unique(subs)); rng = np.random.default_rng(stable_seed("rme-groupdro-order", ctx.dataset, ctx.fold, SEED))
+    model = canonical.VanillaEEGNet(ctx.data.batch(train_idx[:1]).shape[1]).to(device); model.load_state_dict(anchor_state, strict=True); opt = torch.optim.AdamW(model.parameters(), lr=ADAPTER_LR, weight_decay=ADAPTER_WEIGHT_DECAY); subs = metadata_column(ctx.data, "subject_id", train_idx); sub_names = subject_sort(np.unique(subs)); rng = np.random.default_rng(stable_seed("rme-groupdro-order", ctx.dataset, ctx.fold, SEED))
     for epoch in range(ADAPTER_EPOCHS):
         order = train_idx[rng.permutation(len(train_idx))]
         for start in range(0, len(order), BATCH_SIZE):
-            part = order[start:start + BATCH_SIZE]; xb = canonical.prepare_batch(ctx.data, part, mean, std, device); yb = torch.as_tensor(ctx.data.metadata.iloc[part].label.to_numpy(np.int64, copy=True), dtype=torch.long, device=device); logits = model(xb); losses = F.cross_entropy(logits, yb, reduction="none"); bs = ctx.data.metadata.iloc[part].subject_id.astype(str).to_numpy(); per = [losses[torch.as_tensor(bs == s, device=device)].mean() for s in subject_sort(np.unique(bs))]; w = torch.softmax(torch.stack(per).detach(), 0); sample_w = torch.zeros_like(losses); 
+            part = order[start:start + BATCH_SIZE]; xb = canonical.prepare_batch(ctx.data, part, mean, std, device); yb = torch.as_tensor(metadata_column(ctx.data, "label", part, np.int64), dtype=torch.long, device=device); logits = model(xb); losses = F.cross_entropy(logits, yb, reduction="none"); bs = metadata_column(ctx.data, "subject_id", part); per = [losses[torch.as_tensor(bs == s, device=device)].mean() for s in subject_sort(np.unique(bs))]; w = torch.softmax(torch.stack(per).detach(), 0); sample_w = torch.zeros_like(losses); 
             for s, ww in zip(subject_sort(np.unique(bs)), w): sample_w[torch.as_tensor(bs == s, device=device)] = ww / max(1, int(np.sum(bs == s)))
             loss = (losses * sample_w).sum(); opt.zero_grad(set_to_none=True); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0); opt.step()
     return model.eval()

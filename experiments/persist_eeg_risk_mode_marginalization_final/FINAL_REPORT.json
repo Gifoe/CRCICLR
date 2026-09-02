@@ -1,15 +1,6 @@
 {
-  "aggregation": "0.50 anchor + 0.50 mean(four risk experts)",
-  "architecture": {
-    "D": 2,
-    "F1": 8,
-    "F2": 16,
-    "classes": "dataset-defined",
-    "dropout": 0.25,
-    "embedding": 64
-  },
-  "branch_expected": "codex/persist-eeg-risk-mode-marginalization-final",
-  "canonical_baseline_hashes": {
+  "backbone_generality": "NOT_AUTHORIZED_AFTER_SEED0",
+  "baseline_hashes": {
     "per_subject_sha256": "aed97f62d671ce9b2cdf2d9d2ef17e444bfff03d5223a4d984d3a85923fcb4a2",
     "seed_summary_sha256": "51178f23027c087aae4e0dae8c2468b4b2c4c770f33fd094dd89ed49fb5c2241",
     "statistics": {
@@ -140,70 +131,43 @@
     "statistics_sha256": "71abc4f0ed7d0c1dc34f78e124f6f5ece462f97bb10fb76f1ff4dc055be73110",
     "trial_predictions_sha256": "3c6a1f3bfdc3ead96f4524222fb228f809249aff1e4e18427f75377064a0cf62"
   },
-  "canonical_baseline_targets": {
-    "OpenBMI": 0.8190740740740741,
-    "WBCIC": 0.7862985033259424
+  "checkpoint_equivalence": [],
+  "full_three_seed_run": false,
+  "paired_bootstrap": {},
+  "recipe": {
+    "beta_risk": 0.25,
+    "lambda_kd": 0.5
   },
-  "created_before_training_and_outcome": true,
-  "datasets": [
-    "OpenBMI",
-    "WBCIC"
-  ],
-  "folds": [
-    0,
-    1,
-    2,
-    3,
-    4
-  ],
-  "forbidden": [
-    "seed 1/2",
-    "WBCIC sealed outer ten",
-    "OpenBMI sealed/internal holdout",
-    "target adaptation",
-    "target labels",
-    "router",
-    "task-specific priors",
-    "backbone change",
-    "unbounded scientific search"
-  ],
-  "git_sha_before_training": "08a4194a566e91d77de503eaa0fb9970f1cfed0e",
-  "risk_basis": {
-    "gamma": 0.5,
-    "gradient_params": "embedding, LayerNorm, task head",
-    "rank": 2,
-    "ratio_clip": [
-      0.25,
-      4.0
-    ],
-    "subject_session_class_balanced": true,
-    "tau": 1.0
+  "sealed_status": {
+    "OpenBMI_sealed_holdout_accessed": false,
+    "WBCIC_outer_10_accessed": false
   },
-  "schema": "PERSIST_RME_SEED0_PROTOCOL_LOCK_V1",
-  "seed": 0,
-  "source_repair": {
-    "allowed": true,
-    "max_repairs": 1,
-    "rules": {
-      "competence_fail": {
-        "beta_risk": 0.25,
-        "lambda_KD": 0.5
-      },
-      "diversity_fail": {
-        "beta_risk": 0.75,
-        "lambda_KD": 0.1
-      }
-    }
+  "seed0_summary": [],
+  "seed1_seed2_authorized": false,
+  "source_report": {
+    "OpenBMI": {
+      "competence_pass": true,
+      "diversity_pass": true,
+      "mean_expert_delta_BA": -0.00950000000000007,
+      "mean_pairwise_disagreement": 0.02840740740740741,
+      "mean_rme_delta_BA": -0.002888888888888941,
+      "mean_rme_delta_NLL": -0.000588423746096256,
+      "min_expert_delta_BA": -0.018888888888889066,
+      "rme_BA_pass": false
+    },
+    "WBCIC": {
+      "competence_pass": false,
+      "diversity_pass": true,
+      "mean_expert_delta_BA": -0.017352233270202005,
+      "mean_pairwise_disagreement": 0.08191740682688958,
+      "mean_rme_delta_BA": 0.0014999999999999903,
+      "mean_rme_delta_NLL": 0.009832093278951081,
+      "min_expert_delta_BA": -0.13812499999999983,
+      "rme_BA_pass": true
+    },
+    "cross_dataset_nll_pass": true
   },
-  "training": {
-    "batch_size": 64,
-    "beta_risk": 0.5,
-    "epochs": 12,
-    "gradient_clip": 5.0,
-    "lambda_KD": 0.25,
-    "learning_rate": 0.0001,
-    "optimizer": "AdamW",
-    "projection": "conflicting risk component removed",
-    "weight_decay": 0.0005
-  }
+  "task_generality": "NOT_AUTHORIZED_AFTER_SEED0",
+  "terminal": "RME_SOURCE_CONSTRUCTION_FAILED",
+  "title": "PERSIST-RME SEED-0 PILOT"
 }
