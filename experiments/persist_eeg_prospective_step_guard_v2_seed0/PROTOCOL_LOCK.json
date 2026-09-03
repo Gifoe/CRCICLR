@@ -1,0 +1,93 @@
+{
+  "branch_expected": "codex/persist-eeg-prospective-step-guard-v2-seed0",
+  "candidate_specs": [
+    {
+      "kappa": 0.05,
+      "name": "P1_ALL_CAP05",
+      "scope": "ALL"
+    },
+    {
+      "kappa": 0.1,
+      "name": "P2_ALL_CAP10",
+      "scope": "ALL"
+    },
+    {
+      "kappa": 0.2,
+      "name": "P3_ALL_CAP20",
+      "scope": "ALL"
+    },
+    {
+      "kappa": 0.05,
+      "name": "P4_LATE_CAP05",
+      "scope": "LATE"
+    },
+    {
+      "kappa": 0.1,
+      "name": "P5_LATE_CAP10",
+      "scope": "LATE"
+    },
+    {
+      "kappa": 0.2,
+      "name": "P6_LATE_CAP20",
+      "scope": "LATE"
+    }
+  ],
+  "controls": [
+    "TASK_ONLY_MATCHED",
+    "CAP_ZERO_IDENTITY",
+    "ERM2_REFERENCE"
+  ],
+  "data": {
+    "OpenBMI": "frozen 54-subject development cohort",
+    "WBCIC": "frozen 41-subject development cohort"
+  },
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "device": "cuda",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "forbidden": [
+    "WBCIC sealed outer 10",
+    "OpenBMI sealed/internal confirmation cohort",
+    "seed 1/2",
+    "second backbone",
+    "new dataset",
+    "anchor fusion",
+    "LR repair",
+    "post-hoc candidate"
+  ],
+  "guard": {
+    "b_gradient": "eval mode, dropout off, BN frozen",
+    "equation": "h=g_B^T Delta_task; if h>0, Delta_guard,S=Delta_task,S-scale*h/||g_B,S||^2*g_B,S",
+    "kappas": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "late_parameters": "embedding.*, head.*",
+    "scopes": [
+      "ALL",
+      "LATE"
+    ]
+  },
+  "optimizer": {
+    "batch_size_A": 64,
+    "batch_size_B": 64,
+    "gradient_clip": 5.0,
+    "learning_rate": 3e-05,
+    "max_epochs": 5,
+    "name": "AdamW",
+    "weight_decay": 0.0005
+  },
+  "schema": "PERSIST_PSG_SEED0_PROTOCOL_LOCK_V2",
+  "seed": 0,
+  "selection": "global maximize min(anchor delta), then min(task-control effect), then prospective-harm reduction; alpha=1 only",
+  "started_unix": 1788434444.260534
+}
