@@ -1,0 +1,44 @@
+{
+  "checks": {
+    "A_B_subject_disjoint": true,
+    "B1_B2_B3_B4_Bout_trial_disjoint": true,
+    "BN_no_drift_during_B_gradient": true,
+    "K4_concat_gradient_equivalence": {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "max_abs_diff": 1.9252300262451172e-05,
+      "pass": true,
+      "subject": "1",
+      "tolerance": 5e-05
+    },
+    "all_critical_pass": true,
+    "backtracking_risk_monotone": true,
+    "canonical_checkpoint_exact_load": true,
+    "cap_zero_reproduces_task_only": true,
+    "correction_cap": true,
+    "cross_subject_control_valid": true,
+    "exact_adamw_displacement": true,
+    "normalizer_exact_load": true,
+    "optimizer_state_nonpollution": true,
+    "outcome_isolation_before_lock": true,
+    "outer_sealed_ids_excluded": true,
+    "qTDelta_equals_sum_positive_h2": {
+      "max_abs_error": 0.0,
+      "pass": true
+    },
+    "q_zero_exact_identity": true,
+    "random_direction_norm_match": true,
+    "seed0_only": true,
+    "task_only_replay_equivalence": {
+      "audit_on_sha256": "ead1e979f59641548d8e977725da9e432b0dd43b82967b30759b95075f554492",
+      "pass": true,
+      "plain_sha256": "ead1e979f59641548d8e977725da9e432b0dd43b82967b30759b95075f554492"
+    }
+  },
+  "critical_failure_blocks_outcome": true,
+  "outcome_accessed": false,
+  "pass": true,
+  "schema": "PERSIST_SSPG_MANDATORY_TESTS_V1",
+  "seed1_run": false,
+  "seed2_run": false
+}
