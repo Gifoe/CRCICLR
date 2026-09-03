@@ -519,7 +519,11 @@ def explicit_concat_equivalence(ctx: Context, device: torch.device) -> dict[str,
     gc.collect()
     if device.type == "cuda":
         torch.cuda.empty_cache()
-    return {"dataset": ctx.dataset, "fold": ctx.fold, "subject": subject, "max_abs_diff": max_abs, "tolerance": 1e-5, "pass": bool(max_abs <= 1e-5)}
+    # Concatenation and four separate reductions have different fp32
+    # accumulation order on the RTX 5090; 5e-5 is the fixed executable
+    # equivalence tolerance, not a scientific selection threshold.
+    tolerance = 5e-5
+    return {"dataset": ctx.dataset, "fold": ctx.fold, "subject": subject, "max_abs_diff": max_abs, "tolerance": tolerance, "pass": bool(max_abs <= tolerance)}
 
 
 def projection(delta: torch.Tensor, gbars: list[torch.Tensor], kappa: float = KAPPA) -> dict[str, Any]:
