@@ -1157,6 +1157,7 @@ def write_docs(contexts: list[Context], legality: dict[str, Any], terminal: str,
     (EXP / "TASK_ONLY_MATCHING_AUDIT.md").write_text("# Task-only matching audit\n\n`TASK_ONLY_MATCHED` and SSPG/control trajectories start from the exact canonical seed-0 checkpoint, use the same candidate-independent A schedule, dropout-keyed A RNG, AdamW settings, gradient clipping and two-epoch horizon. SSPG/CROSS/RANDOM differ only by their registered post-AdamW correction. Executable replay hashes are in `results/MANDATORY_TESTS.json`.\n", encoding="utf-8")
     (EXP / "BATCH_CONSTRUCTION_AUDIT.md").write_text("# Batch construction audit\n\nEach source/refit subject is deterministically permuted per dataset/fold/class and split into five class-balanced blocks of 16 per class. B1--B4 form the K=4 certificate and B5 is independent B_out. A subjects come from the other meta-folds and are subject-disjoint from B. Cross-subject control uses four cyclic derangements within the B meta-fold; each pseudo slot combines four different source subjects.\n", encoding="utf-8")
     (EXP / "CONTROL_AUDIT.md").write_text("# Control audit\n\nThe primary comparator is matched TaskOnly, not Anchor. CrossSubjectK4 retains K=4, B meta-fold, block counts and correction formula but uses four deterministic within-meta-fold derangements, destroying same-biological-subject block coherence. RandomDirection computes the true stable-subject trigger and capped/backtracked correction norm, then subtracts a deterministic norm-matched direction keyed by dataset/fold/seed/epoch/step/SSPG_RANDOM_DIRECTION.\n\n" + summary.to_markdown(index=False) + "\n", encoding="utf-8")
+    write_csv(RESULTS / "CONTROL_AUDIT.csv", summary)
     (EXP / "OPTIMIZER_STATE_AUDIT.md").write_text("# Optimizer-state audit\n\nAdamW performs the real task-only proposal and updates its moments from the clipped A gradient. SSPG is a parameter-space post-step projection; B gradients are computed with autograd only and never assigned to optimizer gradients. Parameters are then replaced by theta_old+Delta_SSPG while Adam moments are retained. BN running statistics are evaluated/frozen and asserted unchanged after every step.\n", encoding="utf-8")
     (EXP / "INDEPENDENT_HARM_AUDIT.md").write_text("# Independent B_out harm audit\n\nAt five pre-frozen evenly spaced steps per fold, B5 is evaluated only for source/refit subjects after the model has been trained. `H_task=L(B_out;theta+Delta_task)-L(B_out;theta)` and `H_sspg=L(B_out;theta+Delta_SSPG)-L(B_out;theta)` are compared descriptively and with subject-cluster bootstrap. B_out never enters a gradient, optimizer, correction or decision.\n\n" + json.dumps(clean(harm), ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     (EXP / "STATISTICAL_PROTOCOL.md").write_text("# Statistical protocol\n\nBiological subject is the inference unit. Outcome per-subject Balanced Accuracy is averaged within fold and dataset. Primary CIs are 10,000-draw paired biological-subject bootstrap intervals for SSPG minus TaskOnly; controls use the same unit. Independent-harm summaries use subject-cluster bootstrap over B_out subjects. Trials, folds and seeds are not treated as independent bootstrap units.\n", encoding="utf-8")
@@ -1191,6 +1192,130 @@ def run_preflight(device: torch.device) -> None:
     print(f"code_commit = {lock['code_commit']}", flush=True)
     print("outcome_accessed = false", flush=True)
     print("MANDATORY_TESTS_PASS=true", flush=True)
+
+
+def _check_run_lock() -> dict[str, Any]:
+    lock_path = RESULTS / "PRE_OUTCOME_LOCK.json"
+    if not lock_path.is_file():
+        raise RuntimeError("missing pre-outcome lock; run --phase preflight and commit/push it first")
+    lock = json.loads(lock_path.read_text(encoding="utf-8"))
+    if lock.get("seed1_run") or lock.get("seed2_run") or lock.get("WBCIC_outer_opened") or lock.get("OpenBMI_sealed_opened"):
+        raise RuntimeError("lock contains forbidden access/run flags")
+    if lock.get("code_hashes") != code_hashes():
+        raise RuntimeError("implementation code changed after PRE_OUTCOME_LOCK; rerun preflight and obtain a new committed lock")
+    mandatory_path = RESULTS / "MANDATORY_TESTS.json"
+    if not mandatory_path.is_file() or not json.loads(mandatory_path.read_text(encoding="utf-8")).get("pass"):
+        raise RuntimeError("mandatory tests failed; outcome blocked")
+    return lock
+
+
+def run_train_context(device: torch.device, dataset: str, fold: int) -> None:
+    """Train one dataset/fold in an isolated process.
+
+    The RTX 5090 Windows build has occasionally terminated a long-lived
+    process after many CUDA module lifetimes.  One context per process is an
+    execution-stability repair only; it does not change the frozen recipe.
+    """
+    lock = _check_run_lock()
+    if dataset not in DATASETS or fold not in FOLDS:
+        raise ValueError(f"invalid context {dataset} fold={fold}")
+    contexts, _ = load_contexts_source_only()
+    ctx = next(c for c in contexts if c.dataset == dataset and c.fold == fold)
+    all_training_rows: list[dict[str, Any]] = []
+    all_diag_rows: list[dict[str, Any]] = []
+    all_bout_rows: list[dict[str, Any]] = []
+    trajectory_hashes: dict[str, str] = {}
+    for method in TRAIN_METHODS:
+        print(f"[train-context] {dataset} fold={fold} method={method}", flush=True)
+        result = train_candidate(ctx, method, device, collect_harm=(method == "SSPG"))
+        all_training_rows.extend(result["rows"])
+        all_diag_rows.extend(result["diagnostics"])
+        all_bout_rows.extend(result["bout_rows"])
+        trajectory_hashes[method] = result["trajectory_sha256"]
+        model_path = RUNTIME / "models" / dataset / f"fold-{fold}" / f"{method}.pt"
+        model_path.parent.mkdir(parents=True, exist_ok=True)
+        torch.save({"model_state": result["state"], "dataset": dataset, "fold": fold, "method": method, "seed": SEED, "lock_code_commit": lock.get("code_commit")}, model_path)
+        print(f"[train-context-done] {dataset} fold={fold} method={method} trajectory={result['trajectory_sha256'][:12]}", flush=True)
+    payload = {"schema": "PERSIST_SSPG_CONTEXT_TRAINING_V1", "complete": True, "dataset": dataset, "fold": fold, "seed": SEED, "trajectory_hashes": trajectory_hashes, "training_rows": all_training_rows, "diagnostic_rows": all_diag_rows, "bout_rows": all_bout_rows, "runtime_seconds": None}
+    out = RUNTIME / "context_results" / f"{dataset}_fold-{fold}.json"
+    write_json(out, payload)
+    print(f"CONTEXT_COMPLETE dataset={dataset} fold={fold}", flush=True)
+
+
+def _aggregate_from_parts(device: torch.device) -> None:
+    """Aggregate isolated context workers and perform the first outcome read."""
+    lock = _check_run_lock()
+    contexts, legality = load_contexts_source_only()
+    equivalence = pd.read_csv(RESULTS / "CHECKPOINT_EQUIVALENCE.csv").to_dict(orient="records")
+    mandatory = json.loads((RESULTS / "MANDATORY_TESTS.json").read_text(encoding="utf-8"))
+    all_training_rows: list[dict[str, Any]] = []
+    all_diag_rows: list[dict[str, Any]] = []
+    all_bout_rows: list[dict[str, Any]] = []
+    states: dict[tuple[str, int, str], dict[str, torch.Tensor]] = {}
+    for ctx in contexts:
+        part_path = RUNTIME / "context_results" / f"{ctx.dataset}_fold-{ctx.fold}.json"
+        if not part_path.is_file():
+            raise RuntimeError(f"missing isolated context result {part_path}")
+        payload = json.loads(part_path.read_text(encoding="utf-8"))
+        if not payload.get("complete"):
+            raise RuntimeError(f"incomplete isolated context result {part_path}")
+        all_training_rows.extend(payload.get("training_rows", []))
+        all_diag_rows.extend(payload.get("diagnostic_rows", []))
+        all_bout_rows.extend(payload.get("bout_rows", []))
+        for method in TRAIN_METHODS:
+            model_path = RUNTIME / "models" / ctx.dataset / f"fold-{ctx.fold}" / f"{method}.pt"
+            if not model_path.is_file():
+                raise RuntimeError(f"missing isolated model state {model_path}")
+            try:
+                saved = torch.load(model_path, map_location="cpu", weights_only=False)
+            except TypeError:
+                saved = torch.load(model_path, map_location="cpu")
+            states[(ctx.dataset, ctx.fold, method)] = {key: value.detach().cpu().clone() for key, value in saved["model_state"].items()}
+    write_csv(RESULTS / "TRAINING_TRAJECTORIES.csv", all_training_rows)
+    write_csv(RESULTS / "SSPG_STEP_DIAGNOSTICS.csv", all_diag_rows)
+    diagnostics = pd.DataFrame(all_diag_rows)
+    aggregate_diagnostics(diagnostics)
+    # This is the first point at which outcome indices/labels are constructed.
+    outcome_frame = evaluate_outcomes(contexts, states, device)
+    fold, summary = outcome_tables(outcome_frame)
+    _, harm = harm_tables(pd.DataFrame(all_bout_rows))
+    boot: dict[str, Any] = {}
+    for dataset in DATASETS:
+        part = outcome_frame[outcome_frame.dataset == dataset]
+        sspg = part[part.method == "SSPG"].set_index("subject_id").BA
+        for label, control in [("TASK", "TASK_ONLY_MATCHED"), ("CROSS", "CROSS_SUBJECT_K4_GUARD"), ("RANDOM", "RANDOM_DIRECTION_GUARD")]:
+            right = part[part.method == control].set_index("subject_id").BA
+            common = sspg.index.intersection(right.index)
+            result = bootstrap_delta(sspg.loc[common], right.loc[common], pd.Series(common), stable_seed("sspg-bootstrap", dataset, label, SEED))
+            boot[dataset + ("_vs_task" if label == "TASK" else "_vs_cross" if label == "CROSS" else "_vs_random")] = result
+        boot[dataset] = boot[dataset + "_vs_task"]
+    write_json(RESULTS / "SSPG_VS_TASK_BOOTSTRAP.json", {dataset: boot[dataset] for dataset in DATASETS})
+    write_json(RESULTS / "SSPG_VS_CROSS_SUBJECT_BOOTSTRAP.json", {dataset: boot[dataset + "_vs_cross"] for dataset in DATASETS})
+    write_json(RESULTS / "SSPG_VS_RANDOM_BOOTSTRAP.json", {dataset: boot[dataset + "_vs_random"] for dataset in DATASETS})
+    validation = build_validation(outcome_frame, fold, summary, harm, diagnostics, equivalence, mandatory, legality)
+    terminal, decision = decide(summary, fold, boot, harm, validation)
+    validation["terminal"] = terminal
+    write_json(RESULTS / "VALIDATION.json", validation)
+    write_json(RESULTS / "FINAL_REPORT.json", {"schema": "PERSIST_SSPG_FINAL_REPORT_V1", "terminal": terminal, "decision": decision, "summary": clean(summary.to_dict(orient="records")), "fold": clean(fold.to_dict(orient="records")), "bootstrap": clean(boot), "independent_Bout_harm": clean(harm), "validation": validation, "lock": lock, "seed1_run": False, "seed2_run": False, "WBCIC_outer_opened": False, "OpenBMI_sealed_opened": False, "THREE_SEED_CONFIRMATION_SCIENTIFICALLY_JUSTIFIED": terminal == "SSPG_SEED0_STRONG_SIGNAL"})
+    write_docs(contexts, legality, terminal, summary, fold, {dataset: boot[dataset] for dataset in DATASETS} | {dataset + "_vs_cross": boot[dataset + "_vs_cross"] for dataset in DATASETS}, harm, validation, lock)
+    print(f"terminal = {terminal}", flush=True)
+    for dataset in DATASETS:
+        s = summary[summary.dataset == dataset].set_index("method")
+        print(f"{dataset}_TASK_ONLY_BA = {float(s.loc['TASK_ONLY_MATCHED','BA']):.8f}", flush=True)
+        print(f"{dataset}_SSPG_BA = {float(s.loc['SSPG','BA']):.8f}", flush=True)
+        print(f"{dataset}_SSPG_MINUS_TASK_PP = {100*(float(s.loc['SSPG','BA'])-float(s.loc['TASK_ONLY_MATCHED','BA'])):+.4f}", flush=True)
+        print(f"{dataset}_95CI = [{boot[dataset]['CI95_L_pp']:+.4f}, {boot[dataset]['CI95_U_pp']:+.4f}]", flush=True)
+        print(f"{dataset}_SSPG_MINUS_CROSS_PP = {100*(float(s.loc['SSPG','BA'])-float(s.loc['CROSS_SUBJECT_K4_GUARD','BA'])):+.4f}", flush=True)
+        print(f"{dataset}_SSPG_MINUS_RANDOM_PP = {100*(float(s.loc['SSPG','BA'])-float(s.loc['RANDOM_DIRECTION_GUARD','BA'])):+.4f}", flush=True)
+        print(f"{dataset}_independent_harm_reduction = {harm[dataset]['positive_harm_reduction']:.8g}", flush=True)
+        f = fold[fold.dataset == dataset]
+        print(f"{dataset}_nonnegative_folds = {int((f.SSPG_minus_TASK_ONLY_pp >= 0).sum())}/5", flush=True)
+    print("seed1_run = false", flush=True)
+    print("seed2_run = false", flush=True)
+    print("second_backbone_run = false", flush=True)
+    print("WBCIC_outer_opened = false", flush=True)
+    print("OpenBMI_sealed_opened = false", flush=True)
+    print(f"THREE_SEED_CONFIRMATION_SCIENTIFICALLY_JUSTIFIED = {'YES' if terminal == 'SSPG_SEED0_STRONG_SIGNAL' else 'NO'}", flush=True)
 
 
 def run_experiment(device: torch.device) -> None:
@@ -1274,14 +1399,22 @@ def run_experiment(device: torch.device) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--phase", choices=("preflight", "run"), required=True)
+    parser.add_argument("--phase", choices=("preflight", "train-context", "aggregate", "run"), required=True)
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
+    parser.add_argument("--dataset", choices=DATASETS)
+    parser.add_argument("--fold", type=int, choices=FOLDS)
     args = parser.parse_args()
     device = torch.device(args.device)
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     if args.phase == "preflight":
         run_preflight(device)
+    elif args.phase == "train-context":
+        if args.dataset is None or args.fold is None:
+            parser.error("--phase train-context requires --dataset and --fold")
+        run_train_context(device, args.dataset, args.fold)
+    elif args.phase == "aggregate":
+        _aggregate_from_parts(device)
     else:
         run_experiment(device)
 
