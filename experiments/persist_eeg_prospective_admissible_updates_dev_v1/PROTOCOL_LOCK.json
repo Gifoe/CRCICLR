@@ -1,0 +1,88 @@
+{
+  "bn": "running_mean and running_var frozen and asserted after every epoch",
+  "branch_expected": "codex/persist-eeg-prospective-admissible-updates-dev-v1",
+  "candidate_specs": [
+    {
+      "name": "C1_SCOPE_A",
+      "rule": "C1",
+      "scope": "A"
+    },
+    {
+      "name": "C1_SCOPE_B",
+      "rule": "C1",
+      "scope": "B"
+    },
+    {
+      "name": "C2_SCOPE_A",
+      "rule": "C2",
+      "scope": "A"
+    },
+    {
+      "name": "C2_SCOPE_B",
+      "rule": "C2",
+      "scope": "B"
+    },
+    {
+      "name": "C3_SCOPE_A",
+      "rule": "C3",
+      "scope": "A"
+    },
+    {
+      "name": "C3_SCOPE_B",
+      "rule": "C3",
+      "scope": "B"
+    },
+    {
+      "name": "C4_LATE_STRICT",
+      "rule": "C4",
+      "scope": "A"
+    },
+    {
+      "name": "C5_LATE_SOFT",
+      "rule": "C5",
+      "scope": "A"
+    }
+  ],
+  "controls": [
+    "ANCHOR",
+    "C0_ERM2",
+    "RANDOM_CONFLICT"
+  ],
+  "data": {
+    "OpenBMI": "frozen Stage-0 development roles; S1/S2 source and authorized outcome role",
+    "WBCIC": "41-subject development scope; S1/S2 source and S3 authorized outcome role"
+  },
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "device": "cuda",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "forbidden": [
+    "WBCIC sealed outer 10",
+    "OpenBMI sealed/internal confirmation cohort",
+    "seed 1/2",
+    "target adaptation",
+    "unregistered variants"
+  ],
+  "optimizer": {
+    "batch_size_A": 64,
+    "batch_size_B": 64,
+    "gradient_clip": 5.0,
+    "learning_rate": 3e-05,
+    "max_epochs": 5,
+    "name": "AdamW",
+    "repair_learning_rate": 1e-05,
+    "weight_decay": 0.0005
+  },
+  "schema": "PERSIST_AU_SEED0_PROTOCOL_LOCK_V1",
+  "seed": 0,
+  "selection": "global maximize min(OpenBMI delta, WBCIC delta), then mean; no per-fold or dataset-specific selection",
+  "started_unix": 1788417411.8238108
+}
