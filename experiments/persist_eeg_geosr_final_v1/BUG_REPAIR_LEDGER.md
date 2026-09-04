@@ -24,3 +24,20 @@ be appended here with `scientific_definition_changed = false` before rerun.
 - fix: use one deterministic permutation per dataset/fold/seed and take its
   modulo-5 slices for all held-out sets.
 - scientific_definition_changed: false.
+
+## 2026-09-05 — fold-indexed provenance merge repair
+
+- problem: a single-fold worker lock could be written into parent role-hash
+  index zero when the parent merged more than one fold.
+- fix: map a one-element worker lock to the worker's explicit fold index; no
+  training data, weights, outcomes, or model arithmetic are touched.
+- scientific_definition_changed: false.
+
+## 2026-09-05 — bounded dynamic worker scheduling
+
+- problem: the paired launcher could leave one GPU slot idle when the two
+  dataset workers had unequal runtimes.
+- fix: refill a free slot with the other dataset's independent fold while
+  keeping at most one OpenBMI and one WBCIC worker resident.  Worker command,
+  seed, minibatch order, constants, and serialization are unchanged.
+- scientific_definition_changed: false.
