@@ -1,0 +1,572 @@
+# Frozen protocol
+
+- EEGNet only; OpenBMI and WBCIC; folds 0--4; seed 0 only; source/refit subjects and fit sessions only.
+- K=4 class-balanced certificate blocks, 16 trials per class per block, without replacement; B_out is every remaining legal source/refit trial and must retain at least 16/class.
+- BBR: r=sigmoid(-m/tau), m=true logit minus largest competitor, class-balanced mean; tau=max(median(|m|) at legal anchor, 1e-3), frozen before audit.
+- Frozen TASK_ONLY_MATCHED AdamW trajectory: exact canonical checkpoint, lr=3e-5, weight decay=5e-4, gradient clip=5, two epochs, frozen BN. Ten evenly-spaced audit steps are fixed before any harm result.
+- Primary same-subject BBR certificate; deterministic cyclic different-subject, non-self permutation, and norm-matched Gaussian controls. Biological subject is the bootstrap unit (10,000 draws).
+- No outcome/outer/sealed access, no seed 1/2, no second backbone, no search or new guard.
+
+{
+  "K": 4,
+  "OpenBMI_sealed_opened": false,
+  "WBCIC_outer_opened": false,
+  "audit_steps_per_fold": 10,
+  "bootstrap_draws": 10000,
+  "bootstrap_unit": "biological_subject cluster",
+  "bout": "all remaining legal source/refit trials",
+  "branch_at_code_freeze": "codex/persist-eeg-decision-relevant-prospective-harm-audit-v1",
+  "certificate_blocks": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "checkpoint_hashes": [
+    {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-0\\seed-0.pt",
+      "sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-1\\seed-0.pt",
+      "sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-2\\seed-0.pt",
+      "sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-3\\seed-0.pt",
+      "sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-4\\seed-0.pt",
+      "sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 0,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-0\\seed-0.pt",
+      "sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 1,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-1\\seed-0.pt",
+      "sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-2\\seed-0.pt",
+      "sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 3,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-3\\seed-0.pt",
+      "sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 4,
+      "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-4\\seed-0.pt",
+      "sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533"
+    }
+  ],
+  "code_commit": "07b9ef907f432c537f4f19e71bce07d73d5c819f",
+  "code_hashes": {
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\code\\canonical_eegnet_runner.py": "3094d2d5ad9f9522d2383ba67744ded50f080ea5235c3be2d4c1fc7cff5af092",
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_STABLE_SUBJECT_PROSPECTIVE_GUARD_SEED0_V1\\CRCICLR_DECISION_RELEVANT_PROSPECTIVE_HARM_AUDIT_V1\\experiments\\persist_eeg_decision_relevant_prospective_harm_audit_v1\\code\\decision_relevant_audit.py": "246dafa33ca7cc001ba928a40a224402dd53df138aa900ee812a86ea87412297",
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_STABLE_SUBJECT_PROSPECTIVE_GUARD_SEED0_V1\\CRCICLR_DECISION_RELEVANT_PROSPECTIVE_HARM_AUDIT_V1\\experiments\\persist_eeg_stable_subject_prospective_guard_seed0_v1\\code\\run_sspg_seed0.py": "17bad24860eefe1d63802fc53ab0b64c90c9884071e8e7af0ff87f1c2a86757c"
+  },
+  "comparators": [
+    "CE",
+    "deterministic_different_subject",
+    "deterministic_permutation",
+    "norm_matched_random"
+  ],
+  "continuation_epochs": 2,
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "experiment": "persist_eeg_decision_relevant_prospective_harm_audit_v1",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "legality": {
+    "K": 4,
+    "OpenBMI_sealed_opened": false,
+    "WBCIC_outer_opened": false,
+    "datasets": {
+      "OpenBMI": {
+        "fold_roles": [
+          {
+            "discovery_subjects": 9,
+            "fold": 0,
+            "model_fit_subjects": 34,
+            "outcome_role_subjects_not_materialized": 11,
+            "refit_rows": 8600,
+            "source_subjects": 43
+          },
+          {
+            "discovery_subjects": 9,
+            "fold": 1,
+            "model_fit_subjects": 34,
+            "outcome_role_subjects_not_materialized": 11,
+            "refit_rows": 8600,
+            "source_subjects": 43
+          },
+          {
+            "discovery_subjects": 9,
+            "fold": 2,
+            "model_fit_subjects": 34,
+            "outcome_role_subjects_not_materialized": 11,
+            "refit_rows": 8600,
+            "source_subjects": 43
+          },
+          {
+            "discovery_subjects": 9,
+            "fold": 3,
+            "model_fit_subjects": 34,
+            "outcome_role_subjects_not_materialized": 11,
+            "refit_rows": 8600,
+            "source_subjects": 43
+          },
+          {
+            "discovery_subjects": 9,
+            "fold": 4,
+            "model_fit_subjects": 35,
+            "outcome_role_subjects_not_materialized": 10,
+            "refit_rows": 8800,
+            "source_subjects": 44
+          }
+        ],
+        "observed_subjects": 54,
+        "outer_subject_ids_present": false,
+        "rows": 10800,
+        "sessions": [
+          1,
+          2
+        ],
+        "subjects_in_frozen_development_pool": 54
+      },
+      "WBCIC": {
+        "fold_roles": [
+          {
+            "discovery_subjects": 8,
+            "fold": 0,
+            "model_fit_subjects": 24,
+            "outcome_role_subjects_not_materialized": 9,
+            "refit_rows": 12796,
+            "source_subjects": 32
+          },
+          {
+            "discovery_subjects": 8,
+            "fold": 1,
+            "model_fit_subjects": 25,
+            "outcome_role_subjects_not_materialized": 8,
+            "refit_rows": 13196,
+            "source_subjects": 33
+          },
+          {
+            "discovery_subjects": 8,
+            "fold": 2,
+            "model_fit_subjects": 25,
+            "outcome_role_subjects_not_materialized": 8,
+            "refit_rows": 13197,
+            "source_subjects": 33
+          },
+          {
+            "discovery_subjects": 8,
+            "fold": 3,
+            "model_fit_subjects": 25,
+            "outcome_role_subjects_not_materialized": 8,
+            "refit_rows": 13198,
+            "source_subjects": 33
+          },
+          {
+            "discovery_subjects": 9,
+            "fold": 4,
+            "model_fit_subjects": 24,
+            "outcome_role_subjects_not_materialized": 8,
+            "refit_rows": 13197,
+            "source_subjects": 33
+          }
+        ],
+        "observed_subjects": 41,
+        "outer_subject_ids_present": false,
+        "rows": 24591,
+        "sessions": [
+          0,
+          1,
+          2
+        ],
+        "subjects_in_frozen_development_pool": 41
+      }
+    },
+    "fit_sessions": {
+      "OpenBMI": [
+        1,
+        2
+      ],
+      "WBCIC": [
+        0,
+        1
+      ]
+    },
+    "m_per_class": 16,
+    "outcome_data_materialized_before_lock": false,
+    "outcome_index_created_before_lock": false,
+    "outcome_labels_read_before_lock": false,
+    "schema": "PERSIST_SSPG_DATA_LEGALITY_V1",
+    "seed": 0,
+    "seed1_run": false,
+    "seed2_run": false,
+    "source_only_training_subjects": true
+  },
+  "lock_status": "PRE_OUTCOME_LOCKED",
+  "m_per_class": 16,
+  "mandatory_tests_pass": true,
+  "mandatory_tests_sha256": "04cbdd27f227b2f745a88e687bfd801aaa73145bc0189d05a3d2ff7f79cdb531",
+  "margin_scale": {
+    "definition": "max(median(abs(anchor signed margin)),1e-3)",
+    "frozen_before_harm": true,
+    "tau_rows": [
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-0\\seed-0.pt",
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 8600,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.061469078063965,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.061469078063965
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-1\\seed-0.pt",
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 8600,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.3248565196990967,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.3248565196990967
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-2\\seed-0.pt",
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 8600,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.4413065910339355,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.4413065910339355
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-3\\seed-0.pt",
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 8600,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.6375298500061035,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.6375298500061035
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-4\\seed-0.pt",
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 8800,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.343686819076538,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.343686819076538
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-0\\seed-0.pt",
+        "dataset": "WBCIC",
+        "fold": 0,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 12796,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 1.2805280685424805,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 1.2805280685424805
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-1\\seed-0.pt",
+        "dataset": "WBCIC",
+        "fold": 1,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 13196,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 1.120287299156189,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 1.120287299156189
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-2\\seed-0.pt",
+        "dataset": "WBCIC",
+        "fold": 2,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 13197,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.680941343307495,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.680941343307495
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-3\\seed-0.pt",
+        "dataset": "WBCIC",
+        "fold": 3,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 13198,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 1.9502851963043213,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 1.9502851963043213
+      },
+      {
+        "anchor_checkpoint": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-4\\seed-0.pt",
+        "dataset": "WBCIC",
+        "fold": 4,
+        "frozen_before_harm": true,
+        "legal_source_refit_trials": 13197,
+        "outcome_trials_used": 0,
+        "seed": 0,
+        "tau": 2.3118042945861816,
+        "tau_floor": 0.001,
+        "tau_raw_median_abs_anchor_margin": 2.3118042945861816
+      }
+    ]
+  },
+  "method": "Balanced Boundary Risk prospective harm audit",
+  "no_outcome_data": true,
+  "optimizer": {
+    "BN_running_statistics": "frozen",
+    "gradient_clip": 5.0,
+    "learning_rate": 3e-05,
+    "name": "AdamW",
+    "parameter_scope": "FULL_TRAINABLE_PARAMETER_SPACE",
+    "weight_decay": 0.0005
+  },
+  "outcome_used": false,
+  "primary": "same-subject BBR certificate -> held-out BBR harm and exact H_BER",
+  "schema": "PERSIST_EEG_DECISION_RELEVANT_PRE_OUTCOME_LOCK_V1",
+  "second_backbone_run": false,
+  "seed": 0,
+  "seed1_run": false,
+  "seed2_run": false,
+  "task_schedule_hashes": [
+    {
+      "audit_steps": [
+        1,
+        16,
+        31,
+        46,
+        61,
+        76,
+        91,
+        106,
+        121,
+        136
+      ],
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "schedule_sha256": "f495234c45bbfa44179d3c76a05ac0153125c23f4c95ce6d35f7cf299c5c1723",
+      "total_steps": 136
+    },
+    {
+      "audit_steps": [
+        1,
+        16,
+        31,
+        46,
+        61,
+        76,
+        91,
+        106,
+        121,
+        136
+      ],
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "schedule_sha256": "796aea1792f260f58a8320e1cf13067bc2c75fe3593b22e9343fd8077598a7cd",
+      "total_steps": 136
+    },
+    {
+      "audit_steps": [
+        1,
+        16,
+        31,
+        46,
+        61,
+        76,
+        91,
+        106,
+        121,
+        136
+      ],
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "schedule_sha256": "942a35796a0044f0c68ab2bf4ace8ab9c55a0026a529ca6874c4b8e849523d3b",
+      "total_steps": 136
+    },
+    {
+      "audit_steps": [
+        1,
+        16,
+        31,
+        46,
+        61,
+        76,
+        91,
+        106,
+        121,
+        136
+      ],
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "schedule_sha256": "2ebac62f6ee60a4ef528aa151733765f8de0853d579e4714bfc0a2d555b02724",
+      "total_steps": 136
+    },
+    {
+      "audit_steps": [
+        1,
+        16,
+        31,
+        46,
+        61,
+        77,
+        92,
+        107,
+        122,
+        138
+      ],
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "schedule_sha256": "c09b1fb6eb2ae4d613e679aa3174ea44b25eee1388a2b9a49b6318a7ff357d2a",
+      "total_steps": 138
+    },
+    {
+      "audit_steps": [
+        1,
+        23,
+        45,
+        67,
+        89,
+        111,
+        133,
+        155,
+        177,
+        200
+      ],
+      "dataset": "WBCIC",
+      "fold": 0,
+      "schedule_sha256": "70641293d46af9559a7a8d218b924c458badf30aaecae8a12feff190e3934f8e",
+      "total_steps": 200
+    },
+    {
+      "audit_steps": [
+        1,
+        24,
+        47,
+        70,
+        93,
+        116,
+        139,
+        162,
+        185,
+        208
+      ],
+      "dataset": "WBCIC",
+      "fold": 1,
+      "schedule_sha256": "3e0b842992452627351b3c755e82bb4122009606ebfe929fa8336fe105dc02ae",
+      "total_steps": 208
+    },
+    {
+      "audit_steps": [
+        1,
+        24,
+        47,
+        70,
+        93,
+        116,
+        139,
+        162,
+        185,
+        208
+      ],
+      "dataset": "WBCIC",
+      "fold": 2,
+      "schedule_sha256": "ee9d7458475e8a6440233366fa6f1692b2bcba13e412b4cb0c496de6785c5847",
+      "total_steps": 208
+    },
+    {
+      "audit_steps": [
+        1,
+        24,
+        47,
+        70,
+        93,
+        116,
+        139,
+        162,
+        185,
+        208
+      ],
+      "dataset": "WBCIC",
+      "fold": 3,
+      "schedule_sha256": "f6a76d5affbb82d8bd740531f0f6d6b2f1747d432ef1c2c9303915ec967a6961",
+      "total_steps": 208
+    },
+    {
+      "audit_steps": [
+        1,
+        24,
+        47,
+        70,
+        93,
+        116,
+        139,
+        162,
+        185,
+        208
+      ],
+      "dataset": "WBCIC",
+      "fold": 4,
+      "schedule_sha256": "69952b70d50292b4b574d1d0591e683ed4771f892b3041d2bd4c88d4fa912ec0",
+      "total_steps": 208
+    }
+  ]
+}
