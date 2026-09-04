@@ -573,6 +573,14 @@ def top_bottom(frame: pd.DataFrame, cert_col: str, outcome_col: str) -> float | 
     return float(np.mean(high) - np.mean(low))
 
 
+def top_bottom_arrays(cert: np.ndarray, outcome: np.ndarray) -> float | None:
+    if len(cert) == 0:
+        return None
+    order = np.argsort(cert, kind="mergesort")
+    q = max(1, len(order) // 5)
+    return float(np.mean(outcome[order[-q:]]) - np.mean(outcome[order[:q]]))
+
+
 def metric_pack(frame: pd.DataFrame, cert_col: str, outcome_col: str, bootstrap: np.ndarray | None = None) -> dict[str, Any]:
     outcome = frame[outcome_col].to_numpy(float)
     event = (outcome > 0).astype(int)
@@ -594,18 +602,60 @@ def metric_pack(frame: pd.DataFrame, cert_col: str, outcome_col: str, bootstrap:
 
 
 def bootstrap_metric_matrix(frame: pd.DataFrame, cert_col: str, outcome_col: str, seed: int) -> np.ndarray:
-    groups = [part for _, part in frame.groupby("subject_id", sort=True)]
+    cert = frame[cert_col].to_numpy(float)
+    outcome = frame[outcome_col].to_numpy(float)
+    subject_values = frame.subject_id.astype(str).to_numpy()
+    subjects = sorted(set(subject_values))
+    groups = [np.flatnonzero(subject_values == subject) for subject in subjects]
     rng = np.random.default_rng(seed)
     out = np.full((BOOTSTRAP_DRAWS, 4), np.nan, dtype=float)
     for draw in range(BOOTSTRAP_DRAWS):
         chosen = rng.integers(0, len(groups), size=len(groups))
-        sampled = pd.concat([groups[int(i)] for i in chosen], ignore_index=True)
-        outcome = sampled[outcome_col].to_numpy(float)
-        event = (outcome > 0).astype(int)
-        out[draw, 0] = safe_spearman(sampled[cert_col], outcome) or np.nan
-        out[draw, 1] = safe_kendall(sampled[cert_col], outcome) or np.nan
-        out[draw, 2] = safe_auc(sampled[cert_col], event) or np.nan
-        out[draw, 3] = top_bottom(sampled, cert_col, outcome_col) or np.nan
+        idx = np.concatenate([groups[int(i)] for i in chosen])
+        x = cert[idx]
+        y = outcome[idx]
+        event = (y > 0).astype(int)
+        values = [safe_spearman(x, y), safe_kendall(x, y), safe_auc(x, event), top_bottom_arrays(x, y)]
+        out[draw] = np.asarray([value if value is not None else np.nan for value in values], dtype=float)
+    return out
+
+
+def bootstrap_control_advantage(frame: pd.DataFrame, same_col: str, other_col: str, outcome_col: str, seed: int) -> tuple[np.ndarray, np.ndarray]:
+    """Paired biological-subject bootstrap for same-minus-control metrics."""
+    cert_same = frame[same_col].to_numpy(float)
+    cert_other = frame[other_col].to_numpy(float)
+    outcome = frame[outcome_col].to_numpy(float)
+    subject_values = frame.subject_id.astype(str).to_numpy()
+    subjects = sorted(set(subject_values))
+    groups = [np.flatnonzero(subject_values == subject) for subject in subjects]
+    rng = np.random.default_rng(seed)
+    aucs = np.full(BOOTSTRAP_DRAWS, np.nan); spears = np.full(BOOTSTRAP_DRAWS, np.nan)
+    for draw in range(BOOTSTRAP_DRAWS):
+        chosen = rng.integers(0, len(groups), size=len(groups))
+        idx = np.concatenate([groups[int(i)] for i in chosen])
+        event = (outcome[idx] > 0).astype(int)
+        a, b = safe_auc(cert_same[idx], event), safe_auc(cert_other[idx], event)
+        s1, s2 = safe_spearman(cert_same[idx], outcome[idx]), safe_spearman(cert_other[idx], outcome[idx])
+        if a is not None and b is not None: aucs[draw] = a - b
+        if s1 is not None and s2 is not None: spears[draw] = s1 - s2
+    return aucs, spears
+
+
+def bootstrap_quintile_difference(frame: pd.DataFrame, cert_col: str, outcome_col: str, seed: int) -> np.ndarray:
+    """Cluster-bootstrap Q5 minus Q1 event-frequency difference."""
+    cert = frame[cert_col].to_numpy(float)
+    outcome = frame[outcome_col].to_numpy(float)
+    subjects = sorted(set(frame.subject_id.astype(str)))
+    subject_values = frame.subject_id.astype(str).to_numpy()
+    groups = [np.flatnonzero(subject_values == subject) for subject in subjects]
+    rng = np.random.default_rng(seed)
+    out = np.full(BOOTSTRAP_DRAWS, np.nan, dtype=float)
+    for draw in range(BOOTSTRAP_DRAWS):
+        chosen = rng.integers(0, len(groups), size=len(groups))
+        idx = np.concatenate([groups[int(i)] for i in chosen])
+        order = np.argsort(cert[idx], kind="mergesort")
+        q = max(1, len(order) // 5)
+        out[draw] = float(np.mean(outcome[idx][order[-q:]] > 0) - np.mean(outcome[idx][order[:q]] > 0))
     return out
 
 
@@ -726,7 +776,7 @@ def write_docs(lock: dict[str, Any], legality: dict[str, Any], terminal: str | N
         "CONTROL_AUDIT.md": "# Control audit\n\nSame-subject BBR is primary. Different-subject uses the deterministic next subject in the designated B meta-fold; permutation uses a deterministic global non-self cycle; random is a deterministic Gaussian direction norm-matched to the same-subject BBR gradient.\n",
         "STATISTICAL_PROTOCOL.md": "# Statistical protocol\n\nBiological subject is the inference unit. Subject-cluster bootstrap uses 10,000 draws and carries all fold/step observations for each sampled subject. Exact decision events are not treated as independent trial-level evidence.\n",
         "RARE_EVENT_POWER_AUDIT.md": "# Rare-event power audit\n\nExact decision harm is H_BER>0 and is reported separately from continuous BBR harm. Underpower is declared when harmful decision observations are fewer than 30 or biological subjects with at least one such event are fewer than 15. Steps, trajectory, LR and B_out are not changed to increase events.\n",
-        "BUG_REPAIR_LEDGER.md": "# Bug repair ledger\n\nNo scientific-rule repair was made. The runner isolates the frozen SSPG helper loader, uses source/refit-only B_out construction, freezes tau before outcomes, and writes explicit invariant flags. Any runtime-only repair must be recorded here before the lock is regenerated.\n",
+        "BUG_REPAIR_LEDGER.md": "# Bug repair ledger\n\nNo scientific-rule repair was made. Engineering repairs in this audit were limited to (1) reloading the frozen tau into a fresh audit context before replay, (2) moving GPU certificate vectors to a common CPU device for deterministic dot products, and (3) wiring calibration/quintile and cluster-bootstrap control gates explicitly. The runner isolates the frozen SSPG helper loader, uses source/refit-only B_out construction, freezes tau before outcomes, and writes explicit invariant flags.\n",
     }
     for name, text in docs.items():
         (EXP / name).write_text(text, encoding="utf-8")
@@ -895,7 +945,9 @@ def decision_summary(frame: pd.DataFrame, fold_rows: list[dict[str, Any]], datas
         bbr = stats["BBR_to_H_BBR"]
         gate_a[dataset] = bool((bbr.get("auroc") or -np.inf) >= 0.60 and (bbr.get("auroc_CI95") or [-np.inf])[0] > 0.50 and (bbr.get("spearman") or -np.inf) > 0 and (bbr.get("spearman_CI95") or [-np.inf])[0] > 0)
         c = controls[dataset]
-        gate_b[dataset] = bool((c.get("AUROC_advantage") or -np.inf) > 0 and (c.get("Spearman_advantage") or -np.inf) > 0)
+        auc_ci = c.get("AUROC_advantage_CI95") or [-np.inf, np.inf]
+        sp_ci = c.get("Spearman_advantage_CI95") or [-np.inf, np.inf]
+        gate_b[dataset] = bool((c.get("AUROC_advantage") or -np.inf) > 0 and auc_ci[0] > 0 and (c.get("Spearman_advantage") or -np.inf) > 0 and sp_ci[0] > 0)
     gate_a_all, gate_b_all = all(gate_a.values()), all(gate_b.values())
     powered_all = all(not row["EXACT_DECISION_ENDPOINT_UNDERPOWERED"] for row in power.values())
     gate_c = {}
@@ -907,7 +959,11 @@ def decision_summary(frame: pd.DataFrame, fold_rows: list[dict[str, Any]], datas
             cal = pd.DataFrame([r for r in calibration_rows if r["dataset"] == dataset and r["certificate"] == "BBR"])
             q = cal[cal["quintile"].isin([1, 5])]
             qdiff = float(q[q.quintile == 5].decision_harm_frequency.iloc[0] - q[q.quintile == 1].decision_harm_frequency.iloc[0]) if len(q) == 2 else -np.inf
-            gate_c[dataset] = bool((dec.get("spearman") or -np.inf) > 0 and (dec.get("auroc") or -np.inf) > 0.55 and qdiff > 0)
+            qboot = bootstrap_quintile_difference(frame[frame.dataset == dataset], "certificate_BBR", "H_BER", stable_seed("qdiff", dataset, SEED))
+            qlo, qhi = ci_from(qboot)
+            stats["Q5_minus_Q1_decision_harm"] = qdiff
+            stats["Q5_minus_Q1_decision_harm_CI95"] = [qlo, qhi]
+            gate_c[dataset] = bool((dec.get("spearman") or -np.inf) > 0 and (dec.get("auroc") or -np.inf) > 0.55 and qdiff > 0 and (qlo is not None and qlo > 0))
             arow = alignment[dataset]
             au = arow[arow.metric == "decision-harm AUROC"].iloc[0]
             sp = arow[arow.metric == "H_BER Spearman"].iloc[0]
@@ -974,6 +1030,9 @@ def run_audit(device: torch.device) -> None:
         all_cal.extend(calibration(part, "certificate_BBR", "BBR"))
         all_cal.extend(calibration(part, "certificate_CE", "CE"))
         control_summary, control_frame = same_different_controls(part)
+        auc_adv, sp_adv = bootstrap_control_advantage(part, "certificate_BBR", "certificate_BBR_different", "H_BBR", stable_seed("control", dataset, "different", SEED))
+        control_summary["AUROC_advantage_CI95"] = list(ci_from(auc_adv))
+        control_summary["Spearman_advantage_CI95"] = list(ci_from(sp_adv))
         controls[str(dataset)] = control_summary
         control_rows.extend(control_frame.to_dict(orient="records"))
         align, align_meta = paired_decision_alignment(part, bbr_hber_boot, ce_hber_boot)
