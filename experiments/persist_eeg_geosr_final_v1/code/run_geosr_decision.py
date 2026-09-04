@@ -16,6 +16,7 @@ from typing import Any, Mapping
 
 import numpy as np
 import pandas as pd
+import torch
 
 import audit_primitives as ap
 import run_geosr as g
@@ -118,7 +119,7 @@ def write_screen_protocol() -> None:
     )
 
 
-def preflight() -> None:
+def preflight(device: torch.device) -> None:
     g.seed_everything(SEED)
     ROOT.mkdir(parents=True, exist_ok=True)
     RESULTS.mkdir(parents=True, exist_ok=True)
@@ -276,6 +277,10 @@ def preflight() -> None:
         "lock_sha256": g.file_sha(protocol_lock_path()), "role_hashes": role_hashes, "descriptor_cap": g.CAP,
     })
     write_json(RUNTIME / f"seed-{SEED}" / "PREFLIGHT_MANIFEST.json", fold_manifests)
+    write_json(ROOT / "WORKER_PREFLIGHT_COMPLETE.json", {
+        "dataset": list(DATASETS), "folds": list(FOLDS), "methods": list(METHODS),
+        "seed": SEED, "code_fingerprint": g.code_fingerprint(), "completed_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    })
     print("DECISION_PRE_OUTCOME_LOCKED", flush=True)
 
 
@@ -379,15 +384,32 @@ def evaluate_outcome(device) -> dict[str, Any]:
 
 
 def main() -> None:
+    global ROOT, RESULTS, RUNTIME, DATASETS, FOLDS
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", choices=("preflight", "outcome", "all"), required=True)
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--dataset", choices=DATASETS, default=None,
+                        help="single-dataset worker mode; writes an isolated fold tree")
+    parser.add_argument("--fold", type=int, default=None,
+                        help="single-fold worker mode (must be paired with --dataset)")
+    parser.add_argument("--root", type=Path, default=None,
+                        help="artifact root for worker mode")
     args = parser.parse_args()
+    if (args.dataset is None) != (args.fold is None):
+        raise SystemExit("--dataset and --fold must be supplied together")
+    if args.dataset is not None:
+        if args.fold not in (0, 1, 2, 3, 4):
+            raise SystemExit("worker fold must be in 0..4")
+        DATASETS = (args.dataset,)
+        FOLDS = (int(args.fold),)
+        ROOT = (args.root if args.root is not None else EXP / "decision_seed0" / "workers" / f"{args.dataset}_fold{args.fold}").resolve()
+        RESULTS = ROOT / "results"
+        RUNTIME = ROOT / "runtime"
     if args.device.startswith("cuda") and not __import__("torch").cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     device = __import__("torch").device(args.device)
     if args.phase in ("preflight", "all"):
-        preflight()
+        preflight(device)
     if args.phase in ("outcome", "all"):
         evaluate_outcome(device)
 

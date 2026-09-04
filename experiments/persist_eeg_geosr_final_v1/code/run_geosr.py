@@ -118,7 +118,10 @@ def seed_everything(seed: int) -> None:
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.benchmark = False
+    # Benchmarking may select a faster *deterministic* cuDNN kernel.  It is
+    # opt-in so the historical protocol remains the default; the server
+    # decision run enables it only after the bitwise equivalence check.
+    torch.backends.cudnn.benchmark = os.environ.get("PERSIST_CUDNN_BENCHMARK", "0") == "1"
     torch.backends.cudnn.deterministic = True
 
 
@@ -155,7 +158,9 @@ class FoldCache:
             raise RuntimeError(f"empty source cache {dataset} fold {fold}")
         raw = self.data.batch(self.indices).astype(np.float32, copy=False)
         self.pos = {int(r): i for i, r in enumerate(self.indices.tolist())}
-        self.labels = self.meta.label.to_numpy(np.int64)
+        # Own a writable contiguous label buffer so CUDA staging does not
+        # trigger NumPy non-writable warnings; values and order are unchanged.
+        self.labels = self.meta.label.to_numpy(np.int64, copy=True)
         self._raw = raw
         self.x: torch.Tensor | None = None
         self.default_mean: np.ndarray | None = None
