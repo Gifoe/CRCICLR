@@ -157,9 +157,14 @@ def merge_preflight() -> None:
             for ds, values in lock.get("role_hashes", {}).items():
                 role_hashes.setdefault(ds, [None] * 5)
                 # Worker locks contain all role hashes for their dataset; keep
-                # the canonical fold-indexed list.
-                for i, value in enumerate(values):
-                    role_hashes[ds][i] = value
+                # the canonical fold-indexed list.  In single-fold worker mode
+                # the one-element list corresponds to this worker's `fold`,
+                # rather than index zero.
+                if len(values) == 1 and len(FOLDS) == 1:
+                    role_hashes[ds][int(fold)] = values[0]
+                else:
+                    for i, value in enumerate(values):
+                        role_hashes[ds][i] = value
             if support_lock is None:
                 p = wr / "DATA_SUPPORT_LOCK.json"
                 support_lock = json.loads(p.read_text(encoding="utf-8"))
