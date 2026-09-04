@@ -160,7 +160,11 @@ def merge_preflight() -> None:
                 # the canonical fold-indexed list.  In single-fold worker mode
                 # the one-element list corresponds to this worker's `fold`,
                 # rather than index zero.
-                if len(values) == 1 and len(FOLDS) == 1:
+                # A worker lock is always single-fold in this orchestrator;
+                # map its sole value to the worker's actual fold index.  The
+                # parent still merges multiple folds, so checking len(FOLDS)
+                # here would incorrectly overwrite fold 0 with fold 1.
+                if len(values) == 1:
                     role_hashes[ds][int(fold)] = values[0]
                 else:
                     for i, value in enumerate(values):
