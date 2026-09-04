@@ -423,15 +423,16 @@ def train_fold(ctx: Any, device: torch.device, tau_row: dict[str, Any]) -> tuple
                     c = certs[subject]
                     norm = float(torch.linalg.vector_norm(c["g_same"]).detach().cpu())
                     rnd = random_direction(norm, len(delta_task), ctx.dataset, ctx.fold, global_step, subject).to(delta_task.device)
+                    delta_cpu = delta_task.detach().cpu()
                     row = {
                         "dataset": ctx.dataset, "fold": int(ctx.fold), "seed": SEED,
                         "epoch": int(epoch_no), "step": int(global_step), "subject_id": str(subject),
                         "partner_subject": str(c["partner"]), "permuted_subject": str(c["permuted"]),
-                        "certificate_BBR": float(torch.dot(c["g_same"], delta_task.cpu()).item()),
-                        "certificate_CE": float(torch.dot(c["g_ce"], delta_task.cpu()).item()),
-                        "certificate_BBR_different": float(torch.dot(c["g_diff"], delta_task.cpu()).item()),
-                        "certificate_BBR_permuted": float(torch.dot(c["g_perm"], delta_task.cpu()).item()),
-                        "certificate_BBR_random": float(torch.dot(rnd.cpu(), delta_task.cpu()).item()),
+                        "certificate_BBR": float(torch.dot(c["g_same"].cpu(), delta_cpu).item()),
+                        "certificate_CE": float(torch.dot(c["g_ce"].cpu(), delta_cpu).item()),
+                        "certificate_BBR_different": float(torch.dot(c["g_diff"].cpu(), delta_cpu).item()),
+                        "certificate_BBR_permuted": float(torch.dot(c["g_perm"].cpu(), delta_cpu).item()),
+                        "certificate_BBR_random": float(torch.dot(rnd.cpu(), delta_cpu).item()),
                         "certificate_BBR_norm": norm,
                         "random_norm_error": abs(float(torch.linalg.vector_norm(rnd).cpu()) - norm),
                         "tau": float(ctx.tau), "tau_source": "legal_source_refit_anchor",
