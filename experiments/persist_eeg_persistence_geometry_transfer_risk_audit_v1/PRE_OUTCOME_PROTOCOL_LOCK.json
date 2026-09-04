@@ -1,0 +1,37 @@
+{
+  "backbone": "EEGNet",
+  "bootstrap_draws": 10000,
+  "bootstrap_unit": "biological_subject",
+  "canonical_outcome_indices_materialized": false,
+  "canonical_outcome_labels_read": false,
+  "code_sha256": "778108434372feae0391b196751a1693491f2a6ec2d18086e0d33b74c9eb798b",
+  "controls": [
+    "matched-rank non-Protected, 100 SHA256 draws",
+    "same-rank PCA fit on model-fit embeddings",
+    "full 64-D latent"
+  ],
+  "created_at_utc": "2026-09-04T14:23:11Z",
+  "dataset": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "descriptor_cap": 32,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "geometry_gate": {
+    "OpenBMI": true,
+    "WBCIC": true
+  },
+  "outcome_used": false,
+  "outer_access": false,
+  "primary_novelty": "0.5*(cos(v_B,S2,v_A,S1)+cos(v_B,S1,v_A,S2)) then N=1-align",
+  "protected_definition": "union of Signed V3.1 train-only persistence-supported blocks with u_abs and u_spec bootstrap lower CI > 0",
+  "query_min_per_class": 16,
+  "schema": "PERSIST_EEG_TRANSFER_RISK_PRE_OUTCOME_PROTOCOL_LOCK_V1",
+  "seed": 0
+}
