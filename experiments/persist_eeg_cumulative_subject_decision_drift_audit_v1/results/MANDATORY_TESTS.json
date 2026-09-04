@@ -1,0 +1,37 @@
+{
+  "checks": {
+    "B1_B4_Bout_trial_disjoint": true,
+    "BBR_decreases_when_margin_increases": true,
+    "BBR_definition_and_unit_interval": true,
+    "BN_unchanged_during_certificate": true,
+    "K4_gradient_equivalence": {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "max_abs_diff": 2.60770320892334e-07,
+      "pass": true,
+      "subject": "1",
+      "tolerance": 5e-05
+    },
+    "all_critical_pass": true,
+    "canonical_checkpoint_exact_load": true,
+    "cumulative_displacement_sum_test": true,
+    "exact_adamw_displacement": true,
+    "fixed_sentinel_never_in_A": true,
+    "one_epoch_schedule": true,
+    "optimizer_unchanged_during_certificate": true,
+    "outcome_isolation": true,
+    "random_norm_matched": true,
+    "same_different_nonself": true,
+    "seed0_only": true,
+    "subject_cluster_bootstrap_unit": true,
+    "tau_reused_and_frozen": true,
+    "tau_source_legal_anchor": true
+  },
+  "critical_failure_blocks_audit": true,
+  "outcome_used": false,
+  "pass": true,
+  "schema": "PERSIST_EEG_CUMULATIVE_MANDATORY_TESTS_V1",
+  "second_backbone_run": false,
+  "seed1_run": false,
+  "seed2_run": false
+}
