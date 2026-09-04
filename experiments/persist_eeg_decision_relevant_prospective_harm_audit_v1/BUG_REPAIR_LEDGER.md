@@ -1,3 +1,5 @@
 # Bug repair ledger
 
 No scientific-rule repair was made. Engineering repairs in this audit were limited to (1) reloading the frozen tau into a fresh audit context before replay, (2) moving GPU certificate vectors to a common CPU device for deterministic dot products, and (3) wiring calibration/quintile and cluster-bootstrap control gates explicitly. The runner isolates the frozen SSPG helper loader, uses source/refit-only B_out construction, freezes tau before outcomes, and writes explicit invariant flags.
+
+During finalisation, the original in-process scipy bootstrap was observed to be killed by Windows memory pressure after the locked observations had been atomically written. The replacement `aggregate_decision_audit.py` is a postprocessing-only, memory-bounded implementation: it reads only `PER_OBSERVATION.csv`, verifies all ten locked fold/step schedules, uses the same predeclared 10,000 biological-subject draws, and implements equivalent rank statistics without loading EEG data or checkpoints. This repair changes no trajectory, metric definition, gate, or data scope.
