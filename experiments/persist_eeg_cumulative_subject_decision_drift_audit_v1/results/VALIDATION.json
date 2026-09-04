@@ -1,0 +1,62 @@
+{
+  "BN_unchanged": true,
+  "OpenBMI_sealed_opened": false,
+  "WBCIC_outer_opened": false,
+  "all_windows_complete": true,
+  "cumulative_displacement_sum_pass": true,
+  "decision": {
+    "AUTO_START_FINAL_MODEL": false,
+    "BBR_CE_paired_selection": {
+      "BBR_significantly_better": false,
+      "CE_significantly_better": false,
+      "rule": "if both pass, require paired subject-bootstrap AUROC and H_BER Spearman CIs to be strictly one-sided; otherwise select CE"
+    },
+    "CLOSE_PROSPECTIVE_GRADIENT_CONSTRUCTIVE_FAMILY": true,
+    "FINAL_MODEL_DEVELOPMENT_SCIENTIFICALLY_JUSTIFIED": false,
+    "certificate_gate_details": {
+      "BBR": {
+        "OpenBMI": false,
+        "WBCIC": false
+      },
+      "CE": {
+        "OpenBMI": false,
+        "WBCIC": false
+      }
+    },
+    "gate_A_power": {
+      "OpenBMI": true,
+      "WBCIC": true
+    },
+    "gate_B_cumulative_decision_prediction": {
+      "BBR": false,
+      "CE": false
+    },
+    "gate_C_subject_specificity": {
+      "BBR": false,
+      "CE": false
+    },
+    "gate_D_calibration": {
+      "BBR": false,
+      "CE": false
+    },
+    "gate_E_fold_robustness": {
+      "BBR": false,
+      "CE": true
+    },
+    "gate_F_random_control": {
+      "BBR": false,
+      "CE": false
+    },
+    "selected_certificate": "NONE",
+    "terminal": "CUMULATIVE_SMOOTH_HARM_SUPPORTED_DECISION_NOT_SUPPORTED"
+  },
+  "fixed_sentinel_isolation": true,
+  "mandatory_tests_pass": true,
+  "outcome_used": false,
+  "pass": true,
+  "schema": "PERSIST_EEG_CUMULATIVE_VALIDATION_V1",
+  "second_backbone_run": false,
+  "seed1_run": false,
+  "seed2_run": false,
+  "terminal": "CUMULATIVE_SMOOTH_HARM_SUPPORTED_DECISION_NOT_SUPPORTED"
+}
