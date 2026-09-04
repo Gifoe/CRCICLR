@@ -119,6 +119,72 @@ def launch_pair(pair: list[tuple[str, int]], metrics: dict[str, Any]) -> None:
             raise RuntimeError(f"worker did not produce a valid completion marker: {dataset} fold {fold}")
 
 
+def launch_dynamic(metrics: dict[str, Any]) -> None:
+    """Run all decision folds with two bounded slots and immediate refill.
+
+    Folds and datasets are independent.  Refilling a slot as soon as one
+    worker finishes preserves the exact worker command, seed, data split, and
+    deterministic minibatch schedule while avoiding idle GPU time when the two
+    datasets have unequal runtimes.  At most two workers are ever resident, so
+    the measured memory guard remains unchanged.
+    """
+    pending: list[tuple[str, int]] = [(dataset, fold) for fold in FOLDS for dataset in DATASETS]
+    active: list[tuple[tuple[str, int], subprocess.Popen[str], Any, Any, float]] = []
+    scheduler_t0 = time.perf_counter()
+    env = os.environ.copy()
+    env.setdefault("PERSIST_TORCH_THREADS", "8")
+    env.setdefault("PERSIST_CUDNN_BENCHMARK", "0")
+
+    def launch_one(task: tuple[str, int]) -> None:
+        dataset, fold = task
+        root = worker_root(dataset, fold)
+        root.mkdir(parents=True, exist_ok=True)
+        out = (root / "worker.log").open("a", encoding="utf-8")
+        err = (root / "worker.err").open("a", encoding="utf-8")
+        if worker_complete(root):
+            out.write("[orchestrator] worker cache marker valid; skipped launch\n")
+            out.close(); err.close()
+            print(f"[orchestrator] cache hit {dataset} fold={fold}", flush=True)
+            return
+        cmd = [sys.executable, str(Path(__file__).with_name("run_geosr_decision.py")),
+               "--phase", "preflight", "--dataset", dataset, "--fold", str(fold),
+               "--root", str(root), "--device", "cuda"]
+        started = time.perf_counter()
+        p = subprocess.Popen(cmd, cwd=str(EXP), env=env, stdout=out, stderr=err, text=True)
+        active.append((task, p, out, err, started))
+        print(f"[orchestrator] launched {dataset} fold={fold} pid={p.pid}", flush=True)
+
+    while pending or active:
+        while pending and len(active) < 2:
+            launch_one(pending.pop(0))
+        if not active:
+            continue
+        time.sleep(5.0)
+        util, mem = gpu_sample()
+        metrics["gpu_samples"].append({"t_sec": time.perf_counter() - scheduler_t0,
+                                        "util_pct": util, "vram_mib": mem})
+        if mem > MEMORY_LIMIT_MIB:
+            for _, p, out, err, _ in active:
+                if p.poll() is None:
+                    p.terminate()
+                out.close(); err.close()
+            raise RuntimeError(f"GPU memory guard exceeded: {mem:.0f} MiB")
+        still: list[tuple[tuple[str, int], subprocess.Popen[str], Any, Any, float]] = []
+        for task, p, out, err, started in active:
+            if p.poll() is None:
+                still.append((task, p, out, err, started))
+                continue
+            out.close(); err.close()
+            dataset, fold = task
+            elapsed = time.perf_counter() - started
+            metrics.setdefault("worker_wall_sec", []).append({"dataset": dataset, "fold": fold,
+                                                               "sec": elapsed, "returncode": p.returncode})
+            print(f"[orchestrator] finished {dataset} fold={fold} rc={p.returncode}", flush=True)
+            if not worker_complete(worker_root(dataset, fold)):
+                raise RuntimeError(f"worker did not produce a valid completion marker: {dataset} fold {fold}")
+        active = still
+
+
 def merge_preflight() -> None:
     ROOT.mkdir(parents=True, exist_ok=True)
     ROOT_RESULTS = ROOT / "results"
@@ -207,8 +273,7 @@ def main() -> None:
         metrics = {"started_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                    "gpu_samples": [], "pair_wall_sec": [], "workers": 2}
         t0 = time.perf_counter()
-        for fold in FOLDS:
-            launch_pair([("OpenBMI", fold), ("WBCIC", fold)], metrics)
+        launch_dynamic(metrics)
         merge_preflight()
         metrics["wall_sec"] = time.perf_counter() - t0
         metrics["finished_at_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
