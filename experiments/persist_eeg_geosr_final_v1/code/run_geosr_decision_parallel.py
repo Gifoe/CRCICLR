@@ -156,7 +156,16 @@ def launch_dynamic(metrics: dict[str, Any]) -> None:
 
     while pending or active:
         while pending and len(active) < 2:
-            launch_one(pending.pop(0))
+            # Keep one OpenBMI and one WBCIC worker resident whenever
+            # possible.  The WBCIC process has the larger source tensor; this
+            # preserves the measured memory envelope even when one dataset
+            # finishes much earlier than the other.
+            active_datasets = {task[0] for task, *_ in active}
+            pick = next((i for i, task in enumerate(pending)
+                         if task[0] not in active_datasets), None)
+            if pick is None:
+                break
+            launch_one(pending.pop(pick))
         if not active:
             continue
         time.sleep(5.0)
