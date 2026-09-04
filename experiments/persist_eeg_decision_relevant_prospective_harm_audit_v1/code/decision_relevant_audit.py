@@ -937,8 +937,10 @@ def run_audit(device: torch.device) -> None:
     # values are not selected from harm and no outcome data are touched.
     frozen_tau = {(str(r["dataset"]), int(r["fold"])): float(r["tau"]) for r in lock["margin_scale"]["tau_rows"]}
     for ctx in contexts:
-        if abs(float(ctx.tau) - frozen_tau[(ctx.dataset, int(ctx.fold))]) > 0:
+        tau_check = compute_tau(ctx, device)
+        if abs(float(tau_check["tau"]) - frozen_tau[(ctx.dataset, int(ctx.fold))]) > 0:
             raise RuntimeError("DECISION_AUDIT_IMPLEMENTATION_INVALID_TAU_CHANGED")
+        ctx.tau = frozen_tau[(ctx.dataset, int(ctx.fold))]
     all_obs: list[dict[str, Any]] = []
     all_traj: list[dict[str, Any]] = []
     infos: list[dict[str, Any]] = []
