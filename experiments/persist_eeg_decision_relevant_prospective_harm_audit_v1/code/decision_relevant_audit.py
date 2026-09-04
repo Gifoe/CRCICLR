@@ -882,7 +882,7 @@ def require_lock() -> dict[str, Any]:
     return lock
 
 
-def decision_summary(frame: pd.DataFrame, fold_rows: list[dict[str, Any]], dataset_stats: dict[str, dict[str, Any]], controls: dict[str, dict[str, Any]], alignment: dict[str, pd.DataFrame]) -> tuple[str, dict[str, Any]]:
+def decision_summary(frame: pd.DataFrame, fold_rows: list[dict[str, Any]], dataset_stats: dict[str, dict[str, Any]], controls: dict[str, dict[str, Any]], alignment: dict[str, pd.DataFrame], calibration_rows: list[dict[str, Any]]) -> tuple[str, dict[str, Any]]:
     power: dict[str, dict[str, Any]] = {}
     for dataset, part in frame.groupby("dataset", sort=True):
         harmful_obs = int(np.sum(part.H_BER > 0))
@@ -903,8 +903,8 @@ def decision_summary(frame: pd.DataFrame, fold_rows: list[dict[str, Any]], datas
         for dataset, stats in dataset_stats.items():
             dec = stats["BBR_to_H_BER"]
             ce = stats["CE_to_H_BER"]
-            cal = alignment[dataset]
-            q = cal[(cal["certificate"] == "BBR") & (cal["quintile"].isin([1, 5]))]
+            cal = pd.DataFrame([r for r in calibration_rows if r["dataset"] == dataset and r["certificate"] == "BBR"])
+            q = cal[cal["quintile"].isin([1, 5])]
             qdiff = float(q[q.quintile == 5].decision_harm_frequency.iloc[0] - q[q.quintile == 1].decision_harm_frequency.iloc[0]) if len(q) == 2 else -np.inf
             gate_c[dataset] = bool((dec.get("spearman") or -np.inf) > 0 and (dec.get("auroc") or -np.inf) > 0.55 and qdiff > 0)
             arow = alignment[dataset]
@@ -993,7 +993,7 @@ def run_audit(device: torch.device) -> None:
         p["EXACT_DECISION_ENDPOINT_UNDERPOWERED"] = bool(p["H_BER_positive_count"] < 30 or p["biological_subjects_with_harmful_event"] < 15)
         power_rows.append(p)
     write_csv(RESULTS / "RARE_EVENT_POWER.csv", power_rows)
-    terminal, decision = decision_summary(obs_frame, fold_rows, dataset_stats, controls, align_frames)
+    terminal, decision = decision_summary(obs_frame, fold_rows, dataset_stats, controls, align_frames, all_cal)
     mandatory = json.loads((RESULTS / "MANDATORY_TESTS.json").read_text(encoding="utf-8"))
     validation = {
         "schema": "PERSIST_EEG_DECISION_RELEVANT_VALIDATION_V1", "pass": True, "terminal": terminal,
