@@ -6,6 +6,7 @@
 - K=4 class-balanced blocks, 16 trials/class/block without replacement; B_out is all remaining legal source/refit trials and retains at least 16/class.
 - BBR is sigmoid(-signed true-class margin/tau), class-balanced; tau is reused unchanged from the prior decision audit's legal-anchor margin scale. CE is a matched comparator.
 - Primary outcome is held-out H_BER_epoch; H_BBR_epoch is mechanism-support only. Biological subject is the cluster-bootstrap unit (10,000 draws).
+- BBR and CE have separate deterministic norm-matched random controls.
 - Selection rule, gates, controls and all exclusion flags are recorded in PRE_OUTCOME_LOCK.json.
 
 {
@@ -87,15 +88,16 @@
       "sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533"
     }
   ],
-  "code_commit": "0724a42c361d1cf2150509f91f26e921bf82f84a",
+  "code_commit": "c41915c2e279dd196d423c85770b94d64f7d0799",
   "code_hashes": {
     "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\code\\canonical_eegnet_runner.py": "3094d2d5ad9f9522d2383ba67744ded50f080ea5235c3be2d4c1fc7cff5af092",
-    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CUMULATIVE_SUBJECT_DECISION_DRIFT_AUDIT_V1\\experiments\\persist_eeg_cumulative_subject_decision_drift_audit_v1\\code\\cumulative_decision_drift_audit.py": "1a69016ba69669d096fc234be6318484d23b95713aa99478f08ba32c74612f65",
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CUMULATIVE_SUBJECT_DECISION_DRIFT_AUDIT_V1\\experiments\\persist_eeg_cumulative_subject_decision_drift_audit_v1\\code\\cumulative_decision_drift_audit.py": "56e83a0160165a714092c6652bf4389d8c98054c7d516bb96df23476e9cc4727",
     "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CUMULATIVE_SUBJECT_DECISION_DRIFT_AUDIT_V1\\experiments\\persist_eeg_stable_subject_prospective_guard_seed0_v1\\code\\run_sspg_seed0.py": "17bad24860eefe1d63802fc53ab0b64c90c9884071e8e7af0ff87f1c2a86757c"
   },
   "controls": [
     "deterministic_different_subject",
-    "norm_matched_random"
+    "norm_matched_random_BBR",
+    "norm_matched_random_CE"
   ],
   "datasets": [
     "OpenBMI",
@@ -276,7 +278,7 @@
   "selection_rule": {
     "BBR": "select if BBR satisfies all cumulative decision gates and CE does not",
     "CE": "select if CE satisfies all cumulative decision gates and BBR does not",
-    "both": "paired subject-bootstrap AUROC and Spearman; if no significant difference select CE",
+    "both": "compare paired biological-subject cluster-bootstrap AUROC and H_BER Spearman; choose a certificate only if both metrics are strictly one-sided, otherwise choose CE",
     "none": "no certificate and no final model"
   },
   "tau": {
