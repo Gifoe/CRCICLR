@@ -1,0 +1,25 @@
+{
+  "schema": "PERSIST_EEG_GEOSR_FROZEN_PROTOCOL_V1",
+  "datasets": ["OpenBMI", "WBCIC"],
+  "folds": [0, 1, 2, 3, 4],
+  "phase_a_seed": 0,
+  "backbone": "canonical EEGNet",
+  "descriptor_cap": 32,
+  "inner_crossfit_k": 5,
+  "methods": ["CANONICAL_ERM", "SUBJECT_BALANCED_ERM", "RANDOM_RANK", "LOSS_HARD", "GEO_ONLY", "GEOSR"],
+  "formula": {
+    "N_geo": "1 - .5*(cos(v_s,t2,c_t1)+cos(v_s,t1,c_t2))",
+    "N_loss": "balanced held-out descriptor NLL",
+    "GeoSR_weight": "0.5 + 0.5*r_geo + 0.5*r_loss"
+  },
+  "gates": {
+    "G1_mean_delta_pp": {"both_min": 0.1, "one_min": 0.3},
+    "G2_bottom25_delta_pp": {"both_min": 0.0, "one_min": 0.5},
+    "G3_nonnegative_fraction": 0.6,
+    "G3_material_harm_fraction": 0.15,
+    "G4_fold_nonnegative": 3,
+    "G6_bootstrap_upper_ci_pp": 0.0
+  },
+  "outer_sealed_access": false,
+  "scientific_rescue_allowed": false
+}
