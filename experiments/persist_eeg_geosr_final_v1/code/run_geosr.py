@@ -56,6 +56,7 @@ LR = 3e-4
 WEIGHT_DECAY = 5e-4
 GRAD_CLIP = 5.0
 BOOTSTRAP_DRAWS = 10_000
+CACHE_SCHEMA_VERSION = 2
 
 
 def jclean(v: Any) -> Any:
@@ -162,18 +163,40 @@ class FoldCache:
         self._raw_gpu: torch.Tensor | None = None
         self._gpu_view: torch.Tensor | None = None
         self._gpu_view_key: str | None = None
+        # These caches only memoize deterministic indexing/statistics.  They
+        # never alter the row order or arithmetic used by the frozen protocol.
+        self._rows_cache: dict[tuple[tuple[str, ...], tuple[int, ...]], np.ndarray] = {}
+        self._normalizer_cache: dict[str, tuple[np.ndarray, np.ndarray]] = {}
+        self._labels_gpu: torch.Tensor | None = None
+        self._labels_gpu_device: torch.device | None = None
+
+    @staticmethod
+    def _rows_key(subjects: Sequence[str], sessions: Sequence[int]) -> tuple[tuple[str, ...], tuple[int, ...]]:
+        return tuple(subj_sort(subjects)), tuple(sorted(set(map(int, sessions))))
 
     def rows(self, subjects: Sequence[str], sessions: Sequence[int]) -> np.ndarray:
+        key = self._rows_key(subjects, sessions)
+        cached = self._rows_cache.get(key)
+        if cached is not None:
+            return cached.copy()
         m = self.meta
         mask = m.subject_id.astype(str).isin(set(map(str, subjects))) & m.session_id.astype(int).isin(list(map(int, sessions)))
-        return np.flatnonzero(mask.to_numpy()).astype(np.int64)
+        out = np.flatnonzero(mask.to_numpy()).astype(np.int64)
+        self._rows_cache[key] = out
+        return out.copy()
 
     def normalizer(self, rows: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        rows = np.asarray(rows, dtype=np.int64)
+        key = bytes_sha(rows.tobytes())
+        cached = self._normalizer_cache.get(key)
+        if cached is not None:
+            return cached[0].copy(), cached[1].copy()
         positions = np.asarray([self.pos[int(r)] for r in rows], dtype=np.int64)
         x = self._raw[positions].astype(np.float64, copy=False)
         mean = x.mean(axis=(0, 2)).astype(np.float32)
         std = np.sqrt(np.maximum(x.var(axis=(0, 2)), 1e-12)).astype(np.float32)
-        return mean, std
+        self._normalizer_cache[key] = (mean, std)
+        return mean.copy(), std.copy()
 
     def normalize(self, mean: np.ndarray, std: np.ndarray) -> None:
         if self.x is not None and self.default_mean is not None and np.array_equal(self.default_mean, mean) and np.array_equal(self.default_std, std):
@@ -185,7 +208,7 @@ class FoldCache:
 
     def tensor(self, rows: np.ndarray, mean: np.ndarray | None = None, std: np.ndarray | None = None,
                device: torch.device | None = None) -> torch.Tensor:
-        positions = np.asarray([self.pos[int(r)] for r in rows], dtype=np.int64)
+        positions = np.asarray([self.pos[int(r)] for r in np.asarray(rows, dtype=np.int64)], dtype=np.int64)
         if device is not None and device.type == "cuda" and mean is not None and std is not None:
             key = bytes_sha(np.asarray(mean).tobytes() + np.asarray(std).tobytes())
             if self._raw_gpu is None or self._raw_gpu.device != device:
@@ -209,10 +232,21 @@ class FoldCache:
         arr = (raw - mean[None, :, None]) / np.maximum(std[None, :, None], 1e-6)
         return torch.from_numpy(np.ascontiguousarray(arr, dtype=np.float32))
 
+    def labels_tensor(self, device: torch.device) -> torch.Tensor:
+        if device.type != "cuda":
+            return torch.from_numpy(self.labels)
+        if self._labels_gpu is None or self._labels_gpu_device != device:
+            self._labels_gpu = torch.from_numpy(self.labels).to(device, non_blocking=True)
+            self._labels_gpu_device = device
+        return self._labels_gpu
+
 
 def inner_partition(subjects: Sequence[str], dataset: str, fold: int, k: int, seed: int) -> tuple[list[str], list[str]]:
     values = np.asarray(subj_sort(subjects), dtype=object)
-    rng = np.random.default_rng(stable_seed("geosr-inner-kfold", dataset, fold, k, seed))
+    # One deterministic permutation is shared by all k slices.  Seeding each
+    # k independently would reshuffle the subjects and break disjoint,
+    # exhaustive held-out coverage.
+    rng = np.random.default_rng(stable_seed("geosr-inner-kfold", dataset, fold, seed))
     values = values[rng.permutation(len(values))]
     held = values[np.arange(len(values)) % INNER_K == k]
     fit = np.asarray([s for s in values if s not in set(held)], dtype=object)
@@ -288,16 +322,30 @@ def weight_vector(cache: FoldCache, rows: np.ndarray, subject_weights: Mapping[s
 
 
 def train_epoch(model: torch.nn.Module, cache: FoldCache, rows: np.ndarray, mean: np.ndarray, std: np.ndarray,
-                weights: np.ndarray, optimizer: torch.optim.Optimizer, order: np.ndarray, device: torch.device) -> float:
+                weights: np.ndarray, optimizer: torch.optim.Optimizer, order: np.ndarray, device: torch.device,
+                row_weight_lookup: np.ndarray | None = None, weight_device: torch.Tensor | None = None) -> float:
     model.train()
     losses: list[float] = []
-    row_to_weight = {int(r): float(w) for r, w in zip(rows.tolist(), weights.tolist())}
     labels = cache.labels
+    if row_weight_lookup is None:
+        row_weight_lookup = np.zeros(len(cache.meta), dtype=np.float32)
+        row_weight_lookup[np.asarray(rows, dtype=np.int64)] = np.asarray(weights, dtype=np.float32)
+    if device.type == "cuda":
+        if weight_device is None:
+            weight_device = torch.from_numpy(row_weight_lookup).to(device, non_blocking=True)
+        labels_device = cache.labels_tensor(device)
     for start in range(0, len(order), BATCH_SIZE):
         part = order[start:start + BATCH_SIZE]
-        xb = cache.tensor(part, mean, std, device).to(device, non_blocking=True)
-        yb = torch.from_numpy(labels[part]).long().to(device, non_blocking=True)
-        wb = torch.tensor([row_to_weight[int(r)] for r in part], dtype=torch.float32, device=device)
+        xb = cache.tensor(part, mean, std, device)
+        if xb.device != device:
+            xb = xb.to(device, non_blocking=True)
+        if device.type == "cuda":
+            pos = torch.as_tensor(part, dtype=torch.long, device=device)
+            yb = labels_device[pos]
+            wb = weight_device[pos]
+        else:
+            yb = torch.from_numpy(labels[part]).long()
+            wb = torch.from_numpy(row_weight_lookup[part])
         optimizer.zero_grad(set_to_none=True)
         ce = F.cross_entropy(model(xb), yb, reduction="none")
         loss = (ce * wb).mean()
@@ -315,7 +363,10 @@ def eval_rows(cache: FoldCache, model: torch.nn.Module, rows: np.ndarray, mean: 
     with torch.inference_mode():
         for start in range(0, len(rows), BATCH_SIZE):
             part = rows[start:start + BATCH_SIZE]
-            logits.append(model(cache.tensor(part, mean, std, device).to(device, non_blocking=True)).detach().cpu().numpy())
+            xb = cache.tensor(part, mean, std, device)
+            if xb.device != device:
+                xb = xb.to(device, non_blocking=True)
+            logits.append(model(xb).detach().cpu().numpy())
     z = np.concatenate(logits, axis=0)
     z -= z.max(axis=1, keepdims=True)
     p = np.exp(z)
@@ -342,11 +393,16 @@ def select_epoch(cache: FoldCache, train_rows: np.ndarray, val_rows: np.ndarray,
     model = make_model(cache, device)
     model.load_state_dict(state, strict=True)
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
+    row_weight_lookup = np.zeros(len(cache.meta), dtype=np.float32)
+    row_weight_lookup[np.asarray(train_rows, dtype=np.int64)] = np.asarray(weights, dtype=np.float32)
+    weight_device = torch.from_numpy(row_weight_lookup).to(device, non_blocking=True) if device.type == "cuda" else None
     best_ba, best_nll, best_epoch, stale = -math.inf, math.inf, 1, 0
     history: list[dict[str, Any]] = []
     for epoch in range(1, MAX_EPOCHS + 1):
+        epoch_t0 = time.perf_counter()
         order = order_for(train_rows, dataset, fold, seed, "select", owner, epoch)
-        loss = train_epoch(model, cache, train_rows, mean, std, weights, optimizer, order, device)
+        loss = train_epoch(model, cache, train_rows, mean, std, weights, optimizer, order, device,
+                           row_weight_lookup=row_weight_lookup, weight_device=weight_device)
         val = eval_rows(cache, model, val_rows, mean, std, device)
         ba = float(val.BA.mean()) if len(val) else -math.inf
         nll = float(val.NLL.mean()) if len(val) else math.inf
@@ -355,8 +411,9 @@ def select_epoch(cache: FoldCache, train_rows: np.ndarray, val_rows: np.ndarray,
             best_ba, best_nll, best_epoch, stale = ba, nll, epoch, 0
         else:
             stale += 1
-        history.append({"epoch": epoch, "train_loss": loss, "val_BA": ba, "val_NLL": nll})
-        print(f"[select] {dataset} fold={fold} owner={owner} epoch={epoch} BA={ba:.4f} best={best_epoch}", flush=True)
+        elapsed = time.perf_counter() - epoch_t0
+        history.append({"epoch": epoch, "train_loss": loss, "val_BA": ba, "val_NLL": nll, "sec": elapsed})
+        print(f"[select] {dataset} fold={fold} owner={owner} epoch={epoch} BA={ba:.4f} best={best_epoch} sec={elapsed:.3f}", flush=True)
         if epoch >= MIN_EPOCHS and stale >= PATIENCE:
             break
     del model
@@ -366,16 +423,25 @@ def select_epoch(cache: FoldCache, train_rows: np.ndarray, val_rows: np.ndarray,
 
 def fit_exact(cache: FoldCache, rows: np.ndarray, mean: np.ndarray, std: np.ndarray, weights: np.ndarray,
               state: Mapping[str, torch.Tensor], dataset: str, fold: int, seed: int, owner: str,
-              epochs: int, device: torch.device) -> torch.nn.Module:
+              epochs: int, device: torch.device, timing: dict[str, Any] | None = None) -> torch.nn.Module:
     seed_everything(seed)
     model = make_model(cache, device)
     model.load_state_dict(state, strict=True)
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
+    row_weight_lookup = np.zeros(len(cache.meta), dtype=np.float32)
+    row_weight_lookup[np.asarray(rows, dtype=np.int64)] = np.asarray(weights, dtype=np.float32)
+    weight_device = torch.from_numpy(row_weight_lookup).to(device, non_blocking=True) if device.type == "cuda" else None
+    t0 = time.perf_counter()
     for epoch in range(1, int(epochs) + 1):
         order = order_for(rows, dataset, fold, seed, "exact", owner, epoch)
-        loss = train_epoch(model, cache, rows, mean, std, weights, optimizer, order, device)
+        loss = train_epoch(model, cache, rows, mean, std, weights, optimizer, order, device,
+                           row_weight_lookup=row_weight_lookup, weight_device=weight_device)
         if epoch == 1 or epoch == epochs or epoch % 10 == 0:
             print(f"[fit] {dataset} fold={fold} owner={owner} epoch={epoch}/{epochs} loss={loss:.5f}", flush=True)
+    if timing is not None:
+        timing["sec"] = time.perf_counter() - t0
+        timing["epochs"] = int(epochs)
+        timing["sec_per_epoch"] = timing["sec"] / max(int(epochs), 1)
     return model
 
 
@@ -385,7 +451,10 @@ def extract_embeddings(cache: FoldCache, model: torch.nn.Module, rows: np.ndarra
     with torch.inference_mode():
         for start in range(0, len(rows), BATCH_SIZE):
             part = rows[start:start + BATCH_SIZE]
-            out.append(model.forward_features(cache.tensor(part, mean, std, device).to(device, non_blocking=True)).detach().cpu().numpy())
+            xb = cache.tensor(part, mean, std, device)
+            if xb.device != device:
+                xb = xb.to(device, non_blocking=True)
+            out.append(model.forward_features(xb).detach().cpu().numpy())
     return np.concatenate(out, axis=0).astype(np.float32)
 
 
@@ -394,8 +463,68 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / den) if den > 1e-12 else float("nan")
 
 
+def array_sha(value: np.ndarray | Sequence[object]) -> str:
+    arr = np.asarray(value)
+    return bytes_sha(np.ascontiguousarray(arr).tobytes())
+
+
+def code_fingerprint() -> str:
+    """Fingerprint executable code and frozen constants for cache safety."""
+    parts = [file_sha(Path(__file__)), file_sha(Path(__file__).with_name("audit_primitives.py")),
+             str((CAP, INNER_K, MAX_EPOCHS, MIN_EPOCHS, PATIENCE, BATCH_SIZE, LR, WEIGHT_DECAY, GRAD_CLIP))]
+    return bytes_sha("|".join(parts).encode("utf-8"))
+
+
+def atomic_torch_save(value: Any, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".part")
+    torch.save(value, tmp)
+    os.replace(tmp, path)
+
+
+def load_cache(path: Path, expected: Mapping[str, Any]) -> Any | None:
+    if not path.is_file():
+        return None
+    try:
+        value = torch.load(path, map_location="cpu", weights_only=False)
+        meta = value.get("cache_meta", {}) if isinstance(value, dict) else {}
+        if all(meta.get(k) == v for k, v in expected.items()):
+            return value
+    except Exception as exc:
+        print(f"[cache] ignoring unreadable {path.name}: {exc}", flush=True)
+    return None
+
+
+def save_selection_cache(path: Path, expected: Mapping[str, Any], epoch: int, history: list[dict[str, Any]]) -> None:
+    atomic_torch_save({"cache_meta": dict(expected), "selected_epoch": int(epoch), "history": history}, path)
+
+
+def select_epoch_cached(cache: FoldCache, train_rows: np.ndarray, val_rows: np.ndarray, mean: np.ndarray, std: np.ndarray,
+                        weights: np.ndarray, state: Mapping[str, torch.Tensor], dataset: str, fold: int, seed: int,
+                        owner: str, device: torch.device, path: Path | None = None,
+                        expected_extra: Mapping[str, Any] | None = None) -> tuple[int, list[dict[str, Any]], bool]:
+    expected: dict[str, Any] = {
+        "schema": CACHE_SCHEMA_VERSION, "code_fingerprint": code_fingerprint(), "dataset": dataset,
+        "fold": int(fold), "seed": int(seed), "owner": owner, "train_rows_sha256": array_sha(train_rows),
+        "val_rows_sha256": array_sha(val_rows), "weights_sha256": array_sha(np.asarray(weights, dtype=np.float32)),
+        "state_sha256": state_hash(state), "mean_sha256": bytes_sha(np.asarray(mean).tobytes()),
+        "std_sha256": bytes_sha(np.asarray(std).tobytes()),
+    }
+    if expected_extra:
+        expected.update(dict(expected_extra))
+    if path is not None:
+        hit = load_cache(path, expected)
+        if hit is not None:
+            print(f"[cache] selection hit {dataset} fold={fold} owner={owner}", flush=True)
+            return int(hit["selected_epoch"]), list(hit.get("history", [])), True
+    epoch, history = select_epoch(cache, train_rows, val_rows, mean, std, weights, state, dataset, fold, seed, owner, device)
+    if path is not None:
+        save_selection_cache(path, expected, epoch, history)
+    return epoch, history, False
+
+
 def crossfit_scalars(cache: FoldCache, source_subjects: Sequence[str], dataset: str, fold: int, seed: int,
-                     stage: str, device: torch.device) -> tuple[pd.DataFrame, list[dict[str, Any]], list[dict[str, Any]]]:
+                     stage: str, device: torch.device, cache_root: Path | None = None) -> tuple[pd.DataFrame, list[dict[str, Any]], list[dict[str, Any]]]:
     source = subj_sort(source_subjects)
     scalar_rows: list[dict[str, Any]] = []
     assignment_rows: list[dict[str, Any]] = []
@@ -404,6 +533,20 @@ def crossfit_scalars(cache: FoldCache, source_subjects: Sequence[str], dataset: 
     for k in range(INNER_K):
         fit_s, held_s = inner_partition(source, dataset, fold, k, seed)
         seen.extend(held_s)
+        cache_path = None
+        cache_expected = {"schema": CACHE_SCHEMA_VERSION, "code_fingerprint": code_fingerprint(),
+                          "dataset": dataset, "fold": int(fold), "seed": int(seed), "stage": stage,
+                          "inner_k": int(k), "source_subjects_sha256": bytes_sha("|".join(source).encode()),
+                          "held_subjects_sha256": bytes_sha("|".join(held_s).encode())}
+        if cache_root is not None:
+            cache_path = Path(cache_root) / dataset / f"fold-{fold}" / stage / f"teacher-{k}.pt"
+            hit = load_cache(cache_path, cache_expected)
+            if hit is not None:
+                scalar_rows.extend(hit.get("scalar_rows", []))
+                assignment_rows.append(hit["assignment_row"])
+                teacher_rows.append(hit["teacher_row"])
+                print(f"[cache] teacher hit {dataset} fold={fold} stage={stage} k={k}", flush=True)
+                continue
         train_s, val_s = teacher_inner_split(fit_s, dataset, fold, k, seed)
         train_rows = cache.rows(train_s, sessions_for(dataset))
         val_rows = cache.rows(val_s, (SESSION_DISCOVERY[dataset],))
@@ -412,9 +555,12 @@ def crossfit_scalars(cache: FoldCache, source_subjects: Sequence[str], dataset: 
         cache.normalize(mean, std)
         state, init_seed, init_sha = initial_state(cache, dataset, fold, seed, f"teacher-{stage}-{k}")
         w = np.ones(len(train_rows), dtype=np.float32)
+        select_t0 = time.perf_counter()
         ep, hist = select_epoch(cache, train_rows, val_rows, mean, std, w, state, dataset, fold, seed, f"teacher-{stage}-{k}", device)
+        select_sec = time.perf_counter() - select_t0
+        fit_timing: dict[str, Any] = {}
         teacher = fit_exact(cache, fit_rows, mean, std, np.ones(len(fit_rows), dtype=np.float32), state,
-                            dataset, fold, seed, f"teacher-{stage}-{k}", ep, device)
+                            dataset, fold, seed, f"teacher-{stage}-{k}", ep, device, timing=fit_timing)
         # Build directions only in this teacher's own coordinate system.
         desc_rows: list[int] = []
         for s in fit_s + held_s:
@@ -453,7 +599,10 @@ def crossfit_scalars(cache: FoldCache, source_subjects: Sequence[str], dataset: 
             logits = []
             for start in range(0, len(held_desc_arr), BATCH_SIZE):
                 q = held_desc_arr[start:start + BATCH_SIZE]
-                logits.append(teacher(cache.tensor(q, mean, std, device).to(device, non_blocking=True)).detach().cpu().numpy())
+                xb = cache.tensor(q, mean, std, device)
+                if xb.device != device:
+                    xb = xb.to(device, non_blocking=True)
+                logits.append(teacher(xb).detach().cpu().numpy())
         lz = np.concatenate(logits, axis=0)
         lz -= lz.max(axis=1, keepdims=True)
         prob = np.exp(lz); prob /= np.maximum(prob.sum(1, keepdims=True), 1e-12)
@@ -482,11 +631,19 @@ def crossfit_scalars(cache: FoldCache, source_subjects: Sequence[str], dataset: 
                                 "teacher_inner_validation_subjects": ",".join(val_s),
                                 "held_out_subjects_hash": bytes_sha("|".join(held_s).encode()),
                                 "teacher_protocol": "A_k-only; held-out B_k never in teacher training/normalizer"})
-        teacher_rows.append({"dataset": dataset, "fold": fold, "stage": stage, "inner_k": k,
+        teacher_row = {"dataset": dataset, "fold": fold, "stage": stage, "inner_k": k,
                              "teacher_epoch": ep, "teacher_initial_state_sha256": init_sha,
                              "teacher_history_last": json.dumps(hist[-1] if hist else {}, separators=(",", ":")),
                              "teacher_fit_subject_count": len(fit_s), "held_out_subject_count": len(held_s),
-                             "held_out_rows": len(held_desc_arr)})
+                             "held_out_rows": len(held_desc_arr), "teacher_select_sec": select_sec,
+                             "teacher_fit_sec": float(fit_timing.get("sec", 0.0)),
+                             "teacher_fit_sec_per_epoch": float(fit_timing.get("sec_per_epoch", 0.0)),
+                             "cache_hit": False}
+        teacher_rows.append(teacher_row)
+        if cache_path is not None:
+            assignment_row = assignment_rows[-1]
+            atomic_torch_save({"cache_meta": cache_expected, "scalar_rows": scalar_rows[-len(held_s):],
+                               "assignment_row": assignment_row, "teacher_row": teacher_row}, cache_path)
         del teacher, emb, lz, prob
         gc.collect()
     if sorted(seen) != sorted(source) or len(seen) != len(set(seen)):
@@ -499,7 +656,9 @@ def crossfit_scalars(cache: FoldCache, source_subjects: Sequence[str], dataset: 
     return frame, assignment_rows, teacher_rows
 
 
-def source_weights(risk: pd.DataFrame, dataset: str, fold: int, seed: int) -> tuple[dict[str, dict[str, float]], dict[str, Any]]:
+def source_weights(risk: pd.DataFrame, dataset: str, fold: int, seed: int,
+                   methods: Sequence[str] | None = None) -> tuple[dict[str, dict[str, float]], dict[str, Any]]:
+    methods = tuple(METHODS if methods is None else methods)
     f = risk.sort_values("subject_id").reset_index(drop=True)
     n = len(f)
     if n < 2:
@@ -517,30 +676,50 @@ def source_weights(risk: pd.DataFrame, dataset: str, fold: int, seed: int) -> tu
     perm = perm_rng.permutation(n)
     base["RANDOM_RANK"] = base["GEOSR"][perm]
     rows: list[dict[str, Any]] = []
-    out: dict[str, dict[str, float]] = {m: {} for m in METHODS}
+    out: dict[str, dict[str, float]] = {m: {} for m in methods}
     for i, s in enumerate(f.subject_id.astype(str)):
-        for method in METHODS:
+        for method in methods:
             w = float(base[method][i])
             out[method][str(s)] = w
         rows.append({"dataset": dataset, "fold": fold, "seed": seed, "subject_id": str(s),
                      "N_geo": float(f.N_geo.iloc[i]), "N_loss": float(f.N_loss.iloc[i]),
                      "r_geo": float(r_geo[i]), "r_loss": float(r_loss[i]),
-                     **{f"weight_{m}": float(base[m][i]) for m in METHODS},
+                     **{f"weight_{m}": float(base[m][i]) for m in methods},
                      "random_rank_source_position": int(perm[i])})
     audit = {"dataset": dataset, "fold": fold, "seed": seed, "subjects": f.subject_id.astype(str).tolist(),
              "random_rank_permutation": perm.tolist(), "weight_multiset_sha256": bytes_sha(np.sort(base["GEOSR"]).astype(np.float64).tobytes()),
-             "weights": {m: {s: float(w) for s, w in out[m].items()} for m in METHODS}}
+             "weights": {m: {s: float(w) for s, w in out[m].items()} for m in methods}}
     return out, {"rows": rows, "lock": audit}
 
 
+def checkpoint_meta_path(path: Path) -> Path:
+    return path.with_suffix(path.suffix + ".meta.json")
+
+
+def checkpoint_cache_valid(path: Path, expected: Mapping[str, Any]) -> bool:
+    meta_path = checkpoint_meta_path(path)
+    if not path.is_file() or not meta_path.is_file():
+        return False
+    try:
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        return all(meta.get(k) == v for k, v in expected.items())
+    except Exception:
+        return False
+
+
 def save_checkpoint(path: Path, model: torch.nn.Module, mean: np.ndarray, std: np.ndarray, dataset: str,
-                    fold: int, seed: int, method: str, selected_epoch: int, init_sha: str) -> str:
+                    fold: int, seed: int, method: str, selected_epoch: int, init_sha: str,
+                    cache_meta: Mapping[str, Any] | None = None) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {"model_state": {k: v.detach().cpu() for k, v in model.state_dict().items()},
                "mean": mean, "std": std, "dataset": dataset, "fold": fold, "seed": seed,
                "method": method, "selected_epoch": int(selected_epoch), "initial_state_sha256": init_sha,
                "protocol": "GeoSR_final_frozen_v1"}
-    torch.save(payload, path)
+    tmp = path.with_suffix(path.suffix + ".part")
+    torch.save(payload, tmp)
+    os.replace(tmp, path)
+    if cache_meta is not None:
+        write_json(checkpoint_meta_path(path), dict(cache_meta))
     return file_sha(path)
 
 
@@ -581,6 +760,7 @@ def preflight(seed: int, device: torch.device) -> None:
     training_rows: list[dict[str, Any]] = []
     state_hashes: dict[str, Any] = {}
     fold_manifests: dict[str, Any] = {}
+    cache_root = RUNTIME / f"seed-{seed}" / "cache"
     for dataset in DATASETS:
         for fold in FOLDS:
             role = roles_by_dataset[dataset][fold]
@@ -593,10 +773,10 @@ def preflight(seed: int, device: torch.device) -> None:
             fit_mean, fit_std = cache.normalizer(fit_rows)
             cache.normalize(fit_mean, fit_std)
             # Both source stages are required by the frozen protocol.
-            risk1, a1, t1 = crossfit_scalars(cache, source, dataset, fold, seed, "initial_selection", device)
-            weights1, wa1 = source_weights(risk1, dataset, fold, seed)
-            risk2, a2, t2 = crossfit_scalars(cache, source_all, dataset, fold, seed, "final_refit", device)
-            weights2, wa2 = source_weights(risk2, dataset, fold, seed)
+            risk1, a1, t1 = crossfit_scalars(cache, source, dataset, fold, seed, "initial_selection", device, cache_root=cache_root)
+            weights1, wa1 = source_weights(risk1, dataset, fold, seed, methods=METHODS)
+            risk2, a2, t2 = crossfit_scalars(cache, source_all, dataset, fold, seed, "final_refit", device, cache_root=cache_root)
+            weights2, wa2 = source_weights(risk2, dataset, fold, seed, methods=METHODS)
             refit_mean, refit_std = cache.normalizer(refit_rows)
             cache.normalize(refit_mean, refit_std)
             all_crossfit.extend(a1 + a2); all_teachers.extend(t1 + t2)
@@ -612,24 +792,43 @@ def preflight(seed: int, device: torch.device) -> None:
             histories: dict[str, Any] = {}
             for method in METHODS:
                 wvec = weight_vector(cache, fit_rows, weights1[method], method)
-                ep, hist = select_epoch(cache, fit_rows, discovery_rows, fit_mean, fit_std, wvec, state,
-                                         dataset, fold, seed, "student-common", device)
+                sel_path = cache_root / dataset / f"fold-{fold}" / "student_initial_selection" / f"{method}.pt"
+                ep, hist, sel_hit = select_epoch_cached(
+                    cache, fit_rows, discovery_rows, fit_mean, fit_std, wvec, state,
+                    dataset, fold, seed, "student-common", device, path=sel_path,
+                    expected_extra={"method": method, "stage": "initial_selection"})
                 selected[method] = ep; histories[method] = hist
                 training_rows.append({"dataset": dataset, "fold": fold, "seed": seed, "stage": "initial_selection",
                                       "method": method, "selected_epoch": ep, "initial_state_sha256": init_sha,
                                       "normalizer_mean_sha256": bytes_sha(fit_mean.tobytes()),
                                       "normalizer_std_sha256": bytes_sha(fit_std.tobytes()),
                                       "training_subjects": len(source), "discovery_subjects": len(role["discovery"]),
-                                      "weight_mean": float(wvec.mean()), "weight_min": float(wvec.min()), "weight_max": float(wvec.max())})
+                                      "weight_mean": float(wvec.mean()), "weight_min": float(wvec.min()), "weight_max": float(wvec.max()),
+                                      "selection_sec": float(sum(float(h.get("sec", 0.0)) for h in hist)), "cache_hit": bool(sel_hit)})
             # Final refit from the same deterministic initial state, exact selected
             # epochs, with independently recomputed source cross-fit weights.
             ckpt_info: dict[str, Any] = {}
             for method in METHODS:
                 wvec = weight_vector(cache, refit_rows, weights2[method], method)
-                model = fit_exact(cache, refit_rows, refit_mean, refit_std, wvec, state, dataset, fold, seed,
-                                  "student-common", selected[method], device)
                 ck = RUNTIME / f"seed-{seed}" / dataset / f"fold-{fold}" / f"{method}.pt"
-                ck_sha = save_checkpoint(ck, model, refit_mean, refit_std, dataset, fold, seed, method, selected[method], init_sha)
+                ck_expected = {"schema": CACHE_SCHEMA_VERSION, "code_fingerprint": code_fingerprint(),
+                               "dataset": dataset, "fold": int(fold), "seed": int(seed), "method": method,
+                               "stage": "final_refit", "selected_epoch": int(selected[method]),
+                               "initial_state_sha256": init_sha, "rows_sha256": array_sha(refit_rows),
+                               "weights_sha256": array_sha(np.asarray(wvec, dtype=np.float32)),
+                               "mean_sha256": bytes_sha(np.asarray(refit_mean).tobytes()),
+                               "std_sha256": bytes_sha(np.asarray(refit_std).tobytes())}
+                fit_timing: dict[str, Any] = {}
+                ck_hit = checkpoint_cache_valid(ck, ck_expected)
+                if ck_hit:
+                    ck_sha = file_sha(ck)
+                    print(f"[cache] checkpoint hit {dataset} fold={fold} method={method}", flush=True)
+                else:
+                    model = fit_exact(cache, refit_rows, refit_mean, refit_std, wvec, state, dataset, fold, seed,
+                                      "student-common", selected[method], device, timing=fit_timing)
+                    ck_sha = save_checkpoint(ck, model, refit_mean, refit_std, dataset, fold, seed, method,
+                                             selected[method], init_sha, cache_meta=ck_expected)
+                    del model
                 ckpt_info[method] = {"path": str(ck), "sha256": ck_sha, "selected_epoch": selected[method]}
                 training_rows.append({"dataset": dataset, "fold": fold, "seed": seed, "stage": "final_refit",
                                       "method": method, "selected_epoch": selected[method], "initial_state_sha256": init_sha,
@@ -637,8 +836,9 @@ def preflight(seed: int, device: torch.device) -> None:
                                       "normalizer_std_sha256": bytes_sha(refit_std.tobytes()),
                                       "training_subjects": len(source_all), "discovery_subjects": len(role["discovery"]),
                                       "weight_mean": float(wvec.mean()), "weight_min": float(wvec.min()), "weight_max": float(wvec.max()),
-                                      "checkpoint_sha256": ck_sha})
-                del model; gc.collect()
+                                      "checkpoint_sha256": ck_sha, "fit_sec": float(fit_timing.get("sec", 0.0)),
+                                      "fit_sec_per_epoch": float(fit_timing.get("sec_per_epoch", 0.0)), "cache_hit": bool(ck_hit)})
+                gc.collect()
             fold_manifests[f"{dataset}/fold-{fold}/seed-{seed}"] = {
                 "dataset": dataset, "fold": fold, "seed": seed, "model_fit_subjects": source,
                 "discovery_subjects": subj_sort(role["discovery"]), "outcome_subjects_hash": bytes_sha("|".join(subj_sort(role["outcome"])).encode()),
@@ -648,6 +848,7 @@ def preflight(seed: int, device: torch.device) -> None:
                 "source_initial_weight_lock": wa1["lock"], "source_final_weight_lock": wa2["lock"],
                 "initial_histories": histories,
             }
+            write_json(RUNTIME / f"seed-{seed}" / dataset / f"fold-{fold}" / "FOLD_PROGRESS.json", fold_manifests[f"{dataset}/fold-{fold}/seed-{seed}"])
             print(f"[preflight] complete {dataset} fold={fold} source={len(source)} refit={len(source_all)}", flush=True)
             del cache
             gc.collect()
