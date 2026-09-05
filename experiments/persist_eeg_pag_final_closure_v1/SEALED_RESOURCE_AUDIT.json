@@ -1,0 +1,24 @@
+{
+  "checked_metadata": [
+    {
+      "finding": "development caches only; sealed identifiers/resources absent",
+      "path": "DATA_AUDIT.md"
+    },
+    {
+      "finding": "outer resource flags remain false in the frozen audit",
+      "path": "V8 OUTER_LOCK.json"
+    },
+    {
+      "finding": "loader has no internal-holdout or WBCIC-outer adapter",
+      "path": "PUD-Aux loader"
+    }
+  ],
+  "interpretation": "No sealed confirmation is authorized until independently audited sealed resources are materialized.",
+  "openbmi_internal_sealed_holdout_materialized": false,
+  "outcome_labels_read": false,
+  "post_unblinding_repair": false,
+  "resources_available": false,
+  "schema": "PERSIST_EEG_PAG_SEALED_RESOURCE_AUDIT_V1",
+  "sealed_identifiers_enumerated": false,
+  "wbcic_outer10_materialized": false
+}
