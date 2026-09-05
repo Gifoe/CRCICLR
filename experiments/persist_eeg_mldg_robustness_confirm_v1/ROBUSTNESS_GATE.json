@@ -1,0 +1,22 @@
+{
+  "all_gates_pass": false,
+  "available_cells": 6,
+  "full_protocol_cells": 12,
+  "full_protocol_complete": false,
+  "gates": {
+    "OpenBMI": {
+      "G1_or_G2_mean_ge_0.5": true,
+      "G3_positive_ge_4_of_6": false,
+      "G4_both_fold_means_nonnegative": false,
+      "G5_median_ge_0.25": true
+    },
+    "WBCIC": {
+      "G1_or_G2_mean_ge_0.5": false,
+      "G3_positive_ge_4_of_6": false,
+      "G4_both_fold_means_nonnegative": false,
+      "G5_median_ge_0.25": false
+    }
+  },
+  "schema": "PERSIST_EEG_MLDG_ROBUSTNESS_CONFIRM_V1",
+  "terminal": "EARLY_STOP_MLDG_NOT_ROBUST"
+}

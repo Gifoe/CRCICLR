@@ -1,0 +1,73 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "branch": "codex/persist-eeg-mldg-robustness-confirm-v1",
+  "canonical_outcome_labels_read": false,
+  "compute_abs_tol_pp": 0.5,
+  "compute_cells": [
+    [
+      "OpenBMI",
+      0
+    ],
+    [
+      "WBCIC",
+      1
+    ]
+  ],
+  "compute_multiplier": 2,
+  "compute_ratio_gate": 0.8,
+  "created_at_utc": "2026-09-05T17:31:23Z",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "frozen": [
+    {
+      "beta": 1.0,
+      "dataset": "OpenBMI",
+      "erm_epochs": 38,
+      "mldg_epochs": 59,
+      "outer_fold": 0
+    },
+    {
+      "beta": 1.0,
+      "dataset": "OpenBMI",
+      "erm_epochs": 41,
+      "mldg_epochs": 58,
+      "outer_fold": 1
+    },
+    {
+      "beta": 1.0,
+      "dataset": "WBCIC",
+      "erm_epochs": 13,
+      "mldg_epochs": 6,
+      "outer_fold": 0
+    },
+    {
+      "beta": 0.5,
+      "dataset": "WBCIC",
+      "erm_epochs": 12,
+      "mldg_epochs": 23,
+      "outer_fold": 1
+    }
+  ],
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "B2_SUBJECT_EPISODIC_MLDG",
+    "ERM_COMPUTE_MATCHED"
+  ],
+  "opt_seeds": [
+    0,
+    1,
+    2
+  ],
+  "order_seed": "sha256(mldg-robustness|dataset|outer_fold|opt_seed|epoch)",
+  "outer_folds": [
+    0,
+    1
+  ],
+  "parent": "codex/persist-eeg-route-b-randomness-audit-v1",
+  "partition_seed": "sha256(mldg-meta-partition|dataset|outer_fold|opt_seed|epoch)",
+  "schema": "PERSIST_EEG_MLDG_ROBUSTNESS_CONFIRM_V1",
+  "split_source": "persist_eeg_route_b_randomness_audit_v1/SPLIT_AUDIT.csv"
+}

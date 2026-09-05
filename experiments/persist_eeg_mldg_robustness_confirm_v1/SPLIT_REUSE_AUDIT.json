@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "dataset": "OpenBMI",
+      "held_subjects": "18;20;21;23;26;30;41",
+      "inner_validation_subjects": "5;22;24;31;42",
+      "matches_randomness_audit": true,
+      "outer_fold": 0,
+      "train_subjects": "4;5;7;8;9;11;12;15;16;22;24;25;27;29;31;34;35;37;38;39;42;43;44;46;49;51;52"
+    },
+    {
+      "dataset": "WBCIC",
+      "held_subjects": "25;29;32;34;48",
+      "inner_validation_subjects": "14;38;47",
+      "matches_randomness_audit": true,
+      "outer_fold": 0,
+      "train_subjects": "6;7;9;12;14;17;22;23;24;26;30;31;35;38;41;42;47;49;50"
+    },
+    {
+      "dataset": "OpenBMI",
+      "held_subjects": "9;11;29;31;34;42;44",
+      "inner_validation_subjects": "7;21;24;46;52",
+      "matches_randomness_audit": true,
+      "outer_fold": 1,
+      "train_subjects": "4;5;7;8;12;15;16;18;20;21;22;23;24;25;26;27;30;35;37;38;39;41;43;46;49;51;52"
+    },
+    {
+      "dataset": "WBCIC",
+      "held_subjects": "7;22;24;26;47",
+      "inner_validation_subjects": "12;34;42",
+      "matches_randomness_audit": true,
+      "outer_fold": 1,
+      "train_subjects": "6;9;12;14;17;23;25;29;30;31;32;34;35;38;41;42;48;49;50"
+    }
+  ],
+  "schema": "PERSIST_EEG_MLDG_ROBUSTNESS_CONFIRM_V1",
+  "source": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_NESTED_OOF_V1\\experiments\\persist_eeg_route_b_randomness_audit_v1\\SPLIT_AUDIT.csv"
+}
