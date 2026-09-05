@@ -1,0 +1,45 @@
+{
+  "base_commit_before_final_package": "460652c785c5860df3c8f2407ca28ac247e6c007",
+  "blocking_issue": "Independent sealed confirmation resources are absent and must be supplied and audited before a strong confirmatory claim.",
+  "constructive_primary": {
+    "comparator": "exactly matched task-only control",
+    "historical_unpaired_ci95": [
+      -0.01725000000000001,
+      -0.0013333333333333528
+    ],
+    "historical_unpaired_delta": -0.009333333333333332,
+    "matched_development_ci95": [
+      -2.7755575615628915e-18,
+      0.008166666666666659
+    ],
+    "matched_development_delta": 0.00424999999999999,
+    "matched_terminal": "PUD_AUX_MATCHED_NOT_SUPPORTED",
+    "method": "PUD-Aux",
+    "minimum_meaningful_gain_pp": 0.5
+  },
+  "development_premises": {
+    "actionability": "not certified by development evidence",
+    "persistence": "supported in frozen development evidence",
+    "shared_geometry": "supported in bounded development by the authoritative Shared Geometry V1.2 artifact",
+    "task_consequence": "supported, with P3 trajectory evidence"
+  },
+  "ready_for_iclr_manuscript": "NO",
+  "schema": "PERSIST_EEG_PAG_FINAL_DECISION_V1",
+  "sealed_confirmation_run": {
+    "attempted_after_preregistration_lock": true,
+    "blocking_evidence_type": "independent OpenBMI internal sealed holdout and WBCIC outer-10 sealed subjects",
+    "outcome_labels_read": false,
+    "post_unblinding_repair": false,
+    "resource_available": false
+  },
+  "sealed_confirmation_state": "SEALED_CONFIRMATION_NOT_RUN_RESOURCE_UNAVAILABLE",
+  "source_artifacts": {
+    "matched_pud_aux": "experiments/persist_eeg_final_closure_repair_v1/results/matched_aux_statistics.json",
+    "p3": "experiments/persist_eeg_p3closure_p4/outputs/persist_eeg_p3closure_p4/p3_closure/P3_FINAL_REPORT_V2.json",
+    "pud_aux": "experiments/persist_eeg_final_failure_localization_and_aux_v1/results/pud_aux_statistics.json",
+    "tseg": "experiments/persist_eeg_tseg_session_fairness_v1/GO_GATE.json",
+    "v8": "experiments/persist_eeg_final_model_v8/outputs/FINAL_DECISION.json"
+  },
+  "strongest_defensible_claim": "In frozen development protocols, persistent structure, task consequence, and bounded shared geometry are observable, but they do not certify a reliable unseen-subject constructive intervention; independent sealed confirmation remains incomplete because the authorized resources are unavailable in the server repository.",
+  "terminal_state": "PAG_PARTIAL_CONFIRMATION"
+}

@@ -1,0 +1,26 @@
+{
+  "checks": {
+    "final_partial_state": true,
+    "historical_delta_trace": true,
+    "manifest_files_match": true,
+    "matched_delta_trace": true,
+    "meaningful_gain_gate_frozen": true,
+    "no_post_unblinding_repair": true,
+    "no_runtime_or_raw_artifact_in_final_dir": true,
+    "p3_delta_trace": true,
+    "preregistration_anchored": true,
+    "primary_method_frozen": true,
+    "ready_for_manuscript_no": true,
+    "resources_false": true,
+    "sealed_blocked_terminal": true,
+    "sealed_outcome_labels_false": true,
+    "sealed_rows_have_no_value": true,
+    "second_backbone_fail_closed": true,
+    "stage0_complete_without_sealed": true
+  },
+  "forbidden_artifact_names": [],
+  "pass": true,
+  "schema": "PERSIST_EEG_PAG_INDEPENDENT_VALIDATION_V1",
+  "source_outcome_labels_read": false,
+  "validation_scope": "compact final package and provenance only; no sealed labels/features/predictions"
+}
