@@ -1,0 +1,41 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "amendment_sha256": "774748077b683c82512bd4ba38208b510f2367da76f811d9c55d10b611a791a4",
+  "artifact_sha256": {
+    "OpenBMI/memory_cells.npz": "3431254504714b177c18f1eb2bbb1b21b77e77ce3bb88d3af8476a8257ea5d65",
+    "OpenBMI/source_features.npz": "9f3635a1132ef116f5bc85a84ebe0a552e0f6ee09163c00c8c58f7a7c3e7c478",
+    "OpenBMI/source_norm.npz": "af9a8022804723a5227e12712f4284d6468f560b5993925b12929053ff1a0526",
+    "WBCIC/memory_cells.npz": "b30770b05f83cba859f4d46ecf537c49bdc499335d29e21033ba8370893b961b",
+    "WBCIC/source_features.npz": "024d55256d32429c4c11d9cc43c82fd569be807fb7bbd7a4275ccee4cf7ca3ef",
+    "WBCIC/source_norm.npz": "8673934749c40c90c67339c64e83c4d9bf9b58c16be7b46d69d838dadbdeb786"
+  },
+  "code_sha256": "5ca4affb6421bad6a6d56398c3e8354f2dc76ef2e93a2c1a040b5e2c240f2206",
+  "created_at_utc": "2026-09-05T08:59:14Z",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "folds": [
+    0
+  ],
+  "head_sha256": {
+    "OpenBMI/CROSS_SUBJECT_SESSION_RELATION_RESIDUAL": "a443e1e2e6f4b546e319c6525f2133e11db0c24192c4d8ff8539305c84c1d6aa",
+    "OpenBMI/GENERIC_PROTOTYPE_RESIDUAL": "d0e9132fd1d1399ea742dde85b0544fd6554e38040dd2344f879ff4b88e2bc76",
+    "OpenBMI/GENERIC_RESIDUAL": "4fb48aedcb2e3c0c05e620887f42334e611b3076ac4fe930e372d950cb9ff846",
+    "WBCIC/CROSS_SUBJECT_SESSION_RELATION_RESIDUAL": "026b6925a4afe1088b16f4f3db98a8a87a25aa14ee1d645d12105db70eaac96d",
+    "WBCIC/GENERIC_PROTOTYPE_RESIDUAL": "e65b29a239235f4acd49e9923e4070e7bd699dde3b77459bece3f8e27231735f",
+    "WBCIC/GENERIC_RESIDUAL": "295068060d46f12d80fd97f04ebccc0302f724f12151ee08a1bbd0c72b16eb90"
+  },
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GENERIC_RESIDUAL",
+    "GENERIC_PROTOTYPE_RESIDUAL",
+    "CROSS_SUBJECT_SESSION_RELATION_RESIDUAL"
+  ],
+  "outcome_labels_read": false,
+  "outcome_labels_read_before_lock": false,
+  "schema": "PERSIST_EEG_CORRECTED_PRE_OUTCOME_LOCK_V3",
+  "seed": 0,
+  "training_lock_sha256": "4809914575494bf6181fd166f7dd0e6ed0a18254da78837064e96db7bcc362da"
+}

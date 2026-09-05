@@ -1,0 +1,54 @@
+{
+  "all_pass": true,
+  "datasets": [
+    {
+      "T1_zero_initialization": {
+        "CROSS_SUBJECT_SESSION_RELATION_RESIDUAL": true,
+        "GENERIC_PROTOTYPE_RESIDUAL": true,
+        "GENERIC_RESIDUAL": true
+      },
+      "T2_query_subject_exclusion": true,
+      "T3_cross_session_exclusion": true,
+      "T4_no_target_labels_before_lock": true,
+      "T5_memory_multimodality": {
+        "global_direction_only": false,
+        "n_classes": 2,
+        "n_entries": 136,
+        "n_sessions": 2,
+        "n_subjects": 34
+      },
+      "dataset": "OpenBMI",
+      "parameter_counts": {
+        "CROSS_SUBJECT_SESSION_RELATION_RESIDUAL": 1014,
+        "GENERIC_PROTOTYPE_RESIDUAL": 1106,
+        "GENERIC_RESIDUAL": 1074
+      },
+      "schema": "PERSIST_EEG_IMPLEMENTATION_SANITY_AUDIT_V3"
+    },
+    {
+      "T1_zero_initialization": {
+        "CROSS_SUBJECT_SESSION_RELATION_RESIDUAL": true,
+        "GENERIC_PROTOTYPE_RESIDUAL": true,
+        "GENERIC_RESIDUAL": true
+      },
+      "T2_query_subject_exclusion": true,
+      "T3_cross_session_exclusion": true,
+      "T4_no_target_labels_before_lock": true,
+      "T5_memory_multimodality": {
+        "global_direction_only": false,
+        "n_classes": 2,
+        "n_entries": 96,
+        "n_sessions": 2,
+        "n_subjects": 24
+      },
+      "dataset": "WBCIC",
+      "parameter_counts": {
+        "CROSS_SUBJECT_SESSION_RELATION_RESIDUAL": 1014,
+        "GENERIC_PROTOTYPE_RESIDUAL": 1106,
+        "GENERIC_RESIDUAL": 1074
+      },
+      "schema": "PERSIST_EEG_IMPLEMENTATION_SANITY_AUDIT_V3"
+    }
+  ],
+  "schema": "PERSIST_EEG_IMPLEMENTATION_SANITY_AUDIT_V3"
+}
