@@ -167,9 +167,13 @@ def subject_balanced_weights(cache, rows: np.ndarray) -> np.ndarray:
     for r in rows:
         key = (str(subjects[r]), int(labels[r]))
         counts[key] = counts.get(key, 0) + 1
-    w = np.asarray([1.0 / (2.0 * counts[(str(subjects[r]), int(labels[r]))]) for r in rows], np.float32)
-    w *= len(rows) / max(float(w.sum()), 1e-12)
-    return w
+    # Match the audited canonical implementation's float64 normalization
+    # before the final float32 cast.  Normalizing in-place on a float32 array
+    # changes the optimizer trajectory on WBCIC enough to fail the numerical
+    # equivalence audit.
+    w = np.asarray([1.0 / (2.0 * counts[(str(subjects[r]), int(labels[r]))]) for r in rows], dtype=np.float64)
+    w /= max(float(w.mean()), 1e-12)
+    return w.astype(np.float32)
 
 
 def lookup_weights(cache, rows: np.ndarray, weights: np.ndarray) -> np.ndarray:
