@@ -1,0 +1,42 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "alpha": 0.1,
+  "backbone": "EEGNet",
+  "beta": 1.0,
+  "branch": "codex/persist-eeg-tseg-pilot-v1",
+  "canonical_outcome_labels_read": false,
+  "created_at_utc": "2026-09-05T19:02:01Z",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "early_stopping": {
+    "MAX_EPOCHS": 60,
+    "MIN_EPOCHS": 10,
+    "PATIENCE": 8,
+    "metric": [
+      "highest source-validation BA",
+      "lowest source-validation NLL",
+      "earliest epoch"
+    ]
+  },
+  "gamma": 1.0,
+  "held_labels_used_for_selection": false,
+  "methods": [
+    "B0_SUBJECT_BALANCED_ERM",
+    "B1_PLAIN_MLDG",
+    "B2_TWO_TRAJECTORY_MEAN",
+    "B3_TSEG"
+  ],
+  "opt_seeds": [
+    0,
+    1,
+    2
+  ],
+  "outer_fold": 0,
+  "parent": "codex/persist-eeg-mldg-perseed-earlystop-check-v1",
+  "schema": "PERSIST_EEG_TSEG_PILOT_V1",
+  "tau": 0.1,
+  "trajectory_pair_seed": "sha256(tseg|dataset|fold|opt_seed|phase|epoch|step|trajectory_id)"
+}
