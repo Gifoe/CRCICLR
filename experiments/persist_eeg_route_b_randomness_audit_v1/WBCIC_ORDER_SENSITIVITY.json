@@ -1,0 +1,27 @@
+{
+  "any_material": true,
+  "folds": [
+    {
+      "ERM_ORDER_B0": 70.9,
+      "ERM_ORDER_B1": 74.60000000000001,
+      "ERM_ORDER_B3": 73.5,
+      "ERM_ORDER_B4": 52.2,
+      "dataset": "WBCIC",
+      "material_ge_1pp": true,
+      "outer_fold": 0,
+      "range_pp": 22.400000000000006
+    },
+    {
+      "ERM_ORDER_B0": 80.64406565656566,
+      "ERM_ORDER_B1": 79.23257575757575,
+      "ERM_ORDER_B3": 51.22916666666667,
+      "ERM_ORDER_B4": 74.0834595959596,
+      "dataset": "WBCIC",
+      "material_ge_1pp": true,
+      "outer_fold": 1,
+      "range_pp": 29.414898989898987
+    }
+  ],
+  "schema": "PERSIST_EEG_ROUTE_B_RANDOMNESS_AUDIT_V1",
+  "terminal_if_multiple_explained_ge_0.5": "CURRENT_TRIAGE_MATERIALLY_RANDOMNESS_CONFOUNDED"
+}
