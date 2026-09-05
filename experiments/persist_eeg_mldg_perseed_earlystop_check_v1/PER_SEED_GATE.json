@@ -1,0 +1,26 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "any_delta_below_minus5pp": true,
+  "beta": 1.0,
+  "canonical_outcome_labels_read": false,
+  "dataset": "WBCIC",
+  "gates": {
+    "G1_mean_ge_0.5": true,
+    "G2_median_ge_0.25": true,
+    "G3_positive_ge_2_of_3": true,
+    "G4_no_delta_below_minus5": false
+  },
+  "mean_delta_BA_pp": 7.3,
+  "median_delta_BA_pp": 15.799999999999992,
+  "minimum_delta_BA_pp": -19.399999999999995,
+  "opt_seeds": [
+    0,
+    1,
+    2
+  ],
+  "outer_fold": 0,
+  "positive_seeds": 2,
+  "schema": "PERSIST_EEG_MLDG_PERSEED_EARLYSTOP_CHECK_V1",
+  "terminal": "MLDG_PER_SEED_EARLY_STOP_PARTIAL_ONLY"
+}

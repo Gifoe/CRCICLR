@@ -1,0 +1,37 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "backbone": "EEGNet",
+  "base_rng_seed": "sha256(mldg-robustness|WBCIC|fold0|opt_seed|train)",
+  "beta": 1.0,
+  "branch": "codex/persist-eeg-mldg-perseed-earlystop-check-v1",
+  "canonical_outcome_labels_read": false,
+  "created_at_utc": "2026-09-05T18:31:08Z",
+  "dataset": "WBCIC",
+  "early_stopping": {
+    "MAX_EPOCHS": 60,
+    "MIN_EPOCHS": 10,
+    "PATIENCE": 8,
+    "metric": [
+      "highest source-validation BA",
+      "lowest source-validation NLL",
+      "earliest epoch"
+    ]
+  },
+  "methods": [
+    "B0_SUBJECT_BALANCED_ERM",
+    "B2_SUBJECT_EPISODIC_MLDG"
+  ],
+  "mldg_meta_seed": "sha256(mldg-perseed-es-meta|WBCIC|fold0|opt_seed|epoch)",
+  "opt_seeds": [
+    0,
+    1,
+    2
+  ],
+  "order_seed": "sha256(mldg-robustness|WBCIC|fold0|opt_seed|epoch)",
+  "outer_fold": 0,
+  "parent": "codex/persist-eeg-mldg-robustness-confirm-v1",
+  "protocol_revision": "order/base RNG restored to parent; only per-seed source early stopping changes",
+  "schema": "PERSIST_EEG_MLDG_PERSEED_EARLYSTOP_CHECK_V1",
+  "split_source": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_NESTED_OOF_V1\\experiments\\persist_eeg_route_b_randomness_audit_v1\\SPLIT_AUDIT.csv"
+}
