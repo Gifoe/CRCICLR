@@ -1,0 +1,49 @@
+{
+  "all_existing_cache_retained": true,
+  "backbone": "canonical EEGNet frozen fold0 SUBJECT_BALANCED_ERM checkpoint",
+  "controls": {
+    "generic_prototype": true,
+    "generic_residual": true,
+    "protected_only": false,
+    "relation_uses_full_latent": true
+  },
+  "created_at_utc": "2026-09-05T08:04:27Z",
+  "data_scope": {
+    "OpenBMI_sealed_holdout_opened": false,
+    "WBCIC_outer_10_opened": false,
+    "outcome_after_both_dataset_locks": true,
+    "source_only_before_lock": true
+  },
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "final_claim_authorized": false,
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GENERIC_RESIDUAL",
+    "GENERIC_PROTOTYPE",
+    "CROSS_SESSION_RELATION"
+  ],
+  "outer_folds": [
+    0
+  ],
+  "purpose": "fast frozen-feature pilot for incremental cross-session discriminative information",
+  "schema": "PERSIST_EEG_INCREMENTAL_RELATION_AMENDMENT_V1",
+  "scientific_definition_changed": true,
+  "seed": 0,
+  "status": "ACTIVE",
+  "stopping_rule": {
+    "both_dataset_relation_delta_BA_pp_min": 0.5,
+    "both_dataset_relation_delta_macro_F1_pp_min": 0.0,
+    "nonnegative_subject_fraction_min": 0.5,
+    "relation_over_strongest_generic_delta_BA_pp_min": 0.5
+  },
+  "training": {
+    "neural_backbone_training": false,
+    "prototype_metric": "standardized_squared_euclidean",
+    "relation_score": "centered_full_latent_dot_mean_unit_cross_session_direction",
+    "residual_alpha": 1.0,
+    "residual_scale": 0.25
+  }
+}

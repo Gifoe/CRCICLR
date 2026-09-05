@@ -1,0 +1,38 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "amendment_sha256": "366ed3df834e065e1cbd5800c180716d3ccda88f69e4020df86d1ca2dea28ea8",
+  "artifact_sha256": {
+    "OpenBMI/source_frozen_features.npz": "56433409d787d6b12ae0bece2265d76a05b97cf6b191f155980b85d53fb9bff4",
+    "OpenBMI/source_manifest.json": "60b726ab1f9e767316d7538a99526a5524c753af192f5766654cb5c28e52ae86",
+    "OpenBMI/source_specs.npz": "9297a874eaa748a020e526bf6cddee0670e4c997ec7a4c3d5709a6eb1cd1238a",
+    "WBCIC/source_frozen_features.npz": "4e44c8ae82011fdcfcffff7def29081127b229e2fb26c52bfb593a0245c237de",
+    "WBCIC/source_manifest.json": "73893f0eb80bfa0d29278a25dddbdb2bd8891424a2addc7012e5f2092d2b0daf",
+    "WBCIC/source_specs.npz": "b2b1d041c84f1cb3c49bba87a6685fb084fc76ff95f4e0d5fa89e1e2c9222974"
+  },
+  "code_sha256": "10d0ea8876edfba6a3c7739199677f59effb4782c24cf8f8232403c1f735e802",
+  "created_at_utc": "2026-09-05T08:04:35Z",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "final_claim_authorized": false,
+  "folds": [
+    0
+  ],
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GENERIC_RESIDUAL",
+    "GENERIC_PROTOTYPE",
+    "CROSS_SESSION_RELATION"
+  ],
+  "outcome_labels_read": false,
+  "outcome_labels_read_before_lock": false,
+  "schema": "PERSIST_EEG_INCREMENTAL_RELATION_PRE_OUTCOME_LOCK_V1",
+  "seed": 0,
+  "source_audit_sha256": {
+    "OpenBMI": "614fd01c9cd64cac29e46a9beaf28c671a3365d0182d9e363c5d082827eee6b0",
+    "WBCIC": "30298c7ceb0abf557677fa40a3b98022fa94cdd2136807d434258c9b05819aa0"
+  },
+  "training_lock_sha256": "fbed23c8177b57af696ac84349ccf21926c450bb90557d0f65c832af06307200"
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "PERSIST_EEG_INCREMENTAL_RELATION_RUN_METRICS_V1",
+  "seed": 0,
+  "outer_folds": [0],
+  "datasets": ["OpenBMI", "WBCIC"],
+  "methods": ["SUBJECT_BALANCED_ERM", "GENERIC_RESIDUAL", "GENERIC_PROTOTYPE", "CROSS_SESSION_RELATION"],
+  "execution_mode": "sequential_single_gpu",
+  "device": "cuda:0",
+  "neural_backbone_training": false,
+  "feature_extraction_sec": {"OpenBMI": 2.905174099956639, "WBCIC": 3.954297099960968},
+  "source_rows": {"OpenBMI": 6800, "WBCIC": 9596},
+  "feature_dimension": 64,
+  "gpu_utilization_captured": false,
+  "peak_vram_captured": false,
+  "timing_note": "Frozen-feature extraction times are recorded from source manifests. Head evaluation is matrix-only and no neural training was run. GPU utilization and peak VRAM were not sampled during this pilot; no values are fabricated.",
+  "all_existing_cache_retained": true,
+  "outcome_labels_read_before_lock": false,
+  "WBCIC_outer_10_opened": false,
+  "OpenBMI_sealed_holdout_opened": false
+}
