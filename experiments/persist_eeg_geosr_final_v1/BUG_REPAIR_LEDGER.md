@@ -1,5 +1,27 @@
 # Bug repair ledger
 
+## 2026-09-05 — explicit CUDA index restores resident-cache reuse
+
+- cause: `torch.device('cuda') != torch.device('cuda:0')`. `FoldCache.tensor`
+  therefore re-uploaded the full source tensor and recomputed its normalized
+  view on every batch when invoked with the unindexed device.
+- fix: launch with the explicit current CUDA index. Keep `run_geosr.py` and
+  `audit_primitives.py` byte-identical so previously validated cache hashes
+  remain reusable. The full-protocol accelerated launcher uses the same fix.
+- source-only full-epoch verification, both datasets fold0: identical loss
+  and identical full model-state SHA-256 before and after the device change.
+  OpenBMI 25.4026 -> 1.4519 sec/epoch (17.50x); WBCIC 70.2997 -> 1.9049
+  sec/epoch (36.91x). See `DEVICE_CACHE_EQUIVALENCE.json`.
+- change RAPID_TRIAGE scheduling to one worker on the single GPU. Its previous
+  concurrent epoch times were approximately 51 s and 149 s, respectively.
+- preserve atomic progress files, honor already-satisfied early stopping on
+  resume, return actual checkpoint hashes on cache hits, verify hashes before
+  outcome access, and report elapsed epochs rather than selected-best epochs.
+- numerical resume/early-stop regressions and existing protocol tests: 7 passed.
+- scientific_definition_changed: false for these engineering fixes. The
+  separately locked RAPID_TRIAGE amendment changes scientific scope and remains
+  a directional screen, not a formal seed0 result.
+
 No scientific repair was performed.  The implementation was written as a
 separate experiment from the audit base.  Any subsequent engineering-only
 repair (path, device, memory, serialization, or deterministic execution) must

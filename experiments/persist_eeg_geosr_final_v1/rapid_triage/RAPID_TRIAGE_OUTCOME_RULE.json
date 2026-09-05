@@ -1,0 +1,13 @@
+{
+  "both_datasets_required": true,
+  "clear_positive": {
+    "mean_BA_delta_pp_min": 0.5,
+    "mean_macro_F1_delta_pp_min": 0.0,
+    "nonnegative_subject_BA_fraction_min": 0.5
+  },
+  "final_claim_authorized": false,
+  "mixed_direction": "STOP_AS_INCONCLUSIVE",
+  "negative_action": "STOP",
+  "positive_action": "RESTORE_FULL_PROTOCOL",
+  "schema": "PERSIST_EEG_GEOSR_RAPID_TRIAGE_OUTCOME_RULE_V1"
+}

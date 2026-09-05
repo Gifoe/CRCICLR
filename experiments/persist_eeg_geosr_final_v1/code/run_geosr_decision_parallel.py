@@ -82,7 +82,7 @@ def launch_pair(pair: list[tuple[str, int]], metrics: dict[str, Any]) -> None:
         err = (root / "worker.err").open("a", encoding="utf-8")
         cmd = [sys.executable, str(Path(__file__).with_name("run_geosr_decision.py")),
                "--phase", "preflight", "--dataset", dataset, "--fold", str(fold),
-               "--root", str(root), "--device", "cuda"]
+               "--root", str(root), "--device", "cuda:0"]
         if worker_complete(root):
             out.write("[orchestrator] worker cache marker valid; skipped launch\n")
             out.close(); err.close()
@@ -148,7 +148,7 @@ def launch_dynamic(metrics: dict[str, Any]) -> None:
             return
         cmd = [sys.executable, str(Path(__file__).with_name("run_geosr_decision.py")),
                "--phase", "preflight", "--dataset", dataset, "--fold", str(fold),
-               "--root", str(root), "--device", "cuda"]
+               "--root", str(root), "--device", "cuda:0"]
         started = time.perf_counter()
         p = subprocess.Popen(cmd, cwd=str(EXP), env=env, stdout=out, stderr=err, text=True)
         active.append((task, p, out, err, started))
@@ -293,7 +293,7 @@ def main() -> None:
     if args.phase in ("outcome", "all"):
         d.ROOT = ROOT; d.RESULTS = ROOT / "results"; d.RUNTIME = ROOT / "runtime"
         d.DATASETS = DATASETS; d.FOLDS = FOLDS
-        result = d.evaluate_outcome(torch.device("cuda"))
+        result = d.evaluate_outcome(torch.device("cuda:0"))
         print(result["terminal"], flush=True)
 
 

@@ -1,0 +1,30 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "cross_dataset_direction_consistent": false,
+  "dataset_decisions": {
+    "OpenBMI": {
+      "clear_positive": false,
+      "mean_BA_delta_pp": -1.909090909090909,
+      "mean_macro_F1_delta_pp": -1.9916078260638237,
+      "nonnegative_subject_fraction": 0.5454545454545454,
+      "positive_subject_fraction": 0.2727272727272727,
+      "worst_subject_delta_pp": -9.999999999999998
+    },
+    "WBCIC": {
+      "clear_positive": true,
+      "mean_BA_delta_pp": 1.8888888888888893,
+      "mean_macro_F1_delta_pp": 1.9133335037778771,
+      "nonnegative_subject_fraction": 0.6666666666666666,
+      "positive_subject_fraction": 0.5555555555555556,
+      "worst_subject_delta_pp": -1.4999999999999902
+    }
+  },
+  "final_claim_authorized": false,
+  "outcome_after_lock": true,
+  "restore_full_protocol": false,
+  "schema": "PERSIST_EEG_GEOSR_RAPID_TRIAGE_RESULT_V1",
+  "scientific_definition_changed": true,
+  "screen_only": true,
+  "terminal": "RAPID_TRIAGE_STOP_INCONCLUSIVE_OR_MIXED"
+}
