@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "D": 2,
+    "F1": 8,
+    "F2": 16,
+    "architecture": "canonical vanilla EEGNet",
+    "batch_size": 64,
+    "dropout": 0.25,
+    "epoch_selection": "discovery mean subject BA; lower NLL; earlier epoch",
+    "gradient_clip_norm": 5.0,
+    "latent_dim": 64,
+    "lr": 0.0003,
+    "max_epochs": 60,
+    "min_epochs": 10,
+    "optimizer": "AdamW",
+    "patience": 8,
+    "temporal_kernel": 64,
+    "weight_decay": 0.0005
+  },
+  "beta": 0.0001,
+  "lambda_downside": 1.0,
+  "method": "Population-Consensus Subject-Disjoint Effect Transport (SDET)",
+  "rank": 4,
+  "rho": 0.05,
+  "runtime": {
+    "device": "cuda",
+    "repo": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SDET_WORK",
+    "runtime_root": "D:\\nips-temp\\TotalP\\P2\\sdet_runtime_seed0"
+  },
+  "scale_control": "unit L2 norm per U/V column after every optimizer step",
+  "sdet_optimizer": {
+    "episodes": 5,
+    "epochs": 30,
+    "lr": 0.01,
+    "optimizer": "Adam",
+    "weight_decay": 0.0
+  },
+  "seed": 0,
+  "seed1_run": false,
+  "seed2_run": false,
+  "session_semantics": {
+    "OpenBMI": {
+      "query": [
+        2
+      ],
+      "support": [
+        1
+      ]
+    },
+    "WBCIC": {
+      "query": [
+        2
+      ],
+      "support": [
+        0,
+        1
+      ]
+    }
+  },
+  "stop_gradient_proposal": true,
+  "sweep": false,
+  "test_labels_used_for_training_or_selection": false,
+  "test_subject_adapter": false,
+  "test_time_adaptation": false
+}
