@@ -1,0 +1,46 @@
+{
+  "compact_architecture": {
+    "block1_out": 96,
+    "block2_out": 128,
+    "dropout": [
+      0.25,
+      0.2
+    ],
+    "representation_dim": 128,
+    "spatial_out": 72,
+    "stem_channels": 12,
+    "tau": 0.1,
+    "temporal_kernels": [
+      15,
+      63,
+      127
+    ]
+  },
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "device": "cuda",
+  "episode_trials": 128,
+  "fold_seeds": [
+    100,
+    101,
+    102
+  ],
+  "future_session": {
+    "OpenBMI": "physical session 2",
+    "WBCIC": "physical session 2 / S3"
+  },
+  "gradient_clip_norm": 5.0,
+  "lambda_TG": 1.0,
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "method": "Compact-TG (Transfer Geometry)",
+  "min_epochs": 10,
+  "optimizer": "AdamW",
+  "outer_folds": 3,
+  "patience": 8,
+  "runtime": "D:\\nips-temp\\TotalP\\P2\\transfer_geometry_stage1_runtime",
+  "seed": 0,
+  "weight_decay": 0.0005
+}

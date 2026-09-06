@@ -1,0 +1,15 @@
+{
+  "only_allowed_differences": {
+    "architecture": "EEGNet vs Compact",
+    "loss": "Compact-ERM=CE; Compact-TG=CE+TG"
+  },
+  "same_early_stopping_rule": true,
+  "same_episodic_batches": true,
+  "same_fold_splits": true,
+  "same_normalization_source": true,
+  "same_optimization_steps": true,
+  "same_outer_dev_samples": true,
+  "same_session_availability": true,
+  "same_subjects": true,
+  "same_training_labels": true
+}
