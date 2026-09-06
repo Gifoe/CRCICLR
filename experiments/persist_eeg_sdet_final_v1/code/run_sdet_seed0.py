@@ -61,6 +61,7 @@ RHO = 0.05
 LAMBDA_DOWNSIDE = 1.0
 BETA = 1e-4
 EPS = 1e-8
+TIE_TOL = 1e-8
 BASELINE_MAX_EPOCHS = 60
 BASELINE_MIN_EPOCHS = 10
 BASELINE_PATIENCE = 8
@@ -700,7 +701,9 @@ def score_test(bundle: DatasetBundle, model: VanillaEEGNet, module: SDETModule, 
     model.eval(); module.eval()
     rows: list[dict[str, Any]] = []
     for subject in bundle.test_subjects:
-        indices = bundle.test_indices([subject], sessions=(1, 2) if bundle.name == "OpenBMI" else (0, 1, 2))
+        # The preregistered unseen-subject endpoint is future-session only:
+        # OpenBMI physical S2 and WBCIC physical S3 (both encoded as 2).
+        indices = bundle.test_indices([subject], sessions=(2,))
         x = prepare(bundle.test_accessor, indices, mean, std, device)
         labels = bundle.load_test_labels(indices)
         with torch.no_grad():
@@ -724,6 +727,9 @@ def score_test(bundle: DatasetBundle, model: VanillaEEGNet, module: SDETModule, 
 def aggregate(dataset: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
     frame = pd.DataFrame(rows)
     delta = frame["delta_BA"].to_numpy(float)
+    improved = delta > TIE_TOL
+    harmed = delta < -TIE_TOL
+    tied = np.abs(delta) <= TIE_TOL
     return {
         "dataset": dataset,
         "n_subjects": int(len(frame)),
@@ -735,12 +741,14 @@ def aggregate(dataset: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
         "delta_macro_F1": float(frame["delta_F1"].mean()),
         "median_subject_delta_BA_pp": float(np.median(delta) * 100.0),
         "mean_subject_delta_BA_pp": float(np.mean(delta) * 100.0),
-        "improved_subjects": int(np.sum(delta > 0)),
-        "harmed_subjects": int(np.sum(delta < 0)),
-        "improved_subject_ratio": float(np.mean(delta > 0)),
-        "harmed_subject_ratio": float(np.mean(delta < 0)),
-        "NTR0": float(np.mean(delta >= 0)),
-        "NTR0_5": float(np.mean(delta >= 0.005)),
+        "improved_subjects": int(np.sum(improved)),
+        "harmed_subjects": int(np.sum(harmed)),
+        "tied_subjects": int(np.sum(tied)),
+        "improved_subject_ratio": float(np.mean(improved)),
+        "harmed_subject_ratio": float(np.mean(harmed)),
+        "tied_subject_ratio": float(np.mean(tied)),
+        "NTR0": float(np.mean(delta >= -TIE_TOL)),
+        "NTR0_5": float(np.mean(delta >= 0.005 - TIE_TOL)),
         "worst_quartile_subject_delta_BA_pp": float(np.quantile(delta, 0.25) * 100.0),
         "best_quartile_subject_delta_BA_pp": float(np.quantile(delta, 0.75) * 100.0),
         "minimum_subject_delta_BA_pp": float(np.min(delta) * 100.0),
