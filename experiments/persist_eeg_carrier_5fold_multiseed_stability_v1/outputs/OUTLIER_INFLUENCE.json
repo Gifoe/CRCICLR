@@ -1,0 +1,570 @@
+{
+  "OpenBMI": {
+    "best5": [
+      {
+        "EEGNet_mean_BA": 0.69,
+        "LiteBN_mean_BA": 0.8366666666666666,
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "max_delta_pp": 16.999999999999993,
+        "mean_delta_pp": 14.66666666666667,
+        "min_delta_pp": 12.0,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 2.0548046676563234,
+        "subject_id": "44"
+      },
+      {
+        "EEGNet_mean_BA": 0.7799999999999999,
+        "LiteBN_mean_BA": 0.9266666666666666,
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "max_delta_pp": 21.999999999999996,
+        "mean_delta_pp": 14.666666666666657,
+        "min_delta_pp": 6.999999999999984,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 6.128258770283417,
+        "subject_id": "28"
+      },
+      {
+        "EEGNet_mean_BA": 0.7133333333333334,
+        "LiteBN_mean_BA": 0.8366666666666668,
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "max_delta_pp": 20.000000000000007,
+        "mean_delta_pp": 12.333333333333334,
+        "min_delta_pp": 2.9999999999999916,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 7.0395706939809655,
+        "subject_id": "8"
+      },
+      {
+        "EEGNet_mean_BA": 0.7733333333333334,
+        "LiteBN_mean_BA": 0.8966666666666666,
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "max_delta_pp": 14.999999999999991,
+        "mean_delta_pp": 12.333333333333329,
+        "min_delta_pp": 9.999999999999998,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 2.0548046676563225,
+        "subject_id": "33"
+      },
+      {
+        "EEGNet_mean_BA": 0.66,
+        "LiteBN_mean_BA": 0.7433333333333333,
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "max_delta_pp": 12.00000000000001,
+        "mean_delta_pp": 8.333333333333337,
+        "min_delta_pp": 4.999999999999993,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 2.8674417556808827,
+        "subject_id": "32"
+      }
+    ],
+    "fraction_subjects_gain_ge_1pp": 0.625,
+    "fraction_subjects_harm_le_minus_1pp": 0.15,
+    "leave_one_subject_out": [
+      {
+        "mean_without_subject_pp": 2.6923076923076925,
+        "subject_id": "15"
+      },
+      {
+        "mean_without_subject_pp": 2.6923076923076925,
+        "subject_id": "3"
+      },
+      {
+        "mean_without_subject_pp": 2.564102564102564,
+        "subject_id": "32"
+      },
+      {
+        "mean_without_subject_pp": 2.4615384615384617,
+        "subject_id": "33"
+      },
+      {
+        "mean_without_subject_pp": 2.7350427350427347,
+        "subject_id": "38"
+      },
+      {
+        "mean_without_subject_pp": 2.7777777777777772,
+        "subject_id": "47"
+      },
+      {
+        "mean_without_subject_pp": 2.6752136752136746,
+        "subject_id": "5"
+      },
+      {
+        "mean_without_subject_pp": 2.7692307692307687,
+        "subject_id": "6"
+      },
+      {
+        "mean_without_subject_pp": 2.76068376068376,
+        "subject_id": "14"
+      },
+      {
+        "mean_without_subject_pp": 2.9316239316239314,
+        "subject_id": "2"
+      },
+      {
+        "mean_without_subject_pp": 2.7777777777777777,
+        "subject_id": "26"
+      },
+      {
+        "mean_without_subject_pp": 2.4017094017094016,
+        "subject_id": "28"
+      },
+      {
+        "mean_without_subject_pp": 2.752136752136752,
+        "subject_id": "31"
+      },
+      {
+        "mean_without_subject_pp": 2.846153846153846,
+        "subject_id": "35"
+      },
+      {
+        "mean_without_subject_pp": 2.7777777777777777,
+        "subject_id": "40"
+      },
+      {
+        "mean_without_subject_pp": 2.692307692307692,
+        "subject_id": "43"
+      },
+      {
+        "mean_without_subject_pp": 2.743589743589743,
+        "subject_id": "1"
+      },
+      {
+        "mean_without_subject_pp": 2.811965811965812,
+        "subject_id": "11"
+      },
+      {
+        "mean_without_subject_pp": 2.692307692307692,
+        "subject_id": "23"
+      },
+      {
+        "mean_without_subject_pp": 2.905982905982906,
+        "subject_id": "30"
+      },
+      {
+        "mean_without_subject_pp": 2.905982905982906,
+        "subject_id": "48"
+      },
+      {
+        "mean_without_subject_pp": 2.8717948717948714,
+        "subject_id": "50"
+      },
+      {
+        "mean_without_subject_pp": 2.7692307692307687,
+        "subject_id": "52"
+      },
+      {
+        "mean_without_subject_pp": 2.4615384615384617,
+        "subject_id": "8"
+      },
+      {
+        "mean_without_subject_pp": 2.6837606837606836,
+        "subject_id": "10"
+      },
+      {
+        "mean_without_subject_pp": 2.5811965811965814,
+        "subject_id": "16"
+      },
+      {
+        "mean_without_subject_pp": 2.6923076923076925,
+        "subject_id": "19"
+      },
+      {
+        "mean_without_subject_pp": 2.675213675213675,
+        "subject_id": "22"
+      },
+      {
+        "mean_without_subject_pp": 2.6923076923076925,
+        "subject_id": "27"
+      },
+      {
+        "mean_without_subject_pp": 2.735042735042735,
+        "subject_id": "34"
+      },
+      {
+        "mean_without_subject_pp": 2.7264957264957266,
+        "subject_id": "45"
+      },
+      {
+        "mean_without_subject_pp": 2.769230769230769,
+        "subject_id": "49"
+      },
+      {
+        "mean_without_subject_pp": 2.6923076923076925,
+        "subject_id": "20"
+      },
+      {
+        "mean_without_subject_pp": 2.623931623931624,
+        "subject_id": "21"
+      },
+      {
+        "mean_without_subject_pp": 2.709401709401709,
+        "subject_id": "41"
+      },
+      {
+        "mean_without_subject_pp": 2.4017094017094016,
+        "subject_id": "44"
+      },
+      {
+        "mean_without_subject_pp": 2.7777777777777777,
+        "subject_id": "46"
+      },
+      {
+        "mean_without_subject_pp": 2.717948717948718,
+        "subject_id": "53"
+      },
+      {
+        "mean_without_subject_pp": 2.692307692307692,
+        "subject_id": "7"
+      },
+      {
+        "mean_without_subject_pp": 2.692307692307692,
+        "subject_id": "9"
+      }
+    ],
+    "leave_two_worst_out_delta_pp": 3.1403508771929824,
+    "top_quartile_positive_gain_fraction": 0.6641414141414143,
+    "worst5": [
+      {
+        "EEGNet_mean_BA": 0.8033333333333333,
+        "LiteBN_mean_BA": 0.7433333333333333,
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "max_delta_pp": -1.0000000000000009,
+        "mean_delta_pp": -6.000000000000003,
+        "min_delta_pp": -14.000000000000002,
+        "negative_seed_count": 3,
+        "positive_seed_count": 0,
+        "std_delta_pp": 5.715476066494082,
+        "subject_id": "2"
+      },
+      {
+        "EEGNet_mean_BA": 0.7566666666666667,
+        "LiteBN_mean_BA": 0.7066666666666667,
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "max_delta_pp": 6.000000000000005,
+        "mean_delta_pp": -5.000000000000001,
+        "min_delta_pp": -20.000000000000007,
+        "negative_seed_count": 2,
+        "positive_seed_count": 1,
+        "std_delta_pp": 10.984838035522726,
+        "subject_id": "30"
+      },
+      {
+        "EEGNet_mean_BA": 0.6766666666666666,
+        "LiteBN_mean_BA": 0.6266666666666666,
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "max_delta_pp": -0.9999999999999898,
+        "mean_delta_pp": -4.9999999999999964,
+        "min_delta_pp": -13.0,
+        "negative_seed_count": 3,
+        "positive_seed_count": 0,
+        "std_delta_pp": 5.656854249492382,
+        "subject_id": "48"
+      },
+      {
+        "EEGNet_mean_BA": 0.6333333333333333,
+        "LiteBN_mean_BA": 0.5966666666666667,
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "max_delta_pp": 0.0,
+        "mean_delta_pp": -3.6666666666666625,
+        "min_delta_pp": -6.999999999999995,
+        "negative_seed_count": 2,
+        "positive_seed_count": 0,
+        "std_delta_pp": 2.8674417556808733,
+        "subject_id": "50"
+      },
+      {
+        "EEGNet_mean_BA": 0.8433333333333334,
+        "LiteBN_mean_BA": 0.8166666666666668,
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "max_delta_pp": 3.0000000000000027,
+        "mean_delta_pp": -2.6666666666666616,
+        "min_delta_pp": -5.999999999999995,
+        "negative_seed_count": 2,
+        "positive_seed_count": 1,
+        "std_delta_pp": 4.02768199119819,
+        "subject_id": "35"
+      }
+    ]
+  },
+  "WBCIC": {
+    "best5": [
+      {
+        "EEGNet_mean_BA": 0.6533333333333333,
+        "LiteBN_mean_BA": 0.7316666666666668,
+        "dataset": "WBCIC",
+        "fold": 3,
+        "max_delta_pp": 12.0,
+        "mean_delta_pp": 7.833333333333337,
+        "min_delta_pp": 4.5000000000000036,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 3.1180478223116155,
+        "subject_id": "sub-11"
+      },
+      {
+        "EEGNet_mean_BA": 0.6283333333333333,
+        "LiteBN_mean_BA": 0.6883333333333334,
+        "dataset": "WBCIC",
+        "fold": 3,
+        "max_delta_pp": 8.499999999999996,
+        "mean_delta_pp": 6.000000000000001,
+        "min_delta_pp": 3.500000000000003,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 2.0412414523193125,
+        "subject_id": "sub-26"
+      },
+      {
+        "EEGNet_mean_BA": 0.56,
+        "LiteBN_mean_BA": 0.6066666666666666,
+        "dataset": "WBCIC",
+        "fold": 2,
+        "max_delta_pp": 6.999999999999995,
+        "mean_delta_pp": 4.666666666666663,
+        "min_delta_pp": 1.0000000000000009,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 2.6246692913372676,
+        "subject_id": "sub-32"
+      },
+      {
+        "EEGNet_mean_BA": 0.8366666666666666,
+        "LiteBN_mean_BA": 0.88,
+        "dataset": "WBCIC",
+        "fold": 3,
+        "max_delta_pp": 6.499999999999995,
+        "mean_delta_pp": 4.333333333333333,
+        "min_delta_pp": 2.0000000000000018,
+        "negative_seed_count": 0,
+        "positive_seed_count": 3,
+        "std_delta_pp": 1.8408935028645406,
+        "subject_id": "sub-29"
+      },
+      {
+        "EEGNet_mean_BA": 0.6116666666666667,
+        "LiteBN_mean_BA": 0.6383333333333333,
+        "dataset": "WBCIC",
+        "fold": 0,
+        "max_delta_pp": 4.499999999999993,
+        "mean_delta_pp": 2.6666666666666656,
+        "min_delta_pp": 0.0,
+        "negative_seed_count": 0,
+        "positive_seed_count": 2,
+        "std_delta_pp": 1.929306150465036,
+        "subject_id": "sub-18"
+      }
+    ],
+    "fraction_subjects_gain_ge_1pp": 0.41935483870967744,
+    "fraction_subjects_harm_le_minus_1pp": 0.3870967741935484,
+    "leave_one_subject_out": [
+      {
+        "mean_without_subject_pp": -0.4593153759820419,
+        "subject_id": "sub-18"
+      },
+      {
+        "mean_without_subject_pp": -0.3370931537598198,
+        "subject_id": "sub-22"
+      },
+      {
+        "mean_without_subject_pp": -0.3037598204264863,
+        "subject_id": "sub-35"
+      },
+      {
+        "mean_without_subject_pp": -0.40375982042648645,
+        "subject_id": "sub-44"
+      },
+      {
+        "mean_without_subject_pp": -0.28153759820426405,
+        "subject_id": "sub-49"
+      },
+      {
+        "mean_without_subject_pp": -0.3148709315375976,
+        "subject_id": "sub-6"
+      },
+      {
+        "mean_without_subject_pp": -0.16487093153759752,
+        "subject_id": "sub-9"
+      },
+      {
+        "mean_without_subject_pp": -0.40375982042648656,
+        "subject_id": "sub-12"
+      },
+      {
+        "mean_without_subject_pp": 0.0406846240179578,
+        "subject_id": "sub-28"
+      },
+      {
+        "mean_without_subject_pp": -0.22042648709315307,
+        "subject_id": "sub-30"
+      },
+      {
+        "mean_without_subject_pp": -0.3815375982042639,
+        "subject_id": "sub-37"
+      },
+      {
+        "mean_without_subject_pp": -0.2815375982042643,
+        "subject_id": "sub-45"
+      },
+      {
+        "mean_without_subject_pp": -0.281537598204264,
+        "subject_id": "sub-7"
+      },
+      {
+        "mean_without_subject_pp": -0.29264870931537534,
+        "subject_id": "sub-1"
+      },
+      {
+        "mean_without_subject_pp": -0.19264870931537556,
+        "subject_id": "sub-14"
+      },
+      {
+        "mean_without_subject_pp": -0.3759820426487087,
+        "subject_id": "sub-23"
+      },
+      {
+        "mean_without_subject_pp": -0.5259820426487088,
+        "subject_id": "sub-32"
+      },
+      {
+        "mean_without_subject_pp": -0.4315375982042644,
+        "subject_id": "sub-34"
+      },
+      {
+        "mean_without_subject_pp": -0.33153759820426426,
+        "subject_id": "sub-50"
+      },
+      {
+        "mean_without_subject_pp": -0.6315375982042646,
+        "subject_id": "sub-11"
+      },
+      {
+        "mean_without_subject_pp": -0.40375982042648656,
+        "subject_id": "sub-13"
+      },
+      {
+        "mean_without_subject_pp": -0.4111111111111102,
+        "subject_id": "sub-24"
+      },
+      {
+        "mean_without_subject_pp": -0.5704264870931534,
+        "subject_id": "sub-26"
+      },
+      {
+        "mean_without_subject_pp": -0.5148709315375978,
+        "subject_id": "sub-29"
+      },
+      {
+        "mean_without_subject_pp": -0.259315375982042,
+        "subject_id": "sub-47"
+      },
+      {
+        "mean_without_subject_pp": -0.4482042648709307,
+        "subject_id": "sub-16"
+      },
+      {
+        "mean_without_subject_pp": -0.420426487093153,
+        "subject_id": "sub-27"
+      },
+      {
+        "mean_without_subject_pp": -0.3426487093153752,
+        "subject_id": "sub-36"
+      },
+      {
+        "mean_without_subject_pp": -0.3815375982042642,
+        "subject_id": "sub-41"
+      },
+      {
+        "mean_without_subject_pp": -0.36487093153759775,
+        "subject_id": "sub-48"
+      },
+      {
+        "mean_without_subject_pp": -0.4204264870931531,
+        "subject_id": "sub-5"
+      }
+    ],
+    "leave_two_worst_out_delta_pp": 0.2547312202484622,
+    "top_quartile_positive_gain_fraction": 0.8262518968133534,
+    "worst5": [
+      {
+        "EEGNet_mean_BA": 0.6783333333333333,
+        "LiteBN_mean_BA": 0.555,
+        "dataset": "WBCIC",
+        "fold": 1,
+        "max_delta_pp": -5.499999999999994,
+        "mean_delta_pp": -12.333333333333329,
+        "min_delta_pp": -18.499999999999993,
+        "negative_seed_count": 3,
+        "positive_seed_count": 0,
+        "std_delta_pp": 5.328122454381926,
+        "subject_id": "sub-28"
+      },
+      {
+        "EEGNet_mean_BA": 0.6116666666666667,
+        "LiteBN_mean_BA": 0.5499999999999999,
+        "dataset": "WBCIC",
+        "fold": 0,
+        "max_delta_pp": -4.0000000000000036,
+        "mean_delta_pp": -6.166666666666669,
+        "min_delta_pp": -10.499999999999998,
+        "negative_seed_count": 3,
+        "positive_seed_count": 0,
+        "std_delta_pp": 3.0641293851417033,
+        "subject_id": "sub-9"
+      },
+      {
+        "EEGNet_mean_BA": 0.5683333333333332,
+        "LiteBN_mean_BA": 0.515,
+        "dataset": "WBCIC",
+        "fold": 2,
+        "max_delta_pp": -4.499999999999993,
+        "mean_delta_pp": -5.333333333333328,
+        "min_delta_pp": -5.999999999999995,
+        "negative_seed_count": 3,
+        "positive_seed_count": 0,
+        "std_delta_pp": 0.6236095644623242,
+        "subject_id": "sub-14"
+      },
+      {
+        "EEGNet_mean_BA": 0.855,
+        "LiteBN_mean_BA": 0.81,
+        "dataset": "WBCIC",
+        "fold": 1,
+        "max_delta_pp": 0.5000000000000004,
+        "mean_delta_pp": -4.500000000000001,
+        "min_delta_pp": -7.500000000000007,
+        "negative_seed_count": 2,
+        "positive_seed_count": 1,
+        "std_delta_pp": 3.5590260840104384,
+        "subject_id": "sub-30"
+      },
+      {
+        "EEGNet_mean_BA": 0.9533333333333335,
+        "LiteBN_mean_BA": 0.92,
+        "dataset": "WBCIC",
+        "fold": 3,
+        "max_delta_pp": -3.0000000000000027,
+        "mean_delta_pp": -3.3333333333333326,
+        "min_delta_pp": -3.9999999999999925,
+        "negative_seed_count": 3,
+        "positive_seed_count": 0,
+        "std_delta_pp": 0.47140452079102685,
+        "subject_id": "sub-47"
+      }
+    ]
+  }
+}
