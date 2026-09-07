@@ -248,7 +248,9 @@ def main() -> int:
     pd.DataFrame(summary).to_csv(OUT / "CARRIER_SCREEN_SUMMARY.csv", index=False); pd.DataFrame(subject_rows).to_csv(OUT / "SUBJECT_RESULTS.csv", index=False)
     all_logs={d:{n:x[1] for n,x in trained[d].items()} for d in trained}; v1.write_json(OUT / "TRAINING_LOGS.json", all_logs)
     base_rows=[{"model":"EEGNet","openbmi_BA":results["OpenBMI"]["EEGNet"]["BA"],"openbmi_macroF1":results["OpenBMI"]["EEGNet"]["macroF1"],"wbcic_BA":results["WBCIC"]["EEGNet"]["BA"],"wbcic_macroF1":results["WBCIC"]["EEGNet"]["macroF1"],"parameter_count":count(trained["OpenBMI"]["EEGNet"][0])}]; pd.DataFrame(base_rows).to_csv(OUT / "EEGNET_BASELINE.csv",index=False)
-    text=["# Carrier dual-dataset fold0 screen", "", "All candidates were fixed before outer development evaluation. No holdout or WBCIC true outer data were loaded.", "", pd.DataFrame(summary).to_markdown(index=False), "", "Terminal gates are descriptive architecture-screen gates, not confirmation claims."]
+    table = ["| model | OpenBMI BA | OpenBMI delta pp | WBCIC BA | WBCIC delta pp | terminal |", "|---|---:|---:|---:|---:|---|"]
+    table.extend(f"| {r['model']} | {r['openbmi_BA']:.6f} | {r['openbmi_delta_pp']:+.3f} | {r['wbcic_BA']:.6f} | {r['wbcic_delta_pp']:+.3f} | {r['terminal_gate']} |" for r in summary)
+    text=["# Carrier dual-dataset fold0 screen", "", "All candidates were fixed before outer development evaluation. No holdout or WBCIC true outer data were loaded.", "", *table, "", "Terminal gates are descriptive architecture-screen gates, not confirmation claims."]
     (OUT / "DECISION.md").write_text("\n".join(text)+"\n",encoding="utf-8")
     print("CARRIER_DUALDATASET_SCREEN_COMPLETE", flush=True); return 0
 
