@@ -1,0 +1,26 @@
+{
+  "base_classifier_preserved": true,
+  "base_model_frozen": true,
+  "base_state_hash_unchanged_raw": true,
+  "base_state_hash_unchanged_relative": true,
+  "only_intended_difference": "Raw-Sidecar receives h; Relative-Sidecar receives h - frozen_g(h).",
+  "raw_vs_relative": {
+    "same_CE_sample_order": true,
+    "same_CE_samples": true,
+    "same_actual_steps": true,
+    "same_checkpoint_selection": true,
+    "same_episode_manifest": true,
+    "same_epochs": true,
+    "same_evaluation_samples": true,
+    "same_inner_val_subjects": true,
+    "same_learning_rate": true,
+    "same_normalizer": true,
+    "same_optimizer": true,
+    "same_outer_dev_subjects": true,
+    "same_sidecar_architecture": true,
+    "same_sidecar_initial_weights": true,
+    "same_sidecar_parameter_count": true,
+    "same_train_subjects": true,
+    "same_weight_decay": true
+  }
+}

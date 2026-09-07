@@ -1,0 +1,432 @@
+{
+  "actual_steps": 1200,
+  "best_inner_val_offset_MSE": 0.04906308092176914,
+  "checkpoint": "/root/rivermind-data/relative_sidecar_fold0_runtime/checkpoints/offset_best.pt",
+  "checkpoint_sha256": "3a449170a60af6ed8e2eaf8c631575ae155e98913da22d6ae8528f75a5a72674",
+  "frozen_after_selection": true,
+  "history": [
+    {
+      "epoch": 1,
+      "mean_subject_offset_MSE": 0.17028328031301498,
+      "mean_subject_offset_cosine": 0.6380013128121694,
+      "selected": false,
+      "train_offset_MSE": 0.19846283420920371
+    },
+    {
+      "epoch": 2,
+      "mean_subject_offset_MSE": 0.14909586310386658,
+      "mean_subject_offset_cosine": 0.6562384267648061,
+      "selected": false,
+      "train_offset_MSE": 0.19579202681779861
+    },
+    {
+      "epoch": 3,
+      "mean_subject_offset_MSE": 0.12560281778375307,
+      "mean_subject_offset_cosine": 0.6843152244885763,
+      "selected": false,
+      "train_offset_MSE": 0.17061029896140098
+    },
+    {
+      "epoch": 4,
+      "mean_subject_offset_MSE": 0.10435960503915946,
+      "mean_subject_offset_cosine": 0.7158472537994385,
+      "selected": false,
+      "train_offset_MSE": 0.15066415667533875
+    },
+    {
+      "epoch": 5,
+      "mean_subject_offset_MSE": 0.08924745054294665,
+      "mean_subject_offset_cosine": 0.7551189561684927,
+      "selected": true,
+      "train_offset_MSE": 0.12346070744097233
+    },
+    {
+      "epoch": 6,
+      "mean_subject_offset_MSE": 0.0785349967579047,
+      "mean_subject_offset_cosine": 0.7828709979852041,
+      "selected": true,
+      "train_offset_MSE": 0.11251875720918178
+    },
+    {
+      "epoch": 7,
+      "mean_subject_offset_MSE": 0.07157205231487751,
+      "mean_subject_offset_cosine": 0.8028924663861593,
+      "selected": true,
+      "train_offset_MSE": 0.10449631549417973
+    },
+    {
+      "epoch": 8,
+      "mean_subject_offset_MSE": 0.06672412777940433,
+      "mean_subject_offset_cosine": 0.8170617818832397,
+      "selected": true,
+      "train_offset_MSE": 0.10465660654008388
+    },
+    {
+      "epoch": 9,
+      "mean_subject_offset_MSE": 0.06333237793296576,
+      "mean_subject_offset_cosine": 0.8240186472733816,
+      "selected": true,
+      "train_offset_MSE": 0.09749120697379113
+    },
+    {
+      "epoch": 10,
+      "mean_subject_offset_MSE": 0.06134915134559075,
+      "mean_subject_offset_cosine": 0.8275566101074219,
+      "selected": true,
+      "train_offset_MSE": 0.09661522284150123
+    },
+    {
+      "epoch": 11,
+      "mean_subject_offset_MSE": 0.05979109058777491,
+      "mean_subject_offset_cosine": 0.8288615445295969,
+      "selected": true,
+      "train_offset_MSE": 0.09122273735702038
+    },
+    {
+      "epoch": 12,
+      "mean_subject_offset_MSE": 0.05816202579687039,
+      "mean_subject_offset_cosine": 0.8317864934603373,
+      "selected": true,
+      "train_offset_MSE": 0.09073098190128803
+    },
+    {
+      "epoch": 13,
+      "mean_subject_offset_MSE": 0.057075949385762215,
+      "mean_subject_offset_cosine": 0.832687258720398,
+      "selected": true,
+      "train_offset_MSE": 0.08900790177285671
+    },
+    {
+      "epoch": 14,
+      "mean_subject_offset_MSE": 0.055481415862838425,
+      "mean_subject_offset_cosine": 0.8348450064659119,
+      "selected": true,
+      "train_offset_MSE": 0.08706166930496692
+    },
+    {
+      "epoch": 15,
+      "mean_subject_offset_MSE": 0.05441041042407354,
+      "mean_subject_offset_cosine": 0.837376058101654,
+      "selected": true,
+      "train_offset_MSE": 0.0869271919131279
+    },
+    {
+      "epoch": 16,
+      "mean_subject_offset_MSE": 0.0536354910582304,
+      "mean_subject_offset_cosine": 0.8372414708137512,
+      "selected": true,
+      "train_offset_MSE": 0.08335023894906043
+    },
+    {
+      "epoch": 17,
+      "mean_subject_offset_MSE": 0.05349498552580675,
+      "mean_subject_offset_cosine": 0.8368084331353506,
+      "selected": true,
+      "train_offset_MSE": 0.08561633452773094
+    },
+    {
+      "epoch": 18,
+      "mean_subject_offset_MSE": 0.05286245234310627,
+      "mean_subject_offset_cosine": 0.8369637727737427,
+      "selected": true,
+      "train_offset_MSE": 0.08649641051888465
+    },
+    {
+      "epoch": 19,
+      "mean_subject_offset_MSE": 0.05226182813445727,
+      "mean_subject_offset_cosine": 0.8386975626150767,
+      "selected": true,
+      "train_offset_MSE": 0.08550977371633053
+    },
+    {
+      "epoch": 20,
+      "mean_subject_offset_MSE": 0.05205421335995197,
+      "mean_subject_offset_cosine": 0.8400808175404867,
+      "selected": true,
+      "train_offset_MSE": 0.08573768846690655
+    },
+    {
+      "epoch": 21,
+      "mean_subject_offset_MSE": 0.05229471996426582,
+      "mean_subject_offset_cosine": 0.8378925621509552,
+      "selected": false,
+      "train_offset_MSE": 0.08365011289715767
+    },
+    {
+      "epoch": 22,
+      "mean_subject_offset_MSE": 0.0516837773223718,
+      "mean_subject_offset_cosine": 0.8391821682453156,
+      "selected": true,
+      "train_offset_MSE": 0.08442528061568737
+    },
+    {
+      "epoch": 23,
+      "mean_subject_offset_MSE": 0.051204574604829155,
+      "mean_subject_offset_cosine": 0.8395671645800272,
+      "selected": true,
+      "train_offset_MSE": 0.08314353600144386
+    },
+    {
+      "epoch": 24,
+      "mean_subject_offset_MSE": 0.05116463080048561,
+      "mean_subject_offset_cosine": 0.8401340146859487,
+      "selected": true,
+      "train_offset_MSE": 0.08369778990745544
+    },
+    {
+      "epoch": 25,
+      "mean_subject_offset_MSE": 0.05083731127281984,
+      "mean_subject_offset_cosine": 0.8421925008296967,
+      "selected": true,
+      "train_offset_MSE": 0.08607917204499245
+    },
+    {
+      "epoch": 26,
+      "mean_subject_offset_MSE": 0.05112682282924652,
+      "mean_subject_offset_cosine": 0.8417602876822153,
+      "selected": false,
+      "train_offset_MSE": 0.08448641337454318
+    },
+    {
+      "epoch": 27,
+      "mean_subject_offset_MSE": 0.05068254408737024,
+      "mean_subject_offset_cosine": 0.8404543598492941,
+      "selected": true,
+      "train_offset_MSE": 0.08382504805922508
+    },
+    {
+      "epoch": 28,
+      "mean_subject_offset_MSE": 0.05084538211425146,
+      "mean_subject_offset_cosine": 0.8387871583302816,
+      "selected": false,
+      "train_offset_MSE": 0.08378916084766388
+    },
+    {
+      "epoch": 29,
+      "mean_subject_offset_MSE": 0.05132797174155712,
+      "mean_subject_offset_cosine": 0.8390086193879446,
+      "selected": false,
+      "train_offset_MSE": 0.07838979698717594
+    },
+    {
+      "epoch": 30,
+      "mean_subject_offset_MSE": 0.0510432788481315,
+      "mean_subject_offset_cosine": 0.8399049838383993,
+      "selected": false,
+      "train_offset_MSE": 0.08301753848791123
+    },
+    {
+      "epoch": 31,
+      "mean_subject_offset_MSE": 0.050148693223794304,
+      "mean_subject_offset_cosine": 0.8402538200219473,
+      "selected": true,
+      "train_offset_MSE": 0.08116806298494339
+    },
+    {
+      "epoch": 32,
+      "mean_subject_offset_MSE": 0.050572777166962624,
+      "mean_subject_offset_cosine": 0.8412968516349792,
+      "selected": false,
+      "train_offset_MSE": 0.07897647097706795
+    },
+    {
+      "epoch": 33,
+      "mean_subject_offset_MSE": 0.0507867398361365,
+      "mean_subject_offset_cosine": 0.8421254456043243,
+      "selected": false,
+      "train_offset_MSE": 0.08446682542562485
+    },
+    {
+      "epoch": 34,
+      "mean_subject_offset_MSE": 0.05100964941084385,
+      "mean_subject_offset_cosine": 0.839625616868337,
+      "selected": false,
+      "train_offset_MSE": 0.08288465701043606
+    },
+    {
+      "epoch": 35,
+      "mean_subject_offset_MSE": 0.050634412094950676,
+      "mean_subject_offset_cosine": 0.837915966908137,
+      "selected": false,
+      "train_offset_MSE": 0.07998256869614125
+    },
+    {
+      "epoch": 36,
+      "mean_subject_offset_MSE": 0.05051584914326668,
+      "mean_subject_offset_cosine": 0.839554637670517,
+      "selected": false,
+      "train_offset_MSE": 0.08333835117518902
+    },
+    {
+      "epoch": 37,
+      "mean_subject_offset_MSE": 0.050304731354117393,
+      "mean_subject_offset_cosine": 0.8380967775980631,
+      "selected": false,
+      "train_offset_MSE": 0.0811944581568241
+    },
+    {
+      "epoch": 38,
+      "mean_subject_offset_MSE": 0.050885568683346115,
+      "mean_subject_offset_cosine": 0.8386952877044678,
+      "selected": false,
+      "train_offset_MSE": 0.08041990995407104
+    },
+    {
+      "epoch": 39,
+      "mean_subject_offset_MSE": 0.05105967881778876,
+      "mean_subject_offset_cosine": 0.8389053543408712,
+      "selected": false,
+      "train_offset_MSE": 0.08035296536982059
+    },
+    {
+      "epoch": 40,
+      "mean_subject_offset_MSE": 0.050297255938251816,
+      "mean_subject_offset_cosine": 0.839679072300593,
+      "selected": false,
+      "train_offset_MSE": 0.07989410683512688
+    },
+    {
+      "epoch": 41,
+      "mean_subject_offset_MSE": 0.04962574131786823,
+      "mean_subject_offset_cosine": 0.8396930893262228,
+      "selected": true,
+      "train_offset_MSE": 0.08184266537427902
+    },
+    {
+      "epoch": 42,
+      "mean_subject_offset_MSE": 0.04939889535307884,
+      "mean_subject_offset_cosine": 0.8419095178445181,
+      "selected": true,
+      "train_offset_MSE": 0.08135758861899375
+    },
+    {
+      "epoch": 43,
+      "mean_subject_offset_MSE": 0.04987793539961179,
+      "mean_subject_offset_cosine": 0.8418854475021362,
+      "selected": false,
+      "train_offset_MSE": 0.08253530859947204
+    },
+    {
+      "epoch": 44,
+      "mean_subject_offset_MSE": 0.04913750228782495,
+      "mean_subject_offset_cosine": 0.8439109226067861,
+      "selected": true,
+      "train_offset_MSE": 0.08022602871060372
+    },
+    {
+      "epoch": 45,
+      "mean_subject_offset_MSE": 0.04906308092176914,
+      "mean_subject_offset_cosine": 0.8437335888544718,
+      "selected": true,
+      "train_offset_MSE": 0.08104679435491562
+    },
+    {
+      "epoch": 46,
+      "mean_subject_offset_MSE": 0.04941731815536817,
+      "mean_subject_offset_cosine": 0.8427708943684896,
+      "selected": false,
+      "train_offset_MSE": 0.08126921802759171
+    },
+    {
+      "epoch": 47,
+      "mean_subject_offset_MSE": 0.04970946038762728,
+      "mean_subject_offset_cosine": 0.8391810953617096,
+      "selected": false,
+      "train_offset_MSE": 0.08134544156491756
+    },
+    {
+      "epoch": 48,
+      "mean_subject_offset_MSE": 0.05001463803152243,
+      "mean_subject_offset_cosine": 0.8391080598036448,
+      "selected": false,
+      "train_offset_MSE": 0.07881614491343499
+    },
+    {
+      "epoch": 49,
+      "mean_subject_offset_MSE": 0.05117974181969961,
+      "mean_subject_offset_cosine": 0.8385973672072092,
+      "selected": false,
+      "train_offset_MSE": 0.08123661205172539
+    },
+    {
+      "epoch": 50,
+      "mean_subject_offset_MSE": 0.050837154810627304,
+      "mean_subject_offset_cosine": 0.8395981093247732,
+      "selected": false,
+      "train_offset_MSE": 0.07971014454960823
+    },
+    {
+      "epoch": 51,
+      "mean_subject_offset_MSE": 0.05012311910589536,
+      "mean_subject_offset_cosine": 0.8416198889414469,
+      "selected": false,
+      "train_offset_MSE": 0.07893993929028512
+    },
+    {
+      "epoch": 52,
+      "mean_subject_offset_MSE": 0.04996151849627495,
+      "mean_subject_offset_cosine": 0.8409101863702139,
+      "selected": false,
+      "train_offset_MSE": 0.0808370489627123
+    },
+    {
+      "epoch": 53,
+      "mean_subject_offset_MSE": 0.049985225001970925,
+      "mean_subject_offset_cosine": 0.8412594199180603,
+      "selected": false,
+      "train_offset_MSE": 0.08048191517591477
+    },
+    {
+      "epoch": 54,
+      "mean_subject_offset_MSE": 0.05030948854982853,
+      "mean_subject_offset_cosine": 0.8420651853084564,
+      "selected": false,
+      "train_offset_MSE": 0.08041049260646105
+    },
+    {
+      "epoch": 55,
+      "mean_subject_offset_MSE": 0.0503800834218661,
+      "mean_subject_offset_cosine": 0.8429011007150015,
+      "selected": false,
+      "train_offset_MSE": 0.0813554897904396
+    },
+    {
+      "epoch": 56,
+      "mean_subject_offset_MSE": 0.049999295423428215,
+      "mean_subject_offset_cosine": 0.843617300192515,
+      "selected": false,
+      "train_offset_MSE": 0.07693262696266175
+    },
+    {
+      "epoch": 57,
+      "mean_subject_offset_MSE": 0.04994893198211988,
+      "mean_subject_offset_cosine": 0.8444327116012573,
+      "selected": false,
+      "train_offset_MSE": 0.08226301111280918
+    },
+    {
+      "epoch": 58,
+      "mean_subject_offset_MSE": 0.049465290581186615,
+      "mean_subject_offset_cosine": 0.8437019387880961,
+      "selected": false,
+      "train_offset_MSE": 0.07968048788607121
+    },
+    {
+      "epoch": 59,
+      "mean_subject_offset_MSE": 0.04948424485822519,
+      "mean_subject_offset_cosine": 0.843280553817749,
+      "selected": false,
+      "train_offset_MSE": 0.07846929207444191
+    },
+    {
+      "epoch": 60,
+      "mean_subject_offset_MSE": 0.04958724106351534,
+      "mean_subject_offset_cosine": 0.8430389662583669,
+      "selected": false,
+      "train_offset_MSE": 0.07890278287231922
+    }
+  ],
+  "seconds": 49.32358012883924,
+  "selected_epoch": 45,
+  "state_dict_sha256": "25fbd926d36c22b6b919c7e67d04a2ab722a5776b9dd346f5c7f1790e49c6370"
+}
