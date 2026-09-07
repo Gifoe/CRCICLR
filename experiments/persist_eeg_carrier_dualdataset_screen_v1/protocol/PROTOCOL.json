@@ -1,0 +1,16 @@
+{
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "epochs": 60,
+  "fold": 0,
+  "gradient_clip": 5.0,
+  "lr": 0.0003,
+  "optimizer": "AdamW",
+  "order": "train all models in both datasets before any outer-dev evaluation",
+  "seed": 0,
+  "selection": "future-session inner validation BA, epoch 10..60",
+  "split_sha256": "050703ca8676ae43f236691ed37d58d4ed7ed97b83f449a36f04d93af9ebcd14",
+  "weight_decay": 0.0005
+}

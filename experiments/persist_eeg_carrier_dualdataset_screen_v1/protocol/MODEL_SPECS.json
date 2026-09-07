@@ -1,0 +1,28 @@
+{
+  "Compact": {
+    "class": "exact historical CompactEncoder",
+    "params_58": 181806,
+    "params_62": 182094,
+    "source_sha256": "7f453a7cb4b85e66dfadb28c130777567bea87dcab7ac3173bb752a88581a409"
+  },
+  "EEGNet": {
+    "class": "canonical EEGNet",
+    "params_58": 34098,
+    "params_62": 34162
+  },
+  "LiteBN": {
+    "class": "CompactLite BN",
+    "params_58": 47786,
+    "params_62": 47978
+  },
+  "LiteGN": {
+    "class": "CompactLite GN",
+    "params_58": 47786,
+    "params_62": 47978
+  },
+  "MSResidual": {
+    "class": "frozen EEGNet + MSResidualBranch",
+    "params_58": 16730,
+    "params_62": 16922
+  }
+}
