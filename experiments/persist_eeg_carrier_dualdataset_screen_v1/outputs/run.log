@@ -1,0 +1,235 @@
+/opt/conda/lib/python3.12/site-packages/torch/nn/modules/conv.py:549: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at ../aten/src/ATen/native/Convolution.cpp:1036.)
+  return F.conv2d(
+[OpenBMI EEGNet] e=01 CE=0.7172 valBA=0.5667
+[OpenBMI EEGNet] e=05 CE=0.6597 valBA=0.6483
+[OpenBMI EEGNet] e=10 CE=0.6210 valBA=0.6900
+[OpenBMI EEGNet] e=11 CE=0.6071 valBA=0.7067
+[OpenBMI EEGNet] e=13 CE=0.6069 valBA=0.7183
+[OpenBMI EEGNet] e=15 CE=0.5835 valBA=0.7283
+[OpenBMI EEGNet] e=17 CE=0.5533 valBA=0.7383
+[OpenBMI EEGNet] e=20 CE=0.5241 valBA=0.7117
+[OpenBMI EEGNet] e=21 CE=0.5585 valBA=0.7400
+[OpenBMI EEGNet] e=22 CE=0.5342 valBA=0.7467
+[OpenBMI EEGNet] e=25 CE=0.5082 valBA=0.7467
+[OpenBMI EEGNet] e=30 CE=0.5236 valBA=0.7467
+[OpenBMI EEGNet] e=35 CE=0.5060 valBA=0.7367
+[OpenBMI EEGNet] e=36 CE=0.5011 valBA=0.7517
+[OpenBMI EEGNet] e=37 CE=0.4991 valBA=0.7533
+[OpenBMI EEGNet] e=39 CE=0.4811 valBA=0.7550
+[OpenBMI EEGNet] e=40 CE=0.4795 valBA=0.7433
+[OpenBMI EEGNet] e=45 CE=0.4690 valBA=0.7500
+[OpenBMI EEGNet] e=50 CE=0.4402 valBA=0.7417
+[OpenBMI EEGNet] e=52 CE=0.4426 valBA=0.7583
+[OpenBMI EEGNet] e=53 CE=0.4328 valBA=0.7617
+[OpenBMI EEGNet] e=55 CE=0.4630 valBA=0.7500
+[OpenBMI EEGNet] e=56 CE=0.4296 valBA=0.7650
+[OpenBMI EEGNet] e=60 CE=0.4193 valBA=0.7617
+[OpenBMI Compact] e=01 CE=0.7064 valBA=0.6117
+[OpenBMI Compact] e=05 CE=0.6024 valBA=0.6917
+[OpenBMI Compact] e=10 CE=0.4998 valBA=0.7317
+[OpenBMI Compact] e=11 CE=0.4831 valBA=0.7450
+[OpenBMI Compact] e=15 CE=0.4320 valBA=0.7383
+[OpenBMI Compact] e=16 CE=0.3916 valBA=0.7467
+[OpenBMI Compact] e=20 CE=0.3683 valBA=0.7217
+[OpenBMI Compact] e=21 CE=0.3976 valBA=0.7483
+[OpenBMI Compact] e=22 CE=0.3576 valBA=0.7567
+[OpenBMI Compact] e=25 CE=0.3233 valBA=0.7467
+[OpenBMI Compact] e=30 CE=0.3232 valBA=0.7400
+[OpenBMI Compact] e=32 CE=0.2985 valBA=0.7633
+[OpenBMI Compact] e=33 CE=0.2682 valBA=0.7733
+[OpenBMI Compact] e=35 CE=0.2848 valBA=0.7533
+[OpenBMI Compact] e=40 CE=0.2352 valBA=0.7483
+[OpenBMI Compact] e=43 CE=0.2287 valBA=0.7800
+[OpenBMI Compact] e=44 CE=0.2255 valBA=0.7850
+[OpenBMI Compact] e=45 CE=0.2465 valBA=0.7583
+[OpenBMI Compact] e=50 CE=0.2202 valBA=0.7633
+[OpenBMI Compact] e=55 CE=0.2020 valBA=0.7533
+[OpenBMI Compact] e=56 CE=0.1684 valBA=0.7950
+[OpenBMI Compact] e=60 CE=0.1560 valBA=0.7333
+[OpenBMI LiteBN] e=01 CE=0.7340 valBA=0.5050
+[OpenBMI LiteBN] e=05 CE=0.6196 valBA=0.6600
+[OpenBMI LiteBN] e=10 CE=0.5511 valBA=0.7167
+[OpenBMI LiteBN] e=11 CE=0.5236 valBA=0.7317
+[OpenBMI LiteBN] e=13 CE=0.5313 valBA=0.7450
+[OpenBMI LiteBN] e=15 CE=0.4738 valBA=0.7283
+[OpenBMI LiteBN] e=17 CE=0.4599 valBA=0.7483
+[OpenBMI LiteBN] e=20 CE=0.4196 valBA=0.7133
+[OpenBMI LiteBN] e=25 CE=0.4224 valBA=0.7400
+[OpenBMI LiteBN] e=30 CE=0.4105 valBA=0.7300
+[OpenBMI LiteBN] e=35 CE=0.3735 valBA=0.7350
+[OpenBMI LiteBN] e=40 CE=0.3574 valBA=0.7233
+[OpenBMI LiteBN] e=45 CE=0.3331 valBA=0.7350
+[OpenBMI LiteBN] e=46 CE=0.3202 valBA=0.7550
+[OpenBMI LiteBN] e=50 CE=0.3209 valBA=0.7467
+[OpenBMI LiteBN] e=55 CE=0.3234 valBA=0.7400
+[OpenBMI LiteBN] e=60 CE=0.2840 valBA=0.7417
+[OpenBMI LiteGN] e=01 CE=0.7256 valBA=0.5233
+[OpenBMI LiteGN] e=05 CE=0.6366 valBA=0.6617
+[OpenBMI LiteGN] e=10 CE=0.5774 valBA=0.7017
+[OpenBMI LiteGN] e=12 CE=0.5273 valBA=0.7050
+[OpenBMI LiteGN] e=15 CE=0.4914 valBA=0.7167
+[OpenBMI LiteGN] e=17 CE=0.4666 valBA=0.7267
+[OpenBMI LiteGN] e=18 CE=0.4579 valBA=0.7300
+[OpenBMI LiteGN] e=20 CE=0.4406 valBA=0.7250
+[OpenBMI LiteGN] e=22 CE=0.4630 valBA=0.7400
+[OpenBMI LiteGN] e=25 CE=0.4474 valBA=0.7317
+[OpenBMI LiteGN] e=30 CE=0.4448 valBA=0.7017
+[OpenBMI LiteGN] e=35 CE=0.4037 valBA=0.7183
+[OpenBMI LiteGN] e=40 CE=0.3795 valBA=0.7233
+[OpenBMI LiteGN] e=44 CE=0.3893 valBA=0.7417
+[OpenBMI LiteGN] e=45 CE=0.3577 valBA=0.7317
+[OpenBMI LiteGN] e=50 CE=0.3446 valBA=0.7250
+[OpenBMI LiteGN] e=51 CE=0.3536 valBA=0.7517
+[OpenBMI LiteGN] e=55 CE=0.3526 valBA=0.7400
+[OpenBMI LiteGN] e=60 CE=0.2961 valBA=0.7450
+[OpenBMI MSResidual] e=01 CE=0.3816 valBA=0.7650
+[OpenBMI MSResidual] e=05 CE=0.3561 valBA=0.7667
+[OpenBMI MSResidual] e=10 CE=0.3677 valBA=0.7650
+[OpenBMI MSResidual] e=12 CE=0.3483 valBA=0.7683
+[OpenBMI MSResidual] e=15 CE=0.3424 valBA=0.7633
+[OpenBMI MSResidual] e=20 CE=0.3179 valBA=0.7550
+[OpenBMI MSResidual] e=24 CE=0.3387 valBA=0.7700
+[OpenBMI MSResidual] e=25 CE=0.3127 valBA=0.7633
+[OpenBMI MSResidual] e=30 CE=0.3325 valBA=0.7583
+[OpenBMI MSResidual] e=35 CE=0.3204 valBA=0.7633
+[OpenBMI MSResidual] e=37 CE=0.3059 valBA=0.7717
+[OpenBMI MSResidual] e=40 CE=0.2999 valBA=0.7550
+[OpenBMI MSResidual] e=42 CE=0.2805 valBA=0.7733
+[OpenBMI MSResidual] e=45 CE=0.2879 valBA=0.7683
+[OpenBMI MSResidual] e=50 CE=0.2694 valBA=0.7667
+[OpenBMI MSResidual] e=55 CE=0.2726 valBA=0.7617
+[OpenBMI MSResidual] e=60 CE=0.2361 valBA=0.7550
+[OpenBMI MSResidualRMS] e=01 CE=0.3816 valBA=0.7650
+[OpenBMI MSResidualRMS] e=05 CE=0.3561 valBA=0.7683
+[OpenBMI MSResidualRMS] e=10 CE=0.3673 valBA=0.7650
+[OpenBMI MSResidualRMS] e=12 CE=0.3457 valBA=0.7667
+[OpenBMI MSResidualRMS] e=15 CE=0.3393 valBA=0.7633
+[OpenBMI MSResidualRMS] e=20 CE=0.3136 valBA=0.7500
+[OpenBMI MSResidualRMS] e=25 CE=0.3099 valBA=0.7717
+[OpenBMI MSResidualRMS] e=30 CE=0.3263 valBA=0.7533
+[OpenBMI MSResidualRMS] e=35 CE=0.3130 valBA=0.7650
+[OpenBMI MSResidualRMS] e=37 CE=0.2987 valBA=0.7750
+[OpenBMI MSResidualRMS] e=40 CE=0.3003 valBA=0.7567
+[OpenBMI MSResidualRMS] e=45 CE=0.2729 valBA=0.7783
+[OpenBMI MSResidualRMS] e=50 CE=0.2658 valBA=0.7650
+[OpenBMI MSResidualRMS] e=55 CE=0.2678 valBA=0.7633
+[OpenBMI MSResidualRMS] e=60 CE=0.2348 valBA=0.7567
+[WBCIC EEGNet] e=01 CE=0.6592 valBA=0.6050
+[WBCIC EEGNet] e=05 CE=0.4228 valBA=0.7050
+[WBCIC EEGNet] e=10 CE=0.3851 valBA=0.7100
+[WBCIC EEGNet] e=11 CE=0.3867 valBA=0.7137
+[WBCIC EEGNet] e=12 CE=0.3856 valBA=0.7150
+[WBCIC EEGNet] e=14 CE=0.3761 valBA=0.7163
+[WBCIC EEGNet] e=15 CE=0.3698 valBA=0.6975
+[WBCIC EEGNet] e=19 CE=0.3680 valBA=0.7175
+[WBCIC EEGNet] e=20 CE=0.3553 valBA=0.7250
+[WBCIC EEGNet] e=25 CE=0.3431 valBA=0.7150
+[WBCIC EEGNet] e=30 CE=0.3419 valBA=0.7075
+[WBCIC EEGNet] e=35 CE=0.3189 valBA=0.7275
+[WBCIC EEGNet] e=40 CE=0.3081 valBA=0.7163
+[WBCIC EEGNet] e=45 CE=0.2871 valBA=0.7113
+[WBCIC EEGNet] e=50 CE=0.3106 valBA=0.6925
+[WBCIC EEGNet] e=55 CE=0.2705 valBA=0.6925
+[WBCIC EEGNet] e=60 CE=0.2897 valBA=0.6987
+[WBCIC Compact] e=01 CE=0.6711 valBA=0.5737
+[WBCIC Compact] e=05 CE=0.3997 valBA=0.6962
+[WBCIC Compact] e=10 CE=0.3163 valBA=0.7012
+[WBCIC Compact] e=13 CE=0.2874 valBA=0.7213
+[WBCIC Compact] e=15 CE=0.2674 valBA=0.6938
+[WBCIC Compact] e=20 CE=0.2460 valBA=0.6913
+[WBCIC Compact] e=25 CE=0.2234 valBA=0.6900
+[WBCIC Compact] e=30 CE=0.2245 valBA=0.7050
+[WBCIC Compact] e=35 CE=0.2001 valBA=0.6938
+[WBCIC Compact] e=40 CE=0.1843 valBA=0.6725
+[WBCIC Compact] e=45 CE=0.1552 valBA=0.7112
+[WBCIC Compact] e=50 CE=0.1654 valBA=0.6925
+[WBCIC Compact] e=55 CE=0.1357 valBA=0.6900
+[WBCIC Compact] e=60 CE=0.1424 valBA=0.6837
+[WBCIC LiteBN] e=01 CE=0.6900 valBA=0.5513
+[WBCIC LiteBN] e=05 CE=0.4507 valBA=0.6762
+[WBCIC LiteBN] e=10 CE=0.3738 valBA=0.7263
+[WBCIC LiteBN] e=11 CE=0.3627 valBA=0.7288
+[WBCIC LiteBN] e=12 CE=0.3439 valBA=0.7450
+[WBCIC LiteBN] e=15 CE=0.3293 valBA=0.7425
+[WBCIC LiteBN] e=20 CE=0.2967 valBA=0.7350
+[WBCIC LiteBN] e=25 CE=0.2865 valBA=0.7512
+[WBCIC LiteBN] e=27 CE=0.2849 valBA=0.7525
+[WBCIC LiteBN] e=30 CE=0.2930 valBA=0.7200
+[WBCIC LiteBN] e=35 CE=0.2629 valBA=0.7463
+[WBCIC LiteBN] e=40 CE=0.2500 valBA=0.7188
+[WBCIC LiteBN] e=45 CE=0.2285 valBA=0.7125
+[WBCIC LiteBN] e=50 CE=0.2454 valBA=0.7288
+[WBCIC LiteBN] e=55 CE=0.2169 valBA=0.7338
+[WBCIC LiteBN] e=60 CE=0.2236 valBA=0.7050
+[WBCIC LiteGN] e=01 CE=0.6928 valBA=0.5700
+[WBCIC LiteGN] e=05 CE=0.4464 valBA=0.6925
+[WBCIC LiteGN] e=10 CE=0.3743 valBA=0.7000
+[WBCIC LiteGN] e=11 CE=0.3662 valBA=0.7013
+[WBCIC LiteGN] e=12 CE=0.3529 valBA=0.7163
+[WBCIC LiteGN] e=15 CE=0.3380 valBA=0.7263
+[WBCIC LiteGN] e=20 CE=0.3039 valBA=0.7062
+[WBCIC LiteGN] e=25 CE=0.2907 valBA=0.7025
+[WBCIC LiteGN] e=30 CE=0.2929 valBA=0.7000
+[WBCIC LiteGN] e=35 CE=0.2598 valBA=0.7100
+[WBCIC LiteGN] e=40 CE=0.2476 valBA=0.7162
+[WBCIC LiteGN] e=45 CE=0.2291 valBA=0.7200
+[WBCIC LiteGN] e=50 CE=0.2380 valBA=0.7125
+[WBCIC LiteGN] e=55 CE=0.2040 valBA=0.6937
+[WBCIC LiteGN] e=60 CE=0.2215 valBA=0.7063
+[WBCIC MSResidual] e=01 CE=0.2870 valBA=0.7200
+[WBCIC MSResidual] e=05 CE=0.2554 valBA=0.7087
+[WBCIC MSResidual] e=10 CE=0.2675 valBA=0.6950
+[WBCIC MSResidual] e=12 CE=0.2676 valBA=0.7075
+[WBCIC MSResidual] e=15 CE=0.2579 valBA=0.6713
+[WBCIC MSResidual] e=20 CE=0.2484 valBA=0.6925
+[WBCIC MSResidual] e=25 CE=0.2374 valBA=0.7037
+[WBCIC MSResidual] e=30 CE=0.2467 valBA=0.6825
+[WBCIC MSResidual] e=35 CE=0.2044 valBA=0.6875
+[WBCIC MSResidual] e=40 CE=0.2043 valBA=0.6788
+[WBCIC MSResidual] e=45 CE=0.1989 valBA=0.6937
+[WBCIC MSResidual] e=50 CE=0.2060 valBA=0.6963
+[WBCIC MSResidual] e=55 CE=0.1764 valBA=0.6975
+[WBCIC MSResidual] e=60 CE=0.1780 valBA=0.7000
+[WBCIC MSResidualRMS] e=01 CE=0.2869 valBA=0.7200
+[WBCIC MSResidualRMS] e=05 CE=0.2555 valBA=0.7100
+[WBCIC MSResidualRMS] e=10 CE=0.2677 valBA=0.6950
+[WBCIC MSResidualRMS] e=11 CE=0.2688 valBA=0.7000
+[WBCIC MSResidualRMS] e=12 CE=0.2683 valBA=0.7162
+[WBCIC MSResidualRMS] e=15 CE=0.2589 valBA=0.6938
+[WBCIC MSResidualRMS] e=20 CE=0.2483 valBA=0.7012
+[WBCIC MSResidualRMS] e=25 CE=0.2379 valBA=0.7100
+[WBCIC MSResidualRMS] e=30 CE=0.2463 valBA=0.6775
+[WBCIC MSResidualRMS] e=35 CE=0.2054 valBA=0.6938
+[WBCIC MSResidualRMS] e=40 CE=0.2047 valBA=0.6687
+[WBCIC MSResidualRMS] e=45 CE=0.1961 valBA=0.6850
+[WBCIC MSResidualRMS] e=50 CE=0.2040 valBA=0.6763
+[WBCIC MSResidualRMS] e=55 CE=0.1736 valBA=0.6800
+[WBCIC MSResidualRMS] e=60 CE=0.1789 valBA=0.6488
+CARRIER_DUALDATASET_PROTOCOL_INVALID: ImportError: `Import tabulate` failed.  Use pip or conda to install the tabulate package.
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.12/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tabulate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/rivermind-data/CRCICLR_EEGNET_PRD_WORK/experiments/persist_eeg_carrier_dualdataset_screen_v1/code/run_carrier_screen.py", line 257, in <module>
+    try: raise SystemExit(main())
+                          ^^^^^^
+  File "/root/rivermind-data/CRCICLR_EEGNET_PRD_WORK/experiments/persist_eeg_carrier_dualdataset_screen_v1/code/run_carrier_screen.py", line 251, in main
+    text=["# Carrier dual-dataset fold0 screen", "", "All candidates were fixed before outer development evaluation. No holdout or WBCIC true outer data were loaded.", "", pd.DataFrame(summary).to_markdown(index=False), "", "Terminal gates are descriptive architecture-screen gates, not confirmation claims."]
+                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/site-packages/pandas/core/frame.py", line 2983, in to_markdown
+    tabulate = import_optional_dependency("tabulate")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/site-packages/pandas/compat/_optional.py", line 161, in import_optional_dependency
+    raise ImportError(msg) from err
+ImportError: `Import tabulate` failed.  Use pip or conda to install the tabulate package.
