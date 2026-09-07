@@ -1,0 +1,146 @@
+{
+  "allowed_new_carrier_layernorm": true,
+  "expected": {
+    "block1.conv": {
+      "bias": false,
+      "in": 1,
+      "kernel": [
+        25
+      ],
+      "out": 24,
+      "padding": [
+        12
+      ],
+      "stride": [
+        2
+      ]
+    },
+    "dw2": {
+      "bias": false,
+      "dilation": [
+        2
+      ],
+      "groups": 24,
+      "in": 24,
+      "kernel": [
+        15
+      ],
+      "out": 24,
+      "padding": [
+        14
+      ]
+    },
+    "dw3": {
+      "bias": false,
+      "dilation": [
+        4
+      ],
+      "groups": 32,
+      "in": 32,
+      "kernel": [
+        15
+      ],
+      "out": 32,
+      "padding": [
+        28
+      ]
+    },
+    "pool2": {
+      "kernel": 4,
+      "stride": 4
+    },
+    "pool3": {
+      "output": 8
+    },
+    "pw2": {
+      "bias": false,
+      "in": 24,
+      "kernel": [
+        1
+      ],
+      "out": 32
+    },
+    "pw3": {
+      "bias": false,
+      "in": 32,
+      "kernel": [
+        1
+      ],
+      "out": 48
+    }
+  },
+  "observed": {
+    "block1.conv": {
+      "bias": false,
+      "in": 1,
+      "kernel": [
+        25
+      ],
+      "out": 24,
+      "padding": [
+        12
+      ],
+      "stride": [
+        2
+      ]
+    },
+    "dw2": {
+      "bias": false,
+      "dilation": [
+        2
+      ],
+      "groups": 24,
+      "in": 24,
+      "kernel": [
+        15
+      ],
+      "out": 24,
+      "padding": [
+        14
+      ]
+    },
+    "dw3": {
+      "bias": false,
+      "dilation": [
+        4
+      ],
+      "groups": 32,
+      "in": 32,
+      "kernel": [
+        15
+      ],
+      "out": 32,
+      "padding": [
+        28
+      ]
+    },
+    "pool2": {
+      "kernel": [
+        4
+      ],
+      "stride": [
+        4
+      ]
+    },
+    "pool3": {
+      "output": 8
+    },
+    "pw2": {
+      "bias": false,
+      "in": 24,
+      "kernel": [
+        1
+      ],
+      "out": 32
+    },
+    "pw3": {
+      "bias": false,
+      "in": 32,
+      "kernel": [
+        1
+      ],
+      "out": 48
+    }
+  },
+  "v1_temporal_encoder_exact_match": false
+}

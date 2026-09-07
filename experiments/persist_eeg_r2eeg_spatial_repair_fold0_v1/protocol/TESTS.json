@@ -1,0 +1,28 @@
+{
+  "parameter_under_150k": true,
+  "shape": {
+    "62": {
+      "logits": [
+        4,
+        2
+      ],
+      "z_full": [
+        4,
+        128
+      ],
+      "z_rel": [
+        4,
+        64
+      ],
+      "z_res": [
+        4,
+        64
+      ]
+    }
+  },
+  "spatial_sensitivity": {
+    "max_abs_feature_difference": 0.8050665855407715,
+    "mean_abs_feature_difference": 0.11831454187631607
+  },
+  "temporal_encoder_match": false
+}
