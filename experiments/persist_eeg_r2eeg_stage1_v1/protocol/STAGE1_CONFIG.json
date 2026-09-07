@@ -1,0 +1,22 @@
+{
+  "amp": true,
+  "device": "cuda",
+  "folds": 3,
+  "max_epochs": 60,
+  "optimizer": {
+    "grad_clip": 5.0,
+    "lr": 0.0003,
+    "name": "AdamW",
+    "weight_decay": 0.0005
+  },
+  "relation": {
+    "absolute_centroid_alignment": false,
+    "lambda_rel": 0.25,
+    "loss": "CE + 0.25*PRD(z_rel)"
+  },
+  "seed": 0,
+  "selection_epoch_range": [
+    10,
+    60
+  ]
+}

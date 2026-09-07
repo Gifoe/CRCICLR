@@ -1,0 +1,71 @@
+{
+  "cache_schema": true,
+  "episode_isolation": {
+    "OpenBMI": {
+      "folds": [
+        {
+          "episode_sha256": "05eee83d07d0371ba552f9450ffd83601877b4f7ef808311fd67b159519b738f",
+          "fold": 0,
+          "outer_samples_in_episodes": false,
+          "steps_per_epoch": 20
+        },
+        {
+          "episode_sha256": "621a44f5fb7575433187c7dcfd0c03aa8ef1857089f389aa9b7b7c045fab0d69",
+          "fold": 1,
+          "outer_samples_in_episodes": false,
+          "steps_per_epoch": 20
+        },
+        {
+          "episode_sha256": "29a71d851196043d7235cd31c3c043af7119508b2064fee6eb78b15d5c04772f",
+          "fold": 2,
+          "outer_samples_in_episodes": false,
+          "steps_per_epoch": 20
+        }
+      ],
+      "rows": 8000,
+      "subjects": 40
+    },
+    "WBCIC": {
+      "folds": [
+        {
+          "episode_sha256": "911d930fe7daeb6e3cdc096cae26624dcdad08407ccc442932e85e83621ecc59",
+          "fold": 0,
+          "outer_samples_in_episodes": false,
+          "steps_per_epoch": 50
+        },
+        {
+          "episode_sha256": "887e42fee9674007649c9999d4132804a3edd1e16576ac5333aedbc642f13e34",
+          "fold": 1,
+          "outer_samples_in_episodes": false,
+          "steps_per_epoch": 50
+        },
+        {
+          "episode_sha256": "723093a4689e129e8fe49a4451edbba711d1693ec0ca928a7e290389f8fed691",
+          "fold": 2,
+          "outer_samples_in_episodes": false,
+          "steps_per_epoch": 50
+        }
+      ],
+      "rows": 18591,
+      "subjects": 31
+    }
+  },
+  "pass": true,
+  "tests": {
+    "no_global_centroid_alignment_loss": true,
+    "prd_k2_matches_explicit_binary": true,
+    "shape_and_parameter": [
+      {
+        "channels": 62,
+        "params": 33586,
+        "shape_test": true
+      },
+      {
+        "channels": 58,
+        "params": 33586,
+        "shape_test": true
+      }
+    ],
+    "translation_invariance": true
+  }
+}
