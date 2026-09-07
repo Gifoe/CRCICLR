@@ -1,0 +1,8 @@
+{
+  "M": "Z Z^T/N plus 1e-8*trace(M)/C I",
+  "centered_covariance_secondary_only": true,
+  "formula": "||M_B-M_A||_F/(||M_A||_F+1e-8)",
+  "legacy_alias": "cov_fro_shift",
+  "primary_name": "spatial_second_moment_shift",
+  "uncentered": true
+}

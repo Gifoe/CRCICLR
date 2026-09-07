@@ -1,0 +1,2995 @@
+{
+  "checkpoint_info": {
+    "OpenBMI/fold1/EEGNet": {
+      "best_inner_val_BA": 0.77,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/openbmi/fold1/checkpoints/openbmi/fold0_eegnet_best.pt",
+      "checkpoint_sha256": "d60709e0ef52b9dc5a5c7f916cfe61f8be5c280339c8c5071841592ac13eb285",
+      "elapsed_seconds_this_invocation": 32.939586024032906,
+      "history": [
+        {
+          "CE": 0.6946985721588135,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.5633333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.6178541541099548,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.6066666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.607338035106659,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.5777930736541748,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.5724260568618774,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.6516666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.561068594455719,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.6616666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.5571267068386078,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.6733333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.5428948253393173,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.67,
+          "selected": false
+        },
+        {
+          "CE": 0.5350483983755112,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.6566666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.5346214830875397,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.6633333333333332,
+          "selected": true
+        },
+        {
+          "CE": 0.5262833446264267,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.6916666666666668,
+          "selected": true
+        },
+        {
+          "CE": 0.5059894055128098,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.6883333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.5413735985755921,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.71,
+          "selected": true
+        },
+        {
+          "CE": 0.5002869576215744,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.7250000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.5069644659757614,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.7016666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.5003972232341767,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.7033333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.49320037961006163,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.7200000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.48598143458366394,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.7166666666666668,
+          "selected": false
+        },
+        {
+          "CE": 0.4959556609392166,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.7333333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.5042404443025589,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.7150000000000002,
+          "selected": false
+        },
+        {
+          "CE": 0.4724425286054611,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": true
+        },
+        {
+          "CE": 0.5046279311180115,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.7216666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.4617406815290451,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.7183333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.4666329026222229,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.7383333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.4939596921205521,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.7233333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4516242861747742,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.7400000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.46614457964897155,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.7466666666666667,
+          "selected": true
+        },
+        {
+          "CE": 0.4643341153860092,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.4580069988965988,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.7383333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4667086899280548,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.7266666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.44449062943458556,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.43406537771224973,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.7266666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.44355523139238356,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.7333333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4457215666770935,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.7233333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.45830335915088655,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.7333333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4331352531909943,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.7266666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.43989474773406984,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.7266666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.4089780732989311,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.4330831736326218,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.7483333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.4056167885661125,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.7516666666666666,
+          "selected": true
+        },
+        {
+          "CE": 0.42678016275167463,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.7466666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.3961353898048401,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.7450000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.40917093455791476,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.7583333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.42522611767053603,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.4029195919632912,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.7433333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.42633904963731767,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.7550000000000002,
+          "selected": false
+        },
+        {
+          "CE": 0.39771176427602767,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.745,
+          "selected": false
+        },
+        {
+          "CE": 0.408016674220562,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.7399999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.43198630064725874,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.7566666666666668,
+          "selected": false
+        },
+        {
+          "CE": 0.3928678289055824,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.7416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.41419698148965833,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.7616666666666667,
+          "selected": true
+        },
+        {
+          "CE": 0.4132349222898483,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.7416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.39627890288829803,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.7566666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.39933378994464874,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.7566666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.42080389708280563,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.7533333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.3961636021733284,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.755,
+          "selected": false
+        },
+        {
+          "CE": 0.4017332404851913,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.7600000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3893966361880302,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.7583333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.36806443333625793,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.7533333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.36898187547922134,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.77,
+          "selected": true
+        }
+      ],
+      "init_sha256": "f90b3ef660297d6a49ab5d80c73a7f0ebeea324e56fb98a1e571543dc5af42f7",
+      "manifest_sha256": "621a44f5fb7575433187c7dcfd0c03aa8ef1857089f389aa9b7b7c045fab0d69",
+      "model": "EEGNet",
+      "parameter_count": 34162,
+      "selected_epoch": 60
+    },
+    "OpenBMI/fold1/LiteBN": {
+      "best_inner_val_BA": 0.8166666666666668,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/openbmi/fold1/checkpoints/openbmi/fold0_litebn_best.pt",
+      "checkpoint_sha256": "a4513349fbc60871725e718a6d5b0a8c17441d10b616c6beb00cb4e97d97edfa",
+      "elapsed_seconds_this_invocation": 89.89382986281998,
+      "history": [
+        {
+          "CE": 0.708817207813263,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.5966666666666668,
+          "selected": false
+        },
+        {
+          "CE": 0.607319125533104,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.5938998728990554,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.6416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.5705381453037262,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.6383333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.5435697853565216,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.6699999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5430454224348068,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.71,
+          "selected": false
+        },
+        {
+          "CE": 0.509348315000534,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.7016666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.4794707491993904,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.7083333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.47455563545227053,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.7116666666666668,
+          "selected": false
+        },
+        {
+          "CE": 0.4659271761775017,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.7183333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.44882818013429643,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.7316666666666668,
+          "selected": true
+        },
+        {
+          "CE": 0.42532459944486617,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.7200000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.45331564247608186,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.7450000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.39730582684278487,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.7533333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.4226654082536697,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.7583333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.38987903147935865,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.7583333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.3928247198462486,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.7483333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.38564526438713076,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.7600000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.38319038450717924,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.7566666666666665,
+          "selected": false
+        },
+        {
+          "CE": 0.39533381909132004,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.7783333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.36909162253141403,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.7666666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.3803286969661713,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.7733333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.3680960491299629,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.7633333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.35762562081217764,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.7716666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.3569421410560608,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.7666666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.3572031453251839,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.7583333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.31199174746870995,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.7816666666666666,
+          "selected": true
+        },
+        {
+          "CE": 0.3218283995985985,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.7783333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.33848472908139227,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.7683333333333332,
+          "selected": false
+        },
+        {
+          "CE": 0.32088634222745893,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.785,
+          "selected": true
+        },
+        {
+          "CE": 0.3412799328565598,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.7733333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.31932328119874,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.7699999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.34111553356051444,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.7916666666666666,
+          "selected": true
+        },
+        {
+          "CE": 0.3109301269054413,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.7933333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.3140354834496975,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.7833333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.3028876505792141,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.7949999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.3116473749279976,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.8049999999999998,
+          "selected": true
+        },
+        {
+          "CE": 0.2741574488580227,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.8066666666666666,
+          "selected": true
+        },
+        {
+          "CE": 0.29130315110087396,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.7999999999999998,
+          "selected": false
+        },
+        {
+          "CE": 0.26276170164346696,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.7983333333333332,
+          "selected": false
+        },
+        {
+          "CE": 0.2660521730780602,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.8033333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.25402725115418434,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.7883333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.26620877757668493,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.8016666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.25570923611521723,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.7916666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.2780446097254753,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.7933333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.2902150347828865,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.785,
+          "selected": false
+        },
+        {
+          "CE": 0.26199143975973127,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.7916666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.27623283341526983,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.25623625591397287,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.8133333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.2303719587624073,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.8016666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.25353163480758667,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.7999999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.25238808840513227,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.795,
+          "selected": false
+        },
+        {
+          "CE": 0.2609329290688038,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.7833333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.24430761188268663,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.8016666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.2518805146217346,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.8016666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.24946226850152015,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.805,
+          "selected": false
+        },
+        {
+          "CE": 0.25335732772946357,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.24138280749320984,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.7883333333333332,
+          "selected": false
+        },
+        {
+          "CE": 0.2158115454018116,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.8033333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.21406593099236487,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.8166666666666668,
+          "selected": true
+        }
+      ],
+      "init_sha256": "11f0a027525c631b7487cf0b6216fdbb8620169154305ef3ccd8d669c43bc46b",
+      "manifest_sha256": "621a44f5fb7575433187c7dcfd0c03aa8ef1857089f389aa9b7b7c045fab0d69",
+      "model": "LiteBN",
+      "parameter_count": 47978,
+      "selected_epoch": 60
+    },
+    "OpenBMI/fold2/EEGNet": {
+      "best_inner_val_BA": 0.75,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/openbmi/fold2/checkpoints/openbmi/fold0_eegnet_best.pt",
+      "checkpoint_sha256": "d3a9cc66da1623319966deea3b133161a74f27f04c8612341ce9d9f70aaa4975",
+      "elapsed_seconds_this_invocation": 31.802916147978976,
+      "history": [
+        {
+          "CE": 0.7033414363861084,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.5233333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.6453444600105286,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.601196676492691,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.5916666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.5923386871814728,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.6166666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.5579886496067047,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.6383333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.5378743350505829,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.6316666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.5276262164115906,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.6333333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.5438408762216568,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.68,
+          "selected": false
+        },
+        {
+          "CE": 0.5164714947342872,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.6766666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.49269617199897764,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.6516666666666667,
+          "selected": true
+        },
+        {
+          "CE": 0.5117601066827774,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.6683333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.4938854187726974,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.6799999999999998,
+          "selected": true
+        },
+        {
+          "CE": 0.5069771230220794,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.6716666666666665,
+          "selected": false
+        },
+        {
+          "CE": 0.5054982081055641,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.6749999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4924675911664963,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.68,
+          "selected": false
+        },
+        {
+          "CE": 0.48199438899755476,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.69,
+          "selected": true
+        },
+        {
+          "CE": 0.4774887278676033,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.6933333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.48886104077100756,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.7083333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.486007821559906,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.7083333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.4623043417930603,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.7233333333333333,
+          "selected": true
+        },
+        {
+          "CE": 0.4463519975543022,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.6983333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.4655362442135811,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.705,
+          "selected": false
+        },
+        {
+          "CE": 0.47000607252120974,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.7183333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.45221946835517884,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.6966666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.449267715215683,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.6983333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.4362224295735359,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.7083333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.427676385641098,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.7116666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.45028301775455476,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.7183333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4310382500290871,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.7183333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.4334113150835037,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.73,
+          "selected": true
+        },
+        {
+          "CE": 0.4576225861907005,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.7199999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4243690699338913,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.735,
+          "selected": true
+        },
+        {
+          "CE": 0.42762078791856767,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.7233333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4171388134360313,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": true
+        },
+        {
+          "CE": 0.42829468101263046,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.7399999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.40414007008075714,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.7333333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.41992214918136594,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.7383333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4223296791315079,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.7233333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.39632089585065844,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.7466666666666666,
+          "selected": true
+        },
+        {
+          "CE": 0.4187547966837883,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.7283333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.39291572868824004,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.7283333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.39042577147483826,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.7183333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4105688348412514,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.7483333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.4050211951136589,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.725,
+          "selected": false
+        },
+        {
+          "CE": 0.370816695690155,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.71,
+          "selected": false
+        },
+        {
+          "CE": 0.41187532246112823,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.7283333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.40006922334432604,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.7333333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.43119721859693527,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.7250000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.40050030052661895,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.7283333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.39516416788101194,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.7399999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3944416046142578,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.7466666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.3802143082022667,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.7383333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.378621606528759,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.4045894853770733,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.7266666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.38528129160404206,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.7283333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.39645401686429976,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.75,
+          "selected": true
+        },
+        {
+          "CE": 0.37627167999744415,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.7399999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3532929815351963,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.7316666666666668,
+          "selected": false
+        },
+        {
+          "CE": 0.3462588518857956,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.73,
+          "selected": false
+        },
+        {
+          "CE": 0.38137189000844957,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.75,
+          "selected": false
+        }
+      ],
+      "init_sha256": "0aec6986f2b1720a9f00800b5fb066d753f0521c92a28701ab2f5bed6c681c76",
+      "manifest_sha256": "29a71d851196043d7235cd31c3c043af7119508b2064fee6eb78b15d5c04772f",
+      "model": "EEGNet",
+      "parameter_count": 34162,
+      "selected_epoch": 56
+    },
+    "OpenBMI/fold2/LiteBN": {
+      "best_inner_val_BA": 0.7683333333333332,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/openbmi/fold2/checkpoints/openbmi/fold0_litebn_best.pt",
+      "checkpoint_sha256": "d74dc63438cf33dafbb2fbf837d401e626b12ea96e234334f6da834bc743e76e",
+      "elapsed_seconds_this_invocation": 89.4546769221779,
+      "history": [
+        {
+          "CE": 0.6907937467098236,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.57,
+          "selected": false
+        },
+        {
+          "CE": 0.6364795356988907,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.6533333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.576098495721817,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.6499999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5859581828117371,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.6349999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5584178179502487,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.5447784632444381,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.6616666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.5206529468297958,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.6649999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5273345530033111,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.6533333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.5006354302167892,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.6750000000000002,
+          "selected": false
+        },
+        {
+          "CE": 0.486650849878788,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.6833333333333332,
+          "selected": true
+        },
+        {
+          "CE": 0.49997921735048295,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.68,
+          "selected": false
+        },
+        {
+          "CE": 0.47448727637529375,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.6833333333333332,
+          "selected": false
+        },
+        {
+          "CE": 0.47013880908489225,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.68,
+          "selected": false
+        },
+        {
+          "CE": 0.465599824488163,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.7083333333333334,
+          "selected": true
+        },
+        {
+          "CE": 0.45258799493312835,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.6966666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.441174091398716,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.71,
+          "selected": true
+        },
+        {
+          "CE": 0.4278752699494362,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.715,
+          "selected": true
+        },
+        {
+          "CE": 0.4463193565607071,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.7283333333333332,
+          "selected": true
+        },
+        {
+          "CE": 0.4246216967701912,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.73,
+          "selected": true
+        },
+        {
+          "CE": 0.4190488651394844,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.7466666666666667,
+          "selected": true
+        },
+        {
+          "CE": 0.39921088963747026,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.7383333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.41146768182516097,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.7433333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.4152588739991188,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.75,
+          "selected": true
+        },
+        {
+          "CE": 0.39471684992313383,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.7433333333333335,
+          "selected": false
+        },
+        {
+          "CE": 0.37560547739267347,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.7416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.36631266102194787,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.7316666666666668,
+          "selected": false
+        },
+        {
+          "CE": 0.36277795135974883,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.7416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.3996844530105591,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.37405851632356646,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.7433333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.3699340894818306,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.7433333333333335,
+          "selected": false
+        },
+        {
+          "CE": 0.3737613156437874,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.7399999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3591530114412308,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.3717537224292755,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.7366666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.37596854120492934,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.7599999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.3512111112475395,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.725,
+          "selected": false
+        },
+        {
+          "CE": 0.33982168212533,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.745,
+          "selected": false
+        },
+        {
+          "CE": 0.361200113594532,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.35020852237939837,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.7266666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.3395453155040741,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.7566666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.34058457612991333,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.7283333333333332,
+          "selected": false
+        },
+        {
+          "CE": 0.33276778757572173,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.7466666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.30437588766217233,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.7466666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.3234846189618111,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.32035149410367014,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.7466666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.3356732614338398,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.7416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.34862643033266066,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.7466666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.30777288153767585,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.7433333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.33114880323410034,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.7450000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3155658483505249,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.7399999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3082067795097828,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.7416666666666667,
+          "selected": false
+        },
+        {
+          "CE": 0.31182828918099403,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.7483333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.29655362889170644,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.3023460730910301,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.7400000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.31323693245649337,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.2864610552787781,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.7533333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.30515232160687444,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.7516666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.2809570126235485,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.7583333333333334,
+          "selected": false
+        },
+        {
+          "CE": 0.26786803267896175,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.7516666666666666,
+          "selected": false
+        },
+        {
+          "CE": 0.2756505496799946,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.7583333333333333,
+          "selected": false
+        },
+        {
+          "CE": 0.28993588164448736,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.7683333333333332,
+          "selected": true
+        }
+      ],
+      "init_sha256": "efe0e7b712ce3f8b7ad770c64b744bc006bd9afabc9f848d6a4029b51fab80d7",
+      "manifest_sha256": "29a71d851196043d7235cd31c3c043af7119508b2064fee6eb78b15d5c04772f",
+      "model": "LiteBN",
+      "parameter_count": 47978,
+      "selected_epoch": 60
+    },
+    "WBCIC/fold1/EEGNet": {
+      "best_inner_val_BA": 0.744,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/wbcic/fold1/checkpoints/wbcic/fold0_eegnet_best.pt",
+      "checkpoint_sha256": "75f51d750c6f693b17036e920319d9d96de264dfe6a11d095f450c13b8c8cb95",
+      "elapsed_seconds_this_invocation": 71.30326111498289,
+      "history": [
+        {
+          "CE": 0.6441919827461242,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.631,
+          "selected": false
+        },
+        {
+          "CE": 0.5506890094280243,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.704,
+          "selected": false
+        },
+        {
+          "CE": 0.5221879065036774,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.5349999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5131767976284027,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.6970000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5002459836006165,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.631,
+          "selected": false
+        },
+        {
+          "CE": 0.4824070727825165,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.507,
+          "selected": false
+        },
+        {
+          "CE": 0.4688725292682648,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.6519999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.46232664823532105,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.742,
+          "selected": false
+        },
+        {
+          "CE": 0.453607964515686,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.736,
+          "selected": false
+        },
+        {
+          "CE": 0.44427752017974853,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.501,
+          "selected": true
+        },
+        {
+          "CE": 0.4331725710630417,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.7230000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.43878935754299164,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.74,
+          "selected": true
+        },
+        {
+          "CE": 0.42265718460083007,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.4174215161800385,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.5109999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4070453941822052,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.502,
+          "selected": false
+        },
+        {
+          "CE": 0.4184522765874863,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.594,
+          "selected": false
+        },
+        {
+          "CE": 0.415818362236023,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.6990000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3797838097810745,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.673,
+          "selected": false
+        },
+        {
+          "CE": 0.40881902873516085,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.3858935880661011,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.5890000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.384766566157341,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.728,
+          "selected": false
+        },
+        {
+          "CE": 0.38490135490894317,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.502,
+          "selected": false
+        },
+        {
+          "CE": 0.37906492203474046,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.503,
+          "selected": false
+        },
+        {
+          "CE": 0.3954495984315872,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.513,
+          "selected": false
+        },
+        {
+          "CE": 0.3772830539941788,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.7340000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3729888981580734,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.744,
+          "selected": true
+        },
+        {
+          "CE": 0.3718796581029892,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.7310000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.37721811413764955,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.547,
+          "selected": false
+        },
+        {
+          "CE": 0.3780078184604645,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3771999850869179,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.5660000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.35722370773553846,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.728,
+          "selected": false
+        },
+        {
+          "CE": 0.3785306566953659,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.518,
+          "selected": false
+        },
+        {
+          "CE": 0.3519714134931564,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.709,
+          "selected": false
+        },
+        {
+          "CE": 0.37459361016750337,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.503,
+          "selected": false
+        },
+        {
+          "CE": 0.35896251201629636,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.6499999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3498402971029282,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.7100000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3738137358427048,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.504,
+          "selected": false
+        },
+        {
+          "CE": 0.37750036269426346,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3424031609296799,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.696,
+          "selected": false
+        },
+        {
+          "CE": 0.3588739410042763,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.7310000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.34659517765045167,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.608,
+          "selected": false
+        },
+        {
+          "CE": 0.36049518287181853,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.719,
+          "selected": false
+        },
+        {
+          "CE": 0.34960479170084,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.6530000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.35786532938480375,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.7330000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3578946977853775,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.7179999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3368344733119011,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.727,
+          "selected": false
+        },
+        {
+          "CE": 0.3256947419047356,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.7369999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3300052213668823,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.723,
+          "selected": false
+        },
+        {
+          "CE": 0.3406006669998169,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.7369999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.33937592804431915,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.728,
+          "selected": false
+        },
+        {
+          "CE": 0.3594683548808098,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.502,
+          "selected": false
+        },
+        {
+          "CE": 0.34772725015878675,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.502,
+          "selected": false
+        },
+        {
+          "CE": 0.33663591623306277,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.688,
+          "selected": false
+        },
+        {
+          "CE": 0.33389303743839266,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.5269999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.34556627184152605,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.526,
+          "selected": false
+        },
+        {
+          "CE": 0.34124761253595354,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.33080756694078445,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.673,
+          "selected": false
+        },
+        {
+          "CE": 0.3238640344142914,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.737,
+          "selected": false
+        },
+        {
+          "CE": 0.31275137603282926,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.7360000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.32621934384107587,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.611,
+          "selected": false
+        }
+      ],
+      "init_sha256": "0edd94390c7d090c9db5e49fe17e54caa78b1fbd6f4a3fc7e57d7a59d3a5a747",
+      "manifest_sha256": "887e42fee9674007649c9999d4132804a3edd1e16576ac5333aedbc642f13e34",
+      "model": "EEGNet",
+      "parameter_count": 34098,
+      "selected_epoch": 26
+    },
+    "WBCIC/fold1/LiteBN": {
+      "best_inner_val_BA": 0.748,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/wbcic/fold1/checkpoints/wbcic/fold0_litebn_best.pt",
+      "checkpoint_sha256": "56b4a1a580f0a5c5d793e4e434d0b23c194b67c72efbecbd5dbed3bce94e6a37",
+      "elapsed_seconds_this_invocation": 202.51172772212885,
+      "history": [
+        {
+          "CE": 0.702129955291748,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.6472311305999756,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.601,
+          "selected": false
+        },
+        {
+          "CE": 0.5997428607940674,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.536732233762741,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.695,
+          "selected": false
+        },
+        {
+          "CE": 0.5019176185131073,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.608,
+          "selected": false
+        },
+        {
+          "CE": 0.4717572742700577,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4410050678253174,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.4264750796556473,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.7310000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.41980814456939697,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.738,
+          "selected": false
+        },
+        {
+          "CE": 0.4101421135663986,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.7030000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.3991655737161636,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.7230000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.40259562015533445,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.7449999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.39635372698307036,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.516,
+          "selected": false
+        },
+        {
+          "CE": 0.37479432940483093,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.516,
+          "selected": false
+        },
+        {
+          "CE": 0.3723653134703636,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.508,
+          "selected": false
+        },
+        {
+          "CE": 0.3725301969051361,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.701,
+          "selected": false
+        },
+        {
+          "CE": 0.3674946129322052,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.734,
+          "selected": false
+        },
+        {
+          "CE": 0.3493052777647972,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.7110000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.37323153734207154,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3451578816771507,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.6449999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.33853590607643125,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.7309999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3463257542252541,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3501328268647194,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.624,
+          "selected": false
+        },
+        {
+          "CE": 0.3492953035235405,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.3467340329289436,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.741,
+          "selected": false
+        },
+        {
+          "CE": 0.32060185134410857,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.7430000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.32959539294242857,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.741,
+          "selected": false
+        },
+        {
+          "CE": 0.3388064378499985,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.59,
+          "selected": false
+        },
+        {
+          "CE": 0.3305691519379616,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.6489999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3264380979537964,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.6689999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.31355464667081834,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.6990000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.32746849477291107,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.513,
+          "selected": false
+        },
+        {
+          "CE": 0.30130640655755997,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.694,
+          "selected": false
+        },
+        {
+          "CE": 0.3098965388536453,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.536,
+          "selected": false
+        },
+        {
+          "CE": 0.30189348459243776,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.709,
+          "selected": false
+        },
+        {
+          "CE": 0.30432668179273603,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.74,
+          "selected": false
+        },
+        {
+          "CE": 0.3295713126659393,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.55,
+          "selected": false
+        },
+        {
+          "CE": 0.324080570936203,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.584,
+          "selected": false
+        },
+        {
+          "CE": 0.28427241146564486,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.717,
+          "selected": false
+        },
+        {
+          "CE": 0.30249934539198875,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.7470000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.2950815299153328,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.567,
+          "selected": false
+        },
+        {
+          "CE": 0.3055280926823616,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.733,
+          "selected": false
+        },
+        {
+          "CE": 0.3027614697813988,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.656,
+          "selected": false
+        },
+        {
+          "CE": 0.30245968371629717,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.722,
+          "selected": false
+        },
+        {
+          "CE": 0.29820080459117887,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.723,
+          "selected": false
+        },
+        {
+          "CE": 0.2752630452811718,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.7140000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.27057274252176283,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.729,
+          "selected": false
+        },
+        {
+          "CE": 0.27899635046720506,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.7350000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.27512141793966294,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.748,
+          "selected": true
+        },
+        {
+          "CE": 0.2784016472101212,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.717,
+          "selected": false
+        },
+        {
+          "CE": 0.30536187261343,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.682,
+          "selected": false
+        },
+        {
+          "CE": 0.30312813848257064,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.28202725648880006,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.709,
+          "selected": false
+        },
+        {
+          "CE": 0.2724867606163025,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.507,
+          "selected": false
+        },
+        {
+          "CE": 0.28270922690629957,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.2735553389787674,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.522,
+          "selected": false
+        },
+        {
+          "CE": 0.27137852102518084,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.7040000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.26657292753458023,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.699,
+          "selected": false
+        },
+        {
+          "CE": 0.2557573252916336,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.742,
+          "selected": false
+        },
+        {
+          "CE": 0.2574896651506424,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.593,
+          "selected": false
+        }
+      ],
+      "init_sha256": "ac44e7ce3e9d3c043d73d33405806daeebb124ac4ea1dd8debab7fe288f56781",
+      "manifest_sha256": "887e42fee9674007649c9999d4132804a3edd1e16576ac5333aedbc642f13e34",
+      "model": "LiteBN",
+      "parameter_count": 47786,
+      "selected_epoch": 49
+    },
+    "WBCIC/fold2/EEGNet": {
+      "best_inner_val_BA": 0.9029999999999999,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/wbcic/fold2/checkpoints/wbcic/fold0_eegnet_best.pt",
+      "checkpoint_sha256": "9e4c4f971acd762bdfa0ed3bea2dfea6272bef7caebe1bacf50a202854f38f94",
+      "elapsed_seconds_this_invocation": 71.81083280593157,
+      "history": [
+        {
+          "CE": 0.6748017501831055,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.598,
+          "selected": false
+        },
+        {
+          "CE": 0.6306262588500977,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.6799999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.606472225189209,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.728,
+          "selected": false
+        },
+        {
+          "CE": 0.5849243521690368,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.767,
+          "selected": false
+        },
+        {
+          "CE": 0.5593334984779358,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.819,
+          "selected": false
+        },
+        {
+          "CE": 0.5537683141231536,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.85,
+          "selected": false
+        },
+        {
+          "CE": 0.5317017221450806,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.8620000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5166469478607177,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.8559999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5231897485256195,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.852,
+          "selected": false
+        },
+        {
+          "CE": 0.5079411005973816,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.8780000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.5078600347042084,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.865,
+          "selected": false
+        },
+        {
+          "CE": 0.48723268032073974,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.881,
+          "selected": true
+        },
+        {
+          "CE": 0.4949909818172455,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.538,
+          "selected": false
+        },
+        {
+          "CE": 0.49311144173145294,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.7869999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4782324755191803,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.875,
+          "selected": false
+        },
+        {
+          "CE": 0.4869710737466812,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.8870000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.4825914776325226,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.8809999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4715478217601776,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.8869999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4701760596036911,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.882,
+          "selected": false
+        },
+        {
+          "CE": 0.4598477339744568,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.883,
+          "selected": false
+        },
+        {
+          "CE": 0.4528448742628097,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.882,
+          "selected": false
+        },
+        {
+          "CE": 0.46130150139331816,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.8960000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.4516644394397736,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.8119999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.46779770851135255,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4642467147111893,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.8629999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4556426972150803,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.897,
+          "selected": true
+        },
+        {
+          "CE": 0.45279853165149686,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.791,
+          "selected": false
+        },
+        {
+          "CE": 0.42919551730155947,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.891,
+          "selected": false
+        },
+        {
+          "CE": 0.45811813294887543,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.44803663074970246,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.712,
+          "selected": false
+        },
+        {
+          "CE": 0.4403377264738083,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.639,
+          "selected": false
+        },
+        {
+          "CE": 0.43609240353107454,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.901,
+          "selected": true
+        },
+        {
+          "CE": 0.44611851692199705,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.7790000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.4394231551885605,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.42959632515907287,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.89,
+          "selected": false
+        },
+        {
+          "CE": 0.4450515073537826,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.501,
+          "selected": false
+        },
+        {
+          "CE": 0.4312218773365021,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.889,
+          "selected": false
+        },
+        {
+          "CE": 0.4315831255912781,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.8949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4319707429409027,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.9,
+          "selected": false
+        },
+        {
+          "CE": 0.4432863599061966,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.89,
+          "selected": false
+        },
+        {
+          "CE": 0.43331599652767183,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.825,
+          "selected": false
+        },
+        {
+          "CE": 0.4270478105545044,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.89,
+          "selected": false
+        },
+        {
+          "CE": 0.4288834714889526,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.7839999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.44137531757354737,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.4298632603883743,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.8859999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4338092565536499,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.5959999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.42575816869735716,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.581,
+          "selected": false
+        },
+        {
+          "CE": 0.42657275557518004,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.884,
+          "selected": false
+        },
+        {
+          "CE": 0.4203934347629547,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.891,
+          "selected": false
+        },
+        {
+          "CE": 0.42249217599630357,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.6910000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.40332560539245604,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.892,
+          "selected": false
+        },
+        {
+          "CE": 0.43317180931568144,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.506,
+          "selected": false
+        },
+        {
+          "CE": 0.3917592090368271,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.892,
+          "selected": false
+        },
+        {
+          "CE": 0.4004640910029411,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.891,
+          "selected": false
+        },
+        {
+          "CE": 0.41523390531539917,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.8870000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.4033947169780731,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.5479999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.37236669719219206,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.9029999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.4105194419622421,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.8949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.41320175588130953,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.885,
+          "selected": false
+        },
+        {
+          "CE": 0.3918111130595207,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.898,
+          "selected": false
+        }
+      ],
+      "init_sha256": "60fa35af9fc84412447191552a53d22c7e0bdd05384ea56ebaa0f7d8895dbd07",
+      "manifest_sha256": "723093a4689e129e8fe49a4451edbba711d1693ec0ca928a7e290389f8fed691",
+      "model": "EEGNet",
+      "parameter_count": 34098,
+      "selected_epoch": 57
+    },
+    "WBCIC/fold2/LiteBN": {
+      "best_inner_val_BA": 0.9040000000000001,
+      "checkpoint_path": "/root/rivermind-data/spatial_reliability_prospective_runtime/wbcic/fold2/checkpoints/wbcic/fold0_litebn_best.pt",
+      "checkpoint_sha256": "93ab36f6699af941da4110d9ebb96ce97a794b3f04f2a39d3dca193280d2724b",
+      "elapsed_seconds_this_invocation": 201.82679330999963,
+      "history": [
+        {
+          "CE": 0.6926055669784545,
+          "epoch": 1,
+          "inner_val_subject_BA": 0.554,
+          "selected": false
+        },
+        {
+          "CE": 0.6448439931869507,
+          "epoch": 2,
+          "inner_val_subject_BA": 0.5810000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.6297301745414734,
+          "epoch": 3,
+          "inner_val_subject_BA": 0.657,
+          "selected": false
+        },
+        {
+          "CE": 0.6091809678077698,
+          "epoch": 4,
+          "inner_val_subject_BA": 0.561,
+          "selected": false
+        },
+        {
+          "CE": 0.5846886646747589,
+          "epoch": 5,
+          "inner_val_subject_BA": 0.6580000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5717149794101715,
+          "epoch": 6,
+          "inner_val_subject_BA": 0.8109999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5341936135292054,
+          "epoch": 7,
+          "inner_val_subject_BA": 0.8150000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5080557900667191,
+          "epoch": 8,
+          "inner_val_subject_BA": 0.82,
+          "selected": false
+        },
+        {
+          "CE": 0.51156170129776,
+          "epoch": 9,
+          "inner_val_subject_BA": 0.762,
+          "selected": false
+        },
+        {
+          "CE": 0.48945086538791654,
+          "epoch": 10,
+          "inner_val_subject_BA": 0.8200000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.48601449728012086,
+          "epoch": 11,
+          "inner_val_subject_BA": 0.8620000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.46829025864601137,
+          "epoch": 12,
+          "inner_val_subject_BA": 0.8559999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4678471714258194,
+          "epoch": 13,
+          "inner_val_subject_BA": 0.507,
+          "selected": false
+        },
+        {
+          "CE": 0.46265163719654084,
+          "epoch": 14,
+          "inner_val_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.45819836437702177,
+          "epoch": 15,
+          "inner_val_subject_BA": 0.8669999999999998,
+          "selected": true
+        },
+        {
+          "CE": 0.4500575137138367,
+          "epoch": 16,
+          "inner_val_subject_BA": 0.867,
+          "selected": false
+        },
+        {
+          "CE": 0.44895914375782014,
+          "epoch": 17,
+          "inner_val_subject_BA": 0.844,
+          "selected": false
+        },
+        {
+          "CE": 0.4423087388277054,
+          "epoch": 18,
+          "inner_val_subject_BA": 0.8560000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.43051601529121397,
+          "epoch": 19,
+          "inner_val_subject_BA": 0.8680000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.42354998528957366,
+          "epoch": 20,
+          "inner_val_subject_BA": 0.873,
+          "selected": true
+        },
+        {
+          "CE": 0.4057705008983612,
+          "epoch": 21,
+          "inner_val_subject_BA": 0.8649999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4126792848110199,
+          "epoch": 22,
+          "inner_val_subject_BA": 0.834,
+          "selected": false
+        },
+        {
+          "CE": 0.4174371665716171,
+          "epoch": 23,
+          "inner_val_subject_BA": 0.5609999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.42563555657863616,
+          "epoch": 24,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4224270397424698,
+          "epoch": 25,
+          "inner_val_subject_BA": 0.8240000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.40473205983638766,
+          "epoch": 26,
+          "inner_val_subject_BA": 0.877,
+          "selected": true
+        },
+        {
+          "CE": 0.3976361531019211,
+          "epoch": 27,
+          "inner_val_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.3890950730443001,
+          "epoch": 28,
+          "inner_val_subject_BA": 0.873,
+          "selected": false
+        },
+        {
+          "CE": 0.4106507194042206,
+          "epoch": 29,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.40037499099969864,
+          "epoch": 30,
+          "inner_val_subject_BA": 0.708,
+          "selected": false
+        },
+        {
+          "CE": 0.388799284696579,
+          "epoch": 31,
+          "inner_val_subject_BA": 0.841,
+          "selected": false
+        },
+        {
+          "CE": 0.40041524469852446,
+          "epoch": 32,
+          "inner_val_subject_BA": 0.893,
+          "selected": true
+        },
+        {
+          "CE": 0.3932595464587212,
+          "epoch": 33,
+          "inner_val_subject_BA": 0.627,
+          "selected": false
+        },
+        {
+          "CE": 0.3923425763845444,
+          "epoch": 34,
+          "inner_val_subject_BA": 0.843,
+          "selected": false
+        },
+        {
+          "CE": 0.3755578100681305,
+          "epoch": 35,
+          "inner_val_subject_BA": 0.808,
+          "selected": false
+        },
+        {
+          "CE": 0.3800187748670578,
+          "epoch": 36,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.38420695006847383,
+          "epoch": 37,
+          "inner_val_subject_BA": 0.8789999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.37998600959777834,
+          "epoch": 38,
+          "inner_val_subject_BA": 0.8699999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.36803905069828036,
+          "epoch": 39,
+          "inner_val_subject_BA": 0.899,
+          "selected": true
+        },
+        {
+          "CE": 0.38363121509552,
+          "epoch": 40,
+          "inner_val_subject_BA": 0.9030000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.3718667435646057,
+          "epoch": 41,
+          "inner_val_subject_BA": 0.6689999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3712256497144699,
+          "epoch": 42,
+          "inner_val_subject_BA": 0.885,
+          "selected": false
+        },
+        {
+          "CE": 0.36822718918323516,
+          "epoch": 43,
+          "inner_val_subject_BA": 0.6519999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3936614966392517,
+          "epoch": 44,
+          "inner_val_subject_BA": 0.731,
+          "selected": false
+        },
+        {
+          "CE": 0.3662013363838196,
+          "epoch": 45,
+          "inner_val_subject_BA": 0.8779999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3718215119838715,
+          "epoch": 46,
+          "inner_val_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.37135688424110413,
+          "epoch": 47,
+          "inner_val_subject_BA": 0.526,
+          "selected": false
+        },
+        {
+          "CE": 0.3658184352517128,
+          "epoch": 48,
+          "inner_val_subject_BA": 0.858,
+          "selected": false
+        },
+        {
+          "CE": 0.35875648438930513,
+          "epoch": 49,
+          "inner_val_subject_BA": 0.808,
+          "selected": false
+        },
+        {
+          "CE": 0.36282735943794253,
+          "epoch": 50,
+          "inner_val_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.34112869381904604,
+          "epoch": 51,
+          "inner_val_subject_BA": 0.8560000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.36584741950035093,
+          "epoch": 52,
+          "inner_val_subject_BA": 0.514,
+          "selected": false
+        },
+        {
+          "CE": 0.3336758804321289,
+          "epoch": 53,
+          "inner_val_subject_BA": 0.8699999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3438312414288521,
+          "epoch": 54,
+          "inner_val_subject_BA": 0.8939999999999998,
+          "selected": false
+        },
+        {
+          "CE": 0.3491990041732788,
+          "epoch": 55,
+          "inner_val_subject_BA": 0.883,
+          "selected": false
+        },
+        {
+          "CE": 0.3271943739056587,
+          "epoch": 56,
+          "inner_val_subject_BA": 0.499,
+          "selected": false
+        },
+        {
+          "CE": 0.31699726939201356,
+          "epoch": 57,
+          "inner_val_subject_BA": 0.85,
+          "selected": false
+        },
+        {
+          "CE": 0.3554604944586754,
+          "epoch": 58,
+          "inner_val_subject_BA": 0.857,
+          "selected": false
+        },
+        {
+          "CE": 0.35575989842414857,
+          "epoch": 59,
+          "inner_val_subject_BA": 0.851,
+          "selected": false
+        },
+        {
+          "CE": 0.31894896149635316,
+          "epoch": 60,
+          "inner_val_subject_BA": 0.9040000000000001,
+          "selected": true
+        }
+      ],
+      "init_sha256": "a1f10382a4bdeaf0ecece413202713fec934a18533d495885ea45006953ee7af",
+      "manifest_sha256": "723093a4689e129e8fe49a4451edbba711d1693ec0ca928a7e290389f8fed691",
+      "model": "LiteBN",
+      "parameter_count": 47786,
+      "selected_epoch": 60
+    }
+  },
+  "epochs": 60,
+  "gradient_clip": 5.0,
+  "lr": 0.0003,
+  "optimizer": "AdamW",
+  "outer_evaluated_during_phase_A": false,
+  "selection": "inner-val future-session mean-subject BA epochs 10..60 earliest tie",
+  "weight_decay": 0.0005
+}
