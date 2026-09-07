@@ -1,0 +1,22 @@
+{
+  "decomp_ce_vs_offset": {
+    "same_CE_sample_order": true,
+    "same_CE_samples": true,
+    "same_actual_steps": true,
+    "same_architecture": true,
+    "same_checkpoint_selection": true,
+    "same_episode_manifest": true,
+    "same_epochs": true,
+    "same_evaluation_samples": true,
+    "same_initial_weights": true,
+    "same_inner_val_subjects": true,
+    "same_learning_rate": true,
+    "same_normalizer": true,
+    "same_optimizer": true,
+    "same_outer_dev_subjects": true,
+    "same_parameter_count": true,
+    "same_train_subjects": true,
+    "same_weight_decay": true
+  },
+  "only_intended_difference": "Decomp-Offset includes 0.25 * leave-one-out offset estimation loss"
+}

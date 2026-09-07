@@ -1,0 +1,9 @@
+{
+  "groups": "training episode subject/session only",
+  "inference_requires_subject_or_session_id": false,
+  "leave_one_out": true,
+  "offset_loss_gradient": "flows through offset_hat, g and h/carrier path; not through detached target",
+  "target_detached": true,
+  "trials_per_group": 16,
+  "uses_class_labels": false
+}
