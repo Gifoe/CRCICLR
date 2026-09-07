@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "D:\nips-temp\TotalP\P1\persist_eeg_stage0_repo_full\shared_geometry_audit.py", line 79, in main
+    for s in seeds: print('[GEOMETRY]',f,s,flush=True); rs.append(one(f,s,device))
+                                                                  ^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P1\persist_eeg_stage0_repo_full\shared_geometry_audit.py", line 71, in one
+    ch=np.random.default_rng(70000+fold*1000+seed*100+d).choice(np.arange(q.shape[1]),size=rank,replace=False); gm=geom_metrics(tm,q[:,ch],task); rand.append({'rdm':gm['mean_rdm'],'session':float(np.mean(gm['cross_subject_cross_session_rdm'])) if gm['cross_subject_cross_session_rdm'] else 0.,'loso':proto_transfer(tm,q[:,ch],task,sp['train_subjects'][:len(sp['train_subjects'])//2],sp['train_subjects'][len(sp['train_subjects'])//2:])})
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P1\persist_eeg_stage0_repo_full\shared_geometry_audit.py", line 30, in geom_metrics
+    cs,ev=centroids(meta,q,task); subs=sorted(set(s for s,r in cs)); sess=sorted(set(r for s,r in cs)); cos=[]; rdmv=[]; ss=[]; cross=[]
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P1\persist_eeg_stage0_repo_full\shared_geometry_audit.py", line 22, in centroids
+    for (s,r),g in meta.groupby(['subject_id','session_id'],sort=True):
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\groupby\ops.py", line 627, in get_iterator
+    yield from zip(keys, splitter, strict=True)
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\groupby\ops.py", line 1256, in __iter__
+    yield self._chop(sdata, slice(start, end))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\groupby\ops.py", line 1279, in _chop
+    mgr = sdata._mgr.get_slice(slice_obj, axis=1)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/internals.pyx", line 911, in pandas._libs.internals.BlockManager.get_slice
+  File "pandas/_libs/internals.pyx", line 891, in pandas._libs.internals.BlockManager._slice_mgr_rows
+  File "pandas/_libs/internals.pyx", line 723, in pandas._libs.internals.Block.slice_block_rows
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\internals\blocks.py", line 2090, in slice_block_rows
+    new_values = self.values[slicer]
+                 ~~~~~~~~~~~^^^^^^^^
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\arrays\arrow\array.py", line 800, in __getitem__
+    result = self._from_pyarrow_array(value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\arrays\string_arrow.py", line 167, in _from_pyarrow_array
+    return type(self)(pa_array, dtype=self.dtype)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\arrays\string_arrow.py", line 150, in __init__
+    super().__init__(values)
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\arrays\arrow\array.py", line 324, in __init__
+    self._dtype = ArrowDtype(self._pa_array.type)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\dtypes\dtypes.py", line 2194, in __init__
+    super().__init__("pyarrow")
+  File "D:\nips-temp\TotalP\P2\.conda\gpu-baseline-v1\Lib\site-packages\pandas\core\dtypes\base.py", line 461, in __init__
+    self._storage = storage
+    ^^^^^^^^^^^^^
+TypeError: 'str' object does not support the context manager protocol

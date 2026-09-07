@@ -1,0 +1,71 @@
+{
+  "OpenBMI_holdout_accessed": false,
+  "all_code_compiles": true,
+  "authorized_subject_count": 41,
+  "authorized_subject_hash": "dae8e7ec00cbcf6dcc8c5b25829f2148fd0b5fdf162f75a0cddc18b096af7db4",
+  "cache_dtype": "float16",
+  "cache_shape": [
+    24591,
+    58,
+    1000
+  ],
+  "each_subject_outcome_exactly_once": true,
+  "each_subject_validation_exactly_once": true,
+  "folds": [
+    {
+      "fold": 0,
+      "model_fit_S1_S2_rows": 9596,
+      "model_fit_subjects": 24,
+      "outcome_S3_rows": 1800,
+      "outcome_subjects": 9,
+      "validation_discovery_S3_rows": 1600,
+      "validation_discovery_subjects": 8
+    },
+    {
+      "fold": 1,
+      "model_fit_S1_S2_rows": 9997,
+      "model_fit_subjects": 25,
+      "outcome_S3_rows": 1600,
+      "outcome_subjects": 8,
+      "validation_discovery_S3_rows": 1600,
+      "validation_discovery_subjects": 8
+    },
+    {
+      "fold": 2,
+      "model_fit_S1_S2_rows": 9999,
+      "model_fit_subjects": 25,
+      "outcome_S3_rows": 1600,
+      "outcome_subjects": 8,
+      "validation_discovery_S3_rows": 1595,
+      "validation_discovery_subjects": 8
+    },
+    {
+      "fold": 3,
+      "model_fit_S1_S2_rows": 9999,
+      "model_fit_subjects": 25,
+      "outcome_S3_rows": 1595,
+      "outcome_subjects": 8,
+      "validation_discovery_S3_rows": 1600,
+      "validation_discovery_subjects": 8
+    },
+    {
+      "fold": 4,
+      "model_fit_S1_S2_rows": 9597,
+      "model_fit_subjects": 24,
+      "outcome_S3_rows": 1600,
+      "outcome_subjects": 8,
+      "validation_discovery_S3_rows": 1800,
+      "validation_discovery_subjects": 9
+    }
+  ],
+  "materialized_session_count": 123,
+  "materialized_trial_count": 24591,
+  "outcome_evaluation_started": false,
+  "pass": true,
+  "protocol_schema": "PERSIST_EEG_WBCIC_INDEPENDENT_REPLICATION_V1",
+  "repository_start_sha": "3654486141c91333e0507e95be98f4bdc41c0254",
+  "restricted_runtime_tokens_absent": true,
+  "schema": "WBCIC_REPLICATION_PREFLIGHT_V1",
+  "sealed_WBCIC_outer_accessed": false,
+  "sealed_WBCIC_outer_enumerated": false
+}

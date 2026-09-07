@@ -1,0 +1,38 @@
+{
+  "OpenBMI_sealed_internal_holdout": "UNTOUCHED",
+  "P4A_405_grid": "PAUSED_NOT_RESUMED",
+  "P4C_SAFETY_STATUS": "P4C_SAFETY_BOUNDARY_PARTIAL_SUPPORTED",
+  "P4D_AUTHORIZATION": "CONDITIONAL",
+  "P4D_terminal": "P4D_METHOD_LEVEL_BRIDGE_NOT_SUPPORTED",
+  "P4E_MODEL_AUTHORIZATION": "NOT_AUTHORIZED",
+  "WBCIC_outer_10": "UNTOUCHED_NOT_ENUMERATED",
+  "bootstrap_draws": 10000,
+  "branch": "codex/persist-eeg-p4d-method-level-bridge-v1",
+  "competent_methods": {
+    "DANN": 0.1
+  },
+  "figures": [
+    "figure1_unsafe_burden_distribution.png",
+    "figure2_zsi_vs_future_gain.png",
+    "figure3_simple_slopes.png",
+    "figure4_setting_bridge_forest.png",
+    "figure5_method_bridge_forest.png",
+    "figure6_headroom_low_vs_high.png",
+    "figure7_mechanism_to_method_bridge.png"
+  ],
+  "final_report_sha256": "ce8e5393051755573cd3f63721992b85424c3712e58ca5e57ad320bbcb2fa6f9",
+  "final_report_written_after_core_validator_pass": true,
+  "gates": {
+    "G1_manipulation_competence": false,
+    "G2_primary_interaction": false,
+    "G3_simple_slope": false,
+    "G4_setting_consistency": false,
+    "G5_method_consistency": false,
+    "G6_purity": true
+  },
+  "issues": [],
+  "pass": true,
+  "schema": "PERSIST_EEG_P4D_FINAL_VALIDATION_V1",
+  "validated_at_utc": "2026-08-27T21:44:33.146994+00:00",
+  "validated_parent_tip": "cc4b6bb3dc9f5182a80b1c658ccb2c278d397226"
+}

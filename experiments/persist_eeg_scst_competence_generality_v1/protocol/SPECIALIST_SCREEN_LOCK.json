@@ -1,0 +1,30 @@
+{
+  "backup": "EEGNeX only if none of the primary three is competent and admissible",
+  "competence_thresholds": {
+    "OpenBMI": 0.7519166667,
+    "WBCIC": 0.7684300821
+  },
+  "created_before_specialist_outcomes": true,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "future_session_used_for_selection": false,
+  "manifold_threshold": 1.25,
+  "models": [
+    "FBCNet",
+    "ATCNet",
+    "EEGInceptionMI"
+  ],
+  "representation": "final hidden representation immediately before classifier",
+  "schema": "SCST_SPECIALIST_SCREEN_LOCK_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection_data": "source model-fit/validation only"
+}

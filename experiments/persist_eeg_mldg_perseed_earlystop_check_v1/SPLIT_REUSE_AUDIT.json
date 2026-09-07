@@ -1,0 +1,19 @@
+{
+  "parent_split_audit": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_NESTED_OOF_V1\\experiments\\persist_eeg_route_b_randomness_audit_v1\\SPLIT_AUDIT.csv",
+  "pass": true,
+  "rows": [
+    {
+      "dataset": "WBCIC",
+      "held_disjoint_train": true,
+      "held_disjoint_validation": true,
+      "held_subjects": "25;29;32;34;48",
+      "inner_validation_subjects": "14;38;47",
+      "matches_parent_subject_lists": true,
+      "outer_fold": 0,
+      "source_selection_subjects": "6;7;9;12;17;22;23;24;26;30;31;35;41;42;49;50",
+      "train_subjects": "6;7;9;12;14;17;22;23;24;26;30;31;35;38;41;42;47;49;50",
+      "validation_disjoint_selection": true
+    }
+  ],
+  "schema": "PERSIST_EEG_MLDG_PERSEED_EARLYSTOP_CHECK_V1"
+}

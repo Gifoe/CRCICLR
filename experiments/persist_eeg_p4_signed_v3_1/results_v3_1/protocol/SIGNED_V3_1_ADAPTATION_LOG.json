@@ -1,0 +1,10 @@
+{
+  "issue": "Signed V3 used process-dependent Python hash and did not persist sampled row identifiers",
+  "change": "stable SHA256 sampling, persisted fit/eval/validation indices, canonical spectrum npz and fingerprints",
+  "scientific_impact": "definitions, thresholds, probe, blocks, bootstrap, and random draws unchanged",
+  "data_used": [
+    "TRAIN",
+    "DEVELOPMENT_VALIDATION"
+  ],
+  "outer_test_used": false
+}

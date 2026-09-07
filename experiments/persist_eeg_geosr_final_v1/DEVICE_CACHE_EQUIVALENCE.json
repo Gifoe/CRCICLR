@@ -1,0 +1,48 @@
+{
+  "outcome_labels_read": false,
+  "arithmetic_changed": false,
+  "device_alias_equal": false,
+  "datasets": {
+    "OpenBMI": {
+      "implicit_cuda": {
+        "loss": 0.6689335052098069,
+        "sec": 25.402634599944577,
+        "gpu_util_mean": 48.469026548672566,
+        "vram_peak_mib": 10353.0,
+        "state_sha256": "b5159bb8fa5125e47df21e85b2a4821a51de50f3317462c22bbff76910215e42"
+      },
+      "explicit_cuda_0": {
+        "loss": 0.6689335052098069,
+        "sec": 1.4518627999350429,
+        "gpu_util_mean": 83.28571428571429,
+        "vram_peak_mib": 10353.0,
+        "state_sha256": "b5159bb8fa5125e47df21e85b2a4821a51de50f3317462c22bbff76910215e42"
+      },
+      "exact_loss": true,
+      "exact_model_state": true,
+      "speedup": 17.496580669386326,
+      "training_rows": 6800
+    },
+    "WBCIC": {
+      "implicit_cuda": {
+        "loss": 0.6004838760693868,
+        "sec": 70.29965149995405,
+        "gpu_util_mean": 48.09967845659164,
+        "vram_peak_mib": 16995.0,
+        "state_sha256": "bce23a7661107fc0736f439bdda59c470c8cb140e7e1956d974a9495a715fd3e"
+      },
+      "explicit_cuda_0": {
+        "loss": 0.6004838760693868,
+        "sec": 1.9048970000585541,
+        "gpu_util_mean": 88.77777777777777,
+        "vram_peak_mib": 16995.0,
+        "state_sha256": "bce23a7661107fc0736f439bdda59c470c8cb140e7e1956d974a9495a715fd3e"
+      },
+      "exact_loss": true,
+      "exact_model_state": true,
+      "speedup": 36.90469957052436,
+      "training_rows": 9596
+    }
+  },
+  "pass": true
+}

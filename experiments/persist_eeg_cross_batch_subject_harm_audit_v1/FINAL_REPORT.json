@@ -1,0 +1,935 @@
+{
+  "STEP2_AUTHORIZED": false,
+  "bootstrap": {
+    "OpenBMI_K1": {
+      "K": 1,
+      "auroc_advantage_ci95_l": 0.08579716472158337,
+      "auroc_advantage_ci95_u": 0.300505459121964,
+      "auroc_advantage_valid_draws": 10000,
+      "bootstrap_draws": 10000,
+      "bootstrap_unit": "biological_subject",
+      "dataset": "OpenBMI",
+      "different": {
+        "auroc": 0.45569514934686745,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.4863636363636364,
+        "spearman": -0.11278181930881367
+      },
+      "different_auroc_ci95_l": 0.38031605566957666,
+      "different_auroc_ci95_u": 0.5376334380540883,
+      "different_auroc_valid_draws": 10000,
+      "different_spearman_ci95_l": -0.260674192199005,
+      "different_spearman_ci95_u": 0.050128301117034056,
+      "different_spearman_valid_draws": 10000,
+      "n_observations": 220,
+      "n_subjects": 54,
+      "permuted": {
+        "auroc": 0.5097761877028039,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.5136363636363637,
+        "spearman": 0.04356626451711061
+      },
+      "permuted_auroc_ci95_l": 0.42591159300825515,
+      "permuted_auroc_ci95_u": 0.5891855788666374,
+      "permuted_auroc_valid_draws": 10000,
+      "random": {
+        "auroc": 0.44346451451867874,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.4409090909090909,
+        "spearman": -0.08067033691530065
+      },
+      "random_auroc_ci95_l": 0.3618272426286857,
+      "random_auroc_ci95_u": 0.5280523241201969,
+      "random_auroc_valid_draws": 10000,
+      "same": {
+        "auroc": 0.649804476245944,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.6045454545454545,
+        "spearman": 0.37172819122859413
+      },
+      "same_auroc_ci95_l": 0.5703194774371597,
+      "same_auroc_ci95_u": 0.7290144057576513,
+      "same_auroc_valid_draws": 10000,
+      "same_minus_different_auroc": 0.1941093268990765,
+      "same_minus_different_spearman": 0.48451001053740783,
+      "same_spearman_ci95_l": 0.2193926747865267,
+      "same_spearman_ci95_u": 0.5148943095173666,
+      "same_spearman_valid_draws": 10000,
+      "spearman_advantage_ci95_l": 0.2781282227089096,
+      "spearman_advantage_ci95_u": 0.6817193077414034,
+      "spearman_advantage_valid_draws": 10000
+    },
+    "OpenBMI_K2": {
+      "K": 2,
+      "auroc_advantage_ci95_l": 0.13795831370650474,
+      "auroc_advantage_ci95_u": 0.3523307424088173,
+      "auroc_advantage_valid_draws": 10000,
+      "bootstrap_draws": 10000,
+      "bootstrap_unit": "biological_subject",
+      "dataset": "OpenBMI",
+      "different": {
+        "auroc": 0.45636076212663285,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.4909090909090909,
+        "spearman": -0.09567402782551856
+      },
+      "different_auroc_ci95_l": 0.38046429149370325,
+      "different_auroc_ci95_u": 0.5358119048574559,
+      "different_auroc_valid_draws": 10000,
+      "different_spearman_ci95_l": -0.2502727597071056,
+      "different_spearman_ci95_u": 0.06799643239663125,
+      "different_spearman_valid_draws": 10000,
+      "n_observations": 220,
+      "n_subjects": 54,
+      "permuted": {
+        "auroc": 0.48514851485148514,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.5,
+        "spearman": -0.002030845866462305
+      },
+      "permuted_auroc_ci95_l": 0.4063697054381731,
+      "permuted_auroc_ci95_u": 0.5640567001059106,
+      "permuted_auroc_valid_draws": 10000,
+      "random": {
+        "auroc": 0.5396455611947749,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.5454545454545454,
+        "spearman": 0.08706490930503823
+      },
+      "random_auroc_ci95_l": 0.4761122926445507,
+      "random_auroc_ci95_u": 0.6028713396560678,
+      "random_auroc_valid_draws": 10000,
+      "same": {
+        "auroc": 0.6998086363258175,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.6,
+        "spearman": 0.44136975031415
+      },
+      "same_auroc_ci95_l": 0.6086848488160793,
+      "same_auroc_ci95_u": 0.7858705225639212,
+      "same_auroc_valid_draws": 10000,
+      "same_minus_different_auroc": 0.24344787419918462,
+      "same_minus_different_spearman": 0.5370437781396685,
+      "same_spearman_ci95_l": 0.2695569738407245,
+      "same_spearman_ci95_u": 0.5949608112840292,
+      "same_spearman_valid_draws": 10000,
+      "spearman_advantage_ci95_l": 0.3303611615060672,
+      "spearman_advantage_ci95_u": 0.7376533748116737,
+      "spearman_advantage_valid_draws": 10000
+    },
+    "OpenBMI_K4": {
+      "K": 4,
+      "auroc_advantage_ci95_l": 0.17059238389504733,
+      "auroc_advantage_ci95_u": 0.36824928453727035,
+      "auroc_advantage_valid_draws": 10000,
+      "bootstrap_draws": 10000,
+      "bootstrap_unit": "biological_subject",
+      "dataset": "OpenBMI",
+      "different": {
+        "auroc": 0.4395540394375572,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.4727272727272727,
+        "spearman": -0.1207248834968416
+      },
+      "different_auroc_ci95_l": 0.3608654233352877,
+      "different_auroc_ci95_u": 0.5232764427787576,
+      "different_auroc_valid_draws": 10000,
+      "different_spearman_ci95_l": -0.28375603496888546,
+      "different_spearman_ci95_u": 0.0498364191195916,
+      "different_spearman_valid_draws": 10000,
+      "n_observations": 220,
+      "n_subjects": 54,
+      "permuted": {
+        "auroc": 0.49305266661119895,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.509090909090909,
+        "spearman": -0.009446476166862951
+      },
+      "permuted_auroc_ci95_l": 0.4121792673175658,
+      "permuted_auroc_ci95_u": 0.572707827436016,
+      "permuted_auroc_valid_draws": 10000,
+      "random": {
+        "auroc": 0.46359930110658126,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.4681818181818182,
+        "spearman": -0.07524723463482529
+      },
+      "random_auroc_ci95_l": 0.3835326320292448,
+      "random_auroc_ci95_u": 0.5491142579458133,
+      "random_auroc_valid_draws": 10000,
+      "same": {
+        "auroc": 0.7093768200349446,
+        "harm_prevalence": 0.4590909090909091,
+        "n_observations": 220,
+        "n_subjects": 54,
+        "sign_accuracy": 0.6636363636363637,
+        "spearman": 0.47881304835374133
+      },
+      "same_auroc_ci95_l": 0.6305494516030066,
+      "same_auroc_ci95_u": 0.786845872470504,
+      "same_auroc_valid_draws": 10000,
+      "same_minus_different_auroc": 0.2698227805973874,
+      "same_minus_different_spearman": 0.5995379318505829,
+      "same_spearman_ci95_l": 0.33505007967777345,
+      "same_spearman_ci95_u": 0.6098608637822773,
+      "same_spearman_valid_draws": 10000,
+      "spearman_advantage_ci95_l": 0.40823759837889495,
+      "spearman_advantage_ci95_u": 0.7818492942203707,
+      "spearman_advantage_valid_draws": 10000
+    },
+    "WBCIC_K1": {
+      "K": 1,
+      "auroc_advantage_ci95_l": -0.08210185185185184,
+      "auroc_advantage_ci95_u": 0.15625434819831113,
+      "auroc_advantage_valid_draws": 10000,
+      "bootstrap_draws": 10000,
+      "bootstrap_unit": "biological_subject",
+      "dataset": "WBCIC",
+      "different": {
+        "auroc": 0.5614211737629459,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5508982035928144,
+        "spearman": 0.1287607170694755
+      },
+      "different_auroc_ci95_l": 0.47705389152605565,
+      "different_auroc_ci95_u": 0.6451521905375218,
+      "different_auroc_valid_draws": 10000,
+      "different_spearman_ci95_l": -0.032422307648615936,
+      "different_spearman_ci95_u": 0.2892100155529999,
+      "different_spearman_valid_draws": 10000,
+      "n_observations": 167,
+      "n_subjects": 41,
+      "permuted": {
+        "auroc": 0.5287686996547756,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5389221556886228,
+        "spearman": 0.06940989287767527
+      },
+      "permuted_auroc_ci95_l": 0.44191998344783595,
+      "permuted_auroc_ci95_u": 0.620574376818605,
+      "permuted_auroc_valid_draws": 10000,
+      "random": {
+        "auroc": 0.49381472957422323,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.48502994011976047,
+        "spearman": -0.054367668751615236
+      },
+      "random_auroc_ci95_l": 0.41326204926353116,
+      "random_auroc_ci95_u": 0.5836932957393484,
+      "random_auroc_valid_draws": 10000,
+      "same": {
+        "auroc": 0.5946490218642118,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5748502994011976,
+        "spearman": 0.2397299717219513
+      },
+      "same_auroc_ci95_l": 0.4985462399896206,
+      "same_auroc_ci95_u": 0.695237412719058,
+      "same_auroc_valid_draws": 10000,
+      "same_minus_different_auroc": 0.03322784810126589,
+      "same_minus_different_spearman": 0.11096925465247579,
+      "same_spearman_ci95_l": 0.049772816192388256,
+      "same_spearman_ci95_u": 0.4283950877736437,
+      "same_spearman_valid_draws": 10000,
+      "spearman_advantage_ci95_l": -0.13523424156143415,
+      "spearman_advantage_ci95_u": 0.35316422276947695,
+      "spearman_advantage_valid_draws": 10000
+    },
+    "WBCIC_K2": {
+      "K": 2,
+      "auroc_advantage_ci95_l": -0.06546945138720653,
+      "auroc_advantage_ci95_u": 0.1831423272998052,
+      "auroc_advantage_valid_draws": 10000,
+      "bootstrap_draws": 10000,
+      "bootstrap_unit": "biological_subject",
+      "dataset": "WBCIC",
+      "different": {
+        "auroc": 0.5700517836593786,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5149700598802395,
+        "spearman": 0.15161392140076868
+      },
+      "different_auroc_ci95_l": 0.4716025289123115,
+      "different_auroc_ci95_u": 0.6704411970915137,
+      "different_auroc_valid_draws": 10000,
+      "different_spearman_ci95_l": -0.027309405165982077,
+      "different_spearman_ci95_u": 0.3325758115900835,
+      "different_spearman_valid_draws": 10000,
+      "n_observations": 167,
+      "n_subjects": 41,
+      "permuted": {
+        "auroc": 0.5486191024165707,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.562874251497006,
+        "spearman": 0.09686362670144534
+      },
+      "permuted_auroc_ci95_l": 0.4655052847480017,
+      "permuted_auroc_ci95_u": 0.6351351351351351,
+      "permuted_auroc_valid_draws": 10000,
+      "random": {
+        "auroc": 0.5516398158803222,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5209580838323353,
+        "spearman": 0.14582171176812342
+      },
+      "random_auroc_ci95_l": 0.47485372609082616,
+      "random_auroc_ci95_u": 0.6297210172439394,
+      "random_auroc_valid_draws": 10000,
+      "same": {
+        "auroc": 0.6271576524741082,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.6227544910179641,
+        "spearman": 0.28888645542818175
+      },
+      "same_auroc_ci95_l": 0.5261944930715976,
+      "same_auroc_ci95_u": 0.7293983356257316,
+      "same_auroc_valid_draws": 10000,
+      "same_minus_different_auroc": 0.057105868814729566,
+      "same_minus_different_spearman": 0.13727253402741307,
+      "same_spearman_ci95_l": 0.08204568918882148,
+      "same_spearman_ci95_u": 0.48325948117103645,
+      "same_spearman_valid_draws": 10000,
+      "spearman_advantage_ci95_l": -0.11098041015243523,
+      "spearman_advantage_ci95_u": 0.36951996865831194,
+      "spearman_advantage_valid_draws": 10000
+    },
+    "WBCIC_K4": {
+      "K": 4,
+      "auroc_advantage_ci95_l": 0.017042262934659887,
+      "auroc_advantage_ci95_u": 0.2478917589763177,
+      "auroc_advantage_valid_draws": 10000,
+      "bootstrap_draws": 10000,
+      "bootstrap_unit": "biological_subject",
+      "dataset": "WBCIC",
+      "different": {
+        "auroc": 0.5315017261219793,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5209580838323353,
+        "spearman": 0.07896265854183553
+      },
+      "different_auroc_ci95_l": 0.43394809443277127,
+      "different_auroc_ci95_u": 0.6266788693012106,
+      "different_auroc_valid_draws": 10000,
+      "different_spearman_ci95_l": -0.07904538650694076,
+      "different_spearman_ci95_u": 0.24578639056493373,
+      "different_spearman_valid_draws": 10000,
+      "n_observations": 167,
+      "n_subjects": 41,
+      "permuted": {
+        "auroc": 0.5717779056386652,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.5449101796407185,
+        "spearman": 0.1738435871506116
+      },
+      "permuted_auroc_ci95_l": 0.47983949974921836,
+      "permuted_auroc_ci95_u": 0.6642670286459681,
+      "permuted_auroc_valid_draws": 10000,
+      "random": {
+        "auroc": 0.44116800920598387,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.46706586826347307,
+        "spearman": -0.13477709139875785
+      },
+      "random_auroc_ci95_l": 0.3589282588381971,
+      "random_auroc_ci95_u": 0.5271611231249785,
+      "random_auroc_valid_draws": 10000,
+      "same": {
+        "auroc": 0.6636939010356732,
+        "harm_prevalence": 0.47305389221556887,
+        "n_observations": 167,
+        "n_subjects": 41,
+        "sign_accuracy": 0.6287425149700598,
+        "spearman": 0.34955134853130276
+      },
+      "same_auroc_ci95_l": 0.5735285348486443,
+      "same_auroc_ci95_u": 0.749288507001273,
+      "same_auroc_valid_draws": 10000,
+      "same_minus_different_auroc": 0.13219217491369384,
+      "same_minus_different_spearman": 0.2705886899894672,
+      "same_spearman_ci95_l": 0.14255884426855203,
+      "same_spearman_ci95_u": 0.5401286668221246,
+      "same_spearman_valid_draws": 10000,
+      "spearman_advantage_ci95_l": 0.048053599122066686,
+      "spearman_advantage_ci95_u": 0.4856597220246778,
+      "spearman_advantage_valid_draws": 10000
+    }
+  },
+  "checkpoint_equivalence": [
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-0\\seed-0.pt",
+      "checkpoint_sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa",
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-1\\seed-0.pt",
+      "checkpoint_sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87",
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-2\\seed-0.pt",
+      "checkpoint_sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f",
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-3\\seed-0.pt",
+      "checkpoint_sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739",
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-4\\seed-0.pt",
+      "checkpoint_sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d",
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-0\\seed-0.pt",
+      "checkpoint_sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3",
+      "dataset": "WBCIC",
+      "fold": 0,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-1\\seed-0.pt",
+      "checkpoint_sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543",
+      "dataset": "WBCIC",
+      "fold": 1,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-2\\seed-0.pt",
+      "checkpoint_sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08",
+      "dataset": "WBCIC",
+      "fold": 2,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-3\\seed-0.pt",
+      "checkpoint_sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253",
+      "dataset": "WBCIC",
+      "fold": 3,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-4\\seed-0.pt",
+      "checkpoint_sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533",
+      "dataset": "WBCIC",
+      "fold": 4,
+      "normalizer_finite_shape": true,
+      "outcome_subjects_materialized": false,
+      "partial_checkpoint_hash_matches": true,
+      "pass": true,
+      "seed": 0,
+      "source_prediction_repeat_max_abs_diff": 0.0,
+      "source_trials": 128,
+      "state_dict_strict_load": true
+    }
+  ],
+  "excluded_subjects": [],
+  "legality": {
+    "OpenBMI_sealed_opened": false,
+    "WBCIC_outer_opened": false,
+    "batch_rule": "m_per_class=min(16,floor(min_available_per_class/5)); no replacement",
+    "datasets": {
+      "OpenBMI": {
+        "fold_roles": [
+          {
+            "discovery": 9,
+            "fold": 0,
+            "model_fit": 34,
+            "outcome_not_used": 11
+          },
+          {
+            "discovery": 9,
+            "fold": 1,
+            "model_fit": 34,
+            "outcome_not_used": 11
+          },
+          {
+            "discovery": 9,
+            "fold": 2,
+            "model_fit": 34,
+            "outcome_not_used": 11
+          },
+          {
+            "discovery": 9,
+            "fold": 3,
+            "model_fit": 34,
+            "outcome_not_used": 11
+          },
+          {
+            "discovery": 9,
+            "fold": 4,
+            "model_fit": 35,
+            "outcome_not_used": 10
+          }
+        ],
+        "outer_subject_ids_present": false,
+        "rows": 10800,
+        "sessions": [
+          1,
+          2
+        ],
+        "source_only": true,
+        "subjects": 54
+      },
+      "WBCIC": {
+        "fold_roles": [
+          {
+            "discovery": 8,
+            "fold": 0,
+            "model_fit": 24,
+            "outcome_not_used": 9
+          },
+          {
+            "discovery": 8,
+            "fold": 1,
+            "model_fit": 25,
+            "outcome_not_used": 8
+          },
+          {
+            "discovery": 8,
+            "fold": 2,
+            "model_fit": 25,
+            "outcome_not_used": 8
+          },
+          {
+            "discovery": 8,
+            "fold": 3,
+            "model_fit": 25,
+            "outcome_not_used": 8
+          },
+          {
+            "discovery": 9,
+            "fold": 4,
+            "model_fit": 24,
+            "outcome_not_used": 8
+          }
+        ],
+        "outer_subject_ids_present": false,
+        "rows": 24591,
+        "sessions": [
+          0,
+          1,
+          2
+        ],
+        "source_only": true,
+        "subjects": 41
+      }
+    },
+    "m_per_class": {
+      "OpenBMI": [
+        16
+      ],
+      "WBCIC": [
+        16
+      ]
+    },
+    "outcome_used": false,
+    "schema": "PERSIST_CROSS_BATCH_DATA_LEGALITY_V1",
+    "sealed_outer_opened": false,
+    "seed": 0,
+    "seed1_run": false,
+    "seed2_run": false,
+    "source_subjects_only": true
+  },
+  "primary_gate": {
+    "OpenBMI": {
+      "folds_advantage_nonnegative": 5,
+      "folds_total": 5,
+      "same_auroc_ci95_l": 0.6305494516030066,
+      "same_auroc_ci95_u": 0.786845872470504,
+      "same_auroc_point": 0.7093768200349446,
+      "same_minus_different_auroc_ci95_l": 0.17059238389504733,
+      "same_minus_different_auroc_ci95_u": 0.36824928453727035,
+      "same_minus_different_auroc_point": 0.2698227805973874,
+      "same_minus_different_spearman_ci95_l": 0.40823759837889495,
+      "same_minus_different_spearman_ci95_u": 0.7818492942203707,
+      "same_minus_different_spearman_point": 0.5995379318505829,
+      "same_spearman_ci95_l": 0.33505007967777345,
+      "same_spearman_ci95_u": 0.6098608637822773,
+      "same_spearman_point": 0.47881304835374133,
+      "strong_pass": true
+    },
+    "WBCIC": {
+      "folds_advantage_nonnegative": 4,
+      "folds_total": 5,
+      "same_auroc_ci95_l": 0.5735285348486443,
+      "same_auroc_ci95_u": 0.749288507001273,
+      "same_auroc_point": 0.6636939010356732,
+      "same_minus_different_auroc_ci95_l": 0.017042262934659887,
+      "same_minus_different_auroc_ci95_u": 0.2478917589763177,
+      "same_minus_different_auroc_point": 0.13219217491369384,
+      "same_minus_different_spearman_ci95_l": 0.048053599122066686,
+      "same_minus_different_spearman_ci95_u": 0.4856597220246778,
+      "same_minus_different_spearman_point": 0.2705886899894672,
+      "same_spearman_ci95_l": 0.14255884426855203,
+      "same_spearman_ci95_u": 0.5401286668221246,
+      "same_spearman_point": 0.34955134853130276,
+      "strong_pass": true
+    }
+  },
+  "runtime_seconds": 0.2973511219024658,
+  "schema": "PERSIST_CROSS_BATCH_FINAL_REPORT_V1",
+  "subjects": {
+    "OpenBMI": 54,
+    "WBCIC": 41
+  },
+  "terminal": "CROSS_BATCH_SUBJECT_HARM_SUPPORTED",
+  "toy_tests": {
+    "bootstrap_unit": "biological_subject",
+    "checks": {
+      "a_disjoint": true,
+      "bn_freeze": true,
+      "bootstrap_subject_cluster": true,
+      "certificate_outcome_trial_disjoint": true,
+      "derangement": true,
+      "different_subject_identity": true,
+      "exact_adamw_displacement": true,
+      "h_sign_convention": true,
+      "k_aggregation": true,
+      "optimizer_state_nonpollution": true,
+      "random_norm_match": true,
+      "same_subject_identity": true,
+      "sealed_id_exclusion": true,
+      "trajectory_identity": true
+    },
+    "pass": true,
+    "schema": "PERSIST_CROSS_BATCH_MATH_TOY_V1",
+    "seed": 0
+  },
+  "trajectory": [
+    {
+      "audit_rows": 132,
+      "audit_steps": [
+        1,
+        85,
+        170,
+        255,
+        340
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "trajectory_delta_sha256": "e63ac0b6ab8117439bd375ec94eaf7c5f0166769da9de508c5bd973ee27191f9"
+    },
+    {
+      "audit_rows": 132,
+      "audit_steps": [
+        1,
+        85,
+        170,
+        255,
+        340
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "trajectory_delta_sha256": "363a8ecc271cb480915f122ea3b223c485fd19ff2a3c92b68651c032ff4b9b90"
+    },
+    {
+      "audit_rows": 132,
+      "audit_steps": [
+        1,
+        85,
+        170,
+        255,
+        340
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "trajectory_delta_sha256": "4ff8fdad68d8eb3f1023a25bd161ba881bc4396334b6bd42ea712f06a7921113"
+    },
+    {
+      "audit_rows": 132,
+      "audit_steps": [
+        1,
+        85,
+        170,
+        255,
+        340
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "trajectory_delta_sha256": "b81d179888f949fa56deac8c7b7b2c0183060276597e1b8b0564b9cb840c96d4"
+    },
+    {
+      "audit_rows": 132,
+      "audit_steps": [
+        1,
+        87,
+        173,
+        259,
+        345
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "trajectory_delta_sha256": "0de18d4e2e0cbcb20020b693d1209aea1dfa68cf07ab54c137ed61d18b60fcb5"
+    },
+    {
+      "audit_rows": 93,
+      "audit_steps": [
+        1,
+        125,
+        250,
+        375,
+        500
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "WBCIC",
+      "fold": 0,
+      "trajectory_delta_sha256": "1b3460b7c5a742c5410b83d8c8e54b510ddb59c7033057d825821db39d9d5337"
+    },
+    {
+      "audit_rows": 102,
+      "audit_steps": [
+        1,
+        130,
+        260,
+        390,
+        520
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "WBCIC",
+      "fold": 1,
+      "trajectory_delta_sha256": "a52c59d4658dcf5c0c5c12abe1eb48fe593344b35df8d926e8de6f0f3e3d504c"
+    },
+    {
+      "audit_rows": 102,
+      "audit_steps": [
+        1,
+        130,
+        260,
+        390,
+        520
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "WBCIC",
+      "fold": 2,
+      "trajectory_delta_sha256": "06ca9cf0b1073f2efd738d19229f667a9bf6f01238fad2dfbeab15ae72d8bb59"
+    },
+    {
+      "audit_rows": 102,
+      "audit_steps": [
+        1,
+        130,
+        260,
+        390,
+        520
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "WBCIC",
+      "fold": 3,
+      "trajectory_delta_sha256": "42ec30a0d3ed6bcb96527b87f1c29a73781547d02b9e86feb9b85d8b5d35b18a"
+    },
+    {
+      "audit_rows": 102,
+      "audit_steps": [
+        1,
+        130,
+        260,
+        390,
+        520
+      ],
+      "bn_max_displacement": 0.0,
+      "complete": true,
+      "dataset": "WBCIC",
+      "fold": 4,
+      "trajectory_delta_sha256": "b5666621f8da7b228babbb75ecfd4086bd319e8827032ac59c3c39e482121579"
+    }
+  ],
+  "validation": {
+    "OpenBMI_sealed_opened": false,
+    "WBCIC_outer_opened": false,
+    "checks": {
+      "A_B_subject_disjoint": true,
+      "BN_freeze": true,
+      "OpenBMI_sealed_opened": false,
+      "WBCIC_outer_opened": false,
+      "batch_trial_support": true,
+      "certificate_outcome_trial_disjoint": true,
+      "checkpoint_equivalence_pass": true,
+      "deterministic_controls": true,
+      "different_mapping_no_self_pair": true,
+      "different_subject_A_disjoint": true,
+      "exact_adamw_displacement": true,
+      "optimizer_state_nonpollution": true,
+      "outcome_used": false,
+      "permutation_no_self_pair": true,
+      "random_norm_match": true,
+      "same_subject_identity": true,
+      "sealed_resources_untouched": true,
+      "seed0_only": true,
+      "toy_tests_pass": true,
+      "trajectory_identity": true
+    },
+    "pass": true,
+    "primary_gate": {
+      "OpenBMI": {
+        "folds_advantage_nonnegative": 5,
+        "folds_total": 5,
+        "same_auroc_ci95_l": 0.6305494516030066,
+        "same_auroc_ci95_u": 0.786845872470504,
+        "same_auroc_point": 0.7093768200349446,
+        "same_minus_different_auroc_ci95_l": 0.17059238389504733,
+        "same_minus_different_auroc_ci95_u": 0.36824928453727035,
+        "same_minus_different_auroc_point": 0.2698227805973874,
+        "same_minus_different_spearman_ci95_l": 0.40823759837889495,
+        "same_minus_different_spearman_ci95_u": 0.7818492942203707,
+        "same_minus_different_spearman_point": 0.5995379318505829,
+        "same_spearman_ci95_l": 0.33505007967777345,
+        "same_spearman_ci95_u": 0.6098608637822773,
+        "same_spearman_point": 0.47881304835374133,
+        "strong_pass": true
+      },
+      "WBCIC": {
+        "folds_advantage_nonnegative": 4,
+        "folds_total": 5,
+        "same_auroc_ci95_l": 0.5735285348486443,
+        "same_auroc_ci95_u": 0.749288507001273,
+        "same_auroc_point": 0.6636939010356732,
+        "same_minus_different_auroc_ci95_l": 0.017042262934659887,
+        "same_minus_different_auroc_ci95_u": 0.2478917589763177,
+        "same_minus_different_auroc_point": 0.13219217491369384,
+        "same_minus_different_spearman_ci95_l": 0.048053599122066686,
+        "same_minus_different_spearman_ci95_u": 0.4856597220246778,
+        "same_minus_different_spearman_point": 0.2705886899894672,
+        "same_spearman_ci95_l": 0.14255884426855203,
+        "same_spearman_ci95_u": 0.5401286668221246,
+        "same_spearman_point": 0.34955134853130276,
+        "strong_pass": true
+      }
+    },
+    "schema": "PERSIST_CROSS_BATCH_VALIDATION_V1",
+    "seed1_run": false,
+    "seed2_run": false,
+    "terminal": "CROSS_BATCH_SUBJECT_HARM_SUPPORTED"
+  }
+}

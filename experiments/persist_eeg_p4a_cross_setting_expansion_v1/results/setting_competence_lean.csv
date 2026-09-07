@@ -1,0 +1,7 @@
+setting_id,dataset,task,backbone,subject_count,folds,seeds,outcome_BA_mean,outcome_macro_F1_mean,folds_above_chance,representation_dim,session_roles,source_artifact_complete,preprocessing_event_label_status,competence
+S1,OpenBMI,MI,EEGNet,40,5,3,0.7549166666666667,0.7512736840963689,5,64,source S1+S2; outcome held-subject S2,True,PASS,COMPETENCE_PASS
+S2,OpenBMI,MI,EEGConformer,40,5,3,0.7719166666666666,0.7662951535517804,5,64,source S1+S2; outcome held-subject S2,True,PASS,COMPETENCE_PASS
+S3,WBCIC,MI,EEGNet,41,5,3,0.7884300820707071,0.7870798222311761,5,32,source S1+S2; outcome held-subject S3,True,PASS,COMPETENCE_PASS
+S4,WBCIC,MI,EEGConformer,41,5,3,0.7844128787878788,0.7826113196125939,5,64,source S1+S2; outcome held-subject S3,True,PASS,COMPETENCE_PASS
+S5,OpenBMI,ERP,EEGNet,40,5,3,0.8563535353535353,0.8085593462665052,5,64,source S1+S2; outcome held-subject S2,True,PASS,COMPETENCE_PASS
+S6,OpenBMI,ERP,EEGConformer,40,5,3,0.83389898989899,0.7810716472131194,5,64,source S1+S2; outcome held-subject S2,True,PASS,COMPETENCE_PASS

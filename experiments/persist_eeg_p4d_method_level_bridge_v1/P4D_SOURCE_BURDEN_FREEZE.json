@@ -1,0 +1,17 @@
+{
+  "burden_csv_sha256": "3cabdd43c594c7b31ae5bf7fe24b727a972c087d20a6599cf4f8455edf2ecd8c",
+  "content_sha256": "e3c5ae87898a48184ad0860d716a162308023ce1ab5045f59f12c0359e0e3dc5",
+  "method_future_task_outcomes_accessed": false,
+  "p4c_assignment_sha256": "0a6c4caf19937ee9024b852173f07dc8b151d13806e0e5c4635fbca77d98db30",
+  "primary": "R_unsafe=count(High-I AND High-E)/count(High-I)",
+  "rows": 30,
+  "schema": "PERSIST_EEG_P4D_SOURCE_BURDEN_FREEZE_V1",
+  "secondary_admissible": "R_admissible=count(High-I AND Low-E)/count(High-I)",
+  "secondary_mass": "positive z_I mass in target High-I regime / positive z_I mass in all High-I directions",
+  "settings": [
+    "S4",
+    "S6"
+  ],
+  "source_only": true,
+  "timestamp_utc": "2026-08-27T19:36:13.716751+00:00"
+}

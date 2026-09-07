@@ -1,0 +1,30 @@
+{
+  "OUTER_TEST_USED": false,
+  "benchmarks": {
+    "openbmi": {
+      "V7_new_expert_subject_oracle_BA": 0.8525925925925928,
+      "V7_oracle_headroom_vs_strongest_generic_pp": 1.4814814814815058,
+      "V7_strongest_generic_BA": 0.8377777777777777,
+      "V7_strongest_generic_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "approximate_final_5pp_target_BA": 0.8877777777777778,
+      "legacy_reported_headroom_used_weaker_V6_anchor": true,
+      "preferred_V8_oracle_gate_BA": 0.9177777777777777
+    },
+    "wbcic": {
+      "V7_new_expert_subject_oracle_BA": 0.8346064301552109,
+      "V7_oracle_headroom_vs_strongest_generic_pp": 0.963922764227676,
+      "V7_strongest_generic_BA": 0.8249672025129341,
+      "V7_strongest_generic_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "approximate_final_5pp_target_BA": 0.8749672025129341,
+      "legacy_reported_headroom_used_weaker_V6_anchor": true,
+      "preferred_V8_oracle_gate_BA": 0.904967202512934
+    }
+  },
+  "source_commit": "9feee89daa3fdcdae1602104a8b6ef5fc05afd64",
+  "source_files": {
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V7_FUTURE_UTILITY_META\\experiments\\persist_eeg_final_model_v7\\outputs\\FINAL_DECISION.json": "ac984cb93344f390c3a94f1abf34c4fea67361babd0012468b97229a882dc9e6",
+    "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V7_FUTURE_UTILITY_META\\experiments\\persist_eeg_final_model_v7\\outputs\\SCIENTIFIC_REPORT.md": "77df75d363bb31fc89a59af9863ecbadea327c0b03c106c37266a4ad762617fb"
+  },
+  "source_terminal_state": "V7_SCIENTIFIC_EXHAUSTION",
+  "updated_comparison_rule": "V8 uses the strongest fair V7 generic, not the weaker V6 anchor."
+}

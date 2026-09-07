@@ -1,0 +1,67 @@
+{
+  "A_B_disjoint": true,
+  "B1_B4_Bout_disjoint": true,
+  "BN_unchanged": true,
+  "OpenBMI_sealed_opened": false,
+  "WBCIC_outer_opened": false,
+  "checkpoint_equivalence_pass": true,
+  "decision": {
+    "AUTO_START_NEW_MODEL": false,
+    "DECISION_ALIGNED_GUARD_DEVELOPMENT_SCIENTIFICALLY_JUSTIFIED": false,
+    "gate_A_stable_BBR_harm": {
+      "OpenBMI": true,
+      "WBCIC": true
+    },
+    "gate_B_subject_specificity": {
+      "OpenBMI": true,
+      "WBCIC": true
+    },
+    "gate_C_decision_alignment": {
+      "OpenBMI": false,
+      "WBCIC": false
+    },
+    "gate_D_BBR_over_CE": {
+      "OpenBMI": false,
+      "WBCIC": false
+    },
+    "gate_E_fold_robustness": {
+      "OpenBMI": true,
+      "WBCIC": true
+    },
+    "power": {
+      "OpenBMI": {
+        "EXACT_DECISION_ENDPOINT_UNDERPOWERED": true,
+        "H_BER_negative_count": 7,
+        "H_BER_positive_count": 6,
+        "H_BER_zero_count": 437,
+        "biological_subjects_with_harmful_event": 6,
+        "dataset": "OpenBMI",
+        "total_correct_to_wrong_flips": 7,
+        "total_subject_step_observations": 450,
+        "total_wrong_to_correct_flips": 8
+      },
+      "WBCIC": {
+        "EXACT_DECISION_ENDPOINT_UNDERPOWERED": true,
+        "H_BER_negative_count": 19,
+        "H_BER_positive_count": 17,
+        "H_BER_zero_count": 292,
+        "biological_subjects_with_harmful_event": 13,
+        "dataset": "WBCIC",
+        "total_correct_to_wrong_flips": 22,
+        "total_subject_step_observations": 328,
+        "total_wrong_to_correct_flips": 27
+      }
+    },
+    "terminal": "DECISION_ENDPOINT_UNDERPOWERED"
+  },
+  "mandatory_tests_pass": true,
+  "outcome_used": false,
+  "pass": true,
+  "schema": "PERSIST_EEG_DECISION_RELEVANT_VALIDATION_V1",
+  "second_backbone_run": false,
+  "seed1_run": false,
+  "seed2_run": false,
+  "task_only_trajectory_audit_equivalence": true,
+  "tau_frozen": true,
+  "terminal": "DECISION_ENDPOINT_UNDERPOWERED"
+}

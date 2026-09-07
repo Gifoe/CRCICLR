@@ -1,0 +1,40 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "dataset_decisions": {
+    "OpenBMI": {
+      "relation_clear_positive": false,
+      "relation_delta_BA_pp": 0.27272727272727093,
+      "relation_delta_macro_F1_pp": 0.42948174804285516,
+      "relation_nonnegative_subject_fraction": 0.7272727272727273,
+      "relation_over_strongest_generic_delta_BA_pp": -0.09090909090909505,
+      "relation_positive_subject_fraction": 0.36363636363636365,
+      "strongest_generic_delta_BA_pp": 0.363636363636366,
+      "worst_relation_subject_delta_BA_pp": -6.000000000000005
+    },
+    "WBCIC": {
+      "relation_clear_positive": false,
+      "relation_delta_BA_pp": 0.4999999999999992,
+      "relation_delta_macro_F1_pp": 0.5055357321646451,
+      "relation_nonnegative_subject_fraction": 0.7777777777777778,
+      "relation_over_strongest_generic_delta_BA_pp": 0.3333333333333176,
+      "relation_positive_subject_fraction": 0.6666666666666666,
+      "strongest_generic_delta_BA_pp": 0.16666666666668162,
+      "worst_relation_subject_delta_BA_pp": -2.0000000000000018
+    }
+  },
+  "final_claim_authorized": false,
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GENERIC_RESIDUAL",
+    "GENERIC_PROTOTYPE",
+    "CROSS_SESSION_RELATION"
+  ],
+  "outcome_after_lock": true,
+  "outcome_labels_read_before_lock": false,
+  "restore_next_stage": false,
+  "schema": "PERSIST_EEG_INCREMENTAL_RELATION_RESULT_V1",
+  "scientific_definition_changed": true,
+  "screen_only": true,
+  "terminal": "INCREMENTAL_RELATION_STOP_NO_CLEAR_GAIN"
+}

@@ -1,0 +1,50 @@
+{
+  "checks": {
+    "A_B_subject_disjoint": true,
+    "B1_B4_Bout_trial_disjoint": true,
+    "BN_unchanged_during_bbr_gradient": true,
+    "K4_concat_gradient_equivalence": {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "max_abs_diff": 4.870817065238953e-06,
+      "pass": true,
+      "subject": "1",
+      "tolerance": 5e-05
+    },
+    "bbr_decreases_with_margin": true,
+    "bbr_gradient_finite": true,
+    "bbr_in_unit_interval": true,
+    "biological_subject_cluster_bootstrap_unit": true,
+    "class_balanced_implementation": true,
+    "different_subject_A_disjoint": true,
+    "exact_adamw_displacement": true,
+    "margin_positive_iff_prediction_correct": true,
+    "no_outcome_outer_sealed_ids": true,
+    "optimizer_state_unchanged_during_bbr_gradient": true,
+    "outcome_not_materialized": true,
+    "random_gradient_norm_match": true,
+    "same_observation_schedule": true,
+    "seed0_only": true,
+    "signed_margin_definition": {
+      "pass": true,
+      "values": [
+        2.0,
+        2.0,
+        0.0
+      ]
+    },
+    "task_only_replay_equivalence": {
+      "audit_on_sha256": "b5289fcc8c74ec9aa52c1e8ac728955c7bde79a01bbb13abc374db553ace06e4",
+      "pass": true,
+      "plain_sha256": "b5289fcc8c74ec9aa52c1e8ac728955c7bde79a01bbb13abc374db553ace06e4"
+    },
+    "tau_frozen": true,
+    "tau_source_refit_anchor_only": true
+  },
+  "critical_failure_blocks_audit": true,
+  "outcome_used": false,
+  "pass": true,
+  "schema": "PERSIST_EEG_DECISION_RELEVANT_MANDATORY_TESTS_V1",
+  "seed1_run": false,
+  "seed2_run": false
+}

@@ -1,0 +1,24 @@
+{
+  "CBraMod": {
+    "checkpoint": "D:\\nips-temp\\TotalP\\P2\\fm_rescue_runtime\\CBraMod\\pretrained_weights\\pretrained_weights.pth",
+    "checkpoint_sha256": "0792cb808c14e6b7a2bb2ce1dff379bc47bc54c49a779825bdfeb33bf8157178",
+    "commit": "b9e961003214326972c567eff390e75b0287e32a",
+    "dimension": 200,
+    "final_representation": "official final encoder patch tokens mean over channel and four temporal patches",
+    "repo": "https://github.com/wjq-learning/CBraMod",
+    "strict_official_load": true
+  },
+  "LaBraM": {
+    "checkpoint": "D:\\nips-temp\\TotalP\\P2\\fm_rescue_runtime\\LaBraM\\checkpoints\\labram-base.pth",
+    "checkpoint_sha256": "7c50583826afac76c4ab18f43d958df40496c8229accc09ed6a227c9bb57c37c",
+    "commit": "c431221e6cfd23dbfa9950e0180682fb322b0548",
+    "dimension": 200,
+    "expected_non_strict_keys": "pretraining heads omitted; downstream head/fc_norm initialized as documented",
+    "final_representation": "official final encoder mean pooling used by downstream classification head",
+    "repo": "https://github.com/935963004/LaBraM"
+  },
+  "ST-EEGFormer-Small": {
+    "status": "SEALED_CONFIRMATORY_NOT_ACCESSED",
+    "trigger": "only strong or architecture-dependent primary constructive rescue"
+  }
+}

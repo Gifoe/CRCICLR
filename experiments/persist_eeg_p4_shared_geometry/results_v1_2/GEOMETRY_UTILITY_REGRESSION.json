@@ -1,0 +1,14 @@
+{
+  "status": "OK",
+  "n_blocks": 43,
+  "beta_geometry": 0.024463423464322717,
+  "beta_geometry_bootstrap_ci95": [
+    0.013653064300372622,
+    0.04225720883721747
+  ],
+  "beta_geometry_sign_probability": 1.0,
+  "pooled_spearman_rho": 0.5558492703653285,
+  "bootstrap_draws": 10000,
+  "formula": "u_spec ~ geometry + persistence_strength + block_dimension + run_effects",
+  "implementation": "numpy_run_clustered_bootstrap"
+}

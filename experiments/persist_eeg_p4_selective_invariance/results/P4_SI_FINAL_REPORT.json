@@ -1,0 +1,226 @@
+{
+  "status": "P4_SI_CLOSED",
+  "decision": "P4_SELECTIVE_INVARIANCE_NOT_SUPPORTED",
+  "candidate_version": "SI_V4",
+  "candidate_decision": "P4_SELECTIVE_INVARIANCE_NOT_SUPPORTED",
+  "method": "PERSIST-SI Selective Persistence Invariance",
+  "scientific_conclusion": "Repeated-measure persistence and target relevance are detectable, and protected-vs-nuisance intervention audits are often valid, but the current selective representation intervention does not establish a stable validation generalization gain or the preregistered nuisance-suppression gate across the development panel.",
+  "version_table": [
+    {
+      "version": "SI_V0",
+      "decision": "P4_SI_REPRESENTATION_ONLY",
+      "mean_task_delta": {
+        "mi": -0.002407407407407395,
+        "erp": 0.009363075196408535,
+        "ssvep": -1.850371707708594e-17
+      },
+      "gate_A_to_D_pass": true,
+      "checks": {
+        "gate_A_mean_task_delta_at_least_minus_1pp": true,
+        "gate_A_no_task_catastrophic_in_two_or_more_runs": true,
+        "gate_B_MI_relevance_mean_at_least_0_005": true,
+        "gate_B_MI_relevance_positive_in_at_least_4_of_6": true,
+        "gate_B_MI_protected_harm_exceeds_random_mean": true,
+        "gate_C_macro_nuisance_reduction_mean_at_least_0_02": true,
+        "gate_C_macro_nuisance_reduction_positive_in_at_least_4_of_6": true,
+        "gate_D_MI_protected_retention_mean_at_least_0_50": true,
+        "gate_D_MI_protected_retention_positive_in_at_least_4_of_6": true
+      },
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V1",
+      "decision": "P4_SI_REPRESENTATION_ONLY",
+      "mean_task_delta": {
+        "mi": -0.001481481481481491,
+        "erp": 0.009640852974186284,
+        "ssvep": -0.0017592592592592937
+      },
+      "gate_A_to_D_pass": true,
+      "checks": {
+        "gate_A_mean_task_delta_at_least_minus_1pp": true,
+        "gate_A_no_task_catastrophic_in_two_or_more_runs": true,
+        "gate_B_MI_relevance_mean_at_least_0_005": true,
+        "gate_B_MI_relevance_positive_in_at_least_4_of_6": true,
+        "gate_B_MI_protected_harm_exceeds_random_mean": true,
+        "gate_C_macro_nuisance_reduction_mean_at_least_0_02": true,
+        "gate_C_macro_nuisance_reduction_positive_in_at_least_4_of_6": true,
+        "gate_D_MI_protected_retention_mean_at_least_0_50": true,
+        "gate_D_MI_protected_retention_positive_in_at_least_4_of_6": true
+      },
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V2",
+      "decision": "P4_SI_REPRESENTATION_ONLY",
+      "mean_task_delta": {
+        "mi": -0.0012037037037037068,
+        "erp": 0.008894500561167196,
+        "ssvep": -0.0022222222222222734
+      },
+      "gate_A_to_D_pass": true,
+      "checks": {
+        "gate_A_mean_task_delta_at_least_minus_1pp": true,
+        "gate_A_no_task_catastrophic_in_two_or_more_runs": true,
+        "gate_B_MI_relevance_mean_at_least_0_005": true,
+        "gate_B_MI_relevance_positive_in_at_least_4_of_6": true,
+        "gate_B_MI_protected_harm_exceeds_random_mean": true,
+        "gate_C_macro_nuisance_reduction_mean_at_least_0_02": true,
+        "gate_C_macro_nuisance_reduction_positive_in_at_least_4_of_6": true,
+        "gate_D_MI_protected_retention_mean_at_least_0_50": true,
+        "gate_D_MI_protected_retention_positive_in_at_least_4_of_6": true
+      },
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V3",
+      "decision": "P4_SELECTIVE_INVARIANCE_NOT_SUPPORTED",
+      "mean_task_delta": {
+        "mi": 0.0009259259259259411,
+        "erp": 0.007951739618406265,
+        "ssvep": -0.0007407407407407826
+      },
+      "gate_A_to_D_pass": false,
+      "checks": {
+        "gate_A_mean_task_delta_at_least_minus_1pp": true,
+        "gate_A_no_task_catastrophic_in_two_or_more_runs": true,
+        "gate_B_MI_relevance_mean_at_least_0_005": true,
+        "gate_B_MI_relevance_positive_in_at_least_4_of_6": true,
+        "gate_B_MI_protected_harm_exceeds_random_mean": true,
+        "gate_C_macro_nuisance_reduction_mean_at_least_0_02": false,
+        "gate_C_macro_nuisance_reduction_positive_in_at_least_4_of_6": true,
+        "gate_D_MI_protected_retention_mean_at_least_0_50": true,
+        "gate_D_MI_protected_retention_positive_in_at_least_4_of_6": true
+      },
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V4",
+      "decision": "P4_SELECTIVE_INVARIANCE_NOT_SUPPORTED",
+      "mean_task_delta": {
+        "mi": -0.0005555555555555499,
+        "erp": 0.007912457912457871,
+        "ssvep": 0.0003703703703703172
+      },
+      "gate_A_to_D_pass": false,
+      "checks": {
+        "gate_A_mean_task_delta_at_least_minus_1pp": true,
+        "gate_A_no_task_catastrophic_in_two_or_more_runs": true,
+        "gate_B_MI_relevance_mean_at_least_0_005": true,
+        "gate_B_MI_relevance_positive_in_at_least_4_of_6": true,
+        "gate_B_MI_protected_harm_exceeds_random_mean": true,
+        "gate_C_macro_nuisance_reduction_mean_at_least_0_02": false,
+        "gate_C_macro_nuisance_reduction_positive_in_at_least_4_of_6": true,
+        "gate_D_MI_protected_retention_mean_at_least_0_50": true,
+        "gate_D_MI_protected_retention_positive_in_at_least_4_of_6": true
+      },
+      "outer_test_used": false
+    }
+  ],
+  "adaptation_entries": [
+    {
+      "version": "SI_V0",
+      "parent_version": null,
+      "observed_failure": "Old P4 free projector and scale-confounded persistence gate failed",
+      "failure_type": "SCIENTIFIC",
+      "evidence": {
+        "old_decision": "P4_MAIN_METHOD_NOT_SUPPORTED",
+        "UL_PCA_normalized_overlap": 0.745112
+      },
+      "modification": "train-only whitened repeated-measure spectrum, Fisher relevance, nuisance-only GRL",
+      "why_this_modification_addresses_failure": "removes free basis rotation and global P/F bottleneck while protecting high-relevance persistent directions",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V1",
+      "parent_version": "SI_V0",
+      "observed_failure": "SI-V0 passed intervention and nuisance suppression checks but MI validation BA was neutral/slightly negative and SSVEP nuisance suppression was inconsistent across seeds",
+      "failure_type": "NEGATIVE_TRANSFER",
+      "evidence": {
+        "SI_V0_mean_MI_delta_BA": -0.002407407407407395,
+        "SI_V0_mean_macro_nuisance_AUROC_reduction": 0.03245965149176957,
+        "SI_V0_SSVEP_verifier_delta_range": [
+          -0.055471161111111944,
+          0.044548128858024505
+        ]
+      },
+      "modification": "task-specific adversary strength: MI 0.60x, ERP 1.00x, SSVEP 1.40x",
+      "why_this_modification_addresses_failure": "reduce negative transfer on MI while increasing selective suppression pressure on the least consistent SSVEP nuisance path; no change to persistence estimator or relevance definition",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V2",
+      "parent_version": "SI_V1",
+      "observed_failure": "SI-V1 retained valid selective intervention and macro nuisance suppression, but shared persistence strength produced task-dependent negative transfer: MI remained below reference and SSVEP verifier suppression was inconsistent across the development panel",
+      "failure_type": "NEGATIVE_TRANSFER",
+      "evidence": {
+        "SI_V1_mean_MI_delta_BA": -0.001481481481481491,
+        "SI_V1_mean_SSVEP_delta_BA": -0.0017592592592592937,
+        "SI_V1_SSVEP_verifier_delta_range": [
+          -0.061185860339506126,
+          0.050540123456790154
+        ],
+        "SI_V1_gate_A_to_D_pass": true
+      },
+      "modification": "task-conditioned cross-session persistence strengths estimated per target over the same frozen whitened statistical basis; MI/ERP/SSVEP adversary scales unchanged from SI-V1",
+      "why_this_modification_addresses_failure": "shared directions remain tied to repeated-measure statistics, while each target receives its own measured persistence spectrum so a high-persistence direction in one paradigm cannot impose the same nuisance pressure on another paradigm",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V3",
+      "parent_version": "SI_V2",
+      "observed_failure": "SI-V2 task-conditioned persistence strengths improved diagnostic task separation but did not produce a validation generalization gain; MI and SSVEP remained slightly negative on average",
+      "failure_type": "NEGATIVE_TRANSFER",
+      "evidence": {
+        "SI_V2_mean_MI_delta_BA": -0.0012037037037037068,
+        "SI_V2_mean_SSVEP_delta_BA": -0.0022222222222222734,
+        "SI_V2_gate_A_to_D_pass": true,
+        "SI_V2_macro_nuisance_reduction": 0.028744293338477334
+      },
+      "modification": "task-conditioned repeated-measure covariance eigenspaces and strengths under the same fold-train whitening; task bases are statistically estimated, direction-matched across updates, frozen between updates, and never trainable",
+      "why_this_modification_addresses_failure": "the remaining shared-basis assumption can force unrelated paradigms to suppress different physical directions with the same coordinates; task-conditioned measured eigenspaces allow each target to identify its own persistent variation while preserving the repeated-measure definition",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    },
+    {
+      "version": "SI_V4",
+      "parent_version": "SI_V3",
+      "observed_failure": "SI-V3 task-conditioned eigenspaces preserved task performance and intervention validity but the independent nuisance verifier reduction averaged only 0.99pp, below the preregistered 2pp selective-suppression gate",
+      "failure_type": "OPTIMIZATION",
+      "evidence": {
+        "SI_V3_macro_nuisance_reduction": 0.009883509087791434,
+        "SI_V3_gate_C_mean_pass": false,
+        "SI_V3_gate_A_pass": true,
+        "SI_V3_gate_B_MI_pass": true,
+        "SI_V3_gate_D_pass": true
+      },
+      "modification": "increase only the selective nuisance GRL ceiling from lambda_inv=0.10 to 0.15; retain task-conditioned measured eigenspaces, relevance, schedules, and task-specific scales",
+      "why_this_modification_addresses_failure": "the failure is insufficient nuisance suppression rather than an invalid persistence or relevance definition; a single stronger adversarial ceiling tests whether the measured nuisance coordinates can be suppressed without changing the protected/task pathway",
+      "data_used": [
+        "TRAIN",
+        "VALIDATION"
+      ],
+      "outer_test_used": false
+    }
+  ],
+  "outer_test_used": false,
+  "formal_evaluation_authorized": false,
+  "method_lock_created": false,
+  "missing_versioned_summaries": [],
+  "closure_reason": "Five scientifically distinct development versions (SI-V0 through SI-V4) were evaluated on 3 folds x 2 seeds. No version met the preregistered lock/generalization requirements; further tuning would be unbounded search."
+}

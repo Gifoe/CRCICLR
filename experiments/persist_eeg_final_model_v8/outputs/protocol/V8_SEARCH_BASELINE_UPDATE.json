@@ -1,0 +1,65 @@
+{
+  "OUTER_TEST_USED": false,
+  "decisions": {
+    "OpenBMI": {
+      "OUTER_TEST_USED": false,
+      "benchmark": "OpenBMI_MI_S1_to_S2",
+      "eligible_union_candidates": 25,
+      "exploratory": true,
+      "full_scope_locked_V7_baseline_BA": 0.8377777777777777,
+      "full_scope_locked_V7_baseline_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "headroom_state_after_baseline_update": "V8_HEADROOM_WEAK",
+      "internal_holdout_used": false,
+      "mean_pairwise_correctness_correlation": 0.8042506344970991,
+      "multi_backbone_union_subject_oracle_BA": 0.8794444444444445,
+      "oracle_headroom_vs_V7_two_fold_baseline_pp": 2.777777777777778,
+      "oracle_headroom_vs_updated_screening_baseline_pp": 2.055555555555555,
+      "plus_5pp_actual_reached": false,
+      "plus_8pp_oracle_gate_reached": false,
+      "rescue_ge_2pp_vs_V7_fraction": 0.6666666666666666,
+      "rescue_ge_5pp_vs_V7_fraction": 0.2222222222222222,
+      "screening_baseline_update_pp": 0.722222222222213,
+      "screening_folds": [
+        0,
+        1
+      ],
+      "screening_subjects": 18,
+      "strongest_fair_screening_candidate": "RAW_ENCODER_FINETUNE_BANK__TAIL_FAST_RESIDUAL50",
+      "strongest_fair_screening_candidate_BA": 0.8588888888888889,
+      "strongest_fair_screening_candidate_family": "OpenBMI_MI_S1_to_S2__RAW_ENCODER_FINETUNE_BANK",
+      "two_fold_V7_baseline_BA": 0.8516666666666668
+    },
+    "WBCIC": {
+      "OUTER_TEST_USED": false,
+      "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+      "eligible_union_candidates": 41,
+      "exploratory": true,
+      "full_scope_locked_V7_baseline_BA": 0.8249672025129341,
+      "full_scope_locked_V7_baseline_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+      "headroom_state_after_baseline_update": "V8_HEADROOM_WEAK",
+      "internal_holdout_used": false,
+      "mean_pairwise_correctness_correlation": 0.7041177843413883,
+      "multi_backbone_union_subject_oracle_BA": 0.84375,
+      "oracle_headroom_vs_V7_two_fold_baseline_pp": 3.000000000000001,
+      "oracle_headroom_vs_updated_screening_baseline_pp": 2.083333333333348,
+      "plus_5pp_actual_reached": false,
+      "plus_8pp_oracle_gate_reached": false,
+      "rescue_ge_2pp_vs_V7_fraction": 0.6666666666666666,
+      "rescue_ge_5pp_vs_V7_fraction": 0.25,
+      "screening_baseline_update_pp": 0.9166666666666656,
+      "screening_folds": [
+        0,
+        1
+      ],
+      "screening_subjects": 12,
+      "strongest_fair_screening_candidate": "MULTISCALE_TCN_STAGED_BANK_K4__E0_GENERIC_BLEND50",
+      "strongest_fair_screening_candidate_BA": 0.8229166666666665,
+      "strongest_fair_screening_candidate_family": "WBCIC_S1S2_to_S3_authorized_development__MULTISCALE_TCN_STAGED_BANK_K4",
+      "two_fold_V7_baseline_BA": 0.8137499999999999
+    }
+  },
+  "full_scope_baseline_changed": false,
+  "internal_holdout_used": false,
+  "reason_full_scope_not_changed": "New candidates were screened on only source folds 0/1.",
+  "search_scope_baseline_promoted": true
+}

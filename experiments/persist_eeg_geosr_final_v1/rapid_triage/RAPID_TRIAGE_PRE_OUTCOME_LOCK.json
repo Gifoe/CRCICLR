@@ -1,0 +1,39 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "amendment_sha256": "a60ace47470d77b41a9f15da2baf1df556839fe25658fd1f11e3ad8d57fea6dc",
+  "backbone": "EEGNet",
+  "created_at_utc": "2026-09-05T05:20:32Z",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "descriptor_cap": 32,
+  "exact_refit": false,
+  "final_claim_authorized": false,
+  "folds": [
+    0
+  ],
+  "initial_selection_weights_reused": true,
+  "inner_crossfit_k": 5,
+  "manifest_sha256": "e78a0729fd31e8a1fcc59186767fcb2e3a136e344c4500763d7fb75e7f86a2dc",
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GEOSR"
+  ],
+  "outcome_labels_read": false,
+  "outcome_labels_read_before_lock": false,
+  "role_hashes": {
+    "OpenBMI": "6e421f430fca200a00300811bd5e530f19c3784edd39a0ca5ff08e618ab019df",
+    "WBCIC": "7a7a5398ce6ea05309883ca8101669344f21a56c42c7cc2d6d2be223b11262c9"
+  },
+  "schema": "PERSIST_EEG_GEOSR_RAPID_TRIAGE_PRE_OUTCOME_LOCK_V1",
+  "scientific_definition_changed": true,
+  "seed": 0,
+  "student_discovery_selected": true,
+  "wbcic_final_refit_teacher": false,
+  "worker_lock_sha256": {
+    "OpenBMI": "62f0d28d836661b014e46145c9603292acd5a1fdc81d3d6ce82cf9abc06b5604",
+    "WBCIC": "ffd41cdb959ae948a8a82c5fa40794ba27c59f43a2247d6cf679bd7486d71501"
+  }
+}

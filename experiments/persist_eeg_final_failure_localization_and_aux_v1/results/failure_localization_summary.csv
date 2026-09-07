@@ -1,0 +1,8 @@
+hypothesis,status,evidence
+H1_teacher_relative_importance_mismatch,PARTIAL,"""task consequence is measurable but does not predict future BA reliably"""
+H2_source_future_certificate_mismatch,PARTIAL,"""frozen source directions evaluated on unseen Session 2"""
+H3_hard_factorization_brittle_bottleneck,SUPPORT,"{""pud_erase_harm"": 0.1355833333333333, ""random_erase_harm"": 0.02358333333333332, ""identity_erase_harm"": 0.010499999999999989, ""R_P_pud"": 0.6826850240429242, ""R_P_dual"": 0.5026111518343289}"
+H4_optimization_gradient_conflict,PARTIAL,"""gradient cosines are reported without optimizer steps"""
+H5_calibration_margin_failure,NOT_SUPPORT,"""calibration audit is diagnostic; frozen BA loss is not reduced to calibration alone"""
+H6_adaptation_failure,NOT_SUPPORT,0.007416666666666627
+H7_capacity_only_failure,NOT_SUPPORT,"""strong single-path and dual controls are available"""

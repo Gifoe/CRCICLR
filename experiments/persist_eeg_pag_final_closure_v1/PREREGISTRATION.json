@@ -1,0 +1,28 @@
+{
+  "comparator": "exactly matched task-only control",
+  "decision_states": [
+    "PAG_STRONG_CONFIRMATION",
+    "PAG_PARTIAL_CONFIRMATION",
+    "PAG_PREMISE_NOT_REPLICATED",
+    "PAG_FALSIFIED_BY_ACTIONABILITY",
+    "PAG_MIXED"
+  ],
+  "document": "PREREGISTRATION.md",
+  "minimum_meaningful_actionability_gain_pp": 0.5,
+  "optimization_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "primary_method": "PUD-Aux",
+  "primary_metric": "subject-balanced balanced accuracy",
+  "protocol_change_after_lock": false,
+  "schema": "PERSIST_EEG_PAG_PREREGISTRATION_V1",
+  "sealed_cohorts": [
+    "OpenBMI internal sealed holdout",
+    "WBCIC outer sealed subjects"
+  ],
+  "sealed_outcome_access_before_lock": false
+}

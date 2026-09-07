@@ -1,0 +1,55 @@
+{
+  "schema": "P4A_PROTOCOL_AMENDMENT_LEAN_V1",
+  "timestamp_utc": "2026-08-27T08:43:19.016002+00:00",
+  "amendment_type": "COMPUTATIONAL_SCOPE_AMENDMENT",
+  "scientific_outcome_amendment": false,
+  "original_protocol": {
+    "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\P4A_PROTOCOL_FROZEN.json",
+    "sha256": "73732e3cc82d13b1a9c3e2b4f816433838c991a7df5933b3bb414338e48f5618",
+    "required_full_invariance_grid": true,
+    "planned_non_erm_grid_count": 405
+  },
+  "pause_snapshot": {
+    "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_p4a_cross_setting_expansion_v1\\P4A_GRID_PAUSE_SNAPSHOT.json",
+    "sha256": "e306589443f99f408f038d21dd25d749a72fdf1e4b7e2a1f6b044bbd2e884fe2",
+    "erm_completed": 45,
+    "non_erm_grid_completed": 205,
+    "non_erm_grid_complete": false,
+    "counts_by_setting": {
+      "S4": 135,
+      "S5": 70,
+      "S6": 0
+    }
+  },
+  "lean_primary_asset": "cross-setting competent-ERM source evidence cube",
+  "mandatory_erm_complete_before_amendment": true,
+  "amendment_before_p4b_future_direction_utility_discovery": true,
+  "reason": "The non-ERM DANN/CORAL/MMD grid is computationally redundant for P4B direction-level identity-reliability discovery, whose frozen I/P/D/C_src/O_task primitives are available from competent ERM representations.",
+  "pause_decision_used_grid_scientific_outcomes": false,
+  "partial_grid_label": "OPTIONAL_PARTIAL_INVARIANCE_GRID",
+  "partial_grid_excluded_from_lean_primary_gate": true,
+  "unchanged_scientific_elements": [
+    "datasets",
+    "tasks",
+    "backbones",
+    "folds",
+    "seeds",
+    "ERM definition",
+    "I/P/D/C_src/O_task definitions",
+    "competence rule",
+    "holdout policy"
+  ],
+  "purity_boundary": {
+    "new_setting_outcome_access": "ERM_COMPETENCE_ONLY",
+    "invariance_outcome_deltas_sealed": true,
+    "direction_level_future_utilities_sealed": true,
+    "openbmi_internal_holdout_untouched": true,
+    "wbcic_outer_holdout_untouched_not_enumerated": true
+  },
+  "forbidden_claim": "The original full-grid P4A terminal must not be claimed or synthesized.",
+  "allowed_lean_terminals": [
+    "P4A_LEAN_CROSS_SETTING_CUBE_COMPLETE",
+    "P4A_LEAN_PARTIAL_SETTING_FAILURE",
+    "P4A_LEAN_PROTOCOL_OR_PURITY_FAILURE"
+  ]
+}

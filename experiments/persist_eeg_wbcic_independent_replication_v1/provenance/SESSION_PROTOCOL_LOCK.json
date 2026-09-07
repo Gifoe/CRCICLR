@@ -1,0 +1,33 @@
+{
+  "bids_mapping": {
+    "S1": "ses-0",
+    "S2": "ses-1",
+    "S3": "ses-2"
+  },
+  "code_commit_at_freeze": "47523e8e96a03755da2c404b626309b25a92c827",
+  "code_tree_sha256": "a3114765b50e9dbeceb3dff293edc1535090147210a627685620e24c6064697c",
+  "discovery_sessions": [
+    0,
+    1
+  ],
+  "frozen_at_utc": "2026-08-17T13:02:06.939597+00:00",
+  "frozen_before_task_or_actionability_outcomes": true,
+  "implementation_id": "persist_eeg_wbcic_eegnet_actionability_v2_20260817",
+  "model_fit_sessions": [
+    0,
+    1
+  ],
+  "outcome_session": 2,
+  "primary": "S1+S2->S3",
+  "primary_target": "unseen subject + future session",
+  "protocol_seed": "PERSIST-EEG-WBCIC-EEGNET-V2-20260817",
+  "reference_commits": [
+    "1eca3976d62d38fb4291e217ca06add484babd41",
+    "78f010644e86639d44a844558ab37bd865815082"
+  ],
+  "secondary_robustness": [
+    "S1+S3->S2",
+    "S2+S3->S1"
+  ],
+  "trial_random_split_forbidden": true
+}

@@ -1,0 +1,137 @@
+{
+  "analysis_commit": "a8a9c947248ce7d4a32b43292d68a77d72a69727",
+  "authorization": "SCAA_DEVELOPMENT_NOT_AUTHORIZED",
+  "branch": "codex/persist-eeg-scaa-stage0",
+  "competence": {
+    "S1_validation_BA_delta": 0.015243902439024386,
+    "adapted_S1_validation_BA": 0.7716124661246613,
+    "adapted_S1_validation_NLL": 0.4571330643336962,
+    "anchor_S1_validation_BA": 0.7563685636856369,
+    "catastrophic_fraction": 0.0,
+    "cells": 246.0,
+    "lr": 0.001,
+    "median_best_epoch": 21.0,
+    "parameter_relative_change": 0.23237294134328035,
+    "prediction_change_rate": 0.07161246612466125
+  },
+  "correlations": {
+    "EEGConformer": {
+      "CI95": [
+        -0.016330818429902437,
+        0.5914186526326393
+      ],
+      "estimate": 0.3106889427991859
+    },
+    "EEGNet": {
+      "CI95": [
+        -0.17220300096048202,
+        0.5058472909096499
+      ],
+      "estimate": 0.1862005884778532
+    },
+    "Pooled": {
+      "CI95": [
+        -0.018261218132392776,
+        0.5985674364356889
+      ],
+      "estimate": 0.3149962980469522
+    }
+  },
+  "development_subject_count": 41,
+  "development_subjects_only": true,
+  "frozen_adapter": {
+    "S1_split": "within-class chronological first 70% train / final 30% validation",
+    "checkpoint_rule": "highest S1-validation BA, then lower NLL, then earlier epoch",
+    "encoder_frozen": true,
+    "global_recipe_across_subjects_backbones_seeds": true,
+    "last_block_repair_used": false,
+    "learning_rate": 0.001,
+    "maximum_epochs": 50,
+    "minimum_epochs": 10,
+    "name": "classifier_head_only_supervised",
+    "normalization_state_frozen": true,
+    "optimizer": "AdamW",
+    "patience": 8,
+    "selection_completed_before_S2_or_S3": true,
+    "target_data_used_for_training": "S1_train only",
+    "weight_decay": 0.0001
+  },
+  "outer_10_untouched_unenumerated": true,
+  "pooled_harm_coverage": {
+    "S2_positive_S3_negative_reversals": 7,
+    "certificate_positive_subjects": 20,
+    "coverage": 0.4878048780487805,
+    "coverage_CI95_high": 0.6341463414634146,
+    "coverage_CI95_low": 0.34146341463414637,
+    "harm_always": 0.3902439024390244,
+    "harm_always_CI95_high": 0.5365853658536586,
+    "harm_always_CI95_low": 0.24390243902439024,
+    "harm_certified": 0.35,
+    "harm_certified_CI95_high": 0.5714285714285714,
+    "harm_certified_CI95_low": 0.15384615384615385,
+    "harm_reduction_absolute": 0.040243902439024426,
+    "harm_reduction_absolute_CI95_high": 0.20034843205574912,
+    "harm_reduction_absolute_CI95_low": -0.11773418168964295,
+    "harm_reduction_relative": 0.10312500000000013,
+    "harm_reduction_relative_CI95_high": 0.5340909090909092,
+    "harm_reduction_relative_CI95_low": -0.31550802139037426,
+    "scope": "Pooled",
+    "subjects": 41
+  },
+  "pooled_policy": {
+    "S2_gated_policy_BA": 0.7897045659850538,
+    "S2_gated_policy_BA_CI95_high": 0.8310571107415621,
+    "S2_gated_policy_BA_CI95_low": 0.7478539562289563,
+    "always_adapt_policy_BA": 0.789887492814322,
+    "always_adapt_policy_BA_CI95_high": 0.8315065697626673,
+    "always_adapt_policy_BA_CI95_low": 0.7478023373983741,
+    "anchor_policy_BA": 0.7869581742218937,
+    "anchor_policy_BA_CI95_high": 0.8287406932639402,
+    "anchor_policy_BA_CI95_low": 0.7449236213763654,
+    "gated_minus_always": -0.00018292682926823733,
+    "gated_minus_always_CI95_high": 0.0013821138211380674,
+    "gated_minus_always_CI95_low": -0.0018292682926830395,
+    "gated_minus_anchor": 0.00274639176316005,
+    "gated_minus_anchor_CI95_high": 0.005917123470477017,
+    "gated_minus_anchor_CI95_low": 0.000386178861788708,
+    "scope": "Pooled",
+    "subjects": 41,
+    "subjects_gated_policy_above_always": 10,
+    "subjects_gated_policy_above_anchor": 14
+  },
+  "pooled_sign": {
+    "concordant": 22,
+    "exact_CI95_high": 0.6934405671485987,
+    "exact_CI95_low": 0.37424842831374805,
+    "exact_binomial_p_two_sided": 0.755228657504631,
+    "scope": "Pooled",
+    "sign_concordance": 0.5365853658536586,
+    "subjects": 41,
+    "zero_rule": "np.sign; zero only concordant with zero"
+  },
+  "primary_limitation": "Single WBCIC development cohort, one simple head-only adapter, two correlated backbones, and no OpenBMI or sealed-outer confirmation.",
+  "protocol_lock_sha256": "c033abfbfb1c158caa410842a2edb671d4c578060bd76fd34110b9d744362584",
+  "schema": "PERSIST_EEG_SCAA_STAGE0_FINAL_REPORT_V1",
+  "secondary_LCB": {
+    "bootstrap_resamples_within_subject": 2000,
+    "certificate_positive_subjects": 8,
+    "confidence": "90% one-sided",
+    "coverage": 0.1951219512195122,
+    "future_harm_given_LCB_positive": 0.25,
+    "primary_gate_use": false,
+    "scope": "Pooled",
+    "subjects": 41
+  },
+  "strong_support_gates": {
+    "A_utility_transfer": false,
+    "B_sign_persistence": false,
+    "C_reduced_future_harm": false,
+    "D_nontrivial_coverage": true,
+    "E_policy_usefulness": true
+  },
+  "stronger_claim_not_justified": "This Stage-0 does not establish that SCAA improves generalization or formally controls negative transfer.",
+  "strongest_supported_claim": "Same-target historical utility shows favorable but insufficient prospective evidence under the frozen WBCIC analysis.",
+  "target_history_outperforms_simple_proxies_descriptively": true,
+  "target_never_seen_by_anchor": true,
+  "terminal": "TARGET_HISTORY_UTILITY_TRANSFER_PARTIAL"
+}

@@ -1,0 +1,30 @@
+﻿{
+    "schema":  "PERSIST_EEG_GEOSR_RAPID_TRIAGE_EXECUTION_LOCK_V1",
+    "locked_at_utc":  "2026-09-05T04:54:36Z",
+    "amendment_sha256":  "a60ace47470d77b41a9f15da2baf1df556839fe25658fd1f11e3ad8d57fea6dc",
+    "protocol_lock_sha256":  "63ffd4b19ee174769ef7ac3cc34511b02a4951f434adfcdc0758b9f66930257f",
+    "code_sha256":  {
+                        "run_geosr.py":  "45ef81a5e7fcfe8c24b147fbfc17e7e36302b5df84b19c30a80b7354ffdf75e2",
+                        "audit_primitives.py":  "778108434372feae0391b196751a1693491f2a6ec2d18086e0d33b74c9eb798b",
+                        "run_geosr_rapid_triage.py":  "d3aec1be7dbc98682a0d3a718150e9aaa14c1574fd134106884f38713d12fe14",
+                        "run_geosr_rapid_triage_parallel.py":  "1979a47c7c3de4da111b36d644f45fdaaf7cfa418bca3532c9cb9511e93dd156",
+                        "evaluate_geosr_rapid_triage.py":  "3ceb06f8ff41eafbf3e7f8c9f14e2d5f6723d6d7804a2a8f000db9637c7b9399"
+                    },
+    "seed":  0,
+    "datasets":  [
+                     "OpenBMI",
+                     "WBCIC"
+                 ],
+    "folds":  [
+                  0
+              ],
+    "methods":  [
+                    "SUBJECT_BALANCED_ERM",
+                    "GEOSR"
+                ],
+    "outcome_labels_read":  false,
+    "outcome_labels_read_before_lock":  false,
+    "WBCIC_outer_10_opened":  false,
+    "OpenBMI_sealed_holdout_opened":  false,
+    "status":  "LOCKED"
+}

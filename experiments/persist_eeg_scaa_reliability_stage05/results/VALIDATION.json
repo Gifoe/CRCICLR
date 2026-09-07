@@ -1,0 +1,158 @@
+{
+  "OpenBMI": "NOT_ACCESSED",
+  "authorization": "RELIABILITY_GATED_SCAA_DEVELOPMENT_NOT_AUTHORIZED",
+  "checks": [
+    {
+      "check": "required_reports_present",
+      "pass": true
+    },
+    {
+      "check": "required_results_present",
+      "pass": true
+    },
+    {
+      "check": "five_required_figures_present",
+      "pass": true
+    },
+    {
+      "check": "data_access_lock_present",
+      "pass": true
+    },
+    {
+      "check": "feature_protocol_lock_present",
+      "pass": true
+    },
+    {
+      "check": "stage0_tip_preserved",
+      "pass": true
+    },
+    {
+      "check": "stage0_terminal_preserved",
+      "pass": true
+    },
+    {
+      "check": "stage0_non_authorization_preserved",
+      "pass": true
+    },
+    {
+      "check": "outer_identifiers_absent",
+      "pass": true
+    },
+    {
+      "check": "openbmi_not_accessed",
+      "pass": true
+    },
+    {
+      "check": "feature_extraction_read_no_S3_signal",
+      "pass": true
+    },
+    {
+      "check": "feature_sessions_exactly_S1_S2",
+      "pass": true
+    },
+    {
+      "check": "paired_feature_rows_complete",
+      "pass": true
+    },
+    {
+      "check": "both_backbones_per_subject",
+      "pass": true
+    },
+    {
+      "check": "three_seed_aggregation",
+      "pass": true
+    },
+    {
+      "check": "feature_input_label_S1_S2",
+      "pass": true
+    },
+    {
+      "check": "feature_S3_flag_false",
+      "pass": true
+    },
+    {
+      "check": "identity_not_fabricated",
+      "pass": true
+    },
+    {
+      "check": "outcome_rows_complete",
+      "pass": true
+    },
+    {
+      "check": "R_sign_binary",
+      "pass": true
+    },
+    {
+      "check": "H_binary",
+      "pass": true
+    },
+    {
+      "check": "M0_to_M8_all_outcomes",
+      "pass": true
+    },
+    {
+      "check": "M4_unavailable_explicit",
+      "pass": true
+    },
+    {
+      "check": "M4_has_no_fabricated_metric",
+      "pass": true
+    },
+    {
+      "check": "available_AUROC_finite",
+      "pass": true
+    },
+    {
+      "check": "available_Brier_finite",
+      "pass": true
+    },
+    {
+      "check": "policy_subject_pairing",
+      "pass": true
+    },
+    {
+      "check": "policy_comparators_complete",
+      "pass": true
+    },
+    {
+      "check": "policy_coverage_valid",
+      "pass": true
+    },
+    {
+      "check": "policy_BA_valid",
+      "pass": true
+    },
+    {
+      "check": "terminal_allowed",
+      "pass": true
+    },
+    {
+      "check": "terminal_consistent",
+      "pass": true
+    },
+    {
+      "check": "gates_consistent",
+      "pass": true
+    },
+    {
+      "check": "non_supported_not_authorized",
+      "pass": true
+    },
+    {
+      "check": "final_outer_status",
+      "pass": true
+    },
+    {
+      "check": "final_openbmi_status",
+      "pass": true
+    },
+    {
+      "check": "no_post_outcome_feature_change",
+      "pass": true
+    }
+  ],
+  "outer_10": "UNTOUCHED_UNENUMERATED_UNPREPROCESSED_UNEVALUATED",
+  "pass": true,
+  "schema": "PERSIST_EEG_SCAA_RELIABILITY_STAGE05_VALIDATION_V1",
+  "terminal": "RELIABILITY_MECHANISM_PARTIAL"
+}

@@ -1,0 +1,180 @@
+{
+  "architectures": {
+    "EEGConformer": {
+      "channel_drop": 0.03,
+      "depth": 2,
+      "dropout": [
+        0.4,
+        0.3
+      ],
+      "ffn": 160,
+      "heads": 4,
+      "kernel": 25,
+      "pool_kernel": 25,
+      "pool_stride": 10,
+      "representation_dim": 64,
+      "temporal_filters": 40
+    },
+    "EEGNet": {
+      "D": 2,
+      "F1": 8,
+      "F2": 16,
+      "dropout": 0.25,
+      "representation_dim": 64,
+      "temporal_kernel": 64
+    }
+  },
+  "bootstrap_draws": 10000,
+  "branch": "codex/persist-eeg-p4a-cross-setting-expansion-v1",
+  "competence_gate": {
+    "chance": 0.5,
+    "mean_outcome_BA_strictly_greater_than": 0.6,
+    "minimum_fold_means_above_chance": 4
+  },
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "forbidden_in_P4A": [
+    "future direction erasure utility",
+    "invariance outcome delta summary",
+    "reliability-condition fitting",
+    "selective-invariance model design"
+  ],
+  "frozen_before_any_new_setting_outcome_evaluation": true,
+  "future_direction_utility_sealed": true,
+  "invariance_outcome_delta_sealed": true,
+  "methods": {
+    "CORAL": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "DANN": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "ERM": [
+      0.0
+    ],
+    "MMD": [
+      0.01,
+      0.1,
+      1.0
+    ]
+  },
+  "planned_settings": {
+    "S1": {
+      "backbone": "EEGNet",
+      "dataset": "OpenBMI",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S2": {
+      "backbone": "EEGConformer",
+      "dataset": "OpenBMI",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S3": {
+      "backbone": "EEGNet",
+      "dataset": "WBCIC",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S4": {
+      "backbone": "EEGConformer",
+      "dataset": "WBCIC",
+      "status": "new",
+      "task": "MI"
+    },
+    "S5": {
+      "backbone": "EEGNet",
+      "dataset": "OpenBMI",
+      "status": "new",
+      "task": "ERP"
+    },
+    "S6": {
+      "backbone": "EEGConformer",
+      "dataset": "OpenBMI",
+      "status": "new",
+      "task": "ERP"
+    }
+  },
+  "random_controls": {
+    "per_direction": 100,
+    "rank": 1,
+    "rule": "P3 full-space random subspace with per-trial displacement-norm matching"
+  },
+  "repository_start_sha": "1ff8edda656372d8d36a2bcdb7d96311f88f8da6",
+  "schema": "PERSIST_EEG_P4A_CROSS_SETTING_EXPANSION_V1",
+  "scientific_protocol_post_outcome_modification_allowed": false,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "session_rules": {
+    "OpenBMI": {
+      "outcome": "held-subject S2",
+      "source": [
+        "S1",
+        "S2"
+      ]
+    },
+    "WBCIC": {
+      "outcome": "held-subject S3",
+      "source": [
+        "S1",
+        "S2"
+      ]
+    }
+  },
+  "source_primitives": {
+    "C_src": [
+      "validation CE harm",
+      "validation BA harm",
+      "validation macro-F1 harm"
+    ],
+    "D_finite": "RMS class-centered logit displacement",
+    "I": "standardized multiclass ridge alpha=1 symmetric S1<->S2 identity skill",
+    "I_direction": "I_full minus I_after_rank1_erasure",
+    "O_task": "squared projection on class-centered linear classifier-weight span",
+    "P": "P2/P3 subject-centroid SVD pool; sort by cross-session correlation then geometry; first 8"
+  },
+  "subject_scopes": {
+    "OpenBMI_development_count": 40,
+    "OpenBMI_development_hash": "74543b83e744b8261ba92e70f7cfc2c1efa646d17e7d9f1febe44a4612720aa1",
+    "OpenBMI_sealed_internal_holdout_count": 14,
+    "OpenBMI_sealed_internal_holdout_membership_materialized": false,
+    "WBCIC_development_count": 41,
+    "WBCIC_development_hash": "a19f1801d8ea0f5cab96978eda2d05cea0bd07bd7004485d7df5a47c528a30cf",
+    "WBCIC_sealed_outer_count": 10,
+    "WBCIC_sealed_outer_membership_materialized": false
+  },
+  "training": {
+    "OpenBMI_ERP_class_weight": "inverse frequency computed on model-fit rows only",
+    "backbones": {
+      "EEGConformer": {
+        "batch_size": 256,
+        "lr": 0.0003,
+        "weight_decay": 0.0005
+      },
+      "EEGNet": {
+        "batch_size": 512,
+        "lr": 0.0003,
+        "weight_decay": 0.0005
+      }
+    },
+    "gradient_clip_norm": 5.0,
+    "max_epochs": 60,
+    "minimum_epochs": 20,
+    "optimizer": "AdamW",
+    "patience": 12,
+    "selection": "source validation mean-subject balanced accuracy; validation NLL tie-break"
+  }
+}

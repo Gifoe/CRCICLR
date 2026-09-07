@@ -1,0 +1,412 @@
+{
+  "OpenBMI": {
+    "0.0001": {
+      "ci95": {
+        "conflict_minus_nonconflict": [
+          0.002275094078913821,
+          0.0030362722394654757
+        ],
+        "conflict_rate": [
+          0.252,
+          0.428
+        ],
+        "harm_auroc": [
+          0.9971049922799794,
+          1.0
+        ],
+        "mean_delta_conflict": [
+          0.000902456801329031,
+          0.0012557414999926975
+        ],
+        "mean_delta_nonconflict": [
+          -0.0018716073500181635,
+          -0.0012465826436584644
+        ],
+        "pearson_r": [
+          0.9993223725286109,
+          0.9994468974050309
+        ],
+        "positive_harm_conflict": [
+          0.000902456801329031,
+          0.0012557414999926975
+        ],
+        "positive_harm_nonconflict": [
+          0.0,
+          6.7035223813665e-07
+        ],
+        "sign_accuracy": [
+          0.972,
+          1.0
+        ],
+        "spearman_rho": [
+          0.9980222164616877,
+          0.9992503624336339
+        ]
+      },
+      "cluster_unit": "outer_fold",
+      "clusters": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_bootstrap": 10000,
+      "observed": {
+        "conflict_minus_nonconflict": 0.0026695746310891047,
+        "conflict_rate": 0.34,
+        "harm_auroc": 0.9989478114478114,
+        "mean_delta_conflict": 0.0010788323248133484,
+        "mean_delta_nonconflict": -0.0015907423062757565,
+        "n": 250.0,
+        "pearson_r": 0.9993711200048198,
+        "positive_harm_conflict": 0.0010788323248133484,
+        "positive_harm_nonconflict": 2.699367927782463e-07,
+        "sign_accuracy": 0.988,
+        "spearman_rho": 0.9991306100897613
+      },
+      "seed": 3367876002
+    },
+    "0.001": {
+      "ci95": {
+        "conflict_minus_nonconflict": [
+          0.020837320446409544,
+          0.026608146693669097
+        ],
+        "conflict_rate": [
+          0.252,
+          0.428
+        ],
+        "harm_auroc": [
+          0.9100006414779652,
+          0.9813636655741919
+        ],
+        "mean_delta_conflict": [
+          0.01479957329815827,
+          0.019022825886221447
+        ],
+        "mean_delta_nonconflict": [
+          -0.008639380510090361,
+          -0.00438803054342332
+        ],
+        "pearson_r": [
+          0.9060615936211803,
+          0.9407420166442607
+        ],
+        "positive_harm_conflict": [
+          0.01479957329815827,
+          0.019022825886221447
+        ],
+        "positive_harm_nonconflict": [
+          0.0013849194993309668,
+          0.002316989336803446
+        ],
+        "sign_accuracy": [
+          0.76,
+          0.848
+        ],
+        "spearman_rho": [
+          0.8820782562773056,
+          0.9346355981835114
+        ]
+      },
+      "cluster_unit": "outer_fold",
+      "clusters": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_bootstrap": 10000,
+      "observed": {
+        "conflict_minus_nonconflict": 0.023619714541337423,
+        "conflict_rate": 0.34,
+        "harm_auroc": 0.9476254739412634,
+        "mean_delta_conflict": 0.016657712179071714,
+        "mean_delta_nonconflict": -0.00696200236226571,
+        "n": 250.0,
+        "pearson_r": 0.9190523650846334,
+        "positive_harm_conflict": 0.016657712179071714,
+        "positive_harm_nonconflict": 0.0018034858234000793,
+        "sign_accuracy": 0.808,
+        "spearman_rho": 0.9136585225363605
+      },
+      "seed": 3775417927,
+      "sign_reversal_vs_primary": false
+    },
+    "1e-05": {
+      "ci95": {
+        "conflict_minus_nonconflict": [
+          0.0002286033081253536,
+          0.00030731407736270174
+        ],
+        "conflict_rate": [
+          0.252,
+          0.428
+        ],
+        "harm_auroc": [
+          1.0,
+          1.0
+        ],
+        "mean_delta_conflict": [
+          8.190475931069598e-05,
+          0.00011933478246249744
+        ],
+        "mean_delta_nonconflict": [
+          -0.0002010259080060312,
+          -0.0001327418813518214
+        ],
+        "pearson_r": [
+          0.9999935371678206,
+          0.9999946111719794
+        ],
+        "positive_harm_conflict": [
+          8.190475931069598e-05,
+          0.00011933478246249744
+        ],
+        "positive_harm_nonconflict": [
+          0.0,
+          0.0
+        ],
+        "sign_accuracy": [
+          1.0,
+          1.0
+        ],
+        "spearman_rho": [
+          0.9998602110275834,
+          0.9999892474150593
+        ]
+      },
+      "cluster_unit": "outer_fold",
+      "clusters": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_bootstrap": 10000,
+      "observed": {
+        "conflict_minus_nonconflict": 0.00026950564720196174,
+        "conflict_rate": 0.34,
+        "harm_auroc": 1.0,
+        "mean_delta_conflict": 0.00010181682951307981,
+        "mean_delta_nonconflict": -0.00016768881768888195,
+        "n": 250.0,
+        "pearson_r": 0.9999938566231048,
+        "positive_harm_conflict": 0.00010181682951307981,
+        "positive_harm_nonconflict": 0.0,
+        "sign_accuracy": 1.0,
+        "spearman_rho": 0.9999708155330483
+      },
+      "seed": 3059791176,
+      "sign_reversal_vs_primary": false
+    }
+  },
+  "WBCIC": {
+    "0.0001": {
+      "ci95": {
+        "conflict_minus_nonconflict": [
+          0.0006171072339116869,
+          0.0007682753303163872
+        ],
+        "conflict_rate": [
+          0.456,
+          0.584
+        ],
+        "harm_auroc": [
+          1.0,
+          1.0
+        ],
+        "mean_delta_conflict": [
+          0.0002858414099766225,
+          0.00037972040866546703
+        ],
+        "mean_delta_nonconflict": [
+          -0.0004309970190969163,
+          -0.00031509716063734237
+        ],
+        "pearson_r": [
+          0.9999054088247165,
+          0.9999671813869522
+        ],
+        "positive_harm_conflict": [
+          0.0002858414099766225,
+          0.00037972040866546703
+        ],
+        "positive_harm_nonconflict": [
+          0.0,
+          0.0
+        ],
+        "sign_accuracy": [
+          1.0,
+          1.0
+        ],
+        "spearman_rho": [
+          0.9996726095553262,
+          0.9998492775595207
+        ]
+      },
+      "cluster_unit": "outer_fold",
+      "clusters": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_bootstrap": 10000,
+      "observed": {
+        "conflict_minus_nonconflict": 0.0006880185638481983,
+        "conflict_rate": 0.52,
+        "harm_auroc": 1.0,
+        "mean_delta_conflict": 0.0003293166940028462,
+        "mean_delta_nonconflict": -0.00035870186984535206,
+        "n": 250.0,
+        "pearson_r": 0.9999323329265255,
+        "positive_harm_conflict": 0.0003293166940028462,
+        "positive_harm_nonconflict": 0.0,
+        "sign_accuracy": 1.0,
+        "spearman_rho": 0.9998492775595206
+      },
+      "seed": 822645618
+    },
+    "0.001": {
+      "ci95": {
+        "conflict_minus_nonconflict": [
+          0.0060880225176650005,
+          0.007618793513488368
+        ],
+        "conflict_rate": [
+          0.456,
+          0.592
+        ],
+        "harm_auroc": [
+          0.9919871157922628,
+          0.998896103896104
+        ],
+        "mean_delta_conflict": [
+          0.003372225041190737,
+          0.004298151587136042
+        ],
+        "mean_delta_nonconflict": [
+          -0.003626727016042819,
+          -0.0026464953552931218
+        ],
+        "pearson_r": [
+          0.992780008434123,
+          0.996688672017498
+        ],
+        "positive_harm_conflict": [
+          0.003372225041190737,
+          0.004298151587136042
+        ],
+        "positive_harm_nonconflict": [
+          3.8241898571999965e-05,
+          6.963385910283832e-05
+        ],
+        "sign_accuracy": [
+          0.92,
+          0.952
+        ],
+        "spearman_rho": [
+          0.9897604301694752,
+          0.9952832742878539
+        ]
+      },
+      "cluster_unit": "outer_fold",
+      "clusters": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_bootstrap": 10000,
+      "observed": {
+        "conflict_minus_nonconflict": 0.006844983001549955,
+        "conflict_rate": 0.52,
+        "harm_auroc": 0.9959167544783982,
+        "mean_delta_conflict": 0.0038292258977889538,
+        "mean_delta_nonconflict": -0.0030157571037610015,
+        "n": 250.0,
+        "pearson_r": 0.9941064211231007,
+        "positive_harm_conflict": 0.0038292258977889538,
+        "positive_harm_nonconflict": 5.1369766394292425e-05,
+        "sign_accuracy": 0.936,
+        "spearman_rho": 0.9933190611049776
+      },
+      "seed": 1444845151,
+      "sign_reversal_vs_primary": false
+    },
+    "1e-05": {
+      "ci95": {
+        "conflict_minus_nonconflict": [
+          6.178688233058883e-05,
+          7.67823028164395e-05
+        ],
+        "conflict_rate": [
+          0.456,
+          0.584
+        ],
+        "harm_auroc": [
+          1.0,
+          1.0
+        ],
+        "mean_delta_conflict": [
+          2.7972574417405862e-05,
+          3.747877321745042e-05
+        ],
+        "mean_delta_nonconflict": [
+          -4.322384878740068e-05,
+          -3.200955688953291e-05
+        ],
+        "pearson_r": [
+          0.9999989719276402,
+          0.9999995144206848
+        ],
+        "positive_harm_conflict": [
+          2.7972574417405862e-05,
+          3.747877321745042e-05
+        ],
+        "positive_harm_nonconflict": [
+          0.0,
+          0.0
+        ],
+        "sign_accuracy": [
+          1.0,
+          1.0
+        ],
+        "spearman_rho": [
+          0.9999677403869234,
+          0.999999231928723
+        ]
+      },
+      "cluster_unit": "outer_fold",
+      "clusters": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_bootstrap": 10000,
+      "observed": {
+        "conflict_minus_nonconflict": 6.879266255940825e-05,
+        "conflict_rate": 0.52,
+        "harm_auroc": 1.0,
+        "mean_delta_conflict": 3.239483787463144e-05,
+        "mean_delta_nonconflict": -3.639782468477681e-05,
+        "n": 250.0,
+        "pearson_r": 0.999999178171177,
+        "positive_harm_conflict": 3.239483787463144e-05,
+        "positive_harm_nonconflict": 0.0,
+        "sign_accuracy": 1.0,
+        "spearman_rho": 0.999991935867951
+      },
+      "seed": 1587535623,
+      "sign_reversal_vs_primary": false
+    }
+  }
+}

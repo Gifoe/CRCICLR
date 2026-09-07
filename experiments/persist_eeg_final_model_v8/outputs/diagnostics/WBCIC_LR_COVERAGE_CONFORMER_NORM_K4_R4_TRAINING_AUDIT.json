@@ -1,0 +1,224 @@
+[
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "best_objective": 0.33883658051490784,
+    "context": {
+      "explained_variance_fraction": 0.964640063760021,
+      "projected_dimension": 12,
+      "raw_dimension": 396
+    },
+    "experts": 4,
+    "family_id": "WBCIC_S1S2_to_S3_authorized_development__LR_COVERAGE_CONFORMER_NORM_K4_R4",
+    "history": [
+      {
+        "assignment": [
+          0.24919983744621277,
+          0.25024527311325073,
+          0.2477213442325592,
+          0.2528335452079773
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.3129587173461914,
+        "epoch": 1,
+        "mean_abs_residual": 0.0451628714799881,
+        "mean_loss": 0.3129701018333435,
+        "objective": 0.42251741886138916,
+        "usage_balance": 1.3921669051342178e-05
+      },
+      {
+        "assignment": [
+          0.2473796308040619,
+          0.2524500787258148,
+          0.24830439686775208,
+          0.251865953207016
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.28407084941864014,
+        "epoch": 50,
+        "mean_abs_residual": 0.9827754497528076,
+        "mean_loss": 0.28412920236587524,
+        "objective": 0.38451817631721497,
+        "usage_balance": 1.9226072254241444e-05
+      },
+      {
+        "assignment": [
+          0.24741330742835999,
+          0.2517903745174408,
+          0.24761919677257538,
+          0.25317713618278503
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.26846951246261597,
+        "epoch": 100,
+        "mean_abs_residual": 1.2702951431274414,
+        "mean_loss": 0.26850229501724243,
+        "objective": 0.36430150270462036,
+        "usage_balance": 2.5658837330411188e-05
+      },
+      {
+        "assignment": [
+          0.24715659022331238,
+          0.25209587812423706,
+          0.24920052289962769,
+          0.25154706835746765
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.25627368688583374,
+        "epoch": 200,
+        "mean_abs_residual": 1.43609619140625,
+        "mean_loss": 0.2563282549381256,
+        "objective": 0.3483376204967499,
+        "usage_balance": 1.5510267985519022e-05
+      },
+      {
+        "assignment": [
+          0.2501826286315918,
+          0.25209617614746094,
+          0.24913077056407928,
+          0.24859045445919037
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.24900616705417633,
+        "epoch": 300,
+        "mean_abs_residual": 1.5217841863632202,
+        "mean_loss": 0.2492070347070694,
+        "objective": 0.33883658051490784,
+        "usage_balance": 7.1696858867653646e-06
+      }
+    ],
+    "internal_holdout_used": false,
+    "lambda_mean": 0.35,
+    "mean_abs_target_coefficient": 1.0203050374984741,
+    "mean_abs_target_residual": 1.4706666469573975,
+    "meta_assignment": [
+      0.25019529461860657,
+      0.25210103392601013,
+      0.24915185570716858,
+      0.2485518604516983
+    ],
+    "meta_subjects": 26,
+    "meta_usage": [
+      0.25019529461860657,
+      0.25210103392601013,
+      0.24915185570716858,
+      0.2485518604516983
+    ],
+    "query_trials": 5195,
+    "rank": 4,
+    "search_outcome_subjects": 5,
+    "source_fold": 0,
+    "tau": 0.08
+  },
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "best_objective": 0.32177120447158813,
+    "context": {
+      "explained_variance_fraction": 0.9674746367704148,
+      "projected_dimension": 12,
+      "raw_dimension": 396
+    },
+    "experts": 4,
+    "family_id": "WBCIC_S1S2_to_S3_authorized_development__LR_COVERAGE_CONFORMER_NORM_K4_R4",
+    "history": [
+      {
+        "assignment": [
+          0.25042545795440674,
+          0.24892175197601318,
+          0.24901704490184784,
+          0.25163576006889343
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.30265113711357117,
+        "epoch": 1,
+        "mean_abs_residual": 0.031871624290943146,
+        "mean_loss": 0.30265921354293823,
+        "objective": 0.40859007835388184,
+        "usage_balance": 4.985544819646748e-06
+      },
+      {
+        "assignment": [
+          0.24855732917785645,
+          0.24984203279018402,
+          0.2514689564704895,
+          0.2501317262649536
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.27492570877075195,
+        "epoch": 50,
+        "mean_abs_residual": 1.024839162826538,
+        "mean_loss": 0.27500802278518677,
+        "objective": 0.3722129762172699,
+        "usage_balance": 4.281437668396393e-06
+      },
+      {
+        "assignment": [
+          0.2453075498342514,
+          0.24926665425300598,
+          0.2561984658241272,
+          0.249227374792099
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.26057717204093933,
+        "epoch": 100,
+        "mean_abs_residual": 1.2502660751342773,
+        "mean_loss": 0.26072800159454346,
+        "objective": 0.353392630815506,
+        "usage_balance": 6.157481402624398e-05
+      },
+      {
+        "assignment": [
+          0.24635767936706543,
+          0.24874165654182434,
+          0.2533165216445923,
+          0.25158411264419556
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.2437158226966858,
+        "epoch": 200,
+        "mean_abs_residual": 1.5420238971710205,
+        "mean_loss": 0.2440563440322876,
+        "objective": 0.33157774806022644,
+        "usage_balance": 2.8358657800708897e-05
+      },
+      {
+        "assignment": [
+          0.2477053701877594,
+          0.2489461898803711,
+          0.25307804346084595,
+          0.25027045607566833
+        ],
+        "competence_penalty": 0.0,
+        "coverage_loss": 0.23602800071239471,
+        "epoch": 300,
+        "mean_abs_residual": 1.6797386407852173,
+        "mean_loss": 0.23663732409477234,
+        "objective": 0.32177120447158813,
+        "usage_balance": 1.5923340470180847e-05
+      }
+    ],
+    "internal_holdout_used": false,
+    "lambda_mean": 0.35,
+    "mean_abs_target_coefficient": 0.810409426689148,
+    "mean_abs_target_residual": 1.4006699323654175,
+    "meta_assignment": [
+      0.2477172464132309,
+      0.24895906448364258,
+      0.253070592880249,
+      0.2502530813217163
+    ],
+    "meta_subjects": 24,
+    "meta_usage": [
+      0.2477172464132309,
+      0.24895906448364258,
+      0.253070592880249,
+      0.2502530813217163
+    ],
+    "query_trials": 4795,
+    "rank": 4,
+    "search_outcome_subjects": 7,
+    "source_fold": 1,
+    "tau": 0.08
+  }
+]

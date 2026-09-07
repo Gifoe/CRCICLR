@@ -1,0 +1,20 @@
+﻿{
+    "schema":  "GEOSR_EXECUTION_OPTIMIZATION_LOCK_V1",
+    "locked_at_utc":  "2026-09-05T05:16:47.7394256Z",
+    "amendment_sha256":  "a60ace47470d77b41a9f15da2baf1df556839fe25658fd1f11e3ad8d57fea6dc",
+    "previous_execution_lock_sha256":  "59f5d796d3796369778da692a37286a271231a1e8400c2e31758e9c251f9572f",
+    "benchmark_sha256":  "56ece9f8450269720b01471769873ed705cdd9785f68dafdeb5b23dbc9227e5c",
+    "device":  "cuda:0",
+    "execution_mode":  "sequential_single_gpu",
+    "code_sha256":  {
+                        "run_geosr.py":  "45ef81a5e7fcfe8c24b147fbfc17e7e36302b5df84b19c30a80b7354ffdf75e2",
+                        "run_geosr_rapid_triage.py":  "63daa0bfdabd4cb5e6fa763243e6c65d4a4f98c6639c64c2068c425c39cbf03b",
+                        "run_geosr_rapid_triage_parallel.py":  "d31397f04656a78f267770204076e1f796906c11c7268f63f8f6128e57823604",
+                        "evaluate_geosr_rapid_triage.py":  "d6dba8b6c288a2f1c27269e1e10929f7f900d7c83449469b87d44a4eab2eebe0",
+                        "run_geosr_accelerated.py":  "6e3cc59eecd9acc0adeb1ef9af13bc891dacdaf5beee13246f1e63cf3cd9866d"
+                    },
+    "outcome_labels_read":  false,
+    "scientific_definition_changed":  false,
+    "retains_rapid_triage_scope":  true,
+    "all_existing_cache_retained":  true
+}

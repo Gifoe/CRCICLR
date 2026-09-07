@@ -1,0 +1,73 @@
+# Dynamic actionability audit
+
+```json
+{
+  "terminal_state": "EXP4_OPENBMI_DYNAMIC_ACTIONABILITY_NOT_SUPPORTED",
+  "phase_a_state": "DYNAMIC_ACTIONABILITY_NOT_SUPPORTED",
+  "reasons": [
+    "dynamic RMSE improvement below 10%",
+    "dynamic RMSE improves in 2/5 folds",
+    "dynamic Spearman magnitude below 0.25",
+    "negative-transfer AUROC gate not met"
+  ],
+  "gradient_sign_pass": true,
+  "gradient_unit_test": {
+    "passed": true,
+    "max_abs_numeric_gradient_error": 9.412304590207532e-07,
+    "dot_task_G": -0.0012605930768227213,
+    "actual_delta_G": 1.2606066412956807e-07,
+    "sign_convention_ok": true
+  },
+  "trajectory_first_order_direction_agreement": 1.0,
+  "trajectory_first_order_utility_delta_correlation": 0.9998831028787503,
+  "overall_prediction": {
+    "M0": {
+      "RMSE": 0.017427659244388913,
+      "Spearman": 0.11091542825449514,
+      "n": 40
+    },
+    "M_static": {
+      "RMSE": 0.017728913592714453,
+      "Spearman": 0.12660900701325734,
+      "n": 40
+    },
+    "M_dynamic": {
+      "RMSE": 0.01898078675068363,
+      "Spearman": -0.017390181867817593,
+      "n": 40
+    },
+    "M_gradient": {
+      "RMSE": 0.017526243950052103,
+      "Spearman": 0.13890937955390883,
+      "n": 40
+    },
+    "M_full": {
+      "RMSE": 0.019008684756386403,
+      "Spearman": -0.02078338808592834,
+      "n": 40
+    }
+  },
+  "dynamic_relative_RMSE_reduction_vs_static": -0.07061194987625319,
+  "folds_dynamic_RMSE_improved": 2,
+  "fold_improvement_flags": [
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "negative_transfer_AUROC_static": 0.32352941176470584,
+  "negative_transfer_AUROC_dynamic": 0.35784313725490197,
+  "negative_transfer_AUROC_gain": 0.03431372549019612,
+  "tail_high_risk_mean_FutureDeltaBA": 0.004000000000000015,
+  "tail_low_risk_mean_FutureDeltaBA": 0.004615384615384628,
+  "tail_high_minus_low": -0.0006153846153846131,
+  "subjects_evaluated": 40,
+  "folds": 5,
+  "internal_holdout_used": false,
+  "outer_test_used": false,
+  "wbcic_used": false
+}
+```
+
+Cross-fitted prediction metrics are in `results/HISTORY_TO_FUTURE_DYNAMIC_PREDICTION.csv` and `results/NEGATIVE_TRANSFER_PREDICTION.csv`. The algorithmic route is authorized only when the predeclared dynamic-vs-static and negative-transfer gates pass; otherwise the correct result is a boundary, not another hyperparameter search.

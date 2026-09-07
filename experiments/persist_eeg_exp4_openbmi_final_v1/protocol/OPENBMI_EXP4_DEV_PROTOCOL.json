@@ -1,0 +1,32 @@
+{
+  "cache_features_sha256": "3c01b70fca326bd1df2099c3cd61f26aab9516f838873bd2d91ed640c14019cb",
+  "cache_metadata_sha256": "04df38ef221423d150f4ce27004538e0dcd80ac1fd72650ac7a8a38c7bb92f2f",
+  "candidate_ranks": [
+    1,
+    2,
+    4
+  ],
+  "feature_dimension": 64,
+  "generic_C": [
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "generic_alpha": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "internal_holdout_used": false,
+  "outer_test_used": false,
+  "representation": "OPENBMI_MI_SPECIFIC_FOLD_0",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "source_episode_rule": "source S1 labels fit; source S2 labels select only on source folds",
+  "target_rule": "target S1 labels only; target S2 outcome only"
+}

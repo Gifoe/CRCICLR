@@ -1,0 +1,89 @@
+{
+  "cell_rows": 215,
+  "dda_b_observed": {
+    "finite_positive_runs": 6,
+    "finite_ratio_bootstrap_ci95": [
+      1.566797919980589,
+      1.7999793730254048
+    ],
+    "finite_ratio_mean": 1.6799355877725546,
+    "local_positive_runs": 6,
+    "local_ratio_bootstrap_ci95": [
+      2.624824675708999,
+      4.289904924791094
+    ],
+    "local_ratio_mean": 3.4458437417462293,
+    "n_protected_run_blocks": 10,
+    "n_run_level_units": 6,
+    "outer_test_used": false,
+    "passed": true,
+    "protected_gt_matched_nonprotected_runs": 5,
+    "signed_utility_and_held_consequence_concordant_runs": 6,
+    "status": "DDA_B_PASS"
+  },
+  "dda_b_reproduced": true,
+  "dda_c_observed": {
+    "baseline_rmse": 0.04597839942134006,
+    "full_rmse": 0.03149284319712947,
+    "improved_runs": 6,
+    "incremental_coefficients": [
+      0.04837623916876043,
+      0.05683855585102043,
+      0.055820507701040606,
+      0.05730261189297532,
+      0.05830192328980878,
+      0.058973039117854134
+    ],
+    "interpretation_constraint": "Pooled in-sample correlation is not a success criterion.",
+    "n_run_fold_block_cells": 215,
+    "n_runs": 6,
+    "outer_test_used": false,
+    "passed": true,
+    "permutation_draws": 5000,
+    "permutation_p": 0.0001999600079984003,
+    "positive_incremental_coefficients": 6,
+    "relative_rmse_improvement": 0.3150513372913842,
+    "run_cluster_bootstrap_ci95": [
+      0.22829304192786165,
+      0.4097111610374877
+    ],
+    "status": "DDA_C_PASS"
+  },
+  "dda_c_reproduced": true,
+  "identity_metric_verified": true,
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "reference_expectations": {
+    "dda_b": {
+      "finite_positive_runs": 6,
+      "local_positive_runs": 6,
+      "protected_gt_matched_nonprotected_runs": 5,
+      "signed_utility_and_held_consequence_concordant_runs": 6,
+      "status": "DDA_B_PASS"
+    },
+    "dda_c": {
+      "improved_runs": 6,
+      "n_run_fold_block_cells": 215,
+      "n_runs": 6,
+      "status": "DDA_C_PASS"
+    }
+  },
+  "source_hashes": {
+    "dda_b_result": "24c989278d88a5e0e0d93307905f6251a252ba5bacf0e125fe7f2871dbacbae2",
+    "dda_b_run_aggregate": "c9a99f3293a89930b649ae98c3ff01ecdf64d4f0afb0bf5add102907a616275b",
+    "dda_b_runs": "2259405c5a3fc0a6b7a676123884ba33bacb64d20e6af22e1b619063f86210b1",
+    "dda_b_summary": "632f48821aa51c9e7bd1fb14b131d418c4731cf11296d79397b5ceaa946d4a0f",
+    "dda_c_cells": "e12c26216d8eebb9e17275dced6039a470d5eedd04dd82440b26752dcd570b18",
+    "dda_c_predictions": "3a7f982e6a758ced95b9a12574cbb248684b57f9d7cf2bd4568a3a14b4fe2301",
+    "dda_c_result": "cffb6da9b868e242b6d8aa943b1baef4d9a73da71c4622060cf674b1c39f8421",
+    "dda_protocol": "1e04d051aecd2ca6091a10202c983c39730f0045ffd8ad9e6abd077a44662cb3",
+    "dda_provenance": "f71258e891ac273d437bfb4b47e49428f937c3d37fb5cd7ef38341dda60c1593",
+    "dda_subjects": "38fa78d9cb302fbfe9d0049d72631264c8413a001a8f98f64ac87cc0439b2d17",
+    "v12_controls": "9e40ff1275d3596c05b17f6ed0db048cc5e1b6b2cb6ac73dd8af18e81c9cad59",
+    "v12_curves": "603cdf75ed03ee174edb45fac8d1cb2265a62296746682eecb356d3871889271",
+    "v12_design": "8df2a87ad8ea66295fa5b67db289837c2c9f1c37fb3836adeac559549a16da11",
+    "v12_metric_audit": "2ea6430a8db28c080cd9f8c044c952123ca082c9a2949356f3a5050ae6e500e1",
+    "v12_protected": "e14fb5cf68def39f14c4a9fded8319f07093f650e44b4252532826642be3f32e",
+    "v12_protocol": "85a92a0d70c9ad6cebdd190bda0c87aee1deb728f4937cbfa81c2ae572aac283"
+  }
+}

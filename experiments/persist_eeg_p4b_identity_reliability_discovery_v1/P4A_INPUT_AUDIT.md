@@ -1,0 +1,14 @@
+# P4A Input Audit
+
+P4A Lean tip: `281e7c66c9818b5d2efe96968900cb585af20287`. Validator PASS and terminal `P4A_LEAN_CROSS_SETTING_CUBE_COMPLETE` were verified before P4B creation. No future-utility column is present in the 720-row source cube.
+
+- `P4A_LEAN_FINAL_REPORT.md`: `bfbf89617c251343c564f5bc34a9c80fddc762e93b5835438f42806a164c9e89`
+- `P4A_LEAN_FINAL_VALIDATION.json`: `dd7105b34b5eef73687a28c6b9101fae8f6b9cdfd190d87c9fe4823f85352104`
+- `P4A_GRID_PAUSE_SNAPSHOT.json`: `e306589443f99f408f038d21dd25d749a72fdf1e4b7e2a1f6b044bbd2e884fe2`
+- `P4A_PROTOCOL_AMENDMENT_LEAN_V1.json`: `e1b63f88a1bdda76533fff9f901f6b0d1a7cf862441ab7ca3bea87186ab4101f`
+- `SETTING_MANIFEST_LEAN.json`: `a284fe3407272a23d6a131f5c5689810fd2834a4b4843b103f324a84f8b8855d`
+- `SETTING_COMPETENCE_REPORT_LEAN.md`: `1e9bdecf7ef02ae99fc331c6dadeedb5f756168ac458fc0aca6deaf0dda60d64`
+- `erm_setting_cube.csv`: `888fac15a87e24384139a6202e8759609422d77999132bf0c0a7751d95f6273c`
+- `source_evidence_cube.csv`: `41c5373bd73f327a652c3d155ffcf90642589f35e48ce0b2a47ee30307443ec0`
+- `source_artifact_audit.csv`: `dc31fdf217c287d89979d034928600a3e4f8679d7fbf3996b3903fecbf97c199`
+- `setting_competence_lean.csv`: `1945036c087d6bb8c3e680f3119df2812204e99d67d47f65466f6bf381400127`

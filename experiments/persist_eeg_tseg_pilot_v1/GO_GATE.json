@@ -1,0 +1,16 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "canonical_outcome_labels_read": false,
+  "gates": {
+    "G1_both_dataset_mean_ge_0.5": false,
+    "G2_positive_cells_ge_5_of_6": false,
+    "G3_no_catastrophic_collapse": true,
+    "G4_WBCIC_range_below_ERM_and_MLDG": true,
+    "G5_beats_compute_matched_2TR": false,
+    "G6_mechanism_reduces_disagreement_or_dispersion": true
+  },
+  "pooled_TSEG_minus_2TR_mean_pp": -0.20238095238095016,
+  "schema": "PERSIST_EEG_TSEG_PILOT_V1",
+  "terminal": "TSEG_STABILITY_ONLY_PARTIAL_SIGNAL"
+}

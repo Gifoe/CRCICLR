@@ -1,0 +1,183 @@
+{
+  "E_task_formula": "(z_D + z_C + z_O)/3",
+  "active_E_task_primitives": [
+    "D",
+    "C",
+    "O"
+  ],
+  "assignment_sha256": "e2bcd79f46f2249deb02a637749542dac02dffd0b8cd5b9a7ae22850046bc569",
+  "bootstrap": {
+    "draws": 10000,
+    "hierarchy": [
+      "setting",
+      "fold",
+      "seed/run",
+      "direction",
+      "outcome subject"
+    ]
+  },
+  "direction_ranks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "discovery_settings": [
+    "S1",
+    "S2",
+    "S3",
+    "S5"
+  ],
+  "forbidden_rescue": [
+    "nonlinear trees",
+    "random forest",
+    "neural predictor",
+    "post-hoc threshold search",
+    "learned D/C/O weights",
+    "cherry-picked setting"
+  ],
+  "future_utility": {
+    "frozen_classifier": true,
+    "positive_meaning": "suppression beneficial",
+    "primary": "U_BA = BA_erased - BA_intact",
+    "secondary_CE": "U_CE = CE_intact - CE_erased",
+    "secondary_F1": "U_F1 = F1_erased - F1_intact",
+    "subject_first": true
+  },
+  "hypothesis": "Identity is a more reliable nuisance proxy when subject-predictive variation is task-decoupled and becomes less reliable when task-entangled.",
+  "models": {
+    "M0": [
+      "z_P",
+      "z_geometry_strength",
+      "z_rank"
+    ],
+    "MADD": [
+      "z_P",
+      "z_geometry_strength",
+      "z_rank",
+      "z_I",
+      "E_task"
+    ],
+    "ME": [
+      "z_P",
+      "z_geometry_strength",
+      "z_rank",
+      "E_task"
+    ],
+    "MI": [
+      "z_P",
+      "z_geometry_strength",
+      "z_rank",
+      "z_I"
+    ],
+    "MINT": [
+      "z_P",
+      "z_geometry_strength",
+      "z_rank",
+      "z_I",
+      "E_task",
+      "z_I_x_E_task"
+    ],
+    "alpha": 1.0,
+    "secondary": {
+      "MIC": [
+        "z_P",
+        "z_geometry_strength",
+        "z_rank",
+        "z_I",
+        "z_C",
+        "z_I_x_z_C"
+      ],
+      "MID": [
+        "z_P",
+        "z_geometry_strength",
+        "z_rank",
+        "z_I",
+        "z_D",
+        "z_I_x_z_D"
+      ],
+      "MIO": [
+        "z_P",
+        "z_geometry_strength",
+        "z_rank",
+        "z_I",
+        "z_O",
+        "z_I_x_z_O"
+      ]
+    }
+  },
+  "new_discovery_setting": "S5",
+  "normalization": "within-setting (x - median) / (1.4826*MAD + epsilon semantics)",
+  "normalization_sha256": "dfcbcfcde0536e5c673637ab6b300377b4162e5205ba555c90f73274b1c6720f",
+  "p4a_lean_tip": "281e7c66c9818b5d2efe96968900cb585af20287",
+  "p4c_execution": "FORBIDDEN_IN_P4B",
+  "p4c_reserved_future_utility_access": "FORBIDDEN",
+  "p4c_reserved_settings": [
+    "S4",
+    "S6"
+  ],
+  "primary_cv": "Leave-One-Discovery-Setting-Out",
+  "primary_interaction": {
+    "DeltaSlope": "slope(E=-1)-slope(E=+1)>0",
+    "coefficient": "beta_IxE",
+    "hypothesis": "<0"
+  },
+  "primary_regime_contrast": "DeltaRegime=mean(U_BA|High-I,Low-E)-mean(U_BA|High-I,High-E)>0",
+  "regime": {
+    "rule": "within-setting tertiles",
+    "thresholds": {
+      "S1": {
+        "high_E_lower": 0.32960369429817027,
+        "high_I_lower": 0.5949328270166708,
+        "low_E_upper": -0.3777316981964367
+      },
+      "S2": {
+        "high_E_lower": 0.08424267470363558,
+        "high_I_lower": 0.41031161649478937,
+        "low_E_upper": -0.2833889519824063
+      },
+      "S3": {
+        "high_E_lower": 1.030885906253448,
+        "high_I_lower": 0.6587659241924392,
+        "low_E_upper": -0.2926413781145731
+      },
+      "S5": {
+        "high_E_lower": 0.41037152284546835,
+        "high_I_lower": 0.6142620089702853,
+        "low_E_upper": -0.350770476884418
+      }
+    }
+  },
+  "schema": "P4B_IDENTITY_RELIABILITY_DISCOVERY_PROTOCOL_V1",
+  "scientific_question": "What determines when subject identifiability is a valid nuisance proxy?",
+  "secondary_cv": "Leave-One-Entire-Run-Out (setting x fold x seed)",
+  "success_gates": {
+    "G1": "RMSE_MI-RMSE_MINT > 0 with 95% CI lower > 0",
+    "G2": "RMSE_MADD-RMSE_MINT > 0 with CI lower > 0, or beta_IxE CI upper < 0",
+    "G3": "DeltaSlope > 0 with CI lower > 0",
+    "G4": "DeltaRegime > 0 with CI lower > 0",
+    "G5": ">=75% discovery settings show the primary effect direction",
+    "G6": "P4C reserved future utilities untouched"
+  },
+  "terminal_rules": [
+    "P4B_IDENTITY_RELIABILITY_CONDITION_STRONG_SUPPORTED",
+    "P4B_IDENTITY_RELIABILITY_CONDITION_PARTIAL_SUPPORTED",
+    "P4B_IDENTITY_RELIABILITY_CONDITION_NOT_SUPPORTED",
+    "P4B_INSUFFICIENT_CROSS_SETTING_EVIDENCE",
+    "P4B_INSUFFICIENT_PROSPECTIVE_HOLDOUT",
+    "P4B_PROTOCOL_OR_PURITY_FAILURE"
+  ],
+  "timestamp_utc": "2026-08-27T08:50:55.353792+00:00",
+  "usable_settings": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ]
+}

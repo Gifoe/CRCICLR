@@ -1,0 +1,39 @@
+{
+  "all_discovery_settings": [
+    "S1",
+    "S2",
+    "S3",
+    "S5"
+  ],
+  "future_utility_accessed_before_assignment": false,
+  "historically_observed_discovery_settings": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "new_discovery_setting": "S5",
+  "new_sealed_usable_settings": [
+    "S4",
+    "S5",
+    "S6"
+  ],
+  "p4c_reserved_future_utility_access_allowed": false,
+  "p4c_reserved_settings": [
+    "S4",
+    "S6"
+  ],
+  "schema": "P4B_DISCOVERY_SETTING_ASSIGNMENT_V1",
+  "selection_outcome_driven": false,
+  "selection_rule": "If S5 usable choose S5; else S6; else S4. Reserve S4/S6 whenever usable and not selected.",
+  "source_cube_sha256": "41c5373bd73f327a652c3d155ffcf90642589f35e48ce0b2a47ee30307443ec0",
+  "source_only_assignment": true,
+  "timestamp_utc": "2026-08-27T08:50:55.353792+00:00",
+  "usable_settings": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ]
+}

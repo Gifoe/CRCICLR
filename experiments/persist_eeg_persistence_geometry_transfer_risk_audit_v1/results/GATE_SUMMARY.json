@@ -1,0 +1,201 @@
+{
+  "PGEG_AUTHORIZED": false,
+  "PGEG_TRAINING_STARTED": false,
+  "datasets": {
+    "OpenBMI": {
+      "alternative": {
+        "beta0": 0.20685585075382942,
+        "beta_log_direction_strength": -0.07983818796695441,
+        "beta_log_direction_strength_CI95": [
+          -0.1162595719334368,
+          -0.0408739095103534
+        ],
+        "beta_novelty": 0.03577974264963309,
+        "beta_novelty_CI95": [
+          -0.004738480056280771,
+          0.0662922724965013
+        ],
+        "dataset": "OpenBMI",
+        "draws": 10000
+      },
+      "controls": [
+        {
+          "comparator": "matched_nonprotected",
+          "control_bootstrap_draws": 10000,
+          "dataset": "OpenBMI",
+          "delta_CI95_high": 0.5145593087915705,
+          "delta_CI95_low": -0.36625447873863476,
+          "delta_protected_minus_control": 0.071756099938112,
+          "rho_control": 0.3821399494905573,
+          "rho_protected": 0.4538960494286693
+        },
+        {
+          "comparator": "same_rank_PCA",
+          "control_bootstrap_draws": 10000,
+          "dataset": "OpenBMI",
+          "delta_CI95_high": 0.16851299684895493,
+          "delta_CI95_low": -0.33795940961800086,
+          "delta_protected_minus_control": -0.07201421540551539,
+          "rho_control": 0.5259102648341847,
+          "rho_protected": 0.4538960494286693
+        },
+        {
+          "comparator": "full_latent",
+          "control_bootstrap_draws": 10000,
+          "dataset": "OpenBMI",
+          "delta_CI95_high": -0.07001283562157151,
+          "delta_CI95_low": -0.580430004000593,
+          "delta_protected_minus_control": -0.29812336485078944,
+          "rho_control": 0.7520194142794587,
+          "rho_protected": 0.4538960494286693
+        }
+      ],
+      "lofo": [
+        {
+          "dataset": "OpenBMI",
+          "left_out_fold": 0,
+          "n_subjects": 27,
+          "rho_protected": 0.33753144087922804
+        },
+        {
+          "dataset": "OpenBMI",
+          "left_out_fold": 1,
+          "n_subjects": 29,
+          "rho_protected": 0.4215109327936464
+        },
+        {
+          "dataset": "OpenBMI",
+          "left_out_fold": 2,
+          "n_subjects": 29,
+          "rho_protected": 0.5904907715139375
+        },
+        {
+          "dataset": "OpenBMI",
+          "left_out_fold": 3,
+          "n_subjects": 29,
+          "rho_protected": 0.3979766531797976
+        },
+        {
+          "dataset": "OpenBMI",
+          "left_out_fold": 4,
+          "n_subjects": 30,
+          "rho_protected": 0.5362332169634777
+        }
+      ],
+      "n_subjects": 36,
+      "primary": {
+        "CI95_high": 0.7121631328474536,
+        "CI95_low": 0.10902347825397338,
+        "bootstrap_draws": 10000,
+        "dataset": "OpenBMI",
+        "n_biological_subjects": 36,
+        "rho_protected": 0.4538960494286693,
+        "sign_probability": 0.9945
+      }
+    },
+    "WBCIC": {
+      "alternative": {
+        "beta0": 0.16019076682094446,
+        "beta_log_direction_strength": -0.11749781624621441,
+        "beta_log_direction_strength_CI95": [
+          -0.15272037579588985,
+          -0.07415927886473461
+        ],
+        "beta_novelty": -0.028555449728628446,
+        "beta_novelty_CI95": [
+          -0.07020106344225512,
+          0.01936929120875361
+        ],
+        "dataset": "WBCIC",
+        "draws": 10000
+      },
+      "controls": [
+        {
+          "comparator": "matched_nonprotected",
+          "control_bootstrap_draws": 10000,
+          "dataset": "WBCIC",
+          "delta_CI95_high": 0.711379151694303,
+          "delta_CI95_low": -0.19448116644719876,
+          "delta_protected_minus_control": 0.2602331140552322,
+          "rho_control": 0.17260644695017477,
+          "rho_protected": 0.43283956100540694
+        },
+        {
+          "comparator": "same_rank_PCA",
+          "control_bootstrap_draws": 10000,
+          "dataset": "WBCIC",
+          "delta_CI95_high": 0.24927796188735793,
+          "delta_CI95_low": -0.21380090041159466,
+          "delta_protected_minus_control": 0.01396237567719949,
+          "rho_control": 0.41887718532820745,
+          "rho_protected": 0.43283956100540694
+        },
+        {
+          "comparator": "full_latent",
+          "control_bootstrap_draws": 10000,
+          "dataset": "WBCIC",
+          "delta_CI95_high": 0.423636581082877,
+          "delta_CI95_low": -0.32309763556252225,
+          "delta_protected_minus_control": 0.04514774157342727,
+          "rho_control": 0.38769181943197967,
+          "rho_protected": 0.43283956100540694
+        }
+      ],
+      "lofo": [
+        {
+          "dataset": "WBCIC",
+          "left_out_fold": 0,
+          "n_subjects": 33,
+          "rho_protected": 0.43490422730336303
+        },
+        {
+          "dataset": "WBCIC",
+          "left_out_fold": 1,
+          "n_subjects": 33,
+          "rho_protected": 0.5008407659113289
+        },
+        {
+          "dataset": "WBCIC",
+          "left_out_fold": 2,
+          "n_subjects": 33,
+          "rho_protected": 0.22342319490359897
+        },
+        {
+          "dataset": "WBCIC",
+          "left_out_fold": 3,
+          "n_subjects": 33,
+          "rho_protected": 0.5496893928033108
+        },
+        {
+          "dataset": "WBCIC",
+          "left_out_fold": 4,
+          "n_subjects": 32,
+          "rho_protected": 0.41534022333898707
+        }
+      ],
+      "n_subjects": 41,
+      "primary": {
+        "CI95_high": 0.629984809710944,
+        "CI95_low": 0.16543458284492982,
+        "bootstrap_draws": 10000,
+        "dataset": "WBCIC",
+        "n_biological_subjects": 41,
+        "rho_protected": 0.43283956100540694,
+        "sign_probability": 0.9984
+      }
+    }
+  },
+  "gates": {
+    "G0_geometry_availability": {
+      "OpenBMI": true,
+      "WBCIC": true
+    },
+    "G1_predictive_bridge": true,
+    "G2_specificity": false,
+    "G3_LOFO_robustness": true
+  },
+  "outer_sealed_access": false,
+  "schema": "PERSIST_EEG_TRANSFER_RISK_GATE_SUMMARY_V1",
+  "strongest_claim": "Persistent geometry transfer-risk bridge is supported only if all predeclared gates pass.",
+  "terminal": "TRANSFER_RISK_BRIDGE_PARTIAL_OR_NONSPECIFIC"
+}

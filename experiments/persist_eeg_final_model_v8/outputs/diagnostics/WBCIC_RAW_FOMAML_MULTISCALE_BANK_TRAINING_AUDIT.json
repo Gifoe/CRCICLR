@@ -1,0 +1,228 @@
+[
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "experts": [
+      {
+        "configuration": {
+          "id": "HEAD4",
+          "inner_lr": 0.003,
+          "inner_steps": 4,
+          "strategy": "head"
+        },
+        "meta_history": [
+          {
+            "max_query_loss": 0.8619284629821777,
+            "mean_query_loss": 0.32929340950571573,
+            "meta_epoch": 1,
+            "min_query_loss": 0.07530459761619568
+          },
+          {
+            "max_query_loss": 0.8567956686019897,
+            "mean_query_loss": 0.3312307427135798,
+            "meta_epoch": 2,
+            "min_query_loss": 0.06924804300069809
+          },
+          {
+            "max_query_loss": 0.8343632817268372,
+            "mean_query_loss": 0.3315744465933396,
+            "meta_epoch": 3,
+            "min_query_loss": 0.07315020263195038
+          },
+          {
+            "max_query_loss": 0.8424477577209473,
+            "mean_query_loss": 0.3287101026911002,
+            "meta_epoch": 4,
+            "min_query_loss": 0.07353407144546509
+          }
+        ]
+      },
+      {
+        "configuration": {
+          "id": "TAIL3",
+          "inner_lr": 0.0003,
+          "inner_steps": 3,
+          "strategy": "tail"
+        },
+        "meta_history": [
+          {
+            "max_query_loss": 0.8379848003387451,
+            "mean_query_loss": 0.3312223539329492,
+            "meta_epoch": 1,
+            "min_query_loss": 0.07301013171672821
+          },
+          {
+            "max_query_loss": 0.8990895748138428,
+            "mean_query_loss": 0.33569975569844246,
+            "meta_epoch": 2,
+            "min_query_loss": 0.07470396906137466
+          },
+          {
+            "max_query_loss": 0.841589093208313,
+            "mean_query_loss": 0.3303814298258378,
+            "meta_epoch": 3,
+            "min_query_loss": 0.07409168034791946
+          },
+          {
+            "max_query_loss": 0.829861044883728,
+            "mean_query_loss": 0.3323196264413687,
+            "meta_epoch": 4,
+            "min_query_loss": 0.0691065713763237
+          }
+        ]
+      },
+      {
+        "configuration": {
+          "id": "FULL1",
+          "inner_lr": 0.0001,
+          "inner_steps": 1,
+          "strategy": "full"
+        },
+        "meta_history": [
+          {
+            "max_query_loss": 0.8895941376686096,
+            "mean_query_loss": 0.33894346023981387,
+            "meta_epoch": 1,
+            "min_query_loss": 0.07404456287622452
+          },
+          {
+            "max_query_loss": 0.8843616247177124,
+            "mean_query_loss": 0.3341517846744794,
+            "meta_epoch": 2,
+            "min_query_loss": 0.06772085279226303
+          },
+          {
+            "max_query_loss": 0.8245376348495483,
+            "mean_query_loss": 0.33215683641342014,
+            "meta_epoch": 3,
+            "min_query_loss": 0.06143157184123993
+          },
+          {
+            "max_query_loss": 0.8580613732337952,
+            "mean_query_loss": 0.3339980855011023,
+            "meta_epoch": 4,
+            "min_query_loss": 0.06913112103939056
+          }
+        ]
+      }
+    ],
+    "internal_holdout_used": false,
+    "meta_epochs": 4,
+    "population_initialization": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V8_HEADROOM_FIRST\\experiments\\persist_eeg_final_model_v8\\outputs\\cache\\WBCIC_MULTISCALE_TCN_LR_STAGED_BANK_K4_R8_FOLD_0.pt",
+    "search_outcome_future_labels_used_for_fit": false,
+    "source_fold": 0
+  },
+  {
+    "OUTER_TEST_USED": false,
+    "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+    "experts": [
+      {
+        "configuration": {
+          "id": "HEAD4",
+          "inner_lr": 0.003,
+          "inner_steps": 4,
+          "strategy": "head"
+        },
+        "meta_history": [
+          {
+            "max_query_loss": 0.7692021131515503,
+            "mean_query_loss": 0.33280397796382505,
+            "meta_epoch": 1,
+            "min_query_loss": 0.08241110295057297
+          },
+          {
+            "max_query_loss": 0.7716884016990662,
+            "mean_query_loss": 0.33510301106919843,
+            "meta_epoch": 2,
+            "min_query_loss": 0.09109542518854141
+          },
+          {
+            "max_query_loss": 0.8262320756912231,
+            "mean_query_loss": 0.3343444947774212,
+            "meta_epoch": 3,
+            "min_query_loss": 0.1041993722319603
+          },
+          {
+            "max_query_loss": 0.7828657627105713,
+            "mean_query_loss": 0.33645934828867513,
+            "meta_epoch": 4,
+            "min_query_loss": 0.08894774317741394
+          }
+        ]
+      },
+      {
+        "configuration": {
+          "id": "TAIL3",
+          "inner_lr": 0.0003,
+          "inner_steps": 3,
+          "strategy": "tail"
+        },
+        "meta_history": [
+          {
+            "max_query_loss": 0.8034274578094482,
+            "mean_query_loss": 0.3423916104560097,
+            "meta_epoch": 1,
+            "min_query_loss": 0.08634709566831589
+          },
+          {
+            "max_query_loss": 0.8293531537055969,
+            "mean_query_loss": 0.3384248521178961,
+            "meta_epoch": 2,
+            "min_query_loss": 0.09904167056083679
+          },
+          {
+            "max_query_loss": 0.7868054509162903,
+            "mean_query_loss": 0.34529386709133786,
+            "meta_epoch": 3,
+            "min_query_loss": 0.09201546758413315
+          },
+          {
+            "max_query_loss": 0.8519657254219055,
+            "mean_query_loss": 0.3487945661569635,
+            "meta_epoch": 4,
+            "min_query_loss": 0.10735954344272614
+          }
+        ]
+      },
+      {
+        "configuration": {
+          "id": "FULL1",
+          "inner_lr": 0.0001,
+          "inner_steps": 1,
+          "strategy": "full"
+        },
+        "meta_history": [
+          {
+            "max_query_loss": 0.8131524324417114,
+            "mean_query_loss": 0.3383340537548065,
+            "meta_epoch": 1,
+            "min_query_loss": 0.09039440751075745
+          },
+          {
+            "max_query_loss": 0.8450049161911011,
+            "mean_query_loss": 0.3461947776377201,
+            "meta_epoch": 2,
+            "min_query_loss": 0.08667092025279999
+          },
+          {
+            "max_query_loss": 0.7891026735305786,
+            "mean_query_loss": 0.34775205918898183,
+            "meta_epoch": 3,
+            "min_query_loss": 0.09189870208501816
+          },
+          {
+            "max_query_loss": 0.8244667053222656,
+            "mean_query_loss": 0.3330812267959118,
+            "meta_epoch": 4,
+            "min_query_loss": 0.08273172378540039
+          }
+        ]
+      }
+    ],
+    "internal_holdout_used": false,
+    "meta_epochs": 4,
+    "population_initialization": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V8_HEADROOM_FIRST\\experiments\\persist_eeg_final_model_v8\\outputs\\cache\\WBCIC_MULTISCALE_TCN_LR_STAGED_BANK_K4_R8_FOLD_1.pt",
+    "search_outcome_future_labels_used_for_fit": false,
+    "source_fold": 1
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "configuration_count_per_setting": 150,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "planned_control_rows": 72000,
+  "planned_evidence_cube_rows": 720,
+  "planned_model_cube_rows": 900,
+  "schema": "P4A_SETTING_MANIFEST_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "settings": {
+    "S1": {
+      "backbone": "EEGNet",
+      "dataset": "OpenBMI",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S2": {
+      "backbone": "EEGConformer",
+      "dataset": "OpenBMI",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S3": {
+      "backbone": "EEGNet",
+      "dataset": "WBCIC",
+      "status": "historical",
+      "task": "MI"
+    },
+    "S4": {
+      "backbone": "EEGConformer",
+      "dataset": "WBCIC",
+      "status": "new",
+      "task": "MI"
+    },
+    "S5": {
+      "backbone": "EEGNet",
+      "dataset": "OpenBMI",
+      "status": "new",
+      "task": "ERP"
+    },
+    "S6": {
+      "backbone": "EEGConformer",
+      "dataset": "OpenBMI",
+      "status": "new",
+      "task": "ERP"
+    }
+  }
+}

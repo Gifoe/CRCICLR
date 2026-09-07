@@ -1,0 +1,44 @@
+{
+  "SCST_POSITIVE": true,
+  "bootstrap_draws": 10000,
+  "comparisons": [
+    {
+      "CI95_L": -0.00036626426870330726,
+      "CI95_U": 0.0017882072760121383,
+      "comparison": "Mixup-ERM",
+      "delta_BA": 0.0006906463004023785,
+      "folds": 5,
+      "model": "EEGConformer",
+      "positive_folds": 4
+    },
+    {
+      "CI95_L": -4.0650406504082225e-05,
+      "CI95_U": 0.0010162601626016333,
+      "comparison": "RandomTransport-ERM",
+      "delta_BA": 0.0004878048780487728,
+      "folds": 5,
+      "model": "EEGConformer",
+      "positive_folds": 4
+    },
+    {
+      "CI95_L": -0.00024390243902440946,
+      "CI95_U": 0.0018292682926829204,
+      "comparison": "SCST-NoConsistency-ERM",
+      "delta_BA": 0.0007317073170731633,
+      "folds": 5,
+      "model": "EEGConformer",
+      "positive_folds": 3
+    },
+    {
+      "CI95_L": 5.415722071342227e-18,
+      "CI95_U": 0.001788617886178849,
+      "comparison": "Full-SCST-ERM",
+      "delta_BA": 0.0008943089430894218,
+      "folds": 5,
+      "model": "EEGConformer",
+      "positive_folds": 3
+    }
+  ],
+  "full_scst_minus_random": 0.00040650406504064894,
+  "model": "EEGConformer"
+}

@@ -1,0 +1,142 @@
+# PERSIST-PSG seed-0 report
+
+terminal = PSG_SEED0_PERFORMANCE_SIGNAL_MECHANISM_UNCLEAR
+
+## Selected candidate
+
+{
+  "OpenBMI_anchor_delta_pp": 0.05555555555556424,
+  "OpenBMI_mean_relative_correction": 0.055629040052155534,
+  "OpenBMI_task_control_delta_pp": 0.0,
+  "OpenBMI_trigger_rate": 0.4586510263929619,
+  "WBCIC_anchor_delta_pp": 0.4019308943089217,
+  "WBCIC_mean_relative_correction": 0.03391092035285098,
+  "WBCIC_task_control_delta_pp": 0.024390243902427944,
+  "WBCIC_trigger_rate": 0.40813953488372096,
+  "bn_freeze_pass": true,
+  "bootstrap": {
+    "OpenBMI": {
+      "PSG_vs_anchor": {
+        "CI95_L": -0.005185185185185182,
+        "CI95_L_pp": -0.5185185185185182,
+        "CI95_U": 0.006296296296296304,
+        "CI95_U_pp": 0.6296296296296304,
+        "bootstrap_draws": 10000,
+        "mean_delta_BA": 0.0005555555555555622,
+        "mean_delta_pp": 0.05555555555555622,
+        "median_delta_pp": 0.0,
+        "n_subjects": 54,
+        "nonnegative_subject_fraction": 0.5925925925925926,
+        "positive_subject_fraction": 0.37037037037037035
+      },
+      "PSG_vs_task": {
+        "CI95_L": 0.0,
+        "CI95_L_pp": 0.0,
+        "CI95_U": 0.0,
+        "CI95_U_pp": 0.0,
+        "bootstrap_draws": 10000,
+        "mean_delta_BA": 0.0,
+        "mean_delta_pp": 0.0,
+        "median_delta_pp": 0.0,
+        "n_subjects": 54,
+        "nonnegative_subject_fraction": 1.0,
+        "positive_subject_fraction": 0.0
+      }
+    },
+    "WBCIC": {
+      "PSG_vs_anchor": {
+        "CI95_L": 0.0003506097560975641,
+        "CI95_L_pp": 0.03506097560975641,
+        "CI95_U": 0.008048780487804882,
+        "CI95_U_pp": 0.8048780487804882,
+        "bootstrap_draws": 10000,
+        "mean_delta_BA": 0.0040193089430894365,
+        "mean_delta_pp": 0.40193089430894363,
+        "median_delta_pp": 0.0,
+        "n_subjects": 41,
+        "nonnegative_subject_fraction": 0.7073170731707317,
+        "positive_subject_fraction": 0.4878048780487805
+      },
+      "PSG_vs_task": {
+        "CI95_L": -0.00036585365853660195,
+        "CI95_L_pp": -0.03658536585366019,
+        "CI95_U": 0.0008536585365853802,
+        "CI95_U_pp": 0.08536585365853802,
+        "bootstrap_draws": 10000,
+        "mean_delta_BA": 0.00024390243902438775,
+        "mean_delta_pp": 0.024390243902438775,
+        "median_delta_pp": 0.0,
+        "n_subjects": 41,
+        "nonnegative_subject_fraction": 0.926829268292683,
+        "positive_subject_fraction": 0.12195121951219512
+      }
+    }
+  },
+  "candidate": "P6_LATE_CAP20",
+  "cap_zero_identity_pass": true,
+  "epoch": 2,
+  "kappa": 0.2,
+  "lr": 3e-05,
+  "paired_rng_pass": true,
+  "parameter_count": 34098,
+  "probe_harm_reduction": {
+    "OpenBMI": {
+      "harm_frequency_reduction": -0.06666666666666665,
+      "mean_positive_harm_reduction": 4.945198694864911e-06,
+      "selected_harm_frequency": 0.6666666666666666,
+      "selected_mean_delta": 0.00012028912703196207,
+      "selected_mean_positive_harm": 0.00016493697961171468,
+      "task_harm_frequency": 0.6,
+      "task_mean_delta": 0.00012685656547546388,
+      "task_mean_positive_harm": 0.0001698821783065796
+    },
+    "WBCIC": {
+      "harm_frequency_reduction": 0.0,
+      "mean_positive_harm_reduction": 1.213550567626954e-06,
+      "selected_harm_frequency": 0.32,
+      "selected_mean_delta": -5.779027938842773e-05,
+      "selected_mean_positive_harm": 1.7925500869750977e-05,
+      "task_harm_frequency": 0.32,
+      "task_mean_delta": -5.55497407913208e-05,
+      "task_mean_positive_harm": 1.913905143737793e-05
+    }
+  },
+  "rank": {
+    "min_anchor_delta_BA": 0.0005555555555556424,
+    "min_probe_reduction": 1.213550567626954e-06,
+    "min_task_effect_BA": 0.0
+  },
+  "scope": "LATE",
+  "sealed_accessed": false,
+  "seed1_run": false,
+  "seed2_run": false,
+  "terminal": "PSG_SEED0_PERFORMANCE_SIGNAL_MECHANISM_UNCLEAR",
+  "trigger_regime": "PSG_GUARD_NONDEGENERATE_TRIGGER",
+  "true_vs_random_guard_pp": {
+    "OpenBMI": -0.037037037037035425,
+    "WBCIC": 0.024390243902427944
+  }
+}
+
+## Validation
+
+{
+  "checks": {
+    "alpha_one_only": true,
+    "bn_freeze_pass": true,
+    "candidate_count_exact": true,
+    "cap_bound_pass": true,
+    "cap_zero_identity_pass": true,
+    "checkpoint_equivalence_pass": true,
+    "h_monotone_pass": true,
+    "legality_pass": true,
+    "math_audit_pass": true,
+    "paired_rng_pass": true,
+    "probe_disjoint_pass": true,
+    "sealed_accessed": false,
+    "seed0_only": true
+  },
+  "pass": false,
+  "schema": "PERSIST_PSG_VALIDATION_V2",
+  "terminal": "PSG_SEED0_PERFORMANCE_SIGNAL_MECHANISM_UNCLEAR"
+}

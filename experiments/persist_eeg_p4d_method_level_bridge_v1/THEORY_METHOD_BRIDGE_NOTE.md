@@ -1,0 +1,3 @@
+# Theory-to-Method Bridge Note
+
+Let `z=A_y y + A_s s + epsilon`, task head `W`, and a global subject-invariance method suppress subject subspace `P_s`. When `W P_s` is near zero, suppression acts mostly in task-null directions. When `W P_s` is large, global suppression also perturbs task-relevant structure. Frozen `R_unsafe` is an empirical run-level burden for identity-bearing directions entangled with the task decision structure. The prespecified interaction tests whether stronger measured identity suppression becomes more costly as this burden rises. This is a falsifiable empirical bridge, not a theorem guaranteeing generalization gains.

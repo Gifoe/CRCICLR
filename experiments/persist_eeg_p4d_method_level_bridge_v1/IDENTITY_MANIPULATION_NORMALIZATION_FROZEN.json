@@ -1,0 +1,27 @@
+{
+  "S_I_abs": "identity_symmetric_ERM - identity_symmetric_method",
+  "content_sha256": "e8165c227c1e6fc311f0d8df3e8f00a79733c91a0ee1700640ca88e339775417",
+  "definition": "z_SI=(S_I_abs-setting_median)/(1.4826*setting_MAD+1e-12), fallback setting SD if MAD degenerate",
+  "matrix_rows": 30,
+  "matrix_sha256": "95579d441d3883b99d72a1b7ab63c878dd5df7427bacebe709462b9f33990643",
+  "schema": "PERSIST_EEG_P4D_IDENTITY_MANIPULATION_NORMALIZATION_FROZEN_V1",
+  "settings": {
+    "S4": {
+      "MAD": 0.007181632270633731,
+      "fallback_SD_used": false,
+      "median_S_I_abs": 0.015014013965479966,
+      "n": 15,
+      "scale": 0.010647488004441569
+    },
+    "S6": {
+      "MAD": 0.0075726740095354295,
+      "fallback_SD_used": false,
+      "median_S_I_abs": 0.03435751670951226,
+      "n": 15,
+      "scale": 0.011227246486537227
+    }
+  },
+  "source_only": true,
+  "task_outcomes_accessed": false,
+  "timestamp_utc": "2026-08-27T21:06:28.975435+00:00"
+}

@@ -1,0 +1,256 @@
+{
+  "baseline_seed0_BA": {
+    "OpenBMI": 0.8190740740740741,
+    "WBCIC": 0.7862985033259424
+  },
+  "checkpoint_equivalence": [
+    {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1000,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 0,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1800,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 1,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1600,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1600,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 3,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1595,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 4,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1600,
+      "trial_uid_exact": true
+    }
+  ],
+  "legality": {
+    "datasets": {
+      "OpenBMI": {
+        "fold_role_counts": [
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 35,
+            "outcome": 10
+          }
+        ],
+        "outer_subject_ids_present": false,
+        "rows": 10800,
+        "sessions": [
+          1,
+          2
+        ],
+        "subjects": 54
+      },
+      "WBCIC": {
+        "fold_role_counts": [
+          {
+            "discovery": 8,
+            "model_fit": 24,
+            "outcome": 9
+          },
+          {
+            "discovery": 8,
+            "model_fit": 25,
+            "outcome": 8
+          },
+          {
+            "discovery": 8,
+            "model_fit": 25,
+            "outcome": 8
+          },
+          {
+            "discovery": 8,
+            "model_fit": 25,
+            "outcome": 8
+          },
+          {
+            "discovery": 9,
+            "model_fit": 24,
+            "outcome": 8
+          }
+        ],
+        "outer_subject_ids_present": false,
+        "rows": 24591,
+        "sessions": [
+          0,
+          1,
+          2
+        ],
+        "subjects": 41
+      }
+    },
+    "outcome_used_for_training": false,
+    "pass": true,
+    "sealed_outer_opened": false,
+    "seed": 0
+  },
+  "math": {
+    "checks": {
+      "bn_freeze_implemented": true,
+      "c1_future_halfspace": true,
+      "c2_A_halfspace": true,
+      "c2_B_halfspace": true,
+      "c2_no_constraint_equals_g0": true,
+      "c2_toy_nearest_feasible": true,
+      "c3_halfway_to_strict": true,
+      "same_schedule_contract": true,
+      "seed0_only": true
+    },
+    "pass": true,
+    "schema": "PERSIST_AU_MATH_AUDIT_V1"
+  },
+  "schedule_hashes": [
+    {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "sha256": "3092cff55524a212d475988b46212cab18cf5d4137deb1c5abe6a3c7fd8bbdf0"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "sha256": "815ba020c0400654b480cb81c0d7e77736432408a987f0bfdc3c5a52733215f0"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "sha256": "a69d1fbe2fbc9103f842d3e2b87bc50a9ff9761daa56703ad8fef493ab34c837"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "sha256": "e135e9f6c40d726a388baacd464fecae51c22bc1ad12e13dbff29ffcf7b1ffc1"
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "sha256": "b8a25278352ccd17fdc472b2774b2f8139fd47cf60cc3e3b6bd9edbfb087b5ec"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 0,
+      "sha256": "0df2b00c1d5781405e7d4faffb5c1a54108a0da17469f17024bbd0d44858addb"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 1,
+      "sha256": "9a2e9b2d4f66ae8070b46b89468bbd8ec75211239dccf181fa8260d893f4e9b2"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2,
+      "sha256": "1eba66593701fa8b12aee57f2ad4229c0cc2485e2411c2a749c34201985b1039"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 3,
+      "sha256": "a1196dad9ea5d42ed409d3577bd84953f75af673a45467a5cf7af925ad7419e9"
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 4,
+      "sha256": "018c4042d5173ffeb3c6ff96be714661fbf8d679731d9eecf6a8320d93d13789"
+    }
+  ]
+}

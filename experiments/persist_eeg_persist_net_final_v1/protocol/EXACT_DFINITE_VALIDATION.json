@@ -1,0 +1,20 @@
+{
+  "absolute_error": 0.0,
+  "analytic": 0.7125202900831432,
+  "archive_matches_frozen_reference": true,
+  "archived_report": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP3_DECISION_GROUNDING_CLOSURE_V1\\experiments\\persist_eeg_exp3_decision_grounding_closure_v1\\EXP3_FINAL_REPORT.json",
+  "archived_values": {
+    "M0_RMSE": 0.04597839942134,
+    "M0_minus_MD": 0.014791624471360496,
+    "MD_RMSE": 0.0314928431971294,
+    "MD_beats_MI_positive_runs": 6,
+    "MID_RMSE": 0.0315332767866679,
+    "MI_RMSE": 0.0457441624640147,
+    "decision_control_mean": 0.2467850870938559,
+    "decision_protected_mean": 0.9982230109222217
+  },
+  "binary_margin_equivalent": "sqrt(mean(delta_margin^2)/2)",
+  "definition": "sqrt(mean(sum((delta_logits-mean_class(delta_logits))^2,class)))",
+  "numeric": 0.7125202900831432,
+  "validated": true
+}

@@ -1,0 +1,72 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "dataset_decisions": {
+    "OpenBMI": {
+      "B0_OOF_ERM": {
+        "BA": 77.61764705882354,
+        "Macro_F1": 77.20237841495894
+      },
+      "B1_GENERIC_OOF": {
+        "BA": 77.61764705882354,
+        "Macro_F1": 77.19884157623882,
+        "delta_BA_pp": -3.2653618371328136e-16,
+        "positive_subject_fraction": 0.9411764705882353
+      },
+      "B2_GENERIC_PROTOTYPE_OOF": {
+        "BA": 77.6029411764706,
+        "Macro_F1": 77.18556474032331,
+        "delta_BA_pp": -0.01470588235294119,
+        "positive_subject_fraction": 0.9705882352941176
+      },
+      "B3_CROSS_SESSION_RELATION_OOF": {
+        "BA": 77.61764705882354,
+        "Macro_F1": 77.19884157623882,
+        "delta_BA_pp": -3.2653618371328136e-16,
+        "net_correction": 0.0,
+        "positive_subject_fraction": 0.9411764705882353
+      }
+    },
+    "WBCIC": {
+      "B0_OOF_ERM": {
+        "BA": 69.98665201005026,
+        "Macro_F1": 66.6163948316028
+      },
+      "B1_GENERIC_OOF": {
+        "BA": 70.01784966499162,
+        "Macro_F1": 66.73900708973676,
+        "delta_BA_pp": 0.03119765494137468,
+        "positive_subject_fraction": 0.75
+      },
+      "B2_GENERIC_PROTOTYPE_OOF": {
+        "BA": 70.00748534338358,
+        "Macro_F1": 66.69253285221538,
+        "delta_BA_pp": 0.020833333333335202,
+        "positive_subject_fraction": 0.7916666666666666
+      },
+      "B3_CROSS_SESSION_RELATION_OOF": {
+        "BA": 70.04915201005025,
+        "Macro_F1": 66.71967432996414,
+        "delta_BA_pp": 0.06250000000000237,
+        "net_correction": 0.0006255221386800334,
+        "positive_subject_fraction": 0.8333333333333334
+      }
+    }
+  },
+  "gates": {
+    "G1_both_0.5pp": false,
+    "G1_one_1pp": false,
+    "G2_relation_gt_generic": false,
+    "G3_relation_gt_prototype": false,
+    "G4_net_correction": false,
+    "G5_outer_fold_consistency": true,
+    "G6_subject_consistency": true,
+    "G7_harm_le_0.20": true,
+    "triage_stopped": false
+  },
+  "outcome_labels_read": false,
+  "schema": "PERSIST_EEG_NESTED_OOF_RESULT_V1",
+  "screen_only": true,
+  "source_only": true,
+  "terminal": "PERSIST_DERIVED_CONSTRUCTIVE_ROUTE_NOT_SUPPORTED"
+}

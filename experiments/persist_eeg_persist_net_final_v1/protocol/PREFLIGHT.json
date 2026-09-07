@@ -1,0 +1,50 @@
+{
+  "baseline_parameter_counts": [
+    {
+      "id": "EEGNET_F8",
+      "parameters": 34162
+    },
+    {
+      "id": "EEGNET_F16",
+      "parameters": 68514
+    }
+  ],
+  "cuda": "12.8",
+  "data_cache": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP4_HEADROOM_AUDIT\\experiments\\persist_eeg_persist_net_final_v1\\runtime\\cache\\OPENBMI_V8_SEARCH_MI_RAW.npy",
+  "data_cache_sha256": "60d5615f6c403e8a87b2faa11952369861000ad79377b333678945b2d8ef100f",
+  "deterministic_initialization": {
+    "different_seed_changes_parameters": true,
+    "same_seed_state_dict_exact": true,
+    "validated": true
+  },
+  "device": "NVIDIA GeForce RTX 5090",
+  "exact_D": {
+    "absolute_error": 0.0,
+    "analytic": 0.7125202900831432,
+    "archive_matches_frozen_reference": true,
+    "archived_report": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_EXP3_DECISION_GROUNDING_CLOSURE_V1\\experiments\\persist_eeg_exp3_decision_grounding_closure_v1\\EXP3_FINAL_REPORT.json",
+    "archived_values": {
+      "M0_RMSE": 0.04597839942134,
+      "M0_minus_MD": 0.014791624471360496,
+      "MD_RMSE": 0.0314928431971294,
+      "MD_beats_MI_positive_runs": 6,
+      "MID_RMSE": 0.0315332767866679,
+      "MI_RMSE": 0.0457441624640147,
+      "decision_control_mean": 0.2467850870938559,
+      "decision_protected_mean": 0.9982230109222217
+    },
+    "binary_margin_equivalent": "sqrt(mean(delta_margin^2)/2)",
+    "definition": "sqrt(mean(sum((delta_logits-mean_class(delta_logits))^2,class)))",
+    "numeric": 0.7125202900831432,
+    "validated": true
+  },
+  "git_commit_seen_on_server": "dda0674e8524483be48667ae58e95ebf0403c54e",
+  "intended_base_commit": "47e773142cc8cd098eeeb89103bebe68c525d760",
+  "internal_holdout_accessed": false,
+  "metadata_sha256": "3ba900070b71a4681603e1362993dbc699f9d9341d00ae70dbcc65ec74f6762f",
+  "outer_test_used": false,
+  "python": "D:\\nips-temp\\TotalP\\P2\\.conda\\gpu-baseline-v1\\python.exe",
+  "runtime_s": 2.219001054763794,
+  "status": "PREFLIGHT_PASS",
+  "torch": "2.11.0+cu128"
+}

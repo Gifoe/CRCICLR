@@ -1,0 +1,25 @@
+{
+  "P4C_SAFETY_STATUS": "P4C_SAFETY_BOUNDARY_PARTIAL_SUPPORTED",
+  "P4C_validator_pass": true,
+  "P4D_AUTHORIZATION": "CONDITIONAL",
+  "P4E_constraint": "P4C is not strong; P4E remains NOT_AUTHORIZED regardless of P4D outcome",
+  "content_sha256": "6aecfea49d349e0b689e32b9cbacdc8dd90fc141d20fef4dcae25af4406db5f7",
+  "p4c_assignment_sha256": "0a6c4caf19937ee9024b852173f07dc8b151d13806e0e5c4635fbca77d98db30",
+  "p4c_protocol_sha256": "6bd7a2ba3870d95f33f17f0b86d3f70dc3369fd58163a2b87968d54c6ded4069",
+  "p4c_validation_sha256": "6228d8b7a7dbb48699df8a1742b2b84f38acbaca4626875fa7565aba8e437f54",
+  "pooled_DeltaRegime_BA": 0.0041695634037819,
+  "pooled_U_high_BA": -0.0050077132209188,
+  "purity_pass": true,
+  "schema": "PERSIST_EEG_P4D_AUTHORIZATION_V1",
+  "setting_direction_checks": {
+    "S4": {
+      "DeltaRegime_positive": true,
+      "U_high_negative": true
+    },
+    "S6": {
+      "DeltaRegime_positive": true,
+      "U_high_negative": true
+    }
+  },
+  "timestamp_utc": "2026-08-27T19:36:13.676233+00:00"
+}

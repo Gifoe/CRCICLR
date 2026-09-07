@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "collapse_gate_recomputes": true,
+    "complete_cells": true,
+    "constants_frozen": true,
+    "episode_partitions_source_only": true,
+    "forbidden_scopes_closed": true,
+    "held_not_train_or_validation": true,
+    "initial_states_matched": true,
+    "mechanism_recomputes": true,
+    "paired_deltas_recomputable": true,
+    "primary_ba_recomputes": true,
+    "protocol_scope": true,
+    "schema": true,
+    "selected_epochs_source_only": true,
+    "split_reuse": true,
+    "stability_recomputes": true,
+    "trajectory_pair_hashes_matched": true,
+    "tseg_vs_2tr_gate_recomputes": true
+  },
+  "pass": true,
+  "schema": "PERSIST_EEG_TSEG_PILOT_V1"
+}

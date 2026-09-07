@@ -1,0 +1,18 @@
+runtime/
+**/__pycache__/
+*.pyc
+
+# Keep raw, per-step diagnostics out of Git.
+results/STEP_GUARD_LOG.csv
+results/ACTUAL_STEP_CERTIFICATE_RAW.csv
+results/B_PROBE_HARM_RAW.csv
+results/RANDOM_GUARD_CERTIFICATE.csv
+
+# Full per-trial/per-step diagnostics stay on the server; the repository carries
+# only compact summaries and auditable aggregate tables.
+results/ERM2_RESULTS.csv
+results/PROSPECTIVE_HARM_LOG.csv
+results/SEED0_PER_FOLD.csv
+results/SEED0_PER_SUBJECT.csv
+results/SEED0_SELECTED_PER_SUBJECT.csv
+results/GRADIENT_CONFLICT_LOG.csv

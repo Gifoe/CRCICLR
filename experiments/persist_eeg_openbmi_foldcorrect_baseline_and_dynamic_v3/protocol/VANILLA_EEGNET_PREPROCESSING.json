@@ -1,0 +1,29 @@
+{
+  "artifact_rejection": "stage0 cache provenance",
+  "bandpass": "stage0 cache provenance; no new filter in baseline",
+  "baseline_correction": "already applied in stage0 cache; no new target-derived correction",
+  "cache_dtype": "float16",
+  "cache_shape": [
+    10800,
+    62,
+    1000
+  ],
+  "channels": 62,
+  "class_balance": "50 trials per class per subject/session",
+  "classes": [
+    "left_hand",
+    "right_hand"
+  ],
+  "internal_holdout_used": false,
+  "materialized_rows": "8000 V8_SEARCH only",
+  "normalization": "per-fold channel mean/std fit on train subjects and source sessions only",
+  "notch": "stage0 cache provenance",
+  "outer_test_used": false,
+  "raw_cache": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_V7_FUTURE_UTILITY_META\\experiments\\persist_eeg_final_model_v7\\outputs\\cache\\OPENBMI_RAW_EPOCHS_FLOAT16.npy",
+  "sampling_frequency_hz": 250,
+  "test_statistics_used_for_train": false,
+  "trial_count": "100 per subject/session",
+  "trial_crop": "locked 1000 samples from stage0 OpenBMI MI cache",
+  "validation_statistics_used_for_train": false,
+  "wbcic_used": false
+}

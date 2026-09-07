@@ -1,0 +1,24 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "audit_order_controls": [
+    0,
+    1
+  ],
+  "branch": "codex/persist-eeg-route-b-randomness-audit-v1",
+  "canonical_outcome_labels_read": false,
+  "common_order": "sha256(route-b-common-order-v2|dataset|outer|phase|epoch)",
+  "common_rng": "sha256(route-b-common-rng-v2|dataset|outer|phase)",
+  "created_at_utc": "2026-09-05T15:46:05Z",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "method_names_excluded_from_order_and_rng": true,
+  "outer_split_policy": "reuse current Route-B prelocked folds; not bitwise identical to previous nested-OOF folds",
+  "protocol": "COMMON_RANDOMNESS_PROTOCOL_V2",
+  "pseudo_unseen_source_labels_read_for_evaluation": false,
+  "schema": "PERSIST_EEG_ROUTE_B_RANDOMNESS_AUDIT_V1",
+  "seed": 0,
+  "source_only": true
+}

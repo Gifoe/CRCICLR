@@ -1,0 +1,90 @@
+{
+  "consequence": {
+    "future_BA_erasure_harm": {
+      "mean": 0.028334841628959252,
+      "mean_ci95_l": 0.01936990823412696,
+      "mean_ci95_u": 0.03943982142857138,
+      "n_folds": 5,
+      "n_run_directions": 85,
+      "n_runs": 15
+    },
+    "future_CE_erasure_harm": {
+      "mean": 0.0567612467253659,
+      "mean_ci95_l": 0.04332674055436435,
+      "mean_ci95_u": 0.0747430153377756,
+      "n_folds": 5,
+      "n_run_directions": 85,
+      "n_runs": 15
+    },
+    "future_D_finite": {
+      "mean": 0.7130240296921881,
+      "mean_ci95_l": 0.6272444543352934,
+      "mean_ci95_u": 0.8212649824480833,
+      "n_folds": 5,
+      "n_run_directions": 85,
+      "n_runs": 15
+    }
+  },
+  "consequence_status": "DIRECTION_CONSEQUENCE_TRANSFER_SUPPORTED",
+  "hierarchy": [
+    "outer_fold",
+    "seed_run",
+    "direction",
+    "outcome_subject"
+  ],
+  "score_mappings": [
+    {
+      "future": "future_CE_erasure_harm",
+      "mapping_status": "POSITIVE",
+      "mean": 0.0567612467253659,
+      "mean_ci95_l": 0.04297816505916343,
+      "mean_ci95_u": 0.07545774254711368,
+      "n_folds": 5,
+      "n_run_directions": 85,
+      "n_runs": 15,
+      "pearson": 0.93763572200275,
+      "pearson_ci95_l": 0.7934159653614926,
+      "pearson_ci95_u": 0.9465924325238979,
+      "source": "source_U_repaired",
+      "spearman": 0.8355090873558726,
+      "spearman_ci95_l": 0.57814842521516,
+      "spearman_ci95_u": 0.8828515262269903
+    },
+    {
+      "future": "future_D_finite",
+      "mapping_status": "POSITIVE",
+      "mean": 0.7130240296921881,
+      "mean_ci95_l": 0.6228097457932061,
+      "mean_ci95_u": 0.8193260016180731,
+      "n_folds": 5,
+      "n_run_directions": 85,
+      "n_runs": 15,
+      "pearson": 0.9924564962983401,
+      "pearson_ci95_l": 0.9793915417065657,
+      "pearson_ci95_u": 0.9938286498132295,
+      "source": "source_D_finite_repaired",
+      "spearman": 0.9914989251514559,
+      "spearman_ci95_l": 0.9628717946595389,
+      "spearman_ci95_u": 0.9906571086035251
+    },
+    {
+      "future": "future_BA_erasure_harm",
+      "mapping_status": "POSITIVE",
+      "mean": 0.028334841628959252,
+      "mean_ci95_l": 0.019489449404761897,
+      "mean_ci95_u": 0.03933066964285711,
+      "n_folds": 5,
+      "n_run_directions": 85,
+      "n_runs": 15,
+      "pearson": 0.6641425547405025,
+      "pearson_ci95_l": 0.4899275319460707,
+      "pearson_ci95_u": 0.7447240094028572,
+      "source": "source_P_repaired",
+      "spearman": 0.732654208109173,
+      "spearman_ci95_l": 0.4607391837013227,
+      "spearman_ci95_u": 0.800682658155353
+    }
+  ],
+  "score_status": "CERTIFICATE_SCORE_TRANSFER_POSITIVE",
+  "source_score_join_rows_corrected": 680
+}

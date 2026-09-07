@@ -1,0 +1,265 @@
+{
+  "checkpoint_equivalence": [
+    {
+      "dataset": "OpenBMI",
+      "fold": 0,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 1,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 2,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 3,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1100,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "OpenBMI",
+      "fold": 4,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1000,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 0,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1800,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 1,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1600,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 2,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1600,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 3,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1595,
+      "trial_uid_exact": true
+    },
+    {
+      "dataset": "WBCIC",
+      "fold": 4,
+      "labels_exact": true,
+      "max_probability_abs_diff": 1.1102230246251565e-16,
+      "pass": true,
+      "predictions_exact": true,
+      "trial_count": 1600,
+      "trial_uid_exact": true
+    }
+  ],
+  "legality": {
+    "datasets": {
+      "OpenBMI": {
+        "fold_role_counts": [
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 34,
+            "outcome": 11
+          },
+          {
+            "discovery": 9,
+            "model_fit": 35,
+            "outcome": 10
+          }
+        ],
+        "outer_subject_ids_present": false,
+        "rows": 10800,
+        "sessions": [
+          1,
+          2
+        ],
+        "subjects": 54
+      },
+      "WBCIC": {
+        "fold_role_counts": [
+          {
+            "discovery": 8,
+            "model_fit": 24,
+            "outcome": 9
+          },
+          {
+            "discovery": 8,
+            "model_fit": 25,
+            "outcome": 8
+          },
+          {
+            "discovery": 8,
+            "model_fit": 25,
+            "outcome": 8
+          },
+          {
+            "discovery": 8,
+            "model_fit": 25,
+            "outcome": 8
+          },
+          {
+            "discovery": 9,
+            "model_fit": 24,
+            "outcome": 8
+          }
+        ],
+        "outer_subject_ids_present": false,
+        "rows": 24591,
+        "sessions": [
+          0,
+          1,
+          2
+        ],
+        "subjects": 41
+      }
+    },
+    "outcome_used_for_training": false,
+    "pass": true,
+    "sealed_outer_opened": false,
+    "seed": 0
+  },
+  "math_audit": {
+    "checks": {
+      "bn_freeze_implemented": true,
+      "c1_future_halfspace": true,
+      "c2_A_halfspace": true,
+      "c2_B_halfspace": true,
+      "c2_no_constraint_equals_g0": true,
+      "c2_toy_nearest_feasible": true,
+      "c3_halfway_to_strict": true,
+      "same_schedule_contract": true,
+      "seed0_only": true
+    },
+    "pass": true,
+    "schema": "PERSIST_AU_MATH_AUDIT_V1"
+  },
+  "outer_status": {
+    "OpenBMI_sealed_holdout_accessed": false,
+    "WBCIC_outer_10_accessed": false
+  },
+  "runtime_seconds": 2923.3602316379547,
+  "schema": "PERSIST_AU_SEED0_FINAL_REPORT_V1",
+  "seed1_seed2_run": false,
+  "selected": {
+    "OpenBMI_delta_pp": 0.05555555555556424,
+    "WBCIC_delta_pp": 0.49987681694997343,
+    "alpha": 0.5,
+    "base_lr_positive_exists": true,
+    "bootstrap": {
+      "OpenBMI": {
+        "CI95_L": -0.0035185185185185154,
+        "CI95_L_pp": -0.3518518518518515,
+        "CI95_U": 0.004814814814814821,
+        "CI95_U_pp": 0.4814814814814821,
+        "bootstrap_draws": 10000,
+        "mean_delta_BA": 0.0005555555555555622,
+        "mean_delta_pp": 0.05555555555555622,
+        "median_delta_pp": 0.0,
+        "n_subjects": 54,
+        "nonnegative_subject_fraction": 0.7037037037037037,
+        "positive_subject_fraction": 0.3888888888888889
+      },
+      "WBCIC": {
+        "CI95_L": 0.0018280056664202833,
+        "CI95_L_pp": 0.18280056664202832,
+        "CI95_U": 0.008658536585365834,
+        "CI95_U_pp": 0.8658536585365834,
+        "bootstrap_draws": 10000,
+        "mean_delta_BA": 0.004998768169499867,
+        "mean_delta_pp": 0.4998768169499867,
+        "median_delta_pp": 0.0,
+        "n_subjects": 41,
+        "nonnegative_subject_fraction": 0.8048780487804879,
+        "positive_subject_fraction": 0.4878048780487805
+      }
+    },
+    "candidate": "C5_LATE_SOFT",
+    "epoch": 4,
+    "kind": "anchor_fusion",
+    "lr": 3e-05,
+    "mean_delta_pp": 0.27771618625276884,
+    "min_delta_pp": 0.05555555555556424,
+    "parameter_count": 34098,
+    "prospective_harm": {
+      "OpenBMI": {
+        "ERM2_mean_positive_harm": 5.806877332575181e-05,
+        "ERM2_positive_harm_rate": 0.38823529411764707,
+        "true_AU_mean_positive_harm": 5.704778082230512e-05,
+        "true_AU_positive_harm_rate": 0.4588235294117647
+      },
+      "WBCIC": {
+        "ERM2_mean_positive_harm": 1.8550675044688144e-05,
+        "ERM2_positive_harm_rate": 0.3643410852713178,
+        "true_AU_mean_positive_harm": 1.9721051519231277e-05,
+        "true_AU_positive_harm_rate": 0.4418604651162791
+      }
+    },
+    "selection_rule": "maximize min(OpenBMI,WBCIC delta), then mean; fusion retained only if AU beats matched ERM mix on both",
+    "terminal": "AU_POSITIVE_DEVELOPMENT_SIGNAL"
+  },
+  "terminal": "AU_POSITIVE_DEVELOPMENT_SIGNAL"
+}

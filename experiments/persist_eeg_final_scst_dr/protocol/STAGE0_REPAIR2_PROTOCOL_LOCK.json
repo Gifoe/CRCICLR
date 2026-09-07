@@ -1,0 +1,86 @@
+{
+  "schema": "PERSIST_EEG_SCST_DR_STAGE0_REPAIR2_PROTOCOL_V1",
+  "repair_number": 2,
+  "parent_commit": "f5cb605954e624629d8a3849d33a732f29ef54ee",
+  "frozen_before_repair2_outcome_access": true,
+  "scientific_change": "source-support-constrained per-candidate transport magnitude",
+  "direction_definition_unchanged": "delta_(s_to_sprime,y) = r_(sprime,y) - r_(s,y), with empirical equal-subject class centroids",
+  "development_settings": [
+    "OPENBMI_MI_EEGNET",
+    "OPENBMI_MI_EEGCONFORMER",
+    "WBCIC_MI_EEGNET",
+    "WBCIC_MI_EEGCONFORMER"
+  ],
+  "folds": [0, 1, 2, 3, 4],
+  "historical_erm_seed": 0,
+  "sole_layer": "final_embedding",
+  "source_data_roles": {
+    "transport_bank_and_support": "model-fit subjects, first legal source session only",
+    "independent_class_probe_train": "validation subjects, first legal source session",
+    "independent_validation": "model-fit and validation subjects, second legal source session only",
+    "outcome_subject_rows_loaded": false,
+    "future_session_performance_rows_loaded": false
+  },
+  "scaling": "unchanged Stage-0 diagonal standard deviation from model-fit bank-session samples only; floor 1e-6",
+  "source_support": {
+    "unit": "model-fit bank-session subject-class centroid",
+    "support_set": "all real model-fit bank-session subject-class centroids for the queried class",
+    "candidate_query_support_exclusion": "none; candidate queries are independent-session samples and therefore are not identical self-neighbors",
+    "radius_clean_query_exclusion": "leave the queried subject centroid out",
+    "distance": "mean Euclidean distance to the 3 nearest real same-class bank-session subject centroids",
+    "radius": "95th percentile of clean leave-one-subject-out 3NN mean distances, separately by fold and class",
+    "independent_session_used_to_define_support": false
+  },
+  "step_solver": {
+    "grid": [0.0, 0.015625, 0.03125, 0.046875, 0.0625, 0.078125, 0.09375, 0.109375, 0.125, 0.140625, 0.15625, 0.171875, 0.1875, 0.203125, 0.21875, 0.234375, 0.25],
+    "alpha_max": 0.25,
+    "rule": "largest grid value whose candidate mean-3NN source-support distance is at most the source-only class radius; zero if no positive value is legal",
+    "selection_uses_independent_session_outcomes": false,
+    "grid_tuning_after_outcomes": false
+  },
+  "controls": {
+    "retained": ["no_transport", "wrong_class", "subject_permutation", "norm_matched_random", "unconditional_subject_transport", "same_class_mixup"],
+    "random": "deterministic isotropic direction with L2 norm exactly matched to each realized constrained SCST displacement",
+    "directional_controls": "use the same realized SCST alpha_star for the corresponding pair/sample",
+    "same_class_mixup_alpha": 0.5
+  },
+  "diagnostics": {
+    "alpha_star": ["fraction_zero", "mean", "median", "q25", "q75", "fraction_alpha_max"],
+    "strata": ["setting", "class", "source_subject"],
+    "query_units": ["independent_session_subject_class_centroid", "independent_session_trial"],
+    "norm_ratio": "realized transport L2 norm divided by clean standardized-representation L2 norm"
+  },
+  "bootstrap": {
+    "unit": "source subject",
+    "resamples": 10000,
+    "confidence": 0.95,
+    "seed_namespace": "SCST_DR_STAGE0_BOOTSTRAP_V1"
+  },
+  "unchanged_gates": {
+    "independent_probe_BA_min": 0.55,
+    "stability_matched_minus_mismatched_mean_min": 0.0,
+    "stability_bootstrap_CI_lower_strictly_positive": true,
+    "subject_fidelity_relative_improvement_mean_min": 0.0,
+    "subject_fidelity_bootstrap_CI_lower_strictly_positive": true,
+    "subject_fidelity_advantage_over_norm_random_CI_lower_strictly_positive": true,
+    "class_accuracy_loss_max": 0.02,
+    "class_true_log_probability_change_min": -0.05,
+    "manifold_knn_ratio_to_clean_max": 1.25,
+    "manifold_off_rate_excess_over_random_max": 0.02
+  },
+  "success_rule": "all seven unchanged gates must pass at final_embedding in all four retained settings",
+  "success_terminal": "TRANSPORT_VALIDITY_SUPPORTED",
+  "failure_terminals": ["TRANSPORT_VALIDITY_NOT_SUPPORTED", "FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED"],
+  "failure_stop_rule": "no Repair 3, no SCST training, no future performance, no sealed outer access",
+  "sealed_status": {
+    "OpenBMI_internal_14": "UNTOUCHED_UNENUMERATED",
+    "WBCIC_outer_10": "UNTOUCHED_UNENUMERATED",
+    "SEALED_RESOURCE_AUDIT_sha256": "fe4b362d4a762f7ce9308d7a92193ecf4334eab085f1d6b58bbd7418566252e4",
+    "DATA_ACCESS_AUDIT_sha256": "303d065b31fe978c4d90537b68bc3d0007b89dd3335dab30fd8eeeb6282971bf"
+  },
+  "repair1_inputs": {
+    "validation_sha256": "f586ffc1acd39cffce304e23c0a233913052f99e991431d00d88a20c6497cf79",
+    "final_result_sha256": "2a3c23fca9d2c88c2652c0b1a44f6854ed2416c20f5de382a4b8dcdda0c369f7"
+  },
+  "outer_access_allowed": false
+}

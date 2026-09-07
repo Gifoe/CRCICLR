@@ -1,0 +1,57 @@
+{
+  "OpenBMI_delta_pp": 0.05555555555556424,
+  "WBCIC_delta_pp": 0.49987681694997343,
+  "alpha": 0.5,
+  "base_lr_positive_exists": true,
+  "bootstrap": {
+    "OpenBMI": {
+      "CI95_L": -0.0035185185185185154,
+      "CI95_L_pp": -0.3518518518518515,
+      "CI95_U": 0.004814814814814821,
+      "CI95_U_pp": 0.4814814814814821,
+      "bootstrap_draws": 10000,
+      "mean_delta_BA": 0.0005555555555555622,
+      "mean_delta_pp": 0.05555555555555622,
+      "median_delta_pp": 0.0,
+      "n_subjects": 54,
+      "nonnegative_subject_fraction": 0.7037037037037037,
+      "positive_subject_fraction": 0.3888888888888889
+    },
+    "WBCIC": {
+      "CI95_L": 0.0018280056664202833,
+      "CI95_L_pp": 0.18280056664202832,
+      "CI95_U": 0.008658536585365834,
+      "CI95_U_pp": 0.8658536585365834,
+      "bootstrap_draws": 10000,
+      "mean_delta_BA": 0.004998768169499867,
+      "mean_delta_pp": 0.4998768169499867,
+      "median_delta_pp": 0.0,
+      "n_subjects": 41,
+      "nonnegative_subject_fraction": 0.8048780487804879,
+      "positive_subject_fraction": 0.4878048780487805
+    }
+  },
+  "candidate": "C5_LATE_SOFT",
+  "epoch": 4,
+  "kind": "anchor_fusion",
+  "lr": 3e-05,
+  "mean_delta_pp": 0.27771618625276884,
+  "min_delta_pp": 0.05555555555556424,
+  "parameter_count": 34098,
+  "prospective_harm": {
+    "OpenBMI": {
+      "ERM2_mean_positive_harm": 5.806877332575181e-05,
+      "ERM2_positive_harm_rate": 0.38823529411764707,
+      "true_AU_mean_positive_harm": 5.704778082230512e-05,
+      "true_AU_positive_harm_rate": 0.4588235294117647
+    },
+    "WBCIC": {
+      "ERM2_mean_positive_harm": 1.8550675044688144e-05,
+      "ERM2_positive_harm_rate": 0.3643410852713178,
+      "true_AU_mean_positive_harm": 1.9721051519231277e-05,
+      "true_AU_positive_harm_rate": 0.4418604651162791
+    }
+  },
+  "selection_rule": "maximize min(OpenBMI,WBCIC delta), then mean; fusion retained only if AU beats matched ERM mix on both",
+  "terminal": "AU_POSITIVE_DEVELOPMENT_SIGNAL"
+}

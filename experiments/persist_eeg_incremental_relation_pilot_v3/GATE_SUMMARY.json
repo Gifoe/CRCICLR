@@ -1,0 +1,64 @@
+{
+  "dataset_decisions": {
+    "OpenBMI": {
+      "B0_BA": 79.72727272727272,
+      "B0_Macro_F1": 79.37821229207889,
+      "B1_BA": 79.81818181818183,
+      "B1_delta_vs_B0_BA_pp": 0.09090909090909098,
+      "B2_BA": 79.81818181818183,
+      "B2_delta_vs_B0_BA_pp": 0.09090909090909098,
+      "B3_BA": 79.72727272727272,
+      "B3_Macro_F1": 79.3784860303467,
+      "B3_minus_B0_BA_pp": 0.0,
+      "B3_minus_B0_Macro_F1_pp": 0.00027373826782679925,
+      "B3_minus_B1_BA_pp": -0.09090909090909098,
+      "B3_minus_B2_BA_pp": -0.09090909090909098,
+      "bottom25_subject_delta_BA_pp": 0.0,
+      "fraction_delta_BA_below_minus2pp": 0.0,
+      "net_correction": 0.0,
+      "nonnegative_subject_fraction": 0.9090909090909091,
+      "positive_subject_fraction": 0.09090909090909091,
+      "worst_subject_delta_BA_pp": -1.0000000000000009
+    },
+    "WBCIC": {
+      "B0_BA": 80.27777777777777,
+      "B0_Macro_F1": 80.16511726268199,
+      "B1_BA": 80.27777777777777,
+      "B1_delta_vs_B0_BA_pp": 0.0,
+      "B2_BA": 80.33333333333333,
+      "B2_delta_vs_B0_BA_pp": 0.05555555555555437,
+      "B3_BA": 80.33333333333333,
+      "B3_Macro_F1": 80.21500131101685,
+      "B3_minus_B0_BA_pp": 0.05555555555555561,
+      "B3_minus_B0_Macro_F1_pp": 0.04988404833483987,
+      "B3_minus_B1_BA_pp": 0.05555555555555561,
+      "B3_minus_B2_BA_pp": 1.2335811384723961e-15,
+      "bottom25_subject_delta_BA_pp": 0.0,
+      "fraction_delta_BA_below_minus2pp": 0.0,
+      "net_correction": 0.0005555555555555557,
+      "nonnegative_subject_fraction": 0.8888888888888888,
+      "positive_subject_fraction": 0.1111111111111111,
+      "worst_subject_delta_BA_pp": -0.5000000000000004
+    }
+  },
+  "gates": {
+    "OpenBMI": {
+      "G1_two_dataset_0.5pp": false,
+      "G2_relation_gt_B1": false,
+      "G3_relation_gt_B2": false,
+      "G4_net_correction_positive": false,
+      "G5_nonnegative_fraction_0.6": true,
+      "G6_catastrophic_fraction_le_0.2": true
+    },
+    "WBCIC": {
+      "G1_two_dataset_0.5pp": false,
+      "G2_relation_gt_B1": true,
+      "G3_relation_gt_B2": true,
+      "G4_net_correction_positive": true,
+      "G5_nonnegative_fraction_0.6": true,
+      "G6_catastrophic_fraction_le_0.2": true
+    }
+  },
+  "passed": false,
+  "terminal": "CORRECTED_INCREMENTAL_RELATION_NOT_SUPPORTED"
+}

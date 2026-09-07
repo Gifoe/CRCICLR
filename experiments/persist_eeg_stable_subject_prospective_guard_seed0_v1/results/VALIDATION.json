@@ -1,0 +1,40 @@
+{
+  "OpenBMI_sealed_opened": false,
+  "WBCIC_outer_opened": false,
+  "checks": {
+    "A_B_subject_disjoint": true,
+    "BN_frozen": true,
+    "B_Bout_trial_disjoint": true,
+    "K4_concat_gradient_equivalence": true,
+    "OpenBMI_sealed_opened": false,
+    "R_after_le_R_before": true,
+    "WBCIC_outer_opened": false,
+    "checkpoint_equivalence_pass": true,
+    "correction_cap": true,
+    "cross_subject_control_valid": true,
+    "mandatory_tests_pass": true,
+    "normalizer_exact_load": true,
+    "optimizer_state_nonpollution": true,
+    "outcome_access_after_lock": true,
+    "outcome_used_for_training": false,
+    "qTDelta_identity": true,
+    "random_direction_norm_match": true,
+    "seed1_run": false,
+    "seed2_run": false,
+    "task_only_replay_equivalence": true
+  },
+  "critical_checks_pass": true,
+  "expected_false_safety_flags": {
+    "OpenBMI_sealed_opened": false,
+    "WBCIC_outer_opened": false,
+    "outcome_used_for_training": false,
+    "seed1_run": false,
+    "seed2_run": false
+  },
+  "packaging_repair": "Report-only validation aggregation fixed: expected false seed/outer/sealed safety flags are not critical failures.",
+  "pass": true,
+  "schema": "PERSIST_SSPG_VALIDATION_V1",
+  "seed1_run": false,
+  "seed2_run": false,
+  "terminal": "SSPG_MECHANISM_SUPPORTED_PERFORMANCE_INSUFFICIENT"
+}

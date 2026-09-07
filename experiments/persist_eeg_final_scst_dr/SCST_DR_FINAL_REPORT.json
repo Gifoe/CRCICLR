@@ -1,0 +1,167 @@
+{
+  "answers": {
+    "10_transport_validity_supported": false,
+    "11_exact_failure": "Both WBCIC 3NN-to-clean ratios exceeded the unchanged 1.25 gate (EEGNet 1.3079565485; EEGConformer 1.3407995963). All other frozen gates passed.",
+    "12_trainable_scope": "NOT_RUN_BY_STAGE0_GATE",
+    "13_bank_staleness_prevention": "NOT_APPLICABLE; no SCST model was trained",
+    "14_matched_erm_future_ba": "NOT_RUN_BY_STAGE0_GATE",
+    "15_scst_dr_future_ba": "NOT_RUN_BY_STAGE0_GATE",
+    "16_ba_delta": "NOT_RUN_BY_STAGE0_GATE",
+    "17_subject_level_ci": "NOT_RUN_BY_STAGE0_GATE",
+    "18_positive_primary_settings": "NOT_RUN_BY_STAGE0_GATE",
+    "19_scst_vs_mixup": "NOT_RUN_BY_STAGE0_GATE",
+    "1_evidence": {
+      "pre_outcome_freeze": "protocol/PRE_STAGE0_REPAIR2_FREEZE.json",
+      "pre_outcome_hash_freeze_commit": "2ca4440",
+      "protocol_commit": "ad86b25"
+    },
+    "1_repair2_frozen_before_outcomes": true,
+    "20_scst_vs_random_training": "NOT_RUN_BY_STAGE0_GATE",
+    "21_class_conditioning_matters": "NOT_ESTABLISHED_AS_A_TRAINING_EFFECT; Stage-0 class compatibility was preserved",
+    "22_decision_consistency_matters": "NOT_RUN_BY_STAGE0_GATE",
+    "23_subject_identity_I": "NOT_RUN_BY_STAGE0_GATE",
+    "24_transport_decision_sensitivity_D_T": "NOT_RUN_BY_STAGE0_GATE",
+    "25_I_same_D_T_down_G_up": "NOT_SUPPORTED",
+    "26_outer_authorized": false,
+    "27_openbmi_outer_confirmation": "NOT_OPENED",
+    "28_wbcic_outer_confirmation": "NOT_OPENED",
+    "29_strongest_supported_claim": "Source-estimated subject-class residual directions are cross-session stable, and source-support-constrained transport improves target-subject affinity over norm-matched random while preserving class fidelity; validity does not generalize to the frozen WBCIC manifold criterion.",
+    "2_sealed_resources_untouched": true,
+    "30_stronger_unsupported_claim": "SCST-DR improves future-session or unseen-subject generalization, reduces decision sensitivity, retains identity during useful training, or beats ERM/Mixup/random augmentation.",
+    "31_final_terminal": "FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED",
+    "31_repair2_terminal": "TRANSPORT_VALIDITY_NOT_SUPPORTED",
+    "3_alpha_star_distribution": {
+      "OPENBMI_MI_EEGCONFORMER": {
+        "fraction_alpha_max": 0.9753623188405796,
+        "fraction_zero": 0.0219202898550724,
+        "mean": 0.2442028985507246,
+        "median": 0.25,
+        "q25": 0.25,
+        "q75": 0.25,
+        "realized_norm_ratio_mean": 0.2538273766373649
+      },
+      "OPENBMI_MI_EEGNET": {
+        "fraction_alpha_max": 0.991123188405797,
+        "fraction_zero": 0.0032608695652173,
+        "mean": 0.2485507246376811,
+        "median": 0.25,
+        "q25": 0.25,
+        "q75": 0.25,
+        "realized_norm_ratio_mean": 0.2874828683192997
+      },
+      "WBCIC_MI_EEGCONFORMER": {
+        "fraction_alpha_max": 0.9285468319559228,
+        "fraction_zero": 0.0416666666666666,
+        "mean": 0.2369764764118457,
+        "median": 0.25,
+        "q25": 0.25,
+        "q75": 0.25,
+        "realized_norm_ratio_mean": 0.2547545337220673
+      },
+      "WBCIC_MI_EEGNET": {
+        "fraction_alpha_max": 0.9194214876033058,
+        "fraction_zero": 0.040461432506887,
+        "mean": 0.2363227444903581,
+        "median": 0.25,
+        "q25": 0.25,
+        "q75": 0.25,
+        "realized_norm_ratio_mean": 0.2473601115018914
+      }
+    },
+    "4_target_subject_affinity": "POSITIVE_WITH_CI_LOWER_ABOVE_ZERO_IN_ALL_FOUR_SETTINGS",
+    "5_advantage_over_norm_matched_random": "POSITIVE_WITH_CI_LOWER_ABOVE_ZERO_IN_ALL_FOUR_SETTINGS",
+    "6_class_fidelity": "PRESERVED_IN_ALL_FOUR_SETTINGS",
+    "7_independent_session_3nn_ratio": {
+      "OPENBMI_MI_EEGCONFORMER": 1.149371948653882,
+      "OPENBMI_MI_EEGNET": 1.162847296228404,
+      "WBCIC_MI_EEGCONFORMER": 1.340799596274116,
+      "WBCIC_MI_EEGNET": 1.3079565485463502
+    },
+    "8_all_four_ratio_le_1_25": false,
+    "9_binary_off_manifold_rate": {
+      "OPENBMI_MI_EEGCONFORMER": {
+        "matched_random": 0.0014492753623188,
+        "scst": 0.0
+      },
+      "OPENBMI_MI_EEGNET": {
+        "matched_random": 0.0014492753623188,
+        "scst": 0.0
+      },
+      "WBCIC_MI_EEGCONFORMER": {
+        "matched_random": 0.0533746556473829,
+        "scst": 0.0111914600550964
+      },
+      "WBCIC_MI_EEGNET": {
+        "matched_random": 0.0588842975206611,
+        "scst": 0.0167011019283746
+      }
+    }
+  },
+  "closure_base_commit": "dda0cf69c2a25f92612b5d6d864529ebe1a2d18e",
+  "development_performance_status": "NOT_RUN_BY_STAGE0_GATE",
+  "final_constructive_protocol_lock_created": false,
+  "final_model_created": false,
+  "final_terminal": "FINAL_CONSTRUCTIVE_HYPOTHESIS_NOT_SUPPORTED",
+  "outer_results_created": false,
+  "outer_status": "UNTOUCHED_UNENUMERATED_NOT_AUTHORIZED",
+  "repair2_result_sha256": "88257bb74c50636a0bf084f905178906253f43736af4bf58178539c659fd3c80",
+  "repair2_setting_pass_count": 2,
+  "repair2_setting_results": {
+    "OPENBMI_MI_EEGCONFORMER": {
+      "advantage_over_random_ci_low": 0.1749553718302584,
+      "advantage_over_random_mean": 0.1861049857774244,
+      "all_gates_pass": true,
+      "class_accuracy_change": 0.0061684782608695,
+      "class_logp_change": 0.0062666734301772,
+      "knn_ratio": 1.149371948653882,
+      "random_off_manifold_rate": 0.0014492753623188,
+      "scst_off_manifold_rate": 0.0,
+      "subject_affinity_ci_low": 0.1434347571615485,
+      "subject_affinity_mean": 0.153237572794738
+    },
+    "OPENBMI_MI_EEGNET": {
+      "advantage_over_random_ci_low": 0.1540380996022187,
+      "advantage_over_random_mean": 0.1642210292893652,
+      "all_gates_pass": true,
+      "class_accuracy_change": 0.0,
+      "class_logp_change": -5.876690036370702e-20,
+      "knn_ratio": 1.162847296228404,
+      "random_off_manifold_rate": 0.0014492753623188,
+      "scst_off_manifold_rate": 0.0,
+      "subject_affinity_ci_low": 0.1169676456931253,
+      "subject_affinity_mean": 0.1263596141915035
+    },
+    "WBCIC_MI_EEGCONFORMER": {
+      "advantage_over_random_ci_low": 0.1352400140487946,
+      "advantage_over_random_mean": 0.1560307206251845,
+      "all_gates_pass": false,
+      "class_accuracy_change": 0.0235252224110863,
+      "class_logp_change": 0.0160032688477509,
+      "knn_ratio": 1.340799596274116,
+      "random_off_manifold_rate": 0.0533746556473829,
+      "scst_off_manifold_rate": 0.0111914600550964,
+      "subject_affinity_ci_low": 0.0677672199126993,
+      "subject_affinity_mean": 0.0967892612345962
+    },
+    "WBCIC_MI_EEGNET": {
+      "advantage_over_random_ci_low": 0.1175553841175326,
+      "advantage_over_random_mean": 0.1389549540789632,
+      "all_gates_pass": false,
+      "class_accuracy_change": 0.0054880816681314,
+      "class_logp_change": 0.003687674830594,
+      "knn_ratio": 1.3079565485463502,
+      "random_off_manifold_rate": 0.0588842975206611,
+      "scst_off_manifold_rate": 0.0167011019283746,
+      "subject_affinity_ci_low": 0.0545174807373496,
+      "subject_affinity_mean": 0.0849206375739179
+    }
+  },
+  "repair2_validation_pass": true,
+  "repair2_validation_sha256": "311d993373f3b385308b73c902830b4a84f1ae8c144fbeff856a13b6e5991b1c",
+  "schema": "SCST_DR_FINAL_REPORT_V2",
+  "stage0_repair1_terminal": "TRANSPORT_OFF_MANIFOLD",
+  "stage0_repair2_terminal": "TRANSPORT_VALIDITY_NOT_SUPPORTED",
+  "stage0_v0_terminal": "TRANSPORT_NOT_SUBJECT_FAITHFUL",
+  "stage1_authorized": false,
+  "stage1_status": "NOT_RUN_BY_STAGE0_GATE"
+}

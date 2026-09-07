@@ -1,0 +1,171 @@
+{
+  "Q10_interpretation": "SOURCE_ONLY_PERSIST_NOT_SUPPORTED",
+  "Q11_internal_holdout_accessed": false,
+  "Q12_WBCIC_outer_accessed": false,
+  "Q1_PUD_SOURCE_ONLY": {
+    "BA": 0.7565,
+    "macro_f1": 0.7539813418340374
+  },
+  "Q2_vs_Vanilla": {
+    "CI95": [
+      -0.04341666666666666,
+      -0.016997916666666692
+    ],
+    "Delta_BA": -0.029666666666666657,
+    "Vanilla_BA": 0.7861666666666667
+  },
+  "Q3_vs_capacity_matched_dual_source": {
+    "CI95": [
+      -0.029416666666666657,
+      -0.013250000000000001
+    ],
+    "Delta_BA": -0.02116666666666666,
+    "control_BA": 0.7776666666666667
+  },
+  "Q4_vs_Strong_EEGNet": {
+    "CI95": [
+      -0.04724999999999999,
+      -0.02358333333333334
+    ],
+    "Delta_BA": -0.035,
+    "Strong_EEGNet_BA": 0.7915
+  },
+  "Q5_positive_folds_vs_Vanilla": 0,
+  "Q6_positive_seeds_vs_Vanilla": 0,
+  "Q7_subjects_vs_Vanilla": {
+    "harmed": 32,
+    "improved": 8,
+    "tied": 0
+  },
+  "Q8_target_adaptation": {
+    "CI95": [
+      0.003166666666666672,
+      0.011833333333333338
+    ],
+    "after_adaptation_BA": 0.7639166666666667,
+    "after_minus_source_Delta_BA": 0.00741666666666667,
+    "harmed_subjects": 10,
+    "improved_subjects": 26
+  },
+  "Q9_protected_branch": {
+    "adaptive_D_finite_mean": 0.746988073794809,
+    "adaptive_branch_erasure_harm": {
+      "CI95": [
+        0.00916666666666666,
+        0.024833333333333308
+      ],
+      "draws": 10000,
+      "mean": 0.01708333333333332,
+      "median": 0.01666666666666665,
+      "subjects": 40
+    },
+    "functional_teacher_RMSE_mean": 0.7152366403551236,
+    "functional_teacher_correlation_mean": 0.8209233453498094,
+    "protected_D_finite_mean": 1.6370209000460991,
+    "protected_branch_erasure_harm": {
+      "CI95": [
+        0.11708333333333328,
+        0.15541666666666662
+      ],
+      "draws": 10000,
+      "mean": 0.13558333333333328,
+      "median": 0.12666666666666665,
+      "subjects": 40
+    }
+  },
+  "adaptation_function_called": false,
+  "base_commit": "12ab811c2a6194192b430f9c010781acd1c0379f",
+  "evaluation_integrity": {
+    "PUD_source_authoritative_validation_rows": 240,
+    "PUD_source_max_abs_BA_error": 1.1102230246251565e-16,
+    "WBCIC_outer_accessed": false,
+    "adaptation_function_called": false,
+    "all_checkpoint_files_unchanged": true,
+    "all_parameters_and_buffers_unchanged": true,
+    "data_audit": {
+      "Session2_per_subject_class_counts": [
+        50
+      ],
+      "Session2_rows": 4000,
+      "WBCIC_outer_accessed": false,
+      "internal_holdout_accessed": false,
+      "metadata_path": "SOURCE_EXPERIMENT/runtime/cache/OPENBMI_V8_SEARCH_MI_METADATA.parquet",
+      "pass": true,
+      "sessions_in_identifier_metadata": [
+        1,
+        2
+      ],
+      "signal_path": "SOURCE_EXPERIMENT/runtime/cache/OPENBMI_V8_SEARCH_MI_RAW.npy",
+      "signal_shape": [
+        8000,
+        62,
+        1000
+      ],
+      "subjects": 40,
+      "target_history_labels_materialized": false,
+      "target_history_labels_used": false
+    },
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 5090",
+    "evaluation_batch_geometry": "one outcome subject (100 trials) per inference call, matching final-v1",
+    "input_fingerprint": "64d4562de67dc2fa6e9fa769fc381f94dd3cd8fa8be011ce8237a9e29eef1d0e",
+    "internal_holdout_accessed": false,
+    "mechanism_rows": 480,
+    "optimizer_steps": 0,
+    "pass": true,
+    "replay_validation_passed_before_PUD_evaluation": true,
+    "runtime_s": 18.031986474990845,
+    "source_subject_method_rows": 480,
+    "status": "SOURCE_ONLY_EVALUATION_COMPLETE",
+    "target_history_labels_materialized": false
+  },
+  "optimizer_steps": 0,
+  "protocol": "OpenBMI V8_SEARCH 40 subjects; 5 folds x 3 seeds; outcome Session 2",
+  "replay_validation": {
+    "WBCIC_outer_accessed": false,
+    "all_checkpoint_files_unchanged": true,
+    "all_parameters_and_buffers_unchanged": true,
+    "all_trial_counts_match": true,
+    "data_audit": {
+      "Session2_per_subject_class_counts": [
+        50
+      ],
+      "Session2_rows": 4000,
+      "WBCIC_outer_accessed": false,
+      "internal_holdout_accessed": false,
+      "metadata_path": "SOURCE_EXPERIMENT/runtime/cache/OPENBMI_V8_SEARCH_MI_METADATA.parquet",
+      "pass": true,
+      "sessions_in_identifier_metadata": [
+        1,
+        2
+      ],
+      "signal_path": "SOURCE_EXPERIMENT/runtime/cache/OPENBMI_V8_SEARCH_MI_RAW.npy",
+      "signal_shape": [
+        8000,
+        62,
+        1000
+      ],
+      "subjects": 40,
+      "target_history_labels_materialized": false,
+      "target_history_labels_used": false
+    },
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 5090",
+    "evaluation_batch_geometry": "one outcome subject (100 trials) per inference call, matching final-v1",
+    "fold_seed_runs": 15,
+    "input_fingerprint": "64d4562de67dc2fa6e9fa769fc381f94dd3cd8fa8be011ce8237a9e29eef1d0e",
+    "internal_holdout_accessed": false,
+    "max_abs_BA_error": 1.1102230246251565e-16,
+    "max_abs_macro_f1_error": 1.1102230246251565e-16,
+    "methods": [
+      "B0_VANILLA_EEGNET",
+      "B1_STRONG_EEGNET"
+    ],
+    "pass": true,
+    "runtime_s": 7.039665937423706,
+    "status": "REPLAY_VALIDATION_PASS",
+    "subject_method_rows": 240
+  },
+  "source_checkpoint_retrained": false,
+  "terminal_state": "SOURCE_ONLY_PERSIST_NOT_SUPPORTED"
+}

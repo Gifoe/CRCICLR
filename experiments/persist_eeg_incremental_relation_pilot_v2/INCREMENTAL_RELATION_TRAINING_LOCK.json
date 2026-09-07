@@ -1,0 +1,28 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "amendment_sha256": "366ed3df834e065e1cbd5800c180716d3ccda88f69e4020df86d1ca2dea28ea8",
+  "code_sha256": "10d0ea8876edfba6a3c7739199677f59effb4782c24cf8f8232403c1f735e802",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "feature_view": "full_latent_64d",
+  "final_claim_authorized": false,
+  "locked_at_utc": "2026-09-05T08:04:27Z",
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GENERIC_RESIDUAL",
+    "GENERIC_PROTOTYPE",
+    "CROSS_SESSION_RELATION"
+  ],
+  "outcome_labels_read": false,
+  "outcome_labels_read_before_lock": false,
+  "outer_folds": [
+    0
+  ],
+  "protected_only": false,
+  "schema": "PERSIST_EEG_INCREMENTAL_RELATION_TRAINING_LOCK_V1",
+  "scientific_definition_changed": true,
+  "seed": 0
+}

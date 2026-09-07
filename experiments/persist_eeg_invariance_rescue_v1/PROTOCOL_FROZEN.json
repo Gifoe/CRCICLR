@@ -1,0 +1,247 @@
+{
+  "code_sha256": {
+    "common.py": "dfb1976f51fe2901a7819a87137d3e7ab879c0da4944c724515edf45adfd6add",
+    "data.py": "6059c791c2c509e84111cd852d3bc424f5b58b56043824372c8a12bcd60f7ba7",
+    "losses.py": "6fded983b7fc64bfc29d4f4d33dd2b2ba968cf76cec2c29c4365273a8e7a81b6",
+    "models.py": "2ec0577056195c4aa4ce3b5f7e58a554398b59389f3109768f315afacc726d31",
+    "rescue.py": "97bcf8f8995dfc7a3e9bbc11c776c87448979757b51486cadc50c067d2b49961",
+    "run.py": "d636c60febfafadcc58c42c43eb3ec84d0f476aa8a4c8618f7533068d3e17ccf",
+    "spectrum.py": "705b4cd293e205760efa2015772d64e39a51546b1dd85f1c487f2c4875b0d86e",
+    "statistics.py": "94270668dd335c287d8d2065b98fd7dd8314688f30fb24e039eef2cb00134619",
+    "train.py": "1afcd124241a07127e336c42f345290d71f6225d5d14fb0250cc2d3be208eeea"
+  },
+  "fidelity": {
+    "families": {
+      "A_SUBJECT_GRL_EEGNET": {
+        "all_invariant_smoke_models_competent": true,
+        "all_losses_and_metrics_finite": true,
+        "all_runs_complete": true,
+        "deviation": "none",
+        "fidelity_gate_pass": true,
+        "matched_parameter_count": true,
+        "methods": [
+          "A0_TASK_ONLY_EEGNET",
+          "A1_SUBJECT_GRL_EEGNET_L0050",
+          "A1_SUBJECT_GRL_EEGNET_L0100",
+          "A1_SUBJECT_GRL_EEGNET_L0300",
+          "A1_SUBJECT_GRL_EEGNET_L1000"
+        ],
+        "minimum_invariant_calibration_BA": 0.55,
+        "minimum_task_only_calibration_BA": 0.6,
+        "status": "PASS",
+        "task_only_calibration_BA": 0.6799999999999999
+      },
+      "B_EEG_DG": {
+        "all_invariant_smoke_models_competent": true,
+        "all_losses_and_metrics_finite": true,
+        "all_runs_complete": true,
+        "deviation": "clean-room method-level reproduction; not exact official-code replication",
+        "fidelity_gate_pass": true,
+        "matched_parameter_count": true,
+        "methods": [
+          "B0_EEG_DG_TASK_ONLY",
+          "B1_EEG_DG_FULL"
+        ],
+        "minimum_invariant_calibration_BA": 0.55,
+        "minimum_task_only_calibration_BA": 0.6,
+        "status": "DEVIATION",
+        "task_only_calibration_BA": 0.7216666666666667
+      },
+      "C_SCLDGN": {
+        "all_invariant_smoke_models_competent": true,
+        "all_losses_and_metrics_finite": true,
+        "all_runs_complete": true,
+        "deviation": "clean-room method-level reproduction; not exact official-code replication",
+        "fidelity_gate_pass": true,
+        "matched_parameter_count": true,
+        "methods": [
+          "C0_SCLDGN_TASK_ONLY",
+          "C1_SCLDGN_FULL"
+        ],
+        "minimum_invariant_calibration_BA": 0.55,
+        "minimum_task_only_calibration_BA": 0.6,
+        "status": "DEVIATION",
+        "task_only_calibration_BA": 0.76
+      }
+    },
+    "outer_test_used": false,
+    "status": "PASS"
+  },
+  "frozen_at_utc": "2026-08-21T09:03:19.493737+00:00",
+  "git_sha_before_full_run": "873486f7f215ce3b5287d8220d660e06913ea10f",
+  "method_roster": [
+    "A0_TASK_ONLY_EEGNET",
+    "A1_SUBJECT_GRL_EEGNET_L0050",
+    "A1_SUBJECT_GRL_EEGNET_L0100",
+    "A1_SUBJECT_GRL_EEGNET_L0300",
+    "A1_SUBJECT_GRL_EEGNET_L1000",
+    "B0_EEG_DG_TASK_ONLY",
+    "B1_EEG_DG_FULL",
+    "C0_SCLDGN_TASK_ONLY",
+    "C1_SCLDGN_FULL"
+  ],
+  "outer_split_field_read": false,
+  "outer_test_used": false,
+  "primary_pairs": {
+    "A_SUBJECT_GRL_EEGNET": [
+      "A0_TASK_ONLY_EEGNET",
+      "A1_SUBJECT_GRL_EEGNET_L0300"
+    ],
+    "B_EEG_DG": [
+      "B0_EEG_DG_TASK_ONLY",
+      "B1_EEG_DG_FULL"
+    ],
+    "C_SCLDGN": [
+      "C0_SCLDGN_TASK_ONLY",
+      "C1_SCLDGN_FULL"
+    ]
+  },
+  "protocol_config": {
+    "bootstrap_draws": 10000,
+    "calibration_session": 2,
+    "calibration_subject_count": 6,
+    "dataset": "OpenBMI_nm000273_MI",
+    "development_folds": [
+      0,
+      1,
+      2
+    ],
+    "eeg_dg_weights": {
+      "conditional_alignment": 0.1,
+      "domain_classification": 0.1,
+      "marginal_mmd": 0.1
+    },
+    "embedding_dim": 64,
+    "fidelity_min_invariant_calibration_BA": 0.55,
+    "fidelity_min_task_only_calibration_BA": 0.6,
+    "grl_lambdas": [
+      0.05,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "model_fit_subject_count": 28,
+    "outcome_role": "existing_validation_subjects",
+    "outcome_session": 2,
+    "outer_split_field_read": false,
+    "outer_test_used": false,
+    "primary_grl_lambda": 0.3,
+    "protocol_version": "INVARIANCE_RESCUE_V1",
+    "rescue": {
+      "random_draws": 20,
+      "residual_scales": [
+        0.25,
+        0.5,
+        1.0
+      ],
+      "ridge_values": [
+        0.001,
+        0.1,
+        1.0
+      ]
+    },
+    "scldgn_filter_bands_hz": [
+      [
+        4,
+        8
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        20,
+        24
+      ],
+      [
+        24,
+        28
+      ],
+      [
+        28,
+        32
+      ],
+      [
+        32,
+        36
+      ],
+      [
+        36,
+        40
+      ]
+    ],
+    "scldgn_weights": {
+      "coral": 1.0,
+      "supervised_contrastive": 0.1
+    },
+    "seeds": [
+      0,
+      1
+    ],
+    "spectrum": {
+      "inner_splits": 5,
+      "max_block_rank": 4,
+      "per_group_cap": 32,
+      "permutation_draws": 200,
+      "random_erasures": 100,
+      "whitening_rank": 20
+    },
+    "subject_probe_eval_session": 2,
+    "subject_probe_train_session": 1,
+    "train_sessions": [
+      1,
+      2
+    ],
+    "training": {
+      "family_hyperparameters": {
+        "A": {
+          "batch_size": 256,
+          "learning_rate": 0.0002,
+          "weight_decay": 0.001
+        },
+        "B": {
+          "batch_size": 192,
+          "full_max_epochs": 30,
+          "full_min_epochs": 10,
+          "full_patience": 7,
+          "learning_rate": 0.0005,
+          "smoke_max_epochs": 12,
+          "smoke_min_epochs": 8,
+          "smoke_patience": 4,
+          "weight_decay": 0.01
+        },
+        "C": {
+          "batch_size": 64,
+          "learning_rate": 0.001,
+          "weight_decay": 0.001
+        }
+      },
+      "full_max_epochs": 20,
+      "full_min_epochs": 6,
+      "full_patience": 5,
+      "gradient_clip": 5.0,
+      "smoke_max_epochs": 8,
+      "smoke_min_epochs": 3,
+      "smoke_patience": 3
+    }
+  },
+  "protocol_config_sha256": "754f959c71da909ca386b42fd5caeb06c6bdeeb58be0c394a871913f9feaaac2",
+  "protocol_markdown_sha256": "602a337e93546e538fe664f0e2c5794c95eaac55a222110a36f231406c1f6dc6",
+  "scientific_gates": {
+    "I1": "mean delta_ID < 0",
+    "I2": "mean delta_PRS < 0 with all six run values finite",
+    "I3": "mean delta_BA_INV < 0",
+    "certified_rescue": "LCB95(PERSIST-invariant)>0 and LCB95(PERSIST-generic)>0",
+    "cross_family": ">=2 certified eligible families and pooled hierarchical LCB95(PERSIST-generic)>0",
+    "eligible": "I1 and I2 and I3"
+  },
+  "status": "FROZEN_BEFORE_FULL_RUN"
+}

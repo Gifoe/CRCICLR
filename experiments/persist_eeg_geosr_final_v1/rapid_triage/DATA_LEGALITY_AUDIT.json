@@ -1,0 +1,23 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "amendment_sha256": "a60ace47470d77b41a9f15da2baf1df556839fe25658fd1f11e3ad8d57fea6dc",
+  "canonical_outcome_labels_read": true,
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "folds": [
+    0
+  ],
+  "lock_sha256": "679d548d356b1f0f2a3ec2c4550242daae43a2c094cfd13b9d4f4e210c6268c2",
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GEOSR"
+  ],
+  "outcome_access_lock_sha256": "c8c7792cc88eb35a1c8cd9a36f129ccba7e0922772b3587183d721f00d2a911a",
+  "outcome_labels_read_after_lock": true,
+  "outcome_labels_read_before_lock": false,
+  "schema": "PERSIST_EEG_GEOSR_RAPID_TRIAGE_LEGALITY_V1",
+  "seed": 0
+}

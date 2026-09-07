@@ -1,0 +1,91 @@
+{
+  "schema": "PERSIST_EEG_SCST_DR_STAGE0_PROTOCOL_V1",
+  "parent_commit": "57d5e4f1ae0a7c80d95ca27983fedad2ec3f690c",
+  "frozen_before_transport_outcome_access": true,
+  "development_settings": [
+    "OPENBMI_MI_EEGNET",
+    "OPENBMI_MI_EEGCONFORMER",
+    "WBCIC_MI_EEGNET",
+    "WBCIC_MI_EEGCONFORMER"
+  ],
+  "folds": [0, 1, 2, 3, 4],
+  "historical_erm_seed": 0,
+  "candidate_layers": ["pre_embedding", "final_embedding"],
+  "layer_preference_if_both_pass": "final_embedding",
+  "layer_selection_future_performance_allowed": false,
+  "source_partition": {
+    "bank_session": "first legal source session",
+    "independent_evaluation_session": "second legal source session",
+    "model_fit_subjects_only_for_transport": true,
+    "independent_class_probe_subjects": "frozen inner-validation subjects",
+    "future_session_rows_loaded": false,
+    "outcome_subject_rows_loaded": false
+  },
+  "transport": {
+    "centroid": "equal-subject empirical class centroid",
+    "residual": "subject_class_centroid_minus_population_class_centroid",
+    "alpha": 1.0,
+    "shrinkage": 0.0,
+    "clipping": null,
+    "metric_scaling": "diagonal standard deviation from model-fit bank-session samples only; floor 1e-6",
+    "application_space": "standardized representation; exactly invertible to the corresponding raw additive delta"
+  },
+  "controls": [
+    "no_transport",
+    "mismatched_subject_same_class",
+    "wrong_class",
+    "subject_permutation",
+    "norm_matched_random",
+    "unconditional_subject_transport",
+    "same_class_mixup_alpha_0.5"
+  ],
+  "class_semantic_metric": {
+    "model": "balanced logistic regression C=1",
+    "train": "inner-validation subjects, bank session",
+    "competence_test": "same inner-validation subjects, independent source session",
+    "transport_test": "model-fit subjects, independent source session",
+    "not_downstream_scst_head": true
+  },
+  "manifold_metric": {
+    "unit": "subject-class centroid",
+    "support": "all real development source-session-2 subject-class centroids available within the fold roles",
+    "distance": "mean 3-nearest-neighbor Euclidean distance in source-only diagonally scaled space",
+    "off_manifold_threshold": "95th percentile real-centroid leave-one-out 3NN distance by class"
+  },
+  "bootstrap": {
+    "unit": "source subject",
+    "resamples": 10000,
+    "confidence": 0.95,
+    "seed_namespace": "SCST_DR_STAGE0_BOOTSTRAP_V1"
+  },
+  "per_setting_layer_gates": {
+    "independent_probe_BA_min": 0.55,
+    "stability_matched_minus_mismatched_mean_min": 0.0,
+    "stability_bootstrap_CI_lower_strictly_positive": true,
+    "subject_fidelity_relative_improvement_mean_min": 0.0,
+    "subject_fidelity_bootstrap_CI_lower_strictly_positive": true,
+    "subject_fidelity_advantage_over_norm_random_CI_lower_strictly_positive": true,
+    "class_accuracy_loss_max": 0.02,
+    "class_true_log_probability_change_min": -0.05,
+    "manifold_knn_ratio_to_clean_max": 1.25,
+    "manifold_off_rate_excess_over_random_max": 0.02
+  },
+  "setting_policy": {
+    "all_four_historically_competent_settings_retained": true,
+    "transport_validity_supported_requires_every_setting_to_have_a_passing_selected_layer": true,
+    "unfavorable_competent_setting_may_be_dropped": false
+  },
+  "repair_policy": {
+    "maximum_principled_repairs_after_v0": 2,
+    "repair_must_be_declared_before_rerun": true,
+    "future_performance_may_not_motivate_repair": true,
+    "complex_learned_transport_network_forbidden": true
+  },
+  "authorized_stage0_terminals": [
+    "TRANSPORT_VALIDITY_SUPPORTED",
+    "TRANSPORT_NOT_CLASS_PRESERVING",
+    "TRANSPORT_NOT_SUBJECT_FAITHFUL",
+    "TRANSPORT_OFF_MANIFOLD",
+    "TRANSPORT_NOT_IDENTIFIABLE"
+  ]
+}

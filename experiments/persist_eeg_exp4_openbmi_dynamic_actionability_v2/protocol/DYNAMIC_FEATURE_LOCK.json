@@ -1,0 +1,48 @@
+{
+  "binary_target": "NegativeTransfer = FutureDeltaBA < 0",
+  "continuous_target": "FutureDeltaBA = BA_Generic_S2 - BA_NoAdapt_S2",
+  "dynamic": [
+    "delta_P",
+    "delta_U",
+    "delta_D",
+    "slope_P",
+    "slope_U",
+    "slope_D",
+    "AUC_P",
+    "AUC_U",
+    "AUC_D",
+    "min_U",
+    "max_drop_U",
+    "max_drop_D",
+    "late_minus_early_U",
+    "late_minus_early_D"
+  ],
+  "gradient": [
+    "cumulative_predicted_utility_damage",
+    "max_predicted_utility_damage",
+    "fraction_steps_predicted_damage",
+    "cumulative_predicted_decision_damage",
+    "max_predicted_decision_damage",
+    "mean_cos_task_G",
+    "mean_actual_utility_delta_small_step",
+    "mean_predicted_utility_delta"
+  ],
+  "predictors": [
+    "M0",
+    "M_static",
+    "M_dynamic",
+    "M_gradient",
+    "M_full"
+  ],
+  "risk": "z(cumulative_predicted_utility_damage)+z(cumulative_predicted_decision_damage)+z(max_drop_U)",
+  "static": [
+    "P_static",
+    "U_static",
+    "D_static",
+    "I_static",
+    "history_BA_t0",
+    "history_loss_t0",
+    "history_margin_t0",
+    "history_gradient_norm_t0"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "OpenBMI_outer_test_opened": false,
+  "PGEG_training_started": false,
+  "WBCIC_outer_10_opened": false,
+  "canonical_outcome_indices_materialized": false,
+  "canonical_outcome_labels_read": false,
+  "datasets": {
+    "OpenBMI": {
+      "development_pool_subjects": 54,
+      "folds": [],
+      "outer_subject_ids_present": false
+    },
+    "WBCIC": {
+      "development_pool_subjects": 41,
+      "folds": [],
+      "outer_subject_ids_present": false
+    },
+    "summary": {
+      "OpenBMI": {
+        "mean_shared_geometry_effect": 0.8928785191603399,
+        "nonempty_protected_folds": 5
+      },
+      "WBCIC": {
+        "mean_shared_geometry_effect": 0.9075426073233871,
+        "nonempty_protected_folds": 5
+      }
+    }
+  },
+  "descriptor_cap": 32,
+  "outcome_data_materialized_before_lock": false,
+  "outcome_evaluated_after_lock": true,
+  "schema": "PERSIST_EEG_TRANSFER_RISK_DATA_LEGALITY_V1",
+  "second_backbone_run": false,
+  "seed": 0,
+  "seed1_run": false,
+  "seed2_run": false
+}

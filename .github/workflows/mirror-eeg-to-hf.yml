@@ -1,0 +1,159 @@
+name: Mirror PERSIST-EEG to Hugging Face
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/mirror-eeg-to-hf.yml"
+      - "scripts/data_mirror/**"
+      - "configs/data_mirror/**"
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: Dataset to mirror
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - openbmi-mi
+          - openbmi-erp
+          - openbmi-ssvep
+          - eegmmidb
+      chunk:
+        description: Optional inclusive subject range (for example 01-09 or 001-020)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: persist-eeg-mirror-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HF_OIDC_RESOURCE: gifoe/persistent
+  HF_XET_HIGH_PERFORMANCE: "1"
+  HF_HOME: /tmp/persist-hf-home
+  HF_XET_CACHE: /tmp/persist-hf-xet
+  HF_REPO_ID: gifoe/persistent
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      strict: ${{ steps.plan.outputs.strict }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: plan
+        env:
+          REQUESTED_DATASET: ${{ github.event.inputs.dataset || 'all' }}
+          REQUESTED_CHUNK: ${{ github.event.inputs.chunk || '' }}
+        run: python scripts/data_mirror/plan.py >> "$GITHUB_OUTPUT"
+
+  bootstrap:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - id: bootstrap_exec
+        name: License gate and source manifests
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py bootstrap
+          } 2>&1 | tee /tmp/bootstrap.log
+      - name: Enforce bootstrap result
+        if: ${{ steps.bootstrap_exec.outcome != 'success' }}
+        run: exit 1
+
+  probe:
+    needs: bootstrap
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - id: probe_exec
+        name: OpenBMI end-to-end transfer gate
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py probe
+          } 2>&1 | tee /tmp/probe.log
+      - name: Enforce probe result
+        if: ${{ steps.probe_exec.outcome != 'success' }}
+        run: exit 1
+
+  transfer:
+    needs: [plan, bootstrap, probe]
+    if: ${{ needs.plan.outputs.matrix != '{"include":[]}' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - id: transfer_exec
+        name: Mirror resumable chunk
+        continue-on-error: true
+        env:
+          MIRROR_DATASET: ${{ matrix.dataset }}
+          MIRROR_CHUNK: ${{ matrix.chunk }}
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py transfer
+          } 2>&1 | tee /tmp/transfer.log
+      - name: Enforce chunk result
+        if: ${{ steps.transfer_exec.outcome != 'success' }}
+        run: exit 1
+
+  finalize:
+    needs: [plan, bootstrap, probe, transfer]
+    if: ${{ always() && needs.bootstrap.result == 'success' && needs.probe.result == 'success' && (needs.transfer.result == 'success' || needs.plan.outputs.matrix == '{"include":[]}') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - id: finalize_exec
+        name: Aggregate progress and verify completeness
+        continue-on-error: true
+        env:
+          STRICT_COMPLETE: ${{ needs.plan.outputs.strict }}
+        run: |
+          set -o pipefail
+          {
+          python -m pip install --upgrade "huggingface_hub>=1.19.0,<2" hf_xet requests httpx
+          python scripts/data_mirror/mirror.py finalize
+          } 2>&1 | tee /tmp/finalize.log
+      - name: Enforce finalization result
+        if: ${{ steps.finalize_exec.outcome != 'success' }}
+        run: exit 1

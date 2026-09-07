@@ -1,0 +1,1869 @@
+{
+  "datasets": {
+    "OpenBMI": {
+      "BBR_to_H_BER_epoch": {
+        "auroc": 0.4828301691046789,
+        "auroc_CI95": [
+          0.3919763180350918,
+          0.5740496664513801
+        ],
+        "event_count": 63,
+        "kendall": 0.057584325728523775,
+        "kendall_CI95": [
+          -0.043650323738867236,
+          0.15100212984120512
+        ],
+        "n_observations": 216,
+        "n_subjects": 54,
+        "pearson": 0.11835533535020734,
+        "sign_accuracy": 0.3101851851851852,
+        "spearman": 0.07452515231137395,
+        "spearman_CI95": [
+          -0.064243854602788,
+          0.2024072433935299
+        ],
+        "top_minus_bottom": 0.00549095607235142,
+        "top_minus_bottom_CI95": [
+          -0.002583979328165363,
+          0.013565891472868241
+        ]
+      },
+      "CE_Q5_minus_Q1_decision_harm": 0.09936575052854124,
+      "CE_Q5_minus_Q1_decision_harm_CI95": [
+        -0.1162790697674419,
+        0.3023255813953489
+      ],
+      "CE_different_subject_AUROC": 0.575785869903517,
+      "CE_different_subject_Spearman": 0.09657250780491751,
+      "CE_same_minus_different_AUROC": -0.02334267040149407,
+      "CE_same_minus_different_AUROC_CI95": [
+        -0.1476781750258571,
+        0.10395674196129785
+      ],
+      "CE_same_minus_different_Spearman": 0.08776724775023222,
+      "CE_same_minus_different_Spearman_CI95": [
+        -0.11995948564967475,
+        0.2873347437964419
+      ],
+      "CE_same_subject_AUROC": 0.5524431995020229,
+      "CE_same_subject_Spearman": 0.18433975555514973,
+      "CE_to_H_BER_epoch": {
+        "auroc": 0.5524431995020229,
+        "auroc_CI95": [
+          0.45377966435841194,
+          0.6497848765903633
+        ],
+        "event_count": 63,
+        "kendall": 0.13769329596637003,
+        "kendall_CI95": [
+          0.03241588811897962,
+          0.24182783212917755
+        ],
+        "n_observations": 216,
+        "n_subjects": 54,
+        "pearson": 0.2538558663966104,
+        "sign_accuracy": 0.35185185185185186,
+        "spearman": 0.18433975555514973,
+        "spearman_CI95": [
+          0.04258429476440014,
+          0.3234476084654919
+        ],
+        "top_minus_bottom": 0.009366925064599496,
+        "top_minus_bottom_CI95": [
+          0.0022609819121447053,
+          0.01937984496124034
+        ]
+      },
+      "Q5_minus_Q1_decision_harm": 0.031183932346723064,
+      "Q5_minus_Q1_decision_harm_CI95": [
+        -0.186046511627907,
+        0.23255813953488375
+      ],
+      "dataset": "OpenBMI",
+      "different_subject_BBR_AUROC": 0.5878203133105093,
+      "different_subject_BBR_Spearman": 0.1149361620772912,
+      "power": {
+        "CUMULATIVE_DECISION_ENDPOINT_UNDERPOWERED": false,
+        "H_BER_negative_count": 67,
+        "H_BER_positive_count": 63,
+        "H_BER_zero_count": 86,
+        "biological_subjects_with_harmful_event": 41,
+        "dataset": "OpenBMI",
+        "total_correct_to_wrong_flips": 178,
+        "total_subject_window_observations": 216,
+        "total_wrong_to_correct_flips": 194
+      },
+      "random_BBR_AUROC": 0.5254694470380745,
+      "random_BBR_Spearman": 0.04674115787410459,
+      "random_CE_AUROC": 0.4766054569976138,
+      "random_CE_Spearman": -0.09709637363024701,
+      "same_minus_different_AUROC": -0.10499014420583042,
+      "same_minus_different_AUROC_CI95": [
+        -0.22637008101851835,
+        0.017241872033804798
+      ],
+      "same_minus_different_Spearman": -0.040411009765917244,
+      "same_minus_different_Spearman_CI95": [
+        -0.24621082715880505,
+        0.16734653432287305
+      ],
+      "same_subject_BBR_AUROC": 0.4828301691046789,
+      "same_subject_BBR_Spearman": 0.07452515231137395
+    },
+    "WBCIC": {
+      "BBR_to_H_BER_epoch": {
+        "auroc": 0.44079375406636306,
+        "auroc_CI95": [
+          0.3496629452418926,
+          0.5321571373114462
+        ],
+        "event_count": 58,
+        "kendall": 0.010944965967294436,
+        "kendall_CI95": [
+          -0.0913605084750764,
+          0.11488789623498163
+        ],
+        "n_observations": 164,
+        "n_subjects": 41,
+        "pearson": 0.05584376225172466,
+        "sign_accuracy": 0.4329268292682927,
+        "spearman": 0.01162932137945487,
+        "spearman_CI95": [
+          -0.13629058738190022,
+          0.161954637331182
+        ],
+        "top_minus_bottom": 0.00046211192810458046,
+        "top_minus_bottom_CI95": [
+          -0.00333352481617647,
+          0.004131795513344221
+        ]
+      },
+      "CE_Q5_minus_Q1_decision_harm": -0.08143939393939392,
+      "CE_Q5_minus_Q1_decision_harm_CI95": [
+        -0.3125,
+        0.1875
+      ],
+      "CE_different_subject_AUROC": 0.5013012361743656,
+      "CE_different_subject_Spearman": -0.012427559973963982,
+      "CE_same_minus_different_AUROC": -0.03708523096942096,
+      "CE_same_minus_different_AUROC_CI95": [
+        -0.15359113148114684,
+        0.07764428935415968
+      ],
+      "CE_same_minus_different_Spearman": 0.01652847646465511,
+      "CE_same_minus_different_Spearman_CI95": [
+        -0.1988756783842716,
+        0.2302724381789319
+      ],
+      "CE_same_subject_AUROC": 0.46421600520494466,
+      "CE_same_subject_Spearman": 0.004100916490691128,
+      "CE_to_H_BER_epoch": {
+        "auroc": 0.46421600520494466,
+        "auroc_CI95": [
+          0.37760840847900673,
+          0.5551956922858562
+        ],
+        "event_count": 58,
+        "kendall": 0.0055905941271791725,
+        "kendall_CI95": [
+          -0.10277071013049854,
+          0.120001220852677
+        ],
+        "n_observations": 164,
+        "n_subjects": 41,
+        "pearson": 0.08306381123425553,
+        "sign_accuracy": 0.4146341463414634,
+        "spearman": 0.004100916490691128,
+        "spearman_CI95": [
+          -0.1440997988803011,
+          0.15933473492657108
+        ],
+        "top_minus_bottom": -0.000569342320261422,
+        "top_minus_bottom_CI95": [
+          -0.005055168334694965,
+          0.004018607877178656
+        ]
+      },
+      "Q5_minus_Q1_decision_harm": -0.14393939393939392,
+      "Q5_minus_Q1_decision_harm_CI95": [
+        -0.375,
+        0.09375
+      ],
+      "dataset": "WBCIC",
+      "different_subject_BBR_AUROC": 0.4808067664281067,
+      "different_subject_BBR_Spearman": 0.040913156828533886,
+      "power": {
+        "CUMULATIVE_DECISION_ENDPOINT_UNDERPOWERED": false,
+        "H_BER_negative_count": 73,
+        "H_BER_positive_count": 58,
+        "H_BER_zero_count": 33,
+        "biological_subjects_with_harmful_event": 32,
+        "dataset": "WBCIC",
+        "total_correct_to_wrong_flips": 461,
+        "total_subject_window_observations": 164,
+        "total_wrong_to_correct_flips": 515
+      },
+      "random_BBR_AUROC": 0.5305790500975927,
+      "random_BBR_Spearman": 0.030499023412541335,
+      "random_CE_AUROC": 0.47511385816525703,
+      "random_CE_Spearman": -0.13518486053126433,
+      "same_minus_different_AUROC": -0.04001301236174365,
+      "same_minus_different_AUROC_CI95": [
+        -0.10616166415061871,
+        0.026599852693602655
+      ],
+      "same_minus_different_Spearman": -0.029283835449079018,
+      "same_minus_different_Spearman_CI95": [
+        -0.14988975039397714,
+        0.09206149104109258
+      ],
+      "same_subject_BBR_AUROC": 0.44079375406636306,
+      "same_subject_BBR_Spearman": 0.01162932137945487
+    }
+  },
+  "decision": {
+    "AUTO_START_FINAL_MODEL": false,
+    "BBR_CE_paired_selection": {
+      "BBR_significantly_better": false,
+      "CE_significantly_better": false,
+      "rule": "if both pass, require paired subject-bootstrap AUROC and H_BER Spearman CIs to be strictly one-sided; otherwise select CE"
+    },
+    "CLOSE_PROSPECTIVE_GRADIENT_CONSTRUCTIVE_FAMILY": true,
+    "FINAL_MODEL_DEVELOPMENT_SCIENTIFICALLY_JUSTIFIED": false,
+    "certificate_gate_details": {
+      "BBR": {
+        "OpenBMI": false,
+        "WBCIC": false
+      },
+      "CE": {
+        "OpenBMI": false,
+        "WBCIC": false
+      }
+    },
+    "gate_A_power": {
+      "OpenBMI": true,
+      "WBCIC": true
+    },
+    "gate_B_cumulative_decision_prediction": {
+      "BBR": false,
+      "CE": false
+    },
+    "gate_C_subject_specificity": {
+      "BBR": false,
+      "CE": false
+    },
+    "gate_D_calibration": {
+      "BBR": false,
+      "CE": false
+    },
+    "gate_E_fold_robustness": {
+      "BBR": false,
+      "CE": true
+    },
+    "gate_F_random_control": {
+      "BBR": false,
+      "CE": false
+    },
+    "selected_certificate": "NONE",
+    "terminal": "CUMULATIVE_SMOOTH_HARM_SUPPORTED_DECISION_NOT_SUPPORTED"
+  },
+  "fold_metrics": [
+    {
+      "BBR_H_BBR_AUROC": 0.5692307692307692,
+      "BBR_H_BBR_Spearman": 0.18514044095439447,
+      "BBR_H_BER_AUROC": 0.4220430107526882,
+      "BBR_H_BER_Spearman": -0.011441363617181214,
+      "CE_H_BER_AUROC": 0.47311827956989244,
+      "CE_H_BER_Spearman": 0.08931891197146134,
+      "dataset": "OpenBMI",
+      "different_subject_AUROC": 0.5698924731182795,
+      "different_subject_CE_AUROC": 0.5403225806451613,
+      "different_subject_CE_Spearman": -0.07757244532448862,
+      "different_subject_Spearman": -0.026772790864204032,
+      "fold": 0,
+      "harmful_event_count": 12,
+      "harmful_flip_count": 50,
+      "n_observations": 43,
+      "n_subjects": 43,
+      "same_minus_different_AUROC": -0.14784946236559132,
+      "same_minus_different_CE_AUROC": -0.06720430107526881,
+      "same_subject_AUROC": 0.4220430107526882,
+      "same_subject_CE_AUROC": 0.47311827956989244,
+      "same_subject_CE_Spearman": 0.08931891197146134,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": -0.011441363617181214,
+      "same_subject_spearman_positive": false
+    },
+    {
+      "BBR_H_BBR_AUROC": 0.746031746031746,
+      "BBR_H_BBR_Spearman": 0.5780730897009967,
+      "BBR_H_BER_AUROC": 0.4458128078817734,
+      "BBR_H_BER_Spearman": -0.029579944806689,
+      "CE_H_BER_AUROC": 0.4088669950738916,
+      "CE_H_BER_Spearman": -0.04279823076935112,
+      "dataset": "OpenBMI",
+      "different_subject_AUROC": 0.6527093596059114,
+      "different_subject_CE_AUROC": 0.6083743842364532,
+      "different_subject_CE_Spearman": 0.11703019035234993,
+      "different_subject_Spearman": 0.18973076314699155,
+      "fold": 1,
+      "harmful_event_count": 14,
+      "harmful_flip_count": 30,
+      "n_observations": 43,
+      "n_subjects": 43,
+      "same_minus_different_AUROC": -0.20689655172413796,
+      "same_minus_different_CE_AUROC": -0.19950738916256155,
+      "same_subject_AUROC": 0.4458128078817734,
+      "same_subject_CE_AUROC": 0.4088669950738916,
+      "same_subject_CE_Spearman": -0.04279823076935112,
+      "same_subject_CE_spearman_positive": false,
+      "same_subject_Spearman": -0.029579944806689,
+      "same_subject_spearman_positive": false
+    },
+    {
+      "BBR_H_BBR_AUROC": 0.8678571428571429,
+      "BBR_H_BBR_Spearman": 0.6049531863485352,
+      "BBR_H_BER_AUROC": 0.43842364532019706,
+      "BBR_H_BER_Spearman": -0.0010186715561640227,
+      "CE_H_BER_AUROC": 0.5591133004926109,
+      "CE_H_BER_Spearman": 0.15483807653693143,
+      "dataset": "OpenBMI",
+      "different_subject_AUROC": 0.5640394088669951,
+      "different_subject_CE_AUROC": 0.5665024630541872,
+      "different_subject_CE_Spearman": 0.08353106760544986,
+      "different_subject_Spearman": 0.11487480779511208,
+      "fold": 2,
+      "harmful_event_count": 14,
+      "harmful_flip_count": 38,
+      "n_observations": 43,
+      "n_subjects": 43,
+      "same_minus_different_AUROC": -0.12561576354679804,
+      "same_minus_different_CE_AUROC": -0.00738916256157629,
+      "same_subject_AUROC": 0.43842364532019706,
+      "same_subject_CE_AUROC": 0.5591133004926109,
+      "same_subject_CE_Spearman": 0.15483807653693143,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": -0.0010186715561640227,
+      "same_subject_spearman_positive": false
+    },
+    {
+      "BBR_H_BBR_AUROC": 0.7051282051282051,
+      "BBR_H_BBR_Spearman": 0.5634249471458774,
+      "BBR_H_BER_AUROC": 0.4327956989247312,
+      "BBR_H_BER_Spearman": 0.060493656201089596,
+      "CE_H_BER_AUROC": 0.5618279569892473,
+      "CE_H_BER_Spearman": 0.15514085465152935,
+      "dataset": "OpenBMI",
+      "different_subject_AUROC": 0.5376344086021505,
+      "different_subject_CE_AUROC": 0.6424731182795699,
+      "different_subject_CE_Spearman": 0.11003240262408576,
+      "different_subject_Spearman": 0.003544235516442,
+      "fold": 3,
+      "harmful_event_count": 12,
+      "harmful_flip_count": 31,
+      "n_observations": 43,
+      "n_subjects": 43,
+      "same_minus_different_AUROC": -0.10483870967741932,
+      "same_minus_different_CE_AUROC": -0.08064516129032262,
+      "same_subject_AUROC": 0.4327956989247312,
+      "same_subject_CE_AUROC": 0.5618279569892473,
+      "same_subject_CE_Spearman": 0.15514085465152935,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": 0.060493656201089596,
+      "same_subject_spearman_positive": true
+    },
+    {
+      "BBR_H_BBR_AUROC": 0.86875,
+      "BBR_H_BBR_Spearman": 0.5574348132487668,
+      "BBR_H_BER_AUROC": 0.6694214876033059,
+      "BBR_H_BER_Spearman": 0.20549696060621309,
+      "CE_H_BER_AUROC": 0.7300275482093663,
+      "CE_H_BER_Spearman": 0.3882574710255512,
+      "dataset": "OpenBMI",
+      "different_subject_AUROC": 0.5619834710743801,
+      "different_subject_CE_AUROC": 0.5096418732782368,
+      "different_subject_CE_Spearman": 0.019912496182772584,
+      "different_subject_Spearman": 0.007530544010939449,
+      "fold": 4,
+      "harmful_event_count": 11,
+      "harmful_flip_count": 29,
+      "n_observations": 44,
+      "n_subjects": 44,
+      "same_minus_different_AUROC": 0.10743801652892582,
+      "same_minus_different_CE_AUROC": 0.22038567493112948,
+      "same_subject_AUROC": 0.6694214876033059,
+      "same_subject_CE_AUROC": 0.7300275482093663,
+      "same_subject_CE_Spearman": 0.3882574710255512,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": 0.20549696060621309,
+      "same_subject_spearman_positive": true
+    },
+    {
+      "BBR_H_BBR_AUROC": null,
+      "BBR_H_BBR_Spearman": 0.9736070381231671,
+      "BBR_H_BER_AUROC": 0.61328125,
+      "BBR_H_BER_Spearman": 0.20708478566865385,
+      "CE_H_BER_AUROC": 0.578125,
+      "CE_H_BER_Spearman": 0.17794908118455116,
+      "dataset": "WBCIC",
+      "different_subject_AUROC": 0.68359375,
+      "different_subject_CE_AUROC": 0.62109375,
+      "different_subject_CE_Spearman": -0.029135704484102676,
+      "different_subject_Spearman": 0.08205942085712463,
+      "fold": 0,
+      "harmful_event_count": 16,
+      "harmful_flip_count": 105,
+      "n_observations": 32,
+      "n_subjects": 32,
+      "same_minus_different_AUROC": -0.0703125,
+      "same_minus_different_CE_AUROC": -0.04296875,
+      "same_subject_AUROC": 0.61328125,
+      "same_subject_CE_AUROC": 0.578125,
+      "same_subject_CE_Spearman": 0.17794908118455116,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": 0.20708478566865385,
+      "same_subject_spearman_positive": true
+    },
+    {
+      "BBR_H_BBR_AUROC": null,
+      "BBR_H_BBR_Spearman": 0.9060828877005348,
+      "BBR_H_BER_AUROC": 0.4841269841269842,
+      "BBR_H_BER_Spearman": 0.11329831318256905,
+      "CE_H_BER_AUROC": 0.507936507936508,
+      "CE_H_BER_Spearman": 0.19617081822560548,
+      "dataset": "WBCIC",
+      "different_subject_AUROC": 0.42063492063492064,
+      "different_subject_CE_AUROC": 0.4642857142857143,
+      "different_subject_CE_Spearman": 0.013784067775920865,
+      "different_subject_Spearman": -0.08253630826801395,
+      "fold": 1,
+      "harmful_event_count": 12,
+      "harmful_flip_count": 173,
+      "n_observations": 33,
+      "n_subjects": 33,
+      "same_minus_different_AUROC": 0.06349206349206354,
+      "same_minus_different_CE_AUROC": 0.04365079365079372,
+      "same_subject_AUROC": 0.4841269841269842,
+      "same_subject_CE_AUROC": 0.507936507936508,
+      "same_subject_CE_Spearman": 0.19617081822560548,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": 0.11329831318256905,
+      "same_subject_spearman_positive": true
+    },
+    {
+      "BBR_H_BBR_AUROC": null,
+      "BBR_H_BBR_Spearman": 0.8903743315508021,
+      "BBR_H_BER_AUROC": 0.40277777777777773,
+      "BBR_H_BER_Spearman": -0.10900237666727317,
+      "CE_H_BER_AUROC": 0.4537037037037037,
+      "CE_H_BER_Spearman": 0.10566736031191379,
+      "dataset": "WBCIC",
+      "different_subject_AUROC": 0.5231481481481481,
+      "different_subject_CE_AUROC": 0.5046296296296297,
+      "different_subject_CE_Spearman": -0.005441342474533766,
+      "different_subject_Spearman": -0.04159994085369363,
+      "fold": 2,
+      "harmful_event_count": 9,
+      "harmful_flip_count": 41,
+      "n_observations": 33,
+      "n_subjects": 33,
+      "same_minus_different_AUROC": -0.1203703703703704,
+      "same_minus_different_CE_AUROC": -0.05092592592592593,
+      "same_subject_AUROC": 0.40277777777777773,
+      "same_subject_CE_AUROC": 0.4537037037037037,
+      "same_subject_CE_Spearman": 0.10566736031191379,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": -0.10900237666727317,
+      "same_subject_spearman_positive": false
+    },
+    {
+      "BBR_H_BBR_AUROC": 1.0,
+      "BBR_H_BBR_Spearman": 0.9154411764705882,
+      "BBR_H_BER_AUROC": 0.6071428571428572,
+      "BBR_H_BER_Spearman": 0.1719631683802754,
+      "CE_H_BER_AUROC": 0.5634920634920635,
+      "CE_H_BER_Spearman": 0.07343383096356519,
+      "dataset": "WBCIC",
+      "different_subject_AUROC": 0.6666666666666667,
+      "different_subject_CE_AUROC": 0.48809523809523814,
+      "different_subject_CE_Spearman": 0.03149570272978599,
+      "different_subject_Spearman": 0.20379572354567405,
+      "fold": 3,
+      "harmful_event_count": 12,
+      "harmful_flip_count": 80,
+      "n_observations": 33,
+      "n_subjects": 33,
+      "same_minus_different_AUROC": -0.059523809523809534,
+      "same_minus_different_CE_AUROC": 0.07539682539682535,
+      "same_subject_AUROC": 0.6071428571428572,
+      "same_subject_CE_AUROC": 0.5634920634920635,
+      "same_subject_CE_Spearman": 0.07343383096356519,
+      "same_subject_CE_spearman_positive": true,
+      "same_subject_Spearman": 0.1719631683802754,
+      "same_subject_spearman_positive": true
+    },
+    {
+      "BBR_H_BBR_AUROC": 0.8709677419354839,
+      "BBR_H_BBR_Spearman": 0.8980614973262033,
+      "BBR_H_BER_AUROC": 0.45833333333333326,
+      "BBR_H_BER_Spearman": -0.05638451076606923,
+      "CE_H_BER_AUROC": 0.3101851851851852,
+      "CE_H_BER_Spearman": -0.37062296330413264,
+      "dataset": "WBCIC",
+      "different_subject_AUROC": 0.6481481481481481,
+      "different_subject_CE_AUROC": 0.7361111111111112,
+      "different_subject_CE_Spearman": 0.14390673643280355,
+      "different_subject_Spearman": 0.17689588303026496,
+      "fold": 4,
+      "harmful_event_count": 9,
+      "harmful_flip_count": 62,
+      "n_observations": 33,
+      "n_subjects": 33,
+      "same_minus_different_AUROC": -0.18981481481481488,
+      "same_minus_different_CE_AUROC": -0.425925925925926,
+      "same_subject_AUROC": 0.45833333333333326,
+      "same_subject_CE_AUROC": 0.3101851851851852,
+      "same_subject_CE_Spearman": -0.37062296330413264,
+      "same_subject_CE_spearman_positive": false,
+      "same_subject_Spearman": -0.05638451076606923,
+      "same_subject_spearman_positive": false
+    }
+  ],
+  "lock": {
+    "B_out": "all remaining legal source/refit trials",
+    "B_out_min_class_support": 16,
+    "K": 4,
+    "OpenBMI_sealed_opened": false,
+    "WBCIC_outer_opened": false,
+    "bootstrap": {
+      "draws": 10000,
+      "unit": "biological_subject_cluster"
+    },
+    "branch_at_code_freeze": "codex/persist-eeg-cumulative-subject-decision-drift-audit-v1",
+    "certificate_blocks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "checkpoint_hashes": [
+      {
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-0\\seed-0.pt",
+        "sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa"
+      },
+      {
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-1\\seed-0.pt",
+        "sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87"
+      },
+      {
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-2\\seed-0.pt",
+        "sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f"
+      },
+      {
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-3\\seed-0.pt",
+        "sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739"
+      },
+      {
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\OpenBMI\\fold-4\\seed-0.pt",
+        "sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d"
+      },
+      {
+        "dataset": "WBCIC",
+        "fold": 0,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-0\\seed-0.pt",
+        "sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3"
+      },
+      {
+        "dataset": "WBCIC",
+        "fold": 1,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-1\\seed-0.pt",
+        "sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543"
+      },
+      {
+        "dataset": "WBCIC",
+        "fold": 2,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-2\\seed-0.pt",
+        "sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08"
+      },
+      {
+        "dataset": "WBCIC",
+        "fold": 3,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-3\\seed-0.pt",
+        "sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253"
+      },
+      {
+        "dataset": "WBCIC",
+        "fold": 4,
+        "path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\runtime\\checkpoints\\WBCIC\\fold-4\\seed-0.pt",
+        "sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533"
+      }
+    ],
+    "code_commit": "c41915c2e279dd196d423c85770b94d64f7d0799",
+    "code_hashes": {
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CANONICAL_EEGNET\\experiments\\persist_eeg_canonical_eegnet_baseline\\code\\canonical_eegnet_runner.py": "3094d2d5ad9f9522d2383ba67744ded50f080ea5235c3be2d4c1fc7cff5af092",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CUMULATIVE_SUBJECT_DECISION_DRIFT_AUDIT_V1\\experiments\\persist_eeg_cumulative_subject_decision_drift_audit_v1\\code\\cumulative_decision_drift_audit.py": "56e83a0160165a714092c6652bf4389d8c98054c7d516bb96df23476e9cc4727",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CUMULATIVE_SUBJECT_DECISION_DRIFT_AUDIT_V1\\experiments\\persist_eeg_stable_subject_prospective_guard_seed0_v1\\code\\run_sspg_seed0.py": "17bad24860eefe1d63802fc53ab0b64c90c9884071e8e7af0ff87f1c2a86757c"
+    },
+    "controls": [
+      "deterministic_different_subject",
+      "norm_matched_random_BBR",
+      "norm_matched_random_CE"
+    ],
+    "datasets": [
+      "OpenBMI",
+      "WBCIC"
+    ],
+    "experiment": "persist_eeg_cumulative_subject_decision_drift_audit_v1",
+    "fixed_sentinel_meta_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "horizon": {
+      "batch_size": 64,
+      "definition": "one deterministic A-only natural epoch with fixed sentinel group excluded",
+      "epochs": 1,
+      "schedule_batch_reference": 128,
+      "steps_rule": "ceil(A legal trial count / SCHEDULE_BATCH_REFERENCE)"
+    },
+    "legality": {
+      "K": 4,
+      "OpenBMI_sealed_opened": false,
+      "WBCIC_outer_opened": false,
+      "datasets": {
+        "OpenBMI": {
+          "fold_roles": [
+            {
+              "discovery_subjects": 9,
+              "fold": 0,
+              "model_fit_subjects": 34,
+              "outcome_role_subjects_not_materialized": 11,
+              "refit_rows": 8600,
+              "source_subjects": 43
+            },
+            {
+              "discovery_subjects": 9,
+              "fold": 1,
+              "model_fit_subjects": 34,
+              "outcome_role_subjects_not_materialized": 11,
+              "refit_rows": 8600,
+              "source_subjects": 43
+            },
+            {
+              "discovery_subjects": 9,
+              "fold": 2,
+              "model_fit_subjects": 34,
+              "outcome_role_subjects_not_materialized": 11,
+              "refit_rows": 8600,
+              "source_subjects": 43
+            },
+            {
+              "discovery_subjects": 9,
+              "fold": 3,
+              "model_fit_subjects": 34,
+              "outcome_role_subjects_not_materialized": 11,
+              "refit_rows": 8600,
+              "source_subjects": 43
+            },
+            {
+              "discovery_subjects": 9,
+              "fold": 4,
+              "model_fit_subjects": 35,
+              "outcome_role_subjects_not_materialized": 10,
+              "refit_rows": 8800,
+              "source_subjects": 44
+            }
+          ],
+          "observed_subjects": 54,
+          "outer_subject_ids_present": false,
+          "rows": 10800,
+          "sessions": [
+            1,
+            2
+          ],
+          "subjects_in_frozen_development_pool": 54
+        },
+        "WBCIC": {
+          "fold_roles": [
+            {
+              "discovery_subjects": 8,
+              "fold": 0,
+              "model_fit_subjects": 24,
+              "outcome_role_subjects_not_materialized": 9,
+              "refit_rows": 12796,
+              "source_subjects": 32
+            },
+            {
+              "discovery_subjects": 8,
+              "fold": 1,
+              "model_fit_subjects": 25,
+              "outcome_role_subjects_not_materialized": 8,
+              "refit_rows": 13196,
+              "source_subjects": 33
+            },
+            {
+              "discovery_subjects": 8,
+              "fold": 2,
+              "model_fit_subjects": 25,
+              "outcome_role_subjects_not_materialized": 8,
+              "refit_rows": 13197,
+              "source_subjects": 33
+            },
+            {
+              "discovery_subjects": 8,
+              "fold": 3,
+              "model_fit_subjects": 25,
+              "outcome_role_subjects_not_materialized": 8,
+              "refit_rows": 13198,
+              "source_subjects": 33
+            },
+            {
+              "discovery_subjects": 9,
+              "fold": 4,
+              "model_fit_subjects": 24,
+              "outcome_role_subjects_not_materialized": 8,
+              "refit_rows": 13197,
+              "source_subjects": 33
+            }
+          ],
+          "observed_subjects": 41,
+          "outer_subject_ids_present": false,
+          "rows": 24591,
+          "sessions": [
+            0,
+            1,
+            2
+          ],
+          "subjects_in_frozen_development_pool": 41
+        }
+      },
+      "fit_sessions": {
+        "OpenBMI": [
+          1,
+          2
+        ],
+        "WBCIC": [
+          0,
+          1
+        ]
+      },
+      "m_per_class": 16,
+      "outcome_data_materialized_before_lock": false,
+      "outcome_index_created_before_lock": false,
+      "outcome_labels_read_before_lock": false,
+      "schema": "PERSIST_SSPG_DATA_LEGALITY_V1",
+      "seed": 0,
+      "seed1_run": false,
+      "seed2_run": false,
+      "source_only_training_subjects": true
+    },
+    "lock_status": "PRE_OUTCOME_LOCKED",
+    "m_per_class": 16,
+    "mandatory_tests_pass": true,
+    "mandatory_tests_sha256": "f0056ded497b358b46faa85780cecede5c0730e9d47f1b1c2a1880ab81461270",
+    "optimizer": {
+      "BN_running_statistics": "frozen",
+      "dropout": "canonical TaskOnly keyed A RNG",
+      "gradient_clip": 5.0,
+      "learning_rate": 3e-05,
+      "name": "AdamW",
+      "parameter_scope": "FULL_TRAINABLE_PARAMETER_SPACE",
+      "weight_decay": 0.0005
+    },
+    "outcome_used": false,
+    "schema": "PERSIST_EEG_CUMULATIVE_SUBJECT_DECISION_DRIFT_PRE_OUTCOME_LOCK_V1",
+    "second_backbone_run": false,
+    "seed": 0,
+    "seed1_run": false,
+    "seed2_run": false,
+    "selection_rule": {
+      "BBR": "select if BBR satisfies all cumulative decision gates and CE does not",
+      "CE": "select if CE satisfies all cumulative decision gates and BBR does not",
+      "both": "compare paired biological-subject cluster-bootstrap AUROC and H_BER Spearman; choose a certificate only if both metrics are strictly one-sided, otherwise choose CE",
+      "none": "no certificate and no final model"
+    },
+    "tau": {
+      "definition": "previous decision-audit max(median(abs(anchor signed margin)),1e-3)",
+      "frozen_before_outcome": true,
+      "rows": [
+        {
+          "current_anchor_raw_check": 2.061469078063965,
+          "dataset": "OpenBMI",
+          "fold": 0,
+          "frozen_before_outcome": true,
+          "tau": 2.061469078063965,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.061469078063965,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 2.324856758117676,
+          "dataset": "OpenBMI",
+          "fold": 1,
+          "frozen_before_outcome": true,
+          "tau": 2.3248565196990967,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.3248565196990967,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 2.4413065910339355,
+          "dataset": "OpenBMI",
+          "fold": 2,
+          "frozen_before_outcome": true,
+          "tau": 2.4413065910339355,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.4413065910339355,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 2.6375303268432617,
+          "dataset": "OpenBMI",
+          "fold": 3,
+          "frozen_before_outcome": true,
+          "tau": 2.6375298500061035,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.6375298500061035,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 2.343687057495117,
+          "dataset": "OpenBMI",
+          "fold": 4,
+          "frozen_before_outcome": true,
+          "tau": 2.343686819076538,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.343686819076538,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 1.2805278301239014,
+          "dataset": "WBCIC",
+          "fold": 0,
+          "frozen_before_outcome": true,
+          "tau": 1.2805280685424805,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 1.2805280685424805,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 1.120287299156189,
+          "dataset": "WBCIC",
+          "fold": 1,
+          "frozen_before_outcome": true,
+          "tau": 1.120287299156189,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 1.120287299156189,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 2.680940628051758,
+          "dataset": "WBCIC",
+          "fold": 2,
+          "frozen_before_outcome": true,
+          "tau": 2.680941343307495,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.680941343307495,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 1.9502854347229004,
+          "dataset": "WBCIC",
+          "fold": 3,
+          "frozen_before_outcome": true,
+          "tau": 1.9502851963043213,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 1.9502851963043213,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        },
+        {
+          "current_anchor_raw_check": 2.31180477142334,
+          "dataset": "WBCIC",
+          "fold": 4,
+          "frozen_before_outcome": true,
+          "tau": 2.3118042945861816,
+          "tau_floor": 0.001,
+          "tau_raw_median_abs_anchor_margin": 2.3118042945861816,
+          "tau_source": "previous_decision_audit_legal_source_refit_anchor"
+        }
+      ],
+      "source": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_CUMULATIVE_SUBJECT_DECISION_DRIFT_AUDIT_V1\\experiments\\persist_eeg_decision_relevant_prospective_harm_audit_v1\\results\\MARGIN_SCALE.csv",
+      "source_sha256": "94fd34d0753e9da1db77fd0eef37bc66962df50c4e0f5bfde5a65b7f32dbee47"
+    },
+    "window_schedule": [
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "31863972336ad635a427320ba17954637cf4c43ca7cdb288472b249f221f1cd3",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa",
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "50c1e4edc5a6206655a2830c81421af78a3fe019f79560b5fd25c55581780028",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "0bbf50e7b1171f73d6326a9689986931097aeadeba60ee80d288984e5766baf6",
+        "steps": 54,
+        "tau": 2.061469078063965
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "b76449ee51f452178699f03f5e39441f4da529a2873a2e4e488664167d9d095d",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa",
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "406dd82df724d35bd699de58f5209a442cef3e36bd51a967381f09255a84d581",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "1e0cb98a3ad60bd000fc8d37f3c405c54ea3d56f453508f633c99d6b7a4bef62",
+        "steps": 54,
+        "tau": 2.061469078063965
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "39757837af05f087a66fb0071526356dcb91d3dda2698f2cb1d9f7139485db86",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa",
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "e7320903e5c9f3fc967a2be2a7b86903e5882e7c0953c829494e7fee9bd491d6",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "5860139f4e48763c4321c28036f77ed20cb9196641a49e05345f4cc6c773e81e",
+        "steps": 54,
+        "tau": 2.061469078063965
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "9bbc21c637c6d45604e4aa60ab120754e734d823053f0551af94a93c127859ed",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa",
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "9c767f0782ec5ab513123695055296835780ffe58175bc7521ddfb7650559d7a",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "57fdfd03a12aeaaf07ffda263544c1ce4a6d676394e9cc5e60bad7cf4ba9e184",
+        "steps": 55,
+        "tau": 2.061469078063965
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "618fa133f89ba110f5cd6c9ad04ebba317371445698d6e044dcf1f3be63fe6a5",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "cf2b1a715e7ed83e4b2292ef7117b9ac7d358a8d619b5924febabe1981618dfa",
+        "dataset": "OpenBMI",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "8fb202bbfc49a91ca32977cea4e9ef778a1249edc574ddfdc49237b6c11a4bd4",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "c486046a548327543bfe6436280c1c4c92d06c10df36c80d054d10b33ffc1f76",
+        "steps": 55,
+        "tau": 2.061469078063965
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "7b086f798abdb25cf720046e4dc04fbe33ce3c30333b226191438990b2296808",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87",
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "45fb387f183a8f83f163de98f8814fd19ebfc4b6547b4f5c1fd7864072578093",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "9835b4681f3c63c8edd1808f363370a25096381ca110c1f115d31ee5d09d67e5",
+        "steps": 54,
+        "tau": 2.3248565196990967
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "fb12a4e44c4439cabfa5523a0aecf3d6ae67914a75eafc9c55a87555ae9775f6",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87",
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "6b4c06a4ea3ecf0de404468773a5f6263986e65e0f119e11a9936540d669c2f6",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "25d20e1937a91501618567e5434fa7cf354b2f2726834f83230e6152c0b6ac6d",
+        "steps": 54,
+        "tau": 2.3248565196990967
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "b851cf887126f66c9b8b9c194ef601162b6b2db5d5c7c5778300b821b6f4c086",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87",
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "e9000298eeb2c78cfd1f3a84d1bb8312d5bc6e29fa3010f96de481124c20b9fc",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "d6c8f00a77468c0944c2d3ee1397254d44876d7a8c6b1b5ab663c8893140c2dd",
+        "steps": 54,
+        "tau": 2.3248565196990967
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "ba2682de88013203d08b279120d1afab0253fdf16e0c346b2c798cb1ea54f1c2",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87",
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "dbf44cb19f82c95cc9357a2bf1aad726570ac62950f65034c5aadbcb520023ca",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "bbfbbb57f8aabee91b54e0a0059a807427e531b1558056480ef1aaa3191455e8",
+        "steps": 55,
+        "tau": 2.3248565196990967
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "d9925403e5d7e06df670f8c7c6b7919d1b371e14cdc04e54ed2c181e07f0f841",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "a449690ec9d454f6b3521691a5ec5ed6e05490fd6fcef972b98e17e366716b87",
+        "dataset": "OpenBMI",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "9cf6a726ed6292353f81dbff3aa20611fcd630252655f690798b3d9488989a70",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "b3ea4c1acc8dd970f15f248c0dc3db3e56cc904d26656663abe2ab3963460e59",
+        "steps": 55,
+        "tau": 2.3248565196990967
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "f4c298c8aed203052ac7e160dc1385b368a058a5fa5dc55c4caed187e4b18cd3",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f",
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "5f469db6d4257cc6ddaa6c6c84322f5abb1ebeeff081437d14919484c3eb7687",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "4d4cef0e5d451c7bfd7342088a5eac90b7b3d4a351707fe4292c6c6673cffb43",
+        "steps": 54,
+        "tau": 2.4413065910339355
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "d796e0cd6014bda3ae1b257864e236db2998ec83ed88871e1ee4c0540dc82ba6",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f",
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "0e4ead733c26d28aba2a960b27940d72f709233a36c180b418ddb6db537e380b",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "5814e9424fedab480bb58d7baa64be39cac83d5e1a34067626d05be40bb24f0e",
+        "steps": 54,
+        "tau": 2.4413065910339355
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "9f7c8b66420ec708cb03c09287a140a5bc8cede2e8f7a7734f3a998811a9a423",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f",
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "3a933e7a95d5b94a4d77e4f37c77f3a6c3cc86ce3188205efd9e19fb46c3698a",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "c532af9e9496839c6add31ff4de44e366d9becfbb5728f8eb00e21bcf659b9dc",
+        "steps": 54,
+        "tau": 2.4413065910339355
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "82e3594930ce2899ad12ee400495a9aea4e18aab1a575c38ae9b173898b8b90b",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f",
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "2c8f6ca375a7dcbd7d0b0684a94769d726dbc8ba46d39228ca00426a2685b4a4",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "176e51fe9fcaf7ecf11c60d724e1afbd1f0d3dccd2aea155afefe013c72468c3",
+        "steps": 55,
+        "tau": 2.4413065910339355
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "13d9492c7eb3559c26a0920b5cee3594652ba813cfa5c3cb810adf65027fccd6",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "bac23b0ce2bee4c6139e2becf2a4e645a8d9e1bfd0fe5be0faa01a3cb2cbd18f",
+        "dataset": "OpenBMI",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "588c571790a3a0fc14eb3617b6ad06f79a7485f8d02cccec26f65261b6d7ce5d",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "983decb6adb9d3665df2744ce1570481be34f28bcd54cd70e22e8ef854b9fa9f",
+        "steps": 55,
+        "tau": 2.4413065910339355
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "20c9f503305fecd3b99c2090ecee0588271488da627f6957f0d7c0ac33ee28c6",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739",
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "e053060930052efacc46183d4458d1d4078533f1d809b3708911fc6b665bc507",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "1784322c39b3a8371b6f95fd7524c8ab43be97b60bcfce16e9e07dce7ebfa1fe",
+        "steps": 54,
+        "tau": 2.6375298500061035
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "7a4d2f6890ac77e953024380acb06babc03f4cc89fb4479a9cd631f56a032bec",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739",
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "294a8bb92a28770e8d9e1e8cdeeeae669c426e30a9b95abfb25632f280e8876c",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "567a2ad05bb5a008663469a4a1ceb4673506e6def4d1be912d2e199b16445350",
+        "steps": 54,
+        "tau": 2.6375298500061035
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "670d7bc8f56bac7798bbb6429236fd8e3348db47ea52306d24485cecea66a4ad",
+        "a_trial_count": 6800,
+        "batch_size": 64,
+        "checkpoint_sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739",
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "db75ecaa0d347c7e9b9d8a65f2b959e3409c3c8056d47f603b033a6e58de311d",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "c7eb0d9d6280b921b96afbdf9b53cba16616a605734c064b9befa39f38ac1d12",
+        "steps": 54,
+        "tau": 2.6375298500061035
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "b46feb552bb3bd19e79eca2e6ed914e3405befde85d503b1abe91d579ba7b65e",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739",
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "1214c40f227d053098ed95c25c2546b60b4187d07f76d82eed692406101d3e32",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "8185d2dcbea44d0462de90c1e26bbb74c7384d89f9fce4f549fed95458b755ee",
+        "steps": 55,
+        "tau": 2.6375298500061035
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "d4d6d7dba89ac88f01683d2f18a17f7645a4e020c75820bdb5b34a00a8d4ccd8",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "4773e9207c67c0739c1cec110a7c8102cb6a6708139aae0a423d3b05e4c32739",
+        "dataset": "OpenBMI",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "c5330dcdab2a26ba9767c5e79ffc77983038eb3329baf576d08347a75a420169",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "2c680f2a79788b3166265d784fb9438173f4d93ed6e8246f47eb0483cf47a251",
+        "steps": 55,
+        "tau": 2.6375298500061035
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "98e529a4e3d3742f01050738154fd7df6df0ffe99909a517d40dda52267698e2",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d",
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "c183d7a3b794cd4b97d19162b2197515d8a9768e71c2c87053c412344289e3d9",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "ff91850c34b320cb1564dce1a942b35e782ef02285ecef32c7d78b49e79241bf",
+        "steps": 55,
+        "tau": 2.343686819076538
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "e0cafa6272187f52ef60b357d3b2952b1f073c469f3b5029e7a38a777cccbc9b",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d",
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "f38df61816f92c8e4c68b9fef7029599feda72cc2a5220142b28415cb55ddc61",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "9f6d48664dd2a04c4e30918f801cfeeae507ed57b2212be8ce63bedf6eadf23f",
+        "steps": 55,
+        "tau": 2.343686819076538
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "847489b21e084c078a1716158436de2947a2e7e863a33adaf78a517fc0b2df62",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d",
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "0ee9d65bc08c110afd1af68588106022ae65f9f046dc4bdfcd6249cc28894ce2",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "00046f944ec6423ac7c39a25dd5965d544f8dcfb343b48956515df9d660b5f3b",
+        "steps": 55,
+        "tau": 2.343686819076538
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "ce08344ec4650c21e9dbf5a4189be35f5f896cea4cb97f4aa81b7508f733c4c7",
+        "a_trial_count": 7000,
+        "batch_size": 64,
+        "checkpoint_sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d",
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "16e9e6774767245b325ef32019f2d86004517980c4427a63444a99d60138b0f5",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "c34afdad5471acc60f272dccf420cc2ba72f75e06237cf08e641c0fa8baf6820",
+        "steps": 55,
+        "tau": 2.343686819076538
+      },
+      {
+        "B_out_min_class_support": 36,
+        "a_subject_hash": "c2998373919965618f748bb23962bedbd3fc9371cf235ab934ade5f3ae265d9b",
+        "a_trial_count": 7200,
+        "batch_size": 64,
+        "checkpoint_sha256": "4b6db8d980d2ac599243a310adb94064a2dd78b4d594466823319e36c799d29d",
+        "dataset": "OpenBMI",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "45b5131ba0be7003f615ebe304d9a35823b8d307280663acef0607907393757c",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "0f376be4a3a3e7696bb7f28d67fafd16c0e7eaeb8706a8f993fa26632fdc0f3b",
+        "steps": 57,
+        "tau": 2.343686819076538
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "1ebf50165a479aba44cd6ac86ecd0b766bf2cdf57a563e742e0f900e48ebd7b7",
+        "a_trial_count": 9996,
+        "batch_size": 64,
+        "checkpoint_sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3",
+        "dataset": "WBCIC",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "bb43f87dbf5b9adf875f721071b2bbdc176a88156520f55e09b1daf023f638ae",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "afcbac8872cec3558ea679333bd3ce7d4069df1402438dc15806d47c9301a6b5",
+        "steps": 79,
+        "tau": 1.2805280685424805
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "6900fec1c0fd7e285657e26cba988e21121919db2c16ce62a4be8ab564829177",
+        "a_trial_count": 9998,
+        "batch_size": 64,
+        "checkpoint_sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3",
+        "dataset": "WBCIC",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "938ad270c07dd13bd24404ab30089b987e5c1f3d05c5bb783a049549679c2270",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "7ffd5dd8e782a271046cd765011c036c840aef9c1712f3ccc5be47527604096f",
+        "steps": 79,
+        "tau": 1.2805280685424805
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "e3edbd66613ed8324bfa38c6a6237caf0d8e1ce003699c2c1fe757dd56690b55",
+        "a_trial_count": 10397,
+        "batch_size": 64,
+        "checkpoint_sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3",
+        "dataset": "WBCIC",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "987ee153c31da99a8171cfee8fb5966e55019d9eb9a6c10a6b6beab39999d344",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "f2fffd26188fde5837188e6b8ed06eb85afaebe9568608d7b4d52bb3380c5610",
+        "steps": 82,
+        "tau": 1.2805280685424805
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "d7d9f09bedff631e2ee784a3cc60e06478623d9722f9aee6dad6e1e739a353c9",
+        "a_trial_count": 10396,
+        "batch_size": 64,
+        "checkpoint_sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3",
+        "dataset": "WBCIC",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "1474fe9d4828ea45750ea70cfd58da293a981d83f5f6b99650eee1e6dc947792",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "2f19ebab9753e11806f8db356fd66caa9f9d4ec5301ddc5e9733ff8f9f6bcc6c",
+        "steps": 82,
+        "tau": 1.2805280685424805
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "e734431b329de899ba9af97d19b0c91df270b3294659f525581848ce16dad12e",
+        "a_trial_count": 10397,
+        "batch_size": 64,
+        "checkpoint_sha256": "b89b046faecbe5684e0203adaaf548d4a0d8817bef7bb4268b2d3e4112a741d3",
+        "dataset": "WBCIC",
+        "fold": 0,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "697b557fcf081e10cfeb5d823b1c4eac7caa24c363746ad24cf69d24faf09d4f",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "9c1b8cd58b846b9300d6e398b3464e548401e8e246582c4e2f517389fcfa42b8",
+        "steps": 82,
+        "tau": 1.2805280685424805
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "5501730e489be5681e213a4d1acf753174bc8631718f3797e28cf05541be0704",
+        "a_trial_count": 10396,
+        "batch_size": 64,
+        "checkpoint_sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543",
+        "dataset": "WBCIC",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "c37019869b4444796003a814ae1510da43cd5f66499214c4090b4e9caf36f11f",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "b830b987e4f77d94b25c93e0b9c304d27b4a282f76bfa4fa8e745cc6b2406116",
+        "steps": 82,
+        "tau": 1.120287299156189
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "51368d56ad1b7160f5753ad42373c92b823a0eee0aacbc7415f2450376554030",
+        "a_trial_count": 10399,
+        "batch_size": 64,
+        "checkpoint_sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543",
+        "dataset": "WBCIC",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "f28f0821235b8e7707a6db9df6ed0f5aff87ca8f86f8c61dbf087450257c7393",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "8459e063fa6014fa73456d313c7ba572fdf3d4a56b142f24e673ce663f4733ef",
+        "steps": 82,
+        "tau": 1.120287299156189
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "ac6614bc9f12c62845b3b9a54e4b6ca3a817caaddc0e430324d41ddda12fe58d",
+        "a_trial_count": 10396,
+        "batch_size": 64,
+        "checkpoint_sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543",
+        "dataset": "WBCIC",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "fc207cc98b57d7ac6d87fc3417c4f805c87bc8b5dbc5956ee03dfd8a55b34d3a",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "c69d0b2532500421683b2cd60268c6adb6c2a498b99a1c9d62728dcd6bd1ab5b",
+        "steps": 82,
+        "tau": 1.120287299156189
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "e219ed7d6d53c0938a9cf931d83d7b2dcb3ec583466d341cfd5fe21f190e3f35",
+        "a_trial_count": 10796,
+        "batch_size": 64,
+        "checkpoint_sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543",
+        "dataset": "WBCIC",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "62ccdc042af0a9f5f26cfab14671a06cddd8c84e7213bb945c6f1ed6bd65e256",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "c9c41c8255bd7e03562cb1394c2a69b4c536738df4230d0ecfd328a86e96ce6a",
+        "steps": 85,
+        "tau": 1.120287299156189
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "38a042d0b61396596a0030c899b255bab5f00df487b4834ce9a287a455d72ae9",
+        "a_trial_count": 10797,
+        "batch_size": 64,
+        "checkpoint_sha256": "240473b284b45c240ee56021ccf017f86d6db0eaeb54b80fc3dc28b1e4bfe543",
+        "dataset": "WBCIC",
+        "fold": 1,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "2c2c466a278dd6e38b4619361e126501c913a60afd698c7f8b784684990c693f",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "928dd99a12d7caa0f562d9ca431e546b23259873f18de7894376b14d528457fc",
+        "steps": 85,
+        "tau": 1.120287299156189
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "136ead0f0a151d87807e733d3a0d00af223362ef68be62c7f870dd9dcd78293b",
+        "a_trial_count": 10397,
+        "batch_size": 64,
+        "checkpoint_sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08",
+        "dataset": "WBCIC",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "80fb045e9a73f206418a248787681260178e51aa16fccdf381cb9c13186d5773",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "bfd046fb54b6f7d953861d8660fa2c8b1419c5ab83e31f48c9e52889280d8cbe",
+        "steps": 82,
+        "tau": 2.680941343307495
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "9a16aff3c7de9338662299f537ea56444ae2b4490bc59acf365e8438cdda1dfa",
+        "a_trial_count": 10398,
+        "batch_size": 64,
+        "checkpoint_sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08",
+        "dataset": "WBCIC",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "4b6441b6dd2787839174b1e349609379cc37db1b7d806ddfd19ff29a50a22132",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "a32c8576cdd39cc39e3df538fad94705fd034efad4305d708e4670185c19c197",
+        "steps": 82,
+        "tau": 2.680941343307495
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "16bb281f59459205e3a1d9e28ed22770dc95a233af55321c98f8200ade1e088e",
+        "a_trial_count": 10398,
+        "batch_size": 64,
+        "checkpoint_sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08",
+        "dataset": "WBCIC",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "e9dd51e5ce19418bd439c2ac43c7fa03131581208c35a76481c87a07b5d00581",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "9288689ec51e2323eac94f2400f8c352b7f6b56b210617e26fe81b25d840f6e4",
+        "steps": 82,
+        "tau": 2.680941343307495
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "560d8d65f16d9c0228e8f8d2bf1e31747bb18be411feb0e952d8bce6fdb6a3a1",
+        "a_trial_count": 10797,
+        "batch_size": 64,
+        "checkpoint_sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08",
+        "dataset": "WBCIC",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "0ec70a8ce550e49957a58314e8e2b30624e475a93b4d625e68d1a07a5685870a",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "8c8ebb9070a80e6c1f432af29eb835252038c238cc1b728554bd451db81fda78",
+        "steps": 85,
+        "tau": 2.680941343307495
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "2d851637e22d2d7d295ae9bb07f35013c1d79e485f7965e5efb892685dea6e5c",
+        "a_trial_count": 10798,
+        "batch_size": 64,
+        "checkpoint_sha256": "3b8e20601b965b57eee6ae363ccd58118d7f160ecfeef4fc1592847bd7f7ef08",
+        "dataset": "WBCIC",
+        "fold": 2,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "332745448a50d22225bdf2dd5a6673344d123d97be85eb230d21e95946506dd1",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "ac4be62df0dcd39d43608d08168e95cf7a531be1f276df597d959345621cb0a0",
+        "steps": 85,
+        "tau": 2.680941343307495
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "95cff8b6d1b8a782fee19bb82ecb049c50478d9c601729257341b20b8825fab0",
+        "a_trial_count": 10399,
+        "batch_size": 64,
+        "checkpoint_sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253",
+        "dataset": "WBCIC",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "759316c84c23de16075b860028d01119559a524d71df7b835f801f24ec771db3",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "560e2b7aac435999da083b210aaac7a63572703f9b2fb59136d7c7e1cca8e0c3",
+        "steps": 82,
+        "tau": 1.9502851963043213
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "408a9ba54a7d9e2cb09e3ba254200655db353c351b9e59b19bd75bb796ddb3ad",
+        "a_trial_count": 10399,
+        "batch_size": 64,
+        "checkpoint_sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253",
+        "dataset": "WBCIC",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "ca5171bf59531b5d407569cf9e60ac71c9bee8f43adf08607765ccbfe15d2963",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "b70207b62d2c1bd4837b425db338db0374102ab50daac572845008cdee9431bd",
+        "steps": 82,
+        "tau": 1.9502851963043213
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "fdab7b4907008b37c2ea726d6c30c1b2533dcffd687f114bc4bcdca4d3f445ea",
+        "a_trial_count": 10398,
+        "batch_size": 64,
+        "checkpoint_sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253",
+        "dataset": "WBCIC",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "2099af23a34ba3bbda3fc5eab0f70559a27e155e48ceb2ec3ee6bdb99bd4d4c8",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "db3ccdc6f3f4bb7d996932c34070189a78f66347f6aa46f9ae9836f89aff5415",
+        "steps": 82,
+        "tau": 1.9502851963043213
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "f6f7e9e6475715b4a4a0c720e36d61cd3c59eb2ca22eca84fe7afbb2dd20cf48",
+        "a_trial_count": 10798,
+        "batch_size": 64,
+        "checkpoint_sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253",
+        "dataset": "WBCIC",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "38ad7552bd2ee4e7d4819d98c51110ef7f3a17764da85cb13609fb1f9d50ad42",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "3d7ee55d8cb86b7052b383736728b56a5e79ec761ac00d0b1c0747c86ba2068d",
+        "steps": 85,
+        "tau": 1.9502851963043213
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "e4cd34bdcda9234b9e31e1fb3e2c96e0a72373c8505ea78264d04c6059bc08ff",
+        "a_trial_count": 10798,
+        "batch_size": 64,
+        "checkpoint_sha256": "27849e33109bf8cdd75a6791b104e04ad2a2e0a45f9e16d534aec5c6a0667253",
+        "dataset": "WBCIC",
+        "fold": 3,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "523766484ddb2ff86d899f5759014cd419a3f684c291cb00e215ced238509e88",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "2ac3d788666ad27350ae9111505fc8fb3d69cb296c0c4bd2a1ff97706506734c",
+        "steps": 85,
+        "tau": 1.9502851963043213
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "26ff4e77268d67e6fef1f9978f89fd64671fabef62e3e2273cf044d0972b048b",
+        "a_trial_count": 10398,
+        "batch_size": 64,
+        "checkpoint_sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533",
+        "dataset": "WBCIC",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "4589ff5950bb4e735393096d3bcb4fd888cc68a341152470bc451ef4a3a84b8a",
+        "sentinel_meta_fold": 0,
+        "sentinel_subject_hash": "bb96a66dbff187aafcee47c2b4cf3fe51b6ae9fc0f88214aaf5c68a665598f8f",
+        "steps": 82,
+        "tau": 2.3118042945861816
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "0ae013ea64c6f8cf8ff321ec4fad616fcfdb1c37ae3e312a35ac8e3381cae91b",
+        "a_trial_count": 10397,
+        "batch_size": 64,
+        "checkpoint_sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533",
+        "dataset": "WBCIC",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "ab285f9dc9f50bd7e3b20c3a2f01d10be066d2815b3cc10a2e83c1eb22cf1efa",
+        "sentinel_meta_fold": 1,
+        "sentinel_subject_hash": "99f437a4e51dc6b0c5d15cde3b2d76ce80aa5a46770d63a290722000912c51e6",
+        "steps": 82,
+        "tau": 2.3118042945861816
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "2fd2f218fba71fe9b8930c77619d0a2fb79f25524229e2e2c3bacdc01d4f0840",
+        "a_trial_count": 10398,
+        "batch_size": 64,
+        "checkpoint_sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533",
+        "dataset": "WBCIC",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "84e71a3e18e50d23a1bf0b832ce722a7d5beac05e6518fcd34d57ee4dd41ad1c",
+        "sentinel_meta_fold": 2,
+        "sentinel_subject_hash": "314e0ccfe6d98b380588454afcf24da545f8a5dea5624530722324f2fde0fff3",
+        "steps": 82,
+        "tau": 2.3118042945861816
+      },
+      {
+        "B_out_min_class_support": 135,
+        "a_subject_hash": "ea11db123c3d16a5134f7bfcc29c2b90f1feef861b0065051ff97ba21dc7edab",
+        "a_trial_count": 10798,
+        "batch_size": 64,
+        "checkpoint_sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533",
+        "dataset": "WBCIC",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "5a4eabe700ab81b467bc7354523b0a25715ee347cceea30ffb40e9808da9d1e8",
+        "sentinel_meta_fold": 3,
+        "sentinel_subject_hash": "ec81c972a0837c8163c69001a8fb3310d66a7f691f115d67057e776c379bedb8",
+        "steps": 85,
+        "tau": 2.3118042945861816
+      },
+      {
+        "B_out_min_class_support": 136,
+        "a_subject_hash": "b28b9cc0c3e91e87b4b6ee6de9fa110cdd82b62f73ff2eddc57f05ac9aecd81d",
+        "a_trial_count": 10797,
+        "batch_size": 64,
+        "checkpoint_sha256": "53d402c80f3f1c23fd70489dd83e75727eeb3b221364fc309c125ce1af888533",
+        "dataset": "WBCIC",
+        "fold": 4,
+        "schedule_batch_reference": 128,
+        "schedule_sha256": "6c49f9ae6497aea2009719fb0a08cd6dcb639fbb9777530d990da86b639bae89",
+        "sentinel_meta_fold": 4,
+        "sentinel_subject_hash": "073d358c6445aab2fe65aa7828312103ff79443b9bcbcc83a84c8f2a19a0ff9e",
+        "steps": 85,
+        "tau": 2.3118042945861816
+      }
+    ]
+  },
+  "power": [
+    {
+      "CUMULATIVE_DECISION_ENDPOINT_UNDERPOWERED": false,
+      "H_BER_negative_count": 67,
+      "H_BER_positive_count": 63,
+      "H_BER_zero_count": 86,
+      "biological_subjects_with_harmful_event": 41,
+      "dataset": "OpenBMI",
+      "total_correct_to_wrong_flips": 178,
+      "total_subject_window_observations": 216,
+      "total_wrong_to_correct_flips": 194
+    },
+    {
+      "CUMULATIVE_DECISION_ENDPOINT_UNDERPOWERED": false,
+      "H_BER_negative_count": 73,
+      "H_BER_positive_count": 58,
+      "H_BER_zero_count": 33,
+      "biological_subjects_with_harmful_event": 32,
+      "dataset": "WBCIC",
+      "total_correct_to_wrong_flips": 461,
+      "total_subject_window_observations": 164,
+      "total_wrong_to_correct_flips": 515
+    }
+  ],
+  "schema": "PERSIST_EEG_CUMULATIVE_FINAL_REPORT_V1",
+  "smooth": {
+    "OpenBMI": {
+      "BBR_to_H_BBR_epoch": {
+        "auroc": 0.7016244314489929,
+        "auroc_CI95": [
+          0.5991005547646344,
+          0.7910335247752801
+        ],
+        "event_count": 45,
+        "kendall": 0.3360034453057708,
+        "kendall_CI95": [
+          0.24156586488399134,
+          0.4257417625191535
+        ],
+        "n_observations": 216,
+        "n_subjects": 54,
+        "pearson": 0.4818871817112874,
+        "sign_accuracy": 0.7870370370370371,
+        "spearman": 0.46959597042117673,
+        "spearman_CI95": [
+          0.34121936740150843,
+          0.5834091857021242
+        ],
+        "top_minus_bottom": 0.00411168122014334,
+        "top_minus_bottom_CI95": [
+          0.002118387255211209,
+          0.005691553071834319
+        ]
+      },
+      "CE_to_H_CE_epoch": {
+        "auroc": 0.7590115198810851,
+        "auroc_CI95": [
+          0.6852021516263216,
+          0.8226217986536997
+        ],
+        "event_count": 78,
+        "kendall": 0.3782084409991386,
+        "kendall_CI95": [
+          0.2896556643272477,
+          0.45883284475125763
+        ],
+        "n_observations": 216,
+        "n_subjects": 54,
+        "pearson": 0.5785296158588427,
+        "sign_accuracy": 0.7314814814814815,
+        "spearman": 0.5272008478310053,
+        "spearman_CI95": [
+          0.40690736458161547,
+          0.6270780505917359
+        ],
+        "top_minus_bottom": 0.020123436007388803,
+        "top_minus_bottom_CI95": [
+          0.013481374938300877,
+          0.027621522567473168
+        ]
+      },
+      "dataset": "OpenBMI"
+    },
+    "WBCIC": {
+      "BBR_to_H_BBR_epoch": {
+        "auroc": 0.9891466269419025,
+        "auroc_CI95": [
+          0.971896788482835,
+          0.9987903225806452
+        ],
+        "event_count": 37,
+        "kendall": 0.8889720185545414,
+        "kendall_CI95": [
+          0.8473708000602682,
+          0.921342358764508
+        ],
+        "n_observations": 164,
+        "n_subjects": 41,
+        "pearson": 0.9865817880302694,
+        "sign_accuracy": 0.9573170731707317,
+        "spearman": 0.9774216805190917,
+        "spearman_CI95": [
+          0.955176175364035,
+          0.9886865337753109
+        ],
+        "top_minus_bottom": 0.046799703035503626,
+        "top_minus_bottom_CI95": [
+          0.03963488866575062,
+          0.05307624018751085
+        ]
+      },
+      "CE_to_H_CE_epoch": {
+        "auroc": 0.8590492076730609,
+        "auroc_CI95": [
+          0.7999297008819414,
+          0.9107833518013988
+        ],
+        "event_count": 55,
+        "kendall": 0.6688612898398922,
+        "kendall_CI95": [
+          0.594789744845812,
+          0.7369535321372283
+        ],
+        "n_observations": 164,
+        "n_subjects": 41,
+        "pearson": 0.9422601855036505,
+        "sign_accuracy": 0.7926829268292683,
+        "spearman": 0.8239903146382271,
+        "spearman_CI95": [
+          0.7442687684054349,
+          0.884517512066288
+        ],
+        "top_minus_bottom": 0.048540899297222495,
+        "top_minus_bottom_CI95": [
+          0.03920825418899767,
+          0.056958467152435334
+        ]
+      },
+      "dataset": "WBCIC"
+    }
+  },
+  "terminal": "CUMULATIVE_SMOOTH_HARM_SUPPORTED_DECISION_NOT_SUPPORTED",
+  "validation": {
+    "BN_unchanged": true,
+    "OpenBMI_sealed_opened": false,
+    "WBCIC_outer_opened": false,
+    "all_windows_complete": true,
+    "cumulative_displacement_sum_pass": true,
+    "decision": {
+      "AUTO_START_FINAL_MODEL": false,
+      "BBR_CE_paired_selection": {
+        "BBR_significantly_better": false,
+        "CE_significantly_better": false,
+        "rule": "if both pass, require paired subject-bootstrap AUROC and H_BER Spearman CIs to be strictly one-sided; otherwise select CE"
+      },
+      "CLOSE_PROSPECTIVE_GRADIENT_CONSTRUCTIVE_FAMILY": true,
+      "FINAL_MODEL_DEVELOPMENT_SCIENTIFICALLY_JUSTIFIED": false,
+      "certificate_gate_details": {
+        "BBR": {
+          "OpenBMI": false,
+          "WBCIC": false
+        },
+        "CE": {
+          "OpenBMI": false,
+          "WBCIC": false
+        }
+      },
+      "gate_A_power": {
+        "OpenBMI": true,
+        "WBCIC": true
+      },
+      "gate_B_cumulative_decision_prediction": {
+        "BBR": false,
+        "CE": false
+      },
+      "gate_C_subject_specificity": {
+        "BBR": false,
+        "CE": false
+      },
+      "gate_D_calibration": {
+        "BBR": false,
+        "CE": false
+      },
+      "gate_E_fold_robustness": {
+        "BBR": false,
+        "CE": true
+      },
+      "gate_F_random_control": {
+        "BBR": false,
+        "CE": false
+      },
+      "selected_certificate": "NONE",
+      "terminal": "CUMULATIVE_SMOOTH_HARM_SUPPORTED_DECISION_NOT_SUPPORTED"
+    },
+    "fixed_sentinel_isolation": true,
+    "mandatory_tests_pass": true,
+    "outcome_used": false,
+    "pass": true,
+    "schema": "PERSIST_EEG_CUMULATIVE_VALIDATION_V1",
+    "second_backbone_run": false,
+    "seed1_run": false,
+    "seed2_run": false,
+    "terminal": "CUMULATIVE_SMOOTH_HARM_SUPPORTED_DECISION_NOT_SUPPORTED"
+  }
+}

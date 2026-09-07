@@ -1,0 +1,43 @@
+{
+  "OUTER_TEST_USED": false,
+  "baseline_BA": 0.8137499999999999,
+  "baseline_method": "B_STRONG_MATCHED_V7",
+  "baseline_source_method": "ANCHOR_BLEND__CONFORMER_NORM_FIXED_HEAD",
+  "benchmark": "WBCIC_S1S2_to_S3_authorized_development",
+  "deployment_transform": "locked strong anchor plus half learned metric residual",
+  "epochs": 300,
+  "experts": 4,
+  "family_id": "WBCIC_S1S2_to_S3_authorized_development__METRIC_TRANSPORT_MI_SPECIFIC_K4_D16",
+  "feature_family": "MI_SPECIFIC",
+  "folds": [
+    0,
+    1
+  ],
+  "headroom_state": "V8_HEADROOM_WEAK",
+  "internal_holdout_used": false,
+  "lambda_mean": 0.35,
+  "mean_expert_BA": 0.8092708333333333,
+  "mean_pairwise_correctness_correlation": 0.953197278537187,
+  "mean_pairwise_correctness_disagreement": 0.014513888888888887,
+  "metric_dimension": 16,
+  "oracle_assignment_entropy": 1.1988493129136213,
+  "oracle_headroom_pp": 0.6250000000000006,
+  "oracle_usage": {
+    "B_STRONG_MATCHED_V7": 6,
+    "METRIC_TRANSPORT_MI_SPECIFIC_K4_D16__E0_RESIDUAL50": 3,
+    "METRIC_TRANSPORT_MI_SPECIFIC_K4_D16__E1_RESIDUAL50": 2,
+    "METRIC_TRANSPORT_MI_SPECIFIC_K4_D16__E2_RESIDUAL50": 0,
+    "METRIC_TRANSPORT_MI_SPECIFIC_K4_D16__E3_RESIDUAL50": 1
+  },
+  "outcome_labels_used_for_headroom_only": true,
+  "positive_fold_fraction": 1.0,
+  "strongest_single_candidate": "METRIC_TRANSPORT_MI_SPECIFIC_K4_D16__E0_RESIDUAL50",
+  "strongest_single_candidate_BA": 0.8141666666666666,
+  "subject_oracle_BA": 0.82,
+  "subjects": 12,
+  "subjects_rescued_ge_2pp_fraction": 0.08333333333333333,
+  "subjects_rescued_ge_5pp_fraction": 0.0,
+  "tau": 0.08,
+  "training_objective": "history-class prototype transport through query-trained metrics, learned recency, coverage, competence, and diversity",
+  "used_to_train_selector": false
+}

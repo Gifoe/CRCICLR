@@ -1,0 +1,23 @@
+{
+  "OpenBMI_sealed_holdout_opened": false,
+  "WBCIC_outer_10_opened": false,
+  "access_lock_sha256": "17e2894b1e43690bf47dae619a4be4730198f83e503a7add20f3c638e28c35c6",
+  "amendment_sha256": "366ed3df834e065e1cbd5800c180716d3ccda88f69e4020df86d1ca2dea28ea8",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "folds": [
+    0
+  ],
+  "methods": [
+    "SUBJECT_BALANCED_ERM",
+    "GENERIC_RESIDUAL",
+    "GENERIC_PROTOTYPE",
+    "CROSS_SESSION_RELATION"
+  ],
+  "outcome_labels_read_after_lock": true,
+  "outcome_labels_read_before_lock": false,
+  "schema": "PERSIST_EEG_INCREMENTAL_RELATION_LEGALITY_V1",
+  "seed": 0
+}

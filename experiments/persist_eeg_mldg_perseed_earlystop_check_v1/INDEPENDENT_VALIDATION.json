@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "complete_cells": true,
+    "delta_recomputes": true,
+    "early_stop_frozen": true,
+    "forbidden_scopes_closed": true,
+    "gate_definition": true,
+    "gate_recomputes": true,
+    "held_not_train_or_validation": true,
+    "paired_initial_state": true,
+    "paired_rng": true,
+    "parent_order_and_rng_reused": true,
+    "protocol_scope": true,
+    "schema": true,
+    "selected_epochs_source_only": true,
+    "selection_metrics_match_trajectory": true,
+    "split_reuse": true
+  },
+  "pass": true,
+  "schema": "PERSIST_EEG_MLDG_PERSEED_EARLYSTOP_CHECK_V1",
+  "validated_files": [
+    "FINAL_REPORT.md",
+    "INITIAL_STATE_HASH.csv",
+    "MLDG_EPOCH6_DIAGNOSTIC.csv",
+    "MLDG_VALIDATION_TRAJECTORY.csv",
+    "NO_CANONICAL_OUTCOME_ACCESS_AUDIT.json",
+    "PAIRED_RESULTS.csv",
+    "PER_SEED_GATE.json",
+    "PER_SEED_SELECTION.csv",
+    "PER_SUBJECT_PAIRED_DELTAS.csv",
+    "PROTOCOL_LOCK.json",
+    "SPLIT_REUSE_AUDIT.json"
+  ]
+}

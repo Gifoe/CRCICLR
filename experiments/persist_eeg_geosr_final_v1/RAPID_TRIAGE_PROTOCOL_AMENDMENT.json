@@ -1,0 +1,40 @@
+{
+  "schema": "PERSIST_EEG_GEOSR_RAPID_TRIAGE_AMENDMENT_V1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-09-05T04:34:40Z",
+  "purpose": "time-bounded directional futility/continuation screen; not a final scientific evaluation",
+  "seed": 0,
+  "datasets": ["OpenBMI", "WBCIC"],
+  "outer_folds": [0],
+  "methods": ["SUBJECT_BALANCED_ERM", "GEOSR"],
+  "stopped_methods": ["RANDOM_RANK", "CANONICAL_ERM", "LOSS_HARD", "GEO_ONLY"],
+  "stopped_outer_folds": [1, 2, 3, 4],
+  "crossfit": {
+    "initial_selection_crossfit_k": 5,
+    "initial_selection_weights_reused": true,
+    "wbcic_final_refit_teacher_remaining": false,
+    "wbcic_final_refit_exact_training": false
+  },
+  "student_training": {
+    "one_discovery_selected_training": true,
+    "retain_best_checkpoint": true,
+    "exact_refit": false,
+    "optimizer_and_batch_constants_unchanged": true
+  },
+  "outcome_access": {
+    "forbidden_before_both_fold0_workers_complete": true,
+    "read_once_after_triage_lock": true,
+    "WBCIC_outer_10_opened": false,
+    "OpenBMI_sealed_holdout_opened": false
+  },
+  "decision_rule": {
+    "clear_positive_min_mean_delta_pp": 0.5,
+    "preferred_positive_range_pp": [0.5, 1.0],
+    "direction_consistency_required": true,
+    "if_either_dataset_lacks_clear_positive": "STOP",
+    "if_both_datasets_clear_positive": "RESTORE_FULL_PROTOCOL"
+  },
+  "scientific_definition_changed": true,
+  "final_claim_authorized": false,
+  "all_existing_cache_retained": true
+}

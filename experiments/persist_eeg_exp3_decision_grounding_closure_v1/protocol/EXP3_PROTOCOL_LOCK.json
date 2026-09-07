@@ -1,0 +1,67 @@
+{
+  "cell_table": "DDA_BLOCK_CROSSFIT.csv, 215 run x audit_fold x block cells",
+  "decision_metrics": {
+    "finite": "decision_logit_rms from frozen DDA-B/C",
+    "local": "jacobian_energy / jacobian_ratio from frozen DDA-B",
+    "no_redefinition": true
+  },
+  "experiment": "PERSIST_EEG_EXP3_DECISION_GROUNDING_CLOSURE_V1",
+  "external_support": "WBCIC development only if the frozen cell-level identity/consequence chain is available; outer subjects remain sealed",
+  "git_commit": "668d0fca06bd1756c935f1997945fc419c391dc0",
+  "identity_evidence_definition": "full cross-session IdentitySkill minus IdentitySkill after erasing the frozen block coordinates, fit and evaluated on the DDA fit subjects only",
+  "identity_formula": "0.5*((log(K)-CE_S1_to_S2)+(log(K)-CE_S2_to_S1))",
+  "identity_measurement_competence": {
+    "null": "subject-level permutation of evaluation-session subject labels, preserving trial counts",
+    "pass_rule": "at least 5/6 runs have at least 4/5 audit folds with observed full-representation skill > 95th null percentile and >0",
+    "permutations": 500
+  },
+  "models": {
+    "M0": [
+      "persistence_strength",
+      "geometry_strength",
+      "rank"
+    ],
+    "MD": [
+      "persistence_strength",
+      "geometry_strength",
+      "rank",
+      "decision_logit_rms"
+    ],
+    "MI": [
+      "persistence_strength",
+      "geometry_strength",
+      "rank",
+      "identity_evidence"
+    ],
+    "MID": [
+      "persistence_strength",
+      "geometry_strength",
+      "rank",
+      "identity_evidence",
+      "decision_logit_rms"
+    ],
+    "evaluation": "leave-one-run-out; train-run standardization; ridge alpha=1.0 inherited from DDA-C"
+  },
+  "outer_membership_enumerated": false,
+  "outer_test_used": false,
+  "primary_identity_metric": "symmetric_cross_session_subject_id_identity_skill_raw",
+  "primary_outcome": "outcome_ce_effect from frozen DDA cross-fit",
+  "random_seed_rule": "SHA256-derived deterministic seeds; Python hash() is not used",
+  "runs": [
+    "0_0",
+    "0_1",
+    "1_0",
+    "1_1",
+    "2_0",
+    "2_1"
+  ],
+  "scope": "OpenBMI MI development/train resource only; no outer or untouched validation subjects",
+  "statistical_unit": "run for held-out prediction inference; cell-level rows only within each training run",
+  "status": "FROZEN_BEFORE_PRIMARY_COMPARISON",
+  "tests": {
+    "A": "RMSE(M0)-RMSE(MD), run-cluster bootstrap CI and exact 6-run sign-flip p",
+    "B": "RMSE(MI)-RMSE(MD), run-cluster bootstrap CI and exact 6-run sign-flip p",
+    "C": "RMSE(MD)-RMSE(MID), descriptive incremental identity comparison"
+  },
+  "validation_outcome_used_for_design": false
+}

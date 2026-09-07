@@ -1,0 +1,33 @@
+﻿{
+    "schema":  "PERSIST_EEG_GEOSR_RAPID_TRIAGE_LOCK_V1",
+    "locked_at_utc":  "2026-09-05T04:35:39Z",
+    "amendment_sha256":  "a60ace47470d77b41a9f15da2baf1df556839fe25658fd1f11e3ad8d57fea6dc",
+    "amendment_file":  "D:\\nips-temp\\TotalP\\P1\\CRCICLR_GEOSR_FINAL_V1\\experiments\\persist_eeg_geosr_final_v1\\RAPID_TRIAGE_PROTOCOL_AMENDMENT.json",
+    "original_frozen_protocol_sha256":  "1808c08c032a5e1fe162826683d1454a55f44ae89742d5faf4818c8486c15bd9",
+    "code_sha256":  {
+                        "run_geosr.py":  "45ef81a5e7fcfe8c24b147fbfc17e7e36302b5df84b19c30a80b7354ffdf75e2",
+                        "evaluate_geosr_futility.py":  "7fc4f78d440822bff6dc08abc3ed9c9a0f2149265ecdc770479da9364be27f68",
+                        "run_geosr_decision.py":  "03f3e95ce7a47fcc084e2b90c64ad4681c43d0a93c6bf45137152d1a62bad1f3",
+                        "run_geosr_futility.py":  "017d63d807134b0be430ada16454ae8cdad2f52140205c0421d1c584a91555e3",
+                        "audit_primitives.py":  "778108434372feae0391b196751a1693491f2a6ec2d18086e0d33b74c9eb798b"
+                    },
+    "seed":  0,
+    "datasets":  [
+                     "OpenBMI",
+                     "WBCIC"
+                 ],
+    "outer_folds":  [
+                        0
+                    ],
+    "methods":  [
+                    "SUBJECT_BALANCED_ERM",
+                    "GEOSR"
+                ],
+    "outcome_labels_read_before_lock":  false,
+    "outcome_labels_read":  false,
+    "WBCIC_outer_10_opened":  false,
+    "OpenBMI_sealed_holdout_opened":  false,
+    "status":  "RAPID_TRIAGE_LOCKED",
+    "scientific_definition_changed":  true,
+    "final_claim_authorized":  false
+}

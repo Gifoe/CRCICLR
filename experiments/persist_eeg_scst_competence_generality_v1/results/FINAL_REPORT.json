@@ -1,0 +1,115 @@
+{
+  "answers": {
+    "10_EEGInceptionMI_task_BA": {
+      "OpenBMI": 0.7431666666666666,
+      "WBCIC": 0.6059908221663874
+    },
+    "11_EEGInceptionMI_SCST_validity": "SPECIALIST_NOT_COMPETENT",
+    "12_EEGNeX_triggered": false,
+    "13_competent_non_FM": [
+      "ATCNet"
+    ],
+    "14_admissible_non_FM": [],
+    "15_FM_admissible": false,
+    "16_specialist_admissible": false,
+    "17_Level1_authorized": false,
+    "18_Level2_authorized": false,
+    "19_SCST_trained_models": [],
+    "1_frozen_head_rescue": "CBRAMOD_COMPETENCE_NOT_RECOVERED",
+    "20_ERM_BA": "NOT_RUN",
+    "21_SCST_BA": "NOT_RUN",
+    "22_delta_BA_CI": "NOT_RUN",
+    "23_Mixup": "NOT_RUN",
+    "24_random_transport": "NOT_RUN",
+    "25_SCST_beats_random": "NOT_EVALUATED",
+    "26_FM_and_specialist_positive_cases": false,
+    "27_invalid_space_controls": "NOT_RUN_GATE_CLOSED",
+    "28_admissibility_predicts_gain": "NOT_ESTIMABLE",
+    "29_STEEGFormer_triggered": false,
+    "2_representation_repair": "R1_last_encoder_block_plus_task_projector_and_head",
+    "30_STEEGFormer_confirmed": "NOT_TRIGGERED",
+    "31_sealed_resources_untouched": true,
+    "32_strongest_supported_claim": "Under the frozen thresholds and bounded rescue/specialist screen, no representation was both task competent and SCST admissible across OpenBMI and WBCIC.",
+    "33_remains_unsupported": "SCST future-session utility and any general intervention-admissibility method claim.",
+    "34_overall_terminal": "NO_ADMISSIBLE_COMPETENT_REPRESENTATION_FOUND",
+    "3_final_CBraMod_BA": {
+      "OpenBMI": 0.726125,
+      "WBCIC": 0.7463331588498046
+    },
+    "4_CBraMod_both_3NN_le_1p25": true,
+    "5_CBraMod_all_SCST_gates": false,
+    "6_FBCNet_task_BA": {
+      "OpenBMI": 0.6567083333333333,
+      "WBCIC": 0.5956199283454308
+    },
+    "7_FBCNet_SCST_validity": "SPECIALIST_NOT_COMPETENT",
+    "8_ATCNet_task_BA": {
+      "OpenBMI": 0.7670416666666667,
+      "WBCIC": 0.7859004396984924
+    },
+    "9_ATCNet_SCST_validity": "SPECIALIST_COMPETENT_NOT_ADMISSIBLE"
+  },
+  "authorization": {
+    "eligible_models": [],
+    "level1_SCST_DISCOVERY_TRAINING_AUTHORIZED": false,
+    "level2_SCST_GENERAL_METHOD_DEVELOPMENT_AUTHORIZED": false,
+    "schema": "SCST_ADMISSIBILITY_AUTHORIZATION_V1",
+    "sealed_resources_untouched": true,
+    "terminals": [
+      {
+        "admissible_both_datasets": false,
+        "competent_both_datasets": false,
+        "model": "CBraMod-R1",
+        "terminal": "CBRAMOD_COMPETENCE_NOT_RECOVERED"
+      },
+      {
+        "admissible_both_datasets": false,
+        "competent_both_datasets": true,
+        "model": "ATCNet",
+        "terminal": "SPECIALIST_COMPETENT_NOT_ADMISSIBLE"
+      },
+      {
+        "admissible_both_datasets": false,
+        "competent_both_datasets": false,
+        "model": "EEGInceptionMI",
+        "terminal": "SPECIALIST_NOT_COMPETENT"
+      },
+      {
+        "admissible_both_datasets": false,
+        "competent_both_datasets": false,
+        "model": "FBCNet",
+        "terminal": "SPECIALIST_NOT_COMPETENT"
+      }
+    ]
+  },
+  "branch": "codex/persist-eeg-scst-competence-generality-v1",
+  "model_terminals": [
+    {
+      "admissible_both_datasets": false,
+      "competent_both_datasets": false,
+      "model": "CBraMod-R1",
+      "terminal": "CBRAMOD_COMPETENCE_NOT_RECOVERED"
+    },
+    {
+      "admissible_both_datasets": false,
+      "competent_both_datasets": true,
+      "model": "ATCNet",
+      "terminal": "SPECIALIST_COMPETENT_NOT_ADMISSIBLE"
+    },
+    {
+      "admissible_both_datasets": false,
+      "competent_both_datasets": false,
+      "model": "EEGInceptionMI",
+      "terminal": "SPECIALIST_NOT_COMPETENT"
+    },
+    {
+      "admissible_both_datasets": false,
+      "competent_both_datasets": false,
+      "model": "FBCNet",
+      "terminal": "SPECIALIST_NOT_COMPETENT"
+    }
+  ],
+  "overall_terminal": "NO_ADMISSIBLE_COMPETENT_REPRESENTATION_FOUND",
+  "schema": "SCST_COMPETENCE_GENERALITY_FINAL_V1",
+  "sealed_resources_untouched": true
+}

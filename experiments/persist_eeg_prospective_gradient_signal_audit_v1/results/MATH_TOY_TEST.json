@@ -1,0 +1,20 @@
+{
+  "actual": -0.2949995994567871,
+  "checks": {
+    "bn_buffers_unchanged_eval": true,
+    "cluster_bootstrap_outer_folds": true,
+    "disjoint_A_B": true,
+    "functional_call_does_not_overwrite": true,
+    "matched_dropout_rng": true,
+    "no_outcome_subject_in_A_B": true,
+    "primary_has_no_optimizer_step": true,
+    "quadratic_first_order_sign": true,
+    "relative_displacement": true,
+    "seed1_seed2_forbidden": true,
+    "subject_losses_class_balanced": true
+  },
+  "device": "cuda",
+  "first_order": -0.30000000000000004,
+  "pass": true,
+  "schema": "PROSPECTIVE_GRADIENT_SIGNAL_MATH_AUDIT_V1"
+}

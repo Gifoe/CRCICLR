@@ -1,0 +1,48 @@
+{
+  "FINAL_NEW_MODEL_AUTHORIZATION": "NOT_AUTHORIZED_AT_THIS_STAGE",
+  "LOW_E_ACTIONABILITY_STATUS": "LOW_E_SUPPRESSION_NOT_BENEFICIAL",
+  "METHOD_LEVEL_BRIDGE_AUTHORIZATION": "CONDITIONAL",
+  "OpenBMI_sealed_internal_holdout": "UNTOUCHED",
+  "P4A_grid": "OPTIONAL_PARTIAL_INVARIANCE_GRID_PAUSED",
+  "SAFETY_STATUS": "P4C_SAFETY_BOUNDARY_PARTIAL_SUPPORTED",
+  "WBCIC_outer_10": "UNTOUCHED_NOT_ENUMERATED",
+  "bootstrap_draws": 10000,
+  "branch": "codex/persist-eeg-p4c-suppression-safety-validation-v1",
+  "figures": [
+    "figure1_preoutcome_regime_map.png",
+    "figure2_future_uba_regimes.png",
+    "figure3_high_e_veto.png",
+    "figure4_low_e_actionability.png",
+    "figure5_matched_random_specificity.png",
+    "figure6_discovery_prospective_forest.png"
+  ],
+  "final_report_sha256": "423a7cef1e2026aecf994ca030b6727c35a7208bd908bcaa9ce4c3b1a4812910",
+  "final_report_written_after_validator_pass": true,
+  "gates": {
+    "G1": false,
+    "G2": false,
+    "G3": true,
+    "G4": true,
+    "G5": true
+  },
+  "issues": [],
+  "old_p4c_terminal_preserved": "P4C_NOT_AUTHORIZED_BY_P4B",
+  "p4b_terminal_preserved": "P4B_IDENTITY_RELIABILITY_CONDITION_NOT_SUPPORTED",
+  "pass": true,
+  "preoutcome_assignment_sha256": "0a6c4caf19937ee9024b852173f07dc8b151d13806e0e5c4635fbca77d98db30",
+  "regime_counts": {
+    "S4": {
+      "REGIME_HIGH": 15,
+      "REGIME_LOW": 15
+    },
+    "S6": {
+      "REGIME_HIGH": 16,
+      "REGIME_LOW": 14
+    }
+  },
+  "reserved_settings": [
+    "S4",
+    "S6"
+  ],
+  "validated_at_utc": "2026-08-27T19:19:11.124858+00:00"
+}

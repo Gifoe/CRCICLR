@@ -1,0 +1,75 @@
+{
+  "P4D_AUTHORIZATION": "CONDITIONAL",
+  "P4E_gate": "requires P4C strong, P4D strong, canonical low-risk mean>=0.005 with CI lower>0, headroom contrast CI lower>0, purity",
+  "P4E_pre_authorization": "NOT_AUTHORIZED",
+  "bootstrap": {
+    "draws": 10000,
+    "hierarchy": [
+      "setting",
+      "fold",
+      "seed/run"
+    ],
+    "interval": "percentile 95%",
+    "method_configs_nested_within_run": true,
+    "seed": 440041
+  },
+  "canonical_configs_sha256": "f78494a04b29dcd4f345691159cc730a5a54645166aae5dc4f005faffb39b301",
+  "canonical_headroom_method": "DANN",
+  "content_sha256": "533ff598a27229b500cd960d7bc976dfcfe9a0b2a62b702d929100e8badbea57",
+  "forbidden": [
+    "outcome-driven lambda selection",
+    "outcome-driven method selection",
+    "405-grid restart",
+    "S5 completion",
+    "threshold tuning",
+    "nonlinear rescue",
+    "P4C rule changes",
+    "P4E training",
+    "sealed outer holdout access"
+  ],
+  "frozen_R_quantiles": {
+    "R_high_q75": 0.5,
+    "R_low_q25": 0.0,
+    "R_split_median": 0.3333333333333333,
+    "quantile_method": "numpy linear"
+  },
+  "hashes": {
+    "P4D_AUTHORIZATION.json": "8b59e0fcff0a9da0d477cd4b26ec5d073bc91f4c71e22be5239e16697fbd0966",
+    "P4D_SOURCE_BURDEN_FREEZE.json": "8da6cf33ac8322b685bbd6fff82b69e844d3c6a572b38a3e795b30c6191c359b",
+    "P4D_SOURCE_UNSAFE_BURDEN.csv": "3cabdd43c594c7b31ae5bf7fe24b727a972c087d20a6599cf4f8455edf2ecd8c",
+    "identity_manipulation.csv": "b42a5e6b4abd76d83c384436a1c1b98730a4ff4530d0d3fac563f4c421b8bd11",
+    "invariance_grid_inventory.csv": "45281da08d46211ffbafb11cda38f08ea9d90532cc86b886dea82ed747fc4507"
+  },
+  "identity_normalization": "within-setting (S_I_abs-median)/(1.4826*MAD+1e-12); fallback setting SD when MAD degenerate",
+  "inventory_status_counts": {
+    "HISTORICALLY_OBSERVED_TASK_OUTCOME": 495,
+    "TRAINED_BUT_TASK_OUTCOME_SEALED": 205,
+    "UNTRAINED": 200
+  },
+  "method_future_task_outcomes_accessed_before_freeze": false,
+  "parent_p4c_tip": "cc4b6bb3dc9f5182a80b1c658ccb2c278d397226",
+  "primary_burden": "R_unsafe=count(High-I AND High-E)/count(High-I)",
+  "primary_interaction_hypothesis": "beta_zSI_x_Runsafe < 0",
+  "primary_model": "DeltaG_BA ~ z_SI + R_unsafe + z_SI*R_unsafe + method fixed effects",
+  "prospective_settings": [
+    "S4",
+    "S6"
+  ],
+  "risk_split": "LOW when R_unsafe <= frozen pooled median; HIGH otherwise",
+  "schema": "PERSIST_EEG_P4D_PROTOCOL_FROZEN_V1",
+  "simple_slope_contrast": "DeltaSlope_bridge=slope(R_low)-slope(R_high)>0",
+  "supplementary_partial_setting": "S5",
+  "terminal_gates": {
+    "otherwise": "P4D_METHOD_LEVEL_BRIDGE_NOT_SUPPORTED",
+    "partial": "interaction and DeltaSlope directions correct with broad S4/S6 consistency but incomplete CI/method replication gates",
+    "strong": [
+      "G1>=2 competent methods",
+      "G2 interaction<0 CI upper<0",
+      "G3 DeltaSlope>0 CI lower>0",
+      "G4 S4/S6 direction correct",
+      "G5 >=2 methods direction correct",
+      "G6 purity PASS"
+    ]
+  },
+  "timestamp_utc": "2026-08-27T19:36:14.876551+00:00"
+}

@@ -1,0 +1,85 @@
+{
+  "headroom": {
+    "BestGlobalAction": "A3_Generic_75pct",
+    "BestGlobalAction_BA": 0.77475,
+    "Binary_Generic_NoAdapt_Oracle_BA": 0.77675,
+    "Binary_Oracle_Headroom_vs_Generic": 0.003999999999999998,
+    "Clean_Strong_Generic_BA": 0.7727499999999999,
+    "HEADROOM_SUPPORTED": false,
+    "OracleActionBank_BA": 0.781,
+    "OracleHeadroom_vs_Generic": 0.008250000000000002,
+    "PersonalizationHeadroom": 0.006249999999999978,
+    "checks": {
+      "H1_oracle_delta_ge_1pp": false,
+      "H2_personalization_ge_0_5pp": true,
+      "H3_at_least_6_subjects_ge_1pp": true,
+      "H4_positive_in_at_least_4_folds": true,
+      "H5_actions_constructed_without_future": true
+    },
+    "fold_positive_oracle_count": 5,
+    "internal_holdout_used": false,
+    "mean_Strong_Generic_regret": 0.008250000000000002,
+    "optimal_action_distribution": {
+      "A0_NoAdapt": 10,
+      "A1_Generic_25pct": 10,
+      "A2_Generic_50pct": 7,
+      "A3_Generic_75pct": 9,
+      "A4_Strong_Generic": 4
+    },
+    "per_fold_oracle": [
+      {
+        "fold": 0,
+        "generic_BA": 0.741111111111111,
+        "oracle_BA": 0.7511111111111111,
+        "oracle_delta": 0.009999999999999997,
+        "subjects": 9
+      },
+      {
+        "fold": 1,
+        "generic_BA": 0.8055555555555555,
+        "oracle_BA": 0.8144444444444444,
+        "oracle_delta": 0.008888888888888898,
+        "subjects": 9
+      },
+      {
+        "fold": 2,
+        "generic_BA": 0.7549999999999999,
+        "oracle_BA": 0.7633333333333333,
+        "oracle_delta": 0.00833333333333334,
+        "subjects": 6
+      },
+      {
+        "fold": 3,
+        "generic_BA": 0.7866666666666666,
+        "oracle_BA": 0.7922222222222222,
+        "oracle_delta": 0.00555555555555556,
+        "subjects": 9
+      },
+      {
+        "fold": 4,
+        "generic_BA": 0.7685714285714287,
+        "oracle_BA": 0.777142857142857,
+        "oracle_delta": 0.008571428571428563,
+        "subjects": 7
+      }
+    ],
+    "subjects_alternative_gain_ge_0_5pp": 22,
+    "subjects_alternative_gain_ge_1pp": 22,
+    "subjects_best_action_not_Generic": 36,
+    "worst_quartile_oracle_improvement": 0.007000000000000006
+  },
+  "mechanism": {
+    "M1_exact_Dfinite_validated": true,
+    "M2_Dfinite_beats_identity_by_0_03": true,
+    "M3_decision_increment_ge_0_03_or_4folds": false,
+    "M4_no_future_feature_leakage": true,
+    "M5_source_certified_rank": true,
+    "MECHANISM_SUPPORTED": false,
+    "decision_fold_positive_count": 2,
+    "decision_incremental_AUROC": -0.08243727598566297,
+    "strongest_conventional_AUROC": 0.7275985663082437,
+    "strongest_conventional_model": "M_conf",
+    "strongest_decision_AUROC": 0.6451612903225807,
+    "strongest_decision_model": "M_PUDfinite"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "terminal_state": "EXP4_PROTECTION_FAILED",
+  "dataset": "WBCIC/Yang2025/NEMAR nm000348",
+  "development_subject_count": 41,
+  "outer_subject_count": 10,
+  "outer_accessed": false,
+  "outer_authorized": false,
+  "selected_variant": "V1_HARD_PROJECTED_GUARD",
+  "primary": {
+    "frozen_BA": 0.7011588445429909,
+    "generic_BA": 0.7718944013303769,
+    "guard_BA": 0.773234632914511,
+    "guard_minus_generic": 0.001340231584134021,
+    "guard_minus_generic_CI95": [-0.0008548903670854904, 0.003535353535353527],
+    "sign_flip_p": 0.13663,
+    "exact_sign_p": 0.8255555602754612,
+    "guard_positive_subjects": 18,
+    "n_subjects": 41
+  },
+  "negative_transfer": {
+    "generic_rate": 0.1463414634146341,
+    "guard_rate": 0.1707317073170731,
+    "generic_worst_quartile": -0.0040765610651974,
+    "guard_worst_quartile": -0.0049902433425161
+  },
+  "mechanism": {
+    "generic_protected_drift": 0.35117941505714656,
+    "guard_protected_drift": 3.7051123759894686e-08,
+    "generic_decision_response_drift": 1.4766590968972482,
+    "guard_decision_response_drift": 1.3488731432052083,
+    "generic_drift_delta_BA_correlation": 0.34828252849227004
+  },
+  "controls_vs_generic": {
+    "RandomGuard": {"mean": 0.001463004023979624, "CI95": [-0.0003658536585365939, 0.0034544633325120817]},
+    "PCAGuard": {"mean": 0.0006136055678738694, "CI95": [-0.0012195121951219469, 0.002442873860556795]},
+    "PersistenceGuard": {"mean": 0.0018292682926829365, "CI95": [-0.00036585365853656943, 0.004027439024390232]},
+    "IdentityGuard": {"mean": 0.001341463414634153, "CI95": [-0.0002439024390243769, 0.0029268292682926907]}
+  },
+  "iterations": {
+    "V1": {"guard_minus_generic": 0.001340231584134021, "terminal": "EXP4_PROTECTION_FAILED"},
+    "V2_exact_response": {"guard_minus_generic": -0.006595528455284563, "guard_decision_response_drift": 4.4963181299629756e-09, "terminal": "EXP4_PROTECTION_FAILED"},
+    "V3_alpha_0_25": {"guard_minus_generic": 0.0008473454052722284, "guard_decision_response_drift": 1.0679833302804256, "terminal": "EXP4_PROTECTION_FAILED"}
+  },
+  "backbone_replication": "NOT_RUN_AFTER_PRIMARY_GATE_FAILURE",
+  "stronger_claim_not_justified": "Protection-aware updating improves future-session generalization",
+  "outer_result": null
+}

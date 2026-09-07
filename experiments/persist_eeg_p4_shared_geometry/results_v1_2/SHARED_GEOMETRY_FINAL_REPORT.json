@@ -1,0 +1,137 @@
+{
+  "status": "SHARED_GEOMETRY_V1_2_PASS",
+  "version": "Shared Geometry V1.2",
+  "gate": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "E": true,
+    "F": true
+  },
+  "gate_statistics": {
+    "A": {
+      "mean_run_effect": 0.336708983917519,
+      "positive_runs": 6,
+      "n_runs": 6,
+      "hierarchical_bootstrap": {
+        "mean": 0.336708983917519,
+        "median": 0.3068252701505817,
+        "ci95": [
+          0.23937274870137581,
+          0.43646161600915523
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_runs": 6,
+        "n_subject_values": 204
+      }
+    },
+    "B": {
+      "mean_run_effect": 0.15813725490196076,
+      "positive_runs": 6,
+      "n_runs": 6,
+      "hierarchical_bootstrap": {
+        "mean": 0.15813725490196082,
+        "median": 0.14632812500000003,
+        "ci95": [
+          0.12154247089460786,
+          0.1971367857689951
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_runs": 6,
+        "n_subject_values": 204
+      }
+    },
+    "C": {
+      "mean_run_effect": 0.3394534224901591,
+      "positive_runs": 6,
+      "n_runs": 6,
+      "hierarchical_bootstrap": {
+        "mean": 0.33945342249015914,
+        "median": 0.3285309287211959,
+        "ci95": [
+          0.2471250068717684,
+          0.43668782281251906
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_runs": 6,
+        "n_subject_values": 204
+      }
+    },
+    "D": {
+      "mean_run_effect": 0.40365142082186695,
+      "positive_runs": 6,
+      "n_runs": 6,
+      "hierarchical_bootstrap": {
+        "mean": 0.40365142082186695,
+        "median": 0.4134863899230453,
+        "ci95": [
+          0.3158248053042083,
+          0.499106507289978
+        ],
+        "sign_probability": 1.0,
+        "draws": 10000,
+        "n_runs": 6,
+        "n_subject_values": 204
+      }
+    }
+  },
+  "geometry_utility_link": {
+    "status": "OK",
+    "n_blocks": 43,
+    "beta_geometry": 0.024463423464322717,
+    "beta_geometry_bootstrap_ci95": [
+      0.013653064300372622,
+      0.04225720883721747
+    ],
+    "beta_geometry_sign_probability": 1.0,
+    "pooled_spearman_rho": 0.5558492703653285,
+    "bootstrap_draws": 10000,
+    "formula": "u_spec ~ geometry + persistence_strength + block_dimension + run_effects",
+    "implementation": "numpy_run_clustered_bootstrap"
+  },
+  "runs": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "canonical_spectrum_npz_sha256": "129567f93cc5b2c17f6142ddfb0dadd09342cf596195a6828e4104dea1a540e2",
+      "outer_test_used": false
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "canonical_spectrum_npz_sha256": "db87a4f0193d3417fec2baa8b1cc276d078dc5b76eb0c2fcb740189613cd1d18",
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "canonical_spectrum_npz_sha256": "37c689014d2052739ee7beb12e4f809f11fa2cdb53f88c0bcd075c5e5bdc6e83",
+      "outer_test_used": false
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "canonical_spectrum_npz_sha256": "8dc5490a0f9b111c516ad25b8e603de3869e34d43314e5f005ebb98362daca47",
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "canonical_spectrum_npz_sha256": "021ea98a0c849126e217504acf3189461d766a57a6b58edb02010fff7352d8d8",
+      "outer_test_used": false
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "canonical_spectrum_npz_sha256": "d96b1f574dc40e045d2a865ad1401c64e4ea15d5eb487ea2171b090529554ec6",
+      "outer_test_used": false
+    }
+  ],
+  "outer_test_used": false,
+  "method_training_started": false,
+  "canonical_spectrum_source": "Signed_V3.1"
+}

@@ -1,0 +1,34 @@
+{
+  "WBCIC_accessed": false,
+  "evaluation_selection_guards": 300,
+  "figure_sha256": {
+    "decision_vs_identity_rmse.pdf": "88536693b309fed126f8b3145258f66d42eb48a028ff4a70bd8001193a6c33ec",
+    "decision_vs_identity_rmse.png": "8062c96dffcdbb2e4e1ccc76d34a1ce4cf6cce371bc0b3313c551e8d2ab20b3f",
+    "identity_suppression_by_lambda.pdf": "85b63c426c2f8dcc98fb35f7b24680ec1101fcad17c8ef1e1c8906e62d519378",
+    "identity_suppression_by_lambda.png": "6cae55f7a990118b98d4ea058c8a125e8103d26d8e1bca6b338c66658e3a6cd6",
+    "identity_vs_generalization.pdf": "0a896e5c25bad143cdbcca24a8f88cfe5fdb57548bf53d479f25a8cb69122379",
+    "identity_vs_generalization.png": "886d293614d5ec16f19016efacbeed1cd35499df0812391925c5fbbd2c1ea769",
+    "performance_by_method.pdf": "657a9d6a79ebb5b78b793393af8c6d311e949b8e5e21020d34cd959d175ae386",
+    "performance_by_method.png": "ba444e5effb0350a3a851a2b6fa6295dc4aa8e0d8d7eaec376f3f4969791786c"
+  },
+  "issues": [],
+  "matched_initialization_and_minibatch_units": 30,
+  "pass": true,
+  "restricted_data_accessed": false,
+  "result_rows": {
+    "decision_vs_identity_prediction.csv": 124,
+    "direction_audit.csv": 2400,
+    "identity_probe.csv": 300,
+    "invariance_stress.csv": 270,
+    "main_performance.csv": 2400
+  },
+  "result_sha256": {
+    "decision_vs_identity_prediction.csv": "558fa7f96c565cf27933d834d0345b092ead1abcc73ecf3d72ea5f2087c2ac8e",
+    "direction_audit.csv": "dd525b9f97fe5f6d6260f1bb3a92aeeaaee2bb7f251ec144e10739ecea000cc4",
+    "identity_probe.csv": "930d1f286599c5a667e0738a8774884295a9bec9a52efcfe5372890cb06efa47",
+    "invariance_stress.csv": "c80467448386dc0c7d15713429832547d0b491a55bf7c5ea500d0cfa85a0dbda",
+    "main_performance.csv": "251c9df903219ab9edb07c95849c5f322b5520b95276d538c5d420550e592ad7"
+  },
+  "selection_frozen_units": 30,
+  "terminal_state": "SUBJECT_INVARIANCE_AUDIT_STRONG_MISALIGNMENT_SUPPORTED"
+}
