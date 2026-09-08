@@ -11,7 +11,7 @@ import pandas as pd
 from task_datasets import EXP, OUTPUTS, PROTOCOL, TASKS, write_json
 
 BOOTSTRAPS = 10_000
-MI_DATASET = EXP.parents[1] / "persist_eeg_final_heldout_confirmation_v1" / "outputs" / "DATASET_RESULTS.csv"
+MI_DATASET = EXP.parent / "persist_eeg_final_heldout_confirmation_v1" / "outputs" / "DATASET_RESULTS.csv"
 
 
 def bootstrap(delta_pp: np.ndarray) -> dict[str, float | int]:

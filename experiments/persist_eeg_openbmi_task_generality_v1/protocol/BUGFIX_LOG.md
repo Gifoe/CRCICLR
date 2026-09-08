@@ -7,3 +7,5 @@
 - Resuming a CUDA-mapped checkpoint failed before optimization because PyTorch requires the saved CPU RNG state on CPU. `restore_rng` now applies `.cpu()` to that state only. This exactly restores the serialized state; no model/data/split/loss/optimizer/seed/metric definition changed.
 
 - CUDA RNG state has the same PyTorch CPU-ByteTensor API requirement when restored from a CUDA-mapped checkpoint. The resume path now converts saved CUDA RNG tensors to CPU ByteTensors before `set_rng_state_all`; no numerical training definition changed.
+
+- Final aggregation initially resolved the fixed historical MI reference table one directory too high. The path now points to `experiments/persist_eeg_final_heldout_confirmation_v1/outputs/DATASET_RESULTS.csv`; this changes no task data, trained model, metric, or terminal rule.
