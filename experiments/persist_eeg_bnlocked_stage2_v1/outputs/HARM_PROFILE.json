@@ -1,0 +1,38 @@
+{
+  "OpenBMI/BNLOCK-JOINTCE": {
+    "gain_ge_plus_1pp": 0.75,
+    "tie_abs_lt_0_5pp": 0.075,
+    "vs_EEGNet": {
+      "le_minus_1pp": 0.125,
+      "le_minus_3pp": 0.05,
+      "le_minus_5pp": 0.0
+    }
+  },
+  "OpenBMI/BNLOCK-NRRF": {
+    "gain_ge_plus_1pp": 0.675,
+    "tie_abs_lt_0_5pp": 0.15,
+    "vs_EEGNet": {
+      "le_minus_1pp": 0.125,
+      "le_minus_3pp": 0.025,
+      "le_minus_5pp": 0.0
+    }
+  },
+  "WBCIC/BNLOCK-JOINTCE": {
+    "gain_ge_plus_1pp": 0.5483870967741935,
+    "tie_abs_lt_0_5pp": 0.03225806451612903,
+    "vs_EEGNet": {
+      "le_minus_1pp": 0.25806451612903225,
+      "le_minus_3pp": 0.16129032258064516,
+      "le_minus_5pp": 0.03225806451612903
+    }
+  },
+  "WBCIC/BNLOCK-NRRF": {
+    "gain_ge_plus_1pp": 0.5483870967741935,
+    "tie_abs_lt_0_5pp": 0.03225806451612903,
+    "vs_EEGNet": {
+      "le_minus_1pp": 0.2903225806451613,
+      "le_minus_3pp": 0.12903225806451613,
+      "le_minus_5pp": 0.03225806451612903
+    }
+  }
+}
