@@ -1,0 +1,747 @@
+{
+  "all_checkpoint_hashes_match_frozen_provenance": true,
+  "all_models_eval_only_and_frozen": true,
+  "all_required_checkpoints_exist": true,
+  "alpha_exactly_0_5": true,
+  "code_sha256": {
+    "aggregate_final_confirmation.py": "c947e286f80379523c18daea538dd7b76294aa5bf9b4a2d1ae056203a8e5165e",
+    "load_final_carriers.py": "2726cc9be40c9dc10b0253e7414880b68582de37cd447d43b57ca59ce2c179ee",
+    "run_final_confirmation.py": "d2816d3c8f8327db3384cd390de8531ce80694a28d116aa40f880a61187d8166"
+  },
+  "exact_dataset_fold_seed_pair_mapping": true,
+  "exact_fixed_logit_average": true,
+  "expected_checkpoints": 60,
+  "expected_pairs": 30,
+  "heldout_label_arrays_opened": false,
+  "heldout_signal_schema_only": {
+    "OpenBMI": {
+      "12": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-12/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-12/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "13": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-13/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-13/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "17": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-17/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-17/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "18": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-18/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-18/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "24": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-24/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-24/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "25": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-25/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-25/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "29": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-29/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-29/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "36": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-36/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-36/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "37": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-37/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-37/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "39": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-39/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-39/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "4": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-04/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-04/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "42": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-42/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-42/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "51": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-51/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-51/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      },
+      "54": {
+        "dtype": "float32",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-54/ses-2/mi_1train_codes.npy",
+        "shape": [
+          100,
+          62,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/openbmi/openbmi/sub-54/ses-2/mi_1train_signals.npy",
+        "trials": 100
+      }
+    },
+    "WBCIC": {
+      "sub-17": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-17/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-17/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-19": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-19/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-19/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-2": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-2/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-2/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-21": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-21/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-21/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-25": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-25/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-25/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-3": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-3/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-3/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-31": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-31/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-31/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-33": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-33/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-33/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-38": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-38/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-38/ses-2_epochs.npy",
+        "trials": 200
+      },
+      "sub-42": {
+        "dtype": "float16",
+        "label_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-42/ses-2_labels.npy",
+        "shape": [
+          200,
+          58,
+          1000
+        ],
+        "signal_path": "/root/rivermind-data/persist_eeg_cache/wbcic/wbcic_epochs/sub-42/ses-2_epochs.npy",
+        "trials": 200
+      }
+    }
+  },
+  "heldout_subjects_absent_from_normalizer_fit": true,
+  "missing_replicates": 0,
+  "no_backward_path": true,
+  "no_learned_fusion_head": true,
+  "no_optimizer_instantiated": true,
+  "output_dimensions_correct": true,
+  "pass": true,
+  "preflight_only": true,
+  "source_only_normalizers_reproduced_and_hash_verified": true,
+  "synthetic_tests": [
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 0,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 0,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 0,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 1,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 1,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 1,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 2,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 2,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 2,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 3,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 3,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 3,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 4,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 4,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "OpenBMI",
+      "eval_only_and_frozen": true,
+      "fold": 4,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 0,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 0,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 0,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 1,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 1,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 1,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 2,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 2,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 2,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 3,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 3,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 3,
+      "seed": 2
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 4,
+      "seed": 0
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 4,
+      "seed": 1
+    },
+    {
+      "EEGNet_logits_shape": [
+        2,
+        2
+      ],
+      "LOGIT50_exact": true,
+      "LiteBN_logits_shape": [
+        2,
+        2
+      ],
+      "dataset": "WBCIC",
+      "eval_only_and_frozen": true,
+      "fold": 4,
+      "seed": 2
+    }
+  ]
+}
