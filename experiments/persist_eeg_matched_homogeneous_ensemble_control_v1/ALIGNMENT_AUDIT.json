@@ -1,4 +1,102 @@
 {
+  "all_blocks": {
+    "OpenBMI_ERP": {
+      "all_models_and_seeds_exactly_aligned": true,
+      "future_session": 2,
+      "subjects": [
+        "4",
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "42",
+        "51",
+        "54"
+      ],
+      "trial_identity_rule": "dataset|task|subject|session|source_row_index"
+    },
+    "OpenBMI_MI": {
+      "all_models_and_seeds_exactly_aligned": true,
+      "future_session": 2,
+      "subjects": [
+        "4",
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "42",
+        "51",
+        "54"
+      ],
+      "trial_identity_rule": "dataset|task|subject|session|row_index"
+    },
+    "OpenBMI_SSVEP": {
+      "all_models_and_seeds_exactly_aligned": true,
+      "future_session": 2,
+      "subjects": [
+        "4",
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "42",
+        "51",
+        "54"
+      ],
+      "trial_identity_rule": "dataset|task|subject|session|source_row_index"
+    },
+    "WBCIC_MI": {
+      "all_models_and_seeds_exactly_aligned": true,
+      "future_session": 2,
+      "subjects": [
+        "sub-2",
+        "sub-3",
+        "sub-17",
+        "sub-19",
+        "sub-21",
+        "sub-25",
+        "sub-31",
+        "sub-33",
+        "sub-38",
+        "sub-42"
+      ],
+      "trial_identity_rule": "dataset|task|subject|session|row_index"
+    }
+  },
+  "all_checkpoint_hashes_verified_before_inference": true,
+  "all_pairs": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "both_heterogeneous_orientations_retained": true,
   "canonical_trial_identity": [
     "dataset",
     "task",
@@ -1348,9 +1446,13 @@
       1
     ]
   },
-  "heldout_label_values_opened": false,
+  "fusion_weight_exactly": 0.5,
+  "heldout_label_values_opened": true,
+  "no_duplicate_trials": true,
+  "no_orientation_selection": true,
+  "no_rows_dropped": true,
   "pass": true,
-  "phase": "preflight",
+  "phase": "evaluation",
   "required_folds": [
     0,
     1,
