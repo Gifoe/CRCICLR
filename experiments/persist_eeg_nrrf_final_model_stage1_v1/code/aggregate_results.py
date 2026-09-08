@@ -37,6 +37,7 @@ def terminal(open_ok: bool, wbcic_ok: bool, robust_ok: bool) -> str:
     if open_ok and wbcic_ok and robust_ok: return "NRRF_STAGE1_SEED0_PASS_EXPAND"
     if open_ok and not wbcic_ok: return "NRRF_WBCIC_REPAIR_FAIL_STOP"
     if wbcic_ok and not open_ok: return "NRRF_OPENBMI_UPSIDE_NOT_PRESERVED_STOP"
+    if not open_ok and not wbcic_ok: return "NRRF_CONSTRUCTIVE_FAIL_STOP"
     if not robust_ok: return "NRRF_ROBUST_OBJECTIVE_NOT_JUSTIFIED_STOP"
     return "NRRF_CONSTRUCTIVE_FAIL_STOP"
 
