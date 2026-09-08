@@ -1,0 +1,27 @@
+{
+  "CBraMod": "reshape each trial to (channels, 5, 200), official patch length 200",
+  "CodeBrain": "reshape each trial to (channels, 5, 200), official EEGSSM patch length 200",
+  "EEGConformer": "dataset-native spatial convolution; temporal length unchanged",
+  "OpenBMI": {
+    "channels": 62,
+    "future_session": [
+      2
+    ],
+    "samples": 1000,
+    "source_session": [
+      1
+    ]
+  },
+  "WBCIC": {
+    "channels": 58,
+    "future_session": [
+      2
+    ],
+    "samples": 1000,
+    "source_session": [
+      0,
+      1
+    ]
+  },
+  "canonical_input": "same cached MI trial; float32 normalized per fold from source sessions"
+}

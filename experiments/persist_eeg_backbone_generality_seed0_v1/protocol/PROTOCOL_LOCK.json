@@ -1,0 +1,20 @@
+{
+  "backbones": [
+    "EEGConformer",
+    "CBraMod",
+    "CodeBrain"
+  ],
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "fusion": {
+    "alpha_search": false,
+    "rule": "0.5 * raw_logit_A + 0.5 * raw_logit_B"
+  },
+  "holdout_isolation": "screen phase never loads internal holdout or true outer subjects",
+  "pretrained_checkpoint_manifest": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_backbone_generality_seed0_v1\\protocol\\PRETRAINED_CHECKPOINTS.json",
+  "protocol": "PERSIST_EEG_BACKBONE_GENERALITY_SEED0_V1",
+  "search_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+  "seed": 0
+}

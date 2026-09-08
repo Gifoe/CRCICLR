@@ -1,0 +1,83 @@
+{
+  "critical_checks_pass": true,
+  "models": [
+    {
+      "backbone": "EEGConformer",
+      "channels": 62,
+      "checkpoint_roundtrip_identical": true,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "output_shape": [
+        2,
+        2
+      ],
+      "parameters": 858386,
+      "pretrained_loaded": false
+    },
+    {
+      "backbone": "EEGConformer",
+      "channels": 58,
+      "checkpoint_roundtrip_identical": true,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "output_shape": [
+        2,
+        2
+      ],
+      "parameters": 851986,
+      "pretrained_loaded": false
+    },
+    {
+      "backbone": "CBraMod",
+      "channels": 62,
+      "checkpoint_roundtrip_identical": true,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "output_shape": [
+        2,
+        2
+      ],
+      "parameters": 4924402,
+      "pretrained_loaded": true
+    },
+    {
+      "backbone": "CBraMod",
+      "channels": 58,
+      "checkpoint_roundtrip_identical": true,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "output_shape": [
+        2,
+        2
+      ],
+      "parameters": 4924402,
+      "pretrained_loaded": true
+    },
+    {
+      "backbone": "CodeBrain",
+      "channels": 62,
+      "checkpoint_roundtrip_identical": true,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "output_shape": [
+        2,
+        2
+      ],
+      "parameters": 15291602,
+      "pretrained_loaded": true
+    },
+    {
+      "backbone": "CodeBrain",
+      "channels": 58,
+      "checkpoint_roundtrip_identical": true,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "output_shape": [
+        2,
+        2
+      ],
+      "parameters": 15283602,
+      "pretrained_loaded": true
+    }
+  ]
+}

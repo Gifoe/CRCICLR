@@ -1,0 +1,43 @@
+{
+  "amp": {
+    "CBraMod": "bfloat16",
+    "CodeBrain": false,
+    "EEGConformer": "bfloat16"
+  },
+  "backbones": [
+    "EEGConformer",
+    "CBraMod",
+    "CodeBrain"
+  ],
+  "batch_size": 64,
+  "checkpoint_selection": "earliest strict best inner future-session subject-balanced BA",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "epochs": {
+    "CBraMod": 10,
+    "CodeBrain": 10,
+    "EEGConformer": 60
+  },
+  "folds": 5,
+  "fusion": "RAW_LOGIT50",
+  "fusion_weights": [
+    0.5,
+    0.5
+  ],
+  "gradient_clip": 5.0,
+  "hyperparameter_sweep": false,
+  "learning_rate": {
+    "CBraMod": 0.0001,
+    "CodeBrain": 0.0001,
+    "EEGConformer": 0.0002
+  },
+  "optimizer": "AdamW",
+  "seed": 0,
+  "weight_decay": {
+    "CBraMod": 0.01,
+    "CodeBrain": 0.0005,
+    "EEGConformer": 0.0005
+  }
+}
