@@ -25,7 +25,11 @@ def rng_state() -> dict[str, Any]:
 
 
 def restore_rng(value: dict[str, Any]) -> None:
-    random.setstate(value["python"]); np.random.set_state(value["numpy"]); torch.set_rng_state(value["torch"])
+    random.setstate(value["python"]); np.random.set_state(value["numpy"])
+    # torch.load(map_location=cuda) moves the CPU RNG tensor as well; the CPU
+    # generator API requires a CPU ByteTensor.  Moving it back restores the
+    # exact saved state and changes no model/training computation.
+    torch.set_rng_state(value["torch"].detach().cpu())
     if "cuda" in value and torch.cuda.is_available(): torch.cuda.set_rng_state_all(value["cuda"])
 
 

@@ -15,6 +15,11 @@
   "original_protocol_lock_sha256": "6103e8caa55ae1fbf3e25daa2d78e15c9bfb95d3e09369901f0d042c1eacd81f",
   "pass": true,
   "protocol": "PERSIST_EEG_OPENBMI_TASK_GENERALITY_V1_SEED0_PRELIMINARY_AMENDMENT",
+  "resume_engineering_bugfix": {
+    "effect": "restores CPU RNG state from a CUDA-mapped checkpoint; no model, data, split, loss, optimizer, seed, or metric change",
+    "file": "train_task_carriers.py",
+    "sha256_after_fix": "5d68fbd046b804d512d14b7332dbbaf199d93e16614797c0696e08367b0af761"
+  },
   "scientific_changes": {
     "carrier_trainings": 20,
     "heldout_replicates_per_subject": 5,
