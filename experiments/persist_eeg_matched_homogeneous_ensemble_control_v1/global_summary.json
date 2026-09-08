@@ -1,0 +1,85 @@
+{
+  "PROB50_sensitivity": [
+    {
+      "D_avg_pp": 0.24761904761904813,
+      "D_best_pp": -0.9642857142857143,
+      "block": "OpenBMI_MI",
+      "fusion_rule": "LOGIT50"
+    },
+    {
+      "D_avg_pp": 0.23189033189033217,
+      "D_best_pp": -0.17813852813852815,
+      "block": "OpenBMI_ERP",
+      "fusion_rule": "LOGIT50"
+    },
+    {
+      "D_avg_pp": -0.0547619047619046,
+      "D_best_pp": -0.8571428571428571,
+      "block": "OpenBMI_SSVEP",
+      "fusion_rule": "LOGIT50"
+    },
+    {
+      "D_avg_pp": -0.04999999999999978,
+      "D_best_pp": -0.8750000000000002,
+      "block": "WBCIC_MI",
+      "fusion_rule": "LOGIT50"
+    },
+    {
+      "D_avg_pp": 0.24761904761904813,
+      "D_best_pp": -0.9642857142857143,
+      "block": "OpenBMI_MI",
+      "fusion_rule": "PROB50"
+    },
+    {
+      "D_avg_pp": 0.23189033189033217,
+      "D_best_pp": -0.17813852813852815,
+      "block": "OpenBMI_ERP",
+      "fusion_rule": "PROB50"
+    },
+    {
+      "D_avg_pp": 0.03571428571428575,
+      "D_best_pp": -0.6571428571428573,
+      "block": "OpenBMI_SSVEP",
+      "fusion_rule": "PROB50"
+    },
+    {
+      "D_avg_pp": -0.04999999999999978,
+      "D_best_pp": -0.8750000000000002,
+      "block": "WBCIC_MI",
+      "fusion_rule": "PROB50"
+    }
+  ],
+  "bootstrap": {
+    "global_method": "stratified within-block subject bootstrap; equal mean of four blocks",
+    "replicates": 10000,
+    "seed": 20260909,
+    "unit": "subject"
+  },
+  "global_LOGIT50": {
+    "D_avg": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.23189033189033217,
+        "OpenBMI_MI": 0.24761904761904813,
+        "OpenBMI_SSVEP": -0.0547619047619046,
+        "WBCIC_MI": -0.04999999999999978
+      },
+      "ci_high_pp": 0.27803648088023114,
+      "ci_low_pp": -0.11501041666666646,
+      "mean_pp": 0.09368686868686898
+    },
+    "D_best": {
+      "block_means_pp": {
+        "OpenBMI_ERP": -0.17813852813852815,
+        "OpenBMI_MI": -0.9642857142857143,
+        "OpenBMI_SSVEP": -0.8571428571428571,
+        "WBCIC_MI": -0.8750000000000002
+      },
+      "ci_high_pp": -0.512276424963925,
+      "ci_low_pp": -0.9616058802308801,
+      "mean_pp": -0.718641774891775
+    },
+    "large_reproducible_disadvantage": false,
+    "positive_blocks_D_avg": 2
+  },
+  "terminal": "HETEROGENEOUS_ADVANTAGE_WEAK"
+}

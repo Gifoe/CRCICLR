@@ -80,6 +80,10 @@ def freeze_digest() -> str:
     return sha256(FREEZE)
 
 
+def code_digest() -> str:
+    return sha256(Path(__file__))
+
+
 def require_freeze() -> str:
     actual = freeze_digest()
     if not FREEZE_HASH.is_file() or FREEZE_HASH.read_text(encoding="utf-8").strip() != actual:
@@ -245,6 +249,7 @@ def preflight() -> None:
     dump_json(EXP / "ALIGNMENT_AUDIT.json", alignment)
     dump_json(EXP / "PREFLIGHT_TESTS.json", {
         "pass": True, "protocol_sha256": freeze, "heldout_label_values_opened": False,
+        "implementation_sha256": code_digest(),
         "all_frozen_checkpoints_hash_verified": True, "all_models_eval_only": True,
         "all_three_seeds": True, "all_five_folds": True, "all_seed_pairs_locked": True,
         "no_training": True, "no_calibration": True, "no_adaptive_fusion": True,
@@ -264,6 +269,11 @@ def _record_subject(block: str, dataset: str, task: str, subject: str, fold: int
     ba, f1, prediction = metric(y, combined, rule)
     if len(identity) != len(y) or len(np.unique(identity)) != len(identity):
         raise RuntimeError(f"alignment failure while forming {block}/{subject}/f{fold}/{i}{j}")
+    classes = list(range(int(np.max(y)) + 1))
+    count = [int((y == c).sum()) for c in classes]
+    correct_a = [int(((p_a == y) & (y == c)).sum()) for c in classes]
+    correct_b = [int(((p_b == y) & (y == c)).sum()) for c in classes]
+    correct_ensemble = [int(((prediction == y) & (y == c)).sum()) for c in classes]
     return {
         "block": block, "dataset": dataset, "task": task, "subject_id": str(subject), "future_session": 2,
         "fold": fold, "seed_i": i, "seed_j": j, "family": family, "fusion_rule": rule,
@@ -277,6 +287,8 @@ def _record_subject(block: str, dataset: str, task: str, subject: str, fold: int
         "exclusive_correct_fraction": float(np.mean((p_a == y) != (p_b == y))),
         "correct_A": int((p_a == y).sum()), "correct_B": int((p_b == y).sum()),
         "ensemble_correct": int((prediction == y).sum()),
+        "class_counts": json.dumps(count), "class_correct_A": json.dumps(correct_a),
+        "class_correct_B": json.dumps(correct_b), "class_correct_ensemble": json.dumps(correct_ensemble),
     }
 
 
@@ -298,6 +310,21 @@ def _aggregate_pair_subjects(rows: list[dict[str, Any]], block: str, dataset: st
                   "orientation_BA_difference_pp": 100.0 * (a["ensemble_BA"] - b["ensemble_BA"])}
         output.append(merged)
     return output
+
+
+def aggregate_metrics(rows: list[dict[str, Any]]) -> dict[str, float]:
+    """Balanced accuracy after pooling all subject trials in a fixed pair unit."""
+    parsed = [tuple(np.asarray(json.loads(r[key]), dtype=float) for key in
+                    ("class_counts", "class_correct_A", "class_correct_B", "class_correct_ensemble")) for r in rows]
+    counts = np.sum([x[0] for x in parsed], axis=0)
+    if np.any(counts <= 0):
+        raise RuntimeError("aggregate BA has an absent class")
+    ba_a = float(np.mean(np.sum([x[1] for x in parsed], axis=0) / counts))
+    ba_b = float(np.mean(np.sum([x[2] for x in parsed], axis=0) / counts))
+    ba_ensemble = float(np.mean(np.sum([x[3] for x in parsed], axis=0) / counts))
+    return {"aggregate_BA_A": ba_a, "aggregate_BA_B": ba_b, "aggregate_BA": ba_ensemble,
+            "aggregate_G_best_pp": 100.0 * (ba_ensemble - max(ba_a, ba_b)),
+            "aggregate_G_mean_pp": 100.0 * (ba_ensemble - 0.5 * (ba_a + ba_b))}
 
 
 def run_block(block: str, dataset: str, task: str,
@@ -341,13 +368,20 @@ def run_block(block: str, dataset: str, task: str,
                                          "D_avg_pp": h["gain_over_best_pp"] - 0.5 * (e["gain_over_best_pp"] + l["gain_over_best_pp"]),
                                          "D_best_pp": h["gain_over_best_pp"] - max(e["gain_over_best_pp"], l["gain_over_best_pp"])})
                 for family, values in (("EEGNet_homogeneous", ee), ("LiteBN_homogeneous", ll), ("Heterogeneous_orientation_mean", hetero)):
+                    if family == "Heterogeneous_orientation_mean":
+                        a_metrics = aggregate_metrics(per_family[f"{rule}:Heterogeneous_A"])
+                        b_metrics = aggregate_metrics(per_family[f"{rule}:Heterogeneous_B"])
+                        aggregate = {key: float(np.mean([a_metrics[key], b_metrics[key]])) for key in a_metrics}
+                    else:
+                        aggregate = aggregate_metrics(values)
                     pair_rows.append({"block": block, "dataset": dataset, "task": task, "fold": fold, "seed_i": i, "seed_j": j,
                                       "family": family, "fusion_rule": rule, "n_subjects": len(values),
-                                      "aggregate_mean_subject_BA": float(np.mean([r["ensemble_BA"] for r in values])),
+                                      "mean_subject_BA": float(np.mean([r["ensemble_BA"] for r in values])),
                                       "aggregate_mean_subject_macro_F1": float(np.mean([r["ensemble_macro_F1"] for r in values])),
                                       "G_best_pp": float(np.mean([r["gain_over_best_pp"] for r in values])),
                                       "G_mean_pp": float(np.mean([r["gain_over_mean_pp"] for r in values])),
-                                      "exclusive_correct_fraction": float(np.mean([r["exclusive_correct_fraction"] for r in values]))})
+                                      "exclusive_correct_fraction": float(np.mean([r["exclusive_correct_fraction"] for r in values])),
+                                      **aggregate})
                 hh = [r for r in subject_rows if r["block"] == block and r["fold"] == fold and r["seed_i"] == i and r["seed_j"] == j and r["family"] == "Matched_contrast" and r["fusion_rule"] == rule]
                 pair_rows.append({"block": block, "dataset": dataset, "task": task, "fold": fold, "seed_i": i, "seed_j": j,
                                   "family": "Matched_contrast", "fusion_rule": rule, "n_subjects": len(hh),
@@ -449,7 +483,7 @@ def write_decision(summary: pd.DataFrame, global_summary: dict[str, Any], comp: 
 def evaluate() -> None:
     require_freeze()
     pf = json.loads((EXP / "PREFLIGHT_TESTS.json").read_text(encoding="utf-8"))
-    if not pf.get("pass") or pf.get("heldout_label_values_opened"):
+    if not pf.get("pass") or pf.get("heldout_label_values_opened") or pf.get("implementation_sha256") != code_digest():
         raise RuntimeError("MATCHED_ENSEMBLE_PROTOCOL_INVALID: metadata-only preflight required")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     mi, task = mi_records(), task_records()
