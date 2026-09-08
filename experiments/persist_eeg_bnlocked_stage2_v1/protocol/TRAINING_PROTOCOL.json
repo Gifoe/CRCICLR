@@ -1,0 +1,38 @@
+{
+  "EMA_beta": 0.99,
+  "alpha": 0.5,
+  "cells": 20,
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "early_stopping": false,
+  "epochs": 20,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "lr": 0.0001,
+  "methods": [
+    "BNLOCK-JOINTCE",
+    "BNLOCK-NRRF"
+  ],
+  "optimizer": "AdamW",
+  "phase": "A",
+  "scheduler": null,
+  "seed": 0,
+  "source_sessions": {
+    "OpenBMI": [
+      1
+    ],
+    "WBCIC": [
+      0,
+      1
+    ]
+  },
+  "weight_decay": 0.0005
+}

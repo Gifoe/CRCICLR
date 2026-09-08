@@ -1,0 +1,13 @@
+{
+  "BN_mode": "eval throughout every training forward",
+  "frozen_buffers": [
+    "running_mean",
+    "running_var",
+    "num_batches_tracked"
+  ],
+  "invariant_terminal": "BNLOCK_BUFFER_INVARIANT_VIOLATION",
+  "trainable_BN_affine": [
+    "weight",
+    "bias"
+  ]
+}
