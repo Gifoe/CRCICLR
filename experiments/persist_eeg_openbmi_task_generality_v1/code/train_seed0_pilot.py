@@ -13,7 +13,7 @@ from train_task_carriers import lock_sha, train_one
 
 def main() -> int:
     amendment = json.loads((PROTOCOL / "SEED0_PRELIMINARY_AMENDMENT.json").read_text(encoding="utf-8"))
-    if not amendment.get("pass") or amendment.get("seeds") != [0] or not amendment.get("heldout_evaluation_forbidden"):
+    if not amendment.get("pass") or amendment.get("scientific_changes", {}).get("seeds") != [0] or not amendment.get("heldout_evaluation_forbidden"):
         raise RuntimeError("invalid seed0 amendment")
     lock = lock_sha(); device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     split = json.loads((PROTOCOL / "SUBJECT_SPLIT_REFERENCE.json").read_text(encoding="utf-8"))
