@@ -1,0 +1,1258 @@
+{
+  "expected_trainings": 20,
+  "heldout_labels_opened": false,
+  "pass": true,
+  "records": [
+    {
+      "best_inner_val_BA": 0.874141414141414,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold0_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "63c2ae5ba2fdae5283e30adad1ed69466fa3484c47b66cbd42d1901c57e82277",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 0,
+      "init_sha256": "c26787fba3cac9628c31517d2868d08430d52a025790fe4d3368e5d0ed71d5ef",
+      "initialization_seed": 0,
+      "manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "9f8f60e7d74014665f6c41f858b7bc1a01a182ee6a74f4255849bace52f412c4",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "7",
+          "10",
+          "16",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "28",
+          "30",
+          "31",
+          "34",
+          "35",
+          "40",
+          "41",
+          "43",
+          "44",
+          "45",
+          "46",
+          "48",
+          "49",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 30,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8798484848484849,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold0_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "2abd5a36099dd7886c813f1ca9deaa043158ce533a29b6ab31aacf611848f23b",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 0,
+      "init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "initialization_seed": 0,
+      "manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "9f8f60e7d74014665f6c41f858b7bc1a01a182ee6a74f4255849bace52f412c4",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "7",
+          "10",
+          "16",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "28",
+          "30",
+          "31",
+          "34",
+          "35",
+          "40",
+          "41",
+          "43",
+          "44",
+          "45",
+          "46",
+          "48",
+          "49",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 10,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8372727272727273,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold1_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "cc2294ef011ad6e408f9f2b34b8d88d3ecc7b94649cad94e8ac3fc4f36e60305",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 1,
+      "init_sha256": "c26787fba3cac9628c31517d2868d08430d52a025790fe4d3368e5d0ed71d5ef",
+      "initialization_seed": 0,
+      "manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "e2de89059c6012827f0772d4648300c99af68a230b90c5b6210825a3cab5501b",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "10",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "30",
+          "32",
+          "33",
+          "34",
+          "38",
+          "41",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "50",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 39,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8354545454545454,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold1_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "c08f0f3483a798cec6cfcf478741f17cdc1686870da39749ba6ae265536d3c9a",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 1,
+      "init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "initialization_seed": 0,
+      "manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "e2de89059c6012827f0772d4648300c99af68a230b90c5b6210825a3cab5501b",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "10",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "30",
+          "32",
+          "33",
+          "34",
+          "38",
+          "41",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "50",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 13,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8013636363636364,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold2_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "e3d146676646900abc46d853119701225f959bbbd7241e0a8abaa121e72d2b3b",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 2,
+      "init_sha256": "c26787fba3cac9628c31517d2868d08430d52a025790fe4d3368e5d0ed71d5ef",
+      "initialization_seed": 0,
+      "manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "d58614d92d36fe84a3e6a2cc077409586c3c85e039c41e6ea925ec45069a822a",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "2",
+          "3",
+          "7",
+          "9",
+          "10",
+          "15",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "38",
+          "40",
+          "41",
+          "43",
+          "44",
+          "47",
+          "49",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 54,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8008585858585859,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold2_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "58fc6dc4928d3ab4b8a85ba59773d740388233db674ed3200485ece132a8a3c6",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 2,
+      "init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "initialization_seed": 0,
+      "manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "d58614d92d36fe84a3e6a2cc077409586c3c85e039c41e6ea925ec45069a822a",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "2",
+          "3",
+          "7",
+          "9",
+          "10",
+          "15",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "38",
+          "40",
+          "41",
+          "43",
+          "44",
+          "47",
+          "49",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 30,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8488888888888889,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold3_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "a07faf7af3207dd7e59c39a6f4e8599184641c220f6e0c3f93a6b20bfca26d7c",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 3,
+      "init_sha256": "c26787fba3cac9628c31517d2868d08430d52a025790fe4d3368e5d0ed71d5ef",
+      "initialization_seed": 0,
+      "manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "0c2673978377de33dbdc9eec11e75acf70a690be484d67dc44af2b17c4ad8341",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "11",
+          "15",
+          "20",
+          "21",
+          "23",
+          "26",
+          "28",
+          "30",
+          "31",
+          "33",
+          "38",
+          "40",
+          "41",
+          "44",
+          "47",
+          "48",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 32,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8526262626262627,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold3_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "116e47d97d6b3c9e5e55bc077a0ba3ce8d06c99f4b575aebcbd42cef2363dca6",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 3,
+      "init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "initialization_seed": 0,
+      "manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "0c2673978377de33dbdc9eec11e75acf70a690be484d67dc44af2b17c4ad8341",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "11",
+          "15",
+          "20",
+          "21",
+          "23",
+          "26",
+          "28",
+          "30",
+          "31",
+          "33",
+          "38",
+          "40",
+          "41",
+          "44",
+          "47",
+          "48",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 12,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8413636363636364,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold4_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "561e140787961f28d3563270f77f4387da9d3ddc8590dd9d6029e5c882af762e",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 4,
+      "init_sha256": "c26787fba3cac9628c31517d2868d08430d52a025790fe4d3368e5d0ed71d5ef",
+      "initialization_seed": 0,
+      "manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "89b5bfef40ef0e746130fae2c13f2702001b0cad26af7298e63cf8fc10192f97",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "8",
+          "10",
+          "14",
+          "16",
+          "19",
+          "22",
+          "23",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32",
+          "33",
+          "35",
+          "40",
+          "43",
+          "45",
+          "47",
+          "49",
+          "50"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 57,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.818989898989899,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/erp_fold4_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "4caeea4ba87063b74c542024a30a05d044454583c0d10a10dccb5228513f421b",
+      "class_weight_info": {
+        "counts": [
+          42900,
+          8580
+        ],
+        "formula": "N/(K*N_k)",
+        "weighted_cross_entropy": true,
+        "weights": [
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "fold": 4,
+      "init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "initialization_seed": 0,
+      "manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "89b5bfef40ef0e746130fae2c13f2702001b0cad26af7298e63cf8fc10192f97",
+        "samples_per_channel": 12870000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "8",
+          "10",
+          "14",
+          "16",
+          "19",
+          "22",
+          "23",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32",
+          "33",
+          "35",
+          "40",
+          "43",
+          "45",
+          "47",
+          "49",
+          "50"
+        ],
+        "trials": 51480
+      },
+      "seed": 0,
+      "selected_epoch": 16,
+      "source_train_only": true,
+      "task": "ERP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.9550000000000001,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold0_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "00d4207510b9a4cb0173643330843afc048326fa14ddb7b1d179e8564520b439",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 0,
+      "init_sha256": "6d9eebcbd31724185d662fa7dd52539044ecfb25568bf0903874e3ad17b83954",
+      "initialization_seed": 0,
+      "manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "ee5e5751bdcf139783ff744897d821bf571b82584eb02518b105d673d9c906a2",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "7",
+          "10",
+          "16",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "28",
+          "30",
+          "31",
+          "34",
+          "35",
+          "40",
+          "41",
+          "43",
+          "44",
+          "45",
+          "46",
+          "48",
+          "49",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 21,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.9383333333333334,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold0_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "6b46c3e8d910d5f469accbd9561b3f5b2eaf1d9b21f237d46229d5f85f3347a2",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 0,
+      "init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "initialization_seed": 0,
+      "manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "ee5e5751bdcf139783ff744897d821bf571b82584eb02518b105d673d9c906a2",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "7",
+          "10",
+          "16",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "28",
+          "30",
+          "31",
+          "34",
+          "35",
+          "40",
+          "41",
+          "43",
+          "44",
+          "45",
+          "46",
+          "48",
+          "49",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 31,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.91,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold1_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "0a3d20c38a5887733b56055a6b84e2a3bf94a969c09c10d9b8a896aea98daa4e",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 1,
+      "init_sha256": "6d9eebcbd31724185d662fa7dd52539044ecfb25568bf0903874e3ad17b83954",
+      "initialization_seed": 0,
+      "manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "3ccca7591e0a73b37af6be0cd7a48c06ad58b0690e9e045892cf121dc791498b",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "10",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "30",
+          "32",
+          "33",
+          "34",
+          "38",
+          "41",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "50",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 39,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.9033333333333333,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold1_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "4a461aa942074529c03f69729feea592406dbb9a3d16657d7a05e51274a0ab91",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 1,
+      "init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "initialization_seed": 0,
+      "manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "3ccca7591e0a73b37af6be0cd7a48c06ad58b0690e9e045892cf121dc791498b",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "10",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "27",
+          "30",
+          "32",
+          "33",
+          "34",
+          "38",
+          "41",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "50",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 17,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.9383333333333334,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold2_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "5e34e4e735b4e6ed8957b0ab9d283a9bec4b0770d1b09486f2c57a1a216f99bf",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 2,
+      "init_sha256": "6d9eebcbd31724185d662fa7dd52539044ecfb25568bf0903874e3ad17b83954",
+      "initialization_seed": 0,
+      "manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "65457744184c97f7501093f7f0ae77803c77c55c76221e4319732fe46e157686",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "2",
+          "3",
+          "7",
+          "9",
+          "10",
+          "15",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "38",
+          "40",
+          "41",
+          "43",
+          "44",
+          "47",
+          "49",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 53,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.9133333333333334,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold2_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "393369f8bbeb7ed6cf7d11ff2e8634ec97c659caac0a69d0e16b4ee09210e5b8",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 2,
+      "init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "initialization_seed": 0,
+      "manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "65457744184c97f7501093f7f0ae77803c77c55c76221e4319732fe46e157686",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "2",
+          "3",
+          "7",
+          "9",
+          "10",
+          "15",
+          "16",
+          "19",
+          "20",
+          "21",
+          "22",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "38",
+          "40",
+          "41",
+          "43",
+          "44",
+          "47",
+          "49",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 45,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8533333333333334,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold3_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "71243166dd482e20029e0a7c0158d5baacb42a70d91e37fda7d4b37c4deee9c9",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 3,
+      "init_sha256": "6d9eebcbd31724185d662fa7dd52539044ecfb25568bf0903874e3ad17b83954",
+      "initialization_seed": 0,
+      "manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "23fc006691b42bd16828108fc89922654fa7567a759b789614a5642702113b52",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "11",
+          "15",
+          "20",
+          "21",
+          "23",
+          "26",
+          "28",
+          "30",
+          "31",
+          "33",
+          "38",
+          "40",
+          "41",
+          "44",
+          "47",
+          "48",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 35,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8649999999999999,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold3_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "69f2772a3ba8dc5ffb15cf63533bb9e590293fb58e7d095b4121b3fd78786fd0",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 3,
+      "init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "initialization_seed": 0,
+      "manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "23fc006691b42bd16828108fc89922654fa7567a759b789614a5642702113b52",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "7",
+          "9",
+          "11",
+          "15",
+          "20",
+          "21",
+          "23",
+          "26",
+          "28",
+          "30",
+          "31",
+          "33",
+          "38",
+          "40",
+          "41",
+          "44",
+          "47",
+          "48",
+          "50",
+          "52",
+          "53"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 47,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.9283333333333333,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold4_seed0_eegnet/selected_best.pt",
+      "checkpoint_sha256": "3b184c2e17ae109150c841990693681e205b3b7c2f2bdf466d1631ef6039bff9",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 4,
+      "init_sha256": "6d9eebcbd31724185d662fa7dd52539044ecfb25568bf0903874e3ad17b83954",
+      "initialization_seed": 0,
+      "manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "model": "EEGNet",
+      "normalizer": {
+        "mean_std_sha256": "f35658c5b6e9edf7065b881ffbf59d3e0e0afa7726e18c3849663747b9413dda",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "8",
+          "10",
+          "14",
+          "16",
+          "19",
+          "22",
+          "23",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32",
+          "33",
+          "35",
+          "40",
+          "43",
+          "45",
+          "47",
+          "49",
+          "50"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 46,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    },
+    {
+      "best_inner_val_BA": 0.8433333333333333,
+      "checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold4_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "ade61a2103ff649aa1d4810b29c9006dcfdee9f80bde04ebe2af941681c32273",
+      "class_weight_info": {
+        "counts": [
+          650,
+          650,
+          650,
+          650
+        ],
+        "formula": "ordinary multiclass cross entropy",
+        "weighted_cross_entropy": false,
+        "weights": null
+      },
+      "fold": 4,
+      "init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "initialization_seed": 0,
+      "manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "model": "LiteBN",
+      "normalizer": {
+        "mean_std_sha256": "f35658c5b6e9edf7065b881ffbf59d3e0e0afa7726e18c3849663747b9413dda",
+        "samples_per_channel": 2600000,
+        "sessions": [
+          1
+        ],
+        "subjects": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "6",
+          "8",
+          "10",
+          "14",
+          "16",
+          "19",
+          "22",
+          "23",
+          "26",
+          "27",
+          "28",
+          "30",
+          "31",
+          "32",
+          "33",
+          "35",
+          "40",
+          "43",
+          "45",
+          "47",
+          "49",
+          "50"
+        ],
+        "trials": 2600
+      },
+      "seed": 0,
+      "selected_epoch": 31,
+      "source_train_only": true,
+      "task": "SSVEP",
+      "training_rng_seed": 100000
+    }
+  ],
+  "seed": 0
+}

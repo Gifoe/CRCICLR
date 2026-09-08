@@ -1,0 +1,37 @@
+{
+  "heldout_rows": [
+    {
+      "EEGNet_BA": 0.8513073593073593,
+      "LOGIT50_BA": 0.8571298701298701,
+      "LOGIT50_minus_LiteBN_pp": 1.0584415584415579,
+      "LiteBN_BA": 0.8465454545454547,
+      "bootstrap_ci_high_pp": 0.8588744588744543,
+      "bootstrap_ci_low_pp": 0.3090909090909096,
+      "mean_delta_pp": 0.5822510822510808,
+      "median_delta_pp": 0.46363636363636607,
+      "n_subjects": 14,
+      "positive_subjects": 12,
+      "scope": "HELDOUT",
+      "task": "ERP"
+    },
+    {
+      "EEGNet_BA": 0.8855714285714286,
+      "LOGIT50_BA": 0.9158571428571428,
+      "LOGIT50_minus_LiteBN_pp": 0.8857142857142865,
+      "LiteBN_BA": 0.9069999999999999,
+      "bootstrap_ci_high_pp": 5.1,
+      "bootstrap_ci_low_pp": 1.2428571428571416,
+      "mean_delta_pp": 3.028571428571427,
+      "median_delta_pp": 1.6000000000000014,
+      "n_subjects": 14,
+      "positive_subjects": 11,
+      "scope": "HELDOUT",
+      "task": "SSVEP"
+    }
+  ],
+  "heldout_subjects": 14,
+  "not_final": true,
+  "replicates_per_subject": 5,
+  "seed": 0,
+  "terminal": "SEED0_HELDOUT_PROVISIONAL_POSITIVE_BOTH"
+}
