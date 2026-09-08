@@ -1,0 +1,18 @@
+{
+  "LOGIT50": "argmax(0.5*logits_EEGNet + 0.5*logits_LiteBN)",
+  "PROB50": "argmax(0.5*softmax(logits_EEGNet) + 0.5*softmax(logits_LiteBN))",
+  "learned_gate": false,
+  "oracle": "NON_DEPLOYABLE label-informed diagnostic",
+  "primary": "LOGIT50",
+  "weight_search": false,
+  "weights": {
+    "LOGIT50": [
+      0.5,
+      0.5
+    ],
+    "PROB50": [
+      0.5,
+      0.5
+    ]
+  }
+}

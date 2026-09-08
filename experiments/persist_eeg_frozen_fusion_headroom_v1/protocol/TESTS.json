@@ -1,0 +1,625 @@
+{
+  "LOGIT50_weights": [
+    0.5,
+    0.5
+  ],
+  "PROB50_weights": [
+    0.5,
+    0.5
+  ],
+  "all_checkpoint_sha256_verified": true,
+  "all_model_parameters_frozen": true,
+  "all_models_eval": true,
+  "backward_called": false,
+  "baseline_reproduced_within_1e-6": true,
+  "baseline_reproduction": [
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8,
+      "fold": 0,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8262499999999999,
+      "fold": 0,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8262499999999999,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.80875,
+      "fold": 0,
+      "model": "EEGNet",
+      "recomputed_BA": 0.80875,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8474999999999999,
+      "fold": 0,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8474999999999999,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7875000000000001,
+      "fold": 0,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7875000000000001,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8474999999999999,
+      "fold": 0,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8474999999999999,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8125,
+      "fold": 1,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8125,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8325,
+      "fold": 1,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8325,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8,
+      "fold": 1,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8275,
+      "fold": 1,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8275,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.8175,
+      "fold": 1,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8175,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.81125,
+      "fold": 1,
+      "model": "LiteBN",
+      "recomputed_BA": 0.81125,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.6875,
+      "fold": 2,
+      "model": "EEGNet",
+      "recomputed_BA": 0.6875,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7275,
+      "fold": 2,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7275,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.71,
+      "fold": 2,
+      "model": "EEGNet",
+      "recomputed_BA": 0.71,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.70375,
+      "fold": 2,
+      "model": "LiteBN",
+      "recomputed_BA": 0.70375,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7262500000000001,
+      "fold": 2,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7262500000000001,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7012499999999999,
+      "fold": 2,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7012499999999999,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.76,
+      "fold": 3,
+      "model": "EEGNet",
+      "recomputed_BA": 0.76,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7875000000000001,
+      "fold": 3,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7875000000000001,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7275,
+      "fold": 3,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7275,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7725,
+      "fold": 3,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7725,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.74875,
+      "fold": 3,
+      "model": "EEGNet",
+      "recomputed_BA": 0.74875,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7737499999999999,
+      "fold": 3,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7737499999999999,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.72875,
+      "fold": 4,
+      "model": "EEGNet",
+      "recomputed_BA": 0.72875,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.78375,
+      "fold": 4,
+      "model": "LiteBN",
+      "recomputed_BA": 0.78375,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.71625,
+      "fold": 4,
+      "model": "EEGNet",
+      "recomputed_BA": 0.71625,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.765,
+      "fold": 4,
+      "model": "LiteBN",
+      "recomputed_BA": 0.765,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7549999999999999,
+      "fold": 4,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7549999999999999,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "OpenBMI",
+      "expected_BA": 0.7849999999999999,
+      "fold": 4,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7849999999999999,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7714285714285715,
+      "fold": 0,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7714285714285715,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7792857142857141,
+      "fold": 0,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7792857142857141,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8007142857142856,
+      "fold": 0,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8007142857142856,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7792857142857142,
+      "fold": 0,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7792857142857142,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7714285714285715,
+      "fold": 0,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7714285714285715,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7428571428571428,
+      "fold": 0,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7428571428571428,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8125,
+      "fold": 1,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8125,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7733333333333333,
+      "fold": 1,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7733333333333333,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8266666666666667,
+      "fold": 1,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8266666666666667,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7808333333333333,
+      "fold": 1,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7808333333333333,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8166666666666668,
+      "fold": 1,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8166666666666668,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7975,
+      "fold": 1,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7975,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7491666666666666,
+      "fold": 2,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7491666666666666,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7558333333333334,
+      "fold": 2,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7558333333333334,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7583333333333333,
+      "fold": 2,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7583333333333333,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7508333333333335,
+      "fold": 2,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7508333333333335,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7549999999999999,
+      "fold": 2,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7549999999999999,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.745,
+      "fold": 2,
+      "model": "LiteBN",
+      "recomputed_BA": 0.745,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8146811868686868,
+      "fold": 3,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8146811868686868,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8405408249158249,
+      "fold": 3,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8405408249158249,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8029366582491583,
+      "fold": 3,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8029366582491583,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8372337962962964,
+      "fold": 3,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8372337962962964,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8088310185185185,
+      "fold": 3,
+      "model": "EEGNet",
+      "recomputed_BA": 0.8088310185185185,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.8339436026936027,
+      "fold": 3,
+      "model": "LiteBN",
+      "recomputed_BA": 0.8339436026936027,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7675,
+      "fold": 4,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7675,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7875000000000001,
+      "fold": 4,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7875000000000001,
+      "seed": 0,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7683333333333332,
+      "fold": 4,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7683333333333332,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7733333333333334,
+      "fold": 4,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7733333333333334,
+      "seed": 1,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7633333333333335,
+      "fold": 4,
+      "model": "EEGNet",
+      "recomputed_BA": 0.7633333333333335,
+      "seed": 2,
+      "within_1e-6": true
+    },
+    {
+      "absolute_difference": 0.0,
+      "dataset": "WBCIC",
+      "expected_BA": 0.7616666666666667,
+      "fold": 4,
+      "model": "LiteBN",
+      "recomputed_BA": 0.7616666666666667,
+      "seed": 2,
+      "within_1e-6": true
+    }
+  ],
+  "exact_previous_60_selected_checkpoints_used": true,
+  "exact_previous_fivefold_split_reused": true,
+  "fusion_weight_search": false,
+  "learned_gate": false,
+  "optimizer_instantiated": false,
+  "oracle_marked_non_deployable": true,
+  "sealed_holdout_accessed": false,
+  "subject_dependent_deployable_rule": false
+}
