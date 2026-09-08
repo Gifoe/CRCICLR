@@ -1,0 +1,17 @@
+{
+  "extra": [
+    "p_A",
+    "p_E",
+    "abs(p_A-p_E)"
+  ],
+  "forbidden": [
+    "subject_id",
+    "session_id",
+    "dataset_id",
+    "target statistics",
+    "target labels"
+  ],
+  "h_A": "frozen EEGNet penultimate 64-d representation",
+  "h_E": "frozen LiteBN penultimate 64-d representation",
+  "normalization": "per-sample L2, epsilon=1e-6"
+}

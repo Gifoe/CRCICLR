@@ -1,0 +1,11 @@
+{
+  "CFRF-v1": "Linear(131,32) -> GELU -> Dropout(0.10) -> Linear(32,1)",
+  "GLOBAL-ALPHA": "q; delta=0.25*tanh(q); q initialized to zero",
+  "alpha_initial": 0.5,
+  "alpha_range": [
+    0.25,
+    0.75
+  ],
+  "delta": "0.25*tanh(g_phi)",
+  "final_linear_zero": true
+}

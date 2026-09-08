@@ -1,0 +1,43 @@
+{
+  "CFRF_primary": "epoch30 EMA beta 0.99",
+  "GLOBAL_ALPHA_primary": "epoch30 scalar",
+  "K": 6,
+  "M": 32,
+  "early_stopping": false,
+  "epochs": 30,
+  "gradient_clip": 5.0,
+  "head_training_subjects": "INNER_VAL only",
+  "lambda_delta": 0.1,
+  "lr": 0.0003,
+  "optimizer": "AdamW",
+  "phase_a": {
+    "cells": 20,
+    "datasets": [
+      "OpenBMI",
+      "WBCIC"
+    ],
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "methods": [
+      "GLOBAL-ALPHA",
+      "CFRF-v1"
+    ],
+    "seed": 0
+  },
+  "scheduler": null,
+  "source_sessions": {
+    "OpenBMI": [
+      1
+    ],
+    "WBCIC": [
+      0,
+      1
+    ]
+  },
+  "weight_decay": 0.001
+}
