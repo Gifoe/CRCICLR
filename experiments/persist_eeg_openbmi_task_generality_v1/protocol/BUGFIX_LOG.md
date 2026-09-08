@@ -9,3 +9,5 @@
 - CUDA RNG state has the same PyTorch CPU-ByteTensor API requirement when restored from a CUDA-mapped checkpoint. The resume path now converts saved CUDA RNG tensors to CPU ByteTensors before `set_rng_state_all`; no numerical training definition changed.
 
 - Final aggregation initially resolved the fixed historical MI reference table one directory too high. The path now points to `experiments/persist_eeg_final_heldout_confirmation_v1/outputs/DATASET_RESULTS.csv`; this changes no task data, trained model, metric, or terminal rule.
+
+- Final Markdown aggregation attempted to cast the display-string positive-subject field (for example `14/14`) to an integer. The formatter now renders the already-computed display value directly; no data, statistic, or terminal criterion changed.
