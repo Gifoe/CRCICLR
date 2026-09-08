@@ -1,0 +1,46 @@
+{
+  "backbones": [
+    "EEGConformer",
+    "CBraMod",
+    "CodeBrain"
+  ],
+  "bootstrap": {
+    "block": "dataset x backbone",
+    "resamples": 10000,
+    "seed": 0
+  },
+  "companions": [
+    "LiteBN",
+    "EEGNet"
+  ],
+  "correlation": "Spearman rank correlation",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "final_holdout_loaded": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "fusion": {
+    "rule": "0.5 * raw_logit_A + 0.5 * raw_logit_B",
+    "weights": [
+      0.5,
+      0.5
+    ]
+  },
+  "holdout_access": false,
+  "lock_timestamp_utc": "2026-09-08T19:05:03.388955+00:00",
+  "no_alpha_tuning": true,
+  "no_checkpoint_reselection": true,
+  "no_training": true,
+  "partner_tie_tolerance": 1e-08,
+  "primary_outcome": "OUTER_DEV subject-balanced G_best under fixed raw-logit 50/50 fusion",
+  "primary_predictor": "INNER_VAL subject-balanced exclusive-correct complementarity C_subject",
+  "protocol": "PERSIST_EEG_PROSPECTIVE_COMPLEMENTARITY_V1",
+  "wbcic_true_outer_loaded": false
+}
