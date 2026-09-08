@@ -30,7 +30,7 @@ def restore_rng(value: dict[str, Any]) -> None:
     # generator API requires a CPU ByteTensor.  Moving it back restores the
     # exact saved state and changes no model/training computation.
     torch.set_rng_state(value["torch"].detach().cpu())
-    if "cuda" in value and torch.cuda.is_available(): torch.cuda.set_rng_state_all(value["cuda"])
+    if "cuda" in value and torch.cuda.is_available(): torch.cuda.set_rng_state_all([state.detach().cpu() for state in value["cuda"]])
 
 
 def evaluate_val(model:torch.nn.Module,bundle:Any,cache:RawGPUCache,subjects:list[str],mean:np.ndarray,std:np.ndarray)->float:
