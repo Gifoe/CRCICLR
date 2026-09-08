@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from pathlib import Path
 from typing import Any
 
@@ -11,6 +12,7 @@ import pandas as pd
 
 EXP = Path(__file__).resolve().parents[1]
 OUT, PROTOCOL = EXP / "outputs", EXP / "protocol"
+RUNTIME = Path(os.environ.get("NRRF_RUNTIME", "/root/rivermind-data/nrrf_final_model_stage1_runtime")).resolve()
 BOOTSTRAPS = 10_000
 
 
@@ -53,7 +55,9 @@ def main() -> int:
     for method in ("LiteBN", "FROZEN-LOGIT50", "JOINT-CE", "NRRF-v1"):
         wide[f"delta_{method}_vs_EEGNet_pp"] = (wide[f"BA_{method}"] - wide["BA_EEGNet"]) * 100
         wide[f"delta_{method}_vs_LOGIT50_pp"] = (wide[f"BA_{method}"] - wide["BA_FROZEN-LOGIT50"]) * 100
-    wide.to_csv(OUT / "PHASE_A_SUBJECT_RESULTS.csv", index=False)
+    # Preserve the required long table (all methods and all three metrics) and
+    # place derived within-subject comparisons in a separate compact artifact.
+    wide.to_csv(OUT / "PHASE_A_SUBJECT_COMPARISON.csv", index=False)
     fold_rows = []
     for (dataset, fold), group in wide.groupby(["dataset", "fold"]):
         base = group.BA_EEGNet.mean()
@@ -71,6 +75,15 @@ def main() -> int:
         row = {"dataset":dataset,"EEGNet_BA":float(group.BA_EEGNet.mean()),"LiteBN_BA":float(group.BA_LiteBN.mean()),"Frozen_LOGIT50_BA":float(group["BA_FROZEN-LOGIT50"].mean()),"JOINT_CE_BA":float(group["BA_JOINT-CE"].mean()),"NRRF_BA":float(group["BA_NRRF-v1"].mean()),"NRRF_gain_vs_EEGNet_pp":b["mean_pp"],"NRRF_median_subject_gain_pp":b["median_pp"],"NRRF_bootstrap_ci_low_pp":b["ci_low_pp"],"NRRF_bootstrap_ci_high_pp":b["ci_high_pp"],"NRRF_gain_vs_LOGIT50_pp":float((group["BA_NRRF-v1"]-group["BA_FROZEN-LOGIT50"]).mean()*100),"NRRF_harm_le_minus_1pp_fraction":float((delta<=-.01).mean()),"NRRF_harm_le_minus_3pp_fraction":float((delta<=-.03).mean()),"NRRF_worst_subject_delta_pp":float(delta.min()*100),"NRRF_positive_folds":int((f.delta_vs_EEGNet_pp>0).sum()),"NRRF_worst_fold_delta_pp":float(f.delta_vs_EEGNet_pp.min()),"NRRF_vs_JOINT_CE_meanBA_pp":robust_ba,"WBCIC_harm_reduction_vs_JOINT_CE_pp":robust_harm_reduction}
         dataset_rows.append(row); checks[dataset] = row
     ds = pd.DataFrame(dataset_rows); ds.to_csv(OUT / "PHASE_A_DATASET_RESULTS.csv", index=False)
+    diagnostics = []
+    for dataset in ("OpenBMI", "WBCIC"):
+        for fold in range(5):
+            for method in ("JOINT-CE", "NRRF-v1"):
+                path = RUNTIME / "cells" / f"{dataset.lower()}_fold{fold}_seed0_{method.lower().replace('-', '_')}" / "training_diagnostics.json"
+                if not path.is_file():
+                    raise RuntimeError(f"missing required training diagnostic: {path}")
+                diagnostics.append(json.loads(path.read_text(encoding="utf-8")))
+    write_json(OUT / "TRAINING_DIAGNOSTICS.json", {"phase": "A", "diagnostic_only": True, "cells": diagnostics})
     o,w = checks["OpenBMI"], checks["WBCIC"]
     open_ok = o["NRRF_gain_vs_EEGNet_pp"] >= 3 and o["NRRF_positive_folds"] == 5 and o["NRRF_worst_fold_delta_pp"] > -.5 and o["NRRF_harm_le_minus_1pp_fraction"] <= .10
     wbcic_ok = w["NRRF_gain_vs_EEGNet_pp"] >= 1 and w["NRRF_positive_folds"] >= 4 and w["NRRF_worst_fold_delta_pp"] > -2 and w["NRRF_median_subject_gain_pp"] > 0 and w["NRRF_harm_le_minus_1pp_fraction"] < .15
