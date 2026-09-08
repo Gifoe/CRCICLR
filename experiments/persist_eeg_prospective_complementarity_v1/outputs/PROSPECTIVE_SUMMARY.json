@@ -1,0 +1,30 @@
+{
+  "block_matching_count": 3,
+  "holdout_access": false,
+  "partner_ranking": {
+    "accuracy_excluding_ties": 0.6538461538461539,
+    "correct": 17,
+    "incorrect": 9,
+    "n": 30,
+    "ties": 4
+  },
+  "preexisting_units": 60,
+  "primary": {
+    "bootstrap_ci": null,
+    "n": 0,
+    "p_two_sided": null,
+    "rho": null
+  },
+  "prospective_eligible_units": 0,
+  "supportive_posthoc": {
+    "block_bootstrap_ci": [
+      -0.2367085647559306,
+      0.3456192217144393
+    ],
+    "n": 60,
+    "p_two_sided_permutation": 0.8647135286471352,
+    "rho": 0.02264639288620894,
+    "within_block_centered_rho": 0.18320825463864396
+  },
+  "terminal": "PROSPECTIVE_TEST_INSUFFICIENT"
+}
