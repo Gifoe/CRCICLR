@@ -1,0 +1,209 @@
+{
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "note": "Internal holdout audit; WBCIC true outer subjects were not accessed.",
+  "post_screen_only": true,
+  "rows": [
+    {
+      "BA": 0.5047142857142857,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.40640043766406025,
+      "model": "CBraMod",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7114285714285714,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.7031282538593652,
+      "model": "CBraMod+EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7454285714285713,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.737647266921416,
+      "model": "CBraMod+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.650857142857143,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.630490609927129,
+      "model": "CodeBrain",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7044285714285715,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.6939806152058551,
+      "model": "CodeBrain+EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7301428571428571,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.7209712947593383,
+      "model": "CodeBrain+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7382857142857142,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.7309753235971506,
+      "model": "EEGConformer",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7487142857142856,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.7425767804558102,
+      "model": "EEGConformer+EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7588571428571428,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.7524481163091175,
+      "model": "EEGConformer+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7117142857142857,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.7037605737126124,
+      "model": "EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7489999999999999,
+      "dataset": "OpenBMI",
+      "folds": 5,
+      "macro_F1": 0.741576673629817,
+      "model": "EEGNet+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 14
+    },
+    {
+      "BA": 0.7448999999999999,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7407102800641435,
+      "model": "CBraMod",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7891000000000001,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7849006833883166,
+      "model": "CBraMod+EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7979999999999999,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7938198506592151,
+      "model": "CBraMod+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7515999999999999,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7495060973032309,
+      "model": "CodeBrain",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7877,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7847845085790104,
+      "model": "CodeBrain+EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7924000000000001,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7889149259815902,
+      "model": "CodeBrain+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7557,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7473078806452902,
+      "model": "EEGConformer",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7944999999999999,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7887818539096952,
+      "model": "EEGConformer+EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7942,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7889926246768618,
+      "model": "EEGConformer+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.795,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7910385237420221,
+      "model": "EEGNet",
+      "selection_used_holdout": false,
+      "subjects": 10
+    },
+    {
+      "BA": 0.7994,
+      "dataset": "WBCIC",
+      "folds": 5,
+      "macro_F1": 0.7942327432606229,
+      "model": "EEGNet+LiteBN",
+      "selection_used_holdout": false,
+      "subjects": 10
+    }
+  ],
+  "selection_used_holdout": false
+}

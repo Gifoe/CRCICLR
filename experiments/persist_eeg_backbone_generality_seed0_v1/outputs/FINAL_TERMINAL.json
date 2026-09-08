@@ -1,0 +1,334 @@
+{
+  "holdout_confirmation_separate": true,
+  "new_backbones": [
+    "EEGConformer",
+    "CBraMod",
+    "CodeBrain"
+  ],
+  "rows": [
+    {
+      "backbone": "CBraMod",
+      "base_BA": 0.50975,
+      "base_bootstrap_ci": [
+        22.15,
+        27.575
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": 0.30000000000001137,
+      "delta_best_ci_low_pp": -0.12499999999999734,
+      "delta_best_pp": 0.10000000000000009,
+      "delta_vs_base_pp": 24.9,
+      "delta_vs_partner_pp": 0.10000000000000009,
+      "folds": 5,
+      "fusion_BA": 0.7587499999999999,
+      "pair": "CBraMod+EEGNet",
+      "partner_BA": 0.7577499999999999,
+      "partner_bootstrap_ci": [
+        -0.1250000000000001,
+        0.30000000000000054
+      ],
+      "positive_folds_over_best": 3
+    },
+    {
+      "backbone": "CBraMod",
+      "base_BA": 0.50975,
+      "base_bootstrap_ci": [
+        25.174375,
+        31.0
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": 0.12500000000000844,
+      "delta_best_ci_low_pp": -0.20000000000000018,
+      "delta_best_pp": -0.024999999999997247,
+      "delta_vs_base_pp": 28.15,
+      "delta_vs_partner_pp": -0.0250000000000003,
+      "folds": 5,
+      "fusion_BA": 0.79125,
+      "pair": "CBraMod+LiteBN",
+      "partner_BA": 0.7915,
+      "partner_bootstrap_ci": [
+        -0.20000000000000018,
+        0.12499999999999982
+      ],
+      "positive_folds_over_best": 0
+    },
+    {
+      "backbone": "CodeBrain",
+      "base_BA": 0.6675,
+      "base_bootstrap_ci": [
+        6.450000000000003,
+        10.675
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": 0.6750000000000034,
+      "delta_best_ci_low_pp": -1.924999999999999,
+      "delta_best_pp": -0.5999999999999894,
+      "delta_vs_base_pp": 8.425,
+      "delta_vs_partner_pp": -0.5999999999999989,
+      "folds": 5,
+      "fusion_BA": 0.75175,
+      "pair": "CodeBrain+EEGNet",
+      "partner_BA": 0.7577499999999999,
+      "partner_bootstrap_ci": [
+        -1.9249999999999994,
+        0.6750000000000017
+      ],
+      "positive_folds_over_best": 2
+    },
+    {
+      "backbone": "CodeBrain",
+      "base_BA": 0.6675,
+      "base_bootstrap_ci": [
+        8.35,
+        12.8
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": -0.6999999999999895,
+      "delta_best_ci_low_pp": -3.049999999999986,
+      "delta_best_pp": -1.8249999999999988,
+      "delta_vs_base_pp": 10.575,
+      "delta_vs_partner_pp": -1.8250000000000006,
+      "folds": 5,
+      "fusion_BA": 0.77325,
+      "pair": "CodeBrain+LiteBN",
+      "partner_BA": 0.7915,
+      "partner_bootstrap_ci": [
+        -3.05,
+        -0.6999999999999997
+      ],
+      "positive_folds_over_best": 1
+    },
+    {
+      "backbone": "EEGConformer",
+      "base_BA": 0.75775,
+      "base_bootstrap_ci": [
+        1.999999999999999,
+        4.225
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": 3.6499999999999977,
+      "delta_best_ci_low_pp": 1.275000000000015,
+      "delta_best_pp": 3.1000000000000028,
+      "delta_vs_base_pp": 3.0999999999999988,
+      "delta_vs_partner_pp": 3.0999999999999996,
+      "folds": 5,
+      "fusion_BA": 0.7887500000000001,
+      "pair": "EEGConformer+EEGNet",
+      "partner_BA": 0.7577499999999999,
+      "partner_bootstrap_ci": [
+        1.2993749999999995,
+        4.8756249999999905
+      ],
+      "positive_folds_over_best": 5
+    },
+    {
+      "backbone": "EEGConformer",
+      "base_BA": 0.75775,
+      "base_bootstrap_ci": [
+        1.9999999999999982,
+        4.499999999999998
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": 0.9499999999999953,
+      "delta_best_ci_low_pp": -1.2500000000000067,
+      "delta_best_pp": -0.17500000000000293,
+      "delta_vs_base_pp": 3.1999999999999993,
+      "delta_vs_partner_pp": -0.17500000000000016,
+      "folds": 5,
+      "fusion_BA": 0.78975,
+      "pair": "EEGConformer+LiteBN",
+      "partner_BA": 0.7915,
+      "partner_bootstrap_ci": [
+        -1.250000000000001,
+        0.9499999999999996
+      ],
+      "positive_folds_over_best": 3
+    },
+    {
+      "backbone": "EEGNet",
+      "base_BA": 0.7577499999999999,
+      "base_bootstrap_ci": [
+        2.8500000000000005,
+        5.700000000000001
+      ],
+      "dataset": "OpenBMI",
+      "delta_best_ci_high_pp": 1.849999999999996,
+      "delta_best_ci_low_pp": -0.09999999999998899,
+      "delta_best_pp": 0.8500000000000063,
+      "delta_vs_base_pp": 4.225,
+      "delta_vs_partner_pp": 0.85,
+      "folds": 10,
+      "fusion_BA": 0.8,
+      "pair": "EEGNet+LiteBN",
+      "partner_BA": 0.7915,
+      "partner_bootstrap_ci": [
+        -0.09999999999999923,
+        1.8499999999999996
+      ],
+      "positive_folds_over_best": 6
+    },
+    {
+      "backbone": "CBraMod",
+      "base_BA": 0.7348468556533071,
+      "base_bootstrap_ci": [
+        2.5645161290322562,
+        5.902003910068424
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 0.20967741935483702,
+      "delta_best_ci_low_pp": -1.51612903225804,
+      "delta_best_pp": -0.6629806125773574,
+      "delta_vs_base_pp": 4.120356793743889,
+      "delta_vs_partner_pp": -0.6629806125773882,
+      "folds": 5,
+      "fusion_BA": 0.7760504235907464,
+      "pair": "CBraMod+EEGNet",
+      "partner_BA": 0.78268022971652,
+      "partner_bootstrap_ci": [
+        -1.5161290322580647,
+        0.20967741935483714
+      ],
+      "positive_folds_over_best": 2
+    },
+    {
+      "backbone": "CBraMod",
+      "base_BA": 0.7348468556533071,
+      "base_bootstrap_ci": [
+        2.9454626914304356,
+        7.459328160638643
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 0.8229064841968061,
+      "delta_best_ci_low_pp": -0.8706419028999823,
+      "delta_best_pp": -0.03193222548062424,
+      "delta_vs_base_pp": 5.187398175301402,
+      "delta_vs_partner_pp": -0.03193222548061349,
+      "folds": 5,
+      "fusion_BA": 0.7867208374063213,
+      "pair": "CBraMod+LiteBN",
+      "partner_BA": 0.7870401596611275,
+      "partner_bootstrap_ci": [
+        -0.8706419028999681,
+        0.8229064841968063
+      ],
+      "positive_folds_over_best": 3
+    },
+    {
+      "backbone": "CodeBrain",
+      "base_BA": 0.7502156647116326,
+      "base_bootstrap_ci": [
+        2.3430474095796674,
+        4.697886119257087
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 1.5161290322580623,
+      "delta_best_ci_low_pp": -0.951612903225818,
+      "delta_best_pp": 0.2094941348973589,
+      "delta_vs_base_pp": 3.4559506353861194,
+      "delta_vs_partner_pp": 0.209494134897361,
+      "folds": 5,
+      "fusion_BA": 0.7847751710654935,
+      "pair": "CodeBrain+EEGNet",
+      "partner_BA": 0.78268022971652,
+      "partner_bootstrap_ci": [
+        -0.9516129032258066,
+        1.5161290322580656
+      ],
+      "positive_folds_over_best": 2
+    },
+    {
+      "backbone": "CodeBrain",
+      "base_BA": 0.7502156647116326,
+      "base_bootstrap_ci": [
+        2.3870967741935485,
+        5.262239328771588
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 1.047531769305965,
+      "delta_best_ci_low_pp": -0.7266617790811394,
+      "delta_best_pp": 0.16043499511239068,
+      "delta_vs_base_pp": 3.842884490061909,
+      "delta_vs_partner_pp": 0.16043499511241352,
+      "folds": 5,
+      "fusion_BA": 0.7886445096122514,
+      "pair": "CodeBrain+LiteBN",
+      "partner_BA": 0.7870401596611275,
+      "partner_bootstrap_ci": [
+        -0.7266617790811333,
+        1.0475317693059611
+      ],
+      "positive_folds_over_best": 3
+    },
+    {
+      "backbone": "EEGConformer",
+      "base_BA": 0.7253818426197459,
+      "base_bootstrap_ci": [
+        2.983870967741931,
+        7.778388725969368
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 0.4032258064516128,
+      "delta_best_ci_low_pp": -1.3709677419354915,
+      "delta_best_pp": -0.46757901596610196,
+      "delta_vs_base_pp": 5.262259693711304,
+      "delta_vs_partner_pp": -0.46757901596611395,
+      "folds": 5,
+      "fusion_BA": 0.7780044395568589,
+      "pair": "EEGConformer+EEGNet",
+      "partner_BA": 0.78268022971652,
+      "partner_bootstrap_ci": [
+        -1.3709677419354835,
+        0.4032258064516104
+      ],
+      "positive_folds_over_best": 1
+    },
+    {
+      "backbone": "EEGConformer",
+      "base_BA": 0.7253818426197459,
+      "base_bootstrap_ci": [
+        3.440351091560767,
+        8.392207355816222
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 0.7590501792114667,
+      "delta_best_ci_low_pp": -1.4838709677419295,
+      "delta_best_pp": -0.3383838383838489,
+      "delta_vs_base_pp": 5.827447865754316,
+      "delta_vs_partner_pp": -0.3383838383838407,
+      "folds": 5,
+      "fusion_BA": 0.783656321277289,
+      "pair": "EEGConformer+LiteBN",
+      "partner_BA": 0.7870401596611275,
+      "partner_bootstrap_ci": [
+        -1.4838709677419353,
+        0.7590501792114672
+      ],
+      "positive_folds_over_best": 1
+    },
+    {
+      "backbone": "EEGNet",
+      "base_BA": 0.78268022971652,
+      "base_bootstrap_ci": [
+        -0.11290322580645148,
+        2.2755712365591405
+      ],
+      "dataset": "WBCIC",
+      "delta_best_ci_high_pp": 1.2580645161290094,
+      "delta_best_ci_low_pp": -0.30478168784617926,
+      "delta_best_pp": 0.6943833496252716,
+      "delta_vs_base_pp": 1.130376344086021,
+      "delta_vs_partner_pp": 0.6943833496252835,
+      "folds": 10,
+      "fusion_BA": 0.7939839931573802,
+      "pair": "EEGNet+LiteBN",
+      "partner_BA": 0.7870401596611275,
+      "partner_bootstrap_ci": [
+        -0.18939444851743412,
+        1.5806451612903194
+      ],
+      "positive_folds_over_best": 6
+    }
+  ],
+  "screen_only": true,
+  "terminal": "BACKBONE_GENERALITY_NOT_SUPPORTED"
+}
