@@ -1,0 +1,19 @@
+{
+  "amp": true,
+  "batch": "frozen carrier episode manifest",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "epochs": 60,
+  "folds": 5,
+  "gradient_clip": 5.0,
+  "holdout_access": false,
+  "loss": "CE(final)+0.25*CE(stable)+0.25*CE(expressive)",
+  "lr": 0.0003,
+  "minimum_selection_epoch": 10,
+  "optimizer": "AdamW",
+  "seed": 0,
+  "selection": "inner_val future-session subject-equal BA",
+  "weight_decay": 0.0005
+}

@@ -1,0 +1,75 @@
+{
+  "classes": 2,
+  "decision": "0.5*stable_logits + 0.5*expressive_logits",
+  "expressive": {
+    "adaptive": [
+      1,
+      8
+    ],
+    "channels": 48,
+    "depthwise_kernels": [
+      15,
+      31
+    ],
+    "dropout": [
+      0.15,
+      0.15,
+      0.25
+    ],
+    "embedding": 64,
+    "pointwise_channels": [
+      64,
+      64
+    ],
+    "pool": [
+      2,
+      2
+    ],
+    "uses": [
+      "H15",
+      "detach(H64)",
+      "H127"
+    ]
+  },
+  "input": "[B,C,T]",
+  "learned_gate": false,
+  "name": "AMSE-v1",
+  "stable": {
+    "adaptive": [
+      1,
+      8
+    ],
+    "channels": 16,
+    "depthwise_kernel": 16,
+    "dropout": [
+      0.25,
+      0.25
+    ],
+    "embedding": 64,
+    "pool": 8,
+    "uses": [
+      "H64"
+    ]
+  },
+  "stems": {
+    "anchor": {
+      "dropout": 0.2,
+      "kernel": 64,
+      "out": 16,
+      "pool": 4
+    },
+    "long": {
+      "dropout": 0.2,
+      "kernel": 127,
+      "out": 16,
+      "pool": 4
+    },
+    "short": {
+      "dropout": 0.2,
+      "kernel": 15,
+      "out": 16,
+      "pool": 4
+    }
+  },
+  "temperature": false
+}
