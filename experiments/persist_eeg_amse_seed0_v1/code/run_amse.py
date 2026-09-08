@@ -24,7 +24,7 @@ import pandas as pd
 import torch
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 
-REPO = Path(os.environ.get("R2EEG_REPO", Path(__file__).resolve().parents[2])).resolve()
+REPO = Path(os.environ.get("R2EEG_REPO", Path(__file__).resolve().parents[3])).resolve()
 EXP = REPO / "experiments" / "persist_eeg_amse_seed0_v1"
 CODE = EXP / "code"
 PROTOCOL = EXP / "protocol"
