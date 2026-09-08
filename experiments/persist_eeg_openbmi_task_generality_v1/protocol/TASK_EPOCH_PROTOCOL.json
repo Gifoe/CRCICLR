@@ -1,0 +1,20 @@
+{
+  "ERP": {
+    "cache_rate_hz": 250.0,
+    "provenance": "nm000323 BIDS events duration=1.0 s",
+    "samples": 250,
+    "tmax_seconds": 1.0,
+    "tmin_seconds": 0.0,
+    "window": "stimulus onset to 1.0 seconds"
+  },
+  "SSVEP": {
+    "cache_rate_hz": 250.0,
+    "provenance": "nm000273 BIDS events duration=4.0 s",
+    "samples": 1000,
+    "tmax_seconds": 4.0,
+    "tmin_seconds": 0.0,
+    "window": "stimulus onset to 4.0 seconds"
+  },
+  "frozen_before_training": true,
+  "selection_policy": "canonical BIDS event duration; no performance window search"
+}
