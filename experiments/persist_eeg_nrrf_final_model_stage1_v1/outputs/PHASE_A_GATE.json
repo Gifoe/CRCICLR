@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "OpenBMI": {
+      "five_positive_folds": true,
+      "harm_le_10pct": false,
+      "mean_gain_ge_3pp": true,
+      "no_fold_le_minus_0_5pp": true
+    },
+    "WBCIC": {
+      "at_least_four_positive_folds": false,
+      "harm_lt_15pct": false,
+      "mean_gain_ge_1pp": false,
+      "no_fold_le_minus_2pp": false,
+      "positive_median_subject_delta": false
+    },
+    "robust_objective": {
+      "harm_reduction_ge_5pp": false,
+      "mean_BA_ge_joint_by_0_30pp": false
+    }
+  },
+  "openbmi_pass": false,
+  "robust_objective_pass": false,
+  "terminal": "NRRF_CONSTRUCTIVE_FAIL_STOP",
+  "wbcic_pass": false
+}
