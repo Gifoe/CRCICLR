@@ -1,0 +1,10 @@
+{
+  "JOINT-CE": "L_mean + 0.25 L_expr",
+  "NRRF-v1": "L_mean + 0.5 L_tail + 1.0 L_regret + 0.25 L_expr",
+  "alpha": 0.5,
+  "cvar": "top ceil(0.25*K) largest subject L_F",
+  "lambda_expr": 0.25,
+  "lambda_regret": 1.0,
+  "lambda_tail": 0.5,
+  "regret": "mean ReLU(L_F(s)-stopgrad(L_A(s)))"
+}

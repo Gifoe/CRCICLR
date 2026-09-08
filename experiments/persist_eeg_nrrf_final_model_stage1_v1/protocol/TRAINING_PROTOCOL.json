@@ -1,0 +1,60 @@
+{
+  "alpha": 0.5,
+  "anchor": "EEGNet exact selected checkpoint, frozen/eval/no_grad",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "early_stopping": false,
+  "ema": {
+    "beta": 0.99,
+    "parameter_scope": "LiteBN parameters only",
+    "primary_checkpoint": "final epoch20 EMA"
+  },
+  "epochs": 20,
+  "expressive": "exact CompactLite-BN selected checkpoint, trainable",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "lr": 0.0001,
+  "methods": [
+    "JOINT-CE",
+    "NRRF-v1"
+  ],
+  "new_training_cells": 20,
+  "optimizer": "AdamW",
+  "outer_development_sessions": {
+    "OpenBMI": [
+      2
+    ],
+    "WBCIC": [
+      2
+    ]
+  },
+  "phase": "A",
+  "sampler": {
+    "K_subjects": 8,
+    "M_trials_per_subject": 16,
+    "class_balance": "8/8 when available",
+    "deterministic": true
+  },
+  "scheduler": null,
+  "seeds": [
+    0
+  ],
+  "source_sessions": {
+    "OpenBMI": [
+      1
+    ],
+    "WBCIC": [
+      0,
+      1
+    ]
+  },
+  "weight_decay": 0.0005
+}
