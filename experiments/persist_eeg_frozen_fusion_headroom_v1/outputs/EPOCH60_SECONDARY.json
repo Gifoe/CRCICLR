@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "dataset": "OpenBMI",
+      "mean_delta_vs_EEGNet_pp": 2.9416666666666678,
+      "method": "LiteBN",
+      "positive_folds": 5,
+      "positive_seed_means": 3
+    },
+    {
+      "dataset": "OpenBMI",
+      "mean_delta_vs_EEGNet_pp": 3.8250000000000006,
+      "method": "LOGIT50",
+      "positive_folds": 5,
+      "positive_seed_means": 3
+    },
+    {
+      "dataset": "WBCIC",
+      "mean_delta_vs_EEGNet_pp": -3.076008743347454,
+      "method": "LiteBN",
+      "positive_folds": 3,
+      "positive_seed_means": 0
+    },
+    {
+      "dataset": "WBCIC",
+      "mean_delta_vs_EEGNet_pp": -0.11324942978168859,
+      "method": "LOGIT50",
+      "positive_folds": 3,
+      "positive_seed_means": 1
+    }
+  ],
+  "secondary_only": true
+}
