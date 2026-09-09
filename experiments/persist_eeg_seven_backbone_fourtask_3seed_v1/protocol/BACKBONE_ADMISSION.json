@@ -1,0 +1,1390 @@
+{
+  "all_pass": true,
+  "device": "cuda",
+  "outcome_access": "none; synthetic tensors only",
+  "records": [
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "EEGNet",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 80419840,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 34162
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "LiteBN",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 108585472,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 16618
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "TCFormer",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 143954944,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 125060
+    },
+    {
+      "channel_mapping": {
+        "aliases": [
+          {
+            "cache_channel": "F9",
+            "official_alias": "FT9",
+            "official_index": 45
+          },
+          {
+            "cache_channel": "F10",
+            "official_alias": "FT10",
+            "official_index": 87
+          }
+        ],
+        "indices": [
+          6,
+          60,
+          133,
+          71,
+          25,
+          11,
+          118,
+          49,
+          18,
+          34,
+          19,
+          65,
+          130,
+          110,
+          2,
+          68,
+          135,
+          51,
+          85,
+          46,
+          52,
+          137,
+          41,
+          74,
+          1,
+          116,
+          21,
+          44,
+          95,
+          5,
+          103,
+          38,
+          70,
+          75,
+          20,
+          0,
+          10,
+          127,
+          84,
+          119,
+          62,
+          99,
+          117,
+          63,
+          45,
+          82,
+          64,
+          111,
+          89,
+          87,
+          113,
+          8,
+          16,
+          27,
+          45,
+          87,
+          37,
+          86,
+          13,
+          39,
+          102,
+          58
+        ],
+        "mapping_file": "D:\\nips-temp\\TotalP\\P1\\seven_backbone_fourtask_3seed_runtime\\official\\STEEGFormer\\pretrain\\senloc_file\\sen_chan_idx.pkl"
+      },
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 25621504,
+        "loaded_tensors": 101,
+        "mismatched": {},
+        "missing_model_keys": [
+          "cls_head.final.bias",
+          "cls_head.final.weight",
+          "cls_head.norm.bias",
+          "cls_head.norm.weight",
+          "pos_embed"
+        ],
+        "model_parameter_elements": 25724418,
+        "model_tensors": 106,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "mask_token",
+          "norm.bias",
+          "norm.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "ST-EEGFormer-small",
+      "model_input_shape": [
+        2,
+        62,
+        400
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=2, down=5)",
+        "source_hz": 250,
+        "target_hz": 100
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 1300718080,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 25361410
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 5819536,
+        "loaded_tensors": 219,
+        "mismatched": {},
+        "missing_model_keys": [
+          "fc_norm.bias",
+          "fc_norm.weight"
+        ],
+        "model_parameter_elements": 5819936,
+        "model_tensors": 221,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "lm_head.bias",
+          "lm_head.weight",
+          "logit_scale",
+          "mask_token",
+          "norm.bias",
+          "norm.weight",
+          "projection_head.0.bias",
+          "projection_head.0.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "LaBraM-base",
+      "model_input_shape": [
+        2,
+        62,
+        800
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 381303296,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 5820338
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P2\\fm_rescue_runtime\\CBraMod\\pretrained_weights\\pretrained_weights.pth",
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 4924000,
+        "loaded_tensors": 211,
+        "mismatched": {},
+        "missing_model_keys": [],
+        "model_parameter_elements": 4924000,
+        "model_tensors": 211,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": []
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "CBraMod",
+      "model_input_shape": [
+        2,
+        62,
+        800
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 225205248,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 4884002
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "TeCh",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 127170048,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_MI",
+      "tech_recipe": "TECH-T",
+      "trainable_parameters": 793026
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "EEGNet",
+      "model_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 73631744,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": null,
+      "trainable_parameters": 9586
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "LiteBN",
+      "model_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 77603328,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": null,
+      "trainable_parameters": 16618
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "TCFormer",
+      "model_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 86864384,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": null,
+      "trainable_parameters": 125060
+    },
+    {
+      "channel_mapping": {
+        "aliases": [
+          {
+            "cache_channel": "F9",
+            "official_alias": "FT9",
+            "official_index": 45
+          },
+          {
+            "cache_channel": "F10",
+            "official_alias": "FT10",
+            "official_index": 87
+          }
+        ],
+        "indices": [
+          6,
+          60,
+          133,
+          71,
+          25,
+          11,
+          118,
+          49,
+          18,
+          34,
+          19,
+          65,
+          130,
+          110,
+          2,
+          68,
+          135,
+          51,
+          85,
+          46,
+          52,
+          137,
+          41,
+          74,
+          1,
+          116,
+          21,
+          44,
+          95,
+          5,
+          103,
+          38,
+          70,
+          75,
+          20,
+          0,
+          10,
+          127,
+          84,
+          119,
+          62,
+          99,
+          117,
+          63,
+          45,
+          82,
+          64,
+          111,
+          89,
+          87,
+          113,
+          8,
+          16,
+          27,
+          45,
+          87,
+          37,
+          86,
+          13,
+          39,
+          102,
+          58
+        ],
+        "mapping_file": "D:\\nips-temp\\TotalP\\P1\\seven_backbone_fourtask_3seed_runtime\\official\\STEEGFormer\\pretrain\\senloc_file\\sen_chan_idx.pkl"
+      },
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 25621504,
+        "loaded_tensors": 101,
+        "mismatched": {},
+        "missing_model_keys": [
+          "cls_head.final.bias",
+          "cls_head.final.weight",
+          "cls_head.norm.bias",
+          "cls_head.norm.weight",
+          "pos_embed"
+        ],
+        "model_parameter_elements": 25724418,
+        "model_tensors": 106,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "mask_token",
+          "norm.bias",
+          "norm.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "ST-EEGFormer-small",
+      "model_input_shape": [
+        2,
+        62,
+        100
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=2, down=5)",
+        "source_hz": 250,
+        "target_hz": 100
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 590279168,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": null,
+      "trainable_parameters": 25361410
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 5819536,
+        "loaded_tensors": 219,
+        "mismatched": {},
+        "missing_model_keys": [
+          "fc_norm.bias",
+          "fc_norm.weight"
+        ],
+        "model_parameter_elements": 5819936,
+        "model_tensors": 221,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "lm_head.bias",
+          "lm_head.weight",
+          "logit_scale",
+          "mask_token",
+          "norm.bias",
+          "norm.weight",
+          "projection_head.0.bias",
+          "projection_head.0.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "LaBraM-base",
+      "model_input_shape": [
+        2,
+        62,
+        200
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 228675072,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": null,
+      "trainable_parameters": 5820338
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P2\\fm_rescue_runtime\\CBraMod\\pretrained_weights\\pretrained_weights.pth",
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 4924000,
+        "loaded_tensors": 211,
+        "mismatched": {},
+        "missing_model_keys": [],
+        "model_parameter_elements": 4924000,
+        "model_tensors": 211,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": []
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "CBraMod",
+      "model_input_shape": [
+        2,
+        62,
+        200
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 165280768,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": null,
+      "trainable_parameters": 4884002
+    },
+    {
+      "classes": 2,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "TeCh",
+      "model_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 98981888,
+      "raw_input_shape": [
+        2,
+        62,
+        250
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_ERP",
+      "tech_recipe": "TECH-T",
+      "trainable_parameters": 793026
+    },
+    {
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "EEGNet",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 83595776,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": null,
+      "trainable_parameters": 34292
+    },
+    {
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "LiteBN",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 108587008,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": null,
+      "trainable_parameters": 16748
+    },
+    {
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "TCFormer",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 143955968,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": null,
+      "trainable_parameters": 125196
+    },
+    {
+      "channel_mapping": {
+        "aliases": [
+          {
+            "cache_channel": "F9",
+            "official_alias": "FT9",
+            "official_index": 45
+          },
+          {
+            "cache_channel": "F10",
+            "official_alias": "FT10",
+            "official_index": 87
+          }
+        ],
+        "indices": [
+          6,
+          60,
+          133,
+          71,
+          25,
+          11,
+          118,
+          49,
+          18,
+          34,
+          19,
+          65,
+          130,
+          110,
+          2,
+          68,
+          135,
+          51,
+          85,
+          46,
+          52,
+          137,
+          41,
+          74,
+          1,
+          116,
+          21,
+          44,
+          95,
+          5,
+          103,
+          38,
+          70,
+          75,
+          20,
+          0,
+          10,
+          127,
+          84,
+          119,
+          62,
+          99,
+          117,
+          63,
+          45,
+          82,
+          64,
+          111,
+          89,
+          87,
+          113,
+          8,
+          16,
+          27,
+          45,
+          87,
+          37,
+          86,
+          13,
+          39,
+          102,
+          58
+        ],
+        "mapping_file": "D:\\nips-temp\\TotalP\\P1\\seven_backbone_fourtask_3seed_runtime\\official\\STEEGFormer\\pretrain\\senloc_file\\sen_chan_idx.pkl"
+      },
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 25621504,
+        "loaded_tensors": 101,
+        "mismatched": {},
+        "missing_model_keys": [
+          "cls_head.final.bias",
+          "cls_head.final.weight",
+          "cls_head.norm.bias",
+          "cls_head.norm.weight",
+          "pos_embed"
+        ],
+        "model_parameter_elements": 25725444,
+        "model_tensors": 106,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "mask_token",
+          "norm.bias",
+          "norm.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "ST-EEGFormer-small",
+      "model_input_shape": [
+        2,
+        62,
+        400
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=2, down=5)",
+        "source_hz": 250,
+        "target_hz": 100
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 1300726784,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": null,
+      "trainable_parameters": 25362436
+    },
+    {
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 5819536,
+        "loaded_tensors": 219,
+        "mismatched": {},
+        "missing_model_keys": [
+          "fc_norm.bias",
+          "fc_norm.weight"
+        ],
+        "model_parameter_elements": 5819936,
+        "model_tensors": 221,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "lm_head.bias",
+          "lm_head.weight",
+          "logit_scale",
+          "mask_token",
+          "norm.bias",
+          "norm.weight",
+          "projection_head.0.bias",
+          "projection_head.0.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "LaBraM-base",
+      "model_input_shape": [
+        2,
+        62,
+        800
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 381310464,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": null,
+      "trainable_parameters": 5820740
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P2\\fm_rescue_runtime\\CBraMod\\pretrained_weights\\pretrained_weights.pth",
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 4924000,
+        "loaded_tensors": 211,
+        "mismatched": {},
+        "missing_model_keys": [],
+        "model_parameter_elements": 4924000,
+        "model_tensors": 211,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": []
+      },
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "CBraMod",
+      "model_input_shape": [
+        2,
+        62,
+        800
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 225209856,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": null,
+      "trainable_parameters": 4884404
+    },
+    {
+      "classes": 4,
+      "dataset": "OpenBMI",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        4
+      ],
+      "loss_finite": true,
+      "model": "TeCh",
+      "model_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 344876544,
+      "raw_input_shape": [
+        2,
+        62,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "OpenBMI_SSVEP",
+      "tech_recipe": "TECH-TC",
+      "trainable_parameters": 6203140
+    },
+    {
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "EEGNet",
+      "model_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 104404480,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 34098
+    },
+    {
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "LiteBN",
+      "model_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 105993728,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 16426
+    },
+    {
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "TCFormer",
+      "model_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 140011008,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 124676
+    },
+    {
+      "channel_mapping": {
+        "aliases": [],
+        "indices": [
+          112,
+          6,
+          60,
+          86,
+          13,
+          37,
+          39,
+          25,
+          42,
+          54,
+          71,
+          11,
+          72,
+          3,
+          133,
+          118,
+          14,
+          18,
+          34,
+          70,
+          75,
+          49,
+          19,
+          122,
+          22,
+          110,
+          0,
+          10,
+          130,
+          2,
+          20,
+          127,
+          65,
+          68,
+          85,
+          46,
+          84,
+          62,
+          51,
+          52,
+          111,
+          16,
+          74,
+          116,
+          90,
+          23,
+          41,
+          21,
+          63,
+          102,
+          58,
+          96,
+          101,
+          114,
+          129,
+          5,
+          95,
+          103
+        ],
+        "mapping_file": "D:\\nips-temp\\TotalP\\P1\\seven_backbone_fourtask_3seed_runtime\\official\\STEEGFormer\\pretrain\\senloc_file\\sen_chan_idx.pkl"
+      },
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 25621504,
+        "loaded_tensors": 101,
+        "mismatched": {},
+        "missing_model_keys": [
+          "cls_head.final.bias",
+          "cls_head.final.weight",
+          "cls_head.norm.bias",
+          "cls_head.norm.weight",
+          "pos_embed"
+        ],
+        "model_parameter_elements": 25724418,
+        "model_tensors": 106,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "mask_token",
+          "norm.bias",
+          "norm.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "ST-EEGFormer-small",
+      "model_input_shape": [
+        2,
+        58,
+        400
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=2, down=5)",
+        "source_hz": 250,
+        "target_hz": 100
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 1225852416,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 25361410
+    },
+    {
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 5819536,
+        "loaded_tensors": 219,
+        "mismatched": {},
+        "missing_model_keys": [
+          "fc_norm.bias",
+          "fc_norm.weight"
+        ],
+        "model_parameter_elements": 5819936,
+        "model_tensors": 221,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": [
+          "lm_head.bias",
+          "lm_head.weight",
+          "logit_scale",
+          "mask_token",
+          "norm.bias",
+          "norm.weight",
+          "projection_head.0.bias",
+          "projection_head.0.weight"
+        ]
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "LaBraM-base",
+      "model_input_shape": [
+        2,
+        58,
+        800
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 361547264,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 5820338
+    },
+    {
+      "checkpoint_path": "D:\\nips-temp\\TotalP\\P2\\fm_rescue_runtime\\CBraMod\\pretrained_weights\\pretrained_weights.pth",
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "load_report": {
+        "loaded_parameter_elements": 4924000,
+        "loaded_tensors": 211,
+        "mismatched": {},
+        "missing_model_keys": [],
+        "model_parameter_elements": 4924000,
+        "model_tensors": 211,
+        "nonpermitted_missing_model_keys": [],
+        "unexpected_checkpoint_keys": []
+      },
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "CBraMod",
+      "model_input_shape": [
+        2,
+        58,
+        800
+      ],
+      "model_native_adapter": {
+        "method": "scipy.signal.resample_poly(up=4, down=5)",
+        "patch_samples": 200,
+        "source_hz": 250,
+        "target_hz": 200
+      },
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 216899072,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": null,
+      "trainable_parameters": 4884002
+    },
+    {
+      "classes": 2,
+      "dataset": "WBCIC",
+      "deterministic_eval_max_abs_diff": 0.0,
+      "gradient_finite": true,
+      "logits_shape": [
+        2,
+        2
+      ],
+      "loss_finite": true,
+      "model": "TeCh",
+      "model_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "model_native_adapter": null,
+      "pass": true,
+      "peak_cuda_bytes_batch2_train_step": 127062016,
+      "raw_input_shape": [
+        2,
+        58,
+        1000
+      ],
+      "shape_ok": true,
+      "task": "WBCIC_MI",
+      "tech_recipe": "TECH-T",
+      "trainable_parameters": 789954
+    }
+  ],
+  "schema": "SEVEN_BACKBONE_ADMISSION_V1",
+  "sha256": "1ac4119fbdf0919be09b86c773c57990d0a2c5bfc7a810e6a29a961102e84d2a"
+}
