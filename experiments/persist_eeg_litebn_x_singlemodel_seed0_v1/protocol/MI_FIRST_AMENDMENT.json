@@ -1,0 +1,11 @@
+{
+  "amendment": "MI_FIRST_TRIAGE",
+  "seed": 0,
+  "trigger": "after currently running OpenBMI ERP fold1 cell completes",
+  "mi_tasks": ["OpenBMI_MI", "WBCIC_MI"],
+  "retention_rule": "always retain LiteBN_BASELINE; retain candidate iff mean(OpenBMI_MI,WBCIC_MI) inner-validation delta > 0 pp and each MI-task delta >= -0.50 pp; if none pass, retain top candidate diagnostically",
+  "downstream_tasks": ["OpenBMI_ERP", "OpenBMI_SSVEP"],
+  "outer_dev_accessed_before_gate": false,
+  "final_heldout_accessed": false,
+  "test_accessed": false
+}
