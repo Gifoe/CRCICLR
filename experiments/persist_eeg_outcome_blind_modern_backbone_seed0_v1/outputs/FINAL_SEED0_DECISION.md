@@ -2,7 +2,7 @@
 
 ## Backbone competence
 
-See `BACKBONE_DATASET_SUMMARY.csv`; competence was frozen using inner-validation BA before outer reveal.
+See `BACKBONE_COMPETENCE_SUMMARY.csv`; competence was frozen using inner-validation BA before outer reveal.
 
 ## Outcome-blind actionability
 

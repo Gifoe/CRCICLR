@@ -142,7 +142,7 @@ def main() -> int:
         elif float(sel.loc[d,"oracle_minus_random"]) > .005: terminals.append("ACTIONABILITY_GAP_SUPPORTED")
         else: terminals.append("INCONCLUSIVE")
     terminal="ACTIONABILITY_SUPPORTED" if all(x=="ACTIONABILITY_SUPPORTED" for x in terminals) else "ACTIONABILITY_GAP_SUPPORTED" if any(x=="ACTIONABILITY_GAP_SUPPORTED" for x in terminals) and all(x in ("ACTIONABILITY_GAP_SUPPORTED","INCONCLUSIVE") for x in terminals) else "INCONCLUSIVE"
-    table=["# FINAL_SEED0_DECISION", "", "## Backbone competence", "", "See `BACKBONE_DATASET_SUMMARY.csv`; competence was frozen using inner-validation BA before outer reveal.", "", "## Outcome-blind actionability", "", "| Dataset | fresh eligible pairs | rho EC | rho Gdev | EC-selected gain | random gain | oracle gain |", "|---|---:|---:|---:|---:|---:|---:|"]
+    table=["# FINAL_SEED0_DECISION", "", "## Backbone competence", "", "See `BACKBONE_COMPETENCE_SUMMARY.csv`; competence was frozen using inner-validation BA before outer reveal.", "", "## Outcome-blind actionability", "", "| Dataset | fresh eligible pairs | rho EC | rho Gdev | EC-selected gain | random gain | oracle gain |", "|---|---:|---:|---:|---:|---:|---:|"]
     for d in c.DATASETS:
         ec=corr_df[(corr_df.dataset==d)&(corr_df.diagnostic=="EC")].iloc[0]; gd=corr_df[(corr_df.dataset==d)&(corr_df.diagnostic=="G_dev")].iloc[0]; r=sel.loc[d]
         fmt=lambda x:"NA" if x is None or (isinstance(x,float) and not np.isfinite(x)) else f"{float(x):+.4f}"
