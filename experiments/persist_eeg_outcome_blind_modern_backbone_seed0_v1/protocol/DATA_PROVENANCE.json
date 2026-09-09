@@ -1,0 +1,30 @@
+{
+  "cache_root": "/root/rivermind-data/persist_eeg_cache",
+  "datasets": {
+    "OpenBMI": {
+      "cache_sessions_used": [
+        1,
+        2
+      ],
+      "channels": 62,
+      "sample_shape": [
+        62,
+        1000
+      ]
+    },
+    "WBCIC": {
+      "cache_sessions_used": [
+        0,
+        1,
+        2
+      ],
+      "channels": 58,
+      "sample_shape": [
+        58,
+        1000
+      ]
+    }
+  },
+  "normalization": "channel-wise mean/std computed on each fold inner_train source sessions",
+  "search_only": true
+}

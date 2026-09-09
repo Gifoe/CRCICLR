@@ -1,0 +1,16 @@
+{
+  "carrier_runtime": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime",
+  "checkpoint_selection": "inner-validation subject-equal BA, earliest best epoch",
+  "existing_models": [
+    "EEGNet",
+    "LiteBN"
+  ],
+  "modern_models": [
+    "TCFormer",
+    "ST-EEGFormer-small",
+    "LaBraM-base",
+    "CBraMod"
+  ],
+  "modern_runtime": "/root/rivermind-data/modern_backbone_seed0_runtime",
+  "seed": 0
+}

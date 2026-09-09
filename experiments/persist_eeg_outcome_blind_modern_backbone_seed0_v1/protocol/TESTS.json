@@ -1,0 +1,17 @@
+{
+  "competence_gate": "mean inner-val BA >= EEGNet - 3pp",
+  "exact_fivefold_split_reused": true,
+  "fixed_backbone_pool": [
+    "EEGNet",
+    "LiteBN",
+    "TCFormer",
+    "ST-EEGFormer-small",
+    "LaBraM-base",
+    "CBraMod"
+  ],
+  "modern_input_adapter_amendment_hash": "7eb6ac505052e8081115cd67669933e5e2eb3882296393475154a2e3f1108991",
+  "no_weight_search": true,
+  "primary_fusion": "raw-logit 50/50",
+  "seed0_only": true,
+  "stage_a_outer_predictions_absent": true
+}
