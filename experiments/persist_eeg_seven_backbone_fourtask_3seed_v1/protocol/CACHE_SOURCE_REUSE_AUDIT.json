@@ -1,0 +1,47 @@
+{
+  "access_scope": "filenames and signal-byte hashes only; no labels, predictions, scores, outer outcomes, or held-out outcomes were read",
+  "fixed_heldout_accessed": false,
+  "frozen_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+  "identity_comparisons": {
+    "OpenBMI_MI_sub01_ses1": {
+      "identical": true,
+      "paths": [
+        "D:\\nips-temp\\TotalP\\P1\\persist_eeg_cache\\openbmi\\openbmi\\sub-01\\ses-1\\mi_1train_signals.npy",
+        "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_stage0\\cache\\openbmi\\sub-01\\ses-1\\mi_1train_signals.npy"
+      ],
+      "sha256": [
+        "4009ba4328c67501970098cb48efe71c238ca198276fa03290039192632a7435",
+        "4009ba4328c67501970098cb48efe71c238ca198276fa03290039192632a7435"
+      ]
+    },
+    "WBCIC_MI_sub1_ses0": {
+      "identical": true,
+      "paths": [
+        "D:\\nips-temp\\TotalP\\P1\\persist_eeg_cache\\wbcic\\wbcic_epochs\\sub-1\\ses-0_epochs.npy",
+        "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_wbcic_independent_replication_v1\\runtime\\cache\\wbcic_epochs\\sub-1\\ses-0_epochs.npy"
+      ],
+      "sha256": [
+        "a4aa47f142686a0e585da27c68ac247ca484c3f2d02b9a27ef91f999fade18b9",
+        "a4aa47f142686a0e585da27c68ac247ca484c3f2d02b9a27ef91f999fade18b9"
+      ]
+    }
+  },
+  "outer_data_accessed": false,
+  "pass": true,
+  "required_file_counts": {
+    "OpenBMI_ERP": 160,
+    "OpenBMI_MI": 160,
+    "OpenBMI_SSVEP": 160,
+    "WBCIC_MI": 186
+  },
+  "roots": {
+    "complete_openbmi": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_stage0_repo_full\\outputs\\persist_eeg_stage0\\cache\\openbmi",
+    "complete_wbcic": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\\experiments\\persist_eeg_wbcic_independent_replication_v1\\runtime\\cache\\wbcic_epochs",
+    "partial": "D:\\nips-temp\\TotalP\\P1\\persist_eeg_cache"
+  },
+  "search_subject_counts": {
+    "OpenBMI": 40,
+    "WBCIC": 31
+  },
+  "task_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068"
+}

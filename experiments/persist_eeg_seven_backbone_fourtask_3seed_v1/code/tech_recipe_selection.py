@@ -113,6 +113,58 @@ def subject_ba(labels: np.ndarray, logits: np.ndarray, subjects: np.ndarray) -> 
     return float(np.mean(values))
 
 
+def _sort_subjects(subjects: list[str]) -> list[str]:
+    return sorted(map(str, subjects), key=lambda value: int(value.replace("sub-", "")))
+
+
+def _normalise(train_x: np.ndarray, val_x: np.ndarray, train_subjects: list[str], source_sessions: tuple[int, ...]) -> tuple[np.ndarray, np.ndarray, dict[str, Any]]:
+    n = train_x.shape[0] * train_x.shape[2]
+    total = train_x.sum(axis=(0, 2), dtype=np.float64)
+    square = np.square(train_x, dtype=np.float64).sum(axis=(0, 2), dtype=np.float64)
+    mean = (total / n).astype(np.float32)
+    std = np.sqrt(np.maximum(square / n - mean.astype(np.float64) ** 2, 1e-12)).astype(np.float32)
+    record = {"subjects":_sort_subjects(train_subjects), "sessions":list(source_sessions), "trials":int(train_x.shape[0]),
+              "mean_std_sha256":sha_bytes(mean.tobytes(), std.tobytes())}
+    return ((train_x - mean[None, :, None]) / np.maximum(std[None, :, None], 1e-6)).astype(np.float32), ((val_x - mean[None, :, None]) / np.maximum(std[None, :, None], 1e-6)).astype(np.float32), record
+
+
+def _openbmi_rows(root: Path, subjects: list[str], sessions: tuple[int, ...], cache_name: str, raw_to_class: dict[int, int] | None = None) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[int, int]]:
+    arrays, labels, owners = [], [], []
+    mapping = {} if raw_to_class is None else dict(raw_to_class)
+    for subject in _sort_subjects(subjects):
+        for session in sorted(sessions):
+            base = root / f"sub-{int(subject):02d}" / f"ses-{session}" / f"{cache_name}_1train"
+            signal, codes = base.with_name(base.name + "_signals.npy"), base.with_name(base.name + "_codes.npy")
+            if not signal.is_file() or not codes.is_file(): raise FileNotFoundError(f"frozen OpenBMI cache missing: {base}")
+            x, y = np.load(signal, mmap_mode="r", allow_pickle=False), np.load(codes, mmap_mode="r", allow_pickle=False)
+            if x.ndim != 3 or x.shape[1] != 62 or y.shape != (x.shape[0],) or not np.isfinite(x).all(): raise RuntimeError(f"OpenBMI cache schema failure: {signal}")
+            if not mapping:
+                mapping = {int(value): index for index, value in enumerate(sorted(map(int, np.unique(y))))}
+            unknown = set(map(int, np.unique(y))) - set(mapping)
+            if unknown: raise RuntimeError(f"frozen OpenBMI label map disagreement: {unknown}")
+            arrays.append(np.asarray(x, dtype=np.float32)); labels.append(np.asarray([mapping[int(value)] for value in y], dtype=np.int64)); owners.extend([subject] * len(y))
+    if not arrays: raise RuntimeError("empty frozen OpenBMI inner slice")
+    return np.concatenate(arrays), np.concatenate(labels), np.asarray(owners, dtype=object), mapping
+
+
+def _wbcic_rows(root: Path, subjects: list[str], sessions: tuple[int, ...], raw_to_class: dict[int, int] | None = None) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[int, int]]:
+    arrays, labels, owners = [], [], []
+    mapping = {} if raw_to_class is None else dict(raw_to_class)
+    for subject in _sort_subjects(subjects):
+        for session in sorted(sessions):
+            signal, codes = root / subject / f"ses-{session}_epochs.npy", root / subject / f"ses-{session}_labels.npy"
+            if not signal.is_file() or not codes.is_file(): raise FileNotFoundError(f"frozen WBCIC cache missing: {subject}/session{session}")
+            x, y = np.load(signal, mmap_mode="r", allow_pickle=False), np.load(codes, mmap_mode="r", allow_pickle=False)
+            if x.ndim != 3 or x.shape[1:] != (58, 1000) or y.shape != (x.shape[0],) or not np.isfinite(x).all(): raise RuntimeError(f"WBCIC cache schema failure: {signal}")
+            if not mapping:
+                mapping = {int(value): index for index, value in enumerate(sorted(map(int, np.unique(y))))}
+            unknown = set(map(int, np.unique(y))) - set(mapping)
+            if unknown: raise RuntimeError(f"frozen WBCIC label map disagreement: {unknown}")
+            arrays.append(np.asarray(x, dtype=np.float32)); labels.append(np.asarray([mapping[int(value)] for value in y], dtype=np.int64)); owners.extend([subject] * len(y))
+    if not arrays: raise RuntimeError("empty frozen WBCIC inner slice")
+    return np.concatenate(arrays), np.concatenate(labels), np.asarray(owners, dtype=object), mapping
+
+
 def _task_data(task_id: str, fold_id: int) -> dict[str, Any]:
     """Load only frozen inner-train and frozen inner-val cache slices."""
     modern, task_code = modules()
@@ -120,35 +172,36 @@ def _task_data(task_id: str, fold_id: int) -> dict[str, Any]:
         dataset = "OpenBMI" if task_id == "OpenBMI_MI" else "WBCIC"
         folds, _, split_sha = modern.load_split()
         fold = next(value for value in folds[dataset] if int(value["fold_id"]) == int(fold_id))
-        train = modern.load_subset(dataset, fold["inner_train_subjects"], modern.SOURCE_SESSIONS[dataset])
-        val = modern.load_subset(dataset, fold["inner_val_subjects"], (modern.EVAL_SESSION,))
-        mean, std, normalizer = modern.normalizer(dataset, fold["inner_train_subjects"])
-        train_x, val_x = modern.normalize(train, mean, std), modern.normalize(val, mean, std)
-        train_y, val_y = train.labels, val.labels
-        train_subjects, val_subjects = train.subjects, val.subjects
+        source_sessions, future_session = modern.SOURCE_SESSIONS[dataset], modern.EVAL_SESSION
+        if dataset == "OpenBMI":
+            root = Path(os.environ["FULL_OPENBMI_CACHE"]).resolve()
+            train_raw, train_y, train_subjects, mapping = _openbmi_rows(root, fold["inner_train_subjects"], source_sessions, "mi")
+            val_raw, val_y, val_subjects, _ = _openbmi_rows(root, fold["inner_val_subjects"], (future_session,), "mi", mapping)
+        else:
+            root = Path(os.environ["FULL_WBCIC_CACHE"]).resolve()
+            train_raw, train_y, train_subjects, mapping = _wbcic_rows(root, fold["inner_train_subjects"], source_sessions)
+            val_raw, val_y, val_subjects, _ = _wbcic_rows(root, fold["inner_val_subjects"], (future_session,), mapping)
+        train_x, val_x, normalizer = _normalise(train_raw, val_raw, fold["inner_train_subjects"], source_sessions)
         return {"task": task_id, "fold": fold, "split_sha256": split_sha, "normalizer": normalizer,
                 "train_x": train_x, "train_y": train_y, "train_subjects": train_subjects,
                 "val_x": val_x, "val_y": val_y, "val_subjects": val_subjects,
-                "channels": int(train.channels), "samples": int(train_x.shape[-1]),
+                "channels": int(train_x.shape[1]), "samples": int(train_x.shape[-1]),
                 "classes": int(np.unique(train_y).size), "source_sessions": list(modern.SOURCE_SESSIONS[dataset]),
                 "future_session": int(modern.EVAL_SESSION)}
     task_name = "ERP" if task_id == "OpenBMI_ERP" else "SSVEP"
     search, _, reference, _ = task_code.split_reference()
     fold = next(value for value in reference["folds"] if int(value["fold_id"]) == int(fold_id))
-    bundle = task_code.load_bundle(task_name, search, sessions=(1, 2))
-    train_i = bundle.indices(fold["inner_train_subjects"], (1,))
-    val_i = bundle.indices(fold["inner_val_subjects"], (2,))
-    mean, std, normalizer = task_code.normalizer(bundle, fold["inner_train_subjects"])
-    train_x = ((bundle.signal_batch(train_i) - mean[None, :, None]) / np.maximum(std[None, :, None], 1e-6)).astype(np.float32)
-    val_x = ((bundle.signal_batch(val_i) - mean[None, :, None]) / np.maximum(std[None, :, None], 1e-6)).astype(np.float32)
-    train_y, val_y = bundle.labels(train_i), bundle.labels(val_i)
-    train_subjects = np.asarray([bundle.rows[int(i)].subject for i in train_i], dtype=object)
-    val_subjects = np.asarray([bundle.rows[int(i)].subject for i in val_i], dtype=object)
+    spec = task_code.TASKS[task_name]
+    root = Path(os.environ["FULL_OPENBMI_CACHE"]).resolve()
+    train_raw, train_y, train_subjects, mapping = _openbmi_rows(root, fold["inner_train_subjects"], (spec["source_session"],), spec["cache_name"])
+    val_raw, val_y, val_subjects, _ = _openbmi_rows(root, fold["inner_val_subjects"], (spec["future_session"],), spec["cache_name"], mapping)
+    train_x, val_x, normalizer = _normalise(train_raw, val_raw, fold["inner_train_subjects"], (spec["source_session"],))
+    if train_x.shape[1:] != (62, spec["samples"]): raise RuntimeError(f"frozen {task_name} schema mismatch: {train_x.shape}")
     return {"task": task_id, "fold": fold, "split_sha256": reference["source_sha256"], "normalizer": normalizer,
             "train_x": train_x, "train_y": train_y, "train_subjects": train_subjects,
             "val_x": val_x, "val_y": val_y, "val_subjects": val_subjects,
-            "channels": int(bundle.channels), "samples": int(bundle.samples),
-            "classes": int(np.unique(train_y).size), "source_sessions": [1], "future_session": 2}
+            "channels": int(train_x.shape[1]), "samples": int(train_x.shape[-1]),
+            "classes": int(np.unique(train_y).size), "source_sessions": [int(spec["source_session"])], "future_session": int(spec["future_session"])}
 
 
 def _validate_data(data: dict[str, Any]) -> None:
@@ -244,6 +297,7 @@ def train_cell(data: dict[str, Any], recipe: str, batch_size: int, device: torch
               "peak_gpu_memory_bytes_delta":int(max(0, peak)), "checkpoint_path":str(selected_path),
               "checkpoint_sha256":sha256_file(selected_path), "split_sha256":data["split_sha256"],
               "normalizer":data["normalizer"], "source_sessions":data["source_sessions"], "future_session":data["future_session"],
+              "complete_cache_root":os.environ["FULL_OPENBMI_CACHE"] if task.startswith("OpenBMI_") else os.environ["FULL_WBCIC_CACHE"],
               "history":history, "outer_data_accessed":False, "fixed_heldout_accessed":False}
     write_json(record_path, record)
     del model, x_train, y_train, x_val
