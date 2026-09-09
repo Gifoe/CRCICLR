@@ -1,0 +1,24 @@
+{
+  "architectures": [
+    "LiteBN_BASELINE",
+    "LiteBN_R",
+    "LiteBN_RG",
+    "LiteBN_X",
+    "LiteBN_XS"
+  ],
+  "fold_counts": {
+    "OpenBMI": 5,
+    "WBCIC": 5
+  },
+  "historical_litebn_checkpoint_behavior_verified": true,
+  "no_final_holdout_access": true,
+  "pass": true,
+  "seed": 0,
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ]
+}
