@@ -12,7 +12,10 @@ from pathlib import Path
 
 RUNTIME = Path(os.environ["SEVEN_RUNTIME"]).resolve()
 CODE = Path(__file__).resolve().parent
-MODELS = ("EEGNet", "LiteBN", "TCFormer", "TeCh", "ST-EEGFormer-small", "LaBraM-base", "CBraMod")
+# LiteBN's complete 60-cell result is already present in this runtime and is
+# retained as-is.  The continuation queue deliberately starts at the next
+# backbone; this does not alter any model, split, seed, or metric definition.
+MODELS = ("EEGNet", "TCFormer", "TeCh", "ST-EEGFormer-small", "LaBraM-base", "CBraMod")
 TASKS = ("OpenBMI_MI", "OpenBMI_ERP", "OpenBMI_SSVEP", "WBCIC_MI")
 
 

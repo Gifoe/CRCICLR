@@ -27,6 +27,12 @@ from backbone_models import MODELS, MODEL_NATIVE_RESAMPLING, admission_metadata,
 from benchmark_data import load_search_fold
 from tech_official import recipe_config
 
+# Keep CPU-side tensor/OpenMP work below the server's 32 logical CPUs.  This
+# is a host scheduling bound only; it does not change numerical recipes.
+_cpu_threads = int(os.environ.get("SEVEN_CPU_THREADS", "24"))
+if _cpu_threads > 0:
+    torch.set_num_threads(_cpu_threads)
+
 
 EXP = Path(__file__).resolve().parents[1]
 PROTOCOL, OUTPUTS = EXP / "protocol", EXP / "outputs"
