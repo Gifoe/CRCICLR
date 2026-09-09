@@ -35,7 +35,16 @@ def main() -> int:
             write({"state": "RUNNING", "completed": done, "total": len(cells), "current": None, "elapsed_seconds": time.time() - begun}); continue
         write({"state": "RUNNING", "completed": done, "total": len(cells), "current": {"task": task, "model": model, "fold": fold, "seed": seed, "ordinal": ordinal}, "elapsed_seconds": time.time() - begun})
         command = [sys.executable, str(CODE / "run_search.py"), "--task", task, "--model", model, "--fold", str(fold), "--seed", str(seed)]
-        result = subprocess.run(command, cwd=str(CODE), env={**os.environ, "PYTHONUNBUFFERED": "1"})
+        result = subprocess.run(command, cwd=str(CODE), env={**os.environ, "PYTHONUNBUFFERED": "1"},
+                                text=True, capture_output=True)
+        # Keep the scheduler's per-cell process result outside Git.  It is
+        # needed to diagnose launcher failures without rereading experiment
+        # outputs or changing any cell computation.
+        child_log = RUNTIME / "logs" / "queue_child_process.log"
+        child_log.parent.mkdir(parents=True, exist_ok=True)
+        with child_log.open("a", encoding="utf-8") as handle:
+            handle.write(f"\n=== {task} / {model} / fold{fold} / seed{seed}; exit={result.returncode} ===\n")
+            handle.write(result.stdout); handle.write(result.stderr)
         if result.returncode != 0:
             write({"state": "FAILED", "completed": done, "total": len(cells), "failed": {"task": task, "model": model, "fold": fold, "seed": seed, "exit_code": result.returncode}, "elapsed_seconds": time.time() - begun})
             return result.returncode
