@@ -1,0 +1,19 @@
+{
+  "dataset_seed_offset": 0,
+  "fold_dependent_seed": false,
+  "forbidden": [
+    "seed+fold",
+    "dataset-specific seed",
+    "fold-dependent seed"
+  ],
+  "implemented_order": [
+    "set_seed(0)",
+    "construct AMSE-v2",
+    "set_seed(100000)",
+    "start epoch training"
+  ],
+  "model_initialization_seed": 0,
+  "per_fold": true,
+  "protocol": "AMSE_V2_SEED_FIDELITY",
+  "training_rng_seed": 100000
+}
