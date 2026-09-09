@@ -1,0 +1,84 @@
+{
+  "bootstrap": {
+    "paired_contrasts": true,
+    "replicates": 10000,
+    "seed": 20260909,
+    "uncertainty_unit": "subject"
+  },
+  "dataset_balanced_optional": {
+    "EL_minus_EE": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.32164502164502146,
+        "OpenBMI_MI": 2.328571428571426,
+        "OpenBMI_SSVEP": 1.2833333333333314,
+        "WBCIC_MI": 0.290000000000002
+      },
+      "ci_high_pp": 1.3668814634439637,
+      "ci_low_pp": 0.2173975168350165,
+      "mean_pp": 0.8005916305916309,
+      "method": "OpenBMI task average, then 50/50 OpenBMI/WBCIC"
+    },
+    "EL_minus_HOMOAVG": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.31277056277056453,
+        "OpenBMI_MI": 0.9976190476190437,
+        "OpenBMI_SSVEP": 0.5690476190476167,
+        "WBCIC_MI": 0.20999999999999944
+      },
+      "ci_high_pp": 0.5618121091871097,
+      "ci_low_pp": 0.27784220177969904,
+      "mean_pp": 0.4182395382395372,
+      "method": "OpenBMI task average, then 50/50 OpenBMI/WBCIC"
+    },
+    "EL_minus_LL": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.3038961038961056,
+        "OpenBMI_MI": -0.3333333333333352,
+        "OpenBMI_SSVEP": -0.1452380952380951,
+        "WBCIC_MI": 0.12999999999999973
+      },
+      "ci_high_pp": 0.44275285594035624,
+      "ci_low_pp": -0.33798878667628884,
+      "mean_pp": 0.035887445887445746,
+      "method": "OpenBMI task average, then 50/50 OpenBMI/WBCIC"
+    }
+  },
+  "equal_block": {
+    "EL_minus_EE": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.32164502164502146,
+        "OpenBMI_MI": 2.328571428571426,
+        "OpenBMI_SSVEP": 1.2833333333333314,
+        "WBCIC_MI": 0.290000000000002
+      },
+      "ci_high_pp": 1.5990610119047626,
+      "ci_low_pp": 0.5297792207792211,
+      "mean_pp": 1.0558874458874452,
+      "method": "equal average of four locked blocks"
+    },
+    "EL_minus_HOMOAVG": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.31277056277056453,
+        "OpenBMI_MI": 0.9976190476190437,
+        "OpenBMI_SSVEP": 0.5690476190476167,
+        "WBCIC_MI": 0.20999999999999944
+      },
+      "ci_high_pp": 0.6886488546176043,
+      "ci_low_pp": 0.3676831709956737,
+      "mean_pp": 0.5223593073593061,
+      "method": "equal average of four locked blocks"
+    },
+    "EL_minus_LL": {
+      "block_means_pp": {
+        "OpenBMI_ERP": 0.3038961038961056,
+        "OpenBMI_MI": -0.3333333333333352,
+        "OpenBMI_SSVEP": -0.1452380952380951,
+        "WBCIC_MI": 0.12999999999999973
+      },
+      "ci_high_pp": 0.30903494769119655,
+      "ci_low_pp": -0.331023403679653,
+      "mean_pp": -0.011168831168831245,
+      "method": "equal average of four locked blocks"
+    }
+  }
+}

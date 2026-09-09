@@ -1,0 +1,345 @@
+{
+  "alignment_hashes_match_across_families": true,
+  "all_five_folds": true,
+  "all_four_blocks": true,
+  "all_three_seed_pairs": true,
+  "analysis": "statistics_only_reaggregation",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 20260909,
+  "bootstrap_unit": "subject",
+  "both_EL_orientations_retained_equally": true,
+  "no_duplicate_primary_replicates": true,
+  "no_model_training": true,
+  "no_new_inference": true,
+  "no_oracle_comparison_in_primary": true,
+  "pass": true,
+  "primary_fusion_rule": "LOGIT50",
+  "robustness_only_rule": "PROB50",
+  "rules": {
+    "LOGIT50:OpenBMI_ERP": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 14,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "4",
+        "42",
+        "51",
+        "54"
+      ]
+    },
+    "LOGIT50:OpenBMI_MI": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 14,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "4",
+        "42",
+        "51",
+        "54"
+      ]
+    },
+    "LOGIT50:OpenBMI_SSVEP": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 14,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "4",
+        "42",
+        "51",
+        "54"
+      ]
+    },
+    "LOGIT50:WBCIC_MI": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 10,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "sub-17",
+        "sub-19",
+        "sub-2",
+        "sub-21",
+        "sub-25",
+        "sub-3",
+        "sub-31",
+        "sub-33",
+        "sub-38",
+        "sub-42"
+      ]
+    },
+    "PROB50:OpenBMI_ERP": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 14,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "4",
+        "42",
+        "51",
+        "54"
+      ]
+    },
+    "PROB50:OpenBMI_MI": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 14,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "4",
+        "42",
+        "51",
+        "54"
+      ]
+    },
+    "PROB50:OpenBMI_SSVEP": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 14,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "12",
+        "13",
+        "17",
+        "18",
+        "24",
+        "25",
+        "29",
+        "36",
+        "37",
+        "39",
+        "4",
+        "42",
+        "51",
+        "54"
+      ]
+    },
+    "PROB50:WBCIC_MI": {
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_subjects": 10,
+      "replicates_per_subject_family": 15,
+      "seed_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "subjects": [
+        "sub-17",
+        "sub-19",
+        "sub-2",
+        "sub-21",
+        "sub-25",
+        "sub-3",
+        "sub-31",
+        "sub-33",
+        "sub-38",
+        "sub-42"
+      ]
+    }
+  },
+  "same_matched_subjects": true,
+  "source_results_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_matched_homogeneous_ensemble_control_v1\\subject_level_results.csv",
+  "source_results_sha256": "a803c2683de8d44f5a08235186e9ba33129a3dc9f91f5ef3aacde9f435e51a7d",
+  "source_rows": 9360,
+  "subject_family_BA_unit": "percentage_points"
+}
