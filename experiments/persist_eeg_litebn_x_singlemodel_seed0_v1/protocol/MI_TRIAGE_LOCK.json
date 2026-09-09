@@ -1,7 +1,19 @@
 {
   "amendment": "MI_FIRST_TRIAGE",
+  "downstream_architectures": [
+    "LiteBN_BASELINE",
+    "LiteBN_X"
+  ],
+  "downstream_selection_amendment": "X_ONLY_DOWNSTREAM_AMENDMENT",
   "final_holdout_accessed": false,
   "mi_cells_complete": true,
+  "mi_gate_retained_architectures_before_user_amendment": [
+    "LiteBN_BASELINE",
+    "LiteBN_X",
+    "LiteBN_XS",
+    "LiteBN_RG",
+    "LiteBN_R"
+  ],
   "mi_no_robust_survivor": false,
   "mi_outcomes_read": true,
   "outer_dev_accessed": false,
@@ -15,5 +27,9 @@
   "rule": "retain candidate iff mean(OpenBMI_MI,WBCIC_MI) inner-val delta > 0 pp and each MI-task delta >= -0.50 pp; always retain exact LiteBN_BASELINE; if none survive, retain top candidate diagnostically",
   "seed": 0,
   "source_sha256": "5fa225c30f1938146a71f7655d56c487f457b8ab4a35c1a724a527e606c7dbf5",
-  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a"
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "user_requested_downstream_architectures": [
+    "LiteBN_BASELINE",
+    "LiteBN_X"
+  ]
 }

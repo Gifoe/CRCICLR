@@ -160,7 +160,7 @@ def remaining_phase(mod):
     if old_hash != split_hash:
         raise RuntimeError("split hash mismatch")
     triage_prov = read_json(PROTOCOL / "MI_TRIAGE_CHECKPOINT_PROVENANCE.json")["records"]
-    retained = tuple(lock["retained_architectures"])
+    retained = tuple(lock.get("downstream_architectures", lock["retained_architectures"]))
     remaining_rows, remaining_records = train_cells(mod, ("OpenBMI_ERP", "OpenBMI_SSVEP"), retained, split_hash)
     all_records = old_rows + triage_prov + remaining_records
     frame = pd.DataFrame(old_rows + [r for r in triage_prov if r["task"] == "WBCIC_MI"] + remaining_rows)
