@@ -6,6 +6,7 @@ import os
 import subprocess
 import sys
 import time
+import traceback
 from pathlib import Path
 
 
@@ -43,4 +44,12 @@ def main() -> int:
     print("FULL_SEARCH_QUEUE_COMPLETE", flush=True); return 0
 
 
-if __name__ == "__main__": raise SystemExit(main())
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except BaseException:
+        # Task Scheduler otherwise drops child-process tracebacks.  This is a
+        # scheduler-observability change only; it cannot affect any cell.
+        crash = RUNTIME / "search_queue_crash.txt"
+        crash.write_text(traceback.format_exc(), encoding="utf-8")
+        raise
