@@ -1,0 +1,70 @@
+{
+  "classes": 2,
+  "expressive": {
+    "adaptive": [
+      1,
+      8
+    ],
+    "anchor_adapter": {
+      "channels": 16,
+      "depthwise_kernel": 15,
+      "input": "detach(A64)"
+    },
+    "concat_channels": 48,
+    "dropout": [
+      0.2,
+      0.2,
+      0.15,
+      0.15,
+      0.25
+    ],
+    "embedding": 64,
+    "pointwise_channels": [
+      64,
+      64
+    ],
+    "pool": [
+      2,
+      2
+    ],
+    "private_stems": [
+      {
+        "kernel": 15,
+        "out": 16
+      },
+      {
+        "kernel": 127,
+        "out": 16
+      }
+    ],
+    "refinement_depthwise": [
+      15,
+      31
+    ]
+  },
+  "inference": "0.5*z_stable + 0.5*z_expressive",
+  "input": "[B,C,T]",
+  "learned_alpha": false,
+  "learned_gate": false,
+  "name": "AMSE-v2",
+  "objective": "CE(z_stable,y)+CE(z_expressive,y)",
+  "stable": {
+    "anchor": "post-pool4 pre-dropout A64",
+    "architecture": "canonical EEGNet",
+    "depthwise_spatial": [
+      8,
+      16
+    ],
+    "dropout": [
+      0.25,
+      0.25
+    ],
+    "embedding": 64,
+    "pool": [
+      4,
+      8
+    ],
+    "state_module": "stable",
+    "temporal_kernel": 64
+  }
+}
