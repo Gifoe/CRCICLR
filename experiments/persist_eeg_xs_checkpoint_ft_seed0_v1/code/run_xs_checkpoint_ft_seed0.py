@@ -347,6 +347,30 @@ def replay_all(mod, folds: dict[str, list[dict[str, Any]]], history: dict[tuple[
     return frame, replay
 
 
+def cached_replay_if_valid(mod, folds: dict[str, list[dict[str, Any]]]) -> dict[tuple[str, int], dict[str, Any]] | None:
+    """Reuse a completed exact replay only when its source provenance still matches."""
+    path = OUT / "XS_CHECKPOINT_REPLAY_SEED0.csv"
+    if not path.is_file():
+        return None
+    frame = pd.read_csv(path)
+    required = {"task", "fold", "replayed_BA", "replay_passed", "checkpoint_sha256", "normalizer_sha256"}
+    if not required.issubset(frame.columns) or len(frame) != 20 or not bool(frame.replay_passed.all()):
+        return None
+    expected: dict[tuple[str, int], tuple[str, str]] = {}
+    for task in mod.TASK_ORDER:
+        for fold in folds[mod.TASKS[task]["dataset"]]:
+            fold_id = int(fold["fold_id"])
+            _, _, metadata = mod.load_tensor_pair(normalizer_path(task, fold_id))
+            expected[(task, fold_id)] = (digest(source_xs_path(task, fold_id)), metadata["mean_std_sha256"])
+    output: dict[tuple[str, int], dict[str, Any]] = {}
+    for _, row in frame.iterrows():
+        key = (str(row.task), int(row.fold))
+        if key not in expected or (str(row.checkpoint_sha256), str(row.normalizer_sha256)) != expected[key]:
+            return None
+        output[key] = row.to_dict()
+    return output if len(output) == 20 else None
+
+
 def baseline_inner_all(mod, folds: dict[str, list[dict[str, Any]]], device: torch.device) -> dict[tuple[str, int], float]:
     output: dict[tuple[str, int], float] = {}
     for task in mod.TASK_ORDER:
@@ -877,7 +901,11 @@ def main() -> int:
     }
     write_json(PROTOCOL / "XS_FT_PROTOCOL.json", protocol)
     make_manifest(mod, folds, split_hash, device)
-    _, replay = replay_all(mod, folds, load_source_history(), device)
+    replay = cached_replay_if_valid(mod, folds)
+    if replay is None:
+        _, replay = replay_all(mod, folds, load_source_history(), device)
+    else:
+        print("XS_CHECKPOINT_REPLAY_REUSED 20/20", flush=True)
     baseline = baseline_inner_all(mod, folds, device)
 
     records: list[dict[str, Any]] = []
