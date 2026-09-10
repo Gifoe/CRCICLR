@@ -1,0 +1,22 @@
+{
+  "amendment": "X_ONLY_MULTISEED",
+  "baseline_reuse_sources": {
+    "OpenBMI_ERP": "/root/rivermind-data/openbmi_task_generality_runtime (ERP seed0/1/2)",
+    "OpenBMI_MI": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime (OpenBMI seed0/1/2)",
+    "OpenBMI_SSVEP": "/root/rivermind-data/openbmi_task_generality_runtime (SSVEP seed0/1/2)",
+    "WBCIC_MI": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime (WBCIC seed0/1/2)"
+  },
+  "created_utc": "2026-09-10T00:15:05.398220Z",
+  "final_holdout_accessed": false,
+  "final_holdout_predictions_generated": false,
+  "outer_scope": "SEARCH outer-development only",
+  "requested_scope": "Train LiteBN_X only for seeds 1 and 2; do not retrain LiteBN baseline.",
+  "skipped_methods": [
+    "LiteBN_BASELINE"
+  ],
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "status": "RUNNING",
+  "trained_methods": [
+    "LiteBN_X"
+  ]
+}
