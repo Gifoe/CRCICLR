@@ -1,0 +1,25 @@
+{
+  "alpha_cap": 0.5,
+  "architecture": "LiteBN_XB",
+  "final_holdout_accessed": false,
+  "outer_dev_predictions_generated": false,
+  "recipe": {
+    "clip": 5.0,
+    "epochs": 60,
+    "lr": 0.0003,
+    "min_epoch": 10,
+    "weight_decay": 0.0005
+  },
+  "seed": 0,
+  "selection_metric": "maximize worst-task delta, then equal-task mean, then fold consistency",
+  "source_sha256": "425ba215f47a26cc2bca8de44b69b4820b3c317e5c80c2e0fa8136c9e3da552a",
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "stage": "A",
+  "stage_a_complete": true,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ]
+}
