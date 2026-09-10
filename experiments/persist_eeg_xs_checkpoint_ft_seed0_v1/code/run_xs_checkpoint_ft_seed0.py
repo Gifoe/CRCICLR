@@ -931,6 +931,13 @@ def main() -> int:
             write_csv(OUT / "XS_FT1_INNERVAL_AGGREGATE.csv", aggregate[aggregate.regime.eq(FT1.name)])
         if bool(aggregate[aggregate.regime.eq(regime.name)].iloc[0].eligible_4_of_4):
             break
+        if regime == FT2:
+            ft1_worst = float(aggregate[aggregate.regime.eq(FT1.name)].iloc[0].worst_task_delta_pp)
+            ft2_worst = float(aggregate[aggregate.regime.eq(FT2.name)].iloc[0].worst_task_delta_pp)
+            # FT3 is a last fallback, not a second chance to tune after FT2 has
+            # already repaired the primary worst-task objective.
+            if ft2_worst > ft1_worst + TOL:
+                break
 
     detail, aggregate = stage_a_tables(records, attempted)
     write_csv(OUT / "XS_FT_STAGE_A_ALL_CANDIDATES.csv", detail)
