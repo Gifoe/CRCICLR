@@ -1,0 +1,20 @@
+{
+  "experiment": "persist_eeg_xinit_residual_adapter_seed0_v1",
+  "final_heldout_accessed": false,
+  "outer_development_opened": false,
+  "summary": {
+    "final_heldout_accessed": false,
+    "folds": 5,
+    "inner_split_policy": "canonical_frozen",
+    "max_epochs": 20,
+    "negative_folds": 0,
+    "outer_development_opened": false,
+    "patience": 5,
+    "positive_folds": 3,
+    "regime": "XRA_G2_ADAPTER_SCALE_LAST_MIXER",
+    "task": "WBCIC_MI",
+    "task_mean_delta_pp": 0.0995707070707108,
+    "zero_folds": 2
+  },
+  "terminal": "G2_WBCIC_CANONICAL_INNER_COMPLETE"
+}
