@@ -1,0 +1,24 @@
+{
+  "alpha": 0.5,
+  "canonical_split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "experiment": "persist_eeg_base_preserving_xs_seed0_v1",
+  "final_heldout_accessed": false,
+  "folds": 10,
+  "gamma": 0.1,
+  "max_epochs": 60,
+  "model": "LiteBN_BPXS",
+  "outer_development_accessed": false,
+  "parameter_count_by_task": {
+    "OpenBMI_ERP": 219767,
+    "WBCIC_MI": 219479
+  },
+  "patience": 5,
+  "seed": 0,
+  "selection_min_epoch": 10,
+  "tasks": [
+    "OpenBMI_ERP",
+    "WBCIC_MI"
+  ],
+  "temperature": 1.0,
+  "terminal": "BPXS_OBJECTIVE_NO_USEFUL_SIGNAL"
+}
