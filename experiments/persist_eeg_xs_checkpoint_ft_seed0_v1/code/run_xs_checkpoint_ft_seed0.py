@@ -212,6 +212,15 @@ def cell_dir(regime: Regime, task: str, fold: int) -> Path:
     return RUNTIME / "checkpoints" / regime.name.lower() / task.lower() / f"fold{fold}"
 
 
+def same_scientific_invariant(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    """Code hashes are provenance, not a reason to discard numerically identical work."""
+    ignored = {"runner_sha256"}
+    return (
+        {key: value for key, value in left.items() if key not in ignored}
+        == {key: value for key, value in right.items() if key not in ignored}
+    )
+
+
 def load_source_history() -> dict[tuple[str, int], dict[str, Any]]:
     result: dict[tuple[str, int], dict[str, Any]] = {}
     sources = [
@@ -497,7 +506,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
     }
     if record_path.is_file() and selected_path.is_file():
         previous = json.loads(record_path.read_text(encoding="utf-8"))
-        if previous.get("invariant") == invariant:
+        if same_scientific_invariant(previous.get("invariant", {}), invariant):
             return previous
         raise RuntimeError(f"completed checkpoint invariant mismatch: {record_path}")
 
@@ -523,7 +532,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
     best_ba, best_epoch, best_state, history, start, stalled = -float("inf"), None, None, [], 1, 0
     if latest_path.is_file():
         saved = torch.load(latest_path, map_location=device, weights_only=False)
-        if saved.get("invariant") != invariant:
+        if not same_scientific_invariant(saved.get("invariant", {}), invariant):
             raise RuntimeError(f"resume invariant mismatch: {latest_path}")
         model.load_state_dict(saved["current_state"], strict=True)
         optimizer.load_state_dict(saved["optimizer"])
