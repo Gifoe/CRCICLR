@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Seed-0 X-initialized zero-residual adapter experiment.
+"""Seed-0 X-initialized residual-adapter canonical-inner experiment.
 
-Stage A is strictly inner-only.  It uses three deterministic subject-level
-partitions per frozen outer fold, chooses epochs with a robust rule that keeps
-epoch zero (the exact X function) eligible, and stops the G0->G1->G2 hierarchy
-without opening outer-development if none of the regimes passes.  Stage B is a
-separate invocation and refuses to run without the committed Stage-A revision.
+Stage A runs only G1 on each frozen task/fold canonical inner train/validation
+pair. No additional resplits are created. Epoch zero is the exact LiteBN-X
+function; early stopping uses inner-validation BA with patience five. This
+run stops after the 20 G1 inner runs and never opens outer-development.
+Stage B remains a separate guarded entry point and is not invoked here.
 """
 from __future__ import annotations
 
@@ -34,16 +34,16 @@ import torch.nn.functional as F
 REPO = Path("/root/rivermind-data/CRCICLR_TASK_GENERALITY_WORK")
 BASE_EXP = REPO / "experiments/persist_eeg_litebn_x_singlemodel_seed0_v1"
 EXP = REPO / "experiments/persist_eeg_xinit_residual_adapter_seed0_v1"
-OUT = EXP / "outputs"
+OUT = EXP / "outputs_single_inner_g1"
 PROTOCOL = EXP / "protocol"
-RUNTIME = Path("/root/rivermind-data/xinit_residual_adapter_seed0_runtime")
+RUNTIME = Path("/root/rivermind-data/xinit_residual_adapter_seed0_single_inner_runtime")
 SOURCE_RUNTIME = Path("/root/rivermind-data/litebn_x_singlemodel_seed0_runtime")
 HIST_CARRIER = Path("/root/rivermind-data/carrier_5fold_multiseed_stability_runtime")
 HIST_TASK = Path("/root/rivermind-data/openbmi_task_generality_runtime")
 
 SEED = 0
-SPLIT_SEEDS = (101, 211, 307)
 MAX_EPOCHS = 20
+PATIENCE = 5
 LR = 1e-4
 WEIGHT_DECAY = 5e-4
 BETA = 1e-4
@@ -287,34 +287,27 @@ def epoch0_replay(mod, folds: dict[str, list[dict[str, Any]]], device: torch.dev
     return frame
 
 
-def split_seed(task: str, fold_id: int, base_seed: int) -> int:
-    task_code = {"OpenBMI_MI": 11, "OpenBMI_ERP": 23, "OpenBMI_SSVEP": 37, "WBCIC_MI": 53}[task]
-    return int(base_seed + task_code * 100_003 + fold_id * 1_009)
-
-
 def build_inner_splits(mod, task: str, fold: dict[str, Any], bundle) -> list[dict[str, Any]]:
-    all_train = mod.subject_sort(fold["inner_train_subjects"] + fold["inner_val_subjects"], bundle.name)
+    """Return exactly the historical canonical inner train/validation pair."""
+    training = mod.subject_sort(list(fold["inner_train_subjects"]), bundle.name)
+    validation = mod.subject_sort(list(fold["inner_val_subjects"]), bundle.name)
     outer = set(fold["outer_dev_subjects"])
-    if set(all_train) & outer:
+    if set(training) & set(validation):
+        raise RuntimeError(f"canonical inner partition overlaps in {task}/fold{fold['fold_id']}")
+    if set(training) | set(validation) != set(fold["inner_train_subjects"]) | set(fold["inner_val_subjects"]):
+        raise RuntimeError(f"canonical inner partition changed in {task}/fold{fold['fold_id']}")
+    if (set(training) | set(validation)) & outer:
         raise RuntimeError(f"outer-development leakage in {task}/fold{fold['fold_id']}")
-    val_size = max(2, int(round(len(all_train) * 0.25)))
-    records = []
-    for ordinal, base_seed in enumerate(SPLIT_SEEDS):
-        seed = split_seed(task, int(fold["fold_id"]), base_seed)
-        order = list(np.random.default_rng(seed).permutation(np.asarray(all_train, dtype=object)))
-        validation = mod.subject_sort(order[:val_size], bundle.name)
-        training = mod.subject_sort(order[val_size:], bundle.name)
-        if set(training) & set(validation) or set(training) | set(validation) != set(all_train):
-            raise RuntimeError("inner split partition invalid")
-        mean, std, metadata = mod.normalizer(bundle, training)
-        path = RUNTIME / "inner_normalizers" / task.lower() / f"fold{int(fold['fold_id'])}_split{ordinal}.npz"
-        mod.save_tensor_pair(path, mean, std, {**metadata, "split_seed": seed, "outer_subjects_absent": True})
-        records.append({
-            "split": ordinal, "base_seed": int(base_seed), "effective_seed": seed,
-            "train_subjects": training, "val_subjects": validation, "normalizer_path": str(path),
-            "normalizer_sha256": metadata["mean_std_sha256"], "normalizer_mean": mean, "normalizer_std": std,
-        })
-    return records
+    mean, std, metadata = mod.normalizer(bundle, training)
+    fold_id = int(fold["fold_id"])
+    path = RUNTIME / "inner_normalizers" / task.lower() / f"fold{fold_id}.npz"
+    mod.save_tensor_pair(path, mean, std, {**metadata, "inner_split_policy": "canonical_frozen", "outer_subjects_absent": True})
+    canonical_seed = int(fold.get("inner_split_seed", fold.get("fold_seed", 0)))
+    return [{
+        "split": 0, "base_seed": canonical_seed, "effective_seed": canonical_seed,
+        "train_subjects": training, "val_subjects": validation, "normalizer_path": str(path),
+        "normalizer_sha256": metadata["mean_std_sha256"], "normalizer_mean": mean, "normalizer_std": std,
+    }]
 
 
 def residual_energy(model: XResidualAdapter, value: torch.Tensor) -> torch.Tensor:
@@ -372,15 +365,16 @@ def split_cell_path(regime: Regime, task: str, fold: int, split: int) -> Path:
 def train_one_split(mod, regime: Regime, task: str, fold: dict[str, Any], split: dict[str, Any], source_sha: str, device: torch.device) -> dict[str, Any]:
     fold_id, split_id = int(fold["fold_id"]), int(split["split"])
     directory = split_cell_path(regime, task, fold_id, split_id)
-    record_path, latest_path = directory / "record.json", directory / "latest.pt"
+    record_path, latest_path, best_path = directory / "record.json", directory / "latest.pt", directory / "best.pt"
     source = base_x_path(task, fold_id)
     invariant = {
         "regime": regime.name, "task": task, "fold": fold_id, "split": split_id, "seed": SEED,
         "source_x_sha256": source_sha, "split_seed": split["effective_seed"],
         "train_subjects": split["train_subjects"], "val_subjects": split["val_subjects"],
         "normalizer_sha256": split["normalizer_sha256"], "lr": LR, "weight_decay": WEIGHT_DECAY,
-        "beta": BETA, "tau": TAU, "max_epochs": MAX_EPOCHS, "scale_anchor": SCALE_ANCHOR,
-        "mixer_anchor": MIXER_ANCHOR,
+        "beta": BETA, "tau": TAU, "max_epochs": MAX_EPOCHS, "patience": PATIENCE,
+        "scale_anchor": SCALE_ANCHOR, "mixer_anchor": MIXER_ANCHOR,
+        "inner_split_policy": "canonical_frozen",
     }
     if record_path.is_file():
         previous = json.loads(record_path.read_text(encoding="utf-8"))
@@ -399,6 +393,9 @@ def train_one_split(mod, regime: Regime, task: str, fold: dict[str, Any], split:
     scaler = torch.amp.GradScaler("cuda", enabled=device.type == "cuda")
     history: list[dict[str, Any]] = []
     start_epoch = 1
+    best_epoch = 0
+    best_ba = float("-inf")
+    bad_epochs = 0
     if latest_path.is_file():
         saved = torch.load(latest_path, map_location=device, weights_only=False)
         if saved.get("invariant") != invariant:
@@ -408,9 +405,15 @@ def train_one_split(mod, regime: Regime, task: str, fold: dict[str, Any], split:
         scaler.load_state_dict(saved["scaler"])
         restore_rng(saved["rng"])
         history, start_epoch = list(saved["history"]), int(saved["epoch"]) + 1
+        best_epoch = int(saved.get("best_epoch", max(history, key=lambda row: row["BA"])["epoch"]))
+        best_ba = float(saved.get("best_ba", max(row["BA"] for row in history)))
+        bad_epochs = int(saved.get("bad_epochs", 0))
     if not history:
         epoch0 = mean_metrics(mod.evaluate(model, bundle, cache, split["val_subjects"], mean, std))
-        history.append({"epoch": 0, **epoch0, "ce": None, "residual_energy": 0.0, "anchor": 0.0})
+        history.append({"epoch": 0, **epoch0, "ce": None, "residual_energy": 0.0, "anchor": 0.0, "best_epoch": 0, "best_ba": float(epoch0["BA"]), "bad_epochs": 0})
+        best_ba = float(epoch0["BA"])
+        best_epoch = 0
+        torch_save(best_path, {"invariant": invariant, "epoch": 0, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "scaler": scaler.state_dict(), "rng": rng_state(), "history": history, "best_epoch": best_epoch, "best_ba": best_ba, "bad_epochs": bad_epochs})
     for epoch in range(start_epoch, MAX_EPOCHS + 1):
         model.train()
         keep_base_batch_norms_frozen(model)
@@ -446,11 +449,24 @@ def train_one_split(mod, regime: Regime, task: str, fold: dict[str, Any], split:
             residual_values.append(float(energy.detach().float().cpu()))
             anchor_values.append(float(anchor_term.detach().float().cpu()))
         validation = mean_metrics(mod.evaluate(model, bundle, cache, split["val_subjects"], mean, std))
-        snapshot = {"epoch": epoch, **validation, "ce": float(np.mean(ce_values)), "residual_energy": float(np.mean(residual_values)), "anchor": float(np.mean(anchor_values)), "fp32_recovery_batches": fp32_recoveries, "lambda_channel": float(model.lambda_channel.detach().cpu()), "effective_amplitude": float(TAU * torch.tanh(model.lambda_channel).detach().cpu())}
+        improved = bool(validation["BA"] > best_ba + TOL)
+        if improved:
+            best_ba = float(validation["BA"])
+            best_epoch = epoch
+            bad_epochs = 0
+        else:
+            bad_epochs += 1
+        snapshot = {"epoch": epoch, **validation, "ce": float(np.mean(ce_values)), "residual_energy": float(np.mean(residual_values)), "anchor": float(np.mean(anchor_values)), "fp32_recovery_batches": fp32_recoveries, "lambda_channel": float(model.lambda_channel.detach().cpu()), "effective_amplitude": float(TAU * torch.tanh(model.lambda_channel).detach().cpu()), "best_epoch": best_epoch, "best_ba": best_ba, "bad_epochs": bad_epochs}
         history.append(snapshot)
-        torch_save(latest_path, {"invariant": invariant, "epoch": epoch, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "scaler": scaler.state_dict(), "rng": rng_state(), "history": history})
-        print(f"[{regime.name} {task} f{fold_id} s{split_id}] epoch={epoch:02d} valBA={validation['BA']:.5f} A={snapshot['effective_amplitude']:+.5f}", flush=True)
-    record = {"invariant": invariant, "regime": regime.name, "task": task, "dataset": mod.TASKS[task]["dataset"], "fold": fold_id, "split": split_id, "history": history, "source_x_checkpoint": str(source), "source_x_sha256": source_sha, "normalizer_sha256": split["normalizer_sha256"], "train_subjects": split["train_subjects"], "val_subjects": split["val_subjects"]}
+        state = {"invariant": invariant, "epoch": epoch, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "scaler": scaler.state_dict(), "rng": rng_state(), "history": history, "best_epoch": best_epoch, "best_ba": best_ba, "bad_epochs": bad_epochs}
+        torch_save(latest_path, state)
+        if improved:
+            torch_save(best_path, state)
+        print(f"[{regime.name} {task} f{fold_id} s{split_id}] epoch={epoch:02d} valBA={validation['BA']:.5f} best_epoch={best_epoch:02d} bestBA={best_ba:.5f} bad={bad_epochs}/{PATIENCE}", flush=True)
+        if bad_epochs >= PATIENCE:
+            print(f"[{regime.name} {task} f{fold_id} s{split_id}] EARLY_STOP epoch={epoch:02d} best_epoch={best_epoch:02d}", flush=True)
+            break
+    record = {"invariant": invariant, "regime": regime.name, "task": task, "dataset": mod.TASKS[task]["dataset"], "fold": fold_id, "split": split_id, "history": history, "best_epoch": int(best_epoch), "best_inner_val_BA": float(best_ba), "best_checkpoint": str(best_path), "source_x_checkpoint": str(source), "source_x_sha256": source_sha, "normalizer_sha256": split["normalizer_sha256"], "train_subjects": split["train_subjects"], "val_subjects": split["val_subjects"], "inner_split_policy": "canonical_frozen"}
     write_json(record_path, record)
     del model, cache
     if device.type == "cuda":
@@ -460,30 +476,39 @@ def train_one_split(mod, regime: Regime, task: str, fold: dict[str, Any], split:
 
 def select_fold_checkpoint(records: list[dict[str, Any]], regime: Regime, task: str, fold: int) -> dict[str, Any]:
     group = [row for row in records if row["regime"] == regime.name and row["task"] == task and int(row["fold"]) == fold]
-    if len(group) != 3:
-        raise RuntimeError(f"missing split trajectories for {regime.name}/{task}/f{fold}")
-    candidates = []
-    for epoch in range(MAX_EPOCHS + 1):
-        deltas = np.asarray([row["history"][epoch]["BA"] - row["history"][0]["BA"] for row in group], dtype=float)
-        median, deviation = float(np.median(deltas)), float(np.std(deltas, ddof=0))
-        eligible = bool(epoch > 0 and median > 0.0 and int(np.sum(deltas >= 0.0)) >= 2)
-        candidates.append({"epoch": epoch, "deltas": deltas.tolist(), "median_delta_BA": median, "std_delta_BA": deviation, "nonnegative_splits": int(np.sum(deltas >= 0.0)), "robust_score": median - 0.5 * deviation if eligible else 0.0, "eligible": eligible})
-    eligible = [row for row in candidates if row["eligible"] and row["robust_score"] > 0.0]
-    chosen = max(eligible, key=lambda row: (row["robust_score"], -row["epoch"])) if eligible else candidates[0]
-    return {"regime": regime.name, "task": task, "fold": fold, "selected_epoch": int(chosen["epoch"]), "selected_robust_gain_BA": float(chosen["robust_score"]), "selected_median_delta_BA": float(chosen["median_delta_BA"]), "selected_std_delta_BA": float(chosen["std_delta_BA"]), "selected_nonnegative_splits": int(chosen["nonnegative_splits"]), "selected_eligible": bool(chosen["eligible"]), "all_epoch_scores": candidates}
+    if len(group) != 1:
+        raise RuntimeError(f"expected exactly one canonical inner trajectory for {regime.name}/{task}/f{fold}")
+    row = group[0]
+    epoch0 = row["history"][0]
+    selected_epoch = int(row["best_epoch"])
+    selected = next(item for item in row["history"] if int(item["epoch"]) == selected_epoch)
+    delta = float(selected["BA"] - epoch0["BA"])
+    status = "positive" if delta > TOL else ("zero" if abs(delta) <= TOL else "negative")
+    return {"regime": regime.name, "task": task, "fold": fold, "selected_epoch": selected_epoch, "epoch0_inner_val_BA": float(epoch0["BA"]), "selected_inner_val_BA": float(selected["BA"]), "selected_delta_BA": delta, "selected_delta_BA_pp": 100.0 * delta, "status": status, "early_stop_epoch": int(row["history"][-1]["epoch"]), "patience": PATIENCE, "selected_checkpoint": row["best_checkpoint"], "selected_eligible": bool(delta >= -TOL)}
 
 
 def aggregate_regime(selections: list[dict[str, Any]], regime: Regime) -> dict[str, Any]:
     subset = [row for row in selections if row["regime"] == regime.name]
     if len(subset) != 20:
         raise RuntimeError(f"incomplete selections for {regime.name}")
-    task_gains = {task: float(np.mean([row["selected_robust_gain_BA"] for row in subset if row["task"] == task])) for task in sorted({row["task"] for row in subset})}
-    return {"regime": regime.name, "trainable_modules": ";".join(regime.trainable), "worst_task_robust_gain_pp": 100.0 * min(task_gains.values()), "nonnegative_tasks": int(sum(value >= 0.0 for value in task_gains.values())), "positive_tasks": int(sum(value > 0.0 for value in task_gains.values())), "equal_task_mean_robust_gain_pp": 100.0 * float(np.mean(list(task_gains.values()))), "positive_fold_robust_gain": int(sum(row["selected_robust_gain_BA"] > 0.0 for row in subset)), "passes_all_tasks": bool(all(value > 0.0 for value in task_gains.values())), "simplicity_rank": regime.simplicity_rank, **{f"{task}_robust_gain_pp": 100.0 * value for task, value in task_gains.items()}}
+    tasks = sorted({row["task"] for row in subset})
+    task_means = {task: float(np.mean([row["selected_delta_BA"] for row in subset if row["task"] == task])) for task in tasks}
+    openbmi = [task_means[task] for task in tasks if task.startswith("OpenBMI_")]
+    wbcic = float(task_means.get("WBCIC_MI", float("nan")))
+    return {"regime": regime.name, "trainable_modules": ";".join(regime.trainable), "inner_split_policy": "canonical_frozen", "max_epochs": MAX_EPOCHS, "patience": PATIENCE, "positive_folds": int(sum(row["status"] == "positive" for row in subset)), "zero_folds": int(sum(row["status"] == "zero" for row in subset)), "negative_folds": int(sum(row["status"] == "negative" for row in subset)), "openbmi_nonnegative": bool(all(value >= -TOL for value in openbmi)), "wbcic_mean_delta_pp": 100.0 * wbcic, "passes_target": bool(all(value >= -TOL for value in openbmi) and wbcic > TOL), "outer_development_opened": False, "final_heldout_accessed": False, **{f"{task}_mean_delta_pp": 100.0 * value for task, value in task_means.items()}}
 
 
 def stage_a_protocol(split_hash: str) -> str:
     return "\n".join([
-        "# X-init residual adapter seed-0 protocol", "", "Stage A only uses each frozen outer fold's historical inner-train plus inner-validation subjects. Outer-development and final held-out subjects are absent.", "", "## Frozen global hierarchy", "", "1. G0: adapter only; 2. G1: adapter plus X scale parameters with L2 anchor; 3. G2: adapter plus scale plus final mixer with L2 anchor.", "", f"Adapter: shared 2-8-1 MLP, x' = x * [1 + {TAU} * tanh(lambda_channel) * tanh(g)], lambda_channel=0 at initialization.", f"Optimization: AdamW lr={LR}, weight_decay={WEIGHT_DECAY}, beta={BETA}, max_epochs={MAX_EPOCHS}, gradient_clip={CLIP}.", f"Inner partition base seeds: {list(SPLIT_SEEDS)}; effective seeds additionally encode task and outer fold.", "Checkpoint eligibility: median three-split BA delta > 0 and at least 2/3 deltas >= 0. Robust score = median - 0.5*std. If no eligible positive score, epoch 0 is selected.", "Global hierarchy advance rule: a regime passes only if every task's mean selected robust gain is positive. No outer-development is opened otherwise.", f"Frozen source code SHA256: {sha_file(Path(__file__))}", f"Frozen five-fold split SHA256: {split_hash}", "FINAL_HELDOUT_ACCESSED = NO", ""
+        "# X-init residual adapter seed-0 — canonical-inner G1 protocol", "",
+        "Stage A uses exactly each frozen fold's historical inner_train_subjects and inner_val_subjects. No additional resplits are created.",
+        "Only XRA_G1_ADAPTER_SCALE is run in this amendment. G0/G2 are not run and no outer-development is opened.", "",
+        f"Epoch 0 is the exact LiteBN-X checkpoint; tau={TAU}; adapter lambda_channel=0 at initialization.",
+        f"Trainable modules: {', '.join(G1.trainable)}. All remaining LiteBN-X parameters and BatchNorm buffers are frozen.",
+        f"AdamW lr={LR}, weight_decay={WEIGHT_DECAY}, beta={BETA}, max_epochs={MAX_EPOCHS}, patience={PATIENCE}, selection metric=inner-val BA.",
+        "Best checkpoint is saved after each strict BA improvement. Training stops after five consecutive non-improving epochs. If no epoch improves over epoch 0, epoch 0 is selected.",
+        "Target summary: OpenBMI MI/ERP/SSVEP non-negative versus X; WBCIC MI positive mean delta. This run stops after the 20 G1 inner runs for inspection.",
+        f"Frozen source code SHA256: {sha_file(Path(__file__))}", f"Frozen five-fold split SHA256: {split_hash}", "FINAL_HELDOUT_ACCESSED = NO", ""
     ])
 
 
@@ -494,43 +519,41 @@ def run_stage_a() -> int:
     mod = load_module()
     _, folds, split_hash = mod.load_folds()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    (PROTOCOL / "EXPERIMENT_PROTOCOL.md").write_text(stage_a_protocol(split_hash), encoding="utf-8")
+    (PROTOCOL / "EXPERIMENT_PROTOCOL_G1_SINGLE_CANONICAL.md").write_text(stage_a_protocol(split_hash), encoding="utf-8")
     replay = epoch0_replay(mod, folds, device)
     source_sha = {(row.task, int(row.fold)): str(row.X_checkpoint_sha256) for row in replay.itertuples(index=False)}
-    all_records, all_selections, summaries = [], [], []
-    winner: Regime | None = None
-    for regime in (G0, G1, G2):
-        for task in mod.TASK_ORDER:
-            for fold in folds[mod.TASKS[task]["dataset"]]:
-                fold_id = int(fold["fold_id"])
-                bundle = mod.build_bundle(task, fold["inner_train_subjects"] + fold["inner_val_subjects"])
-                splits = build_inner_splits(mod, task, fold, bundle)
-                for split in splits:
-                    all_records.append(train_one_split(mod, regime, task, fold, split, source_sha[(task, fold_id)], device))
-                all_selections.append(select_fold_checkpoint(all_records, regime, task, fold_id))
-                del bundle
-        summary = aggregate_regime(all_selections, regime)
-        summaries.append(summary)
-        write_csv(OUT / "INNER_SPLIT_RESULTS.csv", pd.DataFrame([{**{key: value for key, value in row.items() if key != "history"}, "epoch": item["epoch"], "BA": item["BA"], "macro_F1": item["macro_F1"], "accuracy": item["accuracy"]} for row in all_records for item in row["history"]]))
-        write_csv(OUT / "SELECTED_CHECKPOINTS.csv", pd.DataFrame(all_selections))
-        write_csv(OUT / "INNER_RECIPE_SUMMARY.csv", pd.DataFrame(summaries))
-        print(f"{regime.name}_INNER_SUMMARY worst={summary['worst_task_robust_gain_pp']:+.4f}pp pass={summary['passes_all_tasks']}", flush=True)
-        if summary["passes_all_tasks"]:
-            winner = regime
-            break
-    if winner is None:
-        decision = "XRA_SEED0_FAIL"
-        (OUT / "FINAL_XRA_SEED0_DECISION.md").write_text("\n".join(["# XRA seed-0 decision", "", "All predeclared G0/G1/G2 regimes failed the all-task robust INNER criterion. Outer-development was not opened.", "", f"Terminal: `{decision}`", "", "FINAL_HELDOUT_ACCESSED = NO", ""]), encoding="utf-8")
-        write_json(OUT / "XRA_STAGE_A_LOCK.json", {"stage_a_complete": True, "winner": None, "outer_development_opened": False, "final_heldout_accessed": False, "terminal": decision})
-        print(f"XRA_STAGE_A_FAIL {decision}", flush=True)
-        return 0
-    winner_summary = next(row for row in summaries if row["regime"] == winner.name)
-    winner_selection = [row for row in all_selections if row["regime"] == winner.name]
-    recipe = "\n".join([f"# Frozen {winner.name} recipe", "", f"Trainable blocks: {', '.join(winner.trainable)}", f"Adapter LR: {LR}", f"Weight decay: {WEIGHT_DECAY}", f"Tau: {TAU}", f"Residual beta: {BETA}", f"Scale anchor: {SCALE_ANCHOR}", f"Final-mixer anchor: {MIXER_ANCHOR}", f"Max epochs: {MAX_EPOCHS}", f"Inner split base seeds: {list(SPLIT_SEEDS)}", "Epoch rule: robust median-minus-half-standard-deviation over three subject-disjoint inner partitions; epoch 0 retained if no positive eligible epoch.", f"Runner SHA256: {sha_file(Path(__file__))}", f"Five-fold split SHA256: {split_hash}", "Normalizer policy: split-train-only normalizers in Stage A; frozen historical normalizer in final outer-development evaluation.", ""])
-    (PROTOCOL / f"FROZEN_XRA_{winner.name}_RECIPE.md").write_text(recipe, encoding="utf-8")
-    lock = {"stage_a_complete": True, "winner": winner.name, "winner_summary": winner_summary, "selected_checkpoints": winner_selection, "split_sha256": split_hash, "runner_sha256": sha_file(Path(__file__)), "outer_development_opened": False, "final_heldout_accessed": False, "requires_committed_stage_a": True}
-    write_json(OUT / "XRA_STAGE_A_LOCK.json", lock)
-    print(f"XRA_STAGE_A_LOCKED {winner.name}", flush=True)
+    all_records, all_selections = [], []
+    regime = G1
+    for task in mod.TASK_ORDER:
+        for fold in folds[mod.TASKS[task]["dataset"]]:
+            fold_id = int(fold["fold_id"])
+            bundle = mod.build_bundle(task, fold["inner_train_subjects"] + fold["inner_val_subjects"])
+            splits = build_inner_splits(mod, task, fold, bundle)
+            if len(splits) != 1 or splits[0]["split"] != 0:
+                raise RuntimeError("canonical-inner policy produced more than one split")
+            all_records.append(train_one_split(mod, regime, task, fold, splits[0], source_sha[(task, fold_id)], device))
+            all_selections.append(select_fold_checkpoint(all_records, regime, task, fold_id))
+            del bundle
+    summary = aggregate_regime(all_selections, regime)
+    history_rows = []
+    for row in all_records:
+        for item in row["history"]:
+            history_rows.append({"regime": row["regime"], "task": row["task"], "dataset": row["dataset"], "fold": row["fold"], "split": row["split"], "epoch": item["epoch"], "BA": item["BA"], "macro_F1": item["macro_F1"], "accuracy": item["accuracy"], "best_epoch": row["best_epoch"], "early_stop_epoch": row["history"][-1]["epoch"]})
+    write_csv(OUT / "G1_CANONICAL_INNER_HISTORY.csv", pd.DataFrame(history_rows))
+    write_csv(OUT / "G1_CANONICAL_INNER_FOLD_RESULTS.csv", pd.DataFrame(all_selections).sort_values(["task", "fold"]).reset_index(drop=True))
+    task_rows = []
+    for task in sorted({row["task"] for row in all_selections}):
+        subset = [row for row in all_selections if row["task"] == task]
+        deltas = np.asarray([row["selected_delta_BA"] for row in subset], dtype=float)
+        task_rows.append({"task": task, "folds": len(subset), "task_mean_delta_pp": 100.0 * float(np.mean(deltas)), "positive_folds": int(np.sum(deltas > TOL)), "zero_folds": int(np.sum(np.abs(deltas) <= TOL)), "negative_folds": int(np.sum(deltas < -TOL))})
+    write_csv(OUT / "G1_CANONICAL_INNER_TASK_SUMMARY.csv", pd.DataFrame(task_rows))
+    write_json(OUT / "G1_CANONICAL_INNER_METADATA.json", {"experiment": "persist_eeg_xinit_residual_adapter_seed0_v1", "regime": regime.name, "summary": summary, "final_heldout_accessed": False, "outer_development_opened": False, "terminal": "G1_CANONICAL_INNER_COMPLETE"})
+    report = ["# LiteBN-XRA seed0 — G1 canonical-inner result", "", "- Regime: `XRA_G1_ADAPTER_SCALE` only.", "- Runs: 4 tasks × 5 folds × 1 frozen canonical inner train/validation pair = 20 runs.", f"- Early stopping: max {MAX_EPOCHS} epochs, patience {PATIENCE}, selection metric inner-val BA.", "- Epoch 0 is exact LiteBN-X; if no improvement, epoch 0 is selected.", "- G2 and outer-development were not run.", "", "| Task | Mean delta vs X (pp) | Positive | Zero | Negative |", "|---|---:|---:|---:|---:|"]
+    for row in task_rows:
+        report.append(f"| {row['task']} | {row['task_mean_delta_pp']:+.4f} | {row['positive_folds']}/5 | {row['zero_folds']}/5 | {row['negative_folds']}/5 |")
+    report += ["", f"- WBCIC MI mean delta: **{summary['wbcic_mean_delta_pp']:+.4f} pp**", f"- OpenBMI non-negative target: `{summary['openbmi_nonnegative']}`", f"- WBCIC positive target: `{summary['wbcic_mean_delta_pp'] > 0.0}`", "- This run stops here for inspection; no Stage-A lock is issued.", "", "`FINAL_HELDOUT_ACCESSED = NO`", ""]
+    (OUT / "G1_CANONICAL_INNER_RESULTS.md").write_text("\n".join(report), encoding="utf-8")
+    print(f"G1_CANONICAL_INNER_COMPLETE wbcic_mean={summary['wbcic_mean_delta_pp']:+.4f}pp openbmi_nonnegative={summary['openbmi_nonnegative']}", flush=True)
     return 0
 
 
