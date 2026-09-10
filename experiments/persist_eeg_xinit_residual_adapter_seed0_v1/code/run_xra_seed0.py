@@ -247,9 +247,10 @@ def subject_logits(mod, model: nn.Module, bundle, cache, subjects: Iterable[str]
     return output
 
 
-def epoch0_replay(mod, folds: dict[str, list[dict[str, Any]]], device: torch.device) -> pd.DataFrame:
+def epoch0_replay(mod, folds: dict[str, list[dict[str, Any]]], device: torch.device, tasks: Iterable[str] | None = None) -> pd.DataFrame:
     rows = []
-    for task in mod.TASK_ORDER:
+    task_order = tuple(mod.TASK_ORDER if tasks is None else tasks)
+    for task in task_order:
         for fold in folds[mod.TASKS[task]["dataset"]]:
             fold_id = int(fold["fold_id"])
             source = base_x_path(task, fold_id)
@@ -281,9 +282,10 @@ def epoch0_replay(mod, folds: dict[str, list[dict[str, Any]]], device: torch.dev
                 torch.cuda.empty_cache()
     frame = pd.DataFrame(rows).sort_values(["task", "fold"]).reset_index(drop=True)
     write_csv(OUT / "EPOCH0_EXACT_X_REPLAY.csv", frame)
-    if len(frame) != 20 or not bool(frame["pass"].all()):
+    expected = sum(len(folds[mod.TASKS[task]["dataset"]]) for task in task_order)
+    if len(frame) != expected or not bool(frame["pass"].all()):
         raise RuntimeError("epoch-0 exact-X replay invariant failed")
-    print("EPOCH0_EXACT_X_REPLAY_PASS 20/20", flush=True)
+    print(f"EPOCH0_EXACT_X_REPLAY_PASS {expected}/{expected}", flush=True)
     return frame
 
 
@@ -557,6 +559,69 @@ def run_stage_a() -> int:
     return 0
 
 
+def run_stage_g2_wbcic() -> int:
+    """Run only G2 on WBCIC's five canonical inner folds."""
+    global OUT, RUNTIME, PROTOCOL
+    OUT = EXP / "outputs_single_inner_g2_wbcic"
+    RUNTIME = Path("/root/rivermind-data/xinit_residual_adapter_seed0_g2_wbcic_runtime")
+    OUT.mkdir(parents=True, exist_ok=True)
+    PROTOCOL.mkdir(parents=True, exist_ok=True)
+    RUNTIME.mkdir(parents=True, exist_ok=True)
+    mod = load_module()
+    _, folds, split_hash = mod.load_folds()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    protocol = "\n".join([
+        "# X-init residual adapter seed-0 — canonical-inner G2 WBCIC-only protocol", "",
+        "Only WBCIC_MI is evaluated: five frozen outer folds, one canonical inner train/validation pair per fold.",
+        "No additional resplits are created. OpenBMI, G1, G0, G2 follow-up, outer-development and final held-out evaluation are not run.", "",
+        f"Epoch 0 is the exact LiteBN-X checkpoint; tau={TAU}; adapter lambda_channel=0 at initialization.",
+        f"Trainable modules: {', '.join(G2.trainable)}. All remaining LiteBN-X parameters and BatchNorm buffers are frozen.",
+        f"AdamW lr={LR}, weight_decay={WEIGHT_DECAY}, beta={BETA}, max_epochs={MAX_EPOCHS}, patience={PATIENCE}, selection metric=inner-val BA.",
+        "Best checkpoint is saved after each strict BA improvement. Training stops after five consecutive non-improving epochs. If no epoch improves over epoch 0, epoch 0 is selected.",
+        f"Frozen source code SHA256: {sha_file(Path(__file__))}", f"Frozen five-fold split SHA256: {split_hash}", "FINAL_HELDOUT_ACCESSED = NO", "",
+    ])
+    (PROTOCOL / "EXPERIMENT_PROTOCOL_G2_WBCIC_SINGLE_CANONICAL.md").write_text(protocol, encoding="utf-8")
+    replay = epoch0_replay(mod, folds, device, tasks=("WBCIC_MI",))
+    source_sha = {(row.task, int(row.fold)): str(row.X_checkpoint_sha256) for row in replay.itertuples(index=False)}
+    all_records, all_selections = [], []
+    regime = G2
+    task = "WBCIC_MI"
+    for fold in folds[mod.TASKS[task]["dataset"]]:
+        fold_id = int(fold["fold_id"])
+        bundle = mod.build_bundle(task, fold["inner_train_subjects"] + fold["inner_val_subjects"])
+        splits = build_inner_splits(mod, task, fold, bundle)
+        if len(splits) != 1 or splits[0]["split"] != 0:
+            raise RuntimeError("canonical-inner policy produced more than one split")
+        all_records.append(train_one_split(mod, regime, task, fold, splits[0], source_sha[(task, fold_id)], device))
+        all_selections.append(select_fold_checkpoint(all_records, regime, task, fold_id))
+        del bundle
+    if len(all_selections) != 5:
+        raise RuntimeError("incomplete WBCIC G2 canonical-inner run")
+    deltas = np.asarray([row["selected_delta_BA"] for row in all_selections], dtype=float)
+    summary = {
+        "regime": regime.name, "task": task, "inner_split_policy": "canonical_frozen",
+        "folds": 5, "max_epochs": MAX_EPOCHS, "patience": PATIENCE,
+        "task_mean_delta_pp": 100.0 * float(np.mean(deltas)),
+        "positive_folds": int(np.sum(deltas > TOL)), "zero_folds": int(np.sum(np.abs(deltas) <= TOL)),
+        "negative_folds": int(np.sum(deltas < -TOL)),
+        "outer_development_opened": False, "final_heldout_accessed": False,
+    }
+    history_rows = []
+    for row in all_records:
+        for item in row["history"]:
+            history_rows.append({"regime": row["regime"], "task": row["task"], "dataset": row["dataset"], "fold": row["fold"], "split": row["split"], "epoch": item["epoch"], "BA": item["BA"], "macro_F1": item["macro_F1"], "accuracy": item["accuracy"], "best_epoch": row["best_epoch"], "early_stop_epoch": row["history"][-1]["epoch"]})
+    write_csv(OUT / "G2_WBCIC_CANONICAL_INNER_HISTORY.csv", pd.DataFrame(history_rows))
+    write_csv(OUT / "G2_WBCIC_CANONICAL_INNER_FOLD_RESULTS.csv", pd.DataFrame(all_selections).sort_values(["task", "fold"]).reset_index(drop=True))
+    write_csv(OUT / "G2_WBCIC_CANONICAL_INNER_TASK_SUMMARY.csv", pd.DataFrame([summary]))
+    write_json(OUT / "G2_WBCIC_CANONICAL_INNER_METADATA.json", {"experiment": "persist_eeg_xinit_residual_adapter_seed0_v1", "summary": summary, "final_heldout_accessed": False, "outer_development_opened": False, "terminal": "G2_WBCIC_CANONICAL_INNER_COMPLETE"})
+    report = ["# LiteBN-XRA seed0 — G2 WBCIC canonical-inner result", "", "- Regime: `XRA_G2_ADAPTER_SCALE_LAST_MIXER` only.", "- Scope: WBCIC MI × 5 folds × 1 frozen canonical inner train/validation pair.", f"- Early stopping: max {MAX_EPOCHS} epochs, patience {PATIENCE}, selection metric inner-val BA.", "- Epoch 0 is exact LiteBN-X; if no improvement, epoch 0 is selected.", "- G1/G0, OpenBMI and outer-development were not run.", "", "| Task | Mean delta vs X (pp) | Positive | Zero | Negative |", "|---|---:|---:|---:|---:|"]
+    report.append(f"| WBCIC_MI | {summary['task_mean_delta_pp']:+.4f} | {summary['positive_folds']}/5 | {summary['zero_folds']}/5 | {summary['negative_folds']}/5 |")
+    report += ["", "Selected epoch per fold: " + ", ".join(str(row["selected_epoch"]) for row in all_selections), "", "This run stops here for inspection; no Stage-A lock is issued.", "", "`FINAL_HELDOUT_ACCESSED = NO`", ""]
+    (OUT / "G2_WBCIC_CANONICAL_INNER_RESULTS.md").write_text("\n".join(report), encoding="utf-8")
+    print(f"G2_WBCIC_CANONICAL_INNER_COMPLETE mean={summary['task_mean_delta_pp']:+.4f}pp", flush=True)
+    return 0
+
+
 def selected_regime(name: str) -> Regime:
     return {item.name: item for item in (G0, G1, G2)}[name]
 
@@ -729,11 +794,13 @@ def stage_b(commit: str) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--stage", choices=("stage_a", "stage_b"), required=True)
+    parser.add_argument("--stage", choices=("stage_a", "stage_b", "stage_g2_wbcic"), required=True)
     parser.add_argument("--stage-a-commit")
     args = parser.parse_args()
     if args.stage == "stage_a":
         return run_stage_a()
+    if args.stage == "stage_g2_wbcic":
+        return run_stage_g2_wbcic()
     if not args.stage_a_commit:
         raise SystemExit("stage_b requires --stage-a-commit")
     return stage_b(args.stage_a_commit)
