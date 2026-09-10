@@ -1,0 +1,306 @@
+{
+  "code_commit": "bcb73cd323d265801d8c2f6eb4ec064b92a41ae8",
+  "final_heldout_accessed": false,
+  "forbidden": [
+    "random_initialization",
+    "new_alpha",
+    "fixed_alpha_sweep",
+    "ensemble",
+    "routing",
+    "TTA",
+    "final_heldout"
+  ],
+  "frozen_modules": [
+    "temporal_multi_scale_stems",
+    "spatial_blocks",
+    "scale_gate",
+    "temporal_feature_blocks",
+    "pooling",
+    "embedding_projection",
+    "all_residual_temporal_mixers"
+  ],
+  "ft1": {
+    "frozen": [
+      "temporal_multi_scale_stems",
+      "spatial_blocks",
+      "scale_gate",
+      "temporal_feature_blocks",
+      "pooling",
+      "embedding_projection",
+      "all_residual_temporal_mixers"
+    ],
+    "trainable": [
+      "lambda_channel",
+      "channel_mlp",
+      "classifier_head"
+    ]
+  },
+  "hyperparameters": {
+    "anchor": 0.001,
+    "embedding_lr": 3e-05,
+    "gate_lr": 0.0001,
+    "gradient_clip": 5.0,
+    "head_lr": 0.0001,
+    "max_epochs": 20,
+    "min_epoch": 3,
+    "mixer_lr": 1e-05,
+    "patience": 5,
+    "weak_gate_shrinkage": 0.0001
+  },
+  "name": "XS_CHECKPOINT_LOCAL_FINE_TUNING_SEED0_V1",
+  "normalizers": [
+    {
+      "fold": 0,
+      "sha256": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 1,
+      "sha256": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 2,
+      "sha256": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 3,
+      "sha256": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 4,
+      "sha256": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 0,
+      "sha256": "9f8f60e7d74014665f6c41f858b7bc1a01a182ee6a74f4255849bace52f412c4",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 1,
+      "sha256": "e2de89059c6012827f0772d4648300c99af68a230b90c5b6210825a3cab5501b",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 2,
+      "sha256": "d58614d92d36fe84a3e6a2cc077409586c3c85e039c41e6ea925ec45069a822a",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 3,
+      "sha256": "0c2673978377de33dbdc9eec11e75acf70a690be484d67dc44af2b17c4ad8341",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 4,
+      "sha256": "89b5bfef40ef0e746130fae2c13f2702001b0cad26af7298e63cf8fc10192f97",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 0,
+      "sha256": "ee5e5751bdcf139783ff744897d821bf571b82584eb02518b105d673d9c906a2",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 1,
+      "sha256": "3ccca7591e0a73b37af6be0cd7a48c06ad58b0690e9e045892cf121dc791498b",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 2,
+      "sha256": "65457744184c97f7501093f7f0ae77803c77c55c76221e4319732fe46e157686",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 3,
+      "sha256": "23fc006691b42bd16828108fc89922654fa7567a759b789614a5642702113b52",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 4,
+      "sha256": "f35658c5b6e9edf7065b881ffbf59d3e0e0afa7726e18c3849663747b9413dda",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 0,
+      "sha256": "631974d53460681d0bfd75375e581ffd97ed4e914490e9c9a4560b490d8e5a3b",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 1,
+      "sha256": "380188bb9feeddabfedb51cc689016400b2a12c4f08bdfd96b40465ba3a4ca17",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 2,
+      "sha256": "62aeb00a88c0b46dd2feccb299b31c70d26eb2b41e2f808cc18ca646fd088354",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 3,
+      "sha256": "23765060e5268b3e9d17ac8856fddf0ebee518e507202d3f625e821bc4aa0035",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 4,
+      "sha256": "0e862b1cae5aa096f18b8e895fd881156c2b6b7c2f2d2f0b89e97815b1ab0a0e",
+      "task": "WBCIC_MI"
+    }
+  ],
+  "outer_development_predictions_generated": true,
+  "scope": "SEARCH_AND_OUTER_DEVELOPMENT_ONLY",
+  "seed": 0,
+  "selected_aggregate": {
+    "OpenBMI_ERP_delta_pp": -0.8464646464646531,
+    "OpenBMI_MI_delta_pp": 2.9666666666666575,
+    "OpenBMI_SSVEP_delta_pp": 4.300000000000003,
+    "WBCIC_MI_delta_pp": -0.1999747474747493,
+    "eligible_4_of_4": false,
+    "equal_task_mean_delta_pp": 1.5550568181818147,
+    "frozen_modules": "temporal_multi_scale_stems;spatial_blocks;scale_gate;temporal_feature_blocks;pooling;embedding_projection;all_residual_temporal_mixers",
+    "gate_shrinkage": 0.0001,
+    "positive_folds": 12,
+    "positive_tasks": 2,
+    "regime": "FT1_GATE_HEAD_WEAK_SHRINK",
+    "simplicity_rank": 1,
+    "trainable_modules": "lambda_channel;channel_mlp;classifier_head",
+    "worst_task_delta_pp": -0.8464646464646531
+  },
+  "selected_regime": "FT1_GATE_HEAD_WEAK_SHRINK",
+  "source_checkpoint_policy": "strict XS checkpoint replay then local adaptation",
+  "source_initialization": "existing LiteBN_XS selected checkpoint only",
+  "source_xs_checkpoints": [
+    {
+      "fold": 0,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_mi/fold0_litebn_xs/selected_best.pt",
+      "sha256": "5211f4faca2be10f67b149e8e3186e19962eaa3687f69b2ac02c9c0fc81e6857",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 1,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_mi/fold1_litebn_xs/selected_best.pt",
+      "sha256": "ecbadf46786c166497f0d1c790cb0597dc7e9146465e97b797f34142401f968c",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 2,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_mi/fold2_litebn_xs/selected_best.pt",
+      "sha256": "a08650e49617551c705b49a346ea5745bd0bc05b4b731791a4ad25a64bd37d4d",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 3,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_mi/fold3_litebn_xs/selected_best.pt",
+      "sha256": "13d7c17d04ccd9096d1df47988876f23fedabf1b9092ee47e7f9c426f661fdbc",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 4,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_mi/fold4_litebn_xs/selected_best.pt",
+      "sha256": "4738b01561d03d42a89344e23f72ff932eb2b8e938d0f579985d1b199b4c0061",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 0,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_erp/fold0_litebn_xs/selected_best.pt",
+      "sha256": "ee51d39e62626ee7968ced1184489303c3f1fad55c37f2c62d36e093e8fb6196",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 1,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_erp/fold1_litebn_xs/selected_best.pt",
+      "sha256": "6a856e1c2f6bb59d105071808260778409cb8b12f92683dc0910bd2e0498fe66",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 2,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_erp/fold2_litebn_xs/selected_best.pt",
+      "sha256": "7b640572273476f2c9529630a706194e5d0bec75d8d42c7f2d9c40bd06c68086",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 3,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_erp/fold3_litebn_xs/selected_best.pt",
+      "sha256": "1230cf93472f7bb3f81a4c38e1ca3c3463be40d50e8a18d7be07a2ffbfcdf823",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 4,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_erp/fold4_litebn_xs/selected_best.pt",
+      "sha256": "ea1b30eee85289707c1151d2380f683c7d617a435c313470a2b989d94c3da2f1",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 0,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_ssvep/fold0_litebn_xs/selected_best.pt",
+      "sha256": "b9c1df68ad52e46a61f187d4c8ebf693b0c8b3ae1afe28f28c67e0829f2da913",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 1,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_ssvep/fold1_litebn_xs/selected_best.pt",
+      "sha256": "3ece8d07e67feda07a6dcfb3c53446dc5a08487d0a548a42ea7eefd4d7199c5a",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 2,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_ssvep/fold2_litebn_xs/selected_best.pt",
+      "sha256": "1f17098aa7e1e423b70bdc69bab70c37a874ba59f73b007b30c8564ed051a09b",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 3,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_ssvep/fold3_litebn_xs/selected_best.pt",
+      "sha256": "9c263b210cbd24bde68ce3610d582851fdd5b90ca14598462160c4220e06c3e2",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 4,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/openbmi_ssvep/fold4_litebn_xs/selected_best.pt",
+      "sha256": "f13f0bb6ee6cd68b7fe816af1a85c641dc7373501069d96212be39d5843a256d",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 0,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/wbcic_mi/fold0_litebn_xs/selected_best.pt",
+      "sha256": "c422565bd19b281d7ddbd7c5a5103c38c0908fdda83c32faaf05b80176c2daa6",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 1,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/wbcic_mi/fold1_litebn_xs/selected_best.pt",
+      "sha256": "e45b2658f076625db6e3b1aff824a194d7c12db64fd0357ddf8689089b963256",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 2,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/wbcic_mi/fold2_litebn_xs/selected_best.pt",
+      "sha256": "b26f1a0812c9ac95607a8d4e0a0376d242271a7f2af3e4a48c9415be7c8b935f",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 3,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/wbcic_mi/fold3_litebn_xs/selected_best.pt",
+      "sha256": "d819254929e87529cdce06f8ba5d61a7f3b846e4617626d618efdeafa046dc5e",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 4,
+      "path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/checkpoints/wbcic_mi/fold4_litebn_xs/selected_best.pt",
+      "sha256": "d37f0c4c8975406de573c855931935c66374b12aa2f5f04ebf3e3ff8dbb8e49d",
+      "task": "WBCIC_MI"
+    }
+  ],
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "stage_a_complete": true,
+  "stage_a_selection": "maximize worst-task delta vs LiteBN; then positive tasks; equal-task mean; positive folds; simpler regime",
+  "terminal": "XS_FT_SEED0_FAIL",
+  "trainable_modules": [
+    "lambda_channel",
+    "channel_mlp",
+    "classifier_head"
+  ]
+}
