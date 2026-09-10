@@ -1,0 +1,44 @@
+{
+  "FINAL_HELDOUT_ACCESSED": "NO",
+  "batch": 512,
+  "beta": 0.001,
+  "candidate_lrs": [
+    1e-05,
+    3e-06
+  ],
+  "epoch0_replay_pass": true,
+  "erp_positive_folds_selected_lr": 4,
+  "erp_signal_min_mean_delta_pp": 0.1,
+  "evaluation_steps": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "experiment": "H0.1_MICROSTEP_RESIDUAL_HEAD",
+  "final_heldout_accessed": false,
+  "folds": 20,
+  "lr_selection": [
+    {
+      "erp_mean_delta_pp": 0.014141414141413122,
+      "lr": 3e-06,
+      "mean_selected_head_norm": 0.000414282297974668,
+      "nonnegative_other_tasks": true
+    },
+    {
+      "erp_mean_delta_pp": 0.01919191919191654,
+      "lr": 1e-05,
+      "mean_selected_head_norm": 0.002368025506293699,
+      "nonnegative_other_tasks": true
+    }
+  ],
+  "outer_development_opened": false,
+  "seed": 0,
+  "selected_global_lr": 1e-05,
+  "terminal": "RESIDUAL_HEAD_ERP_SIGNAL_NOT_FOUND",
+  "weight_decay": 0.0005
+}
