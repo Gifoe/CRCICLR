@@ -1,0 +1,32 @@
+{
+  "FINAL_HELDOUT_ACCESSED": "NO",
+  "OUTER_DEVELOPMENT_ACCESSED": "NO",
+  "architecture": "LiteBN_RPXS",
+  "beta_gate": 0.0001,
+  "eval_steps": [
+    0,
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "exact_replay_folds": 5,
+  "exact_replay_pass": true,
+  "experiment": "persist_eeg_rpxs_seed0_v1",
+  "lambda_SP": 0.001,
+  "lr_new_channel": 0.0001,
+  "lr_x_initialized": 3e-05,
+  "max_steps": 512,
+  "optimizer": "AdamW",
+  "p_gate_on": 0.5,
+  "seed": 0,
+  "selection_rule": "inner_val_BA_with_step0_fallback",
+  "source_branch": "codex/persist-eeg-rpxs-seed0-v1",
+  "source_commit": "d67133ae58e660368a6db5025f061c71abf98f8d",
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "terminal": "RPXS_WBCIC_ONLY_COMPLETE",
+  "wbcic_mean_delta_pp": 0.020000000000000018,
+  "wbcic_positive_folds": 1,
+  "weight_decay": 0.0005
+}
