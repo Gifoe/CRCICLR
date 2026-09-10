@@ -530,6 +530,11 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
     anchor, optimizer = freeze_and_optimizer(model, regime)
     scaler = torch.amp.GradScaler("cuda", enabled=device.type == "cuda")
     best_ba, best_epoch, best_state, history, start, stalled = -float("inf"), None, None, [], 1, 0
+    # AMP is a throughput optimization only.  In the rare case that FP16
+    # overflows in a forward pass, retry precisely that unmodified batch in
+    # FP32 from the pre-forward RNG state rather than accepting a non-finite
+    # update or changing the training recipe.
+    fp32_recovery_batches = 0
     if latest_path.is_file():
         saved = torch.load(latest_path, map_location=device, weights_only=False)
         if not same_scientific_invariant(saved.get("invariant", {}), invariant):
@@ -540,6 +545,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
         restore_rng(saved["rng"])
         best_ba, best_epoch, best_state = float(saved["best_ba"]), saved["best_epoch"], saved["best_state"]
         history, start, stalled = list(saved["history"]), int(saved["epoch"]) + 1, int(saved["stalled"])
+        fp32_recovery_batches = int(saved.get("fp32_recovery_batches", 0))
     train_indices = bundle.indices(fold["inner_train_subjects"], mod.TASKS[task]["source_sessions"])
     started = time.perf_counter()
     for epoch in range(start, MAX_EPOCHS + 1):
@@ -550,6 +556,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
         for indices in batches:
             value, labels = cache.batch(np.asarray(indices, dtype=np.int64), mean, std)
             optimizer.zero_grad(set_to_none=True)
+            pre_forward_rng = rng_state()
             with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=device.type == "cuda"):
                 logits, _ = model(value)
                 ce = F.cross_entropy(logits, labels, weight=class_weight)
@@ -557,7 +564,21 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
                 shrink = torch.tanh(model.lambda_channel).square()
                 loss = ce + ANCHOR * raw_anchor + regime.gate_shrinkage * shrink
             if not torch.isfinite(loss):
-                raise RuntimeError(f"non-finite FT loss: {regime.name}/{task}/fold{fold_id}")
+                # The FP16 forward did not update model or optimizer state.
+                # Restore the dropout RNG and retry the same data and mask in
+                # FP32; this is a numerical-stability recovery, not a new
+                # optimization branch or changed scientific recipe.
+                optimizer.zero_grad(set_to_none=True)
+                restore_rng(pre_forward_rng)
+                with torch.autocast(device_type=device.type, enabled=False):
+                    logits, _ = model(value)
+                    ce = F.cross_entropy(logits, labels, weight=class_weight)
+                    raw_anchor = anchor_loss(model, anchor)
+                    shrink = torch.tanh(model.lambda_channel).square()
+                    loss = ce + ANCHOR * raw_anchor + regime.gate_shrinkage * shrink
+                if not torch.isfinite(loss):
+                    raise RuntimeError(f"non-finite FT loss after FP32 recovery: {regime.name}/{task}/fold{fold_id}")
+                fp32_recovery_batches += 1
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
             torch.nn.utils.clip_grad_norm_([parameter for parameter in model.parameters() if parameter.requires_grad], CLIP)
@@ -579,6 +600,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
             "cross_entropy": float(np.mean(ce_values)),
             "anchor_raw": float(np.mean(anchor_values)),
             "gate_shrink_raw": float(np.mean(shrink_values)),
+            "fp32_recovery_batches": fp32_recovery_batches,
             "lambda_channel": float(model.lambda_channel.detach().float().cpu()),
             "tanh_lambda_channel": float(torch.tanh(model.lambda_channel).detach().float().cpu()),
             "selected": selected,
@@ -597,6 +619,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
             "rng": rng_state(),
             "history": history,
             "stalled": stalled,
+            "fp32_recovery_batches": fp32_recovery_batches,
         })
         print(f"[{regime.name} {task} f{fold_id}] epoch={epoch:02d} valBA={ba:.5f} gate={snapshot['tanh_lambda_channel']:+.5f}", flush=True)
         if epoch >= MIN_EPOCH and stalled >= PATIENCE:
@@ -646,6 +669,7 @@ def train_cell(mod, task: str, fold: dict[str, Any], regime: Regime, replay: dic
         "parameter_drift": drift_rows,
         "history": history,
         "elapsed_seconds_this_invocation": time.perf_counter() - started,
+        "fp32_recovery_batches": fp32_recovery_batches,
     }
     write_json(record_path, output)
     del model, cache

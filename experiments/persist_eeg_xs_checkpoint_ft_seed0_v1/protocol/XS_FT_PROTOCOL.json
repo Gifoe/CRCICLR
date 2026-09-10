@@ -1,0 +1,47 @@
+{
+  "code_commit": "68a48beecb26d037d12a9831db4527d3c388bf8f",
+  "final_heldout_accessed": false,
+  "forbidden": [
+    "random_initialization",
+    "new_alpha",
+    "fixed_alpha_sweep",
+    "ensemble",
+    "routing",
+    "TTA",
+    "final_heldout"
+  ],
+  "ft1": {
+    "frozen": [
+      "temporal_multi_scale_stems",
+      "spatial_blocks",
+      "scale_gate",
+      "temporal_feature_blocks",
+      "pooling",
+      "embedding_projection",
+      "all_residual_temporal_mixers"
+    ],
+    "trainable": [
+      "lambda_channel",
+      "channel_mlp",
+      "classifier_head"
+    ]
+  },
+  "hyperparameters": {
+    "anchor": 0.001,
+    "embedding_lr": 3e-05,
+    "gate_lr": 0.0001,
+    "gradient_clip": 5.0,
+    "head_lr": 0.0001,
+    "max_epochs": 20,
+    "min_epoch": 3,
+    "mixer_lr": 1e-05,
+    "patience": 5,
+    "weak_gate_shrinkage": 0.0001
+  },
+  "name": "XS_CHECKPOINT_LOCAL_FINE_TUNING_SEED0_V1",
+  "scope": "SEARCH_AND_OUTER_DEVELOPMENT_ONLY",
+  "seed": 0,
+  "source_initialization": "existing LiteBN_XS selected checkpoint only",
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "stage_a_selection": "maximize worst-task delta vs LiteBN; then positive tasks; equal-task mean; positive folds; simpler regime"
+}
