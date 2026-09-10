@@ -63,8 +63,27 @@ def _json(path: Path, value: Any) -> None:
 def _torch(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".part")
-    torch.save(value, temporary)
-    os.replace(temporary, path)
+    try:
+        # Serialize into memory first.  On Windows, PyTorch's direct zip
+        # writer can raise ``unexpected pos`` on a large file when a file
+        # scanner briefly interferes with the destination handle.  A
+        # BytesIO serialization keeps the previous valid checkpoint intact and
+        # makes the final filesystem operation a plain sequential write.
+        buffer = io.BytesIO()
+        torch.save(value, buffer)
+        with temporary.open("wb") as handle:
+            handle.write(buffer.getbuffer())
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    except Exception:
+        # Windows can surface a transient iostream/badbit when the large
+        # foundation checkpoint is written while the drive is near capacity.
+        # Preserve the previous valid checkpoint and let the cell resume from
+        # it; a failed write must never destroy a valid state.
+        try: temporary.unlink()
+        except FileNotFoundError: pass
+        raise
 
 
 def _sha(path: Path) -> str:
