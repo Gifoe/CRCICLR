@@ -1,0 +1,32 @@
+{
+  "FINAL_HELDOUT_ACCESSED": "NO",
+  "batch": 512,
+  "beta": 0.001,
+  "bottleneck": 16,
+  "clip": 5.0,
+  "embedding_dim": 128,
+  "epoch0_replay_pass": true,
+  "erp_mean_delta_pp": 0.03131313131313318,
+  "erp_positive_folds": 4,
+  "erp_signal_min_mean_delta_pp": 0.1,
+  "evaluation_steps": [
+    0,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    96,
+    128
+  ],
+  "experiment": "H1_XS_REPRESENTATION_ADAPTER",
+  "final_heldout_accessed": false,
+  "folds": 20,
+  "lr": 3e-05,
+  "max_steps": 128,
+  "outer_development_opened": false,
+  "seed": 0,
+  "terminal": "XS_LOCAL_CHECKPOINT_REPAIR_FAILED",
+  "weight_decay": 0.0005
+}
