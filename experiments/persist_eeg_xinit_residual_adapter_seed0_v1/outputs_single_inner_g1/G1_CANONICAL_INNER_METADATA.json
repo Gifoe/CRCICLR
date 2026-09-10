@@ -1,0 +1,26 @@
+{
+  "experiment": "persist_eeg_xinit_residual_adapter_seed0_v1",
+  "final_heldout_accessed": false,
+  "outer_development_opened": false,
+  "regime": "XRA_G1_ADAPTER_SCALE",
+  "summary": {
+    "OpenBMI_ERP_mean_delta_pp": 0.07777777777777439,
+    "OpenBMI_MI_mean_delta_pp": 0.0,
+    "OpenBMI_SSVEP_mean_delta_pp": 0.09999999999999788,
+    "WBCIC_MI_mean_delta_pp": 0.05999999999999784,
+    "final_heldout_accessed": false,
+    "inner_split_policy": "canonical_frozen",
+    "max_epochs": 20,
+    "negative_folds": 0,
+    "openbmi_nonnegative": true,
+    "outer_development_opened": false,
+    "passes_target": true,
+    "patience": 5,
+    "positive_folds": 7,
+    "regime": "XRA_G1_ADAPTER_SCALE",
+    "trainable_modules": "residual_adapter.lambda_channel;residual_adapter.channel_mlp;X.scale_mlp;X.lambda_scale",
+    "wbcic_mean_delta_pp": 0.05999999999999784,
+    "zero_folds": 13
+  },
+  "terminal": "G1_CANONICAL_INNER_COMPLETE"
+}
