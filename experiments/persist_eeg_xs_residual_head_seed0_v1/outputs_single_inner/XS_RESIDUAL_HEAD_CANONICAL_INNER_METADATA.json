@@ -1,0 +1,23 @@
+{
+  "experiment": "persist_eeg_xs_residual_head_seed0_v1",
+  "final_heldout_accessed": false,
+  "outer_development_opened": false,
+  "summary": {
+    "beta": 0.001,
+    "final_heldout_accessed": false,
+    "folds": 20,
+    "inner_split_policy": "canonical_frozen",
+    "lr": 0.0001,
+    "max_epochs": 30,
+    "negative_folds": 0,
+    "openbmi_erp_mean_delta_pp": 0.0,
+    "outer_development_opened": false,
+    "patience": 5,
+    "positive_folds": 8,
+    "regime": "XS_RESIDUAL_HEAD",
+    "terminal": "XS_RESIDUAL_HEAD_CANONICAL_INNER_COMPLETE",
+    "weight_decay": 0.0005,
+    "zero_folds": 12
+  },
+  "terminal": "XS_RESIDUAL_HEAD_CANONICAL_INNER_COMPLETE"
+}
