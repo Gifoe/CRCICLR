@@ -1,0 +1,45 @@
+{
+  "baseline_checkpoints": "exact historical selected_best.pt",
+  "epochs": 60,
+  "experiment": "LiteBN-RGEO",
+  "final_heldout_accessed": "historical heldout only after development",
+  "final_test_used_for_tuning": false,
+  "folds": 5,
+  "geometry": {
+    "direction": "normalize(mu[a]-mu[b])",
+    "max_trials_per_subject_class": 2,
+    "mu_subject_class": "mean embedding per subject/class",
+    "pairs": "all unordered class pairs a<b",
+    "reference": "leave-one-subject-out mean of stopgrad directions",
+    "source_sessions": {
+      "OpenBMI_ERP": [
+        1
+      ],
+      "OpenBMI_MI": [
+        1
+      ],
+      "OpenBMI_SSVEP": [
+        1
+      ],
+      "WBCIC_MI": [
+        0,
+        1
+      ]
+    },
+    "support_subjects": 8
+  },
+  "lambda_geo": 0.1,
+  "lr": 0.0003,
+  "min_selection_epoch": 10,
+  "optimizer": "AdamW",
+  "seed": 0,
+  "selection": "future-session inner subject-mean BA, eligible epochs 10..60, earliest tie",
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "weight_decay": 0.0005
+}
