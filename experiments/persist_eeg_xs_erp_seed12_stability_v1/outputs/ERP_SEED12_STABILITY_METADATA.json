@@ -1,0 +1,24 @@
+{
+  "experiment": "persist_eeg_xs_erp_seed12_stability_v1",
+  "task": "OpenBMI_ERP",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "selection_rule": "canonical inner-val subject-mean BA; min_epoch=10; patience=10",
+  "max_epochs": 60,
+  "lr": 0.0003,
+  "weight_decay": 0.0005,
+  "baseline_reused": true,
+  "new_inner_splits_created": false,
+  "outer_development_accessed": true,
+  "final_heldout_accessed": false,
+  "interpretation": "SEED0_DEGRADATION_LIKELY_RANDOM",
+  "seed_deltas_pp": {
+    "0": 0.24318181818181903,
+    "1": 0.3371212121212139,
+    "2": 0.5053030303030287
+  }
+}
