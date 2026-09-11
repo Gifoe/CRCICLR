@@ -9,8 +9,8 @@ import torch.nn.functional as F
 REPO=Path("/root/rivermind-data/CRCICLR_TASK_GENERALITY_WORK")
 RUNNER_PATH=REPO/"experiments/persist_eeg_litebn_x_singlemodel_seed0_v1/code/run_x_multiseed_x_only.py"
 EXP=REPO/"experiments/persist_eeg_xs_erp_seed12_stability_v1"
-OUT=EXP/"outputs"
-RUNTIME_ROOT=Path("/root/rivermind-data/xs_erp_seed12_stability_runtime")
+OUT=EXP/"outputs_correct_xs"
+RUNTIME_ROOT=Path("/root/rivermind-data/xs_erp_seed12_stability_runtime_correct_xs")
 TASK="OpenBMI_ERP"
 SEEDS=(1,2)
 
@@ -26,24 +26,24 @@ def sha256(p):
 
 def aggregate(frame,seed):
     p=frame.pivot_table(index=["fold","subject_id"],columns="method",values=["BA","macro_F1","accuracy"])
-    d=p[("BA","LiteBN_X")]-p[("BA","LiteBN_BASELINE")]
+    d=p[("BA","LiteBN_XS")]-p[("BA","LiteBN_BASELINE")]
     rows=[]
     for fid,g in frame.groupby("fold"):
         q=g.pivot_table(index="subject_id",columns="method",values=["BA","macro_F1","accuracy"])
-        dd=q[("BA","LiteBN_X")]-q[("BA","LiteBN_BASELINE")]
+        dd=q[("BA","LiteBN_XS")]-q[("BA","LiteBN_BASELINE")]
         rows.append({"seed":int(seed),"fold":int(fid),"n_subjects":int(len(dd)),
                      "LiteBN_BA":float(q[("BA","LiteBN_BASELINE")].mean()),
-                     "XS_BA":float(q[("BA","LiteBN_X")].mean()),
+                     "XS_BA":float(q[("BA","LiteBN_XS")].mean()),
                      "delta_pp":float(100*dd.mean()),
                      "LiteBN_macro_F1":float(q[("macro_F1","LiteBN_BASELINE")].mean()),
-                     "XS_macro_F1":float(q[("macro_F1","LiteBN_X")].mean()),
+                     "XS_macro_F1":float(q[("macro_F1","LiteBN_XS")].mean()),
                      "positive_subjects":int((dd>0).sum()),"harmed_subjects":int((dd<0).sum())})
     fold=pd.DataFrame(rows)
     return fold,{"seed":int(seed),"n_subjects":int(len(p)),
         "LiteBN_BA":float(p[("BA","LiteBN_BASELINE")].mean()),
-        "XS_BA":float(p[("BA","LiteBN_X")].mean()),"delta_pp":float(100*d.mean()),
+        "XS_BA":float(p[("BA","LiteBN_XS")].mean()),"delta_pp":float(100*d.mean()),
         "LiteBN_macro_F1":float(p[("macro_F1","LiteBN_BASELINE")].mean()),
-        "XS_macro_F1":float(p[("macro_F1","LiteBN_X")].mean()),
+        "XS_macro_F1":float(p[("macro_F1","LiteBN_XS")].mean()),
         "positive_folds":int((fold.delta_pp>0).sum()),"negative_folds":int((fold.delta_pp<0).sum()),
         "positive_subjects":int((d>0).sum()),"harmed_subjects":int((d<0).sum())}
 
@@ -59,6 +59,8 @@ TOL=1e-12
 
 def train_one_patience(model, architecture, task, fold, bundle, cache, mean, std, normalizer_meta, batch_info, class_weight, class_weight_meta, device):
     global M
+    if architecture=="LiteBN_X":
+        architecture="LiteBN_XS"
     latest=M.checkpoint_path(task,int(fold["fold_id"]),architecture,"checkpoint_latest.pt")
     selected=M.checkpoint_path(task,int(fold["fold_id"]),architecture,"selected_best.pt")
     initial_hash=M.state_hash(model); source_hash=sha256(RUNNER_PATH)
@@ -134,7 +136,7 @@ def evaluate_only_erp(mod,seed,records,folds,device):
         mean,std,norm=mod.load_tensor_pair(runtime/"normalizers"/"openbmi_erp_fold{}.npz".format(fid))
         cache=mod.RawGPUCache(bundle,device)
         paths={"LiteBN_BASELINE":Path("/root/rivermind-data/openbmi_task_generality_runtime/erp_fold{}_seed{}_litebn/selected_best.pt".format(fid,seed)),
-               "LiteBN_X":Path(byfold[fid]["checkpoint_path"])}
+               "LiteBN_XS":Path(byfold[fid]["checkpoint_path"])}
         for method,path in paths.items():
             if not path.is_file(): raise FileNotFoundError(str(path))
             model=mod.build_model(method,TASK).to(device)
@@ -155,8 +157,8 @@ def evaluate_only_erp(mod,seed,records,folds,device):
     return frame
 
 def seed0_reference(mod):
-    src=REPO/"experiments/persist_eeg_litebn_x_singlemodel_seed0_v1/outputs/OUTER_SUBJECT_RESULTS.csv"
-    f=pd.read_csv(src); f=f[f.task.eq(TASK)].copy(); f["seed"]=0; f["baseline_reused"]=f.method.eq("LiteBN_BASELINE")
+    src=REPO/"experiments/persist_eeg_litebn_x_singlemodel_seed0_v1/outputs/POSTHOC_RG_XS_SEED0_ERP_OUTER_SUBJECT_RESULTS.csv"
+    f=pd.read_csv(src); f=f[f.task.eq(TASK) & f.method.isin(["LiteBN_BASELINE","LiteBN_XS"])].copy(); f["seed"]=0; f["baseline_reused"]=f.method.eq("LiteBN_BASELINE")
     f.to_csv(OUT/"SEED0_EXISTING_ERP_OUTER_SUBJECT_RESULTS.csv",index=False)
     return aggregate(f,0)[1]
 
@@ -167,6 +169,14 @@ def main():
     global M
     M=mod
     mod.train_one=train_one_patience
+    original_build=mod.build_model
+    original_checkpoint_path=mod.checkpoint_path
+    def build_model_xs(architecture, task):
+        return original_build("LiteBN_XS" if architecture=="LiteBN_X" else architecture, task)
+    def checkpoint_path_xs(task, fold_id, architecture, which):
+        return original_checkpoint_path(task, fold_id, "LiteBN_XS" if architecture=="LiteBN_X" else architecture, which)
+    mod.build_model=build_model_xs
+    mod.checkpoint_path=checkpoint_path_xs
     mod.TASK_ORDER=(TASK,)
     mod.OUT=OUT
     mod.RUNTIME=RUNTIME_ROOT

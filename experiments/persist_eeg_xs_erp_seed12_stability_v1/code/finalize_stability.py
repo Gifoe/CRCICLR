@@ -1,16 +1,16 @@
 from pathlib import Path
 import pandas as pd, numpy as np, json
 ROOT=Path("/root/rivermind-data/CRCICLR_TASK_GENERALITY_WORK/experiments/persist_eeg_xs_erp_seed12_stability_v1")
-OUT=ROOT/"outputs"
+OUT=ROOT/"outputs_correct_xs"
 def agg(f,seed):
     p=f.pivot_table(index=["fold","subject_id"],columns="method",values=["BA","macro_F1","accuracy"])
-    d=p[("BA","LiteBN_X")]-p[("BA","LiteBN_BASELINE")]
+    d=p[("BA","LiteBN_XS")]-p[("BA","LiteBN_BASELINE")]
     rows=[]
     for fid,g in f.groupby("fold"):
-        q=g.pivot_table(index="subject_id",columns="method",values=["BA","macro_F1","accuracy"]); dd=q[("BA","LiteBN_X")]-q[("BA","LiteBN_BASELINE")]
-        rows.append({"seed":int(seed),"fold":int(fid),"n_subjects":len(dd),"LiteBN_BA":q[("BA","LiteBN_BASELINE")].mean(),"XS_BA":q[("BA","LiteBN_X")].mean(),"delta_pp":100*dd.mean(),"LiteBN_macro_F1":q[("macro_F1","LiteBN_BASELINE")].mean(),"XS_macro_F1":q[("macro_F1","LiteBN_X")].mean(),"positive_subjects":int((dd>0).sum()),"harmed_subjects":int((dd<0).sum())})
+        q=g.pivot_table(index="subject_id",columns="method",values=["BA","macro_F1","accuracy"]); dd=q[("BA","LiteBN_XS")]-q[("BA","LiteBN_BASELINE")]
+        rows.append({"seed":int(seed),"fold":int(fid),"n_subjects":len(dd),"LiteBN_BA":q[("BA","LiteBN_BASELINE")].mean(),"XS_BA":q[("BA","LiteBN_XS")].mean(),"delta_pp":100*dd.mean(),"LiteBN_macro_F1":q[("macro_F1","LiteBN_BASELINE")].mean(),"XS_macro_F1":q[("macro_F1","LiteBN_XS")].mean(),"positive_subjects":int((dd>0).sum()),"harmed_subjects":int((dd<0).sum())})
     fold=pd.DataFrame(rows)
-    overall={"seed":int(seed),"n_subjects":len(p),"LiteBN_BA":p[("BA","LiteBN_BASELINE")].mean(),"XS_BA":p[("BA","LiteBN_X")].mean(),"delta_pp":100*d.mean(),"LiteBN_macro_F1":p[("macro_F1","LiteBN_BASELINE")].mean(),"XS_macro_F1":p[("macro_F1","LiteBN_X")].mean(),"positive_folds":int((fold.delta_pp>0).sum()),"negative_folds":int((fold.delta_pp<0).sum()),"positive_subjects":int((d>0).sum()),"harmed_subjects":int((d<0).sum())}
+    overall={"seed":int(seed),"n_subjects":len(p),"LiteBN_BA":p[("BA","LiteBN_BASELINE")].mean(),"XS_BA":p[("BA","LiteBN_XS")].mean(),"delta_pp":100*d.mean(),"LiteBN_macro_F1":p[("macro_F1","LiteBN_BASELINE")].mean(),"XS_macro_F1":p[("macro_F1","LiteBN_XS")].mean(),"positive_folds":int((fold.delta_pp>0).sum()),"negative_folds":int((fold.delta_pp<0).sum()),"positive_subjects":int((d>0).sum()),"harmed_subjects":int((d<0).sum())}
     return fold,overall
 all_o=[]; all_f=[]
 for seed in (0,1,2):
