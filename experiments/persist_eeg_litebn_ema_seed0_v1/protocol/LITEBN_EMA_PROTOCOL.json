@@ -1,0 +1,27 @@
+{
+  "architecture": "exact historical CompactLite BN / LiteBN_BASELINE",
+  "current_internal_heldout": true,
+  "ema_decay": 0.9,
+  "experiment": "LiteBN-EMA",
+  "final_heldout_accessed": false,
+  "final_test_used_for_tuning": false,
+  "folds": 5,
+  "gradient_clip": 5.0,
+  "historical_baseline_checkpoint_reused": true,
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "min_selection_epoch": 10,
+  "only_change": "epoch-level EMA training weights",
+  "optimizer": "AdamW",
+  "patience": 10,
+  "seed": 0,
+  "selection": "EMA inner future-session subject-mean BA; macro-F1 tie-break; earliest epoch",
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "tasks": [
+    "OpenBMI_MI",
+    "WBCIC_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP"
+  ],
+  "weight_decay": 0.0005
+}
