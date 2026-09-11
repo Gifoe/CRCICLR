@@ -1,0 +1,50 @@
+{
+  "FINAL_HELDOUT_ACCESSED": "YES",
+  "FINAL_TEST_USED_FOR_TUNING": "NO",
+  "MODEL_FROZEN_BEFORE_FINAL_TEST": "YES",
+  "dataset_balanced_mean_delta_pp": -0.45960798460798447,
+  "equal_task_mean_delta_pp": -0.46441197691197655,
+  "positive_tasks": 0,
+  "tasks": [
+    {
+      "LiteBN_test_BA": 0.7490476190476191,
+      "LiteBN_test_macro_F1": 0.7404206922277159,
+      "XS_test_BA": 0.743,
+      "XS_test_macro_F1": 0.7344254436751828,
+      "delta_BA_pp": -0.6047619047619042,
+      "positive_fold_means": 5,
+      "positive_seed_means": 1,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "LiteBN_test_BA": 0.8479668109668109,
+      "LiteBN_test_macro_F1": 0.8048852407749283,
+      "XS_test_BA": 0.847080808080808,
+      "XS_test_macro_F1": 0.8120927666132088,
+      "delta_BA_pp": -0.08860028860028812,
+      "positive_fold_means": 7,
+      "positive_seed_means": 1,
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "LiteBN_test_BA": 0.9102380952380952,
+      "LiteBN_test_macro_F1": 0.9091469849006005,
+      "XS_test_BA": 0.903095238095238,
+      "XS_test_macro_F1": 0.9015672575073451,
+      "delta_BA_pp": -0.7142857142857137,
+      "positive_fold_means": 7,
+      "positive_seed_means": 1,
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "LiteBN_test_BA": 0.794,
+      "LiteBN_test_macro_F1": 0.788128722714914,
+      "XS_test_BA": 0.7895,
+      "XS_test_macro_F1": 0.7838866681620855,
+      "delta_BA_pp": -0.4500000000000003,
+      "positive_fold_means": 5,
+      "positive_seed_means": 0,
+      "task": "WBCIC_MI"
+    }
+  ]
+}
