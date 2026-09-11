@@ -197,8 +197,11 @@ def _run_cell(task: str, model_name: str, fold_id: int, seed: int) -> dict[str, 
     cell = RUNTIME / "search_cells" / task.lower() / slug / f"fold{fold_id}_seed{seed}"
     record_path, latest_path, selected_path, lock = cell / "record.json", cell / "latest.pt", cell / "selected.pt", cell / "RUNNING.lock"
     if record_path.is_file() and selected_path.is_file(): return json.loads(record_path.read_text(encoding="utf-8"))
-    try: lock.mkdir(parents=True, exist_ok=False)
-    except FileExistsError: raise RuntimeError(f"refusing overlapping or stale cell: {lock}")
+    try:
+        lock.mkdir(parents=True, exist_ok=False)
+        (lock / "pid.txt").write_text(str(os.getpid()), encoding="utf-8")
+    except FileExistsError:
+        raise RuntimeError(f"refusing overlapping or stale cell: {lock}")
     started = time.perf_counter()
     try:
         data = load_search_fold(task, fold_id)
@@ -235,7 +238,7 @@ def _run_cell(task: str, model_name: str, fold_id: int, seed: int) -> dict[str, 
             selected = epoch >= recipe["min_epoch"] and inner["subject_equal_BA"] > best + 1e-12
             if selected: best, best_epoch, best_state = float(inner["subject_equal_BA"]), epoch, copy.deepcopy({key: value.detach().cpu() for key, value in model.state_dict().items()})
             history.append({"epoch": epoch, "cross_entropy": float(np.mean(losses)), "inner_validation": inner, "selected": selected})
-            if selected or epoch % 5 == 0 or epoch == recipe["epochs"]:
+            if (selected and model_name not in FOUNDATION) or epoch % 5 == 0 or epoch == recipe["epochs"]:
                 if device.type == "cuda": torch.cuda.synchronize(device)
                 checkpoint = _cpu_checkpoint({"epoch": epoch, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "rng": _rng_state(),
                                               "best": best, "best_epoch": best_epoch, "best_state": best_state, "history": history, "invariant": invariant})
