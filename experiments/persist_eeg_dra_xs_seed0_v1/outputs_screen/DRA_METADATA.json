@@ -1,0 +1,21 @@
+{
+  "admission_schedule": "epoch1-5=0; epoch6-9=(epoch-5)/5; epoch10+=1",
+  "canonical_split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "experiment": "persist_eeg_dra_xs_seed0_v1",
+  "final_heldout_accessed": false,
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "min_selection_epoch": 10,
+  "model": "LiteBN_DRA_XS",
+  "outer_development_accessed": false,
+  "parameter_count": 219767,
+  "patience": 10,
+  "seed": 0,
+  "source_code_sha256": "f3c7d8b5624dd97ea348c574781419cfa8c0b791f5c9f6ad6909d55193cde765",
+  "stage2_reason": "ERP clear-signal rule not met",
+  "stages_run": [
+    "OpenBMI_ERP"
+  ],
+  "terminal": "DRA_ERP_NO_SIGNAL",
+  "weight_decay": 0.0005
+}
