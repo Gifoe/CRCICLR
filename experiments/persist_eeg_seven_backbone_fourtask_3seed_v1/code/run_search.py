@@ -64,16 +64,13 @@ def _torch(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".part")
     try:
-        # Serialize into memory first.  On Windows, PyTorch's direct zip
-        # writer can raise ``unexpected pos`` on a large file when a file
-        # scanner briefly interferes with the destination handle.  A
-        # BytesIO serialization keeps the previous valid checkpoint intact and
-        # makes the final filesystem operation a plain sequential write.
-        buffer = io.BytesIO()
-        torch.save(value, buffer)
-        with temporary.open("wb") as handle:
-            handle.write(buffer.getbuffer())
-            handle.flush()
+        # Foundation checkpoints contain several complete parameter/state
+        # copies. Keeping the entire serialized archive in a BytesIO object
+        # adds another large allocation and has triggered native c10 failures
+        # on the Windows runner. The legacy writer streams to the temporary
+        # file, while os.replace below retains the same atomic-update property.
+        torch.save(value, temporary, _use_new_zipfile_serialization=False)
+        with temporary.open("rb+") as handle:
             os.fsync(handle.fileno())
         os.replace(temporary, path)
     except Exception:
@@ -84,6 +81,25 @@ def _torch(path: Path, value: Any) -> None:
         try: temporary.unlink()
         except FileNotFoundError: pass
         raise
+
+
+def _cpu_checkpoint(value: Any) -> Any:
+    """Detach checkpoint tensors from CUDA before serialization.
+
+    This is deliberately a storage-only transformation: values, optimizer
+    state, RNG state, and resume semantics are unchanged. It prevents the
+    file writer from issuing CUDA copies while the driver is under load.
+    """
+    if isinstance(value, torch.Tensor):
+        tensor = value.detach()
+        return tensor.cpu().clone() if tensor.device.type != "cpu" else tensor
+    if isinstance(value, dict):
+        return {key: _cpu_checkpoint(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_cpu_checkpoint(item) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_cpu_checkpoint(item) for item in value)
+    return value
 
 
 def _sha(path: Path) -> str:
@@ -220,11 +236,16 @@ def _run_cell(task: str, model_name: str, fold_id: int, seed: int) -> dict[str, 
             if selected: best, best_epoch, best_state = float(inner["subject_equal_BA"]), epoch, copy.deepcopy({key: value.detach().cpu() for key, value in model.state_dict().items()})
             history.append({"epoch": epoch, "cross_entropy": float(np.mean(losses)), "inner_validation": inner, "selected": selected})
             if selected or epoch % 5 == 0 or epoch == recipe["epochs"]:
-                _torch(latest_path, {"epoch": epoch, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "rng": _rng_state(),
-                                     "best": best, "best_epoch": best_epoch, "best_state": best_state, "history": history, "invariant": invariant})
+                if device.type == "cuda": torch.cuda.synchronize(device)
+                checkpoint = _cpu_checkpoint({"epoch": epoch, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "rng": _rng_state(),
+                                              "best": best, "best_epoch": best_epoch, "best_state": best_state, "history": history, "invariant": invariant})
+                _torch(latest_path, checkpoint)
+                del checkpoint
             if epoch == 1 or epoch % 5 == 0 or selected: print(f"[{task} {model_name} f{fold_id} s{seed}] e={epoch} loss={history[-1]['cross_entropy']:.4f} innerBA={inner['subject_equal_BA']:.4f}", flush=True)
         if best_state is None: raise RuntimeError("no eligible selected epoch")
-        model.load_state_dict(best_state, strict=True); _torch(selected_path, {"state_dict": model.state_dict(), "invariant": invariant, "selected_epoch": best_epoch})
+        model.load_state_dict(best_state, strict=True)
+        if device.type == "cuda": torch.cuda.synchronize(device)
+        _torch(selected_path, _cpu_checkpoint({"state_dict": model.state_dict(), "invariant": invariant, "selected_epoch": best_epoch}))
         outer = _evaluate(model, outer_x, data["outer_y"], data["outer_subjects"], recipe["batch_size"])
         peak = int(torch.cuda.max_memory_allocated(device)) if device.type == "cuda" else 0
         record = {"schema": "SEVEN_BACKBONE_SEARCH_CELL_V1", "task": task, "dataset": data["dataset"], "model": model_name,
