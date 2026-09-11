@@ -277,6 +277,20 @@ def seed0_frame(task: str) -> pd.DataFrame:
     return frame
 
 
+def existing_erp_frames() -> list[pd.DataFrame]:
+    """ERP seed1/2 was completed on its dedicated, provenance-matched branch."""
+    root = REPO / "experiments" / "persist_eeg_xs_erp_seed12_stability_v1" / "outputs_correct_xs"
+    frames: list[pd.DataFrame] = []
+    for seed in SEEDS:
+        path = root / f"SEED{seed}_OUTER_SUBJECT_RESULTS.csv"
+        frame = pd.read_csv(path)
+        frame = frame[(frame.task == "OpenBMI_ERP") & frame.method.isin(("LiteBN_BASELINE", "LiteBN_XS"))].copy()
+        frame["seed"] = seed
+        if len(frame) != 80: raise RuntimeError(f"historical ERP seed{seed} source invalid: {len(frame)}")
+        frames.append(frame)
+    return frames
+
+
 def summarize_development(frames: list[pd.DataFrame]) -> None:
     all_rows = pd.concat(frames, ignore_index=True).sort_values(["task", "seed", "fold", "subject_id", "method"]).reset_index(drop=True)
     expected_tasks = set(ALL_TASKS)
@@ -328,7 +342,7 @@ def development() -> None:
                 model = mod.build_model("LiteBN_BASELINE", task); model.load_state_dict(torch.load(path, map_location="cpu", weights_only=False), strict=True)
                 baseline_records.append({"task": task, "fold": int(fold["fold_id"]), "seed": seed, "path": str(path), "sha256": sha256(path), "strict_load": True})
     write_json(PROTOCOL / "BASELINE_REUSE_AUDIT.json", {"pass": True, "records": baseline_records})
-    frames: list[pd.DataFrame] = [seed0_frame(task) for task in ALL_TASKS]
+    frames: list[pd.DataFrame] = [seed0_frame(task) for task in ALL_TASKS] + existing_erp_frames()
     for seed in SEEDS:
         records = train_seed(mod, seed); frames.append(evaluate_outer(mod, seed, records))
     summarize_development(frames)

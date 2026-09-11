@@ -1,0 +1,35 @@
+{
+  "all_final_tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "baseline": "exact verified historical LiteBN_BASELINE checkpoints reused",
+  "canonical_inner_split_only": true,
+  "experiment": "persist_eeg_xs_full_multiseed_finaltest_v1",
+  "final_heldout_accessed": false,
+  "final_test_used_for_tuning": false,
+  "fivefold_split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "min_selection_epoch": 10,
+  "model": "exact original LiteBN_XS",
+  "new_inner_splits_created": false,
+  "new_training_seeds": [
+    1,
+    2
+  ],
+  "optimizer": "AdamW",
+  "patience": 10,
+  "runner_sha256": "47d9ae4a4edc94e164901fd78e7cdd0926348f8574a1e7d1d88a8d74f8f41da2",
+  "seed0": "historical frozen XS checkpoints/results reused",
+  "selection_metric": "canonical inner-validation subject-mean balanced accuracy",
+  "source_code_sha256": "5fa225c30f1938146a71f7655d56c487f457b8ab4a35c1a724a527e606c7dbf5",
+  "training_tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "weight_decay": 0.0005
+}
