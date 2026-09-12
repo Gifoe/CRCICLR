@@ -35,9 +35,13 @@ try {
   Pop-Location
   git -C $work add experiments/persist_eeg_seven_backbone_litebn_seed0_outer_heldout_v1/protocol experiments/persist_eeg_seven_backbone_litebn_seed0_outer_heldout_v1/outputs
   git -C $work commit -m 'Lock LiteBN seed0 outer results before heldout evaluation'
+  # GitHub reachability is an external publication condition, not a reason to
+  # abandon the already committed user-authorized internal-heldout inference.
+  $oldPreference = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
   $push = & git -C $work push origin codex/persist-eeg-seven-litebn-seed0-outer-heldout-v1 2>&1
+  $pushExit = $LASTEXITCODE; $ErrorActionPreference = $oldPreference
   $push | Set-Content "$runtime/litebn_seed0_github_push_before_heldout.log"
-  $pushed = $LASTEXITCODE -eq 0
+  $pushed = $pushExit -eq 0
   # The user explicitly authorized the V8 internal-holdout run. A transient
   # GitHub network failure is recorded; it must not silently be treated as a push.
   $detail = if($pushed){'lock committed and pushed'}else{'lock committed; GitHub push unavailable, recorded'}
@@ -48,9 +52,11 @@ try {
   Pop-Location
   git -C $work add experiments/persist_eeg_seven_backbone_litebn_seed0_outer_heldout_v1
   git -C $work commit -m 'Add LiteBN seed0 outer and internal heldout results'
+  $oldPreference = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
   $push2 = & git -C $work push origin codex/persist-eeg-seven-litebn-seed0-outer-heldout-v1 2>&1
+  $pushExit2 = $LASTEXITCODE; $ErrorActionPreference = $oldPreference
   $push2 | Set-Content "$runtime/litebn_seed0_github_push_results.log"
-  if ($LASTEXITCODE -ne 0) { Write-Status 'COMPLETE_LOCAL_PUSH_PENDING' 'results committed locally; GitHub unreachable' }
+  if ($pushExit2 -ne 0) { Write-Status 'COMPLETE_LOCAL_PUSH_PENDING' 'results committed locally; GitHub unreachable' }
   else { Write-Status 'COMPLETE_AND_PUSHED' 'results committed and pushed' }
 } catch {
   Write-Status 'FAILED' $_.Exception.Message
