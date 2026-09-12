@@ -1,0 +1,45 @@
+{
+  "authorization": "explicit user request after the original 60-run grid began: run seed 0 first and evaluate all final 14 held-out subjects",
+  "final_three_seed_protocol_not_completed": true,
+  "heldout_evaluation_authorized": true,
+  "heldout_evaluation_forbidden": true,
+  "heldout_policy": "heldout S2 labels may be opened only after all 20 seed0 carriers and seed0 SEARCH evaluation; results are provisional and cannot set FINAL_TERMINAL.json",
+  "implementation_sha256": {
+    "aggregate_seed0_screen.py": "a9d7864d821919016f01b0f6dc9236e1ad1b80f218d4afd96026f2ce6c72d743",
+    "evaluate_seed0_heldout.py": "1e2915e26af138db793d0e79b6ff16d6ad5f3a71f9f68d36049df610a2064515",
+    "evaluate_seed0_search.py": "da41e1676abd4d2433d656f71598bd78d1fe265fb544f68d1a2a7e1aa1bc5467",
+    "train_seed0_pilot.py": "bb7a0f3ae8fd86cc6a8ef6c5e56660b2fc79ca3dd6c26d4d41d8b5d70dd3095e"
+  },
+  "interrupted_original_runner_checkpoint": "erp_fold0_seed0_eegnet/checkpoint_latest.pt at epoch 60; exact resume invariant remains enforced",
+  "original_protocol_lock_is_unchanged": true,
+  "original_protocol_lock_sha256": "6103e8caa55ae1fbf3e25daa2d78e15c9bfb95d3e09369901f0d042c1eacd81f",
+  "pass": true,
+  "protocol": "PERSIST_EEG_OPENBMI_TASK_GENERALITY_V1_SEED0_PRELIMINARY_AMENDMENT",
+  "resume_engineering_bugfix": {
+    "effect": "restores both CPU and CUDA RNG states from CUDA-mapped checkpoints through required CPU ByteTensors; no model/data/split/loss/optimizer/seed/metric change",
+    "file": "train_task_carriers.py",
+    "sha256_after_cuda_rng_fix": "de062d5048fd7ab46975eebeae99089520f279f039d4e6fabb95fcd6b107e29c",
+    "sha256_after_fix": "5d68fbd046b804d512d14b7332dbbaf199d93e16614797c0696e08367b0af761"
+  },
+  "scientific_changes": {
+    "carrier_trainings": 20,
+    "heldout_replicates_per_subject": 5,
+    "heldout_subjects": 14,
+    "search_folds": 5,
+    "seeds": [
+      0
+    ]
+  },
+  "unchanged_frozen_definitions": [
+    "tasks ERP/SSVEP",
+    "same 40/14 subjects",
+    "same five folds",
+    "S1 to S2",
+    "epochs=60",
+    "optimizer/hyperparameters",
+    "ERP class-weight formula",
+    "SSVEP CE",
+    "carrier architectures",
+    "LOGIT50 weights 0.5/0.5"
+  ]
+}

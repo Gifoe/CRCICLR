@@ -1,0 +1,51 @@
+{
+  "OpenBMI": {
+    "evaluation_session": "S2",
+    "forbidden_heldout_sessions_for_training_normalization": [
+      1
+    ],
+    "n_subjects": 14,
+    "session_index": 2,
+    "subject_ids": [
+      "4",
+      "12",
+      "13",
+      "17",
+      "18",
+      "24",
+      "25",
+      "29",
+      "36",
+      "37",
+      "39",
+      "42",
+      "51",
+      "54"
+    ]
+  },
+  "WBCIC": {
+    "evaluation_session": "S3",
+    "forbidden_heldout_sessions_for_training_normalization": [
+      0,
+      1
+    ],
+    "n_subjects": 10,
+    "session_index": 2,
+    "subject_ids": [
+      "sub-2",
+      "sub-3",
+      "sub-17",
+      "sub-19",
+      "sub-21",
+      "sub-25",
+      "sub-31",
+      "sub-33",
+      "sub-38",
+      "sub-42"
+    ]
+  },
+  "heldout_labels_read_in_preflight": false,
+  "membership_source_is_metadata_only": true,
+  "source": "/root/rivermind-data/CRCICLR_FINAL_CONFIRM_WORK/experiments/persist_eeg_final_model_v8/outputs/protocol/V8_SEARCH_SPLIT.json",
+  "source_sha256": "3020b18ba596f67126b1744cc3a48a1d27951734924a2b08c57f97ac524a5433"
+}

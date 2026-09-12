@@ -1,0 +1,169 @@
+{
+  "exact_search_subjects": {
+    "OpenBMI": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "14",
+      "15",
+      "16",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "26",
+      "27",
+      "28",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "38",
+      "40",
+      "41",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "52",
+      "53"
+    ],
+    "WBCIC": [
+      "sub-1",
+      "sub-5",
+      "sub-6",
+      "sub-7",
+      "sub-9",
+      "sub-11",
+      "sub-12",
+      "sub-13",
+      "sub-14",
+      "sub-16",
+      "sub-18",
+      "sub-22",
+      "sub-23",
+      "sub-24",
+      "sub-26",
+      "sub-27",
+      "sub-28",
+      "sub-29",
+      "sub-30",
+      "sub-32",
+      "sub-34",
+      "sub-35",
+      "sub-36",
+      "sub-37",
+      "sub-41",
+      "sub-44",
+      "sub-45",
+      "sub-47",
+      "sub-48",
+      "sub-49",
+      "sub-50"
+    ]
+  },
+  "fold_audit": {
+    "OpenBMI": {
+      "folds": [
+        {
+          "disjoint": true,
+          "fold": 0,
+          "inner_train_size": 26,
+          "inner_val_size": 6,
+          "outer_size": 8
+        },
+        {
+          "disjoint": true,
+          "fold": 1,
+          "inner_train_size": 26,
+          "inner_val_size": 6,
+          "outer_size": 8
+        },
+        {
+          "disjoint": true,
+          "fold": 2,
+          "inner_train_size": 26,
+          "inner_val_size": 6,
+          "outer_size": 8
+        },
+        {
+          "disjoint": true,
+          "fold": 3,
+          "inner_train_size": 26,
+          "inner_val_size": 6,
+          "outer_size": 8
+        },
+        {
+          "disjoint": true,
+          "fold": 4,
+          "inner_train_size": 26,
+          "inner_val_size": 6,
+          "outer_size": 8
+        }
+      ],
+      "outer_disjoint": true,
+      "outer_union_exact": true,
+      "search_size": 40
+    },
+    "WBCIC": {
+      "folds": [
+        {
+          "disjoint": true,
+          "fold": 0,
+          "inner_train_size": 19,
+          "inner_val_size": 5,
+          "outer_size": 7
+        },
+        {
+          "disjoint": true,
+          "fold": 1,
+          "inner_train_size": 20,
+          "inner_val_size": 5,
+          "outer_size": 6
+        },
+        {
+          "disjoint": true,
+          "fold": 2,
+          "inner_train_size": 20,
+          "inner_val_size": 5,
+          "outer_size": 6
+        },
+        {
+          "disjoint": true,
+          "fold": 3,
+          "inner_train_size": 20,
+          "inner_val_size": 5,
+          "outer_size": 6
+        },
+        {
+          "disjoint": true,
+          "fold": 4,
+          "inner_train_size": 20,
+          "inner_val_size": 5,
+          "outer_size": 6
+        }
+      ],
+      "outer_disjoint": true,
+      "outer_union_exact": true,
+      "search_size": 31
+    }
+  },
+  "sizes": {
+    "OpenBMI": 40,
+    "WBCIC": 31
+  }
+}

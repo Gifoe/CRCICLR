@@ -1,0 +1,46 @@
+{
+  "OpenBMI": {
+    "abs_delta_lt_0_5pp": 1,
+    "catastrophic_definition": ">=30% held-out subjects with LOGIT50 minus EEGNet <= -5 pp",
+    "catastrophic_subject_harm_pattern": false,
+    "gain_ge_plus_1pp": 10,
+    "gain_ge_plus_3pp": 7,
+    "harm_le_minus_1pp": 2,
+    "harm_le_minus_3pp": 0,
+    "harm_le_minus_5pp": 0,
+    "largest_harm": {
+      "delta_pp": -2.200000000000002,
+      "subject_id": "51"
+    },
+    "largest_improvement": {
+      "delta_pp": 8.733333333333338,
+      "subject_id": "36"
+    },
+    "n_subjects": 14,
+    "positive": 11,
+    "positive_fraction": 0.7857142857142857,
+    "relative_to": "EEGNet"
+  },
+  "WBCIC": {
+    "abs_delta_lt_0_5pp": 4,
+    "catastrophic_definition": ">=30% held-out subjects with LOGIT50 minus EEGNet <= -5 pp",
+    "catastrophic_subject_harm_pattern": false,
+    "gain_ge_plus_1pp": 4,
+    "gain_ge_plus_3pp": 0,
+    "harm_le_minus_1pp": 2,
+    "harm_le_minus_3pp": 0,
+    "harm_le_minus_5pp": 0,
+    "largest_harm": {
+      "delta_pp": -1.0666666666666713,
+      "subject_id": "sub-38"
+    },
+    "largest_improvement": {
+      "delta_pp": 2.966666666666662,
+      "subject_id": "sub-31"
+    },
+    "n_subjects": 10,
+    "positive": 6,
+    "positive_fraction": 0.6,
+    "relative_to": "EEGNet"
+  }
+}

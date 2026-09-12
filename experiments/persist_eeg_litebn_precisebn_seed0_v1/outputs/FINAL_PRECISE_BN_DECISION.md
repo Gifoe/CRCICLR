@@ -1,83 +1,40 @@
-# Precise-BN source gate: blocked, not a scientific negative
+# Source-only Precise-BN seed0 final diagnostic
 
-**BLOCKED_SOURCE_ARCHITECTURE_MISMATCH**
+PRECISE_BN_NO_USEFUL_SIGNAL
 
-The requested four-task seed0 diagnostic is **not completed**. No baseline
-replay, BN recalibration, or new EEG evaluation was performed. Neither
-`PRECISE_BN_SIGNAL_FOUND` nor `PRECISE_BN_NO_USEFUL_SIGNAL` is warranted.
+Recovered checkpoints supersede the initial source-gate blocker. All 20 original checkpoints replayed against historical per-subject BA, macro-F1 and accuracy before any recalibration.
 
-## Direct server evidence
+| Task | Original outer BA | Precise outer BA | Delta pp | Original heldout BA | Precise heldout BA | Delta pp | Fold SD change pp |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| OpenBMI_MI | 0.791500 | 0.788000 | -0.350 | 0.744857 | 0.744857 | +0.000 | -0.117 |
+| OpenBMI_ERP | 0.832553 | 0.831568 | -0.098 | 0.846545 | 0.845623 | -0.092 | -0.026 |
+| OpenBMI_SSVEP | 0.892000 | 0.891250 | -0.075 | 0.907000 | 0.907571 | +0.057 | -0.106 |
+| WBCIC_MI | 0.787299 | 0.710899 | -7.640 | 0.792200 | 0.729000 | -6.320 | +7.773 |
 
-| Source | Strict historical CompactLite load | Meaning |
-|---|---:|---|
-| OpenBMI MI selected seed0 | 5/5 pass | Architecture only; replay/provenance still required |
-| WBCIC MI selected seed0 | 5/5 pass | Architecture only; replay/provenance still required |
-| OpenBMI ERP selected seed0 | 0/5 pass | Different architecture |
-| OpenBMI SSVEP selected seed0 | 0/5 pass | Different architecture |
+Outer equal-task delta: -2.041 pp; positive tasks: 0/4; median -0.224; worst -7.640.
+Internal heldout equal-task delta: -1.589 pp; positive tasks: 1/4; median -0.046; worst -6.320.
+Improved folds: 6/20; mean fold-SD change: +1.881 pp (population SD, ddof=0).
 
-The canonical committed `run_carrier_screen.py` defines depth1 kernel 15,
-point1 output 64, depth2 kernel 31, and embedding input 512. The seven-backbone
-ERP/SSVEP implementation instead uses kernels 9/7, point1 output 32, and
-embedding input 128. All ten selected ERP/SSVEP checkpoints match that smaller
-architecture, not the requested exact historical CompactLite. All ten
-`latest.pt` best_state tensors equal those incompatible selected tensors.
-See `STRICT_ARCHITECTURE_AUDIT.csv` for actual strict-load exception details.
+BN statistics: 160 layer/checkpoint records; median mean shift 0.0144931, median variance shift 0.0658878. Layerwise absolute and relative changes are in LITEBN_PRECISEBN_LAYER_STATS.csv.
 
-Canonical source last-change commit in the locally fetched GitHub history:
-`40f8f04f96c1ecf0101bb81178c3c9635e306de0`.
-Smaller seven-backbone source last-change commit:
-`c040904cbb8d16899f97fc8a32ac75ea1962e60b`.
-These are code-history references, **not proven checkpoint-creation commits**.
+All learnable tensors and non-BN buffers were bitwise identical; maximum parameter change is zero. BN moments used all legal inner-train source examples exactly once; batch size 128, deterministic subject/session/trial order, float64 accumulation, dropout disabled.
 
-Recovery inventoried 7,992 binaries/archives under server `TotalP/P1` and
-inspected small checkpoint state dictionaries. The 110 matching-shape
-candidates belong to carrier MI selected/epoch60, SBTR, or SRGEO-EMA runs.
-ERP/SSVEP matches are SRGEO-EMA candidate weights, not historical LiteBN
-baseline weights, and cannot be substituted. Archive member lists and tracked
-checkpoint paths were additionally checked. The ZIP checkpoint members found
-belong to earlier CT/ICG experiments, not this four-task historical baseline.
+## Interpretation
 
-Recovery limits are explicit: 1,980 initial restricted-load errors are logged;
-relevant ERP/SSVEP LiteBN latest checkpoints were subsequently inspected as
-trusted project artifacts. Large/unrelated checkpoints and all historical
-objects inside Git bundles were not exhaustively deserialized. Therefore this
-is **no verified recoverable exact source in inspected evidence**, not proof
-that a valid backup cannot exist elsewhere.
+The predefined four-task improvement/variability criteria are not met. This uniform Precise-BN procedure does not justify promotion to the next LiteBN method on this diagnostic. Do not rescue individual tasks by selective application or tuning.
 
-## Required answers
+Current heldout is an already-open internal diagnostic, not untouched final confirmation. Historical averaging is restricted to the requested seed0 (five checkpoints), not all fifteen historical seed/fold replicates. Bootstrap resamples subjects after checkpoint averaging, 10,000 draws, seed0; no multiple-task adjustment.
 
-1. BN-stat change: none performed; population moment shifts are unmeasured.
-2. Outer improvement: unknown, no paired experiment.
-3. Current internal heldout improvement: unknown, no data accessed this run.
-4. Fold variability decrease: unknown.
-5. Four-task directional consistency: unknown.
-6. Worth developing as next LiteBN method: cannot determine from a failed
-   prerequisite; no conclusion about the scientific hypothesis.
-
-## Contract flags
+Source provenance caveat: MI original training commit was not recorded; source inspection commit is labeled as such. Original selected binary hashes, source normalizer metadata and historical per-subject replay provide the recovery verification.
 
 ```text
 SEED = 0
 LEARNABLE_WEIGHTS_UPDATED = NO
 CALIBRATION_DATA = INNER_TRAIN_ONLY
-CALIBRATION_EXECUTED = NO
 INNER_VAL_USED_FOR_CALIBRATION = NO
 OUTER_USED_FOR_CALIBRATION = NO
 CURRENT_HELDOUT_USED_FOR_CALIBRATION = NO
 NEW_SEALED_FINAL_DATA_ACCESSED = NO
-BN_BUFFERS_UPDATED = NO
 ```
 
-Header-only scientific result files deliberately contain no fabricated values.
-`LITEBN_PRECISEBN_BASELINE_REPLAY.csv` preserves historical BA for traceability
-but explicitly marks replay NOT RUN; it is not a successful replay table.
-
-To unblock: provide recoverable exact historical ERP/SSVEP selected checkpoints
-for all five seed0 folds with their split/normalization/selection/result
-provenance. Alternatively, changing the scientific scope to the smaller
-seven-backbone LiteBN requires an explicit user decision; it is not silently
-authorized by this protocol. Do not retrain substitute baselines.
-
-Existing server training PID 25168 was preserved. Artifacts were executed on
-the server; only code and lightweight audit/report files are synchronized for
-GitHub publication. No EEG data or checkpoint binaries are committed.
+No new training, seed1/2 evaluation, or light-tail-risk experiment was run. Existing server tasks were not terminated.

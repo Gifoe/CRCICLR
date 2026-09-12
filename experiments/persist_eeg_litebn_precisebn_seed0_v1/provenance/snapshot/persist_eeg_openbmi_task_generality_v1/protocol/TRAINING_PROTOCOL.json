@@ -1,0 +1,27 @@
+{
+  "ERP_loss": {
+    "counts_source": "INNER_TRAIN cache-session-1",
+    "name": "weighted cross entropy",
+    "weights": "N/(K*N_k)"
+  },
+  "SSVEP_loss": {
+    "name": "ordinary multiclass cross entropy"
+  },
+  "batch_size": 64,
+  "checkpoint_selection": "INNER_VAL cache-session-2 mean subject balanced accuracy; earliest strict improvement from epoch 10 through 60",
+  "epochs": 60,
+  "gradient_clip": 5.0,
+  "lr": 0.0003,
+  "min_checkpoint_epoch": 10,
+  "no_holdout_training_or_selection": true,
+  "no_target_adaptation": true,
+  "normalization": "per-fold channel mean/std fit only on INNER_TRAIN cache-session-1 trials",
+  "optimizer": "AdamW",
+  "scheduler": "none",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "weight_decay": 0.0005
+}

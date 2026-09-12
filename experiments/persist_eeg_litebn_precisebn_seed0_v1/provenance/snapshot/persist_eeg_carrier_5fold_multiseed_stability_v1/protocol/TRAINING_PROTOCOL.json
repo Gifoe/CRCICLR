@@ -1,0 +1,32 @@
+{
+  "batch_size": 64,
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 0,
+    "unit": "subject"
+  },
+  "checkpoint_selection": "inner future-session mean-subject BA, eligible epochs 10..60, earliest tie",
+  "datasets": [
+    "OpenBMI",
+    "WBCIC"
+  ],
+  "episode_batch_size": 128,
+  "epochs": 60,
+  "folds": 5,
+  "gradient_clipping": 5.0,
+  "loss": "ordinary cross entropy",
+  "lr": 0.0003,
+  "models": [
+    "EEGNet",
+    "LiteBN"
+  ],
+  "optimizer": "AdamW",
+  "primary_unit": "subject",
+  "scheduler": "none",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "weight_decay": 0.0005
+}
