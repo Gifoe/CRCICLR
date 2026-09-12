@@ -1,0 +1,11 @@
+task,fold,architecture,common_state_bitwise_identical,extra_state_keys,RNG_restored,modes,max_abs_logits_diff,prediction_mismatch,gate_initial_gradient_norm,status
+OpenBMI_MI,0,StaticScale,True,"[""beta""]",True,eval/train x FP32/AMP,0,0,0.004854677245020866,PASS
+OpenBMI_MI,0,TSW,True,"[""lambda_scale"", ""scale_mlp.0.bias"", ""scale_mlp.0.weight"", ""scale_mlp.2.bias"", ""scale_mlp.2.weight""]",True,eval/train x FP32/AMP,0,0,0.0006879583233967423,PASS
+OpenBMI_MI,1,StaticScale,True,"[""beta""]",True,eval/train x FP32/AMP,0,0,0.014954359270632267,PASS
+OpenBMI_MI,1,TSW,True,"[""lambda_scale"", ""scale_mlp.0.bias"", ""scale_mlp.0.weight"", ""scale_mlp.2.bias"", ""scale_mlp.2.weight""]",True,eval/train x FP32/AMP,0,0,0.001599163981154561,PASS
+OpenBMI_MI,2,StaticScale,True,"[""beta""]",True,eval/train x FP32/AMP,0,0,0.007053711451590061,PASS
+OpenBMI_MI,2,TSW,True,"[""lambda_scale"", ""scale_mlp.0.bias"", ""scale_mlp.0.weight"", ""scale_mlp.2.bias"", ""scale_mlp.2.weight""]",True,eval/train x FP32/AMP,0,0,0.00025608783471398056,PASS
+OpenBMI_MI,3,StaticScale,True,"[""beta""]",True,eval/train x FP32/AMP,0,0,0.0018356465734541416,PASS
+OpenBMI_MI,3,TSW,True,"[""lambda_scale"", ""scale_mlp.0.bias"", ""scale_mlp.0.weight"", ""scale_mlp.2.bias"", ""scale_mlp.2.weight""]",True,eval/train x FP32/AMP,0,0,0.00010797471622936428,PASS
+OpenBMI_MI,4,StaticScale,True,"[""beta""]",True,eval/train x FP32/AMP,0,0,0.0027189936954528093,PASS
+OpenBMI_MI,4,TSW,True,"[""lambda_scale"", ""scale_mlp.0.bias"", ""scale_mlp.0.weight"", ""scale_mlp.2.bias"", ""scale_mlp.2.weight""]",True,eval/train x FP32/AMP,0,0,4.137739961151965e-05,PASS
