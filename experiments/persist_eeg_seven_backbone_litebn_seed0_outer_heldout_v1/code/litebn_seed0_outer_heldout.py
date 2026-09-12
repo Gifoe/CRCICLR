@@ -206,16 +206,20 @@ def _mi_holdout(task: str, fold: int, heldout: dict[str, list[str]]):
 
 
 def _task_holdout(task: str, fold: int, heldout: dict[str, list[str]]):
+    # Use the seven-backbone row reader and normalizer rather than the older
+    # task experiment's chunked normalizer.  Their mathematical formula is the
+    # same, but this preserves the exact byte-hashed normalizer of selected.pt.
+    data = _module("seven_litebn_benchmark_data", CODE / "benchmark_data.py")
+    inner = data._load_module("seven_litebn_inner_loader", CODE / "tech_recipe_selection.py")
     os.environ["PERSIST_OPENBMI_CACHE"] = os.environ["FULL_OPENBMI_CACHE"]
     os.environ["TASK_GENERALITY_REPO"] = str(REPO)
     task_data = _module("seven_litebn_task_datasets", REPO / "experiments/persist_eeg_openbmi_task_generality_v1/code/task_datasets.py")
     name = "ERP" if task == "OpenBMI_ERP" else "SSVEP"
     search, _, reference, _ = task_data.split_reference(); current = next(row for row in reference["folds"] if int(row["fold_id"]) == fold)
-    bundle = task_data.load_bundle(name, search + heldout["OpenBMI"], sessions=(1, 2))
-    mean, std, normalizer = task_data.normalizer(bundle, current["inner_train_subjects"])
-    idx = bundle.indices(heldout["OpenBMI"], (2,)); x = bundle.signal_batch(idx)
-    x = ((x - mean[None, :, None]) / np.maximum(std[None, :, None], 1e-6)).astype(np.float32)
-    y, s = bundle.labels(idx), np.asarray([bundle.rows[int(i)].subject for i in idx], dtype=object)
+    spec = task_data.TASKS[name]; root = Path(os.environ["FULL_OPENBMI_CACHE"]).resolve()
+    train, _, _, mapping = inner._openbmi_rows(root, current["inner_train_subjects"], (spec["source_session"],), spec["cache_name"])
+    x, y, s, _ = inner._openbmi_rows(root, heldout["OpenBMI"], (spec["future_session"],), spec["cache_name"], mapping)
+    _, [x], normalizer = data._normalise(train, x)
     return x, y, s, normalizer
 
 
