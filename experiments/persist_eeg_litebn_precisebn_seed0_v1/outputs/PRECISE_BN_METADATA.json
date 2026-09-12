@@ -1,0 +1,22 @@
+{
+  "status": "BLOCKED_SOURCE_ARCHITECTURE_MISMATCH",
+  "completed_four_task_diagnostic": false,
+  "seed": 0,
+  "requested_checkpoints": 20,
+  "strict_load_pass": 10,
+  "strict_load_fail": 10,
+  "baseline_replay_completed": 0,
+  "calibrations_completed": 0,
+  "BN_BUFFERS_UPDATED": "NO",
+  "LEARNABLE_WEIGHTS_UPDATED": "NO",
+  "CALIBRATION_DATA": "INNER_TRAIN_ONLY (planned; no calibration performed)",
+  "INNER_VAL_USED_FOR_CALIBRATION": "NO",
+  "OUTER_USED_FOR_CALIBRATION": "NO",
+  "CURRENT_HELDOUT_USED_FOR_CALIBRATION": "NO",
+  "NEW_SEALED_FINAL_DATA_ACCESSED": "NO",
+  "EEG_DATA_LOADED": "NO",
+  "decision": null,
+  "decision_reason": "Prerequisite failed, not evidence of useful or useless BN signal. Correct exact-historical ERP and SSVEP selected checkpoints plus provenance required. No substitute architecture or retraining permitted.",
+  "source_code_sha256": "c9ff3177013bace782eede1ef871f9f0c858adaf5ef1a35c24ee3232bab8a707",
+  "torch_version": "2.8.0+cu128"
+}

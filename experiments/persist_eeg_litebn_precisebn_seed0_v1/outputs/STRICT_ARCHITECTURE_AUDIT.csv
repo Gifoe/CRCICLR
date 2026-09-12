@@ -1,0 +1,161 @@
+task,fold,checkpoint_sha256,status,error
+OpenBMI_MI,0,6ac976196e0658f66888c0fe23c909c6745c567e57c05cb7e5b2f2113adc5c8c,STRICT_STATE_LOAD_PASS,
+OpenBMI_MI,1,a8229c7f05ac72bea13934f14f5d3600e10e889454687be06f47105e61d3747e,STRICT_STATE_LOAD_PASS,
+OpenBMI_MI,2,36a06475f75712f3c00276cc8de5aab7552c5aa6c5ee94cd201f543692751814,STRICT_STATE_LOAD_PASS,
+OpenBMI_MI,3,2eb9b20d2f2ce7ba385fc296872935bf2ca5a1b5cc30e9f699d502dc25f1b256,STRICT_STATE_LOAD_PASS,
+OpenBMI_MI,4,656f9fd20601d63bed1fe5d4730a815288cc3a29c0c0357ce95559dd04ea6b63,STRICT_STATE_LOAD_PASS,
+WBCIC_MI,0,7fe7b939e760fcc91ed6b8035a9f611f8f2839a442b36810a75ca6ff89c3b267,STRICT_STATE_LOAD_PASS,
+WBCIC_MI,1,838161c589c8ba47b6ac391b90d97ce785fc98b277f84d3d22730e126122838f,STRICT_STATE_LOAD_PASS,
+WBCIC_MI,2,8cb100fba157c5220ae7a9313f7665d683cd96cb315fefd0ce8e3314fc73eb01,STRICT_STATE_LOAD_PASS,
+WBCIC_MI,3,9d4e6a2babb8d1b0febca64f5944319c3612f2c442c3580084d43f33c600f614,STRICT_STATE_LOAD_PASS,
+WBCIC_MI,4,e9cce7a3ca4470c9727670a3135261acc7fa07a811d48ba5a7b74c44442b0807,STRICT_STATE_LOAD_PASS,
+OpenBMI_ERP,0,fe7d9ca32ff1cb91fc7417f615ba21d8f92a2f577939549d545b6362ac3dea5d,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_ERP,0,37a5b48353bca4ff6aface4974200deab3cc75479e6b16b0f013117489661553,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_ERP,1,2094803310d0d215c11fd7d964bb99b2de8f88bde0a294f760703483d199c508,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_ERP,1,6dad712a9f5401a1237d35916b28e9de2d1ff5603c69728d315dff6a4132594c,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_ERP,2,ca94a66d10a33608128b06672571781f6fc9a3231641c6f8b0e3233baedf5433,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_ERP,2,3b2006b1543cf5c43e3469acd5652eb0d4940c76071b5160d9019d262facec9c,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_ERP,3,3d992d58f5b0a624ed0aad7ea3ac0e15a98d3168e0d17da750da9accb96b14dd,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_ERP,3,b25c221e9c9acc62d96f284ad7b88a19d586130862e32193a681fe16ad40c55a,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_ERP,4,b2b85aa73028331c9ad7f13ecc3688d78cf1c3adb7c97c32d8914b4916a75b87,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_ERP,4,e634a41a9dbc9d6f6896be7da849406b422ff82a09dc80fd6d793662a2eb5143,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_SSVEP,0,8134b92bea24f6056b017c8f399a0a0a3baa2b0bd436f49b7b976c5354f48b07,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_SSVEP,0,2ad0426ed46bde9824e7a81b54192f1808dd553a24933f662ac3a7fc8d87dfff,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_SSVEP,1,5e1f1ec4f3365fc2792caf81bb8326a2131b11fc453b9977eba7a3a4d3f2ad1f,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_SSVEP,1,8b6dae1883ea57711139aa0fb503114adcaef7007415417ad6eb2961f9421015,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_SSVEP,2,745e959546317e9126035a351f603518b529a3ff14a5415db5cdb1ac1068ff6d,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_SSVEP,2,db8d208c532afb4b465befbbe16961582fb9fc793ea1a03ebb619d09de0eadd5,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_SSVEP,3,87df456f0e67663a69adec8333388070e8d6ba8b4dda348775ca2fee5f44ae28,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_SSVEP,3,558c09dabe624640765f05b202a2188bb1ce8362dba9fa2e300f42109bdbe7fc,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
+OpenBMI_SSVEP,4,490afcfbbc5454fb8f704e3fbb17758fa59d9450c993d35d206a0a9efa0fc82c,STRICT_STATE_LOAD_FAIL,"Error(s) in loading state_dict for CompactLite:
+	size mismatch for depth1.weight: copying a param with shape torch.Size([48, 1, 1, 9]) from checkpoint, the shape in current model is torch.Size([48, 1, 1, 15]).
+	size mismatch for point1.weight: copying a param with shape torch.Size([32, 48, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 48, 1, 1]).
+	size mismatch for norm1.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm1.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for depth2.weight: copying a param with shape torch.Size([32, 1, 1, 7]) from checkpoint, the shape in current model is torch.Size([64, 1, 1, 31]).
+	size mismatch for point2.weight: copying a param with shape torch.Size([32, 32, 1, 1]) from checkpoint, the shape in current model is torch.Size([64, 64, 1, 1]).
+	size mismatch for norm2.weight: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.bias: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_mean: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm2.running_var: copying a param with shape torch.Size([32]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for embedding.0.weight: copying a param with shape torch.Size([64, 128]) from checkpoint, the shape in current model is torch.Size([64, 512])."
+OpenBMI_SSVEP,4,61a590dfc50fa38cbc9e9a293d2844577a10410dd480d8a794b5b33a542892c2,LATEST_BEST_EQUALS_INCOMPATIBLE_SELECTED,
