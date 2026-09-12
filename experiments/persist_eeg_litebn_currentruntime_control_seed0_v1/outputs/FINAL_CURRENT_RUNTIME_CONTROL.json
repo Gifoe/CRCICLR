@@ -1,0 +1,106 @@
+{
+  "terminal_label": "LARGE_RUNTIME_TRAJECTORY_DRIFT",
+  "model": "EXACT_HISTORICAL_LITEBN",
+  "task": "OpenBMI_MI",
+  "seed": 0,
+  "folds": 5,
+  "historical_LiteBN_outer_BA": 0.7915,
+  "currentruntime_LiteBN_outer_BA": 0.7675000000000001,
+  "runtime_delta_pp": -2.399999999999991,
+  "fold_runtime_delta_pp": [
+    -0.49999999999998934,
+    -5.499999999999994,
+    -2.2499999999999964,
+    -1.8749999999999933,
+    -1.8749999999999933
+  ],
+  "heldout": {
+    "task": "OpenBMI_MI",
+    "label": "INTERNAL_HELDOUT_DIAGNOSTIC_ALREADY_OPEN",
+    "subjects": 14,
+    "historical_LiteBN_BA": 0.7448571428571429,
+    "currentruntime_LiteBN_BA": 0.7371428571428572,
+    "delta_BA_pp": -0.7714285714285707,
+    "new_sealed_test_accessed": "NO"
+  },
+  "candidate_recalibration": [
+    {
+      "candidate": "HE96",
+      "runtime_provenance_match": "COMPATIBLE_CURRENT_RUNTIME",
+      "historical_LiteBN_BA": 0.7915,
+      "currentruntime_LiteBN_BA": 0.7675000000000001,
+      "candidate_BA": 0.76775,
+      "delta_vs_historical_pp": -2.374999999999994,
+      "delta_vs_currentruntime_pp": 0.024999999999997247,
+      "interpretation": "HE96 versus same-runtime LiteBN: +0.025 pp"
+    },
+    {
+      "candidate": "TSW",
+      "runtime_provenance_match": "COMPATIBLE_CURRENT_RUNTIME",
+      "historical_LiteBN_BA": 0.7915,
+      "currentruntime_LiteBN_BA": 0.7675000000000001,
+      "candidate_BA": 0.766,
+      "delta_vs_historical_pp": -2.5499999999999967,
+      "delta_vs_currentruntime_pp": -0.15000000000000568,
+      "interpretation": "TSW versus same-runtime LiteBN: -0.150 pp"
+    },
+    {
+      "candidate": "StaticScale",
+      "runtime_provenance_match": "COMPATIBLE_CURRENT_RUNTIME",
+      "historical_LiteBN_BA": 0.7915,
+      "currentruntime_LiteBN_BA": 0.7675000000000001,
+      "candidate_BA": 0.76775,
+      "delta_vs_historical_pp": -2.374999999999994,
+      "delta_vs_currentruntime_pp": 0.024999999999997247,
+      "interpretation": "StaticScale versus same-runtime LiteBN: +0.025 pp"
+    }
+  ],
+  "initialization_audit": "PASS",
+  "manifest_audit": "PASS",
+  "normalizer_audit": "PASS",
+  "execution_runtime": {
+    "os": "Windows-10-10.0.18363-SP0",
+    "python": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:36:49) [MSC v.1944 64 bit (AMD64)]",
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "cudnn": 91002,
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "gpu_driver": "616.56",
+    "amp_enabled": true,
+    "grad_scaler": {
+      "class": "torch.amp.GradScaler",
+      "enabled": true
+    },
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "deterministic_algorithms": false,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": false,
+    "float32_matmul_precision": "highest",
+    "cuda_environment": {},
+    "server_repo_git_commit": "66da9bb1ee40b6b3e15e7226271c9d1a565453bc",
+    "code_hashes": {
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_litebn_localstats_seed0_v1\\code\\run_localstats.py": "bb2de21964e3b4d79596600361f7c4489fe90922bd6047f246d5c378110e1a80",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_litebn_localstats_seed0_v1\\code\\localstats.py": "77923c40c8615878846a10d8c3f15fb1ec7aa767b7e8e92073c60027377c3d2e",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_litebn_lighttail_seed0_v1\\code\\legacy_init.py": "a77bcea952c3dc8602c321d644657d98ea0ca79639c26a7739d3e25c99487237",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_carrier_5fold_multiseed_stability_v1\\code\\train_grid.py": "23f67f2c6ee75ce0babaab56a9e37b3210fa7b589d0347a417d1437fb1290c61",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_r2eeg_stage1_v1\\code\\run_stage1.py": "ff1c7072dcabd3b4d59113f2e4ad09daa1438124612d44aac91729061f30800f",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_carrier_dualdataset_screen_v1\\code\\run_carrier_screen.py": "c9ff3177013bace782eede1ef871f9f0c858adaf5ef1a35c24ee3232bab8a707",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_r2eeg_stage1_v1\\code\\stage1_core.py": "7f453a7cb4b85e66dfadb28c130777567bea87dcab7ac3173bb752a88581a409",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_openbmi_task_generality_v1\\code\\task_datasets.py": "42e08e93ad38d005d6add1001e33a1b620c0be8ca46a69bdbdb2941d7d5bc25f",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_openbmi_task_generality_v1\\code\\train_task_carriers.py": "de062d5048fd7ab46975eebeae99089520f279f039d4e6fabb95fcd6b107e29c",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_final_heldout_confirmation_v1\\code\\load_final_carriers.py": "2726cc9be40c9dc10b0253e7414880b68582de37cd447d43b57ca59ce2c179ee",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_final_heldout_confirmation_v1\\code\\run_final_confirmation.py": "d2816d3c8f8327db3384cd390de8531ce80694a28d116aa40f880a61187d8166",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_openbmi_task_generality_v1\\code\\evaluate_search.py": "1494dca032077ce1561dcf7ff18d1b2075286b94a585bffc4ee1e7af9e812f5f",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_carrier_5fold_multiseed_stability_v1\\protocol\\FIVEFOLD_SPLIT.json": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+      "D:\\nips-temp\\TotalP\\P1\\precisebn_recovered_historical\\snapshot\\persist_eeg_openbmi_task_generality_v1\\protocol\\CHECKPOINT_PROVENANCE.json": "08a404ff22a26e84ae8fdf040deb36163fec1d58bfe606d2c9ae90f698c71eff",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_litebn_currentruntime_control_seed0_v1\\code\\run_currentruntime_litebn.py": "b2b39155e88e7ffcdad14b844ec0c8a1e50d7a259add8917ebfd95452c1e8395",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_litebn_currentruntime_control_seed0_v1\\protocol\\CURRENT_RUNTIME_CONTROL_PROTOCOL.md": "fa16fe4937f3317c942caef1fb38d43ab1c5fd1b6563de4b9eac26aa643a68fd",
+      "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_litebn_currentruntime_control_seed0_v1\\protocol\\PROVENANCE.md": "8a9fea132a3d07316da2ab3071de8999fe9bc6890290ca87f53188ed86b55cd7"
+    },
+    "runtime_directory": "D:\\nips-temp\\TotalP\\P1\\currentruntime_control_seed0_runtime",
+    "runtime_provenance": "same Windows/Torch/CUDA family used by TSW and HE96",
+    "aggregation_code_sha256": "18933e57f731055cc19e791782ba323570cb7428920250a944a17d25f8a04f64"
+  },
+  "new_sealed_test_accessed": "NO"
+}

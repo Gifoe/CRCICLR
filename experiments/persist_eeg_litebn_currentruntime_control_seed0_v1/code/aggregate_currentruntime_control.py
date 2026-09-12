@@ -1,5 +1,5 @@
 """Aggregate the frozen five-fold current-runtime LiteBN replay control."""
-import argparse, csv, json
+import argparse, csv, hashlib, json
 from pathlib import Path
 from statistics import fmean, median
 
@@ -13,6 +13,7 @@ def write_csv(path, rows):
     with Path(path).open('w', newline='', encoding='utf-8') as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
 def avg(rows, field): return fmean(float(row[field]) for row in rows)
+def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def candidate_rows(repo, historical_by_fold, current_by_fold):
@@ -92,12 +93,13 @@ def main():
         attribution.append(row)
     write_csv(out / 'FOLD_LEVEL_RUNTIME_ARCH_ATTRIBUTION.csv', attribution)
     h, c = fmean(hist_by_fold.values()), fmean(current_by_fold.values()); runtime_delta = 100 * (c - h); label = terminal(runtime_delta)
-    metadata = read_json(out / 'CURRENT_RUNTIME_METADATA.json')
+    metadata = read_json(out / 'CURRENT_RUNTIME_METADATA.json'); metadata['aggregation_code_sha256'] = sha(__file__)
+    (out / 'CURRENT_RUNTIME_METADATA.json').write_text(json.dumps(metadata, indent=2) + '\n', encoding='utf-8')
     final = {'terminal_label': label, 'model': 'EXACT_HISTORICAL_LITEBN', 'task': 'OpenBMI_MI', 'seed': 0, 'folds': 5, 'historical_LiteBN_outer_BA': h, 'currentruntime_LiteBN_outer_BA': c,
              'runtime_delta_pp': runtime_delta, 'fold_runtime_delta_pp': [row['runtime_delta_pp'] for row in attribution], 'heldout': held_summary[0], 'candidate_recalibration': candidates,
              'initialization_audit': 'PASS', 'manifest_audit': 'PASS', 'normalizer_audit': 'PASS', 'execution_runtime': metadata, 'new_sealed_test_accessed': 'NO'}
     (out / 'FINAL_CURRENT_RUNTIME_CONTROL.json').write_text(json.dumps(final, indent=2) + '\n', encoding='utf-8')
-    candidate_text = '\n'.join(f"- {row['candidate']}: {row['delta_vs_currentruntime_pp']} pp vs current-runtime LiteBN ({row['runtime_provenance_match']})." for row in candidates)
+    candidate_text = '\n'.join(f"- {row['candidate']}: {float(row['delta_vs_currentruntime_pp']):+.3f} pp vs current-runtime LiteBN ({row['runtime_provenance_match']})." for row in candidates)
     report = f'''# Exact LiteBN current-runtime replay control
 
 Terminal label: **{label}**.
