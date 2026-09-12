@@ -1,0 +1,19 @@
+{
+  "decision": "STOP_MODEL",
+  "task_gate": "OpenBMI_MI outer development comparison",
+  "LiteBN_outer_BA": 0.7915,
+  "HE96_outer_BA": 0.76775,
+  "delta_BA_pp": -2.3750000000000004,
+  "positive_folds": 0,
+  "worst_fold_delta_pp": -4.875000000000002,
+  "reason": "HE96 did not exceed LiteBN on the first-task outer comparison.",
+  "prohibited_next_steps": [
+    "WBCIC_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "seed1",
+    "seed2"
+  ],
+  "heldout_label": "internal heldout diagnostic; not an untouched final test",
+  "initialization_audit": "PASS: all 5 folds, eval/train x FP32/AMP, zero logits/embedding difference and preserved RNG."
+}
