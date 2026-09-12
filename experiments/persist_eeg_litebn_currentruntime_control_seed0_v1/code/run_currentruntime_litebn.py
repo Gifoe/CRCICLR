@@ -116,16 +116,17 @@ class Replay(prior.foundation.Experiment):
         class Instrument(ast.NodeTransformer):
             def visit_Assign(_, node):
                 nonlocal found_val
-                text = ast.unparse(node)
-                if text.startswith('val_rows, val_ba, _ = carrier.eval_rows('):
-                    found_val += 1; return ast.parse(text.replace('val_rows, val_ba, _ =', 'val_rows, val_ba, val_f1 =', 1)).body[0]
+                target = node.targets[0] if len(node.targets) == 1 else None
+                if (isinstance(target, ast.Tuple) and len(target.elts) == 3 and isinstance(node.value, ast.Call)
+                        and ast.unparse(node.value.func) == 'carrier.eval_rows'
+                        and [getattr(part, 'id', None) for part in target.elts] == ['val_rows', 'val_ba', '_']):
+                    found_val += 1; target.elts[2] = ast.Name(id='val_f1', ctx=ast.Store()); return node
                 return node
             def visit_Expr(_, node):
                 nonlocal found_clip, found_history
-                text = ast.unparse(node.value)
-                if text.startswith('torch.nn.utils.clip_grad_norm_('):
-                    found_clip += 1; return ast.parse('grad_norm = ' + text).body[0]
-                if text.startswith('history.append('):
+                if isinstance(node.value, ast.Call) and ast.unparse(node.value.func) == 'torch.nn.utils.clip_grad_norm_':
+                    found_clip += 1; return ast.Assign(targets=[ast.Name(id='grad_norm', ctx=ast.Store())], value=node.value)
+                if isinstance(node.value, ast.Call) and ast.unparse(node.value.func) == 'history.append':
                     found_history += 1; return [node, ast.parse('observe(epoch, optimizer, scaler, grad_norm, row, val_f1)').body[0]]
                 return node
         tree = Instrument().visit(tree); ast.fix_missing_locations(tree)
