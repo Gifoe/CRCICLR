@@ -109,7 +109,7 @@ def _records() -> list[dict[str, Any]]:
                          "selected_epoch": payload["selected_epoch"],
                          "checkpoint_path": str(checkpoint), "checkpoint_sha256": _sha(checkpoint),
                          "normalizer_sha256": payload["normalizer"]["mean_std_sha256"],
-                         "split_sha256": payload["invariant_sha256"]})
+                         "invariant_sha256": payload["invariant_sha256"]})
     return rows
 
 
