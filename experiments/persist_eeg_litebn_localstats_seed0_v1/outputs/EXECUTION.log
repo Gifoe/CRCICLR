@@ -1,0 +1,519 @@
+INITIAL_FUNCTION_PASS OpenBMI_MI 0
+INITIAL_FUNCTION_PASS OpenBMI_MI 1
+INITIAL_FUNCTION_PASS OpenBMI_MI 2
+INITIAL_FUNCTION_PASS OpenBMI_MI 3
+INITIAL_FUNCTION_PASS OpenBMI_MI 4
+INITIAL_FUNCTION_PASS OpenBMI_ERP 0
+INITIAL_FUNCTION_PASS OpenBMI_ERP 1
+INITIAL_FUNCTION_PASS OpenBMI_ERP 2
+INITIAL_FUNCTION_PASS OpenBMI_ERP 3
+INITIAL_FUNCTION_PASS OpenBMI_ERP 4
+INITIAL_FUNCTION_PASS OpenBMI_SSVEP 0
+INITIAL_FUNCTION_PASS OpenBMI_SSVEP 1
+INITIAL_FUNCTION_PASS OpenBMI_SSVEP 2
+INITIAL_FUNCTION_PASS OpenBMI_SSVEP 3
+INITIAL_FUNCTION_PASS OpenBMI_SSVEP 4
+INITIAL_FUNCTION_PASS WBCIC_MI 0
+INITIAL_FUNCTION_PASS WBCIC_MI 1
+INITIAL_FUNCTION_PASS WBCIC_MI 2
+INITIAL_FUNCTION_PASS WBCIC_MI 3
+INITIAL_FUNCTION_PASS WBCIC_MI 4
+TRAIN OpenBMI_MI 0 epoch 1 steps 21
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=01 CE=0.7192 valBA=0.5750
+TRAIN OpenBMI_MI 0 epoch 5 steps 105
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=05 CE=0.5717 valBA=0.6333
+TRAIN OpenBMI_MI 0 epoch 10 steps 210
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=10 CE=0.5074 valBA=0.6700
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=13 CE=0.4773 valBA=0.6933
+TRAIN OpenBMI_MI 0 epoch 15 steps 315
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=15 CE=0.4493 valBA=0.6800
+TRAIN OpenBMI_MI 0 epoch 20 steps 420
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=20 CE=0.4253 valBA=0.6867
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=24 CE=0.4226 valBA=0.6950
+TRAIN OpenBMI_MI 0 epoch 25 steps 525
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=25 CE=0.4022 valBA=0.6767
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=29 CE=0.3857 valBA=0.7000
+TRAIN OpenBMI_MI 0 epoch 30 steps 630
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=30 CE=0.3627 valBA=0.6833
+TRAIN OpenBMI_MI 0 epoch 35 steps 735
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=35 CE=0.3547 valBA=0.7017
+TRAIN OpenBMI_MI 0 epoch 40 steps 839
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=40 CE=0.3381 valBA=0.6933
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=42 CE=0.3337 valBA=0.7100
+TRAIN OpenBMI_MI 0 epoch 45 steps 944
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=45 CE=0.3196 valBA=0.6950
+TRAIN OpenBMI_MI 0 epoch 50 steps 1049
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=50 CE=0.2953 valBA=0.6833
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=53 CE=0.3082 valBA=0.7183
+TRAIN OpenBMI_MI 0 epoch 55 steps 1154
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=55 CE=0.2805 valBA=0.7050
+TRAIN OpenBMI_MI 0 epoch 60 steps 1259
+[OpenBMI fold=0 seed=OpenBMI_MI_fold0 LiteBN-LS] epoch=60 CE=0.2563 valBA=0.7267
+CELL_COMPLETE OpenBMI_MI 0
+TRAIN OpenBMI_MI 1 epoch 1 steps 21
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=01 CE=0.7386 valBA=0.5400
+TRAIN OpenBMI_MI 1 epoch 5 steps 105
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=05 CE=0.5844 valBA=0.6417
+TRAIN OpenBMI_MI 1 epoch 10 steps 210
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=10 CE=0.5009 valBA=0.6650
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=11 CE=0.5427 valBA=0.6917
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=13 CE=0.5103 valBA=0.7000
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=14 CE=0.4867 valBA=0.7317
+TRAIN OpenBMI_MI 1 epoch 15 steps 315
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=15 CE=0.5095 valBA=0.7217
+TRAIN OpenBMI_MI 1 epoch 20 steps 420
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=20 CE=0.4382 valBA=0.7367
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=22 CE=0.4192 valBA=0.7433
+TRAIN OpenBMI_MI 1 epoch 25 steps 525
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=25 CE=0.4037 valBA=0.7367
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=29 CE=0.3744 valBA=0.7617
+TRAIN OpenBMI_MI 1 epoch 30 steps 630
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=30 CE=0.3636 valBA=0.7633
+TRAIN OpenBMI_MI 1 epoch 35 steps 735
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=35 CE=0.3622 valBA=0.7683
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=37 CE=0.3373 valBA=0.7767
+TRAIN OpenBMI_MI 1 epoch 40 steps 840
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=40 CE=0.3102 valBA=0.7683
+TRAIN OpenBMI_MI 1 epoch 45 steps 945
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=45 CE=0.3222 valBA=0.7633
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=48 CE=0.2925 valBA=0.7850
+TRAIN OpenBMI_MI 1 epoch 50 steps 1050
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=50 CE=0.2993 valBA=0.7667
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=51 CE=0.2945 valBA=0.7883
+TRAIN OpenBMI_MI 1 epoch 55 steps 1155
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=55 CE=0.2756 valBA=0.7700
+TRAIN OpenBMI_MI 1 epoch 60 steps 1260
+[OpenBMI fold=1 seed=OpenBMI_MI_fold1 LiteBN-LS] epoch=60 CE=0.2418 valBA=0.7917
+CELL_COMPLETE OpenBMI_MI 1
+TRAIN OpenBMI_MI 2 epoch 1 steps 21
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=01 CE=0.7127 valBA=0.6667
+TRAIN OpenBMI_MI 2 epoch 5 steps 105
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=05 CE=0.5636 valBA=0.7117
+TRAIN OpenBMI_MI 2 epoch 10 steps 210
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=10 CE=0.4911 valBA=0.7217
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=13 CE=0.4251 valBA=0.7267
+TRAIN OpenBMI_MI 2 epoch 15 steps 315
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=15 CE=0.4164 valBA=0.7417
+TRAIN OpenBMI_MI 2 epoch 20 steps 420
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=20 CE=0.3935 valBA=0.7383
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=21 CE=0.3755 valBA=0.7500
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=23 CE=0.3547 valBA=0.7617
+TRAIN OpenBMI_MI 2 epoch 25 steps 525
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=25 CE=0.3544 valBA=0.7450
+TRAIN OpenBMI_MI 2 epoch 30 steps 630
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=30 CE=0.3095 valBA=0.7467
+TRAIN OpenBMI_MI 2 epoch 35 steps 735
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=35 CE=0.2820 valBA=0.7750
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=37 CE=0.2998 valBA=0.7783
+TRAIN OpenBMI_MI 2 epoch 40 steps 839
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=40 CE=0.2671 valBA=0.7650
+TRAIN OpenBMI_MI 2 epoch 45 steps 944
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=45 CE=0.2352 valBA=0.7800
+TRAIN OpenBMI_MI 2 epoch 50 steps 1049
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=50 CE=0.2488 valBA=0.7583
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=51 CE=0.2372 valBA=0.7867
+TRAIN OpenBMI_MI 2 epoch 55 steps 1154
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=55 CE=0.2116 valBA=0.7650
+TRAIN OpenBMI_MI 2 epoch 60 steps 1259
+[OpenBMI fold=2 seed=OpenBMI_MI_fold2 LiteBN-LS] epoch=60 CE=0.2355 valBA=0.7800
+CELL_COMPLETE OpenBMI_MI 2
+TRAIN OpenBMI_MI 3 epoch 1 steps 21
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=01 CE=0.7120 valBA=0.6183
+TRAIN OpenBMI_MI 3 epoch 5 steps 105
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=05 CE=0.5463 valBA=0.7000
+TRAIN OpenBMI_MI 3 epoch 10 steps 210
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=10 CE=0.4913 valBA=0.7133
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=11 CE=0.4736 valBA=0.7150
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=12 CE=0.4546 valBA=0.7267
+TRAIN OpenBMI_MI 3 epoch 15 steps 315
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=15 CE=0.4543 valBA=0.7350
+TRAIN OpenBMI_MI 3 epoch 20 steps 420
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=20 CE=0.4013 valBA=0.7417
+TRAIN OpenBMI_MI 3 epoch 25 steps 525
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=25 CE=0.3477 valBA=0.7533
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=28 CE=0.3665 valBA=0.7583
+TRAIN OpenBMI_MI 3 epoch 30 steps 630
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=30 CE=0.3435 valBA=0.7467
+TRAIN OpenBMI_MI 3 epoch 35 steps 735
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=35 CE=0.3199 valBA=0.7133
+TRAIN OpenBMI_MI 3 epoch 40 steps 840
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=40 CE=0.3149 valBA=0.7500
+TRAIN OpenBMI_MI 3 epoch 45 steps 945
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=45 CE=0.2899 valBA=0.7300
+TRAIN OpenBMI_MI 3 epoch 50 steps 1050
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=50 CE=0.2488 valBA=0.7283
+TRAIN OpenBMI_MI 3 epoch 55 steps 1154
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=55 CE=0.2706 valBA=0.7317
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=56 CE=0.2640 valBA=0.7617
+TRAIN OpenBMI_MI 3 epoch 60 steps 1259
+[OpenBMI fold=3 seed=OpenBMI_MI_fold3 LiteBN-LS] epoch=60 CE=0.2287 valBA=0.7050
+CELL_COMPLETE OpenBMI_MI 3
+TRAIN OpenBMI_MI 4 epoch 1 steps 21
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=01 CE=0.7009 valBA=0.5833
+TRAIN OpenBMI_MI 4 epoch 5 steps 105
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=05 CE=0.5196 valBA=0.6467
+TRAIN OpenBMI_MI 4 epoch 10 steps 210
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=10 CE=0.4638 valBA=0.6800
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=12 CE=0.4526 valBA=0.7083
+TRAIN OpenBMI_MI 4 epoch 15 steps 315
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=15 CE=0.3951 valBA=0.7083
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=17 CE=0.4238 valBA=0.7233
+TRAIN OpenBMI_MI 4 epoch 20 steps 420
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=20 CE=0.3704 valBA=0.7167
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=21 CE=0.3853 valBA=0.7300
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=22 CE=0.3676 valBA=0.7383
+TRAIN OpenBMI_MI 4 epoch 25 steps 525
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=25 CE=0.3624 valBA=0.7300
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=28 CE=0.3363 valBA=0.7400
+TRAIN OpenBMI_MI 4 epoch 30 steps 630
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=30 CE=0.3251 valBA=0.7467
+TRAIN OpenBMI_MI 4 epoch 35 steps 735
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=35 CE=0.2787 valBA=0.7367
+TRAIN OpenBMI_MI 4 epoch 40 steps 839
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=40 CE=0.2766 valBA=0.7267
+TRAIN OpenBMI_MI 4 epoch 45 steps 944
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=45 CE=0.2637 valBA=0.7400
+TRAIN OpenBMI_MI 4 epoch 50 steps 1049
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=50 CE=0.2443 valBA=0.7300
+TRAIN OpenBMI_MI 4 epoch 55 steps 1154
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=55 CE=0.2715 valBA=0.7317
+TRAIN OpenBMI_MI 4 epoch 60 steps 1259
+[OpenBMI fold=4 seed=OpenBMI_MI_fold4 LiteBN-LS] epoch=60 CE=0.2147 valBA=0.7367
+CELL_COMPLETE OpenBMI_MI 4
+TRAIN OpenBMI_ERP 0 epoch 1 steps 805
+TRAIN OpenBMI_ERP 0 epoch 5 steps 4023
+TRAIN OpenBMI_ERP 0 epoch 10 steps 8046
+TRAIN OpenBMI_ERP 0 epoch 15 steps 12069
+TRAIN OpenBMI_ERP 0 epoch 20 steps 16092
+TRAIN OpenBMI_ERP 0 epoch 25 steps 20116
+TRAIN OpenBMI_ERP 0 epoch 30 steps 24139
+TRAIN OpenBMI_ERP 0 epoch 35 steps 28162
+TRAIN OpenBMI_ERP 0 epoch 40 steps 32185
+TRAIN OpenBMI_ERP 0 epoch 45 steps 36208
+TRAIN OpenBMI_ERP 0 epoch 50 steps 40231
+TRAIN OpenBMI_ERP 0 epoch 55 steps 44256
+TRAIN OpenBMI_ERP 0 epoch 60 steps 48279
+CELL_COMPLETE OpenBMI_ERP 0
+TRAIN OpenBMI_ERP 1 epoch 1 steps 805
+TRAIN OpenBMI_ERP 1 epoch 5 steps 4023
+TRAIN OpenBMI_ERP 1 epoch 10 steps 8046
+TRAIN OpenBMI_ERP 1 epoch 15 steps 12069
+TRAIN OpenBMI_ERP 1 epoch 20 steps 16093
+TRAIN OpenBMI_ERP 1 epoch 25 steps 20116
+TRAIN OpenBMI_ERP 1 epoch 30 steps 24139
+TRAIN OpenBMI_ERP 1 epoch 35 steps 28162
+TRAIN OpenBMI_ERP 1 epoch 40 steps 32186
+TRAIN OpenBMI_ERP 1 epoch 45 steps 36209
+TRAIN OpenBMI_ERP 1 epoch 50 steps 40232
+TRAIN OpenBMI_ERP 1 epoch 55 steps 44256
+TRAIN OpenBMI_ERP 1 epoch 60 steps 48280
+CELL_COMPLETE OpenBMI_ERP 1
+TRAIN OpenBMI_ERP 2 epoch 1 steps 805
+TRAIN OpenBMI_ERP 2 epoch 5 steps 4023
+TRAIN OpenBMI_ERP 2 epoch 10 steps 8045
+TRAIN OpenBMI_ERP 2 epoch 15 steps 12069
+TRAIN OpenBMI_ERP 2 epoch 20 steps 16092
+TRAIN OpenBMI_ERP 2 epoch 25 steps 20116
+TRAIN OpenBMI_ERP 2 epoch 30 steps 24138
+TRAIN OpenBMI_ERP 2 epoch 35 steps 28162
+TRAIN OpenBMI_ERP 2 epoch 40 steps 32185
+TRAIN OpenBMI_ERP 2 epoch 45 steps 36208
+TRAIN OpenBMI_ERP 2 epoch 50 steps 40232
+TRAIN OpenBMI_ERP 2 epoch 55 steps 44255
+TRAIN OpenBMI_ERP 2 epoch 60 steps 48278
+CELL_COMPLETE OpenBMI_ERP 2
+TRAIN OpenBMI_ERP 3 epoch 1 steps 805
+TRAIN OpenBMI_ERP 3 epoch 5 steps 4022
+TRAIN OpenBMI_ERP 3 epoch 10 steps 8046
+TRAIN OpenBMI_ERP 3 epoch 15 steps 12069
+TRAIN OpenBMI_ERP 3 epoch 20 steps 16092
+TRAIN OpenBMI_ERP 3 epoch 25 steps 20115
+TRAIN OpenBMI_ERP 3 epoch 30 steps 24138
+TRAIN OpenBMI_ERP 3 epoch 35 steps 28162
+TRAIN OpenBMI_ERP 3 epoch 40 steps 32185
+TRAIN OpenBMI_ERP 3 epoch 45 steps 36208
+TRAIN OpenBMI_ERP 3 epoch 50 steps 40231
+TRAIN OpenBMI_ERP 3 epoch 55 steps 44254
+TRAIN OpenBMI_ERP 3 epoch 60 steps 48278
+CELL_COMPLETE OpenBMI_ERP 3
+TRAIN OpenBMI_ERP 4 epoch 1 steps 805
+TRAIN OpenBMI_ERP 4 epoch 5 steps 4023
+TRAIN OpenBMI_ERP 4 epoch 10 steps 8046
+TRAIN OpenBMI_ERP 4 epoch 15 steps 12068
+TRAIN OpenBMI_ERP 4 epoch 20 steps 16092
+TRAIN OpenBMI_ERP 4 epoch 25 steps 20115
+TRAIN OpenBMI_ERP 4 epoch 30 steps 24138
+TRAIN OpenBMI_ERP 4 epoch 35 steps 28162
+TRAIN OpenBMI_ERP 4 epoch 40 steps 32184
+TRAIN OpenBMI_ERP 4 epoch 45 steps 36208
+TRAIN OpenBMI_ERP 4 epoch 50 steps 40231
+TRAIN OpenBMI_ERP 4 epoch 55 steps 44254
+TRAIN OpenBMI_ERP 4 epoch 60 steps 48278
+CELL_COMPLETE OpenBMI_ERP 4
+TRAIN OpenBMI_SSVEP 0 epoch 1 steps 41
+TRAIN OpenBMI_SSVEP 0 epoch 5 steps 205
+TRAIN OpenBMI_SSVEP 0 epoch 10 steps 410
+TRAIN OpenBMI_SSVEP 0 epoch 15 steps 615
+TRAIN OpenBMI_SSVEP 0 epoch 20 steps 820
+TRAIN OpenBMI_SSVEP 0 epoch 25 steps 1025
+TRAIN OpenBMI_SSVEP 0 epoch 30 steps 1230
+TRAIN OpenBMI_SSVEP 0 epoch 35 steps 1434
+TRAIN OpenBMI_SSVEP 0 epoch 40 steps 1639
+TRAIN OpenBMI_SSVEP 0 epoch 45 steps 1844
+TRAIN OpenBMI_SSVEP 0 epoch 50 steps 2049
+TRAIN OpenBMI_SSVEP 0 epoch 55 steps 2254
+TRAIN OpenBMI_SSVEP 0 epoch 60 steps 2459
+CELL_COMPLETE OpenBMI_SSVEP 0
+TRAIN OpenBMI_SSVEP 1 epoch 1 steps 41
+TRAIN OpenBMI_SSVEP 1 epoch 5 steps 205
+TRAIN OpenBMI_SSVEP 1 epoch 10 steps 410
+TRAIN OpenBMI_SSVEP 1 epoch 15 steps 615
+TRAIN OpenBMI_SSVEP 1 epoch 20 steps 820
+TRAIN OpenBMI_SSVEP 1 epoch 25 steps 1025
+TRAIN OpenBMI_SSVEP 1 epoch 30 steps 1229
+TRAIN OpenBMI_SSVEP 1 epoch 35 steps 1434
+TRAIN OpenBMI_SSVEP 1 epoch 40 steps 1639
+TRAIN OpenBMI_SSVEP 1 epoch 45 steps 1844
+TRAIN OpenBMI_SSVEP 1 epoch 50 steps 2049
+TRAIN OpenBMI_SSVEP 1 epoch 55 steps 2254
+TRAIN OpenBMI_SSVEP 1 epoch 60 steps 2459
+CELL_COMPLETE OpenBMI_SSVEP 1
+TRAIN OpenBMI_SSVEP 2 epoch 1 steps 41
+TRAIN OpenBMI_SSVEP 2 epoch 5 steps 205
+TRAIN OpenBMI_SSVEP 2 epoch 10 steps 410
+TRAIN OpenBMI_SSVEP 2 epoch 15 steps 615
+TRAIN OpenBMI_SSVEP 2 epoch 20 steps 820
+TRAIN OpenBMI_SSVEP 2 epoch 25 steps 1025
+TRAIN OpenBMI_SSVEP 2 epoch 30 steps 1230
+TRAIN OpenBMI_SSVEP 2 epoch 35 steps 1435
+TRAIN OpenBMI_SSVEP 2 epoch 40 steps 1640
+TRAIN OpenBMI_SSVEP 2 epoch 45 steps 1844
+TRAIN OpenBMI_SSVEP 2 epoch 50 steps 2049
+TRAIN OpenBMI_SSVEP 2 epoch 55 steps 2254
+TRAIN OpenBMI_SSVEP 2 epoch 60 steps 2459
+CELL_COMPLETE OpenBMI_SSVEP 2
+TRAIN OpenBMI_SSVEP 3 epoch 1 steps 41
+TRAIN OpenBMI_SSVEP 3 epoch 5 steps 205
+TRAIN OpenBMI_SSVEP 3 epoch 10 steps 410
+TRAIN OpenBMI_SSVEP 3 epoch 15 steps 615
+TRAIN OpenBMI_SSVEP 3 epoch 20 steps 820
+TRAIN OpenBMI_SSVEP 3 epoch 25 steps 1025
+TRAIN OpenBMI_SSVEP 3 epoch 30 steps 1229
+TRAIN OpenBMI_SSVEP 3 epoch 35 steps 1434
+TRAIN OpenBMI_SSVEP 3 epoch 40 steps 1639
+TRAIN OpenBMI_SSVEP 3 epoch 45 steps 1844
+TRAIN OpenBMI_SSVEP 3 epoch 50 steps 2049
+TRAIN OpenBMI_SSVEP 3 epoch 55 steps 2254
+TRAIN OpenBMI_SSVEP 3 epoch 60 steps 2459
+CELL_COMPLETE OpenBMI_SSVEP 3
+TRAIN OpenBMI_SSVEP 4 epoch 1 steps 41
+TRAIN OpenBMI_SSVEP 4 epoch 5 steps 205
+TRAIN OpenBMI_SSVEP 4 epoch 10 steps 410
+TRAIN OpenBMI_SSVEP 4 epoch 15 steps 614
+TRAIN OpenBMI_SSVEP 4 epoch 20 steps 819
+TRAIN OpenBMI_SSVEP 4 epoch 25 steps 1024
+TRAIN OpenBMI_SSVEP 4 epoch 30 steps 1229
+TRAIN OpenBMI_SSVEP 4 epoch 35 steps 1434
+TRAIN OpenBMI_SSVEP 4 epoch 40 steps 1639
+TRAIN OpenBMI_SSVEP 4 epoch 45 steps 1844
+TRAIN OpenBMI_SSVEP 4 epoch 50 steps 2049
+TRAIN OpenBMI_SSVEP 4 epoch 55 steps 2254
+TRAIN OpenBMI_SSVEP 4 epoch 60 steps 2459
+CELL_COMPLETE OpenBMI_SSVEP 4
+TRAIN WBCIC_MI 0 epoch 1 steps 60
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=01 CE=0.6978 valBA=0.5000
+TRAIN WBCIC_MI 0 epoch 5 steps 298
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=05 CE=0.4721 valBA=0.6587
+TRAIN WBCIC_MI 0 epoch 10 steps 598
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=10 CE=0.3815 valBA=0.5735
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=11 CE=0.3416 valBA=0.6546
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=13 CE=0.3450 valBA=0.6741
+TRAIN WBCIC_MI 0 epoch 15 steps 897
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=15 CE=0.3150 valBA=0.6637
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=16 CE=0.3480 valBA=0.6897
+TRAIN WBCIC_MI 0 epoch 20 steps 1197
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=20 CE=0.2956 valBA=0.6666
+TRAIN WBCIC_MI 0 epoch 25 steps 1497
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=25 CE=0.2882 valBA=0.6637
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=27 CE=0.2790 valBA=0.6977
+TRAIN WBCIC_MI 0 epoch 30 steps 1796
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=30 CE=0.2695 valBA=0.6627
+TRAIN WBCIC_MI 0 epoch 35 steps 2096
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=35 CE=0.2531 valBA=0.6837
+TRAIN WBCIC_MI 0 epoch 40 steps 2396
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=40 CE=0.2465 valBA=0.6897
+TRAIN WBCIC_MI 0 epoch 45 steps 2696
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=45 CE=0.2432 valBA=0.6757
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=47 CE=0.2253 valBA=0.6978
+TRAIN WBCIC_MI 0 epoch 50 steps 2996
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=50 CE=0.2332 valBA=0.5000
+TRAIN WBCIC_MI 0 epoch 55 steps 3296
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=55 CE=0.2331 valBA=0.6534
+TRAIN WBCIC_MI 0 epoch 60 steps 3596
+[WBCIC fold=0 seed=WBCIC_MI_fold0 LiteBN-LS] epoch=60 CE=0.2356 valBA=0.6342
+CELL_COMPLETE WBCIC_MI 0
+TRAIN WBCIC_MI 1 epoch 1 steps 63
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=01 CE=0.7010 valBA=0.6362
+TRAIN WBCIC_MI 1 epoch 5 steps 315
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=05 CE=0.4856 valBA=0.8473
+TRAIN WBCIC_MI 1 epoch 10 steps 630
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=10 CE=0.4013 valBA=0.8656
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=11 CE=0.3892 valBA=0.8736
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=13 CE=0.3818 valBA=0.8736
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=14 CE=0.3736 valBA=0.8766
+TRAIN WBCIC_MI 1 epoch 15 steps 945
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=15 CE=0.3768 valBA=0.8766
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=16 CE=0.3494 valBA=0.8796
+TRAIN WBCIC_MI 1 epoch 20 steps 1259
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=20 CE=0.3429 valBA=0.8776
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=21 CE=0.3377 valBA=0.8806
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=22 CE=0.3488 valBA=0.8826
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=24 CE=0.3490 valBA=0.8927
+TRAIN WBCIC_MI 1 epoch 25 steps 1574
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=25 CE=0.3337 valBA=0.8766
+TRAIN WBCIC_MI 1 epoch 30 steps 1889
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=30 CE=0.3213 valBA=0.8846
+TRAIN WBCIC_MI 1 epoch 35 steps 2204
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=35 CE=0.2934 valBA=0.8816
+TRAIN WBCIC_MI 1 epoch 40 steps 2519
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=40 CE=0.2826 valBA=0.8807
+TRAIN WBCIC_MI 1 epoch 45 steps 2834
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=45 CE=0.2619 valBA=0.8827
+TRAIN WBCIC_MI 1 epoch 50 steps 3149
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=50 CE=0.2671 valBA=0.8888
+TRAIN WBCIC_MI 1 epoch 55 steps 3463
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=55 CE=0.2576 valBA=0.8897
+TRAIN WBCIC_MI 1 epoch 60 steps 3778
+[WBCIC fold=1 seed=WBCIC_MI_fold1 LiteBN-LS] epoch=60 CE=0.2427 valBA=0.8827
+CELL_COMPLETE WBCIC_MI 1
+TRAIN WBCIC_MI 2 epoch 1 steps 63
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=01 CE=0.6928 valBA=0.6260
+TRAIN WBCIC_MI 2 epoch 5 steps 315
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=05 CE=0.4885 valBA=0.8180
+TRAIN WBCIC_MI 2 epoch 10 steps 630
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=10 CE=0.3962 valBA=0.8500
+TRAIN WBCIC_MI 2 epoch 15 steps 945
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=15 CE=0.3490 valBA=0.8350
+TRAIN WBCIC_MI 2 epoch 20 steps 1260
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=20 CE=0.3282 valBA=0.8490
+TRAIN WBCIC_MI 2 epoch 25 steps 1575
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=25 CE=0.3212 valBA=0.8330
+TRAIN WBCIC_MI 2 epoch 30 steps 1890
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=30 CE=0.2892 valBA=0.8280
+TRAIN WBCIC_MI 2 epoch 35 steps 2204
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=35 CE=0.2810 valBA=0.8140
+TRAIN WBCIC_MI 2 epoch 40 steps 2519
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=40 CE=0.2675 valBA=0.8490
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=43 CE=0.2718 valBA=0.8520
+TRAIN WBCIC_MI 2 epoch 45 steps 2834
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=45 CE=0.2482 valBA=0.8370
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=49 CE=0.2548 valBA=0.8560
+TRAIN WBCIC_MI 2 epoch 50 steps 3149
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=50 CE=0.2394 valBA=0.8600
+TRAIN WBCIC_MI 2 epoch 55 steps 3463
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=55 CE=0.2291 valBA=0.8440
+TRAIN WBCIC_MI 2 epoch 60 steps 3778
+[WBCIC fold=2 seed=WBCIC_MI_fold2 LiteBN-LS] epoch=60 CE=0.2337 valBA=0.8450
+CELL_COMPLETE WBCIC_MI 2
+TRAIN WBCIC_MI 3 epoch 1 steps 63
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=01 CE=0.6907 valBA=0.5770
+TRAIN WBCIC_MI 3 epoch 5 steps 315
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=05 CE=0.5002 valBA=0.6920
+TRAIN WBCIC_MI 3 epoch 10 steps 628
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=10 CE=0.4124 valBA=0.5000
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=11 CE=0.4031 valBA=0.6860
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=12 CE=0.3937 valBA=0.7110
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=13 CE=0.3912 valBA=0.7280
+TRAIN WBCIC_MI 3 epoch 15 steps 942
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=15 CE=0.3749 valBA=0.7260
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=16 CE=0.3615 valBA=0.7430
+TRAIN WBCIC_MI 3 epoch 20 steps 1257
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=20 CE=0.3479 valBA=0.6680
+TRAIN WBCIC_MI 3 epoch 25 steps 1572
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=25 CE=0.3230 valBA=0.6670
+TRAIN WBCIC_MI 3 epoch 30 steps 1887
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=30 CE=0.3104 valBA=0.7300
+TRAIN WBCIC_MI 3 epoch 35 steps 2201
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=35 CE=0.3168 valBA=0.5000
+TRAIN WBCIC_MI 3 epoch 40 steps 2516
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=40 CE=0.2997 valBA=0.7080
+TRAIN WBCIC_MI 3 epoch 45 steps 2831
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=45 CE=0.2656 valBA=0.6950
+TRAIN WBCIC_MI 3 epoch 50 steps 3146
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=50 CE=0.2578 valBA=0.7270
+TRAIN WBCIC_MI 3 epoch 55 steps 3461
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=55 CE=0.2382 valBA=0.7310
+TRAIN WBCIC_MI 3 epoch 60 steps 3775
+[WBCIC fold=3 seed=WBCIC_MI_fold3 LiteBN-LS] epoch=60 CE=0.2296 valBA=0.7150
+CELL_COMPLETE WBCIC_MI 3
+TRAIN WBCIC_MI 4 epoch 1 steps 63
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=01 CE=0.6938 valBA=0.6220
+TRAIN WBCIC_MI 4 epoch 5 steps 315
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=05 CE=0.4471 valBA=0.7030
+TRAIN WBCIC_MI 4 epoch 10 steps 630
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=10 CE=0.3385 valBA=0.7350
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=11 CE=0.3369 valBA=0.7390
+TRAIN WBCIC_MI 4 epoch 15 steps 945
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=15 CE=0.3085 valBA=0.7390
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=18 CE=0.2796 valBA=0.7480
+TRAIN WBCIC_MI 4 epoch 20 steps 1260
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=20 CE=0.2850 valBA=0.7230
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=23 CE=0.2946 valBA=0.7580
+TRAIN WBCIC_MI 4 epoch 25 steps 1574
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=25 CE=0.2731 valBA=0.7310
+TRAIN WBCIC_MI 4 epoch 30 steps 1889
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=30 CE=0.2479 valBA=0.7560
+TRAIN WBCIC_MI 4 epoch 35 steps 2204
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=35 CE=0.2337 valBA=0.7550
+TRAIN WBCIC_MI 4 epoch 40 steps 2519
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=40 CE=0.2286 valBA=0.7300
+TRAIN WBCIC_MI 4 epoch 45 steps 2834
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=45 CE=0.2141 valBA=0.7520
+TRAIN WBCIC_MI 4 epoch 50 steps 3148
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=50 CE=0.2174 valBA=0.7470
+TRAIN WBCIC_MI 4 epoch 55 steps 3463
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=55 CE=0.2027 valBA=0.7360
+TRAIN WBCIC_MI 4 epoch 60 steps 3778
+[WBCIC fold=4 seed=WBCIC_MI_fold4 LiteBN-LS] epoch=60 CE=0.2011 valBA=0.7470
+CELL_COMPLETE WBCIC_MI 4
+EVALUATED OpenBMI_MI 0 outer
+EVALUATED OpenBMI_MI 1 outer
+EVALUATED OpenBMI_MI 2 outer
+EVALUATED OpenBMI_MI 3 outer
+EVALUATED OpenBMI_MI 4 outer
+EVALUATED OpenBMI_ERP 0 outer
+EVALUATED OpenBMI_ERP 1 outer
+EVALUATED OpenBMI_ERP 2 outer
+EVALUATED OpenBMI_ERP 3 outer
+EVALUATED OpenBMI_ERP 4 outer
+EVALUATED OpenBMI_SSVEP 0 outer
+EVALUATED OpenBMI_SSVEP 1 outer
+EVALUATED OpenBMI_SSVEP 2 outer
+EVALUATED OpenBMI_SSVEP 3 outer
+EVALUATED OpenBMI_SSVEP 4 outer
+EVALUATED WBCIC_MI 0 outer
+EVALUATED WBCIC_MI 1 outer
+EVALUATED WBCIC_MI 2 outer
+EVALUATED WBCIC_MI 3 outer
+EVALUATED WBCIC_MI 4 outer
+EVALUATED OpenBMI_MI 0 heldout
+EVALUATED OpenBMI_MI 1 heldout
+EVALUATED OpenBMI_MI 2 heldout
+EVALUATED OpenBMI_MI 3 heldout
+EVALUATED OpenBMI_MI 4 heldout
+EVALUATED OpenBMI_ERP 0 heldout
+EVALUATED OpenBMI_ERP 1 heldout
+EVALUATED OpenBMI_ERP 2 heldout
+EVALUATED OpenBMI_ERP 3 heldout
+EVALUATED OpenBMI_ERP 4 heldout
+EVALUATED OpenBMI_SSVEP 0 heldout
+EVALUATED OpenBMI_SSVEP 1 heldout
+EVALUATED OpenBMI_SSVEP 2 heldout
+EVALUATED OpenBMI_SSVEP 3 heldout
+EVALUATED OpenBMI_SSVEP 4 heldout
+EVALUATED WBCIC_MI 0 heldout
+EVALUATED WBCIC_MI 1 heldout
+EVALUATED WBCIC_MI 2 heldout
+EVALUATED WBCIC_MI 3 heldout
+EVALUATED WBCIC_MI 4 heldout
+LOCALSTATS_SEED0_NO_BROAD_SIGNAL

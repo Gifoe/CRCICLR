@@ -1,0 +1,3144 @@
+{
+  "invariant": "2eb77fd2384735f32021178cd02dbe03a07a8d88c7870845145fd3ac890b0bb0",
+  "audits": [
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.4521750211715698,
+      "historical_init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.4381484389305115,
+      "historical_init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.5212911367416382,
+      "historical_init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.6080731153488159,
+      "historical_init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.5307393074035645,
+      "historical_init_sha256": "b18bf7a4f78b1ec8ad450f3a5d96a124d92879aff86c644d32cba38c00043aed",
+      "status": "PASS"
+    }
+  ],
+  "parameters": [
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 47978,
+      "LS_parameters": 54634,
+      "extra_parameters": 6656,
+      "increase_percent": 13.873025136520905
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 47978,
+      "LS_parameters": 54634,
+      "extra_parameters": 6656,
+      "increase_percent": 13.873025136520905
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 47978,
+      "LS_parameters": 54634,
+      "extra_parameters": 6656,
+      "increase_percent": 13.873025136520905
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 47978,
+      "LS_parameters": 54634,
+      "extra_parameters": 6656,
+      "increase_percent": 13.873025136520905
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 47978,
+      "LS_parameters": 54634,
+      "extra_parameters": 6656,
+      "increase_percent": 13.873025136520905
+    }
+  ],
+  "manifests": [
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 1,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9d7453def81228d6c4165c1c967270a4a2673f740856d3153cbdfcf64289d5cb",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 2,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d701b8fd7b99397920ec2152e693679ff0ed1da9dbc3ed7a9c79b9b6cf83a34f",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 3,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c1a2bd21ca2639e32b4a1c8bb19e40e67bb0129171904e8cf6c22304d6b03a56",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 4,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f84eedc51b1d63b66b0e07c6bb1f11b72c698f6b1cd9785214c048c4ef86ee05",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 5,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fabe2f19944c778121b6f532092dc6a20e0e22fc24ba3fb804c4cd2092fa0065",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 6,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5c1b1f62c088930234926b4e2a80d86fff3b1a2298cea6e15dcc011a57c0db13",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 7,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ee00d3156a00e752c897fe27294e09f95f0f4bc268bd641740a17d8f6ecfade0",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 8,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "26d286f47f1c5efec81bb98a9cbc685a5e339d7f471fcc582fd9e450ad23214e",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 9,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "efb5184b5a8da76175a04ab7d5068972e47a7a3aefac2ff65435e87d4697344d",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 10,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e49b6584fe121122ca97ca06eb83f77905f0e4f7fe7020a50de9270e9e98ebe7",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 11,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "420c73cfecb5071908121318fea83d2cafda5e88a9bf7ed02340fb62fbcd2273",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 12,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a959fbec16a34fcf5acb81abb199bb2d5eafdd002d757666a94b113e12eeaf07",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 13,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "256a9a87552060c9bc5d4ae126e07a615199b87c949a6f5018849d4ecb3be885",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 14,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "204697fef6f720c63dc6d0cce9e310b4141520c35e73c5f1486fce2de05056f1",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 15,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d2482e26b8b61ed8295f9b59976632ff50a460c3234b964cf026c06d403471ed",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 16,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "335afc05af27632bf2a8b7f27eca2bc9de3f4a2dbdb2827f7d67d0ef737f7de4",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 17,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c80111854649d9515418eb46672543b9956f2c78030b216b655024944b0d1271",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 18,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d5b9e46c274ee9ccd403599ba0b9e54f218ebe5fb380950b93474d74046eaf9e",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 19,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "41c5f54b6bd8995f5d39fbad05146975985c9c61e40274c0bddb53fca1305a4f",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 20,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f3852573153e7748c8512b69aa669056721a92dafea99cf68f0b62c14da1d9df",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 21,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0b75ea492fc4f821287c984e16d5161f4a728afb04ea34c149e70ea438aad806",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 22,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4c4ad1b1fde148d93eb2b154637ed8360f5344e3edefa4834454ee84931538af",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 23,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8f1196bcdbc9f9f5a11eb038b3ca1afd752ffb234e4ce81ac54813a69c0cb359",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 24,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f7d60c0f3d5435c2faf3455107730d4a97d3411478e319b8495491c421845374",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 25,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "44c063857a0cf6c5b9839813009c284e1d49384c67e85df32e362bf61fbddd99",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 26,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "bbaa777a164737e7360dd207f724ed1cd69348fce33b89d17f6998e17e04f2ca",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 27,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d9dd4643a6ecc2b533cc115c5445c691053796da6424b33b6462cf057c745c8b",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 28,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8dfe058ff0305ff184500c501560b08ef84b306371bf09541960dd24675bb470",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 29,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "327ca702579bed3e211c77b779c122e239b46e5b2ae94bbd82298ad9da9ae111",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 30,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9f7af3940e737a615de29828de8f290fe2399979fe3d00135b9470829dd2ad34",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 31,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b4db3ea7a6e08c3c0eb0f51e37724edf6aed2f30c51f371b40b35bd7a3fa1778",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 32,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "96f6db293013d7d71994af9bef8bb2b31472fabcd026d4adef591eafc6fc4943",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 33,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fe528da7d068e0e2fbdc8f38020bb8417a443657826500573193a143e75b7184",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 34,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "55b7a71c2cfbbacfb431db742bf6c22a607478d062c445e94620230577368916",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 35,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f15e6111871111ac6bf9dca6cc2157f002d4e6a6ef3f4be30ddf34b20a2a6c38",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 36,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d2f1c925da624679665138ba9f4bdad85d7b8f63956618c75d04e0483711107c",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 37,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "438691b38bb5ffe5984b60cb7b64d9c65714e8f4fd8904c8b395fd12238e0c3a",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 38,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7187df53719e5d7a94329cc7191d1bbb5200c4fc1770312f521456e2d32d5d1c",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 39,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fdfb5e7529f444d5eb0e773e4075626253d8ee5f248cc64325608662cbfe109d",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 40,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b01d2695f776d0db27b3600a76f7f0c40fdd14b98514557f5011b70034eccac8",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 41,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0d8d638c4a08d5ad41977bbdad3f49615fd04d6c159cb680a315aa3fda6b8869",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 42,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a373d58b0d06f0c0f0e3dc338818eed34ff9364b44cbc09b70e9da4110398af5",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 43,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6250be623d4886b834843359585b06fe9c8e081db946d3c84f26d79848e03a65",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 44,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4d5919953d885b2796fe37f90d305cc549dd6d2e9561648c54f083692f5b99df",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 45,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "881e56bd8731fb3fe30d417c0994e8ef2e5691c3cd7517ea1f90ceb411ccdd13",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 46,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f79846c26729d6da33005705cf97f2b689466b95bd4d354580bb10c07b419b19",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 47,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b9426fdec2e459ec8336053b7fdf4b5eb1767c8028a0ef1309768499904f8bec",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 48,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "08c135189db358203cf608f2afd421c6d3bb493aece4f1ceb2625a14b89c6a66",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 49,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d310669f20eb8ec4b263b5a765acb1cf068066c6beae77de8409622addfe0e82",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 50,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c16bd97df8217d6672e0572b7c3285978e50fc9a4506f5cc498462f8826e0ea3",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 51,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fbe1feacb3a4a0a598afa5bf3f6480ba44189e5338434c5f2a3dbdbc398353f4",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 52,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0406fd54d9b75ee0cae8d0c4656a39db610eff42403def90eca1c04308112ee7",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 53,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2b72525d628445898e850d4c82fb3d74184180d8fefb5b898625420c22026dac",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 54,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b02136370191daacebd3c0ae2a3fc845bc54b3da6332ab4c88defd49ce235ae5",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 55,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "dcf70ec5b2d8f72a6a3c7f6aca2f0c7fdebf23f5d31c255103e0591e336a66a0",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 56,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6cc4b2f9e49a9b37c33b936781d2229e1ff7606518aa5f13f63fa4e763d150da",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 57,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "690aaf717cef14df1c9157dbabcb7ab24756d4130e52ed6ef10d63c21c6d0a7c",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 58,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f3f3203cdb72a8fe391b3e0340e00de6e803704f85957726de58e4aeb5d90423",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 59,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "bf5f8c213a3d8bcf066b6d14c07da5a71647acd2074a44897f3ff310ae934de3",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 0,
+      "epoch": 60,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "85a034867419922521fa4b52939f7a17521f684f40ea4c59f1f0a17129f1384d",
+      "historical_manifest_sha256": "f7cc4c6d6696467c83e518b7d038f9df69835ef8bd901f8ec77ea9f24ed3e274",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 1,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c9afe737f9d37e79144dccd92119f07db6f589ea142db5c4204d428abbc447f2",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 2,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "831efbf988619a891f1e963f89452155679f4b88aabb8d5740ecb1cdc5dee3e2",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 3,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ba1a8007a6e909b7c27ac75bd3de8dbc426bc8eeedf66ed7646d1ae12050ddda",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 4,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c917a3e89aa9ed32d4d035464e0bc757146004045a855bbd5f3312899c1aad98",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 5,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "df3087c1201f42ece4684dd5280d982dc4ab100936e63e29c22f8031fe10ab32",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 6,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "dc05c25bb68b782e6a4fdd4ca0920864d6d6179552507e65187455a9e6e8b39a",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 7,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "06b7c9dd6a73b2dc886a5dd553bdd9427445518f2a95eb8c64bf86023d33a93c",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 8,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5f6e4a8eafd90d4c9a9c53e711f18fe5a790a627f95c2c62a2f77d735f2614af",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 9,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0cf47bcbb2ce6ce9ce1da4b8adc2198e6fe68bfc6d1e7b537c5e211b8da10617",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 10,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "116d27cb1fa05802101b027d5f178c2a09de89b7d0b7f00e2238c199ee5cc931",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 11,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4df5b2cfa54ad6f915bb8b83f1ebb11eb95233dbeb74a4930b3f6c997258223d",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 12,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3b0883c93f37df15effe5b7e91732a8600cb5e9edf93dea1e46adbd6fade1543",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 13,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b3fadaaacd5d2e9d8e9d00253cf70af6981a9756350a87a23aba98e5bcf49879",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 14,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "02d28b96f7c44ab87f839f4d3c941edeab01893a0c452da8342f40d5212813aa",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 15,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8d0c099273a20d6b9be625f14b52471ce15b0064ba9e6d3e69765b25d03b4a34",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 16,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "07bf7e8cacf976fd130f49a11cc1775d8b52ec8038f7fbfacfd70ffbf5a169ef",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 17,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1dc7ced1beb03121ba713171bc66c55945a57cc46dd0b45951edd807e5e7d5cb",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 18,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2fbc3d83cad89794eea0164f63d922b2a21cab6987d0d3b445a49239e7851b90",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 19,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a21fecb8adffbe8395977dd1d4129319ffc8dd5afbe96b0e4aeddbc5d906e202",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 20,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9d12e83eb36dbd806bfac3e571ea54f229dca6d5d5fa95e008b746356f04e254",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 21,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "aaff66e4a6748a955ea479ffd477c6d87082ec5a33528835269d3f87db7d46fe",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 22,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e95d5b4098317a9164e038691bc3dc68816e2fed15099bfa8228bbe1605a1467",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 23,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "455bcba4ff7743e6c7dc3938736fa6665f4c1098dd2f965cfb0304b7cdd3da8f",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 24,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e69c591c6b9b0548766764a8c1a9091b8c69df4cd9590473296f0f196280c30a",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 25,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "93dd2d9f0559e7cf03e8c01ac6ff155179f692b4b0ba5a4ceae9cc3a781182b5",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 26,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c73a55b082ea23cb5e55784a909f7b665c10f742da72811f89f98787df217607",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 27,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c36f4ab0d0167912430e419d2670c1fa32fd3e5fae469c08d231e5a003e2b459",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 28,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "541b2c9fd3e2639383036ca19c2b37a5bc2a4dd06e0822e2100ebbaf2426d624",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 29,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0ef7ad84877df74fec4d9b9635efefd73ed2f2e4a65734f18db887ba3f73988f",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 30,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "df22eaada7f1de73d24aff09cb159ad3e7d63357bc68091e0a4ddffdffb97e78",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 31,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fa7ab4654d89f3620ced3d940444492fb6235cb19175d5d51f16c9211f01c536",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 32,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "959c048c31ba6f9d4efec550fbb7b4df3fa477caeb042885458f614eb04787f9",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 33,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2ff1b40eaf013fdc29df6b80e380b853e53b16e0089e5916e6cd010d297369ed",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 34,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "472c3ed81486818d74d8eedefcf9d575854a48e11a426187628c2d38703227dd",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 35,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1a3d9b5db99bfff71098830c17517be7d028fee057866071e7aadf39d145a198",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 36,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8f8e841810ba6335f6f5fd68eab198b0ee6db60d9052022981b37954966e5e63",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 37,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "585ed180c8a162a16bc437fe081d28f3ec15cac4568a4c8de1c7f5dd88755fa4",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 38,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "430589a25df3088fede172887972771273a66b9861f959b0e2d72706b5168900",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 39,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2e0ce580dc5ab2cfd0df2711d042452265808a596a37b12706fe01138b89c7d1",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 40,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f999642ca0066e25465d40f500c9e988c90327c65de92fbc7776f376eeb5ac6f",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 41,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2e99b9bca2b36ffe0602130201d0944ed67c673772fde71237734c05d156c5fd",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 42,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a00b38521c4d848c5b7e8efbe16f512594b8ea714b63afc3605c6cdb23d3d971",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 43,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3b1b1561df1b32b92cf1f381ed25e347400ac4d342ff4f3c8a6e9dce84b23037",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 44,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b4189c9a333e7afe87af0c72a5ce12011b016f2c68fa01905eb9e70f5498ef07",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 45,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4df754a123970753367d0751a5e46b0b7e82a96923c24a93c4ade71bc040346e",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 46,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e8f6a2c674b3a513838a125d9f45de28cddc1b3481470689f9db6246185dda41",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 47,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a805ae004f937631db5c8ef6e69c80d9239e4e46aa0e87da4de4922097edc70e",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 48,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e91fdc4ad9ec374eae886f3bc5a8b03ab46debe2f93da2fd791eb1c760915d28",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 49,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8c0d7881ac193a241873e54caec175143f23437d1cac14a85cbda3f63b4a909d",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 50,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0f0c5d34149ff35106dda7b213ee5e640af9cb18a6480856e8d5ca54b4e85612",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 51,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a3b5bdd269886d21469d4bedb8bfda780ff67ba8fefdadbcbab4308ce99e82b5",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 52,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2d5c3c2943b06541da82ac802d778ee9c4b55609d48e8d206a31f41d9325522c",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 53,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a8292fa52d73301f165ae21ff7acc6eb7d73114f703bb809fff646e437347e70",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 54,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6adb81391f29f56bfb5a3057de6ad538476b5ffb2df0a6ea648949dcdbedf481",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 55,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "32ef43d18bbb38c8e498056f528382df9fba6f3fed0c557f8569d64f1786437e",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 56,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a199a5bf3fb31ded7abf9e5301900bbd307152653112e89a9049b40cf673794c",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 57,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6e3e5c00bc990b7544dd8afce70def35ba477709298bf101247a2261ad59276c",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 58,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e2bea08e61dee7ce173583a4e310c0c24a07357ab267b13078bc13412e08ea11",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 59,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6348a658edcffe5684648de38d4e9491bf92fa00e95c81d72625e3201b7a2bdf",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 1,
+      "epoch": 60,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7bf17fc28f31f63572672f7b9ab19b3dc005595925fcbf650f0995ed92da473b",
+      "historical_manifest_sha256": "65f8d980d08208e620ce6665c703877544a72aaae93470484f93cebb1db56194",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 1,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6e368101f47b5367768def722ec7dd85dfb39a3210b9d314eb461e7a01f44430",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 2,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c5340d152d86d3f0c5739875fd4ff45d751f485e520344ae6622370d2e41c017",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 3,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "cbb5533452c0ced1d77d175efb43fb4fa347cd5b8b164287e96b81193e46d003",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 4,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2105965dcb28c96970372ad0f51c5f1e576925deb7a38c7dbca2ae2c07e38af9",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 5,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7a8fe22bdd8c31fafe68614450fbed12f7a6f7a0f11606221af0d9709bab02a3",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 6,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d25d276d8b4396b7e922f5685ff62bddc11db18df1e2eb056e7e892f71893ee2",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 7,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0eec67ca03fb7082c5dd1d91eb3ec625d3894448560dda0746e1c04647ae0c85",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 8,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2f656be358412c2223253b9c130a51cfb8758b4548757ce2794e21833d4d5adc",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 9,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a4a27665e20ed3a30d64b149b165e72499922f53a1fb44c243ed0a6d8d2eec75",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 10,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0036370759d8951aba084466bf6bd6a763c197229c63f1bdfd80790d737de86c",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 11,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "319e1af37460e693552045c709f254694364f69189aeb82ac892140fc009c25f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 12,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b6e10c42a55b36708aeb7dc1adcfc9c5733a7368325b1b84f2aa78e8816b7caa",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 13,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "84d275776991da199957cae78c96ca4274b1db20f3025a4f47baddda93202e08",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 14,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8a0529beb082baa75d16f47e75e65db40c984f4287e76a6137ba843085f542a7",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 15,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e0860f74046a75e8f2626d11c1bd6872c0a1552eacf4dcf336cce84f26fe740b",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 16,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9940cdf08beac677f5e25a66f177dd47e9a0c4333d0f47a68a8c6fa5a10d0f20",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 17,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c2ad14ad402fa40ccfca8fe836b7fd8ca116d0f0bbc6f61d0184e06e4aeaf5f1",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 18,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "77698e1b17e04e54bd6a3cf38b4fc77b29ec7867fb1df8313d6f030947cff461",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 19,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a25e8f4369d2334d31c97c1293cc5dc512ba801c28641c00ba068a9df8584a72",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 20,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3f38007a2c590fcbc44a1e2a0e374f16783aab9bbba4b91a886034c4af4db613",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 21,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ff511772848e9b0f41467d0f0c80baf1c87639989775766b741f5e1706882546",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 22,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0edde9f064eac3012800bf5fb48e3c1393f9cd33e8e5037c733e06e672a1ab38",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 23,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9fb5c95373069bbb8fe2d8a34e8c5dea95096c361bab3dc621c13140ff1ff1b8",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 24,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "771890ee320b9604c133aa9491addfd7c6b9cfdcacb70a5777246bf429f43718",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 25,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "15b832797db2cc4a580c199b0286607c54210dd55f8352a6d87ec94084badfb6",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 26,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7f13c3c8bbdf586660df6c0f403baf29ee859dab12d12418a6a901fb717e5329",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 27,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6a323d3ddc4535cb472bf28f60145c04e83970401d7567e932a60ec5af86e9d8",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 28,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "173ab00c60520fd34b5cfed26ae210a3113d74e9751168c1df576f8783c60437",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 29,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d823b30153c66232f682c7e50c7d986a4d10e1ec7be27d32bedb77679fb54e5f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 30,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5d8e92faa8fcec22093d26068c6a71ab58e3f056909ff6c60a43d7d3b235d083",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 31,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "efcfa9b214085454f50ad8514f9e18e5e49d92622b3c5f593704f7618790d7a7",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 32,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "21129698731f18712be131e83e2f0384c15f1d6c51e1e2f33f59b873dc4e5740",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 33,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d28ed6a29382c3874f5a58c74cea256d8d4a142bceeb689540c9953a1b8b2fc5",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 34,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "edab5541ab996f279c526ee39d7c2b9687e2ab03ee9c4e4d11d669b34e2edbba",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 35,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b6fb23a179cca4bac81da676e3e9fb13f3a4bfb40ba74d270ed7c19edbd91293",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 36,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "33360595ae589a2f038f08477827dce7614af3f6ea03e7899fead8e75cda186a",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 37,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f98183714ee472245a7a956a234a0666005fb330463b83c5b6b07ca5a263766e",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 38,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c8da66fa531a44e4fd2dc2a3c36085bfc5bbdef68f3f0b697a010b1614d7cde5",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 39,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9f7b9c3a125e14c81f152a149b4a8c2226c00e8826b5bfedf412b4c3e039da41",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 40,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f3a8261fca989bc63c8f6710c01f9caceb9824682496a623cd5ccb5324de9206",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 41,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "775999b9fd6ebb68afa841290371de983491adf4a268d3f78970b198ebd15ba0",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 42,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6f09a0c2d81d44343d0e2e723d518cad4d6a0ffc31be284c77d7371a4ee597b3",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 43,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0ac0171a962a112360829ed97491c155052ed505b45bd98e63ef87f46828690c",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 44,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "376ff3d102e329eb7be47dbcaf6ce39f106a0dd28c98d0cde220cc5c84d70558",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 45,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "25918f404e155fe8767e37644df3eeae02589d7fc0cd14c91ce4a212c2dbc655",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 46,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0e1f67111964935b1caab6524d1b53fe8419cbf5072e07b8f1c1c8a292d6dd8f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 47,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "055fcbfab5e0e7ec5109867c8de650a48284727e88791762ace9985a56fc35a4",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 48,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4fc56cefdaa142d3d1d11a4991b54f0ad57d08177bdaa1f5d26a223302d4ad19",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 49,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1ca1e05215fd43c0079b2a8b635c986dea3b819d282967819e0f3549bc1d9c21",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 50,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9c97a0f2cbcf19d0992ae3cb27c93b77007f6216609b4c6dc8c4d580d407d74b",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 51,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3a8bad0c35d0b0134ee6792d0af0832eefd2e6be9a1768346ac151b10ade954a",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 52,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2fae6283e1bc18de615c9317f8dff11acf4338171225e93e1db80db56015d976",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 53,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c89d90eae85bb60856f8ef1f362b619ce17608b50e7da0d86d03e9849413a54f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 54,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2eda064298eb789f5474e91677bdd95188a70a494a9f171334bb753d9de0c9c0",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 55,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8d0df32c0aef7d051a7e16c3b99243c39739a7d4a61e7b66d940621bc55a747f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 56,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3f1388bf3dc42dc2cd7b60bc6edd371f1a5293edb88929ecf3a8cb8d16c9213f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 57,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "39dbabed9333c7a8f6aca0be36472be789c2d8c968cfe9aeb03b407e3a2bc7f4",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 58,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3486e60e53d5bc0bd1bbbbe47ee0a3a36af388f1822033a3a72f3df86251563f",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 59,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9e7e0042c29494b9b83923802c2453f9d2c820eaa8ad49a9a7a6665a1ea8d5ac",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 2,
+      "epoch": 60,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "bfc2d73f12397766a2e4d9d4583ccc6ba7341c02b0a5ebf08e8435590566c44a",
+      "historical_manifest_sha256": "d425efc31ca25487b1439b60eb0cf01429d8a216dde39d2af8d63a9db2f13356",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 1,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ada5089591f4339df9f3c844000c4c7d514d70428e834f0fbe3d8ea43abffcac",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 2,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c81b08cae8b01cd9dcd8fee8a60ca0ed3ad63cabb9cce51e98fdd346daff9046",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 3,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5300500675ad454314c754f928a864017cd876e73c4432313432fa595bd2c75b",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 4,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f8af464324b51afc890678ae531e25e56d989f63d68462cdc2099ba88f896e30",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 5,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1c8695c8f68cb3a88a61c3cf538a5045b703da1adfd41466f93e7d0bdb5f4739",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 6,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8eddc9652f240eb182c0ad58d2bbd0272e5613729d53fba39767600ab9237052",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 7,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ca994906b20d7f03f78f821402a5b41a2fbebec5b0f7dd6b3d365bdd624f2ed8",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 8,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fc5c9eb7828752ef702a1400d3d347b7ff903711913034b0c8dff963c3d3aa8e",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 9,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9e4b7080f0f937b0fe8a01e46408c7bd18c512ebb2787bffbb2cb96ffa57bf6b",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 10,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "06f3d006210ce1d60ead3a6a623a14298397480a46c98c72c4856afdb04376bf",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 11,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ffdf5c959e15fb0700f8935558d6e48a2bed59529bdba214299d451c17257ddd",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 12,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9b4b48efbd027f8b38e9a987579bc8d9b2e512f5698a21a25a0a5a85a82639af",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 13,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "47812144400ece9f09e2e86ee3041cd3e649f6197bbe278caf11e58bdffcf6cd",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 14,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "52e93fd6cadf8a5edad0177cffcbd16dbe82956cb5a2dfcd672802e4acf22ceb",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 15,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b4aa1db3bc9367e83c98c9c838e8fc9df8d5baa458a7cc68d97d5bb381b19801",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 16,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a989f4e9bd622c4b05726f11ee30aa2b486270153562739936320a3b7295b552",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 17,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "484ea21d7606aadc60f4a52da0f143ae5ec5798faf9fed7a28fd276e260eebf8",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 18,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c1fc766a3512dd385a51093dc37062c02e4b7366bd732fd7d8d249c136d5109a",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 19,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7c1f022f3953cea49266f5c4e0b8773a1597ec20aa80e19985da6af81e3ee810",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 20,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e8d25c250c4f2b969db135a54e30a633a0cfaf7e585edf1324d84d67edc74ddb",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 21,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "36dd4c6618e1d7600d084ac9c4e2c6764ca5536df2986627ce01c8c736a44d54",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 22,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "28245499b6375f5f55501d73ddf490b31caf955796111cba921ab51df8a91005",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 23,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a266f3461bbdc2cc59f947e28f057c37d09893429b2dc3f1e23fb3cd93f34e50",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 24,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "89e8c6625e065f1fb3ede448bd59551ac79499ca2248f161385af69dfef89c4a",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 25,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "03657a5968556c1aa941e7cf5b111919334511b94e81ec83b6d1a0dbf6e8e68d",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 26,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1f04470bd627d3834bba44191677bb739e47221620444ed630e7a0928e505cf3",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 27,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9b85480960c3271e8e2b6cc8bf7f945e722649593f17fb39fc92011453a862cb",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 28,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b173cd3b7c7dea6c707cf75b408816fb22118f8de73e4793698eedab12306f3b",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 29,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4793f082d5d6fdafb01839efc8f14e78d84c0f9df55e1b87bc7c2992df467ed5",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 30,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a2d0a370b9cd6dcaf1ed56f661c43e2abde64057dbd049f2f5513091a18266b9",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 31,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7fb7bea5a35f363c11958f27fbd20e6a9320661218b8b7dfddfb45fa53e3a6c2",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 32,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "77baa271fc1ca2e9a95ee72d66d27803b2f15f7f55ad65762da502ac4acc101c",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 33,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6c15e2b4f45938b740fa7be5ac9b8c43680cb1d9a38a91cac1c97801de084f5a",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 34,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "f9fbd85b105a286a49e33b7cfc8b1df1433a4e7f33f65a8c9c42532c98dd2c1d",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 35,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4c884e4f4e3210f844fd063eca27749f640ae46c705cb6a777cec642bb9bdf5e",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 36,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8fd16c048b24c50ebac99a50a11dc68113b605a641235d98587cdf406403587b",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 37,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6335b6e14d3ac23ed577f957843577f88c55f3b7b9aaa09efde5077497f9ebeb",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 38,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5f1c45133dea0e4209b901d8469b7a68ca893b734d9847dc85f8f938ccd34c04",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 39,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c0c4dadd37c67cec741f2a98ad966b17a735ad9de123fc24c6d41a63e83ee461",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 40,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fafca7dde953efcb2374f3be00ac78b48eec39df04191baeb8e9fa6d0ff8d1fe",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 41,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ff94671ed53282e027259a486daeb12093e506a45a0d3eb53c4e2a050d447794",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 42,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5ed2a1e544268332807283d06ffa107b2c9b40e17d52b57723f35b30168e16f4",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 43,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d76a9dbd4643a01afbb171574fe6839bf6d64f8023941c96b564b38cf24596a9",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 44,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "2e1a80ea3a38fb33fcba15752a062a770417b06982a6bb3495a380cff78868fa",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 45,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ba2bd4092f7e492acb8f69edfd4e386933412bb01716f29eae1bc36bffdc68af",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 46,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "56871ef0838ef8d15940ce9e9cbbbb763ebc0e11d8c97fca41eebb816cd520b1",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 47,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4195d3d13dc7d600f6b28abe25f9b6697a749449da4f31ab19adb1a4c7dc1b7f",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 48,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8039af9d3ada01a4b6a9657391c99768e739961c3a374ed7c79ab7dbd7366afd",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 49,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9b16d7f9aca67cb86795863581b32ce929ef2e7d3ef8ebc505464637435adadb",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 50,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4538f069eef6f07ff3f2cbf42e3dd9926cb3e670cf4c84e1d5780cc54c12798d",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 51,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3cfd20d6a4f96c23ffa83f8015b6bb13459f966372f34d98a7dfb4f358429849",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 52,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1a727b4820c6114afdca0ad991ab561d02c9c2e41fcb0b7bb4f5dc082e2d2b3e",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 53,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e9ca05e9ffc374e8c4e17e7383effadbd752174e307cae740e40bb2f67563fe9",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 54,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4c6df71e9954725c8c658003cb33949bff387a2ce80a04a94b4f6df2fda21df6",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 55,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5b3d3fba1fdb02305e5480e38926141da4b5a69a3e6877e7b723038d8549fe6a",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 56,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ae8cb7787f991cbac65b589826f51411abc1a05f025c57a2607642adfaf7c2cd",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 57,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a44cebdc3498dfda97bcd4125b3e0a3d5d6fef9eaf94d201d4af0220e17995d2",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 58,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "870cb15ee636fc68e1025e9c510f975f498f162d20371082dcc3fd57cd941d63",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 59,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "59e059fcd01e9bd0991dee2870ac69e75d3260cf4bed9db27bfb57440c237b36",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 3,
+      "epoch": 60,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "292f37f7f0d85651414463465b293903a3b504d4144c96160125109c71fcfff8",
+      "historical_manifest_sha256": "7d85e84c90987729c051149b03664a7e3a8e9ce954d8cf8bceeba51bba6fc46a",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 1,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5ecef6ecbe2ad687542372fabfe2aa46aeb66f08e8854a369a8ad6584317dcd2",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 2,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "5986f78999f56cc3a0c9ac5a23fcc3397832055f9a43549c652a0ad9fb6b4d01",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 3,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "bbf8fd8ee2742c2b183c1c205e77442bc71129455e48c0c9bda3b37751a84215",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 4,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "cbf95c5137ba3782d6450d3f6b88e2f31a434db82f4ca89b0f234c322f104c61",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 5,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "99b6c3753c3d8429e0acff31e07e36b4fb8228edcedd6314c219880120989ca3",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 6,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d89f9c18bb9ef88049c4e9cabd80257b15d747068bd1f0956ba018fef809f825",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 7,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "844e0464d325bc448ce0bd5c17feaa088ceeeb2fef348eb968ae9f5e0c315dde",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 8,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "429ff0d30d1aaf29af8f05ef45bb9bb00f5e65643612dd0a37f63765fc61f590",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 9,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "61f7a71659217194f2e71853ae2c53f9940103f6ac85e2081d76aed5770af16f",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 10,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a07ff97365eb17ce5383791e88255df587a9e6ecc541c0179a4ea08189d90d1e",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 11,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0c83a0abfcee47bfa5563ac518f1d85e84ce37f596a8760339d4772b0f37b152",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 12,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "21685307103462741038b56bc2003e9a55fa8c42afefd78f7aed3cc99e08a656",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 13,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "955c52e04a6732455395672b4b3ab56b5d8782e42bf11e8753fc4cc2fa7ec0f4",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 14,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "209ea07d36aca3cfa0676f4683f7c31fc997c1a082eed83f6eb3c8bcd095b9f7",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 15,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9da629877ef917822ce6a6f894afa564f55997253fbb0e7c0d12116099d1ed45",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 16,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3af4fe954356dddcb589406add02db63eb420279666c69a54d8f0917d65b9b4c",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 17,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "882506efd1a8d7cdd70021d5cb75c87283744f488bb3b771c84532c67b7f0708",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 18,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ccbb6ade7f20c470eff8f019631ba0232f5d121b25fd1ecafaf20d5c7e7bc6a4",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 19,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9aaade0836f24abe74207bf211396af1491fc178af212815979bfce92628134c",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 20,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6d0eac8781f19f7094a4a74e7b81fb171700cf9cef774ac5061a308df216ad63",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 21,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3fc67115924526043fec70cc4099cc8738b5b824a2a0350c31de88500c516f2e",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 22,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9b1d84e3f3d379350378b7bc2ab02012426518e3c0ede23e1f57ddcebc4b57d9",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 23,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "9d9bd3bb00f41c027a557038a51008e4ea1c734999914db37c0cd0a0b0eb15de",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 24,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6538e1ebcf528d152b2976672987fcf495320243412fd15a2eb251789e88f416",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 25,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "36294e48d0fb15bcd86dfc921a8b15942e64a987148cf89576aad19740ec529f",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 26,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "feab008d855e98ded511401702504f8c43ddbad58ca76d00dd8d6d644156297f",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 27,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "592c8e6fb7b20c5c592a15f71050bd7467de81f517b08508343ec1a22a027847",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 28,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e8285e57294af43f36ecc0cd62a829e7264bf1cdeb1bdfeb0e698cf1aa2dae5b",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 29,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1caf752baaefd3efaa66331baf06a0567ce1f7afce6e8936b789db2adad4a18e",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 30,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6ccb7b2f58eb865c570af4559bb549b82f29c328b6ba8307b1a00cbb6805eafc",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 31,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "ad8b29579598eba6e2ab52ea816a6623d8c2dbc30580f06bd629f9fcf6d476ba",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 32,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "b47fc1e51a37616ac5521a5143f12160489ff6d55a3083f718ac6ed18b78f9c2",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 33,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "c40344a1a4079372082ff5c7772124a5957367e4a67ee15cf2c6c5efd37cdda3",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 34,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "d0f9806edf1a710a722334ea8abcf4860479805eacda0691238c51d3238f6d10",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 35,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "16e3cca7ae80baf8022e14528c417816f698f541ab557f4f324034fdc95c540b",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 36,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "34b5d2c997dfaed4394d587760cbba17c233069358b0bf50822af86debd63776",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 37,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "0691f80fee6a3b6cdf52c084cad9ab403d8dbf63fbdf652d9ce208153cba76d0",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 38,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fe14dd5859f497c20a0504b6740589e625726385e0755c795e2d20395429cdb4",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 39,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "25a62085899716c082ab8320349a3668b92d3760a60725e2de6befb687300326",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 40,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e1db8309710b0e3520cec0380e3cdc0a340590cd8cd0eb06b9fce9259c1d1d68",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 41,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4ba649593e69fd173578e61fb9a28f1386e918ac390c2969e2757ef7a68da76d",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 42,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "a7da07ee805b59e623707f3477a6f72c058409e2e2f3c970af6c778ee7984be5",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 43,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4dbceacc836edc75f8e3200049807093cd7b91a73e2bdbb0fc795265bced6228",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 44,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "4b269669e06c3e5f8ee3bd00ad66e0d1dd4ecd08b654e0a33d722da5ca9cc90f",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 45,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8ed4896e4ae2e57582b1e447fead06cb366344b82b099805b609da16c7d64d06",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 46,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "bf7f72ebd31c6856b0e1c3d0109b495e60ee25f437ca023bf6722abc6d5855ca",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 47,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "e48063bd7548e46a31fa8b6b1098360ac72db5a6bb82714a2725e895aa845f2b",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 48,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "36d524829eb65922b373f7c8c0a84438e7613a41a6aa06a9aa0cc3a19d70b316",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 49,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3d3dc025a9f2b8c2ffa8f57e5591c5d3983489134b5d9d22bb18723dbb49fe40",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 50,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "7ba3efd49f6d2615d8971c129f2dc46c2bf6572d6e5ef854acdcbac75bf6b0c2",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 51,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "fab9ce6bbc44f8e27a14fab9c2eefe47379b8dc73258caf074c94c1c1a3269b3",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 52,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "6169f0c6400c583d04b47545089f50ad203660c24680d95f6797f8a47a6a6f13",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 53,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "95be01f4c418c494fc75558c74fc9ef54ffd6d8cdd50573e380c08e10a19e977",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 54,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3bcbcce85617345e3e17aafdefcc28cb3f4c08d19042b5d6ebf2b827c1b0706c",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 55,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "48beafa441c321a753f867d92a9de6029d304ce73b73b70e86dc7a2622086e84",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 56,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "75ee84e0157397b3940bbb8e8513c8d0c2732450413bec75f558dccdd64aa122",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 57,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "1c3d6f43af72566cbf8198fbf33571795ad1f47ece4ca07010d85699aa617575",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 58,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "079e411a93666e4a49a8c31b05b7282b36f791168e34d538441ddacd43cee97d",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 59,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "3d87f43d31063a720fbb6257ceb118f20fed854e653ae921765f37be799896e0",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_ERP",
+      "fold": 4,
+      "epoch": 60,
+      "batches": 805,
+      "trial_exposure": 51480,
+      "ordered_batches_sha256": "8f324baa2c9eb242757412b7b9e8fd5c3977f5a19e9f5dc394f4197b027f23a0",
+      "historical_manifest_sha256": "637d5d432da31add3fa640d0982a0c50a7324bbd4d6ecd509a6cf799da62da6f",
+      "match": true
+    }
+  ]
+}

@@ -1,0 +1,3144 @@
+{
+  "invariant": "2eb77fd2384735f32021178cd02dbe03a07a8d88c7870845145fd3ac890b0bb0",
+  "audits": [
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.4285820722579956,
+      "historical_init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.22054162621498108,
+      "historical_init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.41461944580078125,
+      "historical_init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.3337945342063904,
+      "historical_init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "status": "PASS"
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "seed": 0,
+      "shared_parameters_identical": true,
+      "U_zero": true,
+      "V_nonzero": true,
+      "rng_restored": true,
+      "modes_checked": "eval/train x FP32/AMP",
+      "max_abs_logit_diff": 0,
+      "prediction_mismatch": 0,
+      "U_initial_gradient_norm": 0.40850335359573364,
+      "historical_init_sha256": "f13f2e755d47998726f87c1f8901725fab214ba0e995c20b0beaaa4ffe3805c0",
+      "status": "PASS"
+    }
+  ],
+  "parameters": [
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 48108,
+      "LS_parameters": 54764,
+      "extra_parameters": 6656,
+      "increase_percent": 13.835536709071256
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 48108,
+      "LS_parameters": 54764,
+      "extra_parameters": 6656,
+      "increase_percent": 13.835536709071256
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 48108,
+      "LS_parameters": 54764,
+      "extra_parameters": 6656,
+      "increase_percent": 13.835536709071256
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 48108,
+      "LS_parameters": 54764,
+      "extra_parameters": 6656,
+      "increase_percent": 13.835536709071256
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "shallow_channels": 48,
+      "q_dim": 768,
+      "rank": 8,
+      "bins": 8,
+      "baseline_parameters": 48108,
+      "LS_parameters": 54764,
+      "extra_parameters": 6656,
+      "increase_percent": 13.835536709071256
+    }
+  ],
+  "manifests": [
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 1,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3d62d72173857c8f98290d6f137bcb5aa8a5a449c4402781e27de13c7f150400",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 2,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ccfb251e9837960248a65d36690649daa24e4d97006b6ada54253e3d1f9eafb7",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 3,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "31e3ff3451601da31c6a6e53563ff44e00d3d9fd63af49ca4f8f67f48142f04f",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 4,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "7a6df09a6c63330f9cbc0f8b1bdbbfacd5ae048be63f9510cbd3743dc5978115",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 5,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c894cf697b223a59d13c87489bb41c1c96a1b35cf7cf289f7d6f836a96f4bf31",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 6,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2a6145072249b8dbb84c08837f3d8473faa9a7bf8ed853455c5d2d34343c084c",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 7,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d5ad94bd5a691604caad4e3966830f21bbd94a0179f3e82267713715b44700b8",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 8,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b6a0a684306d1658c2adb7310b756ab5868d658338daaea52a94d34ca2501541",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 9,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a0a79069a84673045047cee6b5ebecd90b0acc8605a38364b104c504b14b16e1",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 10,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a16fdf1deb3cf43d2dfed8e0ead1291fd9ae982add09fa906d3bf80c63b6608b",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 11,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "781d628dd460076c09c0a1075ef11559181f12657575a962f6af83e1dcaf8530",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 12,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0ef1c558e0d9473e269f64823371f82a3213b2342973396f2afda434cd60dbbf",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 13,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "141247500a8f35aeb58634505573f187af64845a07ee42618cc45c987c853ed7",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 14,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "dadebcb160d8dd008e756044245f470ded8a0916ce8df37318c9194693d723fc",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 15,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3112eb7fd7c3b371a0873336988950104eb1dce4e7d792096137aff5b476aa72",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 16,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c5f669a6edcb2615fd78280c6c1b04d2b3aea2454d49c8eeace8c35e9d2e0bff",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 17,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b2afc7990244f86a5dba521378396af88b45e26651c59dd722146e32c4e59282",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 18,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "71aefa53715a0c48890bcd694760c3616e7548edbefadf549307397f3dfe875a",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 19,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "cb59ac3ac5fb1021a368eaabe04ecf8a6ef797d531a6dd4eae769c0266058bad",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 20,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4cf86c91a78784c9647602ce6320913b5ba011b89524f4d050f59e42c832450a",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 21,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "042b0c14d49d590679cc855b648f855ea8ef5aad609e9168417b760ebbe12b51",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 22,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2a019910199147e0baaf83a933363919a6e1a3fa899aad94a64b471432c9e8bc",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 23,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f4514b00d288fe4196e5952ee09a4fbacf669d22e0723e35e9063d82897f4184",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 24,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1f90527d2466e2915decdabb073cf6048118105836d5ba0288854d3f0bda9ef1",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 25,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "06aa0a3593736900b2227a5dbb00c255380057332dba22df5a7df60ae64dfd5d",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 26,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8a1a3ef6c528b2e7822be987bb066f465d5039cd8ecd3b87441a4cded33760fc",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 27,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "564abf82e77a8d57d2e755815241d0f66801eba661dfb86083a333e19d87b73c",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 28,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "bc64ab2122dea5603395ac62cd6b7cb33511ff68dcc7ca4f38cb5572e81f2d25",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 29,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "54c7dcc9a2c14748eefa084761cb0fd1a39df3160bd2b86d3f5d5e68deaca578",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 30,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ac1bf5bff1a0e3b6b5f12b11f361704d73d62f41ff9d8c1199ab245cb842b21d",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 31,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6dacde5a8eeb49d9e4c0bffc82c91e435ecc1550228296946b02c5ed2cd06b9f",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 32,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d50050678ac0096282349e152aa12f26ddee9c098369141172d5ece845d8b3da",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 33,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "60c7326a4351573d2171a30d1bb84a66bfcf5159f45467df08de18d9c7260f88",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 34,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6297a41921190d8e345244a3ef36fef221b0b18a71f6f9ac677062f602238650",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 35,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "53ad8fb874315149ed2f271af45f692ee823f7fba87020ef78de892108a7a8f2",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 36,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f26b296c28d8de7750c84aa64e182d0d0c340e96d78fcce8b252a75c4338999e",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 37,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b20f7c7308d6401eb49ab83aed1e69c39f289169d646d62ba70f9c4a0201286c",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 38,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "374e7a4c4754b4f0146c94fe69bff0848751a3be08ad9ef296bc2251e4b0fc75",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 39,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0669dd8a1ce5f1dfe4ae253f3680306c40397e55abbf8b77782d6c3d13adf72b",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 40,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ea9613299d37064aef68f51546713e96d7292d79a58f0bf91a83dfe9402e51ea",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 41,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c925ff4163344b20ce5363680f1aab33d0afa0addae6cb19431d217040b851d5",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 42,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b26e1c4f485f807545830f8e045cd314458ad97f433cba41984895d92e127966",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 43,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b8e29057b8b5357801a36611be3aae525f78dcb4fc8731b9e4016ab12e550b98",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 44,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e7667b66fbe545d82d479eafc5b3c710d55ef3e892f6be10f032effbd9ab5260",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 45,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c0ff1a6be513f63e83d940780f91d159600a70661a80b862b840daee7830b113",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 46,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "46f7971066888765682a3ec09525541df6966d102e528558b298a8c330dc78d0",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 47,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2572971b550581c533eb9d91f74b805012dbeb771a38b32b382bbcb978600673",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 48,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9f0d27357b3c401fb5efb6ad6bcde0b924a9c0ba8bd16c28ac32798420288a5c",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 49,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2db424a7abe644ccf5494de05b0c9c9be5570b972d061511dda0d0a36975b698",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 50,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4ce39948b18d0a990df87623c01802c2042486fb00c4dd0dc622b3f26c11cb63",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 51,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9e266a2a877f721d4f05007907f7d71e0adec8cc0f2c97e5d32a5c8c0c4255d7",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 52,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9ab11523bb8eaeed4b9f451a73a013e779c2acd08097e8c1ce2e771bbeadff44",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 53,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c37604414fba36e8c3f811022b56881f09ecdbb3fbce142d4289dea5357a8518",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 54,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2b6e721a1a97678386727dad04300ee2e5e45ce8ea21fd3b3b3c970d0aeceb6f",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 55,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "148cff573dc1c4701ccce82ff9e5a34fc849f84d3b4e5d9285cb3cb257671b1e",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 56,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "363670d097c4de59c742cd7360da5f0494cf265e36b983e9cc182976f31135c2",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 57,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "eec6e02bec1828032dd0f0638267260b8ccb20163c972f0fc3dae79f8a19d2f2",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 58,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "962d1f575874f77d58db79e58a8258900528e23fb5fbd02a25e6427c8b07de20",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 59,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "59213d074b1f9ab8bf402c4c9a8b16eea8f169fd655722798b8109f55d4cea16",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 0,
+      "epoch": 60,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ff4eaddcd91400eea519a1b91da7deaed940943831b5d76104e8c892d42355b0",
+      "historical_manifest_sha256": "60e9bbadb71f2c3df83f2b290c45d01e48bc4efe66a4964a72e2424116d4cc39",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 1,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "71fdaf57b9c587e6e58c61911a60cd58444ba8b09b275e0cd157b41781afecba",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 2,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "45feda7a4059e7b96fefa017747b3419b564c13471fa534aad7d25335dc00725",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 3,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "85d3fc43d8c4deb7164b1b9f9577b40e13786ab922c6d4205c5d46b1b01acc89",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 4,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "893de292ddec56020987f1c765aeb7bf6c2228cd8d8dee90aedcebb883bb7e6e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 5,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "17c7a0e97773c693f8d1dd9fff6b2cd27b5c52ffcdbcd2c40aafd9a014c0a5e4",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 6,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1f21d67448c44fdff5fcf1f522fd3e7c059255c318ee96f43c59356d5ba2ed34",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 7,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f9f1ba3f9159c966092865a06cf6f5daf541814b61f01787c5544e3babbf1455",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 8,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "cc6625b0b6c5e653a62f618770e35dbc0ad32ca00903372f8e47a8322ec86ea9",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 9,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5251fc7ad38a23528a0ab8c2651716e7916ac29ae9e940a56f34ac54ccad74be",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 10,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d1d2a1056311bf0113dc0f3db9c195393184dd541d6ae48e2ea27d09d225646d",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 11,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "17310a7afc03e6751b69e238b1260cd68aa820f91db24b186c8ae15ca21e14f9",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 12,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1bcd586c23acf7f09f391a055a7c1f95bba9ae63ddb259f718776b3c36aa7cc1",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 13,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3cf4c3d194e9a5309833c8b055a52b386ca061fec56dd0711223a1cf3f61cda3",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 14,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ad7200be7d0ee147fa90058e1c513af5d2dc200ac0c99c2a835645b4a4db5817",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 15,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6186311419254df14c899fca1c86d0284d71bb3e7acfcea0071f575a54f98d00",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 16,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "36e3218f2df4cd5736d02eb0b334b418d2f986dfe1e6530e150539e96b1a8d71",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 17,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a083d2659c3752d23da6d5f388f2dde2ad63266d4716ce3d85f9dc39bc7ab09c",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 18,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6eade6d2cb4fd72dcb6563d7e7573f7225833f1c4b3a91d91bb9677ea5413328",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 19,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4e8c22efbc4431ec394eaf3a09d5472a205450e43d1f4c4e44e150e0cc5e6bfc",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 20,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "34e29eec5de3cfd2b101217eafa45dfbc7b39853825f8ba6db6c93f33870a175",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 21,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d20bbd6e4476f28a9b556cc2d58e5fbd9eeb3a31e44c548a58a9856a60fb01f1",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 22,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6eb3bd6b59ca65e8db63f52c2441c63b0d1d9e3a82bb8b1e02176be532b88827",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 23,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "73dec9987c8eb74b864de34d2215216cbf7b315fd713398288f9a96178aba28e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 24,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1efaaaa5d9b2d4838f80f99f22d285e42d9d8e596e5c9f0a242f20452c19d74e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 25,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2fd207bdfe151674f89e73d7c0af8381c0f575aeefe4dd73e35e31843bf9d3bd",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 26,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "27fed11d7b1d1e28f5e9911cabccb1ed5b08ccb3e98b3037d994491e551b7665",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 27,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2805db0282d59074c9f12b3a1add3432c4d4939a5ba70dae92b1b793fab92028",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 28,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "22168e326720dbd51e805c71f24685d3e771fd1e24d6a99bd1e4bcaec41ea53e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 29,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "07835fc2337a13fe9d9c9dff464e5d1590506bbf6a398b2c9f5318b463a8ae54",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 30,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "345f1d22cb2155319b834cc0a800682a0e26052743d468126d4fd951df38c9d5",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 31,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5c82260b8b9c7d95ecf701054edbb81bd1bcf4c60881ccf627c6d34c77f7a99e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 32,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0761b907ab3608531b26a8885eca78b22d4dece3b5f37c99964aac93fb87b992",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 33,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8ba0e325315ebda015c884073ce5e83dedbc17098a9254982b42550ca4484f5d",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 34,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d883fdea79c648f563e6842e09302c39321179a0fe000bad8ac3380ff0af5008",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 35,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "be11d4a89d211d7f75dade184b989f89fd33813b7ab55a4af49bfd372ad974b9",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 36,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "90d99d5235d81a7f0e6b1383c61e165533d632f863d1e9d9e37699928e5e1ba7",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 37,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b5788ec67c1a1082529764e0a9d1ba13c06b20fc6f7b391cf2e855873f075257",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 38,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1b29f720363f992497d089d945f6c5d3e8ac0497b11dc2dbb777598910c16ae4",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 39,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "851cdd5fadac2527bfb4de21dec329faa42238ff1e7475ef10313d68c0b5139f",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 40,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6498338e90d2871546f31d07cf5e7a590bab69886959250e8c71707c5a772ab6",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 41,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "98e74ff6dec8782915b920e1424a6d8deebcf28770bfdb77c543aaf6383200c9",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 42,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5ae6f2e903935a99dd3d2424a78f75cd45abb546dbb839b3ecf74d29a0d3ac3e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 43,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d8fb16f202d57f14efd645f3e03eeae0f8b92f1c456bf9d024be8b5a037630e4",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 44,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "108fa7182515fa268554362826d5d360643dbbd40f1dbcc097d0619624cc326a",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 45,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a74900e9e6d4bcb1165611cdc0c650aec41ac56624a5cda53fc5cfc20a0bce62",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 46,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5e8bdea7813b3834b7f5f5dfc70a55c919d94c9d68447d13029ff1121ef6f380",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 47,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "aaee97e0e9d0253223d8a530b324b941919b0f24ff161d5b5d1a824533e0105e",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 48,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6deac1fcf259cb47d2a0386e193d8fb2c2edf595473fc58b384f16d1730d9131",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 49,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2718163a9570d8f9ebb03d9f0a91900fc13759e511ef5234bc99fa233a6a8a4a",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 50,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2e7afd717a8dfde5c7d34b439e0a9ef499a024fa24be3db47a9eb9a34ac4af35",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 51,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c00055cfdc16767bfb895a1539be3b6797e844f9c26547759cb66b2d63400119",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 52,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f64516b92988e0be8f27f27bbbb349265a664a7e718ae210c6f0b8b9cde2f2da",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 53,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f392d9836dd349c919b3753edba31678de5a80200533a50e1bbc98e6247b1254",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 54,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b0d416214ec45261a5e93d13e9eb1bee85d56eb74d1e39d6eb9fd7d9f6149339",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 55,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "49dc9e7044eacde584d93f0cf018eb38ef9b39f66beb063806c880fcd24a7ca4",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 56,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "46f04d4a72760d7a16bbc69a712b5603c83636def354f8c9c512a482220641de",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 57,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "980f411620d19a1de35d20bfeeead55c9c76a067ae41f7f27c6ad29fb0c2edcd",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 58,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ea282122608ad0fedca6b78cbdacde71976d854de4da0edcbdea39de90a41467",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 59,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8b37e4bc02bee7ed713aa68195ae1b06edb2412abb92ed2630349f57e9f6142a",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 1,
+      "epoch": 60,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9e40dbc62aaa1bca857f72092a569989361831f58e34c640887540a859874346",
+      "historical_manifest_sha256": "485bc34c97f1c269bc6560695c8ea45875d9beb7bed6dd1ec005fcd4a6c42ac8",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 1,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ab849b1d886a515194d4aa0f6798a8f9a1fba31c7f60092f01d2abdf299269f9",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 2,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "93db4775fe75e6c33479bd5d20a6beefaa35a6b9836931d3c399a0f0b78dd1da",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 3,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "56f1f0516b26223bd49f1787ff2f510a938c53cf6cc33ade6ebf5c0348aee80a",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 4,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e369b91ad51d036628fdc66f15cd5c97ee71c786ca32cf3553f3e5bac9ce6598",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 5,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "eb31941287b4e0556e2ab65671cab0b35ff011a2ef461c080e16c9a40414e437",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 6,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "32ddfbf3ac7cd733fc8c04080921f3f20a27f15d604b963dcadd34f81e04cf9e",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 7,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0d32a31f382012d672a75eccc99d3ae411b45ecf14ed6539c5a2ac36f8798e79",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 8,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0fec6991e88d5640a5b52404e4be77a6d99990102d74cf5761a95e13bf468057",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 9,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ae9bd68112a5e328be455ef7614658236cbca2f8b0a1103898be70973d46a13f",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 10,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "52b172adf4d1246b0c6bc50c8c5278413640e8e4854a01d08ca6597bfd9d49f2",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 11,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "fd8bc719c004fd77faaa9ffe6028fcd296ec098d24ee42a177d65178f86ce081",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 12,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "841da48bd7e97c4be8689cd295bea31537b2401321a1d8d0eec08a6b21806ff7",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 13,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "371587dbcdaf1d475857d7f53e293a467f4c741c904d2c0c2bbd18e6b877dfe7",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 14,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "83f19644fe65caa76a4b9a479458d1f96fa799be064378b64f24e948039ded71",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 15,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c68c363553cc2c9a0fc3436d9925a7f43028cc69c189ca6e62179f411424ea88",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 16,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ce9219b0bc0b8a43df6a6e7e6bc617ec081d85f76bdd9339e9fc802326b0a4d9",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 17,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9cf2cc6376a248dddf41e6335d8cf6a91f4496bc359ebb09688e98c99f090998",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 18,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f954050cb2b483a6303b06dfb183398bbee9e98a2bd28eb79eadb62efefe9e89",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 19,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "72f62a0448b63903d2a9309fe68f84d373a28df474ace8bd4d3f9a519905bc5d",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 20,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6882d6d10114557ac66a25620e4804b64a11ed91595b622534a4703f869a6932",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 21,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "07b414fd54d90e68c9251551d8a9655e15fd1a16be695370310091a912a8f43e",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 22,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6f48d0a0227c62af3e516f1372a81bb1387806a7e3b3f79eb221eb1842c1fa03",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 23,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ffed9e4abf8f831f4d9281b89b8308420ed391c39096a62ecb282b11dc63a895",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 24,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4e3916fc532a6f338f3b31e52ffafc1cc778743e85474e4236f70af4dead8c07",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 25,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "7a3860ec30316c83a9b00c007e0f986154cecdef3d47afa322e5080a88298b08",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 26,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "713db8644684ddaccfcc109541a0960503c32c8bafaaa06353a9567458c90929",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 27,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e7685605e89cfd4f9fce54ab2d4c75a240341f66d187fb5f3e170451a31427e1",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 28,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "af030378249db352fb1de14f4b3883174ad81f13459c673238101c5889cfc906",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 29,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ccd6598edd5c318d91fef0c5d205c77cabacb56f0bf16d0bd506cb3886ebc39b",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 30,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "82da745b43c574f38457b2ed48b972ff3240e911e9847678b9b3f9eb0d7402bf",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 31,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e35f316cf944d8ee3dc93bd280e22b6c14996b14e233b40723cf0ad155d502b7",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 32,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "92192a025db977cc67a1041b53f04ddeb5c9eefc86f191a6db4bd1b748bf8b4a",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 33,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "bafa25c7b48630006408aea803685fa938f78462701b389d83b7321c3bebdb81",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 34,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "68f1b3a4f0a0b8716e1f04f987d1bf55c4a5d4ea9ad53c1915e77e406c96f3a1",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 35,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0518118a8744ca2bf11e6d4ef3b4b8b81a0106ff939eccdf44f4b54f1a79e687",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 36,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a4385366912cf18cf91941b43ba7720bca69084cec5884fe85a079bdc3675e2e",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 37,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "bc7b84872ed35382664697865e025299374032ed3ec5b55b8d80f06df2de5990",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 38,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "909daf02f3e89493018474ee20b7ccb90b1b9fa8ee6cdb8e315285f1f4c368ec",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 39,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "54e9070c2b33d3b90b3a4b30190d80506ca98c9885707810e2f68b460668d1d8",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 40,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0b3bcc1a37a5caaedb2913ad0d39209d65406403a79a2f81804c7cc46800c454",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 41,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f9b4ac8dd2fed5492dce941c07e7c554c1efc626c31cd3be3aee239b7640f711",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 42,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5f7baa21b98271623846d2cb05832d9e05fbc2bc386ee5cc54b03ee5a0bbd7e8",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 43,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e2475e2b74c80a849d3dd4fb4d76b5324bba66fc899011a4a7d4a2d69eb12ea8",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 44,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "db2382b998e9cadfe174d271f4f1de953023ed601ebe88715ce05394ec8fb90e",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 45,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "21a5baf355476fcbae0f6b8732b326d28be6ce6d22f8f152e66cd4fbdef2455a",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 46,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "feaaa057b54fb22f64cf1f7b6e6344abe8161d42d5fa66a02020ef2db07582f4",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 47,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "81218174f54af8729a0625cc752860d92e19acfc41b64f4ec0f746b5f30fe5a5",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 48,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "dc73e5b17f7cbe0a15aae203fa4d59c4cd7ff64006c7407ae08fe31db028ed2f",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 49,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "06d2522485abe394eed9753db1cce714da01ee90b6fc73596430e6d2f5ed8d23",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 50,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ae550084847ebfc3d50ab2c2463e8fa2b1240665db344a5a16115ffcdd609956",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 51,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8a5aea83a4b1c48df1a22ce5110c7b4e3955c1c8635990afe6804be752969f96",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 52,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "cbc74c658648ff91c80b86e1a61b727963600bc233e870deb5679191d82b03e3",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 53,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4de714300acd1bf25441bbfdee0f7a75d51795368ae054fff7a7822009b37a8b",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 54,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9150f3eb4794ee1464d1df501bfbd3a2dac5759d2db6802942df993ac83e1e46",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 55,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8260257cee6d4011088644a18db54982967da346eb4ff3176cb5e9663bf1cd28",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 56,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6cb43d8a64c06f5828d09306bd22294d5981694989d7ebc2794ea0ff87a6a224",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 57,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "93b6f330c5810e97a5f7c0ff50bd5405e9240b4d4f5190a53dea9ac76793021d",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 58,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0788ccdcbc360d756a7a9a32da1dc164dac25c45789da3a9c3152e446f55a24c",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 59,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ddce1026d8691d0ca48b8f0a68dab2f0285e1619f46e89f07de2ae6d6e13cf6b",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 2,
+      "epoch": 60,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5656cd85f148646d24dde2c34dd2ea889a24a5ee6d49a1d260afc4e60cd204a3",
+      "historical_manifest_sha256": "82d53556155f66af1c35bc42698af6aa4bb323d678ce2eff20cd433c9e55bfea",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 1,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a99454c43b6635bc9f85df1cb7b4e861964fdb3878dac02bc4db2a6bb2a4342c",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 2,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "05023a0281a56ef04c1c2da40b242090c49474b5985265aa230ee414d5f79890",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 3,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3dbe632093d1430a8fe6d6b2ac79e01e5cf687a480e42593229fe5c1c01fdd3d",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 4,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4026430602d584098544dd5e4c6f1d8bacfd232424cb6293fb1dcdcdc31810d7",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 5,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6c0f9315643f733c1d059f8668751b8acd85519de76e28009f0baa15a1756f3e",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 6,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "36143afe148f1a799935687142aaa39c63cf145b617e140eedc42ca86dcd26df",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 7,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9a4bdba0097af553028d85c8ec8a32c1fa3c405205b18e613924da2a905c62f8",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 8,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "61f499f31432a5393aafe5d891f691ccab6db06d3d9cbe33be2eb857540de82f",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 9,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "522c8ff103f7743766417032ffb3f981b820c452eec237cc0f3f7623056a5eaf",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 10,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "69f2986fa196e2ad3fcd80e404c09759d8feb5dbb317ae3e7b1ab52d670b04fa",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 11,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "57c68a0db3be11ef6dfbd8fd3b81f5361087005d33456485c0fbe160b093d6cc",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 12,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2cc264975730f20451c5d9ccc15760a8e66c4b836cb7fd17e73cbac1ce720883",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 13,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "34f63ee3feb7aaeee739120e038b54747fb729f9395287fae8d6e13569dbfde2",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 14,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9ef8243127514e3ddea4c1e2d2bfa1930bc1138691dd651f2dabb090fd08d34e",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 15,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6c5c39af9ac104e3830be9ca4beb04080c9feb0e8aeea4f39f24c78869f930b4",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 16,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "02d35a0818939cc0ad7a0389352019addbe4f4dcbac34eae79ec5cdae430f5f2",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 17,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8d6d0f7748582a21cbd4bd52ba6063618fe8b334ba5235013bd8486284bfd0f9",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 18,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f24bb540d633d64c5b86a1a936337ff55b9920ee47e62f95e694e7a9e28da1c2",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 19,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6231c1286ca8b2d4efc58d1abc9db36d470ee15b93980b47db1e4d75cf49fca2",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 20,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f9b03ece2338ad9ff7b6da7590c286b9b8ddc1388fef72403938e3cdd9157fb1",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 21,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "79cbb61fe95de454b55d0fbb4cfeaf45e06ce8f76499ecd0b9f443844a0f0325",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 22,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ad5a3b0a5041e1b88f3d9bfb2ff9c465cc843f842eb46c8d06e9c56eb0c77a5a",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 23,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "38e5c84a3438824646a2e8dbc0d3c4b3f080eddb9c66ca1b33e020690f98c3fa",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 24,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "37d02f35a074f38f8e24acdd15b5e8c5a8e71774c0660e1d403d1f18aeeead24",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 25,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9608a7f2cdfd95ad9a078bdcdc17e0dfa0c3f6a911c267616b0e10ccafb9f3d0",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 26,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "66a759dda349bb9d2e7f6c96ffb6b5bc6f2e52fa8ba8dc34949768b706e1a349",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 27,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8a86b1d53fdf6cf48226130ba103c8185a2ecfb772b40c9d26a7b73430f27cc6",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 28,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3e1e89a019f7ad4be0774752cc8fbf264bcb7e9f2cb91a3cc82332b38a6db76e",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 29,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "626a5ddfaae7f31de9e06d183a9949c44bd8927a4c37021e6b1b268d2d748a1e",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 30,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9667407ba0cab4fcdbdad1ca2437b8f510eaf40ef7677a9839abd5e50a698007",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 31,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "761e4c393ef4c54dbcf6ff3b7858dd3348cc930610dd260d4dbdedfac703f8a3",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 32,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c3214b70356786f4c96e6aa082a0d5d665e988f135bdeef5c3bbef50fa6de699",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 33,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2c205d1ca5b83fdd93b5fb582579bf65148bb68a2cfb9624c892f36949a629b0",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 34,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "11d22ae41aae146d08defd784c8badca18c0ba1980740e40e97a2172930be414",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 35,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1546459505815232d82e1f7f16555332a5400d33c989a4168e0bf4dd7d718a27",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 36,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "5e1a6a2e9f174140f963b3c6ffd9ddc567440ca7875f219336ba01e504161d03",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 37,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "46840f430516b926b340f32a6ee8a43239849dec37075a06d17147ed81c12d58",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 38,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e1f803521d86cca5e81cbd83b763dc0d1a2dc50e76b032df820f88e2f6e431a0",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 39,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d32ec75519374c74f0d580beb50c137623871cfb381c65799ff01c96467238ac",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 40,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e727262a228122b2c5f65f82bf3d022f9f67db268c97921fff8a7f3cc8259072",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 41,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "96ad1f6c5a12a0590d86ff511f0a15fb11ec8bd2554bace7220fd694786d5984",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 42,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ea506323409fbb61ac8d90bbd3789d026283c68d936f0bf0830117f5817407fc",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 43,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "dcc541967c0036955791369ae3ff6b764390fec9d3ec7b22327ca4a71c1c186f",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 44,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "7445ab8797ddcb4b7e0da923320a34f69479bad9f54a75f9b1cddd6ebdb0005a",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 45,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "43e97499b71700aec563b51af688ca68c43567fb78e4c0de2355ea2ae58e53a5",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 46,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3162fa76c1d7a80b8489f6069082eeb34923ac2492cad4666bc3fa1f483dddd6",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 47,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c802752e8625f2a979c960e90424b3699cc565a0ea57320adb31c2b8be7bf0e8",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 48,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e80ec42a1fab6ffd957db80bc2c401aaec35e9f570b4d338a1fa3bc0655d90f0",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 49,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "7133f229e7470bcdc8f01b60440d889eec3c32dd44bf35bb38501184fcc767b0",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 50,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c565a62de836e0b0b87471c26ed0ca15b201c0136381e68106420bebeb7b9399",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 51,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6166d1a0b21e756da1836575437d906c5cf833a0c7fab54207b0b7305513b3b8",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 52,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3560968af323f660f787689ef6a1d1316f9a567dd7c229f861dc97ec83685daf",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 53,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d3318d6ad4bfa51ca3ed6bd51f6c520c285e5e6766cefcfbb1879b185c2a6b61",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 54,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9ae627836e42d7ce35b10c651d2df9dc62952bd5ac8ec0ea13967ea6e02b357d",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 55,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "31eb91954a57b9c09d805581ba82e7825026cdd3a1f658ae3f34a33b4e7ab016",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 56,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "662f6ea00ffebc2c642c1624a6f3d2058db0a3065928538c3575b97c31b83c9b",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 57,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "4f9504ba953bcaa033abb718904808db6d688c4cb2055be5344ebc48b05a2e86",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 58,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a97f8fcde12a5c67938b49eab2397eb1f9969f7231499ac0c0242e016d9d7e20",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 59,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "39245700bbad3eda2bc29179a65d6357f3b30b584105de6c8ae604c58aaeb9c7",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 3,
+      "epoch": 60,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3a9cb089d28e702165932a5fb137be3dbb8b10b611cb97ea0deef715aa1a099e",
+      "historical_manifest_sha256": "4fea88d525b56d5c8e0c3601b54ac7a7f28bdc94faf5d2a3f2292496994df425",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 1,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "8f90b9906dde01764eea80b737e22428f410615ff0c158d4c2d99147a9453a40",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 2,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b7a15349dd8a56b04e22b81f1307c187a0ba047792a8a8fe5bdd234b583cd75e",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 3,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "71b428e1642197b64142f4a9c30fa917b787bf3a379c247b38887fea81f8725e",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 4,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "92b1598d532482d9c60d2dce69adc6ff3813db33f1df556eba0869b18a026f83",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 5,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f11f96f32b7db5bddbe1a8d7085d3e63f7b7d90eaefd73d0c1cac5329b1e8b8a",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 6,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6db766f99baf3eba31cf900f35aaf8ea2e8e08543cb422a1c80bee07c89bbd72",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 7,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9a2006b714e0370ada26aa3f126adf2e6fcfbc4d0e157f82709a29b98747195a",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 8,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a563ce7323e88c1c96404b70effb6eedcb12ad12bea51f14532a5546bc6ee403",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 9,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "bd9d43ddc6cdf7c497687ea75c3f782231ac8d59555c07d9331341199ec23279",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 10,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c5f57b1fab6c0aab92fe12896082ad658e84c806efc458afa43ea2c8eaa98df4",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 11,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "80704077e1a2e02c3ab3b5f97267ef7e5705297bdf7a39587461f15e882a5a56",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 12,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f2df9f7b782620c1d4893d2def496d435312e73d00b888e9d5c1c1c46149c5d2",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 13,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "18ba88372377b703bc97c5c531bc5b518a349ab94e4aa6bc4229cd27518a4ce9",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 14,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "bae9a329ff0e3239e1409ace0f89188c19141ff8647d1ca60596afa3088b0263",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 15,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2fb146fc13da1da1ed34453527524b340de592119207ee09557aa18255b16ad6",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 16,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "07e731e284fdeb0f90927d50736f7445527552c609e4b046c2074ef52884a953",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 17,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a60e0f2ddf3b81c7f262ef5f5b9c223fde2aa5379b59d3bbbfb9205d122c8578",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 18,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "aebac7aad254691f2d7eb5fac0be6f28a0a3bb98fa7f3250d9feef61cfa2408f",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 19,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "787a1172ae00598da281efbe2216870625733218c3eaf94c817ef00b6195d241",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 20,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a4a16561453ddbf6a32532e196dcd747ad729cc4e3144173eaaa8548dc174c36",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 21,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c398e857a940a9bfb0fd7ca00a19075f2134bf75c4e8b597509e6a4be15639d4",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 22,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "ebbd3ed022fa27c07d490723d2fd9411f051abd03c6d8ca23d8449079305b51a",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 23,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1445ba01655c715fc2a7f9d0d83162ca4ecd1687f0ce837318e014dd2b261fb5",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 24,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "73f6e40732906946d135e0f1237cffb6228081de60aa4f6cd54f590dcd4d63bc",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 25,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "f0d2fa53bb77d2537ab7a8b0d0d05e79040851ab80d8ed434ecc5668b39cca77",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 26,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "9758c64ba56b238b4885cf36cfb359ee1acb36ec3e5da5e1b44076715ad34afa",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 27,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "13c79c1cd5d54c3d427168f5c6c03d02463c933c59b649a85a6e1d27b79f1d0c",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 28,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b1b6ec6580372785e8af5ab4eac1133a8bc1b708f1ba41afc225ffdd09f10695",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 29,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3729d156cfcd2a75ad71ea09915a57673806bc9e9e8f746ebb53ace7b42d5dc8",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 30,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "b8468f711560d594eb795f8140bd7b527a7623ea8af2965887376f31cf001f30",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 31,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "575978742283e205ee5cbffa27651e4eff0600b1d52a5a016a8c5edef435e0ce",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 32,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "881acf1694149e46fd3acb336dd48e56a2681dd0352912d5ee9b8893e027ba93",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 33,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1f498d6815a7e482c5655b3581e4321d584ddcfaff3114b2709dfa059d496636",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 34,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "965e112df2728d5eb7b014a0d4c6dac26da6c6f4895e1e86385dd21fb71dee53",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 35,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "78774434aa5bbcb2bb2dfe429320e91f0820f594bf643e916862c593cd95d7b3",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 36,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "06036739d995caa942419c7b4e5f0f75b2c75f1ff2cce9a6f27f7c797e550ff5",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 37,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "1bfbcabf9cc98a429c206f92cb8ef1ef2d4def721b0c172dc60226e23a529250",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 38,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "a6aff9bfd74a93eddd83c39234764f1bfa9247705c154381635b8fdc9ae522d1",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 39,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2e3be9c969b062d3157cb1b182197ec57260c0eba9b06ee86d345d2abfb423cd",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 40,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e8520a24754fd1ef21b2f17b81999a3e541ba0540935958cc4ff7faa0db4acf5",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 41,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e2b3cb8f1cc92e6d9b352636c17da7c5167fa9cd960dce94727277d1395065f4",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 42,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c9eb39ed1225319a217199ba5ca9f9ace74b83d25666b9050f4b9de2988dba2e",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 43,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c4cc57f664d1e2438fe9ca1a1f36e5365788cbb5c50b482b6a2d9877e3c1e49e",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 44,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "634ac3d1a951ddd94355138517ff4ee07ee9fc3dfc66513b05bc47fd65c90eae",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 45,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "3105e0ec1c97d779c7229ab3aad9b1f71447520f046bc4a4b8c99cd11731fe78",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 46,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "09a59d181d22e78157ce3d9a0914d2cc85a18489fa08c87332b07412efdf6616",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 47,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "0158841ec1785db53021f03f7d2c600db2057e58b085def59157ffd534366777",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 48,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "2bbbe31651e902a6bcd8e76c255a21b540f06d8c818ca31290f407e7cf8ee9f7",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 49,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "6392250640f72dedd9e4222074f1c5f939c8a3c66fd0ec5ed87d5803842774b9",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 50,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "d787b48a3c7aca14fc607549214976adb4cbb5db28d2b5c1e80acfdd5e676e58",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 51,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "e0cb4cb71c87c730b2af21f7640ba56644241c7af7d87c16d769bf2771f12e5a",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 52,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "83ff3cbc495eb70064f4fba4a2fc800283d8b8e9a5ba41537908d5307b1b41fb",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 53,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "87770f86476b1b109a52ff3f4c7fc6aff5766f55e83d94530414adc12421f0d1",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 54,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "fed4b3c75e188fa829e4cccf3c76d96aa20f28fbd6b097797a6f07ec1b69df9a",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 55,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "658a545ebd34f5152e7e1130f04efaeded780a0908f48b1d4e3b1c9d381804f1",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 56,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "46b76bd42dbe6e8b3c9d13faa1f825cee0829a9cefff1def018c650d22fb1701",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 57,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "982b7f64fc04483899c9961bd906f6d6a9ff4fbaff4c48b7bed7d17e05785987",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 58,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "73058733df0b1ba5ff00d4a4e3904308d72632fd69c68c3cd8271c4a3d2090a4",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 59,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "c91db1c2f4446403a04ad179f53e57f24ddd9565e0bcd97516bf7d6dc67849e1",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    },
+    {
+      "task": "OpenBMI_SSVEP",
+      "fold": 4,
+      "epoch": 60,
+      "batches": 41,
+      "trial_exposure": 2600,
+      "ordered_batches_sha256": "69bd733f45ad97534170144c34a70019360328582d0721cfd52d611e29660bd8",
+      "historical_manifest_sha256": "89ca5715c6e21508c95c52417e4f23611fb39e3d783e59aa3363cdccf101a4c5",
+      "match": true
+    }
+  ]
+}
