@@ -1,0 +1,19 @@
+{
+  "K_SUBJECTS": 8,
+  "MEAN_WEIGHT": 0.75,
+  "TAIL_FRACTION": 0.5,
+  "TAIL_WEIGHT": 0.25,
+  "TRIALS_PER_SUBJECT": 8,
+  "architecture": "exact historical LiteBN_BASELINE",
+  "epochs": 60,
+  "experiment": "LiteBN-SBTR",
+  "folds": 5,
+  "gradient_clip": 5.0,
+  "heldout_status": "internal heldout diagnostic; no untouched final test",
+  "lr": 0.0003,
+  "optimizer": "AdamW",
+  "seed": 0,
+  "selection_start": 10,
+  "task": "OpenBMI_MI",
+  "weight_decay": 0.0005
+}
