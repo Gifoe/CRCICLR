@@ -1,0 +1,24 @@
+{
+  "DEVELOPMENT_OUTER_ONLY": "YES",
+  "EXPERIMENT_TYPE": "DEVELOPMENT_ANALYSIS_ONLY",
+  "F0_CONTROL_REPRODUCTION_PASS": true,
+  "FINAL_HELDOUT_ACCESSED": "NO",
+  "FINAL_TEST_ACCESSED": "NO",
+  "INTERNAL_HELDOUT_ACCESSED": "NO",
+  "NEW_EEG_MODEL_TRAINED": "NO",
+  "REPRESENTATION_REPLAY_PASS": true,
+  "SEALED_TEST_ACCESSED": "NO",
+  "SUBJECT_EQUAL_WEIGHT_PASS": true,
+  "allowed_fitted_model": "StandardScaler plus fixed L2 LogisticRegression only",
+  "forbidden_predictors": [
+    "task_id",
+    "seed_id",
+    "subject_id",
+    "fold_id",
+    "true_label",
+    "correctness",
+    "outcome"
+  ],
+  "protocol_audits_pass": true,
+  "source_scope": "development outer subjects from authoritative stable-rescue artifacts"
+}

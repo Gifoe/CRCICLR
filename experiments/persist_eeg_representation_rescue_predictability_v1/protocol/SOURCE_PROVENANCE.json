@@ -1,0 +1,22 @@
+{
+  "authoritative_git_commit": "7db912ae2f6a14db7501e30042dae2bac4415eab",
+  "authoritative_source_experiment": "experiments/persist_eeg_stable_rescue_predictability_audit_v1",
+  "B0_FIXED_XS": "exact seed0 XS-development LiteBN baseline per task/fold, identical across XS seeds",
+  "X_B0": "exact historical matched B0 from prior X analysis",
+  "development_rows": {
+    "X": "/root/rivermind-data/stable_rescue_predictability_runtime_v1/X_ROWS.csv.gz",
+    "XS": "/root/rivermind-data/stable_rescue_predictability_runtime_v1/FIXED_B0_XS_ROWS.csv.gz"
+  },
+  "ERP_replay_semantics": "historical PyTorch defaults for the five repaired cells: cuDNN TF32 on, matrix multiplication TF32 off; prior passing rows remain full FP32",
+  "checkpoint_roots": [
+    "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime",
+    "/root/rivermind-data/xs_full_multiseed_finaltest_runtime",
+    "/root/rivermind-data/xs_erp_seed12_stability_runtime_correct_xs",
+    "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime",
+    "/root/rivermind-data/openbmi_task_generality_runtime"
+  ],
+  "weights_modified": false,
+  "forward_modified": false,
+  "normalizers_modified": false,
+  "folds_modified": false
+}
