@@ -1,0 +1,22 @@
+{
+  "starting_commit": "0db030ec8baf9ac3c1caa93940c31bf5f9fd3489",
+  "authoritative_source": "experiments/persist_eeg_stable_rescue_predictability_audit_v1",
+  "historical_XS_source": "experiments/persist_eeg_xs_full_multiseed_finaltest_v1",
+  "development_rows": "/root/rivermind-data/stable_rescue_predictability_runtime_v1/FIXED_B0_XS_ROWS.csv.gz",
+  "checkpoint_roots": [
+    "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime",
+    "/root/rivermind-data/xs_full_multiseed_finaltest_runtime",
+    "/root/rivermind-data/xs_erp_seed12_stability_runtime_correct_xs"
+  ],
+  "B0_FIXED": "exact seed0 XS-development LiteBN baseline per task/fold, identical across XS seeds",
+  "ERP_repaired_cells": ["seed1/fold0", "seed1/fold3", "seed2/fold0", "seed2/fold3"],
+  "ERP_repaired_numerics": "cuDNN TF32 on and matrix multiplication TF32 off",
+  "other_cells_numerics": "validated full FP32 replay semantics",
+  "checkpoint_mutation": "NONE"
+  ,"trial_csv_lossless_encoding": {
+    "task": {"OMI": "OpenBMI_MI", "OERP": "OpenBMI_ERP", "OSSVEP": "OpenBMI_SSVEP", "WMI": "WBCIC_MI"},
+    "correctness_booleans": "0=false, 1=true",
+    "WMI_subject_id": "numeric suffix; canonical sub- prefix restored by analysis scripts",
+    "reason": "keep the required CSV below GitHub's 100 MB blob limit when LFS object storage is unavailable"
+  }
+}
