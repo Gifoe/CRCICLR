@@ -1,0 +1,29 @@
+{
+  "B0_FIXED": "exact seed0 XS-development LiteBN baseline per task/fold",
+  "erp_previously_failed_cells": 5,
+  "erp_repaired_cells": 5,
+  "erp_replay_semantics": {
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_tf32_allowed": true,
+    "matmul_tf32_allowed": false
+  },
+  "erp_unresolved_cells": 0,
+  "fivefold_split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "fixed_b0_equal_across_candidate_seeds": true,
+  "fixed_rows_runtime_path": "/root/rivermind-data/stable_rescue_predictability_runtime_v1/FIXED_B0_XS_ROWS.csv.gz",
+  "fixed_rows_sha256": "ef5c7eb6f70ccd80003fc65ec846feab7c24f1629218ceda5aeb046a19bb2f78",
+  "historical_model_source_sha256": "5fa225c30f1938146a71f7655d56c487f457b8ab4a35c1a724a527e606c7dbf5",
+  "normalizer_equal_across_candidate_seeds": true,
+  "paired_trial_results_sha256": "8e510448c7eab3a922f36550aad800776969a06158a5ba2fbc64b2bd893d5a38",
+  "primary_source": "experiments/persist_eeg_b0_x_xs_complementarity_audit_v1",
+  "source_commit": "577b1c5910abb4aa65a438b5e88417bf9939281e",
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "x_rows_runtime_path": "/root/rivermind-data/stable_rescue_predictability_runtime_v1/X_ROWS.csv.gz",
+  "x_rows_sha256": "70dfa5e2b9d42b588cdc327d5dbfb7653148c9d30b85d68b0eed34ea01382a43"
+}
