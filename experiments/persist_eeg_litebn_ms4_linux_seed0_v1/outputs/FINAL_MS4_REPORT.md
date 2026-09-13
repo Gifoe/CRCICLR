@@ -1,0 +1,44 @@
+# LiteBN-MS4 WBCIC seed-0 report
+
+MODEL = LiteBN-MS4
+BASE_ARCHITECTURE = EXACT_HISTORICAL_LITEBN
+SEED = 0
+TASK = WBCIC_MI
+ARCHITECTURE_CHANGE = NO
+PARAMETER_INCREASE = 0
+B0_STOCHASTIC_FORWARDS = 1
+C0_STOCHASTIC_FORWARDS = 2
+MS4_STOCHASTIC_FORWARDS = 4
+MS4_OBJECTIVE = MEAN_OF_FOUR_HISTORICAL_SUPERVISED_CE
+KL_LOSS = NO
+CONSISTENCY_LOSS = NO
+PERSISTENT_BN_UPDATES_PER_BATCH = 1
+OPTIMIZER_STEPS_PER_BATCH = 1
+INFERENCE_FORWARD_PASSES = 1
+NEW_SEALED_TEST_ACCESSED = NO
+INTERNAL_HELDOUT_STATUS = DEVELOPMENT_MODEL_SELECTION_DATA
+
+B0 outer BA = 0.790274315738
+C0 outer BA = 0.791407013685
+MS4 outer BA = 0.788824332030
+C0-B0 outer pp = +0.113270
+MS4-B0 outer pp = -0.144998
+MS4-C0 outer pp = -0.258268
+B0 heldout BA = 0.797600000000
+C0 heldout BA = 0.799900000000
+MS4 heldout BA = 0.800700000000
+C0-B0 heldout pp = +0.230000
+MS4-B0 heldout pp = +0.310000
+MS4-C0 heldout pp = +0.080000
+positive folds vs B0 = 2/5
+positive folds vs C0 = 2/5
+outer subjects MS4-B0 positive/negative/tied = 16/12/3
+outer subjects MS4-C0 positive/negative/tied = 13/15/3
+heldout subjects MS4-B0 positive/negative/tied = 5/5/0
+heldout subjects MS4-C0 positive/negative/tied = 5/5/0
+outer bootstrap MS4-B0 95% CI pp = [-0.935158, 0.580808]
+outer bootstrap MS4-C0 95% CI pp = [-1.016333, 0.516512]
+heldout bootstrap MS4-B0 95% CI pp = [-0.230000, 0.910000]
+heldout bootstrap MS4-C0 95% CI pp = [-0.350000, 0.550000]
+
+MS4_NO_USEFUL_SIGNAL

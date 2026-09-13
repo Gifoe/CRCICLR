@@ -1,0 +1,16 @@
+task,fold,precision,audit,forward_A_live_bn_exact,max_abs_forward_A_bn_diff,backward_preserves_bn_exact,max_abs_backward_bn_diff,main_rng_matches_single_A,B_gradient_finite_nonzero,C_gradient_finite_nonzero,D_gradient_finite_nonzero,total_gradient_finite_nonzero,stochastic_logits_not_all_identical,uses_data_bypass,status,model_state_exact,max_abs_model_state_diff,main_rng_exact,secondary_rng_exact,scaler_exact
+WBCIC_MI,0,AMP_FP16,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,0,AMP_FP16,THREE_STEP_RESUME,,,,,,,,,,,,PASS,True,0.0,True,True,True
+WBCIC_MI,0,FP32,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,1,AMP_FP16,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,1,AMP_FP16,THREE_STEP_RESUME,,,,,,,,,,,,PASS,True,0.0,True,True,True
+WBCIC_MI,1,FP32,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,2,AMP_FP16,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,2,AMP_FP16,THREE_STEP_RESUME,,,,,,,,,,,,PASS,True,0.0,True,True,True
+WBCIC_MI,2,FP32,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,3,AMP_FP16,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,3,AMP_FP16,THREE_STEP_RESUME,,,,,,,,,,,,PASS,True,0.0,True,True,True
+WBCIC_MI,3,FP32,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,4,AMP_FP16,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
+WBCIC_MI,4,AMP_FP16,THREE_STEP_RESUME,,,,,,,,,,,,PASS,True,0.0,True,True,True
+WBCIC_MI,4,FP32,BN_AND_AUTOGRAD,True,0.0,True,0.0,True,True,True,True,True,True,False,PASS,,,,,
