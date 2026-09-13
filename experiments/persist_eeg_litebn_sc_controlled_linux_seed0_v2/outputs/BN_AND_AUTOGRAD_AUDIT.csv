@@ -1,0 +1,11 @@
+task,fold,precision,bn_tensor_count,bn_persistent_exact,max_abs_bn_diff,forward_a_matches_b0,different_dropout_logits,main_rng_matches_b0_after_a,forward_b_ce_shared_parameter_gradients_finite,total_backward_gradients_finite,backward_does_not_change_bn,backward_bn_max_abs_diff,uses_data_bypass,status
+WBCIC_MI,0,FP32,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,0,AMP_FP16,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,1,FP32,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,1,AMP_FP16,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,2,FP32,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,2,AMP_FP16,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,3,FP32,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,3,AMP_FP16,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,4,FP32,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS
+WBCIC_MI,4,AMP_FP16,24,True,0.0,True,True,True,True,True,True,0.0,False,PASS

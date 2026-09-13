@@ -1,0 +1,45 @@
+{
+  "C1_ge_C0_heldout": "NOT_EVALUABLE_C0_NOT_RUN_CURRENT_SCOPE",
+  "C1_gt_C0_outer": "NOT_EVALUABLE_C0_NOT_RUN_CURRENT_SCOPE",
+  "internal_heldout": {
+    "B0_BA": 0.7976,
+    "B0_replay_max_abs_BA_diff": 1.1102230246251565e-16,
+    "C1_BA": 0.7975000000000001,
+    "C1_minus_B0_pp": -0.009999999999997788,
+    "bootstrap_ci_high_pp": 0.38025000000000203,
+    "bootstrap_ci_low_pp": -0.44999999999999485,
+    "data_status": "DEVELOPMENT_MODEL_SELECTION_DATA",
+    "negative_subjects": 4,
+    "positive_subjects": 5,
+    "tied_subjects": 1
+  },
+  "known_conditions": {
+    "C1_minus_B0_heldout_ge_0_pp": false,
+    "C1_minus_B0_outer_ge_0_30_pp": true,
+    "all_protocol_and_graph_audits_pass": true,
+    "positive_outer_folds_ge_3": true,
+    "worst_outer_fold_gt_minus_1_pp": true
+  },
+  "new_sealed_test_accessed": false,
+  "outer": {
+    "B0_BA": 0.7902743157380255,
+    "B0_replay_max_abs_BA_diff": 1.1102230246251565e-16,
+    "C1_BA": 0.7947969615509938,
+    "C1_minus_B0_pp": 0.4522645812968404,
+    "best_fold_delta_pp": 2.416666666666678,
+    "bootstrap_ci_high_pp": 1.4845226458129697,
+    "bootstrap_ci_low_pp": -0.5793418051482561,
+    "negative_folds": 2,
+    "negative_subjects": 13,
+    "positive_folds": 3,
+    "positive_subjects": 15,
+    "tied_folds": 0,
+    "tied_subjects": 3,
+    "worst_fold_delta_pp": -0.6632996632996546
+  },
+  "phase2_executed": false,
+  "reason_phase2_not_executed": "At least one C1-versus-B0 gate condition failed",
+  "scope_completed": "C1_WBCIC_MI_SEED0_FIVE_FOLDS_OUTER_AND_INTERNAL_HELDOUT",
+  "seed1_2_run": false,
+  "status": "SC_NO_CONTINUATION_SIGNAL"
+}

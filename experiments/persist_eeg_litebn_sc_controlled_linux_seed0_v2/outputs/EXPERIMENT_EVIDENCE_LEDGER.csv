@@ -1,0 +1,9 @@
+item,status,evidence
+B0 exact Linux checkpoints and metric replay,RUN,REFERENCE_PROVENANCE.json and replay diffs
+C1 WBCIC seed0 five-fold training,RUN,checkpoint provenance and TRAINING_TRAJECTORIES.csv
+C1 outer evaluation,RUN,OUTER_SUBJECT_RESULTS.csv
+C1 internal heldout,RUN,HELDOUT_SUBJECT_RESULTS.csv; development data
+C0 DualCE,PLANNED_NOT_RUN_CURRENT_SCOPE,required before C1-C0 claim
+Phase2 OpenBMI tasks,PLANNED_GATE_NOT_EVALUABLE,At least one C1-versus-B0 gate condition failed
+Old SC v1,PROTOCOL_MISMATCH_PAUSED,natural shared RNG stream; not renamed or reused
+New sealed final test,NOT_ACCESSED,protocol lock
