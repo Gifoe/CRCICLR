@@ -32,4 +32,4 @@ Internal-heldout is DEVELOPMENT_MODEL_SELECTION_DATA, not a sealed final test.
 11. All methods use the exact historical LiteBN and one deterministic inference forward.
 12. Phase2 executed: NO. WBCIC continuation gate failed.
 
-SC_GAIN_NOT_SEPARATED_FROM_DUAL_CE
+SC_NO_CONTINUATION_SIGNAL

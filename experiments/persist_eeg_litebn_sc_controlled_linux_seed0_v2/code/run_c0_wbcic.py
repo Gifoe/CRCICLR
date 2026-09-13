@@ -300,7 +300,9 @@ def evaluate_and_finalize(
     }
     if all(conditions.values()):
         terminal = "SC_WBCIC_PROMISING"
-    elif float(o10.delta_pp) > 0 and (float(o1c0.delta_pp) <= 0 or float(h1c0.delta_pp) < 0):
+    elif conditions["C1_minus_B0_outer_ge_0_30_pp"] and conditions["C1_minus_B0_heldout_ge_0_pp"] and (
+        not conditions["C1_outer_gt_C0_outer"] or not conditions["C1_heldout_ge_C0_heldout"]
+    ):
         terminal = "SC_GAIN_NOT_SEPARATED_FROM_DUAL_CE"
     else:
         terminal = "SC_NO_CONTINUATION_SIGNAL"

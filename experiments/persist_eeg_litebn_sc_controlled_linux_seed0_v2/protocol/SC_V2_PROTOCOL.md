@@ -2,11 +2,10 @@
 
 ## Scope
 
-The locked full design contains B0 (historical one-forward LiteBN), C0
-(two-forward DualCE), and C1 (two-forward DualCE plus symmetric KL). Per the
-current execution instruction, this run completes only C1 for WBCIC_MI seed 0,
-folds 0--4. B0 is replayed from the matched frozen Linux checkpoints. C0 and
-Phase 2 are not run in this scope.
+The locked design contains B0 (historical one-forward LiteBN), C0 (two-forward
+DualCE), and C1 (two-forward DualCE plus symmetric KL). WBCIC_MI seed 0 folds
+0--4 are complete for C0 and C1. B0 is replayed from the matched frozen Linux
+checkpoints. Phase 2 is not run because the WBCIC continuation gate fails.
 
 ## Identity
 
@@ -57,7 +56,8 @@ All five C1 checkpoints are frozen before outer evaluation. Only after outer is
 frozen is the already-open internal-heldout cohort evaluated. It is labeled
 `DEVELOPMENT_MODEL_SELECTION_DATA`; no new sealed test is accessed.
 
-Because C0 is outside the current run scope, the mandatory C1-versus-C0 gate
-cannot be evaluated. If C1 already fails any C1-versus-B0 condition, the result
-is `SC_NO_CONTINUATION_SIGNAL`. Otherwise it is
-`C1_WBCIC_COMPLETE_C0_REQUIRED`; neither label authorizes Phase 2.
+The continuation gate requires C1 to satisfy both B0 directions as well as the
+matched C0 comparisons. Failure of a C1-versus-B0 requirement is
+`SC_NO_CONTINUATION_SIGNAL`. `SC_GAIN_NOT_SEPARATED_FROM_DUAL_CE` is reserved for
+the narrower case where the B0 requirements pass but the C0 separation
+requirements fail.

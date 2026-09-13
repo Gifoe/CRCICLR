@@ -4,14 +4,15 @@ This experiment is the controlled Linux seed-0 evaluation of `LiteBN-SC`, an
 exact historical LiteBN trained with an R-Drop-style symmetric prediction
 consistency objective. The inference architecture is unchanged.
 
-The current run scope is deliberately limited to C1 on WBCIC_MI folds 0--4.
-The exact frozen B0 Linux checkpoints are replayed for comparison. C0 (DualCE)
-is recorded as pending and is not silently substituted by an earlier SC run.
+The completed WBCIC_MI seed-0 run contains C0 and C1 on folds 0--4. The exact
+frozen B0 Linux checkpoints are replayed for comparison. C0 is a matched DualCE
+compute/sampling control and is not substituted by an earlier SC run.
 
 Run from the repository root:
 
 ```bash
 python -u experiments/persist_eeg_litebn_sc_controlled_linux_seed0_v2/code/run_c1_wbcic.py
+python -u experiments/persist_eeg_litebn_sc_controlled_linux_seed0_v2/code/run_c0_wbcic.py
 ```
 
 Runtime checkpoints are stored outside Git in
