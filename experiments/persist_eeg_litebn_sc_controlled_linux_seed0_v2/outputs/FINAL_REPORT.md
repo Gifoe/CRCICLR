@@ -33,11 +33,11 @@ Heldout improved/harmed/tied subjects = 5/4/1
 3. Outer and heldout direction: opposite.
 4. Subject effects: outer 15 improved and 13 harmed; heldout 5 improved and 4 harmed.
 5. Selected-checkpoint stochastic consistency B0/C1 pairwise KL = 0.072491/0.047153; this is observational.
-6. Consistency improved while BA declined: False.
+6. Consistency improved while BA declined: outer=NO; heldout=YES. The consistency diagnostic is observational.
 7. Mean selected inner-val BA B0/C1 = 0.795676/0.799074; no causal conclusion without C0.
 8. Median ||grad(0.5J)||/||grad(CE)|| = 0.182728.
 9. Persistent BN state updated once per original batch; exact BN/autograd audits passed.
-10. Recorded training time C1/B0 = 2793.6/5558.7 s (ratio 0.503); C1 peak allocated CUDA memory = 5.856 GiB. B0 peak memory was not recorded, so memory increase is unknown.
+10. Recorded C1 training wall time = 2793.6 s. Historical B0 artifacts record 5558.7 s, but this is not a controlled timing benchmark, so their ratio does not estimate compute change. C1 executes two training forwards versus B0's one. C1 peak allocated CUDA memory = 5.856 GiB; B0 peak memory was not recorded, so the memory increase is unknown.
 11. Inference remains exact historical LiteBN with one deterministic forward.
 12. Phase2 executed: NO. Reason: At least one C1-versus-B0 gate condition failed.
 

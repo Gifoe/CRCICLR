@@ -735,11 +735,11 @@ def finalize(records: list[dict[str, Any]], outer: dict[str, Any], heldout: dict
         f"3. Outer and heldout direction: {'same' if np.sign(outer['C1_minus_B0_pp']) == np.sign(heldout['C1_minus_B0_pp']) else 'opposite'}.",
         f"4. Subject effects: outer {outer['positive_subjects']} improved and {outer['negative_subjects']} harmed; heldout {heldout['positive_subjects']} improved and {heldout['negative_subjects']} harmed.",
         f"5. Selected-checkpoint stochastic consistency B0/C1 pairwise KL = {diag.loc['B0_Exact_LiteBN','mean_pairwise_symmetric_KL']:.6f}/{diag.loc[METHOD,'mean_pairwise_symmetric_KL']:.6f}; this is observational.",
-        f"6. Consistency improved while BA declined: {bool(diag.loc[METHOD,'mean_pairwise_symmetric_KL'] < diag.loc['B0_Exact_LiteBN','mean_pairwise_symmetric_KL'] and outer['C1_minus_B0_pp'] < 0)}.",
+        f"6. Consistency improved while BA declined: outer={'YES' if diag.loc[METHOD,'mean_pairwise_symmetric_KL'] < diag.loc['B0_Exact_LiteBN','mean_pairwise_symmetric_KL'] and outer['C1_minus_B0_pp'] < 0 else 'NO'}; heldout={'YES' if diag.loc[METHOD,'mean_pairwise_symmetric_KL'] < diag.loc['B0_Exact_LiteBN','mean_pairwise_symmetric_KL'] and heldout['C1_minus_B0_pp'] < 0 else 'NO'}. The consistency diagnostic is observational.",
         f"7. Mean selected inner-val BA B0/C1 = {np.mean([r['best_inner_val_BA'] for r in b0_reference]):.6f}/{np.mean([r['best_inner_val_BA'] for r in records]):.6f}; no causal conclusion without C0.",
         f"8. Median ||grad(0.5J)||/||grad(CE)|| = {gradients.weighted_J_to_CE_gradient_norm_ratio.median():.6f}.",
         "9. Persistent BN state updated once per original batch; exact BN/autograd audits passed." if audits_pass else "9. BN/autograd audit did not fully pass.",
-        f"10. Recorded training time C1/B0 = {c1_seconds:.1f}/{b0_seconds:.1f} s (ratio {c1_seconds/b0_seconds:.3f}); C1 peak allocated CUDA memory = {max(r['peak_cuda_memory_bytes'] for r in records)/2**30:.3f} GiB. B0 peak memory was not recorded, so memory increase is unknown.",
+        f"10. Recorded C1 training wall time = {c1_seconds:.1f} s. Historical B0 artifacts record {b0_seconds:.1f} s, but this is not a controlled timing benchmark, so their ratio does not estimate compute change. C1 executes two training forwards versus B0's one. C1 peak allocated CUDA memory = {max(r['peak_cuda_memory_bytes'] for r in records)/2**30:.3f} GiB; B0 peak memory was not recorded, so the memory increase is unknown.",
         "11. Inference remains exact historical LiteBN with one deterministic forward.",
         f"12. Phase2 executed: NO. Reason: {decision['reason_phase2_not_executed']}.", "", terminal,
     ]
