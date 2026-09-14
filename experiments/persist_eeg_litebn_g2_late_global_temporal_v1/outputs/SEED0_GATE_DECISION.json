@@ -1,0 +1,25 @@
+{
+  "NEW_SEALED_TEST_ACCESSED": "NO",
+  "early_stopped": true,
+  "outcomes": {
+    "OpenBMI_SSVEP": {
+      "LiteBN_G2_BA": 0.9122857142857145,
+      "benchmark_best": 0.9234,
+      "benchmark_model": "TCFormer",
+      "delta_vs_LiteBN_pp": 0.528571428571456,
+      "delta_vs_benchmark_pp": -1.1114285714285521,
+      "folds": 5,
+      "gate": "SSVEP_BENCHMARK_FAIL",
+      "matched_LiteBN_BA": 0.9069999999999999,
+      "pass": false,
+      "resource": "OpenBMI_V8_INTERNAL",
+      "scope": "EXPOSED_DEVELOPMENT_BENCHMARK",
+      "subjects": 14,
+      "task": "OpenBMI_SSVEP"
+    }
+  },
+  "seed": 0,
+  "seed1_run": false,
+  "seed2_run": false,
+  "terminal": "SSVEP_BENCHMARK_FAIL"
+}
