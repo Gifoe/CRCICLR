@@ -1,0 +1,31 @@
+{
+  "complete_experiment": false,
+  "completed_checkpoint_cells": 6,
+  "completed_tasks": [
+    "OpenBMI_MI"
+  ],
+  "expected_checkpoint_cells": 20,
+  "final_test_accessed": false,
+  "new_sealed_test_accessed": false,
+  "not_started_tasks": [
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "note": "ERP fold1 latest checkpoint is resumable but is not a selected result. No ERP task comparison was performed because only 1/5 folds is frozen.",
+  "partially_completed_tasks": {
+    "OpenBMI_ERP": {
+      "frozen_folds": [
+        0
+      ],
+      "interrupted_fold": 1,
+      "latest_saved_epoch": 3
+    }
+  },
+  "resume_supported": true,
+  "runtime_checkpoint_root": "/root/rivermind-data/linux_w0r0_seed0_runtime/checkpoints",
+  "seed": 0,
+  "task_immediate_evaluations_complete": [
+    "OpenBMI_MI"
+  ],
+  "terminal": "STOPPED_BY_USER_FOR_GITHUB_UPLOAD"
+}
