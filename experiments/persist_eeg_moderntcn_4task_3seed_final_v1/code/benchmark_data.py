@@ -22,9 +22,12 @@ def _load_module(name: str, path: Path) -> Any:
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None: raise ImportError(path)
     value = importlib.util.module_from_spec(spec); sys.modules[name] = value
+    sys.path.insert(0, str(path.parent))
     try: spec.loader.exec_module(value)
     except Exception:
         sys.modules.pop(name, None); raise
+    finally:
+        sys.path.remove(str(path.parent))
     return value
 
 
