@@ -253,7 +253,11 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
         start_epoch, best, best_epoch, best_state, history = 1, -float("inf"), 0, None, []
         no_improvement_epochs = 0
         if latest_path.is_file():
-            saved = torch.load(latest_path, map_location=device, weights_only=False)
+            # Deserialize resume payloads on CPU.  load_state_dict transfers the
+            # live model/optimizer tensors to their parameter device; keeping
+            # historical model, optimizer, and best-state copies on CUDA wastes
+            # several GB and can exhaust VRAM in concurrent queues.
+            saved = torch.load(latest_path, map_location="cpu", weights_only=False)
             if saved.get("invariant") != invariant:
                 raise RuntimeError("cell resume invariant mismatch")
             model.load_state_dict(saved["model"], strict=True)
@@ -263,6 +267,7 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
             best, best_epoch = float(saved["best"]), int(saved["best_epoch"])
             best_state, history = saved["best_state"], list(saved["history"])
             no_improvement_epochs = int(saved.get("no_improvement_epochs", 0))
+            del saved
         if device.type == "cuda":
             torch.cuda.reset_peak_memory_stats(device)
         stopped_epoch = start_epoch - 1 if no_improvement_epochs >= EARLY_STOPPING_PATIENCE else None
