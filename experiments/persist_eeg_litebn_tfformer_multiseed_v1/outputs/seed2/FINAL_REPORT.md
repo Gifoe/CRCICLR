@@ -1,0 +1,10 @@
+# TFFormer seed2 four-task evaluation
+
+| seed | task | TFFormer | LiteBN | delta_vs_LiteBN_pp | benchmark | delta_vs_benchmark_pp | PASS |
+|---|---|---|---|---|---|---|---|
+| 2 | OpenBMI_SSVEP | 0.9134285714285711 | 0.9124285714285715 | 0.0999999999999977 | 0.9234 | -0.9971428571428853 | False |
+| 2 | OpenBMI_ERP | 0.8525324675324677 | 0.8528484848484847 | -0.03160173160172856 | 0.8557 | -0.3167532467532319 | False |
+| 2 | OpenBMI_MI | 0.7497142857142859 | 0.7515714285714284 | -0.18571428571428666 | 0.7555 | -0.5785714285714061 | False |
+| 2 | WBCIC_MI | 0.7950999999999999 | 0.7933 | 0.17999999999999905 | 0.7918 | 0.32999999999999696 | True |
+
+Internal heldout diagnostic only. New sealed test was not accessed.

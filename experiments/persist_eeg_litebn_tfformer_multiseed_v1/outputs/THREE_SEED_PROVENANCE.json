@@ -1,0 +1,25 @@
+{
+  "internal_heldout_diagnostic": true,
+  "new_sealed_test_accessed": false,
+  "seed0_OpenBMI_SSVEP": {
+    "path": "/root/rivermind-data/CRCICLR_TFF_WORK/experiments/persist_eeg_litebn_tfformer_v1/outputs/SEED0_TASK_RESULTS.csv",
+    "sha256": "ae5d5eb8059169075327dcd1ef4d0871e6718dc0f3106114188f1c3169b47cc5",
+    "training_schedule": "historical full-60-epoch seed0 run"
+  },
+  "seed0_remaining_tasks": {
+    "path": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_tfformer_remaining_tasks_seed0_v1/outputs/SEED0_HELDOUT_RESULTS.csv",
+    "sha256": "5294da5234572a6d79cd824fb75ef6e8d7e0dd44b7b88219c945abc9339a1da2",
+    "training_schedule": "ERP fold0 full 60; later folds min10 patience8"
+  },
+  "seed1": {
+    "path": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_tfformer_multiseed_v1/outputs/seed1/SEED1_HELDOUT_RESULTS.csv",
+    "sha256": "1c7a3c43fd01582f620f72c6fff8697b04c687d4d49f0b8e6e60c4f191f0cc27",
+    "training_schedule": "all folds min10 patience8"
+  },
+  "seed2": {
+    "path": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_tfformer_multiseed_v1/outputs/seed2/SEED2_HELDOUT_RESULTS.csv",
+    "sha256": "7a50453cb2378775852d75b77aa332401babbbac5354933e49682b91b312584a",
+    "training_schedule": "all folds min10 patience8"
+  },
+  "uniform_training_schedule_across_seeds": false
+}

@@ -1,0 +1,17 @@
+{
+  "checkpoint_selection": "inner validation only",
+  "early_stopping": {
+    "applies_after": "OpenBMI_ERP fold0",
+    "minimum_epochs": 10,
+    "patience_without_strict_inner_val_BA_improvement": 8,
+    "user_revision": true
+  },
+  "heldout_after_five_checkpoints": true,
+  "seed": 0,
+  "status": "additional diagnostic after original SSVEP benchmark failure",
+  "tasks": [
+    "OpenBMI_ERP",
+    "OpenBMI_MI",
+    "WBCIC_MI"
+  ]
+}

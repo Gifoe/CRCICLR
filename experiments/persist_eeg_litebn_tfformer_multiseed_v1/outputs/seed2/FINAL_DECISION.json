@@ -1,0 +1,48 @@
+{
+  "new_sealed_test_accessed": false,
+  "original_SSVEP_gate_overridden_for_user_requested_multiseed_diagnostic": true,
+  "results": [
+    {
+      "LiteBN": 0.9124285714285715,
+      "PASS": false,
+      "TFFormer": 0.9134285714285711,
+      "benchmark": 0.9234,
+      "delta_vs_LiteBN_pp": 0.0999999999999977,
+      "delta_vs_benchmark_pp": -0.9971428571428853,
+      "seed": 2,
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "LiteBN": 0.8528484848484847,
+      "PASS": false,
+      "TFFormer": 0.8525324675324677,
+      "benchmark": 0.8557,
+      "delta_vs_LiteBN_pp": -0.03160173160172856,
+      "delta_vs_benchmark_pp": -0.3167532467532319,
+      "seed": 2,
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "LiteBN": 0.7515714285714284,
+      "PASS": false,
+      "TFFormer": 0.7497142857142859,
+      "benchmark": 0.7555,
+      "delta_vs_LiteBN_pp": -0.18571428571428666,
+      "delta_vs_benchmark_pp": -0.5785714285714061,
+      "seed": 2,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "LiteBN": 0.7933,
+      "PASS": true,
+      "TFFormer": 0.7950999999999999,
+      "benchmark": 0.7918,
+      "delta_vs_LiteBN_pp": 0.17999999999999905,
+      "delta_vs_benchmark_pp": 0.32999999999999696,
+      "seed": 2,
+      "task": "WBCIC_MI"
+    }
+  ],
+  "seed": 2,
+  "terminal": "TFFORMER_SEED2_FOUR_TASK_COMPLETE"
+}

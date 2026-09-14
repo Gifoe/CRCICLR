@@ -1,0 +1,19 @@
+{
+  "checkpoint_selection": "inner validation only",
+  "early_stopping": {
+    "applies_to": "all seed1/2 folds",
+    "minimum_epochs": 10,
+    "patience_without_strict_inner_val_BA_improvement": 8,
+    "user_revision": true
+  },
+  "effective_fs": 250,
+  "heldout_after_five_checkpoints": true,
+  "seed": 1,
+  "status": "user-requested four-task multiseed extension",
+  "tasks": [
+    "OpenBMI_SSVEP",
+    "OpenBMI_ERP",
+    "OpenBMI_MI",
+    "WBCIC_MI"
+  ]
+}

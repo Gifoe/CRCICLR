@@ -1,0 +1,11 @@
+{
+  "equal_task_mean_paired_delta_vs_LiteBN_pp": 0.14199134199134178,
+  "internal_heldout_diagnostic": true,
+  "new_sealed_test_accessed": false,
+  "protocol_limitation": "Seed0 SSVEP used the historical full-60-epoch schedule while seed1/2 used user-requested min10/patience8 early stopping. Treat this as an internal multiseed diagnostic, not a strict uniform-protocol estimate.",
+  "protocol_uniform_across_seeds": false,
+  "reason": "Only WBCIC MI exceeds its hard benchmark in the three-seed mean; OpenBMI SSVEP, ERP, and MI remain below benchmark. OpenBMI MI also has a negative mean paired delta versus matched LiteBN.",
+  "task_means_above_hard_benchmark": 1,
+  "terminal": "STOP_MODEL",
+  "total_tasks": 4
+}
