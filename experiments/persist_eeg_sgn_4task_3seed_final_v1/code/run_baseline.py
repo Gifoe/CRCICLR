@@ -32,6 +32,7 @@ FOLDS = tuple(range(5))
 SEEDS = (0, 1, 2)
 EPOCHS = 60
 MIN_EPOCH = 10
+EARLY_STOPPING_PATIENCE = 8
 BATCH_SIZE = 128
 LR = 3e-4
 WEIGHT_DECAY = 5e-4
@@ -234,13 +235,17 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
         invariant_value = {
             "task": task, "model": MODEL_NAME, "fold": fold, "seed": seed,
             "initial_state": initial_hash, "split": data["split_sha256"], "normalizer": data["normalizer"],
-            "recipe": {"epochs": EPOCHS, "min_epoch": MIN_EPOCH, "batch_size": BATCH_SIZE, "lr": LR,
-                       "weight_decay": WEIGHT_DECAY, "gradient_clip": GRADIENT_CLIP, "scheduler": None},
+            "recipe": {"max_epochs": EPOCHS, "min_epoch": MIN_EPOCH,
+                       "early_stopping_patience": EARLY_STOPPING_PATIENCE,
+                       "early_stopping_metric": "inner_validation_subject_equal_BA",
+                       "batch_size": BATCH_SIZE, "lr": LR, "weight_decay": WEIGHT_DECAY,
+                       "gradient_clip": GRADIENT_CLIP, "scheduler": None},
             "freeze": freeze_hash, "architecture": ARCHITECTURE,
         }
         invariant = hashlib.sha256(json.dumps(invariant_value, sort_keys=True).encode()).hexdigest()
         optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
         start_epoch, best, best_epoch, best_state, history = 1, -float("inf"), 0, None, []
+        no_improvement_epochs = 0
         if latest_path.is_file():
             saved = torch.load(latest_path, map_location=device, weights_only=False)
             if saved.get("invariant") != invariant:
@@ -251,9 +256,11 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
             start_epoch = int(saved["epoch"]) + 1
             best, best_epoch = float(saved["best"]), int(saved["best_epoch"])
             best_state, history = saved["best_state"], list(saved["history"])
+            no_improvement_epochs = int(saved.get("no_improvement_epochs", 0))
         if device.type == "cuda":
             torch.cuda.reset_peak_memory_stats(device)
-        for epoch in range(start_epoch, EPOCHS + 1):
+        stopped_epoch = start_epoch - 1 if no_improvement_epochs >= EARLY_STOPPING_PATIENCE else None
+        for epoch in ([] if stopped_epoch is not None else range(start_epoch, EPOCHS + 1)):
             epoch_started = time.perf_counter()
             model.train()
             losses = []
@@ -271,19 +278,29 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
             selected = epoch >= MIN_EPOCH and inner["subject_equal_BA"] > best + 1e-12
             if selected:
                 best, best_epoch, best_state = float(inner["subject_equal_BA"]), epoch, _cpu_state(model)
+                no_improvement_epochs = 0
+            elif epoch >= MIN_EPOCH:
+                no_improvement_epochs += 1
+            should_stop = epoch >= MIN_EPOCH and no_improvement_epochs >= EARLY_STOPPING_PATIENCE
             history.append({
                 "epoch": epoch, "cross_entropy": float(np.mean(losses)), "inner_validation": inner,
-                "selected": selected, "elapsed_seconds": time.perf_counter() - epoch_started,
+                "selected": selected, "no_improvement_epochs": no_improvement_epochs,
+                "elapsed_seconds": time.perf_counter() - epoch_started,
             })
-            if selected or epoch % 5 == 0 or epoch == EPOCHS:
+            if selected or epoch % 5 == 0 or epoch == EPOCHS or should_stop:
                 if device.type == "cuda":
                     torch.cuda.synchronize(device)
                 _save_torch(latest_path, _cpu_tree({
                     "epoch": epoch, "model": model.state_dict(), "optimizer": optimizer.state_dict(), "rng": _rng_state(),
                     "best": best, "best_epoch": best_epoch, "best_state": best_state, "history": history, "invariant": invariant,
+                    "no_improvement_epochs": no_improvement_epochs,
                 }))
             if epoch == 1 or epoch % 5 == 0 or selected:
                 print(f"[{MODEL_NAME} {task} f{fold} s{seed}] epoch={epoch} loss={history[-1]['cross_entropy']:.5f} innerBA={inner['subject_equal_BA']:.5f}", flush=True)
+            if should_stop:
+                stopped_epoch = epoch
+                print(f"[{MODEL_NAME} {task} f{fold} s{seed}] EARLY_STOP epoch={epoch} patience={EARLY_STOPPING_PATIENCE} best_epoch={best_epoch}", flush=True)
+                break
         if best_state is None:
             raise RuntimeError("no eligible checkpoint selected")
         model.load_state_dict(best_state, strict=True)
@@ -297,6 +314,8 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
             "normalizer": data["normalizer"], "split_sha256": data["split_sha256"], "protocol_freeze_sha256": freeze_hash,
             "initial_state_sha256": initial_hash, "invariant_sha256": invariant, "selected_epoch": best_epoch,
             "best_inner_validation_BA": best, "outer_development": outer, "history": history,
+            "epochs_completed": int(history[-1]["epoch"]), "early_stopped": stopped_epoch is not None,
+            "early_stopping_patience": EARLY_STOPPING_PATIENCE,
             "checkpoint_path": str(selected_path), "checkpoint_sha256": _sha(selected_path),
             "predictions_path": str(predictions_path), "predictions_sha256": _sha(predictions_path),
             "elapsed_seconds": time.perf_counter() - started,
