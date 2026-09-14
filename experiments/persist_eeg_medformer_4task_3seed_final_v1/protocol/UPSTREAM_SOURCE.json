@@ -1,0 +1,20 @@
+{
+  "repository": "DL4mHealth/Medformer",
+  "commit": "446275f27b713a9f09917a6ba0bc51a18e921597",
+  "copied_paths": ["models/Medformer.py", "layers/", "LICENSE"],
+  "source_compatibility_bug_fixed": true,
+  "compatibility_fix": "Guard unused optional reformer_pytorch/einops imports in shared upstream layers; the Medformer execution path and parameters are unchanged.",
+  "architecture_source": "official subject-independent TDBRAIN classification setting",
+  "architecture": {
+    "e_layers": 6,
+    "d_model": 128,
+    "d_ff": 256,
+    "n_heads": 8,
+    "patch_len_list": "8,8,8,16,16,16",
+    "dropout": 0.1,
+    "single_channel": false,
+    "no_inter_attn": false,
+    "augmentations": "none",
+    "swa": false
+  }
+}
