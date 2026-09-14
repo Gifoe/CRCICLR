@@ -1,0 +1,32 @@
+{
+  "repository": "colison/SGN",
+  "commit": "c6d1b573dcb8c4255cde59b988f74334ea5da503",
+  "paper_source_url": "https://github.com/colison/SGN",
+  "copied_paths": ["sgnmodels/SGN.py", "layers/"],
+  "source_compatibility_bug_fixed": true,
+  "compatibility_fixes": [
+    "Replace absent SGN4MTSC package prefix with package-local imports.",
+    "Replace hard-coded 33-variable TDBRAIN assignment file with dimension-compatible deterministic one-hot-plus-noise initialization.",
+    "Guard an unused optional einops import in the shared embedding file."
+  ],
+  "component_verification": {
+    "VGE_present": true,
+    "VGE_implementation": "GumbelGroupEmbedding",
+    "MGWM_present": true,
+    "MGWM_implementation": "DilatedConvBlock and DilatedConvEncoder",
+    "PWSM_present": true,
+    "PWSM_implementation": "TemporalSwinTransformerBlock and PeriodMerging"
+  },
+  "architecture_source": "official PTB-XL classification command",
+  "architecture": {
+    "e_layers": 5,
+    "depths": [2, 2, 2, 2, 1],
+    "d_model": 64,
+    "mlp_ratio": 2,
+    "block_num": 1,
+    "num_kernels": 7,
+    "num_groups": 4,
+    "period": 25,
+    "dropout": 0.1
+  }
+}
