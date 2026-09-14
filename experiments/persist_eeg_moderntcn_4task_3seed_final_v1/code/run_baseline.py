@@ -140,9 +140,11 @@ def _rng_state() -> dict[str, Any]:
 def _restore_rng(state: dict[str, Any]) -> None:
     random.setstate(state["python"])
     np.random.set_state(state["numpy"])
-    torch.set_rng_state(state["torch"])
+    # Checkpoints are loaded with map_location=device so ByteTensor RNG states
+    # may arrive on CUDA.  PyTorch's RNG restoration APIs require CPU states.
+    torch.set_rng_state(state["torch"].cpu())
     if torch.cuda.is_available() and state["cuda"] is not None:
-        torch.cuda.set_rng_state_all(state["cuda"])
+        torch.cuda.set_rng_state_all([item.cpu() for item in state["cuda"]])
 
 
 def _freeze_hash() -> str:
