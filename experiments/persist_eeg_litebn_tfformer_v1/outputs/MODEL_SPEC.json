@@ -1,0 +1,11 @@
+{
+  "architecture": "LiteBN-TFFormer",
+  "stft_windows_seconds": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "spectral_tokens": 288,
+  "global_blocks": 2,
+  "cross_attention": "time queries spectral KV"
+}

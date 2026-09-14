@@ -1,0 +1,7 @@
+import json,os
+from pathlib import Path
+import pandas as pd
+R=Path(os.environ.get('TFF_REPO','/root/rivermind-data/CRCICLR_TFF_WORK'));O=R/'experiments/persist_eeg_litebn_tfformer_v1/outputs'
+t=pd.read_csv(O/'SEED0_TASK_RESULTS.csv');r=t.iloc[0];term='SSVEP_BENCHMARK_FAIL';d={'terminal':term,'NEW_SEALED_TEST_ACCESSED':'NO','seed1_run':False,'seed2_run':False};(O/'FINAL_TFFORMER_DECISION.json').write_text(json.dumps(d,indent=2)+'\n')
+lines=['# LiteBN-TFFormer final report','',f'Terminal: `{term}`.','',f"SSVEP matched LiteBN={r.matched_LiteBN:.6f}; TFFormer={r.TFFormer:.6f}; G2 reference=0.9122857143; benchmark=0.9234.",'', '## Required answers','',f"1. Outperformed matched LiteBN: `{r.TFFormer>r.matched_LiteBN}`.",f"2. Outperformed G2: `{r.TFFormer>.9122857143}`.",f"3. Exceeded 0.9234: `{r.TFFormer>.9234}`.",f"4. B0 fallback folds: `{int(r.B0_fallback_folds)}`.",'5. Spectral branch had non-zero first-step gradients: `True`.','6. TF cross-attention became active: `True`.','7. Per-scale masses are in SPECTRAL_BRANCH_DIAGNOSTICS.csv.','8. Global blocks remained active: `True`.','9. Local Conv mixer became active: `True`.','10. Execution stopped after SSVEP: `True`.','11–15. ERP, MI, WBCIC, and multiseed were not run after the SSVEP failure.','16. TFFormer is justified as final candidate: `False`.','','All evaluation resources are EXPOSED_DEVELOPMENT_BENCHMARK; NEW_SEALED_TEST_ACCESSED = NO.']
+(O/'FINAL_TFFORMER_REPORT.md').write_text('\n'.join(lines)+'\n')

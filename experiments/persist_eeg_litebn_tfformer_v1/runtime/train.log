@@ -1,0 +1,9 @@
+/root/rivermind-data/CRCICLR_TFF_WORK/experiments/persist_eeg_litebn_tfformer_v1/code/train_tfformer.py:18: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  f=fold;bid=int(f['fold_id']);b=base.build_bundle(task,f['inner_train_subjects']+f['inner_val_subjects']);mean,std,nm=base.load_tensor_pair(runner.normalizer_source(task,bid));c=base.RawGPUCache(b,d);m,p=model(task,bid,d);m.eval();v,_=c.batch(b.indices(f['inner_val_subjects'],(2,))[:16],mean,std);bl,_=m.base(v);tl,_=m(v);init={'task':task,'fold':bid,'checkpoint_sha256':runner.sha256(p),'normalizer_sha256':nm['mean_std_sha256'],'initial_max_abs_logit_difference':float((bl-tl).abs().max()),'initial_B0_BA':evalm(m.base,b,c,f['inner_val_subjects'],mean,std)['BA'],'initial_TFFormer_BA':evalm(m,b,c,f['inner_val_subjects'],mean,std)['BA']};
+TFF_FOLD 0 18
+TFF_FOLD 1 35
+TFF_FOLD 2 23
+TFF_FOLD 3 48
+TFF_FOLD 4 8
+TFF_DONE 0.9142857142857143
