@@ -156,7 +156,7 @@ def _freeze_hash() -> str:
 
 
 def _batch_order(length: int, task: str, fold: int, seed: int, epoch: int) -> list[np.ndarray]:
-    token = f"CRCICLR-COMMON-SUPERVISED-V1|{task}|{MODEL_NAME}|{fold}|{seed}|{epoch}"
+    token = f"SEVEN-BACKBONE|{task}|{MODEL_NAME}|{fold}|{seed}|{epoch}"
     digest = hashlib.sha256(token.encode()).digest()
     order = np.random.default_rng(int.from_bytes(digest[:8], "little")).permutation(length)
     return [order[start:start + BATCH_SIZE] for start in range(0, length, BATCH_SIZE)]
