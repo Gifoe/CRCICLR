@@ -1,0 +1,106 @@
+{
+  "Hkv": 2,
+  "Hq": 4,
+  "LiteBN_G_total_parameters": 59702,
+  "RoPE_base": 10000,
+  "RoPE_dimension": 12,
+  "alpha_attn_initial": 0.0,
+  "alpha_ffn_initial": 0.0,
+  "attention_dropout": 0.1,
+  "d_head": 12,
+  "d_model": 48,
+  "exact_total_parameter_count": 59702,
+  "ffn_dimensions": [
+    48,
+    96,
+    48
+  ],
+  "ffn_dropout": 0.1,
+  "frozen_parameter_names": [
+    "base.temporal.0.weight",
+    "base.temporal.1.weight",
+    "base.temporal.2.weight",
+    "base.temporal_norm.0.weight",
+    "base.temporal_norm.0.bias",
+    "base.temporal_norm.1.weight",
+    "base.temporal_norm.1.bias",
+    "base.temporal_norm.2.weight",
+    "base.temporal_norm.2.bias",
+    "base.spatial.0.weight",
+    "base.spatial.1.weight",
+    "base.spatial.2.weight",
+    "base.spatial_norm.0.weight",
+    "base.spatial_norm.0.bias",
+    "base.spatial_norm.1.weight",
+    "base.spatial_norm.1.bias",
+    "base.spatial_norm.2.weight",
+    "base.spatial_norm.2.bias",
+    "base.norm1.weight",
+    "base.norm1.bias",
+    "base.norm2.weight",
+    "base.norm2.bias"
+  ],
+  "global_parameter_breakdown": {
+    "FFN": 9360,
+    "K": 1176,
+    "LayerNorm": 192,
+    "Q": 2352,
+    "ReZero_scalars": 2,
+    "V": 1176,
+    "global_temporal_block_total": 16610,
+    "output_projection": 2352
+  },
+  "gradient_clip_norm": 5.0,
+  "group_G_trainable_names": [
+    "global_block.alpha_attn",
+    "global_block.alpha_ffn",
+    "global_block.ln_attn.weight",
+    "global_block.ln_attn.bias",
+    "global_block.q.weight",
+    "global_block.q.bias",
+    "global_block.k.weight",
+    "global_block.k.bias",
+    "global_block.v.weight",
+    "global_block.v.bias",
+    "global_block.output.weight",
+    "global_block.output.bias",
+    "global_block.ln_ffn.weight",
+    "global_block.ln_ffn.bias",
+    "global_block.ffn.0.weight",
+    "global_block.ffn.0.bias",
+    "global_block.ffn.3.weight",
+    "global_block.ffn.3.bias"
+  ],
+  "group_L_trainable_names": [
+    "base.depth1.weight",
+    "base.point1.weight",
+    "base.depth2.weight",
+    "base.point2.weight",
+    "base.embedding.0.weight",
+    "base.embedding.0.bias",
+    "base.embedding.2.weight",
+    "base.embedding.2.bias",
+    "base.head.weight",
+    "base.head.bias"
+  ],
+  "historical_LiteBN_total_parameters": 43092,
+  "historical_dropout": {
+    "backend": 0.15,
+    "readout": 0.25,
+    "stem": 0.2
+  },
+  "insertion_point": "after 48-channel three-branch concat and before historical backend block 1",
+  "max_epochs": 40,
+  "optimizer_parameter_groups": {
+    "G": {
+      "lr": 0.0003,
+      "parameters": "all Global Temporal Block parameters"
+    },
+    "L": {
+      "lr": 3e-05,
+      "parameters": "declared historical LiteBN backend/readout parameters only"
+    }
+  },
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "weight_decay": 0.0005
+}
