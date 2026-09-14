@@ -227,9 +227,13 @@ def run_cell(task: str, fold: int, seed: int) -> dict[str, Any]:
         metadata = model_metadata(model)
         initial_hash = _state_sha(model)
         _set_seed(seed + 100000)
-        train_x = torch.from_numpy(np.ascontiguousarray(data["train_x"])).to(device)
-        val_x = torch.from_numpy(np.ascontiguousarray(data["val_x"])).to(device)
-        outer_x = torch.from_numpy(np.ascontiguousarray(data["outer_x"])).to(device)
+        # The device tensors are the sole signal owners during optimization.  Pop
+        # the source arrays so three concurrent workers do not retain a second,
+        # multi-gigabyte CPU copy of every split.  Values and transfer order are
+        # unchanged from the original implementation.
+        train_x = torch.from_numpy(np.ascontiguousarray(data.pop("train_x"))).to(device)
+        val_x = torch.from_numpy(np.ascontiguousarray(data.pop("val_x"))).to(device)
+        outer_x = torch.from_numpy(np.ascontiguousarray(data.pop("outer_x"))).to(device)
         train_y = torch.as_tensor(data["train_y"], dtype=torch.long, device=device)
         weight = _weight(data, device)
         invariant_value = {
