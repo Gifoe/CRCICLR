@@ -1,4 +1,4 @@
-param([int]$Workers = 1)
+param([int]$Workers = 1, [switch]$SkipPreflight)
 $ErrorActionPreference = 'Stop'
 $python = 'E:/Anaconda/envs/persist_stable_251/python.exe'
 $experiment = Split-Path -Parent $PSScriptRoot
@@ -14,8 +14,10 @@ $logs = Join-Path $env:BASELINE_RUNTIME 'logs'
 New-Item -ItemType Directory -Force -Path $logs | Out-Null
 Set-Location $PSScriptRoot
 
-& $python -u run_baseline.py --preflight *>> (Join-Path $logs 'preflight.log')
-if ($LASTEXITCODE -ne 0) { throw "preflight failed: $LASTEXITCODE" }
+if (!$SkipPreflight) {
+    & $python -u run_baseline.py --preflight *>> (Join-Path $logs 'preflight.log')
+    if ($LASTEXITCODE -ne 0) { throw "preflight failed: $LASTEXITCODE" }
+}
 
 $processes = @()
 for ($worker = 0; $worker -lt $Workers; $worker++) {
