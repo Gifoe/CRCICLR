@@ -1,0 +1,21 @@
+{
+  "current_model_source_sha256": "5ada6bd72770233a0a1b0fd5f056586d4bacef17ac99d0465227e8de1d997896",
+  "exact_model_source": "/root/rivermind-data/CRCICLR_OPTALIGN_WORK/experiments/persist_eeg_litebn_cm_ga_final_candidate_v1/code/models_cm.py",
+  "exact_model_source_sha256": "5ada6bd72770233a0a1b0fd5f056586d4bacef17ac99d0465227e8de1d997896",
+  "fivefold_split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "historical_litebn_checkpoints": "strictly loaded historical matched 64-feature LiteBN seed0 checkpoints",
+  "model_source_byte_identical_to_cm_ga": true,
+  "normalizers": "frozen exact historical source-session normalizers",
+  "previous_cm_ga_terminal": "CM_GA_GRADIENT_TRANSFER_NOT_SUPPORTED",
+  "previous_raw_cosine": {
+    "OpenBMI": {
+      "auroc": 0.6432259213,
+      "spearman": 0.2599282625
+    },
+    "WBCIC": {
+      "auroc": 0.6034500357,
+      "spearman": 0.2213600083
+    }
+  },
+  "seed": 0
+}
