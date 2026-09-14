@@ -1,0 +1,23 @@
+{
+  "benchmarks": {
+    "OpenBMI_ERP": {
+      "model": "TCFormer",
+      "threshold": 0.8557
+    },
+    "OpenBMI_MI": {
+      "model": "TCFormer",
+      "threshold": 0.7555
+    },
+    "OpenBMI_SSVEP": {
+      "model": "TCFormer",
+      "threshold": 0.9234
+    },
+    "WBCIC_MI": {
+      "model": "EEGNet",
+      "threshold": 0.7918
+    }
+  },
+  "exposed_benchmark_evaluation_accessed": false,
+  "new_sealed_test_accessed": false,
+  "status": "NOT_RUN_DUE_STAGE0_FAIL"
+}

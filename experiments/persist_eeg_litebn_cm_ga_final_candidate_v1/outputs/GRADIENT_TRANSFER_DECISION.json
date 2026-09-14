@@ -1,0 +1,52 @@
+{
+  "datasets": {
+    "OpenBMI": {
+      "auroc": 0.6432259213103081,
+      "auroc_advantage": 0.09821375586018644,
+      "auroc_advantage_ci95_lower": 0.0018894823762771052,
+      "auroc_advantage_ci95_upper": 0.1878959029507573,
+      "auroc_ci95_lower": 0.5737624513460995,
+      "auroc_ci95_upper": 0.7129729513366775,
+      "control_auroc": 0.5450121654501217,
+      "control_spearman": 0.15217924895769108,
+      "dataset": "OpenBMI",
+      "harm_rate": 0.47307692307692306,
+      "observations": 260,
+      "pass": false,
+      "spearman": 0.25992826245551204,
+      "spearman_advantage": 0.10774901349782096,
+      "spearman_advantage_ci95_lower": -0.07275283247808237,
+      "spearman_advantage_ci95_upper": 0.2905853979954283,
+      "spearman_ci95_lower": 0.11800797571517833,
+      "spearman_ci95_upper": 0.4008642906211505,
+      "subjects": 40
+    },
+    "WBCIC": {
+      "auroc": 0.603450035725222,
+      "auroc_advantage": 0.07492089415127079,
+      "auroc_advantage_ci95_lower": -0.01794042979861201,
+      "auroc_advantage_ci95_upper": 0.16863694961583925,
+      "auroc_ci95_lower": 0.5313654484985818,
+      "auroc_ci95_upper": 0.6745734207021333,
+      "control_auroc": 0.5285291415739513,
+      "control_spearman": 0.023401906781960736,
+      "dataset": "WBCIC",
+      "harm_rate": 0.51010101010101,
+      "observations": 198,
+      "pass": false,
+      "spearman": 0.2213600082863895,
+      "spearman_advantage": 0.19795810150442875,
+      "spearman_advantage_ci95_lower": 3.983263706677788e-05,
+      "spearman_advantage_ci95_upper": 0.3957652045403586,
+      "spearman_ci95_lower": 0.058469809972057675,
+      "spearman_ci95_upper": 0.37686952304054083,
+      "subjects": 31
+    }
+  },
+  "exposed_benchmark_evaluation_accessed": false,
+  "new_sealed_test_accessed": false,
+  "seed1_run": false,
+  "seed2_run": false,
+  "stage1_authorized": false,
+  "terminal": "CM_GA_GRADIENT_TRANSFER_NOT_SUPPORTED"
+}
