@@ -1,0 +1,27 @@
+{
+  "repository": "luodhhh/ModernTCN",
+  "commit": "56a9a2c018385cd5acef015378cae7f084d1b11c",
+  "copied_paths": [
+    "ModernTCN-classification/models/ModernTCN.py",
+    "ModernTCN-classification/models/ModernTCN_Layer.py",
+    "ModernTCN-classification/layers/RevIN.py",
+    "LICENSE"
+  ],
+  "source_compatibility_bug_fixed": false,
+  "architecture_source": "official SelfRegulationSCP2 classification command",
+  "architecture": {
+    "ffn_ratio": 4,
+    "patch_size": 32,
+    "patch_stride": 16,
+    "num_blocks": [1, 1],
+    "large_size": [51, 49],
+    "small_size": [5, 5],
+    "dims": [64, 128],
+    "head_dropout": 0.0,
+    "dropout": 0.3,
+    "class_dropout": 0.1,
+    "use_multi_scale": false,
+    "revin": true
+  }
+}
+
