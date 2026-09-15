@@ -1,0 +1,11 @@
+{
+  "JOINT": "exact stored corrected PEEH Protected union",
+  "PERSISTENCE_ONLY": "S_P>0; exact-K DP maximizing sum S_P",
+  "RANDOM": "exact existing 100 final-random equal-rank coordinate subsets",
+  "UTILITY_ONLY": "S_U>0; exact-K DP maximizing sum S_U",
+  "tie_break": [
+    "larger total score",
+    "fewer selected blocks",
+    "lexicographically smaller ordered block-index list"
+  ]
+}

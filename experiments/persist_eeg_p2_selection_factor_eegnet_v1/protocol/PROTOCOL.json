@@ -1,0 +1,26 @@
+{
+  "bootstrap_resamples": 20000,
+  "bootstrap_unit": "biological subject",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "model": "EEGNet",
+  "neural_finetuning": false,
+  "neural_training": false,
+  "primary_contrast": "JOINT minus UTILITY_ONLY",
+  "random_draws": 100,
+  "ridge_alpha": 0.01,
+  "schema": "P2_SELECTION_FACTOR_EEGNET_PROTOCOL_V1",
+  "seed": 0,
+  "selector_freeze_before_heldout_access": true,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ]
+}
