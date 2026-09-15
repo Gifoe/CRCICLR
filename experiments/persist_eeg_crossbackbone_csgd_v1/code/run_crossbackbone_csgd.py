@@ -58,9 +58,9 @@ FOLDS = tuple(range(5))
 SEEDS = (0, 1, 2)
 OLD_MODELS = ("EEGNet", "CBraMod", "TeCh", "LiteBN")
 OLD_SLUGS = {"EEGNet": "eegnet", "CBraMod": "cbramod", "TeCh": "tech", "LiteBN": "litebn"}
-OPENBMI_SESSIONS = (0, 1)
+OPENBMI_SESSIONS = (1, 2)
 WBCIC_SESSIONS = (0, 1, 2)
-SESSION_NAMES = {"OpenBMI": {0: "S1", 1: "S2"}, "WBCIC": {0: "S0", 1: "S1", 2: "S2"}}
+SESSION_NAMES = {"OpenBMI": {1: "S1", 2: "S2"}, "WBCIC": {0: "S0", 1: "S1", 2: "S2"}}
 TRUE_WBCIC_SUBJECTS = ("sub-4", "sub-8", "sub-10", "sub-15", "sub-20", "sub-39", "sub-40", "sub-43", "sub-46", "sub-51")
 BOOTSTRAP_DRAWS = 20_000
 
@@ -544,12 +544,12 @@ def compute_seed_subject_rows(session_rows: list[dict[str, Any]]) -> list[dict[s
                 "macro_F1": float(np.mean([float(row["macro_F1"]) for row in selected])),
             }
         if task.startswith("OpenBMI"):
-            source_ba, future_ba = per_session[0]["BA"], per_session[1]["BA"]
-            source_f1, future_f1 = per_session[0]["macro_F1"], per_session[1]["macro_F1"]
+            source_ba, future_ba = per_session[1]["BA"], per_session[2]["BA"]
+            source_f1, future_f1 = per_session[1]["macro_F1"], per_session[2]["macro_F1"]
             row = {
                 "Model": model, "Task": task, "seed": seed, "subject": subject, "folds_averaged": 5,
-                "S1_BA": per_session[0]["BA"], "S1_macro_F1": per_session[0]["macro_F1"],
-                "S2_BA": per_session[1]["BA"], "S2_macro_F1": per_session[1]["macro_F1"],
+                "S1_BA": per_session[1]["BA"], "S1_macro_F1": per_session[1]["macro_F1"],
+                "S2_BA": per_session[2]["BA"], "S2_macro_F1": per_session[2]["macro_F1"],
                 "source_BA": source_ba, "future_BA": future_ba, "source_macro_F1": source_f1, "future_macro_F1": future_f1,
                 "CSGD_pp": 100.0 * (source_ba - future_ba), "S0_to_S2_drop_pp": "", "S1_to_S2_drop_pp": "",
             }

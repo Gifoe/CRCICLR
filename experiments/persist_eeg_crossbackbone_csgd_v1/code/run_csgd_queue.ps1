@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
 $repo = "D:\nips-temp\TotalP\P1\CRCICLR_CROSSBACKBONE_CSGD_WORK"
 $runtime = "D:\nips-temp\TotalP\P1\crossbackbone_csgd_runtime"
 $python = "E:\Anaconda\envs\persist_stable_251\python.exe"
@@ -14,6 +14,8 @@ $env:FULL_WBCIC_CACHE = "D:\nips-temp\TotalP\P1\CRCICLR_SOURCE_ONLY_DIAGNOSTIC\e
 $env:TRUE_OUTER_WBCIC_CACHE = "D:\nips-temp\TotalP\P2\wbcic_outer_cache\wbcic_epochs"
 
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
+Remove-Item -LiteralPath (Join-Path $runtime "FAILED.txt") -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath (Join-Path $runtime "COMPLETED.txt") -Force -ErrorAction SilentlyContinue
 
 function Invoke-CSGD([string[]]$Arguments) {
     & $python -u $runner @Arguments 2>&1 | Tee-Object -FilePath $log -Append
