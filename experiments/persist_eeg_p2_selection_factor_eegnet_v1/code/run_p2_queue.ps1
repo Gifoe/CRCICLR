@@ -1,4 +1,6 @@
-$ErrorActionPreference = 'Stop'
+# Windows PowerShell wraps native stderr as NativeCommandError.  The Python
+# process exit code and atomic cell file are the authoritative status signals.
+$ErrorActionPreference = 'Continue'
 $python = 'E:/Anaconda/envs/persist_stable_251/python.exe'
 $repo = 'D:/nips-temp/TotalP/P1/CRCICLR_P2_SELECTION_FACTOR_WORK'
 $code = Join-Path $repo 'experiments/persist_eeg_p2_selection_factor_eegnet_v1/code'
