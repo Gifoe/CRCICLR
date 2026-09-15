@@ -81,11 +81,11 @@ def _cell(task: str, fold: int, seed: int) -> tuple[dict[str, Any], Path]:
     return record, checkpoint
 
 
-def _all_records() -> list[dict[str, Any]]:
+def _all_records(seeds: tuple[int, ...] = SEEDS) -> list[dict[str, Any]]:
     rows = []
     for task in TASKS:
         for fold in range(5):
-            for seed in SEEDS:
+            for seed in seeds:
                 record, checkpoint = _cell(task, fold, seed)
                 rows.append({
                     "task": task, "fold": fold, "seed": seed, "checkpoint_path": str(checkpoint),
@@ -93,13 +93,20 @@ def _all_records() -> list[dict[str, Any]]:
                     "selected_epoch": record["selected_epoch"], "split_sha256": record["split_sha256"],
                     "channels": record["channels"], "samples": record["samples"], "classes": record["classes"],
                 })
-    if len(rows) != 60:
-        raise RuntimeError("heldout requires all 60 selected checkpoints")
+    expected_count = len(TASKS) * 5 * len(seeds)
+    if len(rows) != expected_count:
+        raise RuntimeError(f"heldout requires all {expected_count} selected checkpoints")
     return rows
 
 
-def prelock() -> None:
-    records = _all_records()  # fail before touching even heldout membership metadata
+def _artifact_paths(interim_seed0: bool) -> tuple[Path, Path, str]:
+    prefix = "SEED0_INTERIM_" if interim_seed0 else ""
+    lock_path = PROTOCOL / f"{prefix}HELDOUT_EVALUATION_LOCK.json"
+    return lock_path, lock_path.with_suffix(".sha256"), prefix
+
+
+def prelock(seeds: tuple[int, ...] = SEEDS, interim_seed0: bool = False) -> None:
+    records = _all_records(seeds)  # fail before touching even heldout membership metadata
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     memberships = {
         "OpenBMI": list(map(str, manifest["OpenBMI"]["subject_ids"])),
@@ -107,18 +114,19 @@ def prelock() -> None:
     }
     if len(memberships["OpenBMI"]) != 14 or len(memberships["WBCIC"]) != 10:
         raise RuntimeError("established heldout membership mismatch")
-    lock_path = PROTOCOL / "HELDOUT_EVALUATION_LOCK.json"
+    lock_path, sidecar, _ = _artifact_paths(interim_seed0)
     if lock_path.exists():
         raise RuntimeError("refusing to replace heldout lock")
     lock = {
         "schema": "CRCICLR_MATCHED_BASELINE_HELDOUT_LOCK_V1", "model": MODEL_NAME,
+        "evaluation_scope": "seed0_interim" if interim_seed0 else "three_seed_final",
         "checkpoint_count": len(records), "checkpoints": records,
         "manifest_path": str(MANIFEST), "manifest_sha256": _sha(MANIFEST), "memberships": memberships,
-        "aggregation": "for each seed, subject-equal metrics averaged over the five frozen checkpoint folds; then mean and sample SD across seeds",
+        "aggregation": "subject-equal metrics averaged over five frozen checkpoint folds for seed0" if interim_seed0 else "for each seed, subject-equal metrics averaged over the five frozen checkpoint folds; then mean and sample SD across seeds",
         "prelock_access": {"heldout_signal_loaded": False, "heldout_labels_loaded": False, "heldout_predictions_generated": False},
     }
     _json(lock_path, lock)
-    (PROTOCOL / "HELDOUT_EVALUATION_LOCK.sha256").write_text(_sha(lock_path) + "\n", encoding="utf-8")
+    sidecar.write_text(_sha(lock_path) + "\n", encoding="utf-8")
     print("HELDOUT_INPUTS_LOCKED_WITHOUT_SIGNAL_OR_LABEL_ACCESS", flush=True)
 
 
@@ -163,14 +171,14 @@ def _metrics(labels: np.ndarray, logits: np.ndarray, subjects: np.ndarray) -> tu
     }, rows
 
 
-def evaluate() -> None:
-    lock_path, sidecar = PROTOCOL / "HELDOUT_EVALUATION_LOCK.json", PROTOCOL / "HELDOUT_EVALUATION_LOCK.sha256"
+def evaluate(seeds: tuple[int, ...] = SEEDS, interim_seed0: bool = False) -> None:
+    lock_path, sidecar, prefix = _artifact_paths(interim_seed0)
     if not lock_path.is_file() or not sidecar.is_file() or _sha(lock_path) != sidecar.read_text(encoding="utf-8").strip():
         raise RuntimeError("heldout evaluation requires an intact post-training lock")
     lock = json.loads(lock_path.read_text(encoding="utf-8"))
     if lock["prelock_access"] != {"heldout_signal_loaded": False, "heldout_labels_loaded": False, "heldout_predictions_generated": False}:
         raise RuntimeError("invalid prelock access state")
-    records = _all_records()
+    records = _all_records(seeds)
     expected = {(row["task"], row["fold"], row["seed"]): row["checkpoint_sha256"] for row in lock["checkpoints"]}
     if any(expected[(row["task"], row["fold"], row["seed"])] != row["checkpoint_sha256"] for row in records):
         raise RuntimeError("checkpoint family changed after heldout lock")
@@ -181,7 +189,7 @@ def evaluate() -> None:
         for fold in range(5):
             heldout, labels, subjects, normalizer = _heldout_data(task, fold, lock["memberships"])
             x = torch.from_numpy(heldout).to(device)
-            for seed in SEEDS:
+            for seed in seeds:
                 record = next(row for row in records if row["task"] == task and row["fold"] == fold and row["seed"] == seed)
                 if normalizer["mean_std_sha256"] != record["normalizer_sha256"]:
                     raise RuntimeError(f"normalizer mismatch: {task}/fold{fold}")
@@ -200,7 +208,7 @@ def evaluate() -> None:
             if device.type == "cuda": torch.cuda.empty_cache()
     seed_rows = []
     for task in TASKS:
-        for seed in SEEDS:
+        for seed in seeds:
             details = [row for row in subject_rows if row["task"] == task and row["seed"] == seed]
             reps = [row for row in replicate_rows if row["task"] == task and row["seed"] == seed]
             seed_rows.append({
@@ -214,22 +222,26 @@ def evaluate() -> None:
         rows = [row for row in seed_rows if row["task"] == task]
         final_rows.append({
             "task": task, "subject_equal_BA_mean": float(np.mean([row["subject_equal_BA"] for row in rows])),
-            "subject_equal_BA_std": float(np.std([row["subject_equal_BA"] for row in rows], ddof=1)),
+            "subject_equal_BA_std": float(np.std([row["subject_equal_BA"] for row in rows], ddof=1)) if len(rows) > 1 else 0.0,
             "subject_equal_macro_F1_mean": float(np.mean([row["subject_equal_macro_F1"] for row in rows])),
-            "subject_equal_macro_F1_std": float(np.std([row["subject_equal_macro_F1"] for row in rows], ddof=1)),
+            "subject_equal_macro_F1_std": float(np.std([row["subject_equal_macro_F1"] for row in rows], ddof=1)) if len(rows) > 1 else 0.0,
             "trial_accuracy_mean": float(np.mean([row["trial_accuracy"] for row in rows])),
-            "trial_accuracy_std": float(np.std([row["trial_accuracy"] for row in rows], ddof=1)),
+            "trial_accuracy_std": float(np.std([row["trial_accuracy"] for row in rows], ddof=1)) if len(rows) > 1 else 0.0,
         })
-    _csv(OUTPUTS / "HELDOUT_SUBJECT_RESULTS.csv", subject_rows)
-    _csv(OUTPUTS / "HELDOUT_SEED_RESULTS.csv", seed_rows)
-    _csv(OUTPUTS / "HELDOUT_FINAL_SUMMARY.csv", final_rows)
-    _json(PROTOCOL / "HELDOUT_LEAKAGE_AUDIT.json", {
+    _csv(OUTPUTS / f"{prefix}HELDOUT_SUBJECT_RESULTS.csv", subject_rows)
+    _csv(OUTPUTS / f"{prefix}HELDOUT_SEED_RESULTS.csv", seed_rows)
+    _csv(OUTPUTS / f"{prefix}HELDOUT_FINAL_SUMMARY.csv", final_rows)
+    _json(PROTOCOL / f"{prefix}HELDOUT_LEAKAGE_AUDIT.json", {
         "pass": True, "HELDOUT_ACCESSED_DURING_TRAINING": "NO", "HELDOUT_ACCESSED_DURING_SELECTION": "NO",
         "OUTER_DEV_USED_FOR_SELECTION": "NO", "heldout_labels_read_once_after_post_training_lock": True,
+        "evaluation_scope": "seed0_interim" if interim_seed0 else "three_seed_final",
     })
     print("FIXED_HELDOUT_EVALUATION_COMPLETE", flush=True)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(); parser.add_argument("--stage", choices=("prelock", "evaluate"), required=True)
-    args = parser.parse_args(); prelock() if args.stage == "prelock" else evaluate()
+    parser.add_argument("--seed0-interim", action="store_true")
+    args = parser.parse_args()
+    selected_seeds = (0,) if args.seed0_interim else SEEDS
+    prelock(selected_seeds, args.seed0_interim) if args.stage == "prelock" else evaluate(selected_seeds, args.seed0_interim)
