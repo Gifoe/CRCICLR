@@ -348,12 +348,169 @@ def erase(h: np.ndarray, spec: dict[str,Any], dims: Sequence[int]) -> np.ndarray
     return (h-q[:,np.asarray(dims)]@base).astype(np.float32)
 
 
-def ridge(hfit: np.ndarray,yfit:np.ndarray,heval:np.ndarray,classes:int)->tuple[np.ndarray,np.ndarray]:
-    mu=hfit.mean(0,dtype=np.float64); sd=hfit.std(0,dtype=np.float64); sd[sd<1e-6]=1
-    X=((hfit-mu)/sd).astype(np.float32); Z=((heval-mu)/sd).astype(np.float32); Y=np.eye(classes,dtype=np.float64)[yfit]; ym=Y.mean(0); Yc=Y-ym
-    if X.shape[1] <= X.shape[0]: W=np.linalg.solve(X.T@X+RIDGE_ALPHA*np.eye(X.shape[1]),X.T@Yc); scores=Z@W+ym
+def _erasure_base(spec: dict[str, Any]) -> np.ndarray:
+    """Return raw-representation erasure rows for every active direction."""
+    return ((spec["directions"].T * spec["scale"][None, :]) @ spec["basis"].T).astype(np.float32)
+
+
+class FixedStandardizerKernelRidge:
+    """Exact low-rank intervention path for the locked ridge protocol.
+
+    The mean and standard deviation are fitted once on the intact training
+    representation.  If A contains standardized erasure rows and Q contains
+    canonical coordinates, an intervention has X' = X - Q A.  Consequently
+
+      X'X'^T = K - UQ^T - QU^T + QGQ^T,
+
+    where U=XA^T and G=AA^T.  The change to K is rank at most 2*len(dims), so
+    Woodbury reuses the intact kernel solve.  No intervention constructs an
+    N-by-D erased representation or another D-dimensional Gram product.
+    """
+
+    def __init__(self, hfit: np.ndarray, yfit: np.ndarray, heval: np.ndarray,
+                 classes: int, spec: dict[str, Any], *,
+                 qfit: np.ndarray | None = None, qeval: np.ndarray | None = None,
+                 raw_base: np.ndarray | None = None) -> None:
+        self.classes = int(classes)
+        self.rank = int(spec["rank"])
+        self.mu = hfit.mean(0, dtype=np.float64)
+        self.sd = hfit.std(0, dtype=np.float64)
+        self.sd[self.sd < 1e-6] = 1.0
+
+        # Retain float32 feature products, as in the original runner, then use
+        # float64 for solves and low-rank updates.
+        X = ((hfit - self.mu) / self.sd).astype(np.float32)
+        Z = ((heval - self.mu) / self.sd).astype(np.float32)
+        base = _erasure_base(spec) if raw_base is None else raw_base
+        A = (base / self.sd[None, :]).astype(np.float32)
+        Q = canonical(hfit, spec) if qfit is None else qfit
+        R = canonical(heval, spec) if qeval is None else qeval
+        Q = np.asarray(Q, dtype=np.float32)
+        R = np.asarray(R, dtype=np.float32)
+        Y = np.eye(self.classes, dtype=np.float64)[yfit]
+        self.ym = Y.mean(0)
+        Yc = Y - self.ym
+
+        # Compact backbones are faster in the direct primal system.  The
+        # catastrophic case is D >> N (e.g. ModernTCN D=230,144), where the
+        # dual low-rank path below is required.
+        self.mode = "primal" if X.shape[1] <= X.shape[0] else "dual_woodbury"
+        if self.mode == "primal":
+            self.X = X
+            self.Z = Z
+            self.A = A
+            self.Q = Q
+            self.R = R
+            self.Yc = Yc
+            return
+
+        K = (X @ X.T).astype(np.float64)
+        self.L = (Z @ X.T).astype(np.float64)
+        self.U = (X @ A.T).astype(np.float64)
+        self.V = (Z @ A.T).astype(np.float64)
+        self.G = (A @ A.T).astype(np.float64)
+        self.Q = Q.astype(np.float64)
+        self.R = R.astype(np.float64)
+
+        H = K + RIDGE_ALPHA * np.eye(len(K), dtype=np.float64)
+        # All active directions are solved together.  Each intervention then
+        # selects at most 2*rank columns and solves only its small Woodbury core.
+        Fall = np.concatenate([self.U, self.Q], axis=1)
+        solved = np.linalg.solve(H, np.concatenate([Yc, Fall], axis=1))
+        self.c0 = solved[:, :self.classes]
+        self.HF = solved[:, self.classes:]
+        self.F = Fall
+        self.Fc0 = Fall.T @ self.c0
+        self.FHF = Fall.T @ self.HF
+        self.Lc0 = self.L @ self.c0
+        self.LHF = self.L @ self.HF
+        self.K = K
+        self.Yc = Yc
+
+    def scores(self, dims: Sequence[int]) -> np.ndarray:
+        dims = np.asarray(dims, dtype=np.int64)
+        if dims.ndim != 1 or np.any(dims < 0) or np.any(dims >= self.rank):
+            raise ValueError(f"invalid erasure dimensions: {dims}")
+        if self.mode == "primal":
+            if len(dims):
+                X = self.X - self.Q[:, dims] @ self.A[dims]
+                Z = self.Z - self.R[:, dims] @ self.A[dims]
+            else:
+                X, Z = self.X, self.Z
+            W = np.linalg.solve(
+                X.T @ X + RIDGE_ALPHA * np.eye(X.shape[1]), X.T @ self.Yc
+            )
+            return Z @ W + self.ym
+        if len(dims) == 0:
+            return self.Lc0 + self.ym
+        d = len(dims)
+        take = np.concatenate([dims, self.rank + dims])
+        G = self.G[np.ix_(dims, dims)]
+        # C^-1 for C=[[0,-I],[-I,G]].
+        Cinv = np.block([[-G, -np.eye(d)], [-np.eye(d), np.zeros((d, d))]])
+        M = Cinv + self.FHF[np.ix_(take, take)]
+        rhs = self.Fc0[take]
+        use_fallback = not np.all(np.isfinite(M))
+        if not use_fallback:
+            try:
+                # Cancellation in Woodbury can make the small core ill
+                # conditioned even though the alpha-regularized updated kernel
+                # is positive definite.  The fallback still avoids all D work.
+                use_fallback = np.linalg.cond(M) > 1e12
+                if not use_fallback:
+                    w = np.linalg.solve(M, rhs)
+            except np.linalg.LinAlgError:
+                use_fallback = True
+        if use_fallback:
+            Q = self.Q[:, dims]
+            U = self.U[:, dims]
+            Qe = self.R[:, dims]
+            V = self.V[:, dims]
+            Kprime = self.K - U @ Q.T - Q @ U.T + Q @ G @ Q.T
+            Lprime = self.L - V @ Q.T - Qe @ U.T + Qe @ G @ Q.T
+            coef = np.linalg.solve(
+                Kprime + RIDGE_ALPHA * np.eye(len(Kprime), dtype=np.float64),
+                self.Yc,
+            )
+            return Lprime @ coef + self.ym
+
+        Lcoef = self.Lc0 - self.LHF[:, take] @ w
+        fcoef = rhs - self.FHF[np.ix_(take, take)] @ w
+        ucoef, qcoef = fcoef[:d], fcoef[d:]
+        Qe = self.R[:, dims]
+        scores = Lcoef - self.V[:, dims] @ qcoef - Qe @ ucoef + Qe @ G @ qcoef
+        return scores + self.ym
+
+    def predict(self, dims: Sequence[int]) -> tuple[np.ndarray, np.ndarray]:
+        scores = self.scores(dims)
+        return scores.argmax(1), scores
+
+
+def ridge_fixed_direct(hfit: np.ndarray, yfit: np.ndarray, heval: np.ndarray,
+                       classes: int, spec: dict[str, Any], dims: Sequence[int],
+                       standardizer: tuple[np.ndarray, np.ndarray] | None = None
+                       ) -> tuple[np.ndarray, np.ndarray]:
+    """Slow locked-protocol reference used by equivalence tests only."""
+    if standardizer is None:
+        mu = hfit.mean(0, dtype=np.float64)
+        sd = hfit.std(0, dtype=np.float64)
+        sd[sd < 1e-6] = 1.0
     else:
-        K=(X@X.T).astype(np.float64); coef=np.linalg.solve(K+RIDGE_ALPHA*np.eye(len(K)),Yc); scores=(Z@X.T)@coef+ym
+        mu, sd = standardizer
+    hf = erase(hfit, spec, dims)
+    he = erase(heval, spec, dims)
+    X = ((hf - mu) / sd).astype(np.float32)
+    Z = ((he - mu) / sd).astype(np.float32)
+    Y = np.eye(classes, dtype=np.float64)[yfit]
+    ym = Y.mean(0)
+    Yc = Y - ym
+    if X.shape[1] <= X.shape[0]:
+        W = np.linalg.solve(X.T @ X + RIDGE_ALPHA * np.eye(X.shape[1]), X.T @ Yc)
+        scores = Z @ W + ym
+    else:
+        K = (X @ X.T).astype(np.float64)
+        coef = np.linalg.solve(K + RIDGE_ALPHA * np.eye(len(K)), Yc)
+        scores = (Z @ X.T) @ coef + ym
     return scores.argmax(1), scores
 
 
@@ -368,22 +525,28 @@ def bootstrap(values: Sequence[float], *seed_parts: object) -> tuple[float,float
 
 def select_protected(h:np.ndarray,y:np.ndarray,sub:np.ndarray,sess:np.ndarray,spec:dict[str,Any],model:str,task:str,fold:int)->tuple[list[int],list[dict[str,Any]]]:
     subjects=natural_subjects(sub); rows=[]; selected=[]; all_dims=np.arange(spec["rank"])
-    for bi,block in enumerate(spec["blocks"]):
-        abs_by:dict[str,list[float]]={}; excess_by:dict[str,list[float]]={}
-        for split in range(UTILITY_SPLITS):
-            vals=np.asarray(subjects,dtype=object); vals=vals[np.random.default_rng(stable_seed("half",model,task,fold,split)).permutation(len(vals))]; n=max(1,min(len(vals)-1,len(vals)//2)); fit=set(vals[:n]); eva=set(vals[n:])
-            fi=np.flatnonzero(np.isin(sub,list(fit))); ei=np.flatnonzero(np.isin(sub,list(eva)))
-            _p0,s0=ridge(h[fi],y[fi],h[ei],spec.get("classes",int(y.max()+1))); base=ce(y[ei],s0)
-            hpfi=erase(h[fi],spec,block);hpei=erase(h[ei],spec,block);_,sp=ridge(hpfi,y[fi],hpei,spec.get("classes",int(y.max()+1))); harm=ce(y[ei],sp)-base
+    stats=[{"abs":{},"excess":{}} for _ in spec["blocks"]]
+    qall=canonical(h,spec).astype(np.float32,copy=False);raw_base=_erasure_base(spec)
+    # A split has one intact-train standardizer.  Reuse its kernel engine for
+    # every protected block and all 100 matched random erasures.
+    for split in range(UTILITY_SPLITS):
+        vals=np.asarray(subjects,dtype=object); vals=vals[np.random.default_rng(stable_seed("half",model,task,fold,split)).permutation(len(vals))]; n=max(1,min(len(vals)-1,len(vals)//2)); fit=set(vals[:n]); eva=set(vals[n:])
+        fi=np.flatnonzero(np.isin(sub,list(fit))); ei=np.flatnonzero(np.isin(sub,list(eva)))
+        engine=FixedStandardizerKernelRidge(h[fi],y[fi],h[ei],spec.get("classes",int(y.max()+1)),spec,qfit=qall[fi],qeval=qall[ei],raw_base=raw_base)
+        _p0,s0=engine.predict(())
+        for bi,block in enumerate(spec["blocks"]):
+            _,sp=engine.predict(block)
             candidates=np.setdiff1d(all_dims,np.asarray(block)); random_scores=[]
             for draw in range(RANDOM_ERASURES):
                 pool=candidates if len(candidates)>=len(block) else all_dims; rd=np.random.default_rng(stable_seed("utility-random",model,task,fold,split,bi,draw)).choice(pool,len(block),replace=False)
-                hrfi=erase(h[fi],spec,rd);hrei=erase(h[ei],spec,rd);_,sr=ridge(hrfi,y[fi],hrei,spec.get("classes",int(y.max()+1))); random_scores.append(sr)
+                _,sr=engine.predict(rd);random_scores.append(sr)
             for s in natural_subjects(sub[ei]):
                 local=np.flatnonzero(sub[ei].astype(str)==s); bce=ce(y[ei][local],s0[local]); ah=ce(y[ei][local],sp[local])-bce
                 rhs=[ce(y[ei][local],sr[local])-bce for sr in random_scores]
-                abs_by.setdefault(s,[]).append(ah);excess_by.setdefault(s,[]).append(ah-float(np.mean(rhs)))
-        av=[float(np.mean(v)) for v in abs_by.values()];ev=[float(np.mean(v)) for v in excess_by.values()]
+                stats[bi]["abs"].setdefault(s,[]).append(ah);stats[bi]["excess"].setdefault(s,[]).append(ah-float(np.mean(rhs)))
+        del engine;gc.collect()
+    for bi,block in enumerate(spec["blocks"]):
+        av=[float(np.mean(v)) for v in stats[bi]["abs"].values()];ev=[float(np.mean(v)) for v in stats[bi]["excess"].values()]
         am,alo,ahi,_=bootstrap(av,"assign-abs",model,task,fold,bi);em,elo,ehi,_=bootstrap(ev,"assign-excess",model,task,fold,bi)
         supported=bool(spec["support"][bi]["persistence_supported"]); protected=bool(supported and alo>0 and elo>0)
         rows.append({"Model":model,"Task":task,"fold":fold,"block":bi,"dimensions":len(block),"persistence_supported":supported,"absolute_CE_harm":am,"absolute_CI_low":alo,"absolute_CI_high":ahi,"excess_CE_harm":em,"excess_CI_low":elo,"excess_CI_high":ehi,"protected":protected})
@@ -402,11 +565,11 @@ def evaluate(model:str,task:str,fold:int,device:torch.device)->dict[str,Any]:
     if h.shape[1] != int(head.in_features): raise RuntimeError("representation/head mismatch")
     spec=spectrum(h,y,sub,sess,task,model,fold);spec["classes"]=data["classes"]
     protected,assignment=select_protected(h,y,sub,sess,spec,model,task,fold)
-    fit=np.flatnonzero(sess==data["source_session"]); p0,s0=ridge(h[fit],y[fit],he,data["classes"]); hp=erase(h[fit],spec,protected);hep=erase(he,spec,protected);pp,sp=ridge(hp,y[fit],hep,data["classes"])
+    fit=np.flatnonzero(sess==data["source_session"]); qfit=canonical(h[fit],spec); qe=canonical(he,spec); engine=FixedStandardizerKernelRidge(h[fit],y[fit],he,data["classes"],spec,qfit=qfit,qeval=qe,raw_base=_erasure_base(spec)); p0,s0=engine.predict(()); pp,sp=engine.predict(protected)
     all_dims=np.arange(spec["rank"]); random_predictions=[]
     for draw in range(RANDOM_ERASURES):
         rd=[] if not protected else np.random.default_rng(stable_seed("final-random",model,task,fold,draw)).choice(all_dims,len(protected),replace=False).tolist()
-        pr,_=ridge(erase(h[fit],spec,rd),y[fit],erase(he,spec,rd),data["classes"]);random_predictions.append(pr)
+        pr,_=engine.predict(rd);random_predictions.append(pr)
     subjects=[]
     for s in natural_subjects(se):
         m=se.astype(str)==s; b0=float(balanced_accuracy_score(ye[m],p0[m]));bp=float(balanced_accuracy_score(ye[m],pp[m]));br=float(np.mean([balanced_accuracy_score(ye[m],p[m]) for p in random_predictions]));subjects.append({"subject_id":s,"intact_BA":b0,"protected_BA":bp,"random_BA":br,"protected_harm_pp":100*(b0-bp),"random_harm_pp":100*(b0-br),"PEEH_pp":100*(br-bp)})
