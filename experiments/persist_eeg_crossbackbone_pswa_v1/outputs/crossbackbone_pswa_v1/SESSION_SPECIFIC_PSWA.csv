@@ -1,55 +1,46 @@
-Model,Task,session,Protected BA,Random BA,Advantage pp,Status,Reason
-EEGNet,OpenBMI_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,OpenBMI_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,OpenBMI_ERP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,OpenBMI_ERP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,OpenBMI_SSVEP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,OpenBMI_SSVEP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,WBCIC_MI,S0,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,WBCIC_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-EEGNet,WBCIC_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,OpenBMI_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,OpenBMI_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,OpenBMI_ERP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,OpenBMI_ERP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,OpenBMI_SSVEP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,OpenBMI_SSVEP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,WBCIC_MI,S0,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,WBCIC_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-CBraMod,WBCIC_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,OpenBMI_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,OpenBMI_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,OpenBMI_ERP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,OpenBMI_ERP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,OpenBMI_SSVEP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,OpenBMI_SSVEP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,WBCIC_MI,S0,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,WBCIC_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-TeCh,WBCIC_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,OpenBMI_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,OpenBMI_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,OpenBMI_ERP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,OpenBMI_ERP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,OpenBMI_SSVEP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,OpenBMI_SSVEP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,WBCIC_MI,S0,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,WBCIC_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-ModernTCN,WBCIC_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,OpenBMI_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,OpenBMI_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,OpenBMI_ERP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,OpenBMI_ERP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,OpenBMI_SSVEP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,OpenBMI_SSVEP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,WBCIC_MI,S0,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,WBCIC_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-Medformer,WBCIC_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,OpenBMI_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,OpenBMI_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,OpenBMI_ERP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,OpenBMI_ERP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,OpenBMI_SSVEP,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,OpenBMI_SSVEP,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,WBCIC_MI,S0,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,WBCIC_MI,S1,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
-SGN,WBCIC_MI,S2,,,,INCOMPLETE,frozen retained-coordinate predictions unavailable
+Model,Task,session,Advantage pp,Median pp,CI low,CI high,Status
+EEGNet,OpenBMI_MI,S1,6.530357142857143,6.739062499999999,4.913392857142858,8.0852734375,COMPLETE
+EEGNet,OpenBMI_MI,S2,7.364732142857142,8.678125,5.281026785714287,9.528593749999997,COMPLETE
+EEGNet,OpenBMI_ERP,S1,10.30357142857143,10.326562500000003,8.734564732142859,12.042215401785713,COMPLETE
+EEGNet,OpenBMI_ERP,S2,11.085714285714284,10.987499999999997,10.162042410714285,11.969877232142856,COMPLETE
+EEGNet,OpenBMI_SSVEP,S1,15.407142857142857,15.627000000000002,12.888428571428568,17.85090714285714,COMPLETE
+EEGNet,OpenBMI_SSVEP,S2,14.096857142857141,12.983999999999998,12.383124999999996,15.884857142857134,COMPLETE
+EEGNet,WBCIC_MI,S0,21.985,25.846874999999997,13.708304687499997,29.8459765625,COMPLETE
+EEGNet,WBCIC_MI,S1,23.828750000000003,22.13125,17.7321328125,30.080624999999998,COMPLETE
+EEGNet,WBCIC_MI,S2,23.151249999999997,23.634375,16.272070312500002,29.635937499999994,COMPLETE
+CBraMod,OpenBMI_MI,S1,0.0409226190476197,-0.9244791666666659,-1.3173456101190475,1.6049293154761892,COMPLETE
+CBraMod,OpenBMI_MI,S2,1.321056547619048,1.1171875000000016,0.3541666666666669,2.2239676339285706,COMPLETE
+CBraMod,OpenBMI_ERP,S1,3.322823660714285,2.9882812499999996,2.0942940848214286,4.603808593749999,COMPLETE
+CBraMod,OpenBMI_ERP,S2,3.5025111607142856,3.066406249999999,2.143659319196428,4.870556640624998,COMPLETE
+CBraMod,OpenBMI_SSVEP,S1,7.460714285714286,7.505000000000001,5.850000000000006,9.022857142857138,COMPLETE
+CBraMod,OpenBMI_SSVEP,S2,7.687142857142853,8.434999999999992,5.849267857142849,9.324321428571425,COMPLETE
+CBraMod,WBCIC_MI,S0,,,,,INCOMPLETE
+CBraMod,WBCIC_MI,S1,,,,,INCOMPLETE
+CBraMod,WBCIC_MI,S2,,,,,INCOMPLETE
+TeCh,OpenBMI_MI,S1,8.24955357142857,8.237499999999999,6.104910714285714,10.289531249999996,COMPLETE
+TeCh,OpenBMI_MI,S2,8.901116071428572,8.407812500000002,6.4999665178571435,11.4805859375,COMPLETE
+TeCh,OpenBMI_ERP,S1,7.637499999999998,7.471875,5.777198660714285,9.458258928571427,COMPLETE
+TeCh,OpenBMI_ERP,S2,7.853348214285714,7.846875000000001,6.422321428571429,9.250452008928567,COMPLETE
+TeCh,OpenBMI_SSVEP,S1,9.903714285714287,10.222999999999995,8.795132142857144,11.020289285714282,COMPLETE
+TeCh,OpenBMI_SSVEP,S2,8.828142857142858,8.517000000000005,7.401553571428568,10.289160714285716,COMPLETE
+TeCh,WBCIC_MI,S0,7.925,7.582812499999999,4.841187499999999,10.879718749999999,COMPLETE
+TeCh,WBCIC_MI,S1,8.083749999999998,8.15625,6.267179687499999,9.930632812499999,COMPLETE
+TeCh,WBCIC_MI,S2,7.210312499999998,7.537499999999999,4.291132812499999,9.927296874999989,COMPLETE
+ModernTCN,OpenBMI_MI,S1,,,,,INCOMPLETE
+ModernTCN,OpenBMI_MI,S2,,,,,INCOMPLETE
+ModernTCN,OpenBMI_ERP,S1,,,,,INCOMPLETE
+ModernTCN,OpenBMI_ERP,S2,,,,,INCOMPLETE
+ModernTCN,OpenBMI_SSVEP,S1,,,,,INCOMPLETE
+ModernTCN,OpenBMI_SSVEP,S2,,,,,INCOMPLETE
+ModernTCN,WBCIC_MI,S0,,,,,INCOMPLETE
+ModernTCN,WBCIC_MI,S1,,,,,INCOMPLETE
+ModernTCN,WBCIC_MI,S2,,,,,INCOMPLETE
+Medformer,OpenBMI_MI,S1,,,,,INCOMPLETE
+Medformer,OpenBMI_MI,S2,,,,,INCOMPLETE
+Medformer,OpenBMI_ERP,S1,,,,,INCOMPLETE
+Medformer,OpenBMI_ERP,S2,,,,,INCOMPLETE
+Medformer,OpenBMI_SSVEP,S1,,,,,INCOMPLETE
+Medformer,OpenBMI_SSVEP,S2,,,,,INCOMPLETE
+Medformer,WBCIC_MI,S0,,,,,INCOMPLETE
+Medformer,WBCIC_MI,S1,,,,,INCOMPLETE
+Medformer,WBCIC_MI,S2,,,,,INCOMPLETE

@@ -1,47 +1,28 @@
-# Final cross-backbone PSWA v1 report
+# Cross-backbone PSWA v1
 
-## Outcome
+Scientific status: **PRIORITY3_COMPLETE**.
 
-PSWA is **not estimable** under the frozen-artifact rules. No numeric PSWA value was fabricated.
+No PEEH selection, persistence null, utility split, or PEEH bootstrap was rerun.
 
-The corrected PEEH run persisted checkpoint provenance, Protected ranks/assignments, and subject-level erasure summaries. It did not persist the frozen pre-classifier representation matrices, the canonical spectral transform (mean/basis/scale/directions), or the exact 100 final random-coordinate sets. Retained-subspace probe performance cannot be recovered from erased-subspace BA summaries.
-
-## Primary seed-0 coverage
-
-|Model|Task|Protected rank (mean over recorded folds)|Protected coverage|Status|
-|---|---|---:|---:|---|
-|EEGNet|OpenBMI_MI|4.80|5/5|INCOMPLETE|
-|EEGNet|OpenBMI_ERP|6.40|5/5|INCOMPLETE|
-|EEGNet|OpenBMI_SSVEP|6.40|5/5|INCOMPLETE|
-|EEGNet|WBCIC_MI|2.00|5/5|INCOMPLETE|
-|CBraMod|OpenBMI_MI|2.40|3/5|INCOMPLETE|
-|CBraMod|OpenBMI_ERP|3.40|4/5|INCOMPLETE|
-|CBraMod|OpenBMI_SSVEP|0.60|1/5|INCOMPLETE|
-|CBraMod|WBCIC_MI|3.00|3/5|INCOMPLETE|
-|TeCh|OpenBMI_MI|5.60|5/5|INCOMPLETE|
-|TeCh|OpenBMI_ERP|7.00|5/5|INCOMPLETE|
-|TeCh|OpenBMI_SSVEP|7.20|5/5|INCOMPLETE|
-|TeCh|WBCIC_MI|4.80|5/5|INCOMPLETE|
-|ModernTCN|OpenBMI_MI|0.20|1/5|INCOMPLETE|
-|ModernTCN|OpenBMI_ERP|4.00|5/5|INCOMPLETE|
-|ModernTCN|OpenBMI_SSVEP|4.60|5/5|INCOMPLETE|
-|ModernTCN|WBCIC_MI|1.20|3/5|INCOMPLETE|
-|Medformer|OpenBMI_MI|3.40|5/5|INCOMPLETE|
-|Medformer|OpenBMI_ERP|5.60|5/5|INCOMPLETE|
-|Medformer|OpenBMI_SSVEP|7.20|5/5|INCOMPLETE|
-|Medformer|WBCIC_MI|3.60|5/5|INCOMPLETE|
-|SGN|OpenBMI_MI|NA|0/5|INCOMPLETE|
-|SGN|OpenBMI_ERP|NA|0/5|INCOMPLETE|
-|SGN|OpenBMI_SSVEP|NA|0/5|INCOMPLETE|
-|SGN|WBCIC_MI|NA|0/5|INCOMPLETE|
-
-## Integrity conclusion
-
-- Training performed: NO
-- Inference rerun: NO
-- Protected assignments recomputed: NO
-- Persistence spectrum recomputed: NO
-- Random controls redrawn: NO
-- Numeric PSWA estimates: 0
-
-A future PSWA run requires a separately authorized artifact-recovery amendment that deterministically regenerates and then freezes the exact representations, spectral transforms, and random coordinate sets. That amendment is outside this locked analysis.
+|Model|Task|Coverage|Protected WS-BA|Random WS-BA|PSWA pp [95% CI]|Future S2 advantage pp [95% CI]|Recovery|
+|---|---|---:|---:|---:|---|---|---|
+|EEGNet|OpenBMI_MI|5/5|59.98|53.77|6.210 [4.820, 7.642]|7.365 [5.267, 9.541]|RECOVERY_OK|
+|EEGNet|OpenBMI_ERP|5/5|72.37|61.46|10.908 [9.747, 12.057]|11.086 [10.178, 11.959]|RECOVERY_OK|
+|EEGNet|OpenBMI_SSVEP|5/5|75.37|60.97|14.399 [12.445, 16.296]|14.097 [12.376, 15.836]|RECOVERY_OK|
+|EEGNet|WBCIC_MI|5/5|68.91|48.78|20.122 [12.374, 28.649]|23.151 [16.377, 29.548]|RECOVERY_OK|
+|CBraMod|OpenBMI_MI|3/5|47.02|46.36|0.665 [-0.279, 1.753]|1.321 [0.361, 2.223]|RECOVERY_OK|
+|CBraMod|OpenBMI_ERP|4/5|60.38|56.89|3.487 [2.386, 4.474]|3.503 [2.154, 4.877]|RECOVERY_OK|
+|CBraMod|OpenBMI_SSVEP|1/5|80.93|73.34|7.584 [5.900, 9.255]|7.687 [5.802, 9.319]|RECOVERY_OK|
+|CBraMod|WBCIC_MI|3/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|TeCh|OpenBMI_MI|5/5|64.11|56.11|7.998 [6.060, 9.992]|8.901 [6.503, 11.447]|RECOVERY_OK|
+|TeCh|OpenBMI_ERP|5/5|69.53|61.82|7.712 [5.789, 9.545]|7.853 [6.451, 9.232]|RECOVERY_OK|
+|TeCh|OpenBMI_SSVEP|5/5|68.23|58.36|9.869 [8.588, 11.066]|8.828 [7.449, 10.287]|RECOVERY_OK|
+|TeCh|WBCIC_MI|5/5|63.06|56.59|6.471 [3.755, 9.286]|7.210 [4.288, 9.917]|RECOVERY_OK|
+|ModernTCN|OpenBMI_MI|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|ModernTCN|OpenBMI_ERP|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|ModernTCN|OpenBMI_SSVEP|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|ModernTCN|WBCIC_MI|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|Medformer|OpenBMI_MI|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|Medformer|OpenBMI_ERP|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|Medformer|OpenBMI_SSVEP|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
+|Medformer|WBCIC_MI|0/5|NA|NA|NA|NA|INCOMPLETE_OR_PENDING|
