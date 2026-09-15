@@ -376,6 +376,7 @@ class FixedStandardizerKernelRidge:
         self.mu = hfit.mean(0, dtype=np.float64)
         self.sd = hfit.std(0, dtype=np.float64)
         self.sd[self.sd < 1e-6] = 1.0
+        self._score_cache: dict[tuple[int, ...], np.ndarray] = {}
 
         # Retain float32 feature products, as in the original runner, then use
         # float64 for solves and low-rank updates.
@@ -482,7 +483,11 @@ class FixedStandardizerKernelRidge:
         return scores + self.ym
 
     def predict(self, dims: Sequence[int]) -> tuple[np.ndarray, np.ndarray]:
-        scores = self.scores(dims)
+        key = tuple(sorted(map(int, dims)))
+        scores = self._score_cache.get(key)
+        if scores is None:
+            scores = self.scores(key)
+            self._score_cache[key] = scores
         return scores.argmax(1), scores
 
 
