@@ -585,7 +585,15 @@ def evaluate(model:str,task:str,fold:int,device:torch.device)->dict[str,Any]:
 
 
 def aggregate() -> None:
-    cells=[json.loads((RUNTIME/"cells"/m.lower()/t.lower()/f"fold{f}_seed0.json").read_text()) for m in MODELS for t in TASKS for f in FOLDS]
+    cells=[];missing=[]
+    for m in MODELS:
+        for t in TASKS:
+            for f in FOLDS:
+                path=RUNTIME/"cells"/m.lower()/t.lower()/f"fold{f}_seed0.json"
+                if path.is_file(): cells.append(json.loads(path.read_text(encoding="utf-8")))
+                else: missing.append({"Model":m,"Task":t,"fold":f,"seed":0})
+    expected_invalid=[{"Model":"CBraMod","Task":"WBCIC_MI","fold":4,"seed":0}]
+    unexpected_missing=[x for x in missing if x not in expected_invalid]
     run_rows=[];subject_raw=[]
     for c in cells:
         vals=c["subjects"];run_rows.append({"Model":c["Model"],"Task":c["Task"],"fold":c["fold"],"seed":0,"Representation dim":c["representation_dim"],"trainable_parameters":c["trainable_parameters"],"protected_rank":c["protected_dimensions"],"Intact probe BA":np.mean([x["intact_BA"] for x in vals]),"Protected-erased BA":np.mean([x["protected_BA"] for x in vals]),"Random-erased BA":np.mean([x["random_BA"] for x in vals]),"Protected harm pp":np.mean([x["protected_harm_pp"] for x in vals]),"Random harm pp":np.mean([x["random_harm_pp"] for x in vals]),"PEEH pp":np.mean([x["PEEH_pp"] for x in vals])});subject_raw.extend([{"Model":c["Model"],"Task":c["Task"],"fold":c["fold"],**x} for x in vals])
@@ -598,23 +606,38 @@ def aggregate() -> None:
     primary=[]
     for model in MODELS:
         for task in TASKS:
-            s=[x for x in subject_rows if x["Model"]==model and x["Task"]==task];r=[x for x in run_rows if x["Model"]==model and x["Task"]==task];mean,lo,hi,med=bootstrap([x["PEEH_pp"] for x in s],"final",model,task)
-            primary.append({"Model":model,"Task":task,"Representation dim":r[0]["Representation dim"],"Intact probe BA":np.mean([x["intact_BA"] for x in s]),"Protected-erased BA":np.mean([x["protected_BA"] for x in s]),"Random-erased BA":np.mean([x["random_BA"] for x in s]),"Protected harm pp":np.mean([x["protected_harm_pp"] for x in s]),"Random harm pp":np.mean([x["random_harm_pp"] for x in s]),"PEEH pp":mean,"PEEH CI low":lo,"PEEH CI high":hi,"Median PEEH pp":med,"Protected assignment coverage":f"{sum(x['protected_rank']>0 for x in r)}/5","Significant consequence":"YES" if lo>0 else "NO"})
+            s=[x for x in subject_rows if x["Model"]==model and x["Task"]==task];r=[x for x in run_rows if x["Model"]==model and x["Task"]==task]
+            base={"Model":model,"Task":task,"Representation dim":r[0]["Representation dim"] if r else None,"folds":len(r),"Protected assignment coverage":f"{sum(x['protected_rank']>0 for x in r)}/{len(r)}"}
+            if len(r)==5:
+                mean,lo,hi,med=bootstrap([x["PEEH_pp"] for x in s],"final",model,task)
+                base.update({"Status":"COMPLETE","Intact probe BA":np.mean([x["intact_BA"] for x in s]),"Protected-erased BA":np.mean([x["protected_BA"] for x in s]),"Random-erased BA":np.mean([x["random_BA"] for x in s]),"Protected harm pp":np.mean([x["protected_harm_pp"] for x in s]),"Random harm pp":np.mean([x["random_harm_pp"] for x in s]),"PEEH pp":mean,"PEEH CI low":lo,"PEEH CI high":hi,"Median PEEH pp":med,"Significant consequence":"YES" if lo>0 else "NO"})
+            else:
+                base.update({"Status":"INVALID_INCOMPLETE","Intact probe BA":None,"Protected-erased BA":None,"Random-erased BA":None,"Protected harm pp":None,"Random harm pp":None,"PEEH pp":None,"PEEH CI low":None,"PEEH CI high":None,"Median PEEH pp":None,"Significant consequence":"NOT_ESTIMATED"})
+            primary.append(base)
     summary=[]
     for model in MODELS:
-        z=[x for x in primary if x["Model"]==model];summary.append({"Model":model,"MI significant?":next(x for x in z if x["Task"]=="OpenBMI_MI")["Significant consequence"],"ERP significant?":next(x for x in z if x["Task"]=="OpenBMI_ERP")["Significant consequence"],"SSVEP significant?":next(x for x in z if x["Task"]=="OpenBMI_SSVEP")["Significant consequence"],"WBCIC significant?":next(x for x in z if x["Task"]=="WBCIC_MI")["Significant consequence"],"Significant tasks / 4":sum(x["Significant consequence"]=="YES" for x in z),"Mean Protected assignment coverage":np.mean([int(x["Protected assignment coverage"].split('/')[0])/5 for x in z])})
+        z=[x for x in primary if x["Model"]==model];complete=[x for x in z if x["Status"]=="COMPLETE"]
+        summary.append({"Model":model,"MI significant?":next(x for x in z if x["Task"]=="OpenBMI_MI")["Significant consequence"],"ERP significant?":next(x for x in z if x["Task"]=="OpenBMI_ERP")["Significant consequence"],"SSVEP significant?":next(x for x in z if x["Task"]=="OpenBMI_SSVEP")["Significant consequence"],"WBCIC significant?":next(x for x in z if x["Task"]=="WBCIC_MI")["Significant consequence"],"Significant tasks":sum(x["Significant consequence"]=="YES" for x in complete),"Complete tasks":len(complete),"Mean Protected assignment coverage":np.mean([int(x["Protected assignment coverage"].split('/')[0])/5 for x in complete])})
     write_csv(OUT/"RUN_LEVEL_PEEH.csv",run_rows);write_csv(OUT/"SUBJECT_LEVEL_PEEH.csv",subject_rows);write_csv(OUT/"CROSSBACKBONE_PEEH_SEED0.csv",primary);write_csv(OUT/"CROSSBACKBONE_CONSEQUENCE_SUMMARY.csv",summary)
     reps=[]
     for model in MODELS:
         for task in TASKS:
             r=next(x for x in run_rows if x["Model"]==model and x["Task"]==task);reps.append({"Model":model,"Task":task,"Representation dim":r["Representation dim"],"trainable_parameters":r["trainable_parameters"]})
     write_csv(OUT/"REPRESENTATION_SPEC.csv",reps)
-    lines=["# Frozen cross-backbone PEEH (seed 0)","","TFFormer was excluded by user instruction. SGN is deferred because 6/20 seed0 frozen checkpoints are absent and this analysis is forbidden to train.","","|Model|Task|Params|D|Intact BA|Protected BA|Random BA|PEEH pp|95% CI|Coverage|Significant|","|---|---|---:|---:|---:|---:|---:|---:|---|---:|---|"]
+    write_json(OUT/"MISSING_INVALID_CELLS.json",{"missing":missing,"expected_protocol_invalid":expected_invalid,"unexpected_missing":unexpected_missing,"reason":"CBraMod/WBCIC_MI/fold4 numerical active rank below locked minimum 4"})
+    finite=all(np.isfinite(float(x[k])) for x in primary if x["Status"]=="COMPLETE" for k in ("Intact probe BA","Protected-erased BA","Random-erased BA","PEEH pp","PEEH CI low","PEEH CI high"))
+    valid=(len(cells)==99 and missing==expected_invalid and not unexpected_missing and sum(x["Status"]=="COMPLETE" for x in primary)==19 and finite)
+    write_json(OUT/"VALIDATION.json",{"pass":valid,"expected_cells":100,"analyzed_cells":len(cells),"complete_model_tasks":sum(x["Status"]=="COMPLETE" for x in primary),"protocol_invalid_cells":missing,"unexpected_missing":unexpected_missing,"finite_metrics":finite,"bootstrap_draws":BOOTSTRAP_DRAWS,"training_performed":False,"batchnorm_updated":False,"probe_standardizer":"fit once on intact TRAIN and fixed across interventions"})
+    lines=["# Frozen cross-backbone PEEH (seed 0)","","TFFormer was excluded by user instruction. SGN is deferred because 6/20 seed0 frozen checkpoints are absent and this analysis is forbidden to train.","","Ninety-nine admissible cells completed. CBraMod / WBCIC_MI / fold4 is excluded because its numerical active rank is below the locked minimum of four; the threshold was not weakened.","","|Model|Task|Params|D|Intact BA|Protected BA|Random BA|PEEH pp|95% CI|Coverage|Significant|","|---|---|---:|---:|---:|---:|---:|---:|---|---:|---|"]
     for x in primary:
-        p=next(r["trainable_parameters"] for r in reps if r["Model"]==x["Model"] and r["Task"]==x["Task"]);lines.append(f"|{x['Model']}|{x['Task']}|{p:,}|{x['Representation dim']:,}|{100*x['Intact probe BA']:.2f}|{100*x['Protected-erased BA']:.2f}|{100*x['Random-erased BA']:.2f}|{x['PEEH pp']:.3f}|[{x['PEEH CI low']:.3f}, {x['PEEH CI high']:.3f}]|{x['Protected assignment coverage']}|{x['Significant consequence']}|")
+        p=next(r["trainable_parameters"] for r in reps if r["Model"]==x["Model"] and r["Task"]==x["Task"])
+        if x["Status"]=="COMPLETE": lines.append(f"|{x['Model']}|{x['Task']}|{p:,}|{x['Representation dim']:,}|{100*x['Intact probe BA']:.2f}|{100*x['Protected-erased BA']:.2f}|{100*x['Random-erased BA']:.2f}|{x['PEEH pp']:.3f}|[{x['PEEH CI low']:.3f}, {x['PEEH CI high']:.3f}]|{x['Protected assignment coverage']}|{x['Significant consequence']}|")
+        else: lines.append(f"|{x['Model']}|{x['Task']}|{p:,}|{x['Representation dim']:,}|NA|NA|NA|NA|NA|{x['Protected assignment coverage']}|NOT_ESTIMATED|")
     lines += ["","Interpretation is restricted to persistence-consequence consistency. Absolute PEEH is not a model-quality ranking."]
     (OUT/"FINAL_CROSSBACKBONE_PEEH_REPORT.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
-    print("CROSSBACKBONE_PEEH_100_RUNS_COMPLETE",flush=True)
+    if not valid: raise RuntimeError("PEEH admissible aggregation validation failed")
+    (RUNTIME/"RUN_ADMISSIBLE_COMPLETE.txt").write_text(time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())+"\n",encoding="utf-8")
+    print("CROSSBACKBONE_PEEH_99_ADMISSIBLE_RUNS_COMPLETE",flush=True)
 
 
 def main() -> int:
