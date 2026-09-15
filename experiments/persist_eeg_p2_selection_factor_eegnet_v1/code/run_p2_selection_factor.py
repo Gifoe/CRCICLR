@@ -34,7 +34,10 @@ PROTOCOL = EXP / "protocol"
 RUNTIME = Path(os.environ.get("P2_RUNTIME", r"D:\nips-temp\TotalP\P1\p2_selection_factor_eegnet_runtime"))
 PEEH_RUNTIME = Path(os.environ.get("PEEH_RUNTIME", r"D:\nips-temp\TotalP\P1\crossbackbone_peeh_runtime"))
 PSWA_RUNTIME = Path(os.environ.get("PSWA_RUNTIME", r"D:\nips-temp\TotalP\P1\crossbackbone_pswa_runtime"))
-PSWA_CODE = REPO / "experiments" / "persist_eeg_crossbackbone_pswa_v1" / "code" / "run_pswa_recovery.py"
+PSWA_CODE = Path(os.environ.get(
+    "PSWA_CODE_PATH",
+    str(REPO / "experiments" / "persist_eeg_crossbackbone_pswa_v1" / "code" / "run_pswa_recovery.py"),
+))
 
 TASKS = ("OpenBMI_MI", "OpenBMI_ERP", "OpenBMI_SSVEP", "WBCIC_MI")
 FOLDS = tuple(range(5))

@@ -7,6 +7,7 @@ $env:P2_RUNTIME = $runtime
 $env:PSWA_RUNTIME = 'D:/nips-temp/TotalP/P1/crossbackbone_pswa_runtime'
 $env:PEEH_RUNTIME = 'D:/nips-temp/TotalP/P1/crossbackbone_peeh_runtime'
 $env:PEEH_REPO = 'D:/nips-temp/TotalP/P1/CRCICLR_CROSSBACKBONE_PEEH_WORK'
+$env:PSWA_CODE_PATH = 'D:/nips-temp/TotalP/P1/CRCICLR_CROSSBACKBONE_PEEH_WORK/experiments/persist_eeg_crossbackbone_pswa_v1/code/run_pswa_recovery.py'
 $env:SEVEN_REPO = 'D:/nips-temp/TotalP/P1/CRCICLR_BACKBONE_GEN_WORK'
 $env:SEVEN_RUNTIME = 'D:/nips-temp/TotalP/P1/seven_backbone_fourtask_3seed_runtime'
 $env:FULL_OPENBMI_CACHE = 'D:/nips-temp/TotalP/P1/persist_eeg_stage0_repo_full/outputs/persist_eeg_stage0/cache/openbmi'
