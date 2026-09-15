@@ -1,7 +1,13 @@
 {
   "bootstrap_resamples": 20000,
   "bootstrap_unit": "biological subject",
-  "folds": [0, 1, 2, 3, 4],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
   "model": "TeCh",
   "neural_finetuning": false,
   "neural_training": false,
@@ -11,5 +17,10 @@
   "schema": "P2_SELECTION_FACTOR_TECH_PROTOCOL_V1",
   "seed": 0,
   "selector_freeze_before_heldout_access": true,
-  "tasks": ["OpenBMI_MI", "OpenBMI_ERP", "OpenBMI_SSVEP", "WBCIC_MI"]
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ]
 }

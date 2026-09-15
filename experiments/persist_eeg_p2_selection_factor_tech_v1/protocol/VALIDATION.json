@@ -1,0 +1,26 @@
+{
+  "all_20_cells_accounted": true,
+  "all_nonrandom_selectors_rank_exactly_K": true,
+  "all_random_controls_rank_exactly_K": true,
+  "backbone": "TeCh",
+  "bootstrap_resamples": 20000,
+  "bootstrap_unit": "biological subject",
+  "deviations_from_eegnet_code_path": [
+    "backbone-specific representation I/O and artifact paths only"
+  ],
+  "evaluation_protocol_exactly_matches_eegnet_p2": true,
+  "exact_original_random_controls_reused": true,
+  "folds_per_task": 5,
+  "joint_exactly_matches_corrected_peeh": true,
+  "model_training_count": 0,
+  "neural_finetuning_count": 0,
+  "no_final_heldout_outcome_used_in_selector_construction": true,
+  "pass": true,
+  "persistence_margin_provenance": "reconstructed missing deterministic TRAIN-only statistic; gate asserted equal to stored corrected PEEH",
+  "protocol_correctness_independent_of_outcome": true,
+  "ridge_alpha": 0.01,
+  "same_final_heldout_subjects_sessions_as_original_pswa": true,
+  "seed": 0,
+  "statistical_estimand_deviations": [],
+  "tasks": 4
+}

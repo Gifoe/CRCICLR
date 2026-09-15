@@ -1,0 +1,26 @@
+{
+  "eegnet_protocol_sha256": "6b85659693cf7f4642f181441ee7368f6b7f080d93b3484f4b9f7fe1947514a2",
+  "eegnet_selector_definitions_sha256": "1f1bb0a72f30c8d82da0e2f7b5c9e851ed8dbd637574777204ff13d64dc6a043",
+  "intended_differences": [
+    "backbone=TeCh",
+    "backbone-specific representation I/O",
+    "artifact/output paths",
+    "replication summary"
+  ],
+  "matched_keys": [
+    "tasks",
+    "folds",
+    "seed",
+    "ridge_alpha",
+    "random_draws",
+    "bootstrap_resamples",
+    "bootstrap_unit",
+    "primary_contrast",
+    "selector_freeze_before_heldout_access",
+    "neural_training",
+    "neural_finetuning"
+  ],
+  "pass": true,
+  "selector_definitions_exact_match": true,
+  "statistical_estimand_differences": []
+}
