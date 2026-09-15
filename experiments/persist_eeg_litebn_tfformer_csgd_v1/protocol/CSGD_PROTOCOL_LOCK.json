@@ -1,0 +1,74 @@
+{
+  "BN_updates": false,
+  "aggregation": "average folds and seeds within biological subject, then bootstrap subjects",
+  "analysis": "frozen post-hoc cross-session generalization drop",
+  "bootstrap_draws": 20000,
+  "checkpoint_selection_changed": false,
+  "cohort_status": "previously accessed diagnostic/evaluation cohorts; labels used only for post-hoc metrics",
+  "decoder": "frozen model classifier head; no ridge probe",
+  "finetuning": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "LiteBN",
+    "TFFormer"
+  ],
+  "normalization": "exact original fold-specific train-only channelwise normalizer, unchanged across evaluation sessions",
+  "openbmi_sessions": [
+    1,
+    2
+  ],
+  "openbmi_subjects": [
+    "4",
+    "12",
+    "13",
+    "17",
+    "18",
+    "24",
+    "25",
+    "29",
+    "36",
+    "37",
+    "39",
+    "42",
+    "51",
+    "54"
+  ],
+  "recalibration": false,
+  "script_sha256": "d96d1aee9fdfa864f9837a75a8ca51744b3a8a9913261046e49b514edd2639f5",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "target_adaptation": false,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "training": false,
+  "wbcic_sessions": [
+    0,
+    1,
+    2
+  ],
+  "wbcic_subjects": [
+    "sub-4",
+    "sub-8",
+    "sub-10",
+    "sub-15",
+    "sub-20",
+    "sub-39",
+    "sub-40",
+    "sub-43",
+    "sub-46",
+    "sub-51"
+  ]
+}
