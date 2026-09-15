@@ -18,7 +18,7 @@ New-Item -ItemType Directory -Force -Path $runtime | Out-Null
 function Invoke-CSGD([string[]]$Arguments) {
     & $python -u $runner @Arguments 2>&1 | Tee-Object -FilePath $log -Append
     if ($LASTEXITCODE -ne 0) {
-        throw "CSGD runner failed with exit code $LASTEXITCODE: $($Arguments -join ' ')"
+        throw "CSGD runner failed with exit code ${LASTEXITCODE}: $($Arguments -join ' ')"
     }
 }
 
