@@ -1,5 +1,6 @@
 {
   "active_rank_max": 20,
+  "appendix_l_primary_exact": true,
   "bn_eval_locked": true,
   "checkpoints": [
     {
@@ -963,7 +964,7 @@
       "task": "WBCIC_MI"
     }
   ],
-  "device": "cuda",
+  "device": "cpu",
   "eigengap_max_block_rank": 4,
   "erasure": "canonical coordinates with inverse map; raw hidden coordinates are never directly zeroed",
   "evaluation": {
@@ -988,8 +989,12 @@
       ]
     },
     "WBCIC": {
-      "scope": "true_outer_confirmation_already_accessed",
-      "session": "S3",
+      "consequence_session": "S2 true-outer (already accessed)",
+      "persistence_sessions": [
+        "S0",
+        "S1"
+      ],
+      "scope": "source-session persistence -> future-session consequence",
       "subjects": [
         "sub-4",
         "sub-8",
@@ -1021,18 +1026,23 @@
     "TFFormer"
   ],
   "no_retraining": true,
+  "persistence_null_operator": "class-specific null covariance operators are averaged within each permutation before one projection per observed block",
   "persistence_subject_correspondence_permutations": 200,
   "predictive_consequence_subject_half_splits": 5,
   "protected_rule": "persistence supported AND lower95 absolute CE harm > 0 AND lower95 excess CE harm > 0",
+  "repair_execution": {
+    "cached_embeddings_only": true,
+    "neural_inference_performed": false
+  },
   "representation": "64-d immediately before final classifier",
   "ridge": {
     "alpha": 0.01,
     "final_erasure_dimensions": 64,
-    "protected_selection_dimensions": 24,
+    "protected_selection_dimensions": 64,
     "refit_after_each_erasure": true,
     "standardized": true
   },
-  "schema": "PERSIST_EEG_LITEBN_TFFORMER_PEEH_V1",
+  "schema": "PERSIST_EEG_LITEBN_TFFORMER_PEEH_V1_APPENDIX_L_REPAIRED",
   "seeds": [
     0,
     1,
@@ -1046,5 +1056,6 @@
     "WBCIC_MI"
   ],
   "utility_random_erasure_draws": 100,
-  "whitening": "train-only full 64-d basis"
+  "whitening": "train-only full 64-d basis",
+  "whitening_eigenvalue_floor": "max(1e-4 * lambda_r, 1e-8), where lambda_r is the smallest retained eigenvalue"
 }

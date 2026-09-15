@@ -9,9 +9,9 @@ OpenBMI internal-heldout subjects and the WBCIC true-outer subjects.
 The persistence spectrum, block construction, subject-correspondence null,
 subject-half utility selection, and canonical-coordinate erasure reproduce the
 existing Signed-V3.1 implementation in
-``persist_eeg_geosr_final_v1/code/audit_primitives.py``.  Protected selection
-keeps its historical 24-d probe convention; the requested PEEH A/B/C metrics
-use full 64-d probes and 20,000 subject bootstrap draws.
+``persist_eeg_geosr_final_v1/code/audit_primitives.py``.  Appendix-L Protected
+selection and the PEEH A/B/C metrics use full 64-d probes. Final confidence
+intervals use 20,000 biological-subject bootstrap draws.
 """
 from __future__ import annotations
 
@@ -350,7 +350,9 @@ def build_spectrum(meta: pd.DataFrame, h: np.ndarray, run_key: Sequence[Any]) ->
     active_rank = min(ACTIVE_RANK_MAX, numerical_rank)
     if active_rank < 4:
         raise RuntimeError(f"insufficient active representation rank: {numerical_rank}")
-    active = np.maximum(eigenvalues[:active_rank], max(float(eigenvalues[:active_rank].mean()) * 1e-4, 1e-8))
+    lambda_r = float(eigenvalues[active_rank - 1])
+    eigenvalue_floor = max(1e-4 * lambda_r, 1e-8)
+    active = np.maximum(eigenvalues[:active_rank], eigenvalue_floor)
     active_vectors = eigenvectors[:, :active_rank]
     whitener = active_vectors * np.power(active, -0.5)[None, :]
     dewhitener = np.sqrt(active)[:, None] * active_vectors.T
@@ -389,6 +391,7 @@ def build_spectrum(meta: pd.DataFrame, h: np.ndarray, run_key: Sequence[Any]) ->
     rng = np.random.default_rng(stable_seed("persistence-null", *run_key))
     for _ in range(PERSISTENCE_PERMUTATIONS):
         permutation = rng.permutation(len(subjects))
+        permutation_class_covariances = []
         for label in classes:
             left, right = [], []
             for index, subject in enumerate(subjects):
@@ -400,8 +403,13 @@ def build_spectrum(meta: pd.DataFrame, h: np.ndarray, run_key: Sequence[Any]) ->
                 aa, bb = np.asarray(left), np.asarray(right)
                 aa -= aa.mean(0); bb -= bb.mean(0)
                 covariance_null = (aa.T @ bb + bb.T @ aa) / (2.0 * len(aa))
-                for block_index, block in enumerate(blocks):
-                    null_values[block_index].append(float(np.mean(np.diag(directions[:, block].T @ covariance_null @ directions[:, block]))))
+                permutation_class_covariances.append(covariance_null)
+        # Appendix-L primary null: average class-specific covariance operators
+        # within a permutation, then project the single class-averaged operator.
+        if permutation_class_covariances:
+            covariance_null = np.mean(permutation_class_covariances, axis=0)
+            for block_index, block in enumerate(blocks):
+                null_values[block_index].append(float(np.mean(np.diag(directions[:, block].T @ covariance_null @ directions[:, block]))))
     support = []
     for block_index, block in enumerate(blocks):
         observed = float(np.mean(rho[block]))
@@ -412,6 +420,7 @@ def build_spectrum(meta: pd.DataFrame, h: np.ndarray, run_key: Sequence[Any]) ->
             "rho_G": observed,
             "null_mean": float(null.mean()) if len(null) else None,
             "null_p95": null_p95,
+            "null_class_averaged_operator_samples": int(len(null)),
             "persistence_supported": bool(observed > null_p95),
             "dimensions": len(block),
         })
@@ -426,6 +435,9 @@ def build_spectrum(meta: pd.DataFrame, h: np.ndarray, run_key: Sequence[Any]) ->
             "nominal_embedding_dimension": 64,
             "numerical_rank": numerical_rank,
             "active_rank": active_rank,
+            "lambda_r_smallest_retained": lambda_r,
+            "whitening_eigenvalue_floor": eigenvalue_floor,
+            "whitening_eigenvalue_floor_rule": "max(1e-4 * lambda_r, 1e-8)",
             "whitening_error_max_abs": float(np.max(np.abs(whitened.T @ whitened / max(len(whitened) - 1, 1) - np.eye(active_rank)))),
             "block_metadata": block_metadata,
             "persistence_support": support,
@@ -433,6 +445,7 @@ def build_spectrum(meta: pd.DataFrame, h: np.ndarray, run_key: Sequence[Any]) ->
             "classes": classes,
             "sessions": sessions,
             "null_permutations": PERSISTENCE_PERMUTATIONS,
+            "null_operator_rule": "within each permutation average class-specific covariance operators, then project once per observed block",
         },
     }
 
@@ -495,19 +508,16 @@ def block_utility(h: np.ndarray, meta: pd.DataFrame, spectrum: Mapping[str, Any]
         ])
         fit_y = meta.iloc[fit_indices].label.to_numpy(np.int64)
         eval_y = meta.iloc[eval_indices].label.to_numpy(np.int64)
-        # Preserve the manuscript MI-only Protected-selection convention:
-        # selection uses the first 24 hidden dimensions. The final PEEH A/B/C
-        # probes below are separately fit on all 64 dimensions as requested.
-        intact_pack = ridge_fit(h[fit_indices], fit_y, classes, dimensions=24)
+        intact_pack = ridge_fit(h[fit_indices], fit_y, classes, dimensions=64)
         protected_fit = erase(h[fit_indices], spectrum, block)
         protected_eval = erase(h[eval_indices], spectrum, block)
-        protected_pack = ridge_fit(protected_fit, fit_y, classes, dimensions=24)
+        protected_pack = ridge_fit(protected_fit, fit_y, classes, dimensions=64)
         active = np.arange(len(spectrum["rho"]), dtype=np.int64)
         candidates = np.setdiff1d(active, np.asarray(block, np.int64))
         random_packs = []
         for draw in range(UTILITY_RANDOM_DRAWS):
             ids = np.random.default_rng(stable_seed("utility-null", *run_key, inner, draw)).choice(candidates, size=len(block), replace=False)
-            random_packs.append((ids, ridge_fit(erase(h[fit_indices], spectrum, ids), fit_y, classes, dimensions=24)))
+            random_packs.append((ids, ridge_fit(erase(h[fit_indices], spectrum, ids), fit_y, classes, dimensions=64)))
         eval_frame = meta.iloc[eval_indices].reset_index(drop=True)
         for subject, group in eval_frame.groupby(eval_frame.subject_id.astype(str), sort=True):
             loc = group.index.to_numpy(np.int64)
@@ -602,7 +612,7 @@ def evaluate_erasure(train_h: np.ndarray, train_y: np.ndarray, eval_h: np.ndarra
         h_random = intact_ba[subject] - random_mean
         rows.append({
             "subject_id": subject,
-            "intact_BA": intact_ba[subject],
+            "intact_probe_BA": intact_ba[subject],
             "protected_erased_BA": protected_ba[subject],
             "random_erased_BA": random_mean,
             "protected_harm_pp": 100.0 * h_protected,
@@ -672,7 +682,7 @@ def run_one(embeddings: Mapping[str, Any], task: str, model_name: str, fold: int
         "protected_coordinates": protected,
         "protected_rank": len(protected),
         "active_rank": len(spectrum["rho"]),
-        "intact_BA": float(frame.intact_BA.mean()),
+        "intact_probe_BA": float(frame.intact_probe_BA.mean()),
         "protected_erased_BA": float(frame.protected_erased_BA.mean()),
         "random_erased_BA": float(frame.random_erased_BA.mean()),
         "protected_harm_pp": float(frame.protected_harm_pp.mean()),
@@ -683,6 +693,10 @@ def run_one(embeddings: Mapping[str, Any], task: str, model_name: str, fold: int
         "block_selection": selection_rows,
         "checkpoint_sha256": embeddings["metadata"]["checkpoint_sha256"],
         "normalizer_sha256": embeddings["metadata"]["normalizer_sha256"],
+        "persistence_to_consequence": (
+            "source-session persistence -> future-session consequence"
+            if task == "WBCIC_MI" else "source-session persistence -> internal-heldout consequence"
+        ),
         "no_training": True,
         "bn_state_updates": False,
     }
@@ -690,7 +704,8 @@ def run_one(embeddings: Mapping[str, Any], task: str, model_name: str, fold: int
 
 def protocol_payload(checkpoints: list[dict[str, Any]], device: torch.device) -> dict[str, Any]:
     return {
-        "schema": "PERSIST_EEG_LITEBN_TFFORMER_PEEH_V1",
+        "schema": "PERSIST_EEG_LITEBN_TFFORMER_PEEH_V1_APPENDIX_L_REPAIRED",
+        "appendix_l_primary_exact": True,
         "models": list(MODELS),
         "tasks": list(TASKS),
         "folds": list(FOLDS),
@@ -699,18 +714,25 @@ def protocol_payload(checkpoints: list[dict[str, Any]], device: torch.device) ->
         "selection_scope": "inner_train biological subjects only",
         "evaluation": {
             "OpenBMI": {"scope": "internal_heldout_diagnostic", "subjects": list(OPENBMI_EVAL), "session": "S2"},
-            "WBCIC": {"scope": "true_outer_confirmation_already_accessed", "subjects": list(WBCIC_EVAL), "session": "S3"},
+            "WBCIC": {
+                "scope": "source-session persistence -> future-session consequence",
+                "persistence_sessions": ["S0", "S1"],
+                "consequence_session": "S2 true-outer (already accessed)",
+                "subjects": list(WBCIC_EVAL),
+            },
         },
         "method_source": str(REFERENCE),
         "method_source_sha256": sha256_file(REFERENCE),
         "whitening": "train-only full 64-d basis",
+        "whitening_eigenvalue_floor": "max(1e-4 * lambda_r, 1e-8), where lambda_r is the smallest retained eigenvalue",
         "active_rank_max": ACTIVE_RANK_MAX,
         "eigengap_max_block_rank": MAX_BLOCK_RANK,
         "persistence_subject_correspondence_permutations": PERSISTENCE_PERMUTATIONS,
+        "persistence_null_operator": "class-specific null covariance operators are averaged within each permutation before one projection per observed block",
         "predictive_consequence_subject_half_splits": INNER_HALF_SPLITS,
         "utility_random_erasure_draws": UTILITY_RANDOM_DRAWS,
         "protected_rule": "persistence supported AND lower95 absolute CE harm > 0 AND lower95 excess CE harm > 0",
-        "ridge": {"protected_selection_dimensions": 24, "final_erasure_dimensions": 64, "standardized": True, "alpha": RIDGE_ALPHA, "refit_after_each_erasure": True},
+        "ridge": {"protected_selection_dimensions": 64, "final_erasure_dimensions": 64, "standardized": True, "alpha": RIDGE_ALPHA, "refit_after_each_erasure": True},
         "final_random_erasure_draws": ERASURE_RANDOM_DRAWS,
         "final_subject_bootstrap_draws": FINAL_BOOTSTRAP_DRAWS,
         "erasure": "canonical coordinates with inverse map; raw hidden coordinates are never directly zeroed",
@@ -726,7 +748,7 @@ def finalize(results: list[dict[str, Any]]) -> None:
     subject_rows = [row for result in results for row in result["subject_rows"]]
     raw_subject = pd.DataFrame(subject_rows)
     subject = raw_subject.groupby(["task", "model", "subject_id"], as_index=False).agg(
-        intact_BA=("intact_BA", "mean"),
+        intact_probe_BA=("intact_probe_BA", "mean"),
         protected_erased_BA=("protected_erased_BA", "mean"),
         random_erased_BA=("random_erased_BA", "mean"),
         protected_harm_pp=("protected_harm_pp", "mean"),
@@ -745,9 +767,12 @@ def finalize(results: list[dict[str, Any]]) -> None:
         summaries.append({
             "task": task,
             "model": model_name,
-            "evaluation_scope": "true_outer_confirmation" if task == "WBCIC_MI" else "internal_heldout_diagnostic",
+            "evaluation_scope": (
+                "source-session persistence -> future-session consequence"
+                if task == "WBCIC_MI" else "source-session persistence -> internal-heldout consequence"
+            ),
             "n_biological_subjects": int(len(group)),
-            "intact_BA": float(group.intact_BA.mean()),
+            "intact_probe_BA": float(group.intact_probe_BA.mean()),
             "protected_erased_BA": float(group.protected_erased_BA.mean()),
             "random_erased_BA": float(group.random_erased_BA.mean()),
             "protected_harm_pp": float(group.protected_harm_pp.mean()),
@@ -760,6 +785,9 @@ def finalize(results: list[dict[str, Any]]) -> None:
             "protected_rank_median": float(run_group.protected_rank.median()),
             "protected_rank_min": int(run_group.protected_rank.min()),
             "protected_rank_max": int(run_group.protected_rank.max()),
+            "protected_assignment_nonempty_runs": int((run_group.protected_rank > 0).sum()),
+            "protected_assignment_total_runs": 15,
+            "protected_assignment_coverage": float((run_group.protected_rank > 0).mean()),
             "bootstrap_draws": FINAL_BOOTSTRAP_DRAWS,
         })
     summary = pd.DataFrame(summaries)
@@ -776,20 +804,22 @@ def finalize(results: list[dict[str, Any]]) -> None:
     write_csv(OUT / "PROTECTED_BLOCK_SELECTION.csv", selection_rows)
 
     lines = [
-        "# LiteBN / TFFormer PEEH v1",
+        "# LiteBN / TFFormer PEEH v1 - Appendix-L repaired primary diagnostic",
         "",
         "No neural model was retrained. Protected selection and all ridge probes use inner-train biological subjects only.",
-        "OpenBMI rows use the 14-subject internal-heldout diagnostic cohort; WBCIC uses the 10-subject true-outer cohort.",
+        "OpenBMI rows use the 14-subject internal-heldout diagnostic cohort.",
+        "WBCIC is explicitly source-session persistence -> future-session consequence: persistence uses S0<->S1 and consequence uses true-outer S2.",
         "",
-        "| Task | Model | Intact BA | Protected-erased BA | Random-erased BA | Protected harm | Random harm | PEEH [95% CI] | Protected rank |",
-        "|---|---|---:|---:|---:|---:|---:|---:|---:|",
+        "| Task | Model | Intact probe BA | Protected-erased BA | Random-erased BA | Protected harm | Random harm | PEEH [95% CI] | Protected rank | Protected coverage |",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for _, row in summary.iterrows():
         rank = f"{row.protected_rank_mean:.2f} [{int(row.protected_rank_min)}-{int(row.protected_rank_max)}]"
         lines.append(
-            f"| {row.task} | {row.model} | {100*row.intact_BA:.3f}% | {100*row.protected_erased_BA:.3f}% | "
+            f"| {row.task} | {row.model} | {100*row.intact_probe_BA:.3f}% | {100*row.protected_erased_BA:.3f}% | "
             f"{100*row.random_erased_BA:.3f}% | {row.protected_harm_pp:.3f} pp | {row.random_harm_pp:.3f} pp | "
-            f"{row.PEEH_pp:.3f} [{row.PEEH_CI95_L_pp:.3f}, {row.PEEH_CI95_U_pp:.3f}] pp | {rank} |"
+            f"{row.PEEH_pp:.3f} [{row.PEEH_CI95_L_pp:.3f}, {row.PEEH_CI95_U_pp:.3f}] pp | {rank} | "
+            f"{int(row.protected_assignment_nonempty_runs)}/15 |"
         )
     lines += [
         "",
@@ -803,10 +833,15 @@ def finalize(results: list[dict[str, Any]]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-new-runs", type=int, default=None, help="debug/resume limit; finalization requires all runs")
+    parser.add_argument(
+        "--cached-only",
+        action="store_true",
+        help="require all frozen 64-d embedding caches and forbid neural inference",
+    )
     args = parser.parse_args()
-    if not torch.cuda.is_available():
+    if not args.cached_only and not torch.cuda.is_available():
         raise RuntimeError("CUDA required for frozen representation extraction")
-    device = torch.device("cuda")
+    device = torch.device("cpu" if args.cached_only else "cuda")
     for directory in (OUT, PROTOCOL, RUNTIME, CACHE, RUN_RESULTS):
         directory.mkdir(parents=True, exist_ok=True)
     runtime = load_runtime()
@@ -820,49 +855,89 @@ def main() -> None:
                     if not path.is_file():
                         raise FileNotFoundError(path)
                     checkpoints.append({"task": task, "model": model_name, "fold": fold, "seed": seed, "path": str(path), "sha256": sha256_file(path)})
-    write_json(PROTOCOL / "PROTOCOL_LOCK.json", {**protocol_payload(checkpoints, device), "fivefold_split_sha256": split_sha})
+    write_json(PROTOCOL / "PROTOCOL_LOCK.json", {
+        **protocol_payload(checkpoints, device),
+        "fivefold_split_sha256": split_sha,
+        "repair_execution": {
+            "cached_embeddings_only": bool(args.cached_only),
+            "neural_inference_performed": False if args.cached_only else "only when a cache is absent",
+        },
+    })
     write_csv(OUT / "CHECKPOINT_AUDIT.csv", checkpoints)
 
     completed_new = 0
-    for task in TASKS:
-        dataset = runtime.base.TASKS[task]["dataset"]
-        classes = int(runtime.base.TASKS[task]["classes"])
-        persistence_sessions = (1, 2) if dataset == "OpenBMI" else (0, 1)
-        eval_subjects = OPENBMI_EVAL if dataset == "OpenBMI" else WBCIC_EVAL
-        for fold_record in folds_by_dataset[dataset]:
-            fold = int(fold_record["fold_id"])
-            train_subjects = fold_record["inner_train_subjects"]
-            train_full = runtime.base.build_bundle(task, train_subjects)
-            train_bundle = subset_bundle(runtime, train_full, persistence_sessions)
-            if dataset == "OpenBMI":
-                eval_full = runtime.base.build_bundle(task, eval_subjects)
-                eval_bundle = subset_bundle(runtime, eval_full, (2,))
-            else:
-                eval_bundle = true_outer_bundle(runtime)
-            train_raw = runtime.base.RawGPUCache(train_bundle, device)
-            eval_raw = runtime.base.RawGPUCache(eval_bundle, device)
-            mean, std, _ = runtime.base.load_tensor_pair(normalizer_path(task, fold))
-            for seed in SEEDS:
-                for model_name in MODELS:
-                    result_path = run_result_path(task, model_name, fold, seed)
-                    if result_path.is_file():
-                        continue
-                    embeddings = cache_embeddings(runtime, task, model_name, fold, seed, train_bundle, train_raw, eval_bundle, eval_raw, mean, std, device)
-                    result = run_one(embeddings, task, model_name, fold, seed, classes)
-                    write_json(result_path, result)
-                    completed_new += 1
-                    print(
-                        f"PEEH_RUN_DONE task={task} model={model_name} fold={fold} seed={seed} "
-                        f"rank={result['protected_rank']} PEEH_pp={result['PEEH_pp']:.6f}",
-                        flush=True,
-                    )
-                    if args.max_new_runs is not None and completed_new >= args.max_new_runs:
-                        print("PEEH_DEBUG_LIMIT_REACHED", flush=True)
-                        return
-            del train_raw, eval_raw, train_bundle, eval_bundle, train_full
-            if dataset == "OpenBMI":
-                del eval_full
-            gc.collect(); torch.cuda.empty_cache()
+    if args.cached_only:
+        for task in TASKS:
+            classes = int(runtime.base.TASKS[task]["classes"])
+            for fold in FOLDS:
+                expected_normalizer_sha = sha256_file(normalizer_path(task, fold))
+                for seed in SEEDS:
+                    for model_name in MODELS:
+                        result_path = run_result_path(task, model_name, fold, seed)
+                        if result_path.is_file():
+                            continue
+                        checkpoint = checkpoint_path(model_name, task, fold, seed)
+                        checkpoint_sha = sha256_file(checkpoint)
+                        embeddings = load_embeddings(embedding_cache_path(task, model_name, fold, seed), checkpoint_sha)
+                        if embeddings is None:
+                            raise RuntimeError(f"cached-only mode forbids inference; missing embedding cache for {task}/{model_name}/fold{fold}/seed{seed}")
+                        metadata = embeddings["metadata"]
+                        expected = {"task": task, "model": model_name, "fold": fold, "seed": seed}
+                        if any(metadata.get(key) != value for key, value in expected.items()):
+                            raise RuntimeError(f"embedding cache provenance mismatch for {task}/{model_name}/fold{fold}/seed{seed}")
+                        if metadata.get("normalizer_sha256") != expected_normalizer_sha:
+                            raise RuntimeError(f"embedding cache normalizer mismatch for {task}/fold{fold}")
+                        result = run_one(embeddings, task, model_name, fold, seed, classes)
+                        write_json(result_path, result)
+                        completed_new += 1
+                        print(
+                            f"PEEH_CACHE_ONLY_RUN_DONE task={task} model={model_name} fold={fold} seed={seed} "
+                            f"rank={result['protected_rank']} PEEH_pp={result['PEEH_pp']:.6f}",
+                            flush=True,
+                        )
+                        if args.max_new_runs is not None and completed_new >= args.max_new_runs:
+                            print("PEEH_DEBUG_LIMIT_REACHED", flush=True)
+                            return
+    else:
+        for task in TASKS:
+            dataset = runtime.base.TASKS[task]["dataset"]
+            classes = int(runtime.base.TASKS[task]["classes"])
+            persistence_sessions = (1, 2) if dataset == "OpenBMI" else (0, 1)
+            eval_subjects = OPENBMI_EVAL if dataset == "OpenBMI" else WBCIC_EVAL
+            for fold_record in folds_by_dataset[dataset]:
+                fold = int(fold_record["fold_id"])
+                train_subjects = fold_record["inner_train_subjects"]
+                train_full = runtime.base.build_bundle(task, train_subjects)
+                train_bundle = subset_bundle(runtime, train_full, persistence_sessions)
+                if dataset == "OpenBMI":
+                    eval_full = runtime.base.build_bundle(task, eval_subjects)
+                    eval_bundle = subset_bundle(runtime, eval_full, (2,))
+                else:
+                    eval_bundle = true_outer_bundle(runtime)
+                train_raw = runtime.base.RawGPUCache(train_bundle, device)
+                eval_raw = runtime.base.RawGPUCache(eval_bundle, device)
+                mean, std, _ = runtime.base.load_tensor_pair(normalizer_path(task, fold))
+                for seed in SEEDS:
+                    for model_name in MODELS:
+                        result_path = run_result_path(task, model_name, fold, seed)
+                        if result_path.is_file():
+                            continue
+                        embeddings = cache_embeddings(runtime, task, model_name, fold, seed, train_bundle, train_raw, eval_bundle, eval_raw, mean, std, device)
+                        result = run_one(embeddings, task, model_name, fold, seed, classes)
+                        write_json(result_path, result)
+                        completed_new += 1
+                        print(
+                            f"PEEH_RUN_DONE task={task} model={model_name} fold={fold} seed={seed} "
+                            f"rank={result['protected_rank']} PEEH_pp={result['PEEH_pp']:.6f}",
+                            flush=True,
+                        )
+                        if args.max_new_runs is not None and completed_new >= args.max_new_runs:
+                            print("PEEH_DEBUG_LIMIT_REACHED", flush=True)
+                            return
+                del train_raw, eval_raw, train_bundle, eval_bundle, train_full
+                if dataset == "OpenBMI":
+                    del eval_full
+                gc.collect(); torch.cuda.empty_cache()
 
     result_files = [run_result_path(task, model, fold, seed) for task in TASKS for model in MODELS for fold in FOLDS for seed in SEEDS]
     if not all(path.is_file() for path in result_files):
@@ -874,6 +949,9 @@ def main() -> None:
         "run_count": len(results),
         "models_retrained": False,
         "bn_state_updates": False,
+        "neural_inference_performed": False if args.cached_only else "cache-dependent",
+        "cached_embeddings_only": bool(args.cached_only),
+        "appendix_l_primary_exact": True,
         "evaluation_subjects_used_for_selection": False,
         "completed_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     })
