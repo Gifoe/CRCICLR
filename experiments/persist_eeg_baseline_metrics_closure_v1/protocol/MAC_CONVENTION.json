@@ -1,0 +1,15 @@
+{
+  "profiler": "torch.profiler/2.8.0+cu128/CPU/with_flops",
+  "toy_validation": "PASS: linear 24, conv1d 96, conv2d 1152, bmm 24 MACs",
+  "counting_convention": "1 multiply-accumulate pair = 1 MAC; convolution module geometry plus ATen non-convolution matmul FLOPs / 2",
+  "batch_size": 1,
+  "excluded": [
+    "activation",
+    "dropout",
+    "pooling",
+    "normalization",
+    "softmax",
+    "simple elementwise"
+  ],
+  "unsupported_major_ops_policy": "mark blank and UNRELIABLE, never report underestimated MACs"
+}

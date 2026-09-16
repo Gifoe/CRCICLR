@@ -123,6 +123,7 @@ def main() -> None:
     if not (PSWA_RUNTIME / "PSWA_COMPLETED.txt").is_file():
         raise RuntimeError("PSWA extension queue not complete")
     full = rows(OUT / "FINAL_FULLMODEL_METRICS.csv")
+    sessions = rows(OUT / "SESSION_METRIC_SUMMARY.csv")
     coverage = rows(OUT / "FROZEN_SESSION_COVERAGE.csv")
     macs = {(row["model"], row["task"]): row for row in rows(OUT / "MACS_AUDIT.csv")}
     regression = rows(OUT / "TRUE_OUTER_FUTURE_REGRESSION_AUDIT.csv")
@@ -216,6 +217,24 @@ def main() -> None:
               "The originally supplied WBCIC numerical targets belonged to the disjoint V8 internal cohort; "
               "they were retired as final-outer targets by the approved amendment.", "",
               *predictive[5:], "",
+              "## B. ModernTCN frozen-session detail", "",
+              "| Task | Session | BA (%) | Macro-F1 (%) | WS-BA (%) | CSGD (pp) | Params | MACs (M) |",
+              "|---|---|---:|---:|---:|---:|---:|---:|",
+              *[f"| {row['task']} | {row['session']} | {as_percent(row['BA'])} | {as_percent(row['macro_F1'])} | "
+                f"{as_percent(index['ModernTCN', row['task']]['WS_BA'])} | "
+                f"{as_percent(index['ModernTCN', row['task']]['CSGD'])} | "
+                f"{index['ModernTCN', row['task']]['parameters']} | "
+                f"{float(macs['ModernTCN', row['task']]['MACs_M']):.2f} |"
+                for row in sessions if row['model'] == 'ModernTCN'], "",
+              "## C. Medformer frozen-session detail", "",
+              "| Task | Session | BA (%) | Macro-F1 (%) | WS-BA (%) | CSGD (pp) | Params | MACs (M) |",
+              "|---|---|---:|---:|---:|---:|---:|---:|",
+              *[f"| {row['task']} | {row['session']} | {as_percent(row['BA'])} | {as_percent(row['macro_F1'])} | "
+                f"{as_percent(index['Medformer', row['task']]['WS_BA'])} | "
+                f"{as_percent(index['Medformer', row['task']]['CSGD'])} | "
+                f"{index['Medformer', row['task']]['parameters']} | "
+                f"{float(macs['Medformer', row['task']]['MACs_M']):.2f} |"
+                for row in sessions if row['model'] == 'Medformer'], "",
               "## E. Representation-only PSWA extension", "",
               "Published EEGNet/TeCh rows reproduce exactly (8/8). The exact published recovery script, "
               "frozen PEEH assignments, and deterministic original random controls were used. "
@@ -241,6 +260,13 @@ def main() -> None:
                "ModernTCN/Medformer were re-evaluated in a preserved, separate runtime using the original frozen "
                "evaluators' batch size 128. A single Medformer ERP subject/checkpoint prediction differed at CSGD batch 32; "
                "batch 128 reproduces the published OpenBMI target exactly. The batch-32 runtime was retained for audit.", "",
+               "Source commits: seven-backbone true-outer `097c7f5016fb6690800c57452eb1ec9657a2fc7b`; "
+               "ModernTCN `a9c6a6a4ecd363242a5cd7a0608abe3ae7d73b79`; "
+               "Medformer `68ef63a182ee250b0b6865182ed94fcebec6e89d`; "
+               "cross-backbone CSGD `4020f0bb0a24d5ef70bb9ba0e2116b7b0f257ebb`; "
+               "PEEH `bd2cc4346041d16f544963703e02bf93e262fbd3`; "
+               "published PSWA `3fd6aad50c08144c95a58454ca76d58f21aedc25`. "
+               "Per-cell hashes are in the frozen inference and PSWA locks.", "",
                "## H. Manuscript recommendation and remaining gaps", "",
                "Use future BA, macro-F1, WS-BA and Params in the main predictive table. Put session-wise BA/F1, CSGD, "
                "subject bootstrap CIs, paired contrasts and MAC audit in appendix. PSWA is a representation diagnostic, "

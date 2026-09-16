@@ -1,6 +1,8 @@
 {
   "schema": "PERSIST_EEG_BASELINE_METRICS_CLOSURE_SOURCE_AUDIT_V1",
-  "closure_status": "STOPPED_ON_COHORT_AND_COMPLETENESS_GATE",
+  "closure_status": "AMENDED_BASELINE_CLOSURE_COMPLETE_WITH_EXPLICIT_INCOMPLETE_CELLS",
+  "original_gate_status": "STOPPED_ON_COHORT_AND_COMPLETENESS_GATE",
+  "amendment": "TRUE_OUTER_AMENDMENT_20260916.md",
   "sources": [
     {
       "name": "seven_backbone_frozen_checkpoint_runtime",

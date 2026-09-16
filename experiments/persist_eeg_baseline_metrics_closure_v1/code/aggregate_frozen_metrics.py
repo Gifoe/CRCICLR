@@ -262,7 +262,7 @@ def summarize(subject_rows: list[dict], coverage: list[dict], lock: dict) -> Non
                                "WS_BA": ws[0], "WS_BA_ci_low": ws[1], "WS_BA_ci_high": ws[2],
                                "CSGD": csgd[0], "CSGD_ci_low": csgd[1], "CSGD_ci_high": csgd[2],
                                "parameters": next(iter(params)), "MACs": "", "complete_3seed": True,
-                               "notes": "MACs pending unified profiling"})
+                               "notes": ""})
     write_csv(OUT / "SESSION_METRIC_SUMMARY.csv", session_summary)
     write_csv(OUT / "WSBA_SUBJECT_RESULTS.csv", ws_rows)
     write_csv(OUT / "CSGD_SUBJECT_RESULTS.csv", csgd_rows)

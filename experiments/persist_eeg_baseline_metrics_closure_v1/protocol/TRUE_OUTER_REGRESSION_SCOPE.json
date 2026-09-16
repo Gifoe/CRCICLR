@@ -1,0 +1,16 @@
+{
+  "status": "SEED0_INDEPENDENT_PASS",
+  "source_branch": "codex/persist-eeg-crossbackbone-csgd-v1",
+  "source_commit": "4020f0bb0a24d5ef70bb9ba0e2116b7b0f257ebb",
+  "comparison": "fresh frozen inference versus committed per-subject WBCIC true-outer future-session CSGD rows",
+  "models": [
+    "ModernTCN",
+    "Medformer"
+  ],
+  "folds": 5,
+  "seed": 0,
+  "subjects": 10,
+  "rows": 100,
+  "tolerance": 1e-08,
+  "limitation": "No independent published 15-checkpoint true-outer reference exists; this verifies seed0 only."
+}
