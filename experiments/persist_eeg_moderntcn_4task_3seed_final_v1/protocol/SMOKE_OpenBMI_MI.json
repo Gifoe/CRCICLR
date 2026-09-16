@@ -1,0 +1,42 @@
+{
+  "architecture": {
+    "class_dropout": 0.1,
+    "dims": [
+      64,
+      128
+    ],
+    "dropout": 0.3,
+    "ffn_ratio": 4,
+    "head_dropout": 0.0,
+    "large_size": [
+      51,
+      49
+    ],
+    "num_blocks": [
+      1,
+      1
+    ],
+    "patch_size": 32,
+    "patch_stride": 16,
+    "revin": true,
+    "small_size": [
+      5,
+      5
+    ],
+    "source_configuration": "official SelfRegulationSCP2 classification configuration",
+    "use_multi_scale": false
+  },
+  "batch": 128,
+  "logit_shape": [
+    128,
+    2
+  ],
+  "loss": 0.7054914236068726,
+  "model": "ModernTCN",
+  "parameters": 17391170,
+  "peak_cuda_bytes": 7476311552,
+  "task": "OpenBMI_MI",
+  "trainable_parameters": 17391170,
+  "upstream_commit": "56a9a2c018385cd5acef015378cae7f084d1b11c",
+  "upstream_repository": "luodhhh/ModernTCN"
+}

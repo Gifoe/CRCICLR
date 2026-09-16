@@ -1,0 +1,165 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "architecture": {
+        "class_dropout": 0.1,
+        "dims": [
+          64,
+          128
+        ],
+        "dropout": 0.3,
+        "ffn_ratio": 4,
+        "head_dropout": 0.0,
+        "large_size": [
+          51,
+          49
+        ],
+        "num_blocks": [
+          1,
+          1
+        ],
+        "patch_size": 32,
+        "patch_stride": 16,
+        "revin": true,
+        "small_size": [
+          5,
+          5
+        ],
+        "source_configuration": "official SelfRegulationSCP2 classification configuration",
+        "use_multi_scale": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "ModernTCN",
+      "parameters": 17391170,
+      "task": "OpenBMI_MI",
+      "trainable_parameters": 17391170,
+      "upstream_commit": "56a9a2c018385cd5acef015378cae7f084d1b11c",
+      "upstream_repository": "luodhhh/ModernTCN"
+    },
+    {
+      "architecture": {
+        "class_dropout": 0.1,
+        "dims": [
+          64,
+          128
+        ],
+        "dropout": 0.3,
+        "ffn_ratio": 4,
+        "head_dropout": 0.0,
+        "large_size": [
+          51,
+          49
+        ],
+        "num_blocks": [
+          1,
+          1
+        ],
+        "patch_size": 32,
+        "patch_stride": 16,
+        "revin": true,
+        "small_size": [
+          5,
+          5
+        ],
+        "source_configuration": "official SelfRegulationSCP2 classification configuration",
+        "use_multi_scale": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "ModernTCN",
+      "parameters": 17026114,
+      "task": "OpenBMI_ERP",
+      "trainable_parameters": 17026114,
+      "upstream_commit": "56a9a2c018385cd5acef015378cae7f084d1b11c",
+      "upstream_repository": "luodhhh/ModernTCN"
+    },
+    {
+      "architecture": {
+        "class_dropout": 0.1,
+        "dims": [
+          64,
+          128
+        ],
+        "dropout": 0.3,
+        "ffn_ratio": 4,
+        "head_dropout": 0.0,
+        "large_size": [
+          51,
+          49
+        ],
+        "num_blocks": [
+          1,
+          1
+        ],
+        "patch_size": 32,
+        "patch_stride": 16,
+        "revin": true,
+        "small_size": [
+          5,
+          5
+        ],
+        "source_configuration": "official SelfRegulationSCP2 classification configuration",
+        "use_multi_scale": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        4
+      ],
+      "model": "ModernTCN",
+      "parameters": 17883204,
+      "task": "OpenBMI_SSVEP",
+      "trainable_parameters": 17883204,
+      "upstream_commit": "56a9a2c018385cd5acef015378cae7f084d1b11c",
+      "upstream_repository": "luodhhh/ModernTCN"
+    },
+    {
+      "architecture": {
+        "class_dropout": 0.1,
+        "dims": [
+          64,
+          128
+        ],
+        "dropout": 0.3,
+        "ffn_ratio": 4,
+        "head_dropout": 0.0,
+        "large_size": [
+          51,
+          49
+        ],
+        "num_blocks": [
+          1,
+          1
+        ],
+        "patch_size": 32,
+        "patch_stride": 16,
+        "revin": true,
+        "small_size": [
+          5,
+          5
+        ],
+        "source_configuration": "official SelfRegulationSCP2 classification configuration",
+        "use_multi_scale": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "ModernTCN",
+      "parameters": 15914050,
+      "task": "WBCIC_MI",
+      "trainable_parameters": 15914050,
+      "upstream_commit": "56a9a2c018385cd5acef015378cae7f084d1b11c",
+      "upstream_repository": "luodhhh/ModernTCN"
+    }
+  ]
+}
