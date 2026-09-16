@@ -17,6 +17,7 @@ import numpy as np
 EXP = Path(__file__).resolve().parents[1]
 P1 = Path(r"D:\nips-temp\TotalP\P1")
 RUNTIME = P1 / "baseline_metrics_closure_v1_runtime"
+NATIVE_RUNTIME = P1 / "baseline_metrics_closure_v1_native_batch_runtime"
 LOCK = EXP / "protocol" / "FROZEN_INFERENCE_LOCK.json"
 LOCK_SHA = LOCK.with_suffix(".sha256")
 OUT = EXP / "outputs"
@@ -62,7 +63,8 @@ def load_lock() -> dict:
 
 
 def session_path(model: str, task: str, fold: int, seed: int, session_index: int) -> Path:
-    return (RUNTIME / "session_cells" / model.lower() / task.lower()
+    runtime = NATIVE_RUNTIME if model in ("ModernTCN", "Medformer") else RUNTIME
+    return (runtime / "session_cells" / model.lower() / task.lower()
             / f"fold{fold}_seed{seed}_session{session_index}.json")
 
 
@@ -103,6 +105,8 @@ def validated_rows(lock: dict) -> tuple[list[dict], list[dict]]:
                         raise RuntimeError(f"normalizer hash mismatch: {path}")
                     if value["session"] != (f"S{index}"):
                         raise RuntimeError(f"file session mismatch: {path}")
+                    if model in ("ModernTCN", "Medformer") and int(value["batch_size"]) != 128:
+                        raise RuntimeError(f"native frozen evaluator batch mismatch: {path}")
                     data = value["subject_rows"]
                     actual_subjects = {str(row["subject"]) for row in data}
                     if len(data) != len(subjects) or actual_subjects != subjects:
@@ -205,11 +209,14 @@ def summarize(subject_rows: list[dict], coverage: list[dict], lock: dict) -> Non
         for task in TASKS:
             current_coverage = next(row for row in coverage if row["model"] == model and row["task"] == task)
             if not current_coverage["complete_3seed"]:
+                known_params = {int(row["trainable_parameters"]) for row in lock["evaluation_checkpoints"]
+                                if row["Model"] == model and row["Task"] == task}
                 final_rows.append({"model": model, "task": task, "future_BA": "", "future_BA_ci_low": "",
                                    "future_BA_ci_high": "", "future_macro_F1": "", "future_macro_F1_ci_low": "",
                                    "future_macro_F1_ci_high": "", "WS_BA": "", "WS_BA_ci_low": "",
                                    "WS_BA_ci_high": "", "CSGD": "", "CSGD_ci_low": "", "CSGD_ci_high": "",
-                                   "parameters": "", "MACs": "", "complete_3seed": False,
+                                   "parameters": next(iter(known_params)) if len(known_params) == 1 else "",
+                                   "MACs": "", "complete_3seed": False,
                                    "notes": current_coverage["notes"]})
                 continue
             subjects = list(lock["cohorts"]["WBCIC" if task == "WBCIC_MI" else "OpenBMI"]["subjects"])
@@ -260,6 +267,39 @@ def summarize(subject_rows: list[dict], coverage: list[dict], lock: dict) -> Non
     write_csv(OUT / "WSBA_SUBJECT_RESULTS.csv", ws_rows)
     write_csv(OUT / "CSGD_SUBJECT_RESULTS.csv", csgd_rows)
     write_csv(OUT / "FINAL_FULLMODEL_METRICS.csv", final_rows)
+    paired_rows = []
+    session_lookup = {(row["model"], row["task"], row["subject_id"], row["session"]): row
+                      for row in subject_rows}
+    ws_lookup = {(row["model"], row["task"], row["subject_id"]): row["WS_BA_subject"]
+                 for row in ws_rows}
+    complete = {(row["model"], row["task"]) for row in coverage if row["complete_3seed"]}
+    for task in TASKS:
+        future_name = tuple(session_map(task).values())[-1]
+        subjects = list(lock["cohorts"]["WBCIC" if task == "WBCIC_MI" else "OpenBMI"]["subjects"])
+        for baseline in MODELS:
+            if baseline == "LiteBN":
+                continue
+            for metric in ("future_BA", "future_macro_F1", "WS_BA"):
+                if ("LiteBN", task) not in complete or (baseline, task) not in complete:
+                    paired_rows.append({"baseline": baseline, "task": task, "metric": metric,
+                                        "delta_LiteBN_minus_baseline": "", "CI_low": "", "CI_high": "",
+                                        "n_subjects": "", "bootstrap_draws": N_BOOT,
+                                        "status": "NOT_ESTIMABLE_INCOMPLETE_3SEED_CELL"})
+                    continue
+                if metric == "WS_BA":
+                    differences = [ws_lookup["LiteBN", task, subject] - ws_lookup[baseline, task, subject]
+                                   for subject in subjects]
+                else:
+                    key = "BA" if metric == "future_BA" else "macro_F1"
+                    differences = [session_lookup["LiteBN", task, subject, future_name][key]
+                                   - session_lookup[baseline, task, subject, future_name][key]
+                                   for subject in subjects]
+                estimate = bootstrap(differences)
+                paired_rows.append({"baseline": baseline, "task": task, "metric": metric,
+                                    "delta_LiteBN_minus_baseline": estimate[0],
+                                    "CI_low": estimate[1], "CI_high": estimate[2],
+                                    "n_subjects": len(subjects), "bootstrap_draws": N_BOOT, "status": "COMPLETE"})
+    write_csv(OUT / "PAIRED_LITEBN_BASELINE_CI.csv", paired_rows)
     (EXP / "protocol" / "BOOTSTRAP_PROTOCOL.json").write_text(json.dumps({
         "draws": N_BOOT, "seed": BOOT_SEED, "unit": "biological_subject",
         "interval": "percentile_2.5_97.5", "replicate_handling": "average_15_frozen_checkpoints_before_subject_bootstrap",

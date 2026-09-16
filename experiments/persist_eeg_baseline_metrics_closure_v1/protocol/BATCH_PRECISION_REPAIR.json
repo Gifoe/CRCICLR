@@ -1,0 +1,30 @@
+{
+  "schema": "PERSIST_EEG_FROZEN_INFERENCE_BATCH_REPAIR_V1",
+  "source_evaluator_batch_size": {
+    "ModernTCN": 128,
+    "Medformer": 128
+  },
+  "source_evaluator_files": [
+    "CRCICLR_MODERNTCN_FINAL/experiments/persist_eeg_moderntcn_4task_3seed_final_v1/code/evaluate_heldout.py",
+    "CRCICLR_MEDFORMER_FINAL/experiments/persist_eeg_medformer_4task_3seed_final_v1/code/evaluate_heldout.py"
+  ],
+  "diagnostic_cell": {
+    "model": "Medformer",
+    "task": "OpenBMI_ERP",
+    "fold": 4,
+    "seed": 2,
+    "subject_id": "4",
+    "paper_session": "S2",
+    "batch_32_BA_minus_published": -0.0003030303030303605,
+    "batch_32_macro_F1_minus_published": -0.0006193788098209918,
+    "batch_128_mismatched_subject_rows": 0,
+    "total_subject_rows_in_cell": 14
+  },
+  "cause": "The reused CSGD inference helper capped Medformer evaluation batch at 32, whereas the original frozen evaluator used 128. Floating-point batch partition changed one borderline trial decision.",
+  "repair": "Re-evaluate every ModernTCN and Medformer subject-session-checkpoint cell using original evaluator batch 128 in a new runtime; preserve batch-32 files for audit.",
+  "training_changed": false,
+  "checkpoint_changed": false,
+  "normalizer_changed": false,
+  "selection_changed": false,
+  "regression_tolerance_changed": false
+}

@@ -21,7 +21,7 @@ EXP = Path(__file__).resolve().parents[1]
 P1 = Path(r"D:\nips-temp\TotalP\P1")
 SOURCE = (P1 / "CRCICLR_CROSSBACKBONE_CSGD_WORK" / "experiments"
           / "persist_eeg_crossbackbone_csgd_v1" / "code" / "run_crossbackbone_csgd.py")
-RUNTIME = P1 / "baseline_metrics_closure_v1_runtime"
+RUNTIME = Path(os.environ.get("CLOSURE_RUNTIME", str(P1 / "baseline_metrics_closure_v1_runtime")))
 OLD_RUNTIME = P1 / "crossbackbone_csgd_runtime"
 LOCK = EXP / "protocol" / "FROZEN_INFERENCE_LOCK.json"
 LOCK_SHA = LOCK.with_suffix(".sha256")
@@ -52,6 +52,15 @@ def source():
     spec.loader.exec_module(value)
     if Path(value.RUNTIME) != RUNTIME:
         raise RuntimeError("CSGD runtime redirection failed")
+    if os.environ.get("CLOSURE_NATIVE_BATCH") == "1":
+        original_batch = value.inference_batch
+        def native_batch(model_name, recorded):
+            if model_name in ("ModernTCN", "Medformer"):
+                if int(recorded) != 128:
+                    raise RuntimeError(f"original baseline evaluation batch is not 128: {model_name} {recorded}")
+                return 128
+            return original_batch(model_name, recorded)
+        value.inference_batch = native_batch
     return value
 
 
@@ -129,6 +138,8 @@ def complete_subjects(path: Path, expected: set[str]) -> bool:
 
 def reuse(csgd, row: dict, lock: dict) -> int:
     model, task, fold, seed = row["Model"], row["Task"], int(row["fold"]), int(row["seed"])
+    if os.environ.get("CLOSURE_NATIVE_BATCH") == "1" and model in ("ModernTCN", "Medformer"):
+        return 0
     expected = set(lock["cohorts"]["WBCIC" if task == "WBCIC_MI" else "OpenBMI"]["subjects"])
     sessions = (0, 1, 2) if task == "WBCIC_MI" else (1, 2)
     copied = 0
