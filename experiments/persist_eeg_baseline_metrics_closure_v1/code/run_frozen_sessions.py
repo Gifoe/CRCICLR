@@ -43,6 +43,7 @@ def source():
     if not SOURCE.is_file():
         raise FileNotFoundError(SOURCE)
     os.environ["CSGD_RUNTIME"] = str(RUNTIME)
+    os.environ.setdefault("SEVEN_RUNTIME", str(P1 / "seven_backbone_fourtask_3seed_runtime"))
     spec = importlib.util.spec_from_file_location("closure_frozen_csgd", SOURCE)
     if spec is None or spec.loader is None:
         raise ImportError(SOURCE)
