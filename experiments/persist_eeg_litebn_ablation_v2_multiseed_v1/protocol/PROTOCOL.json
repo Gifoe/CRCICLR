@@ -1,0 +1,41 @@
+{
+  "B0_trained": false,
+  "bootstrap_draws": 20000,
+  "bootstrap_unit": "biological subject",
+  "checkpoint_metric": "subject-equal inner-validation BA",
+  "early_stop_patience": 8,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "heldout_used_for_selection": false,
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "minimum_checkpoint_epoch": 10,
+  "official_reference": "OFFICIAL_FINAL_LITEBN_REFERENCE",
+  "official_reference_is_matched": false,
+  "optimizer": "AdamW",
+  "seed0_B1_B4_reused": true,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "variants": [
+    "B1_SAME_SCALE_63",
+    "B2_SCALE_COLLAPSE",
+    "B3_SINGLE_SPATIAL_BASIS",
+    "B4_ONE_STAGE_BACKEND"
+  ],
+  "weight_decay": 0.0005
+}
