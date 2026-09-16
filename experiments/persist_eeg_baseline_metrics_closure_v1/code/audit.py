@@ -23,11 +23,7 @@ CSGD = (
     / "persist_eeg_crossbackbone_csgd_v1" / "outputs"
     / "crossbackbone_csgd_v1" / "SESSION_SUBJECT_RESULTS.csv"
 )
-PSWA_WORK = (
-    P1 / "CRCICLR_CROSSBACKBONE_PEEH_WORK" / "experiments"
-    / "persist_eeg_crossbackbone_pswa_v1" / "outputs"
-    / "crossbackbone_pswa_v1" / "CROSSBACKBONE_PSWA_SEED0.csv"
-)
+PSWA_REFERENCE = PROTOCOL / "PSWA_PUBLISHED_REFERENCE.csv"
 MANIFEST = (
     P1 / "CRCICLR_BACKBONE_GEN_WORK" / "experiments"
     / "persist_eeg_final_heldout_confirmation_v1" / "protocol"
@@ -106,8 +102,8 @@ def main() -> None:
         if row.get("Model") in MODELS and row.get("Task") in TASKS:
             session_index[row["Model"], row["Task"]].append(row)
 
-    pswa = read_csv(PSWA_WORK)
-    pswa_index = {(row.get("Model"), row.get("Task")): row for row in pswa}
+    pswa = read_csv(PSWA_REFERENCE)
+    pswa_index = {(row.get("model"), row.get("task")): row for row in pswa}
     audit_rows: list[dict[str, object]] = []
     checkpoint_detail: list[dict[str, object]] = []
     for model in MODELS:
@@ -184,7 +180,7 @@ def main() -> None:
                 recent_future = len(present) == 15 and keys == future_expected and len(new_rows) == len(future_expected)
             future_available = future_complete or recent_future
             pswa_row = pswa_index.get((model, task), {})
-            pswa_state = pswa_row.get("Status", "NOT_FOUND")
+            pswa_state = pswa_row.get("status", "NOT_FOUND")
             if len(present) != 15:
                 status = "INCOMPLETE_FROZEN_CHECKPOINT_MATRIX"
             elif not future_available:
@@ -206,7 +202,7 @@ def main() -> None:
                 "all_session_metrics_available": all_sessions,
                 "WS_BA_available": all_sessions,
                 "CSGD_available": all_sessions,
-                "PSWA_available": "WORKTREE_UNCOMMITTED_" + pswa_state if pswa_row else "NO_COMMITTED_ESTIMATE",
+                "PSWA_available": "PUBLISHED_" + pswa_state if pswa_row else "NO_COMMITTED_ESTIMATE",
                 "parameters_available": len(parameters) == 1 and next(iter(parameters), 0) > 0,
                 "MACs_available": False,
                 "status": status,

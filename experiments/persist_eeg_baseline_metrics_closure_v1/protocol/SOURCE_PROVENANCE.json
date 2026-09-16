@@ -34,12 +34,13 @@
       "WBCIC_heldout_cohort": "TRUE_OUTER"
     },
     {
-      "name": "crossbackbone_PSWA_committed_artifacts",
+      "name": "crossbackbone_PSWA_published_artifacts",
       "branch": "codex/persist-eeg-crossbackbone-pswa-v1",
-      "source_commit": "bd2cc4346041d16f544963703e02bf93e262fbd3",
+      "published_source_commit": "3fd6aad50c08144c95a58454ca76d58f21aedc25",
+      "server_checkout_commit": "bd2cc4346041d16f544963703e02bf93e262fbd3",
       "experiment": "experiments/persist_eeg_crossbackbone_pswa_v1",
-      "committed_result_status": "NOT_ESTIMATED",
-      "local_worktree_status": "DIRTY_RECOVERY_UNCOMMITTED_NOT_IMPORTED"
+      "published_result_status": "EEGNet and TeCh complete; ModernTCN and Medformer 0/5 incomplete",
+      "local_worktree_status": "DIRTY_RECOVERY_NOT_USED_AS_SOURCE; published GitHub commit is authoritative"
     }
   ]
 }
