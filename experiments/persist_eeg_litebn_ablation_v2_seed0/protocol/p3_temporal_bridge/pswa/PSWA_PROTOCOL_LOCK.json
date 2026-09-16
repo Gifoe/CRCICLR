@@ -1,0 +1,76 @@
+{
+  "OpenBMI": {
+    "cohort": [
+      "4",
+      "12",
+      "13",
+      "17",
+      "18",
+      "24",
+      "25",
+      "29",
+      "36",
+      "37",
+      "39",
+      "42",
+      "51",
+      "54"
+    ],
+    "sessions": [
+      1,
+      2
+    ],
+    "status": "previously accessed internal-heldout diagnostic"
+  },
+  "WBCIC": {
+    "cohort": [
+      "sub-4",
+      "sub-8",
+      "sub-10",
+      "sub-15",
+      "sub-20",
+      "sub-39",
+      "sub-40",
+      "sub-43",
+      "sub-46",
+      "sub-51"
+    ],
+    "sessions": [
+      0,
+      1,
+      2
+    ],
+    "status": "previously accessed true-outer diagnostic"
+  },
+  "adaptation": false,
+  "basis_array_reconstruction": "PEEH omitted matrices; reconstruct deterministically from frozen TRAIN embeddings and validate against stored spectrum audit; no null or selection rerun",
+  "bootstrap_draws": 20000,
+  "finetuning": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "OFFICIAL_FINAL_LITEBN_REFERENCE",
+    "B1_SAME_SCALE_63"
+  ],
+  "persistence_permutations_rerun": false,
+  "protected_selection_rerun": false,
+  "random_draws": 100,
+  "random_redraw": false,
+  "ridge_alpha": 0.01,
+  "schema": "PERSIST_EEG_LITEBN_TFFORMER_PSWA_V1",
+  "seeds": [
+    0
+  ],
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "training": false
+}

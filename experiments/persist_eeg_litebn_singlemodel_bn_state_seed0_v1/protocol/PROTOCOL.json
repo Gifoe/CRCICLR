@@ -1,0 +1,21 @@
+{
+  "adaptation_epochs": 20,
+  "direct_analogue_deviation": "single LiteBN CE only; EEGNet anchor and fusion removed; BN deliberately train-mode to produce nu1",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "heldout_used_for_adaptation_or_selection": false,
+  "lr": 0.0001,
+  "optimizer": "AdamW",
+  "seed": 0,
+  "tasks": [
+    "OpenBMI_MI",
+    "WBCIC_MI"
+  ],
+  "weight_decay": 0.0005
+}

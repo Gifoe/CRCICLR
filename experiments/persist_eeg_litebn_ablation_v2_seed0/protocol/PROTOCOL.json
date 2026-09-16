@@ -1,0 +1,55 @@
+{
+  "OpenBMI_evaluation": "existing V8 internal future-session S2",
+  "WBCIC_evaluation": {
+    "interpretation": "exposed ablation benchmark; not untouched or one-shot",
+    "scope": "already-accessed true-outer future-session S2 ten subjects",
+    "selection_use": false,
+    "subjects": [
+      "sub-4",
+      "sub-8",
+      "sub-10",
+      "sub-15",
+      "sub-20",
+      "sub-39",
+      "sub-40",
+      "sub-43",
+      "sub-46",
+      "sub-51"
+    ],
+    "user_override": true
+  },
+  "checkpoint_metric": "subject-equal inner-validation BA",
+  "early_stop_patience": 8,
+  "epochs_cap": 60,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "independent_model_study": true,
+  "learning_rate": 0.0003,
+  "matched_full_available": false,
+  "minimum_checkpoint_epoch": 10,
+  "model": "LiteBN",
+  "optimizer": "AdamW",
+  "reference": "OFFICIAL_FINAL_LITEBN_REFERENCE",
+  "seed": 0,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "user_override": "Do not train B0_FULL_MATCHED; train B1-B4 only",
+  "variants": [
+    "OFFICIAL_FINAL_LITEBN_REFERENCE",
+    "B1_SAME_SCALE_63",
+    "B2_SCALE_COLLAPSE",
+    "B3_SINGLE_SPATIAL_BASIS",
+    "B4_ONE_STAGE_BACKEND"
+  ],
+  "weight_decay": 0.0005
+}

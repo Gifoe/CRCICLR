@@ -1,0 +1,32 @@
+{
+  "B0_FULL_MATCHED_trained": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "min_checkpoint_epoch": 10,
+  "newly_trained": [
+    "B1_SAME_SCALE_63",
+    "B2_SCALE_COLLAPSE",
+    "B3_SINGLE_SPATIAL_BASIS",
+    "B4_ONE_STAGE_BACKEND"
+  ],
+  "optimizer": "AdamW",
+  "patience": 8,
+  "scheduler": "none",
+  "seed": 0,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "user_override": true,
+  "weight_decay": 0.0005
+}

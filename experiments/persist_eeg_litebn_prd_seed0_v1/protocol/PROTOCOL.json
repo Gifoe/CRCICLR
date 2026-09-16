@@ -1,0 +1,34 @@
+{
+  "architecture": "exact final LiteBN",
+  "checkpoint_metric": "subject-equal inner-validation BA",
+  "conditions": [
+    "CE",
+    "CE_PLUS_PRD"
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "heldout_used_for_training_or_selection": false,
+  "hyperparameter_search": false,
+  "identical_CE_batches": true,
+  "identical_initialization": true,
+  "lambda": 0.25,
+  "lambda_source": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_eegnet_prd_fold0_v1/code/run_fold0.py",
+  "lr": 0.0003,
+  "max_epochs": 60,
+  "min_checkpoint_epoch": 10,
+  "optimizer": "AdamW",
+  "patience": 8,
+  "prd_definition": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_eegnet_prd_fold0_v1/code/prd_loss.py",
+  "seed": 0,
+  "tasks": [
+    "OpenBMI_MI",
+    "WBCIC_MI"
+  ],
+  "weight_decay": 0.0005
+}

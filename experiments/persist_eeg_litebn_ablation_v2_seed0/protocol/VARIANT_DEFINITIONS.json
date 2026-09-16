@@ -1,0 +1,7 @@
+{
+  "B1_SAME_SCALE_63": "three independent k63 branches; downstream identical",
+  "B2_SCALE_COLLAPSE": "average three branch tensors then repeat to 48 channels",
+  "B3_SINGLE_SPATIAL_BASIS": "one grouped spatial basis then linear 1x1 expansion to 16",
+  "B4_ONE_STAGE_BACKEND": "remove only second backend stage",
+  "OFFICIAL_FINAL_LITEBN_REFERENCE": "official frozen LiteBN; non-matched reference only"
+}
