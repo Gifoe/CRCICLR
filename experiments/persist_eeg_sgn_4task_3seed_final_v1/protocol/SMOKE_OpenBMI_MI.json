@@ -1,0 +1,36 @@
+{
+  "MGWM_present": true,
+  "PWSM_present": true,
+  "VGE_present": true,
+  "architecture": {
+    "block_num": 1,
+    "d_model": 64,
+    "depths": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "dropout": 0.1,
+    "e_layers": 5,
+    "mlp_ratio": 2,
+    "num_groups": 4,
+    "num_kernels": 7,
+    "period": 25,
+    "source_configuration": "official PTB-XL standard classification configuration"
+  },
+  "batch": 128,
+  "logit_shape": [
+    128,
+    2
+  ],
+  "loss": 0.6954134702682495,
+  "model": "SGN",
+  "parameters": 686266,
+  "peak_cuda_bytes": 9542694912,
+  "task": "OpenBMI_MI",
+  "trainable_parameters": 681402,
+  "upstream_commit": "c6d1b573dcb8c4255cde59b988f74334ea5da503",
+  "upstream_repository": "colison/SGN"
+}

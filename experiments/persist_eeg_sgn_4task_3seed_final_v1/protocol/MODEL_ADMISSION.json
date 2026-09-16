@@ -1,0 +1,141 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "MGWM_present": true,
+      "PWSM_present": true,
+      "VGE_present": true,
+      "architecture": {
+        "block_num": 1,
+        "d_model": 64,
+        "depths": [
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dropout": 0.1,
+        "e_layers": 5,
+        "mlp_ratio": 2,
+        "num_groups": 4,
+        "num_kernels": 7,
+        "period": 25,
+        "source_configuration": "official PTB-XL standard classification configuration"
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "SGN",
+      "parameters": 686266,
+      "task": "OpenBMI_MI",
+      "trainable_parameters": 681402,
+      "upstream_commit": "c6d1b573dcb8c4255cde59b988f74334ea5da503",
+      "upstream_repository": "colison/SGN"
+    },
+    {
+      "MGWM_present": true,
+      "PWSM_present": true,
+      "VGE_present": true,
+      "architecture": {
+        "block_num": 1,
+        "d_model": 64,
+        "depths": [
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dropout": 0.1,
+        "e_layers": 5,
+        "mlp_ratio": 2,
+        "num_groups": 4,
+        "num_kernels": 7,
+        "period": 25,
+        "source_configuration": "official PTB-XL standard classification configuration"
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "SGN",
+      "parameters": 686266,
+      "task": "OpenBMI_ERP",
+      "trainable_parameters": 681402,
+      "upstream_commit": "c6d1b573dcb8c4255cde59b988f74334ea5da503",
+      "upstream_repository": "colison/SGN"
+    },
+    {
+      "MGWM_present": true,
+      "PWSM_present": true,
+      "VGE_present": true,
+      "architecture": {
+        "block_num": 1,
+        "d_model": 64,
+        "depths": [
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dropout": 0.1,
+        "e_layers": 5,
+        "mlp_ratio": 2,
+        "num_groups": 4,
+        "num_kernels": 7,
+        "period": 25,
+        "source_configuration": "official PTB-XL standard classification configuration"
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        4
+      ],
+      "model": "SGN",
+      "parameters": 686780,
+      "task": "OpenBMI_SSVEP",
+      "trainable_parameters": 681916,
+      "upstream_commit": "c6d1b573dcb8c4255cde59b988f74334ea5da503",
+      "upstream_repository": "colison/SGN"
+    },
+    {
+      "MGWM_present": true,
+      "PWSM_present": true,
+      "VGE_present": true,
+      "architecture": {
+        "block_num": 1,
+        "d_model": 64,
+        "depths": [
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dropout": 0.1,
+        "e_layers": 5,
+        "mlp_ratio": 2,
+        "num_groups": 4,
+        "num_kernels": 7,
+        "period": 25,
+        "source_configuration": "official PTB-XL standard classification configuration"
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "SGN",
+      "parameters": 685482,
+      "task": "WBCIC_MI",
+      "trainable_parameters": 680618,
+      "upstream_commit": "c6d1b573dcb8c4255cde59b988f74334ea5da503",
+      "upstream_repository": "colison/SGN"
+    }
+  ]
+}
