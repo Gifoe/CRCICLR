@@ -35,6 +35,10 @@ PROTOCOL = EXP / "protocol" / "PROTOCOL.json"
 SIDECAR = EXP / "protocol" / "PROTOCOL.sha256"
 TASKS = ("OpenBMI_MI", "OpenBMI_ERP", "OpenBMI_SSVEP", "WBCIC_MI")
 MODELS = ("EEGConformer", "FBCNet")
+MODEL_SHARD = os.environ.get("NEW_BASELINE_MODEL", "ALL")
+if MODEL_SHARD != "ALL" and MODEL_SHARD not in MODELS:
+    raise ValueError(f"invalid model shard {MODEL_SHARD}")
+ACTIVE_MODELS = MODELS if MODEL_SHARD == "ALL" else (MODEL_SHARD,)
 SEEDS = (0, 1, 2)
 FOLDS = range(5)
 MAX_EPOCHS = 60
@@ -59,7 +63,7 @@ def sha(path: Path) -> str:
 
 def atomic_json(path: Path, value: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    part = path.with_suffix(path.suffix + ".part")
+    part = path.with_name(path.name + f".{os.getpid()}.part")
     part.write_text(json.dumps(value, indent=2, sort_keys=True, default=str) + "\n", encoding="utf-8")
     os.replace(part, path)
 
@@ -304,17 +308,15 @@ def main() -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if device.type != "cuda":
         raise RuntimeError("GPU baseline queue requires CUDA")
-    completed = 0
     for task in TASKS:
         for fold in FOLDS:
-            needed = [(model, seed) for model in MODELS for seed in SEEDS
+            needed = [(model, seed) for model in ACTIVE_MODELS for seed in SEEDS
                       if not cell_complete(model, task, fold, seed)]
             if not needed:
-                completed += 6
                 continue
             print(f"LOAD_FOLD {task} f{fold} pending={len(needed)}", flush=True)
             data = load_search_fold(task, fold)
-            for model_name in MODELS:
+            for model_name in ACTIVE_MODELS:
                 pending = [seed for model, seed in needed if model == model_name]
                 if not pending:
                     continue
@@ -325,10 +327,9 @@ def main() -> None:
                     arrays = filtered_arrays(task, fold, data)
                 for seed in pending:
                     train_cell(model_name, task, fold, seed, data, arrays, device)
-                    completed += 1
                     total_completed = sum(cell_complete(m, t, f, s) for m in MODELS for t in TASKS
                                           for f in FOLDS for s in SEEDS)
-                    atomic_json(RUNTIME / "TRAINING_PROGRESS.json", {"completed_training_cells": total_completed,
+                    atomic_json(RUNTIME / f"TRAINING_PROGRESS_{model_name}.json", {"completed_training_cells": total_completed,
                                                                         "expected_training_cells": 120,
                                                                         "current_model": model_name,
                                                                         "current_task": task,
@@ -342,20 +343,24 @@ def main() -> None:
             # Fixed-filter arrays are scratch, not experimental checkpoints.
             # Release only this completed fold's known files to keep E: bounded.
             scratch = SCRATCH / task.lower() / f"fold{fold}"
-            if all((cell_dir("FBCNet", task, fold, seed) / "record.json").is_file() for seed in SEEDS):
+            if "FBCNet" in ACTIVE_MODELS and all(cell_complete("FBCNet", task, fold, seed) for seed in SEEDS):
                 for part in ("train", "val", "outer"):
                     for suffix in (".npy", ".json"):
                         path = scratch / f"{part}{suffix}"
                         if path.is_file():
                             path.unlink()
-    expected = [cell_dir(model, task, fold, seed) / "record.json"
-                for model in MODELS for task in TASKS for fold in FOLDS for seed in SEEDS]
-    if len(expected) != 120 or not all(cell_complete(model, task, fold, seed)
-                                       for model in MODELS for task in TASKS
-                                       for fold in FOLDS for seed in SEEDS):
-        raise RuntimeError("training matrix incomplete")
-    atomic_json(RUNTIME / "TRAINING_COMPLETED.json", {"expected": 120, "completed": 120})
-    print("ALL_120_SOURCE_TRAINING_CELLS_COMPLETE", flush=True)
+    if not all(cell_complete(model, task, fold, seed) for model in ACTIVE_MODELS
+               for task in TASKS for fold in FOLDS for seed in SEEDS):
+        raise RuntimeError(f"training shard incomplete: {ACTIVE_MODELS}")
+    atomic_json(RUNTIME / f"TRAINING_SHARD_{MODEL_SHARD}_COMPLETED.json",
+                {"model_shard": MODEL_SHARD, "expected": 60 if MODEL_SHARD != "ALL" else 120,
+                 "completed": 60 if MODEL_SHARD != "ALL" else 120})
+    if all(cell_complete(model, task, fold, seed) for model in MODELS
+           for task in TASKS for fold in FOLDS for seed in SEEDS):
+        atomic_json(RUNTIME / "TRAINING_COMPLETED.json", {"expected": 120, "completed": 120})
+        print("ALL_120_SOURCE_TRAINING_CELLS_COMPLETE", flush=True)
+    else:
+        print(f"MODEL_SHARD_COMPLETE {MODEL_SHARD}", flush=True)
 
 
 if __name__ == "__main__":
