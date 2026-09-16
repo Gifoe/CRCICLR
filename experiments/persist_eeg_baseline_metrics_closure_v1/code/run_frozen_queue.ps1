@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Continue'
 $python = 'E:\Anaconda\envs\persist_stable_251\python.exe'
 $runner = 'D:\nips-temp\TotalP\P1\CRCICLR_BASELINE_METRICS_CLOSURE_V1\experiments\persist_eeg_baseline_metrics_closure_v1\code\run_frozen_sessions.py'
 $runtime = 'D:\nips-temp\TotalP\P1\baseline_metrics_closure_v1_runtime'
