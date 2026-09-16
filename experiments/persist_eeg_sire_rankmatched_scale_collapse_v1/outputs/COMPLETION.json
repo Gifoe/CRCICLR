@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE",
+  "official_full_checkpoints": 60,
+  "random_rank16_projectors": 100,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "subject_bootstrap_draws": 20000,
+  "no_neural_retraining": true,
+  "no_selector_retuning": true,
+  "identity_max_abs_logit_difference": 0.0
+}
