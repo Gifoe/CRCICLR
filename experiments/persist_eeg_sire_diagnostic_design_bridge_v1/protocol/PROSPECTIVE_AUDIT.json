@@ -1,0 +1,14 @@
+{
+  "candidate_early_stopping_uses_outer_dev_labels": false,
+  "candidate_training_uses_outer_dev_subjects": false,
+  "claim_limit": "policy results do not isolate causal architecture effect and do not establish independent prospective confirmation",
+  "classification": "pre-specified development replay, not strictly prospective",
+  "final_heldout_14_used_in_part_b": false,
+  "future_P4_requirement": "apply the identical frozen selector to an independent cohort without retuning",
+  "historical_Full_B0_protocol_matched": false,
+  "historical_Full_B0_reason": "existing multiseed protocol explicitly states B0_trained=false and official_reference_is_matched=false",
+  "prior_exposure": "CONFIRMED: persist_eeg_carrier_5fold_multiseed_stability_v1/code/train_grid.py evaluates the historical Full/LiteBN checkpoint on these outer_dev_subjects and records selected_outer_BA and per-subject results",
+  "schema": "SIRE_P3_PROSPECTIVE_AUDIT_V1",
+  "selector_uses_outer_dev_labels_before_freeze": false,
+  "task": "OpenBMI_MI"
+}

@@ -1,0 +1,26 @@
+{
+  "B0_status": "historical frozen Full, user-directed; not matched training protocol",
+  "admissible_if": "Protected nonempty AND inner-validation PEEH_pp > 0 AND inner-validation PSWA_pp > 0",
+  "candidate_order_for_exact_ties": [
+    "B0_FULL_EXISTING",
+    "B1_SAME_SCALE_63",
+    "B2_SCALE_COLLAPSE",
+    "B4_ONE_STAGE_BACKEND"
+  ],
+  "evaluation_label": "pre-specified development replay, not strictly prospective",
+  "evaluation_unit": "inner-validation biological subject; average seeds within subject first",
+  "fallback": "If no admissible candidate, maximum inner-validation intact_probe_WSBA",
+  "folds": 5,
+  "no_significance_gate": true,
+  "outer_labels_used_to_design_rule": false,
+  "primary_choice": "Among admissible, maximum inner-validation complement_retained_WSBA",
+  "random_policy": "uniform exact expectation across four candidates",
+  "schema": "SIRE_P3_DIAGNOSTIC_SELECTOR_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "task": "OpenBMI_MI",
+  "ties": "exact numerical ties use candidate_order_for_exact_ties"
+}
