@@ -128,6 +128,7 @@ def main() -> None:
     regression = rows(OUT / "TRUE_OUTER_FUTURE_REGRESSION_AUDIT.csv")
     independent = rows(OUT / "TRUE_OUTER_SEED0_INDEPENDENT_REGRESSION.csv")
     scope = json.loads((PROTO / "TRUE_OUTER_REGRESSION_SCOPE.json").read_text(encoding="utf-8"))
+    precision = json.loads((PROTO / "NATIVE_BATCH_PRECISION_AUDIT.json").read_text(encoding="utf-8"))
     pswa_lock = json.loads((PROTO / "PSWA_EXTENSION_LOCK.json").read_text(encoding="utf-8"))
     if len(full) != 24 or len(coverage) != 24 or len(regression) != 6:
         raise RuntimeError("main model-task matrix or OpenBMI regression incomplete")
@@ -137,6 +138,8 @@ def main() -> None:
         raise RuntimeError("independent WBCIC true-outer seed0 regression failed")
     if scope["status"] != "SEED0_INDEPENDENT_PASS":
         raise RuntimeError("WBCIC regression scope unverified")
+    if precision["OpenBMI_exact_rows"] != precision["OpenBMI_total_rows"]:
+        raise RuntimeError("native-batch OpenBMI subject-level regression incomplete")
     complete = {(row["model"], row["task"]) for row in coverage if row["complete_3seed"] == "True"}
     expected_complete = {(model, task) for model in MODELS for task in TASKS} - {
         ("LiteBN", "OpenBMI_SSVEP"), ("LiteBN", "WBCIC_MI")}
@@ -230,6 +233,11 @@ def main() -> None:
                "For WBCIC, an independent frozen seed0 rerun matches 100 committed true-outer subject/fold rows; "
                "there is no independent published 15-checkpoint true-outer target, so this remains a documented scope limitation. "
                "All per-session rows retain checkpoint and normalizer hashes. WBCIC file S0/S1/S2 maps to paper S1/S2/S3.", "",
+               f"Native-batch OpenBMI per-subject future rows match the published evaluator exactly "
+               f"({precision['OpenBMI_exact_rows']}/{precision['OpenBMI_total_rows']}). "
+               f"WBCIC seed0 comparison to the old batch-32 CSGD artifact is exact for "
+               f"{precision['WBCIC_batch32_reference_exact_rows']}/{precision['WBCIC_seed0_total_rows']} rows; "
+               f"maximum BA difference is {precision['WBCIC_max_abs_BA_difference']:.8f}.", "",
                "ModernTCN/Medformer were re-evaluated in a preserved, separate runtime using the original frozen "
                "evaluators' batch size 128. A single Medformer ERP subject/checkpoint prediction differed at CSGD batch 32; "
                "batch 128 reproduces the published OpenBMI target exactly. The batch-32 runtime was retained for audit.", "",
