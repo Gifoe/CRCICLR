@@ -1,0 +1,45 @@
+{
+  "schema": "PERSIST_EEG_BASELINE_METRICS_CLOSURE_SOURCE_AUDIT_V1",
+  "closure_status": "STOPPED_ON_COHORT_AND_COMPLETENESS_GATE",
+  "sources": [
+    {
+      "name": "seven_backbone_frozen_checkpoint_runtime",
+      "branch": "codex/persist-eeg-seven-backbone-true-outer-v1",
+      "server_checkout_commit": "097c7f5016fb6690800c57452eb1ec9657a2fc7b",
+      "runtime": "D:\\nips-temp\\TotalP\\P1\\seven_backbone_fourtask_3seed_runtime\\search_cells",
+      "models": ["EEGNet", "CBraMod", "TeCh", "LiteBN"],
+      "checkpoint_identity": "FROZEN_CHECKPOINT_MANIFEST_AUDIT.csv records per-cell checkpoint and normalizer hashes"
+    },
+    {
+      "name": "ModernTCN_final_baseline",
+      "branch": "codex/persist-eeg-moderntcn-4task-3seed-final-v1",
+      "server_checkout_commit": "a9c6a6a4ecd363242a5cd7a0608abe3ae7d73b79",
+      "published_commit_with_same_experiment_tree": "a3abf1636e91d8a21552a4b258ae8e6ac4e6f4c4",
+      "experiment": "experiments/persist_eeg_moderntcn_4task_3seed_final_v1",
+      "WBCIC_heldout_cohort": "V8_INTERNAL_NOT_TRUE_OUTER"
+    },
+    {
+      "name": "Medformer_final_baseline",
+      "branch": "codex/persist-eeg-medformer-4task-3seed-final-v1",
+      "server_checkout_commit": "68ef63a182ee250b0b6865182ed94fcebec6e89d",
+      "published_commit_with_same_experiment_tree": "0e5b7d4cd4c0307a768c2b252f01c0448177420a",
+      "experiment": "experiments/persist_eeg_medformer_4task_3seed_final_v1",
+      "WBCIC_heldout_cohort": "V8_INTERNAL_NOT_TRUE_OUTER"
+    },
+    {
+      "name": "crossbackbone_CSGD_session_artifact",
+      "branch": "codex/persist-eeg-crossbackbone-csgd-v1",
+      "source_commit": "4020f0bb0a24d5ef70bb9ba0e2116b7b0f257ebb",
+      "experiment": "experiments/persist_eeg_crossbackbone_csgd_v1",
+      "WBCIC_heldout_cohort": "TRUE_OUTER"
+    },
+    {
+      "name": "crossbackbone_PSWA_committed_artifacts",
+      "branch": "codex/persist-eeg-crossbackbone-pswa-v1",
+      "source_commit": "bd2cc4346041d16f544963703e02bf93e262fbd3",
+      "experiment": "experiments/persist_eeg_crossbackbone_pswa_v1",
+      "committed_result_status": "NOT_ESTIMATED",
+      "local_worktree_status": "DIRTY_RECOVERY_UNCOMMITTED_NOT_IMPORTED"
+    }
+  ]
+}

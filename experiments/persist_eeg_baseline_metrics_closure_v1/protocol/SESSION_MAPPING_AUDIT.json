@@ -1,0 +1,59 @@
+{
+  "OpenBMI": {
+    "file_S1": "paper_S1",
+    "file_S2": "paper_S2"
+  },
+  "WBCIC": {
+    "file_S0": "paper_S1",
+    "file_S1": "paper_S2",
+    "file_S2": "paper_S3"
+  },
+  "heldout_subject_counts": {
+    "OpenBMI": 14,
+    "WBCIC_true_outer": 10
+  },
+  "OpenBMI_heldout_subject_ids": [
+    "4",
+    "12",
+    "13",
+    "17",
+    "18",
+    "24",
+    "25",
+    "29",
+    "36",
+    "37",
+    "39",
+    "42",
+    "51",
+    "54"
+  ],
+  "WBCIC_true_outer_subject_ids": [
+    "sub-10",
+    "sub-15",
+    "sub-20",
+    "sub-39",
+    "sub-4",
+    "sub-40",
+    "sub-43",
+    "sub-46",
+    "sub-51",
+    "sub-8"
+  ],
+  "WBCIC_V8_internal_subject_ids": [
+    "sub-17",
+    "sub-19",
+    "sub-2",
+    "sub-21",
+    "sub-25",
+    "sub-3",
+    "sub-31",
+    "sub-33",
+    "sub-38",
+    "sub-42"
+  ],
+  "cohort_overlap": [],
+  "V8_internal_manifest_path": "D:\\nips-temp\\TotalP\\P1\\CRCICLR_BACKBONE_GEN_WORK\\experiments\\persist_eeg_final_heldout_confirmation_v1\\protocol\\FINAL_HOLDOUT_MANIFEST.json",
+  "true_outer_source": "crossbackbone_csgd_v1 code TRUE_WBCIC_SUBJECTS and seven_backbone_true_outer_v1 outputs",
+  "verified_from": "existing CSGD runner session definitions and heldout subject metadata; no EEG arrays or labels read"
+}
