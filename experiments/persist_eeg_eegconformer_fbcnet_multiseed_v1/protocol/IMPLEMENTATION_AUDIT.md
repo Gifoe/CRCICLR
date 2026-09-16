@@ -1,0 +1,9 @@
+# Implementation audit
+
+- EEG Conformer source: Song et al. official release, `https://github.com/eeyhsong/EEG-Conformer`, commit `9ae149ba62487ceae723277d13adac27837113d2`. `EEGConformer_BASELINE` is a clean-room implementation of the released 40-filter convolutional tokenizer, six 40-wide transformer blocks with ten heads, and 256/32 classifier. Class count and flattened token count follow the frozen task input. For ERP's 250 samples the head input is 440 rather than the upstream 2440 for 1000 samples. No depth, filter, kernel, head, attention, dropout or classifier-width search is performed.
+- FBCNet source: Mane et al. official release, `https://github.com/ravikiran-mane/FBCNet`, commit `de1bbdd8a54cb1e466830e3d47070e0e56761a37`. `FBCNet_BASELINE` retains the nine fixed 4-Hz Chebyshev-II bands from 4-40 Hz, grouped spatial convolution with 32 filters/band, batch normalization, swish, four temporal log-variance segments and max-norm linear head. For ERP T=250, the four consecutive segments have lengths 63, 63, 62, 62. All samples are retained. This is the only necessary temporal-shape adaptation.
+- The FBCNet filter bank is a deterministic model adapter *after* the common source-only normalizer. Its coefficients are fixed before training and are never fitted on any subject. It is not a change to the shared data preprocessing. Runtime memmaps cache the exact float32 output of this fixed adapter; no labels or metrics influence their content.
+- Both implementations use the common benchmark optimizer, batch and selection rule, with no heldout-based tuning.
+- Model counts are calculated at actual task input shapes and saved in cell records. MAC reporting will state `not fully counted` unless every filter and operation is covered by the profiler.
+
+Source repositories are cited for architecture provenance; no upstream GPL source is copied into this repository.
