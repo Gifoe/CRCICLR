@@ -25,8 +25,11 @@ def coefficients() -> tuple[tuple[np.ndarray, np.ndarray], ...]:
     for low, high in BANDS:
         passband = [low / (FS / 2), high / (FS / 2)]
         stopband = [(low - 2) / (FS / 2), (high + 2) / (FS / 2)]
-        order, critical = signal.cheb2ord(passband, stopband, 3, 30)
-        values.append(signal.cheby2(order, 30, critical, btype="bandpass"))
+        order, _ = signal.cheb2ord(passband, stopband, 3, 30)
+        # The official FBCNet implementation deliberately passes the fixed
+        # stop-band edges, not cheb2ord's returned natural frequency, to
+        # cheby2. Preserve that exact published adapter contract.
+        values.append(signal.cheby2(order, 30, stopband, btype="bandpass"))
     return tuple(values)
 
 

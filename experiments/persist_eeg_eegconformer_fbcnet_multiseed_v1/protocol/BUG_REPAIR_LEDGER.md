@@ -1,0 +1,5 @@
+# Pre-heldout engineering repair ledger
+
+1. The first loader smoke test exposed missing `SEVEN_RUNTIME`, `MODERN_REPO`, and task-cache environment variables. They were set to the same frozen repository and existing caches before any training.
+2. Resume of heldout session inference originally checked only for file existence. It now validates identity, checkpoint hash, normalizer hash and subject-row count before skipping a completed session. No heldout was read before this repair.
+3. An upstream-source parity audit found that the initial FBCNet filter code passed `cheb2ord`'s returned natural frequency to `cheby2`; official FBCNet passes its predetermined stop-band edges. The experiment-owned scheduled task was stopped before any FBCNet cell trained, while three EEG Conformer OpenBMI-MI fold0 seed cells were already complete. The fixed filter code was corrected without changing the predeclared nine bands, attenuation, transition allowance or model structure. The three unrelated EEG Conformer cells remain valid and are reused. No final-heldout signal or label was accessed.
