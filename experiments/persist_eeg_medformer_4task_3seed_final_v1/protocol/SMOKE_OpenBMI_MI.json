@@ -1,0 +1,28 @@
+{
+  "architecture": {
+    "augmentations": "none",
+    "d_ff": 256,
+    "d_model": 128,
+    "dropout": 0.1,
+    "e_layers": 6,
+    "n_heads": 8,
+    "no_inter_attn": false,
+    "patch_len_list": "8,8,8,16,16,16",
+    "single_channel": false,
+    "source_configuration": "official subject-independent TDBRAIN classification setting",
+    "swa": false
+  },
+  "batch": 128,
+  "logit_shape": [
+    128,
+    2
+  ],
+  "loss": 0.7176806926727295,
+  "model": "Medformer",
+  "parameters": 3890178,
+  "peak_cuda_bytes": 6774484480,
+  "task": "OpenBMI_MI",
+  "trainable_parameters": 3890178,
+  "upstream_commit": "446275f27b713a9f09917a6ba0bc51a18e921597",
+  "upstream_repository": "DL4mHealth/Medformer"
+}

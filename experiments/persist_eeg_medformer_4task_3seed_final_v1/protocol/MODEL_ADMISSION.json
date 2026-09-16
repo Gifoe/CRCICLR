@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "architecture": {
+        "augmentations": "none",
+        "d_ff": 256,
+        "d_model": 128,
+        "dropout": 0.1,
+        "e_layers": 6,
+        "n_heads": 8,
+        "no_inter_attn": false,
+        "patch_len_list": "8,8,8,16,16,16",
+        "single_channel": false,
+        "source_configuration": "official subject-independent TDBRAIN classification setting",
+        "swa": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "Medformer",
+      "parameters": 3890178,
+      "task": "OpenBMI_MI",
+      "trainable_parameters": 3890178,
+      "upstream_commit": "446275f27b713a9f09917a6ba0bc51a18e921597",
+      "upstream_repository": "DL4mHealth/Medformer"
+    },
+    {
+      "architecture": {
+        "augmentations": "none",
+        "d_ff": 256,
+        "d_model": 128,
+        "dropout": 0.1,
+        "e_layers": 6,
+        "n_heads": 8,
+        "no_inter_attn": false,
+        "patch_len_list": "8,8,8,16,16,16",
+        "single_channel": false,
+        "source_configuration": "official subject-independent TDBRAIN classification setting",
+        "swa": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "Medformer",
+      "parameters": 3781890,
+      "task": "OpenBMI_ERP",
+      "trainable_parameters": 3781890,
+      "upstream_commit": "446275f27b713a9f09917a6ba0bc51a18e921597",
+      "upstream_repository": "DL4mHealth/Medformer"
+    },
+    {
+      "architecture": {
+        "augmentations": "none",
+        "d_ff": 256,
+        "d_model": 128,
+        "dropout": 0.1,
+        "e_layers": 6,
+        "n_heads": 8,
+        "no_inter_attn": false,
+        "patch_len_list": "8,8,8,16,16,16",
+        "single_channel": false,
+        "source_configuration": "official subject-independent TDBRAIN classification setting",
+        "swa": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        4
+      ],
+      "model": "Medformer",
+      "parameters": 4035332,
+      "task": "OpenBMI_SSVEP",
+      "trainable_parameters": 4035332,
+      "upstream_commit": "446275f27b713a9f09917a6ba0bc51a18e921597",
+      "upstream_repository": "DL4mHealth/Medformer"
+    },
+    {
+      "architecture": {
+        "augmentations": "none",
+        "d_ff": 256,
+        "d_model": 128,
+        "dropout": 0.1,
+        "e_layers": 6,
+        "n_heads": 8,
+        "no_inter_attn": false,
+        "patch_len_list": "8,8,8,16,16,16",
+        "single_channel": false,
+        "source_configuration": "official subject-independent TDBRAIN classification setting",
+        "swa": false
+      },
+      "finite": true,
+      "logit_shape": [
+        2,
+        2
+      ],
+      "model": "Medformer",
+      "parameters": 3853314,
+      "task": "WBCIC_MI",
+      "trainable_parameters": 3853314,
+      "upstream_commit": "446275f27b713a9f09917a6ba0bc51a18e921597",
+      "upstream_repository": "DL4mHealth/Medformer"
+    }
+  ]
+}
