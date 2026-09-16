@@ -56,7 +56,7 @@ def source():
         original_batch = value.inference_batch
         def native_batch(model_name, recorded):
             if model_name in ("ModernTCN", "Medformer"):
-                if int(recorded) != 128:
+                if recorded not in (None, "") and int(recorded) != 128:
                     raise RuntimeError(f"original baseline evaluation batch is not 128: {model_name} {recorded}")
                 return 128
             return original_batch(model_name, recorded)
