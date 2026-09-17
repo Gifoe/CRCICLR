@@ -48,8 +48,8 @@ def main() -> None:
     done = 0
     failure = None
     workers = int(os.environ.get("INCREMENTAL_ANALYSIS_WORKERS", "3"))
-    if workers < 1 or workers > 3:
-        raise RuntimeError("worker count must be in [1, 3]")
+    if workers < 1 or workers > 4:
+        raise RuntimeError("worker count must be in [1, 4]")
     print(f"PARALLEL_WORKERS {workers}", flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
         active = {pool.submit(run_cell, next(pending)) for _ in range(workers)}
