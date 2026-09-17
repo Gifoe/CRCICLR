@@ -1,0 +1,17 @@
+# M3CV dataset audit
+
+- Dataset: M3CV / NEMAR `nm000166` v1.0.0, DOI `10.82901/nemar.nm000166`.
+- Source manifest: `https://data.nemar.org/nm000166/v1.0.0/manifest.json`; local downloader audit: `/root/m3cv_nm000166_external_replication/M3CV_DOWNLOAD_AUDIT.md`.
+- BIDS BrainVision `.vhdr`/`.eeg`/`.vmrk` plus BIDS event and EEG JSON sidecars; `RecordingType=continuous` is documented by the source as pseudo-continuous reconstruction of native 4-s epochs.
+- All 380 task recordings passed: C=64, fs=250 Hz, each valid epoch T=1000, event duration=3 s, onset/sample sequence is 4 s/1000 samples within its recording. Trial counts naturally vary.
+- Task identifiers (value, trial_type, task_code): `motorLHand`=('12', 'cue/motorLHand', '12'); `motorRHand`=('11', 'cue/motorRHand', '11').
+
+## Channel order
+
+`Fp1`, `Fp2`, `F3`, `F4`, `C3`, `C4`, `P3`, `P4`, `O1`, `O2`, `F7`, `F8`, `T7`, `T8`, `P7`, `P8`, `Fz`, `Cz`, `Pz`, `FC1`, `FC2`, `CP1`, `CP2`, `FC5`, `FC6`, `CP5`, `CP6`, `FT9`, `FT10`, `TP9`, `TP10`, `F1`, `F2`, `C1`, `C2`, `P1`, `P2`, `AF3`, `AF4`, `FC3`, `FC4`, `CP3`, `CP4`, `PO3`, `PO4`, `F5`, `F6`, `C5`, `C6`, `P5`, `P6`, `AF7`, `AF8`, `FT7`, `FT8`, `TP7`, `TP8`, `PO7`, `PO8`, `Fpz`, `CPz`, `POz`, `Oz`, `FCz`
+
+## Downloaded/eligible IDs
+
+- Downloaded 95: `sub-001`, `sub-002`, `sub-003`, `sub-004`, `sub-005`, `sub-006`, `sub-007`, `sub-008`, `sub-009`, `sub-010`, `sub-011`, `sub-012`, `sub-013`, `sub-014`, `sub-015`, `sub-016`, `sub-017`, `sub-018`, `sub-019`, `sub-020`, `sub-021`, `sub-022`, `sub-023`, `sub-024`, `sub-025`, `sub-026`, `sub-027`, `sub-028`, `sub-029`, `sub-030`, `sub-031`, `sub-032`, `sub-033`, `sub-034`, `sub-035`, `sub-036`, `sub-037`, `sub-038`, `sub-039`, `sub-040`, `sub-041`, `sub-042`, `sub-043`, `sub-044`, `sub-045`, `sub-046`, `sub-047`, `sub-048`, `sub-049`, `sub-050`, `sub-051`, `sub-052`, `sub-053`, `sub-054`, `sub-055`, `sub-056`, `sub-057`, `sub-058`, `sub-059`, `sub-060`, `sub-061`, `sub-062`, `sub-063`, `sub-064`, `sub-065`, `sub-066`, `sub-067`, `sub-068`, `sub-069`, `sub-070`, `sub-071`, `sub-072`, `sub-073`, `sub-074`, `sub-075`, `sub-076`, `sub-077`, `sub-078`, `sub-079`, `sub-080`, `sub-081`, `sub-082`, `sub-083`, `sub-084`, `sub-085`, `sub-086`, `sub-087`, `sub-088`, `sub-089`, `sub-090`, `sub-091`, `sub-092`, `sub-093`, `sub-094`, `sub-095`
+- Eligible 93: `sub-001`, `sub-002`, `sub-003`, `sub-004`, `sub-005`, `sub-006`, `sub-007`, `sub-008`, `sub-009`, `sub-010`, `sub-011`, `sub-012`, `sub-013`, `sub-014`, `sub-015`, `sub-016`, `sub-017`, `sub-018`, `sub-019`, `sub-020`, `sub-021`, `sub-022`, `sub-023`, `sub-024`, `sub-025`, `sub-026`, `sub-027`, `sub-028`, `sub-029`, `sub-030`, `sub-031`, `sub-032`, `sub-033`, `sub-034`, `sub-036`, `sub-037`, `sub-038`, `sub-039`, `sub-040`, `sub-041`, `sub-042`, `sub-043`, `sub-044`, `sub-045`, `sub-046`, `sub-047`, `sub-048`, `sub-049`, `sub-050`, `sub-051`, `sub-052`, `sub-053`, `sub-054`, `sub-055`, `sub-056`, `sub-057`, `sub-058`, `sub-059`, `sub-060`, `sub-061`, `sub-062`, `sub-063`, `sub-064`, `sub-065`, `sub-066`, `sub-067`, `sub-068`, `sub-069`, `sub-070`, `sub-071`, `sub-072`, `sub-073`, `sub-074`, `sub-075`, `sub-076`, `sub-077`, `sub-078`, `sub-079`, `sub-081`, `sub-082`, `sub-083`, `sub-084`, `sub-085`, `sub-086`, `sub-087`, `sub-088`, `sub-089`, `sub-090`, `sub-091`, `sub-092`, `sub-093`, `sub-094`, `sub-095`
+- Excluded availability-only: `sub-035`, `sub-080`
