@@ -1,0 +1,20 @@
+{
+  "schema": "PERSISTENCE_INCREMENTAL_VALUE_SELECTOR_SPEC_V1",
+  "frozen_before_heldout_selector_evaluation": true,
+  "coordinate_system": "formal cross-backbone PEEH TRAIN-only canonical basis, unchanged",
+  "candidate_blocks": "formal eigengap partition, rank at most 4",
+  "selectors": {
+    "PU": "exact formal Protected union: persistence_supported AND absolute_CI_low>0 AND excess_CI_low>0",
+    "U_only": "exact-rank subset maximizing sum min(absolute_CI_low, excess_CI_low), ignoring persistence gate",
+    "P_only": "exact-rank subset maximizing sum (rho-null_p95), ignoring predictive utility"
+  },
+  "budget": "k=rank(PU), within each model-task-fold-seed cell",
+  "empty_PU": "k=0; primary non-estimable; do not force a nonzero selector",
+  "optimization": "deterministic exact 0/1 rank-knapsack over candidate blocks",
+  "ties": "lexicographically smallest ascending block-index tuple for mathematically identical summed scores",
+  "random_controls": "100 exact-rank-k coordinate subsets shared unchanged across PU/U_only/P_only within a cell, formal final-random stable_seed scheme",
+  "primary_endpoint": "subject-level minimum BA across heldout sessions per checkpoint, then fold/seed mean within biological subject; paired PU minus U_only",
+  "bootstrap": "20000 deterministic paired draws over biological subjects",
+  "no_neural_retraining": true,
+  "no_heldout_selector_fitting": true
+}

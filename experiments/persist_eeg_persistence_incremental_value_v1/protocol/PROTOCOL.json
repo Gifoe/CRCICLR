@@ -1,0 +1,21 @@
+{
+  "schema": "PERSIST_EEG_PERSISTENCE_INCREMENTAL_VALUE_V1",
+  "purpose": "Frozen diagnostic replay of TRAIN-side persistence gate incremental value beyond TRAIN-side predictive utility",
+  "evidence_tier": "framework analysis using previously accessed final-heldout cohorts; not untouched prospective confirmation",
+  "models": ["EEGNet", "CBraMod", "TeCh", "ModernTCN", "Medformer", "EEGConformer", "FBCNet"],
+  "tasks": ["OpenBMI_MI", "OpenBMI_ERP", "OpenBMI_SSVEP", "WBCIC_MI"],
+  "folds": [0, 1, 2, 3, 4],
+  "seeds": [0, 1, 2],
+  "expected_checkpoint_cells": 420,
+  "source_rule": "selected frozen checkpoint only; checkpoint SHA must match record and formal manifest",
+  "OpenBMI_final_heldout": ["4", "12", "13", "17", "18", "24", "25", "29", "36", "37", "39", "42", "51", "54"],
+  "WBCIC_final_true_outer": ["sub-4", "sub-8", "sub-10", "sub-15", "sub-20", "sub-39", "sub-40", "sub-43", "sub-46", "sub-51"],
+  "not_WBCIC_V8_internal": true,
+  "formal_coordinate_construction": "exact cross-backbone PEEH implementation; active rank at most 20; original whitening, persistence operator, eigengap blocks at most 4, 200 permutations, 5 subject half-splits, ridge alpha 0.01, 100 rank-matched random erasures",
+  "selector_file": "SELECTOR_SPEC.json",
+  "primary_comparison": "PU minus U_only absolute worst-session retained BA, subject paired",
+  "statistical_unit": "biological subject; fold/seed average within subject before 20000-draw deterministic paired bootstrap",
+  "gate_before_new_evaluation": "all 420 checkpoint provenance pass and first-five-model seed0 PEEH/PSWA replay within numeric tolerance",
+  "invalid_cells": "retain locked active-rank and empty-PU non-estimable semantics without relaxation",
+  "forbidden": ["neural retraining", "heldout selector fitting", "post-outcome selector changes", "manuscript edit", "ProtectedPreserve intervention"]
+}
