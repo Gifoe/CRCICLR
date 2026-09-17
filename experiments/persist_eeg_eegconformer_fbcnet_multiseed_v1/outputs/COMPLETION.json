@@ -1,0 +1,24 @@
+{
+  "schema": "EEGCONFORMER_FBCNET_COMPLETION_V1",
+  "pass": true,
+  "expected_training_cells": 120,
+  "completed_training_cells": 120,
+  "missing_training_cells": 0,
+  "expected_heldout_session_cells": 270,
+  "completed_heldout_session_cells": 270,
+  "model_task_checkpoint_coverage": {
+    "EEGConformer/OpenBMI_MI": 15,
+    "EEGConformer/OpenBMI_ERP": 15,
+    "EEGConformer/OpenBMI_SSVEP": 15,
+    "EEGConformer/WBCIC_MI": 15,
+    "FBCNet/OpenBMI_MI": 15,
+    "FBCNet/OpenBMI_ERP": 15,
+    "FBCNet/OpenBMI_SSVEP": 15,
+    "FBCNet/WBCIC_MI": 15
+  },
+  "heldout_used_for_training": false,
+  "heldout_used_for_selection": false,
+  "WBCIC_cohort": "final true outer 10",
+  "formal_SIRE_paired_status": "UNAVAILABLE_FORMAL_SIRE_SOURCE_NOT_PROVIDED",
+  "biological_subject_bootstrap_draws": 20000
+}

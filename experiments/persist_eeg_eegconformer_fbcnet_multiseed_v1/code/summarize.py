@@ -245,13 +245,16 @@ def main() -> None:
                   "biological_subject_bootstrap_draws": DRAW_COUNT}
     (OUT / "COMPLETION.json").write_text(json.dumps(completion, indent=2) + "\n", encoding="utf-8")
     lines = ["# Final EEG Conformer / FBCNet report", "",
-             "| Model | Task | BA | Macro-F1 | WS-BA | Params |",
+             "| Model | Task | Future BA [95% CI] | Future Macro-F1 [95% CI] | WS-BA [95% CI] | Params |",
              "|---|---|---:|---:|---:|---:|"]
     for row in task_rows:
-        lines.append(f"| {row['model']} | {row['task']} | {row['BA']*100:.2f}% | "
-                     f"{row['macro_F1']*100:.2f}% | {row['WS_BA']*100:.2f}% | {row['parameters']:,} |")
+        def pct_ci(metric: str) -> str:
+            return (f"{row[metric]*100:.2f}% "
+                    f"[{row[metric + '_ci_low']*100:.2f}, {row[metric + '_ci_high']*100:.2f}]")
+        lines.append(f"| {row['model']} | {row['task']} | {pct_ci('BA')} | "
+                     f"{pct_ci('macro_F1')} | {pct_ci('WS_BA')} | {row['parameters']:,} |")
     lines.extend(["", "All eight cells contain 5 folds x 3 seeds (15 selected checkpoints).",
-                  "Future-session BA/F1 and WS-BA are subject-equal; 95% CIs use 20,000 biological-subject bootstrap draws. ",
+                  "Future-session BA/F1 and WS-BA are subject-equal; 95% CIs use 20,000 biological-subject bootstrap draws.",
                   "Fold/seed estimates are averaged within a subject/session before any bootstrap; WS-BA is the within-subject minimum over sessions.",
                   "", f"Formal SIRE-EEG paired comparison: {paired[0]['status']}. The different local LiteBN is not substituted.",
                   "", "MACs: not fully counted, because the available profiler does not account for the complete fixed filter bank and all attention operations.",
