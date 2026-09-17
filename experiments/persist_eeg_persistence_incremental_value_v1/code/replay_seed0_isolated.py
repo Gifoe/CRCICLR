@@ -100,8 +100,6 @@ def main() -> int:
                         rows = [r for r in rows if (r["model"], r["task"], int(r["fold"])) != key] + [row]
                         save(rows)
                         print("REPLAY", *key, status, reason[:160], flush=True)
-                        if status == "FAIL":
-                            return 2
                         continue
                 reference = REFERENCE / path
                 if not reference.is_file():
@@ -117,9 +115,10 @@ def main() -> int:
                 rows = [r for r in rows if (r["model"], r["task"], int(r["fold"])) != key] + [row]
                 save(rows)
                 print("REPLAY", *key, status, "seconds", row["seconds"], flush=True)
-                if status == "FAIL":
-                    return 2
-    return 0 if len(rows) == 100 and sum(r["status"] == "PASS" for r in rows) == 99 else 3
+    if len(rows) != 100:
+        return 3
+    return 0 if sum(r["status"] == "PASS" for r in rows) == 99 and sum(
+        r["status"] == "PROTOCOL_INVALID" for r in rows) == 1 else 2
 
 
 if __name__ == "__main__":

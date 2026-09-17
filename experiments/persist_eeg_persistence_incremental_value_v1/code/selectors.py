@@ -85,6 +85,28 @@ def self_test() -> None:
     assert exact_rank_choice(blocks, [0, 0, 0, 0], 3).block_ids == (0, 1)
     assert exact_rank_choice(blocks, [-1, -2, -3, -4], 3).rank == 3
     assert exact_rank_choice(blocks, [1, 2, 3, 4], 0).block_ids == ()
+    spec = {"blocks": blocks, "support": [
+        {"persistence_supported": False, "rho": 0.1, "null_p95": 0.2},
+        {"persistence_supported": True, "rho": 0.5, "null_p95": 0.2},
+        {"persistence_supported": True, "rho": 0.4, "null_p95": 0.2},
+        {"persistence_supported": False, "rho": 0.0, "null_p95": 0.2},
+    ]}
+    evidence = [
+        {"block": 0, "dimensions": 2, "absolute_CI_low": 1.0, "excess_CI_low": 1.0, "protected": False},
+        {"block": 1, "dimensions": 1, "absolute_CI_low": 2.0, "excess_CI_low": 2.0, "protected": True},
+        {"block": 2, "dimensions": 2, "absolute_CI_low": 3.0, "excess_CI_low": 3.0, "protected": True},
+        {"block": 3, "dimensions": 1, "absolute_CI_low": 4.0, "excess_CI_low": 4.0, "protected": False},
+    ]
+    result = choose(spec, evidence)
+    assert result["k"] == 3 and result["PU"].block_ids == (1, 2)
+    assert result["U_only"].block_ids == (2, 3)
+    assert result["P_only"].block_ids == (1, 2)
+    assert result["PU"].rank == result["U_only"].rank == result["P_only"].rank
+    for row in evidence:
+        row["protected"] = False
+        row["absolute_CI_low"] = -1.0
+    empty = choose(spec, evidence)
+    assert empty["PU_empty"] and empty["k"] == 0 and empty["U_only"] is None
 
 
 if __name__ == "__main__":
