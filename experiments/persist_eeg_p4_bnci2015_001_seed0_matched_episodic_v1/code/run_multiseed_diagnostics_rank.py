@@ -38,7 +38,7 @@ def run():
     emb={"train_h":th,"train_y":tm.label.to_numpy(int),"train_subject":tm.subject_id.astype(str).to_numpy(),"train_session":tm.session_id.to_numpy(int),"eval_h":eh,"eval_y":em.label.to_numpy(int),"eval_subject":em.subject_id.astype(str).to_numpy(),"eval_session":em.session_id.to_numpy(int),"metadata":{"checkpoint_sha256":r["checkpoint_sha256"],"normalizer_sha256":norm["mean_std_sha256"]}}
     one=ev.empty_peeh(peeh.run_one(emb,"BNCI2015_001",name,fid,seed,2))
     for q in one["subject_rows"]: prows.append({**q,"seed":seed,"checkpoint_sha256":r["checkpoint_sha256"]})
-    two=ev.pswa_for_fold(pswa,one,th,tm,ah,am,f["outer_test_subjects"],name,fid); 
+    two=ev.pswa_for_fold(pswa,one,th,tm,ah,am,f["outer_test_subjects"],name,fid)
     for q in two["subject_rows"]: srows.append({**q,"seed":seed,"checkpoint_sha256":r["checkpoint_sha256"]})
     del model
    del cache
