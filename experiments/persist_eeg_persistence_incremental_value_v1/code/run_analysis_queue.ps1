@@ -20,30 +20,10 @@ try {
     if (-not (Test-Path -LiteralPath $amendment)) { throw 'direct-analysis amendment missing' }
     "DIRECT_ANALYSIS_AMENDMENT_SHA256 $((Get-FileHash -LiteralPath $amendment -Algorithm SHA256).Hash) $(Get-Date -Format o)" | Add-Content -LiteralPath $log
 
-    $models = @('EEGNet', 'CBraMod', 'TeCh', 'ModernTCN', 'Medformer', 'EEGConformer', 'FBCNet')
-    $tasks = @('OpenBMI_MI', 'OpenBMI_ERP', 'OpenBMI_SSVEP', 'WBCIC_MI')
-    foreach ($model in $models) {
-        foreach ($task in $tasks) {
-            foreach ($fold in 0..4) {
-                foreach ($seed in 0..2) {
-                    $ErrorActionPreference = 'Continue'
-                    & $python -u (Join-Path $code 'run_cell.py') $model $task $fold $seed *>> $log
-                    $status = $LASTEXITCODE
-                    if ($status -eq -1073741819) {
-                        "NATIVE_RETRY $model $task fold=$fold seed=$seed" | Add-Content -LiteralPath $log
-                        & $python -u (Join-Path $code 'run_cell.py') $model $task $fold $seed *>> $log
-                        $status = $LASTEXITCODE
-                    }
-                    $ErrorActionPreference = 'Stop'
-                    if ($status -ne 0) { throw "cell failure $model $task fold=$fold seed=$seed exit=$status" }
-                }
-            }
-        }
-    }
     $ErrorActionPreference = 'Continue'
-    & $python -u (Join-Path $code 'finalize.py') *>> $log
+    & $python -u (Join-Path $code 'run_analysis_parallel.py') *>> $log
     $ErrorActionPreference = 'Stop'
-    if ($LASTEXITCODE -ne 0) { throw "finalization failed exit=$LASTEXITCODE" }
+    if ($LASTEXITCODE -ne 0) { throw "parallel queue failed exit=$LASTEXITCODE" }
     [IO.File]::WriteAllText((Join-Path $runtime 'analysis_queue.exit'), '0')
 }
 catch {
