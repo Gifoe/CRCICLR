@@ -1,0 +1,32 @@
+{
+  "bootstrap_subject_draws": 20000,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "insertion": "48-channel concatenated branch output after dropout, before backend",
+  "name": "same-checkpoint rank-matched frozen ScaleCollapse control",
+  "neural_training": false,
+  "previous_selector": "unchanged; not reused as architecture-ranking objective",
+  "random_projectors": 100,
+  "rank": 16,
+  "scope": {
+    "OpenBMI": "14-subject internal-heldout diagnostic",
+    "WBCIC": "10-subject true-outer diagnostic"
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection": "none",
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ]
+}
