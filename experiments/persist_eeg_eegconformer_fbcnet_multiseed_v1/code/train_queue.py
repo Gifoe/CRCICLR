@@ -39,6 +39,10 @@ MODEL_SHARD = os.environ.get("NEW_BASELINE_MODEL", "ALL")
 if MODEL_SHARD != "ALL" and MODEL_SHARD not in MODELS:
     raise ValueError(f"invalid model shard {MODEL_SHARD}")
 ACTIVE_MODELS = MODELS if MODEL_SHARD == "ALL" else (MODEL_SHARD,)
+TASK_SHARD = os.environ.get("NEW_BASELINE_TASK", "ALL")
+if TASK_SHARD != "ALL" and TASK_SHARD not in TASKS:
+    raise ValueError(f"invalid task shard {TASK_SHARD}")
+ACTIVE_TASKS = TASKS if TASK_SHARD == "ALL" else (TASK_SHARD,)
 SEEDS = (0, 1, 2)
 FOLDS = range(5)
 MAX_EPOCHS = 60
@@ -308,7 +312,7 @@ def main() -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if device.type != "cuda":
         raise RuntimeError("GPU baseline queue requires CUDA")
-    for task in TASKS:
+    for task in ACTIVE_TASKS:
         for fold in FOLDS:
             needed = [(model, seed) for model in ACTIVE_MODELS for seed in SEEDS
                       if not cell_complete(model, task, fold, seed)]
@@ -350,17 +354,19 @@ def main() -> None:
                         if path.is_file():
                             path.unlink()
     if not all(cell_complete(model, task, fold, seed) for model in ACTIVE_MODELS
-               for task in TASKS for fold in FOLDS for seed in SEEDS):
-        raise RuntimeError(f"training shard incomplete: {ACTIVE_MODELS}")
-    atomic_json(RUNTIME / f"TRAINING_SHARD_{MODEL_SHARD}_COMPLETED.json",
-                {"model_shard": MODEL_SHARD, "expected": 60 if MODEL_SHARD != "ALL" else 120,
-                 "completed": 60 if MODEL_SHARD != "ALL" else 120})
+               for task in ACTIVE_TASKS for fold in FOLDS for seed in SEEDS):
+        raise RuntimeError(f"training shard incomplete: {ACTIVE_MODELS}, {ACTIVE_TASKS}")
+    shard_name = MODEL_SHARD if TASK_SHARD == "ALL" else f"{MODEL_SHARD}_{TASK_SHARD}"
+    expected = len(ACTIVE_MODELS) * len(ACTIVE_TASKS) * len(FOLDS) * len(SEEDS)
+    atomic_json(RUNTIME / f"TRAINING_SHARD_{shard_name}_COMPLETED.json",
+                {"model_shard": MODEL_SHARD, "task_shard": TASK_SHARD,
+                 "expected": expected, "completed": expected})
     if all(cell_complete(model, task, fold, seed) for model in MODELS
            for task in TASKS for fold in FOLDS for seed in SEEDS):
         atomic_json(RUNTIME / "TRAINING_COMPLETED.json", {"expected": 120, "completed": 120})
         print("ALL_120_SOURCE_TRAINING_CELLS_COMPLETE", flush=True)
     else:
-        print(f"MODEL_SHARD_COMPLETE {MODEL_SHARD}", flush=True)
+        print(f"MODEL_SHARD_COMPLETE {shard_name}", flush=True)
 
 
 if __name__ == "__main__":
