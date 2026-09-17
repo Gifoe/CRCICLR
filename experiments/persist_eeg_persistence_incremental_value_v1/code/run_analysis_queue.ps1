@@ -26,6 +26,7 @@ try {
         foreach ($task in $tasks) {
             foreach ($fold in 0..4) {
                 foreach ($seed in 0..2) {
+                    $ErrorActionPreference = 'Continue'
                     & $python -u (Join-Path $code 'run_cell.py') $model $task $fold $seed *>> $log
                     $status = $LASTEXITCODE
                     if ($status -eq -1073741819) {
@@ -33,12 +34,15 @@ try {
                         & $python -u (Join-Path $code 'run_cell.py') $model $task $fold $seed *>> $log
                         $status = $LASTEXITCODE
                     }
+                    $ErrorActionPreference = 'Stop'
                     if ($status -ne 0) { throw "cell failure $model $task fold=$fold seed=$seed exit=$status" }
                 }
             }
         }
     }
+    $ErrorActionPreference = 'Continue'
     & $python -u (Join-Path $code 'finalize.py') *>> $log
+    $ErrorActionPreference = 'Stop'
     if ($LASTEXITCODE -ne 0) { throw "finalization failed exit=$LASTEXITCODE" }
     [IO.File]::WriteAllText((Join-Path $runtime 'analysis_queue.exit'), '0')
 }
