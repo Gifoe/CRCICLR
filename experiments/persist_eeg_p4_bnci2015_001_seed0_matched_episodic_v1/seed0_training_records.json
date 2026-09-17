@@ -1,0 +1,4069 @@
+{
+  "device": "cuda",
+  "final_repository": "/root/rivermind-data/CRCICLR_FINAL_CONFIRM_WORK",
+  "final_repository_commit": "cf1db5a6d8f337626544b44f13057e86abe54dc8",
+  "normalizers": {
+    "0": {
+      "mean_std_sha256": "ed454438e89812334dcd972152ee083a1f1767b2774e1a7c80aae5543d02e253",
+      "samples_per_channel": 1600000,
+      "session": "S1=0A",
+      "session_id": 1,
+      "subjects": [
+        "sub-01",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-09",
+        "sub-11",
+        "sub-12"
+      ],
+      "trials": 1600
+    },
+    "1": {
+      "mean_std_sha256": "0f74f2e95a3edcdaf45beda5b5d1116b27f8033110f6f887148dd665f60434bb",
+      "samples_per_channel": 1600000,
+      "session": "S1=0A",
+      "session_id": 1,
+      "subjects": [
+        "sub-01",
+        "sub-02",
+        "sub-03",
+        "sub-04",
+        "sub-07",
+        "sub-08",
+        "sub-09",
+        "sub-10"
+      ],
+      "trials": 1600
+    },
+    "2": {
+      "mean_std_sha256": "cae67d33040e734c40eda9a2d23f208a7c0a53e2f0945b33e68ebdf248e03dc9",
+      "samples_per_channel": 1800000,
+      "session": "S1=0A",
+      "session_id": 1,
+      "subjects": [
+        "sub-02",
+        "sub-03",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-08",
+        "sub-10",
+        "sub-11",
+        "sub-12"
+      ],
+      "trials": 1800
+    },
+    "3": {
+      "mean_std_sha256": "09e8c6d6ac4fb3bc189642321bc4dbb0e406a0f74c5e06a37de0ece1e81d5a58",
+      "samples_per_channel": 1800000,
+      "session": "S1=0A",
+      "session_id": 1,
+      "subjects": [
+        "sub-01",
+        "sub-02",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-08",
+        "sub-09",
+        "sub-10",
+        "sub-12"
+      ],
+      "trials": 1800
+    },
+    "4": {
+      "mean_std_sha256": "45abbf2347ce5878f8fdca522044914d06f947c13125842892a6a6eff1ad2f01",
+      "samples_per_channel": 1800000,
+      "session": "S1=0A",
+      "session_id": 1,
+      "subjects": [
+        "sub-01",
+        "sub-03",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-08",
+        "sub-11",
+        "sub-12"
+      ],
+      "trials": 1800
+    }
+  },
+  "records": [
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.87,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold0_seed0/selected_best.pt",
+      "checkpoint_sha256": "10d313fd65a39f38db1a148b7ce7793192a778292f3ef4026e3c6086b238d64f",
+      "elapsed_seconds": 8.21895238099387,
+      "fold": 0,
+      "history": [
+        {
+          "CE": 0.7156162738800049,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.6723537445068359,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.660250449180603,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.6587328910827637,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.6530123710632324,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.655295729637146,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.6380803346633911,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.6401270389556885,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.67,
+          "selected": false
+        },
+        {
+          "CE": 0.6227169990539551,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.645,
+          "selected": false
+        },
+        {
+          "CE": 0.6376500725746155,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.66,
+          "selected": true
+        },
+        {
+          "CE": 0.6209866523742675,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.6599999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.621227216720581,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.6699999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.605649983882904,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.7,
+          "selected": true
+        },
+        {
+          "CE": 0.5852439403533936,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.735,
+          "selected": true
+        },
+        {
+          "CE": 0.5693633198738098,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.755,
+          "selected": true
+        },
+        {
+          "CE": 0.5790750026702881,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": true
+        },
+        {
+          "CE": 0.5506680965423584,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.5537247061729431,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.785,
+          "selected": true
+        },
+        {
+          "CE": 0.5522454023361206,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.77,
+          "selected": false
+        },
+        {
+          "CE": 0.5534069895744324,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.755,
+          "selected": false
+        },
+        {
+          "CE": 0.5436973154544831,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.5291753828525543,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": true
+        },
+        {
+          "CE": 0.5514402091503143,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.5451276481151581,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.8300000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.5311576187610626,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": false
+        },
+        {
+          "CE": 0.5185070693492889,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5180012106895446,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.84,
+          "selected": true
+        },
+        {
+          "CE": 0.5024983525276184,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.8200000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5163867115974426,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5287238866090774,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.4965855270624161,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.4973338931798935,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5114456921815872,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.8049999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.48040056228637695,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.7749999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.48844637870788576,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4816577613353729,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.47840253114700315,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.49126264452934265,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.4908082872629166,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.48280408382415774,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4889011293649673,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.835,
+          "selected": false
+        },
+        {
+          "CE": 0.49147493541240694,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.4742943435907364,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.77,
+          "selected": false
+        },
+        {
+          "CE": 0.475519897043705,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.4781411558389664,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.8049999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4911393016576767,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.83,
+          "selected": false
+        },
+        {
+          "CE": 0.4726129651069641,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.7749999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.486508871614933,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.83,
+          "selected": false
+        },
+        {
+          "CE": 0.4667442858219147,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.4685564935207367,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": false
+        },
+        {
+          "CE": 0.4577516481280327,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.8400000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.47696237415075304,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.48098659962415696,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": false
+        },
+        {
+          "CE": 0.4593973562121391,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.4607182264328003,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.4590992718935013,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.46558326184749604,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.4904645875096321,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.87,
+          "selected": true
+        },
+        {
+          "CE": 0.4633911594748497,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.47085105776786806,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.845,
+          "selected": false
+        }
+      ],
+      "init_sha256": "2401435c48aa9d710c3a47fcdea3d86da4fd8cb52edd891db2eedf1e4d3654f4",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-09",
+        "sub-11",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-02"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold0_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "0ff569e763676687614840f2f230351d6311099f2d871dc4c905d1bcc1b55356",
+      "model": "EEGNet",
+      "normalizer_sha256": "ed454438e89812334dcd972152ee083a1f1767b2774e1a7c80aae5543d02e253",
+      "outer_test_subjects": [
+        "sub-03",
+        "sub-08",
+        "sub-10"
+      ],
+      "parameter_count": 33378,
+      "seed": 0,
+      "selected_epoch": 58
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.85,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold0_seed0/selected_best.pt",
+      "checkpoint_sha256": "3171ab8927c0a5d9f9e829dc139b2a9969e87a5b6794af0a1a704f10979d2e1a",
+      "elapsed_seconds": 19.057249078992754,
+      "fold": 0,
+      "history": [
+        {
+          "CE": 0.7347927689552307,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.49,
+          "selected": false
+        },
+        {
+          "CE": 0.6905022382736206,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.6634381175041199,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.6475279927253723,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.6335671544075012,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.69,
+          "selected": false
+        },
+        {
+          "CE": 0.6031524956226348,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.74,
+          "selected": false
+        },
+        {
+          "CE": 0.5863289296627044,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.725,
+          "selected": false
+        },
+        {
+          "CE": 0.5876231878995896,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.5631751656532288,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.5622936964035035,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": true
+        },
+        {
+          "CE": 0.5574447244405747,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5464751452207566,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.85,
+          "selected": true
+        },
+        {
+          "CE": 0.5160263150930404,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.5085655152797699,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.49187579900026324,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.835,
+          "selected": false
+        },
+        {
+          "CE": 0.4878607392311096,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": false
+        },
+        {
+          "CE": 0.47927447110414506,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.8300000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.4940095186233521,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4841603249311447,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.46750427335500716,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.45970992743968964,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.459692157804966,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.46614234894514084,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.4769351452589035,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.443276347219944,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.42490154802799224,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.84,
+          "selected": false
+        },
+        {
+          "CE": 0.41478591710329055,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.4198857918381691,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.845,
+          "selected": false
+        },
+        {
+          "CE": 0.4220473885536194,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.825,
+          "selected": false
+        },
+        {
+          "CE": 0.437080180644989,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.40743930339813234,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.4199134841561317,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4155970051884651,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.8200000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.39408980011940004,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.3688195630908012,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3971541866660118,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.8049999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3945921823382378,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.755,
+          "selected": false
+        },
+        {
+          "CE": 0.3853566080331802,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.37112429440021516,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.755,
+          "selected": false
+        },
+        {
+          "CE": 0.3653972610831261,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.37321747839450836,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.8049999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3676610037684441,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.35318049043416977,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.8049999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3600665792822838,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.36475623697042464,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.825,
+          "selected": false
+        },
+        {
+          "CE": 0.38395237028598783,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.845,
+          "selected": false
+        },
+        {
+          "CE": 0.34570473432540894,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.38374082148075106,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.845,
+          "selected": false
+        },
+        {
+          "CE": 0.3595830574631691,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.3663080453872681,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.84,
+          "selected": false
+        },
+        {
+          "CE": 0.3551448717713356,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.835,
+          "selected": false
+        },
+        {
+          "CE": 0.35780556350946424,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.3656177014112473,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.33855861872434617,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.8200000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3507570639252663,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.3489787966012955,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": false
+        },
+        {
+          "CE": 0.33508251011371615,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.84,
+          "selected": false
+        },
+        {
+          "CE": 0.3442836403846741,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.3323745936155319,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.327759213745594,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.8200000000000001,
+          "selected": false
+        }
+      ],
+      "init_sha256": "3196881559c2f03025d30d79b845b8b136846acc72637f1d0788cedc4b20d299",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-09",
+        "sub-11",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-02"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold0_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "0ff569e763676687614840f2f230351d6311099f2d871dc4c905d1bcc1b55356",
+      "model": "SIRE-EEG",
+      "normalizer_sha256": "ed454438e89812334dcd972152ee083a1f1767b2774e1a7c80aae5543d02e253",
+      "outer_test_subjects": [
+        "sub-03",
+        "sub-08",
+        "sub-10"
+      ],
+      "parameter_count": 45626,
+      "seed": 0,
+      "selected_epoch": 12
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.53,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold1_seed0/selected_best.pt",
+      "checkpoint_sha256": "a5aa49416b6db3c99f205bb9a0a1b3b05bd466b8f7f17066e9ad12bbb21b8ab5",
+      "elapsed_seconds": 7.702337812981568,
+      "fold": 1,
+      "history": [
+        {
+          "CE": 0.7148612976074219,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.5349999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6762383460998536,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.5549999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6709713459014892,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.6542244911193847,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.642057991027832,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.6428515672683716,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.5599999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6228166580200195,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.5549999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6018523573875427,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.5939968943595886,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.5756706357002258,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": true
+        },
+        {
+          "CE": 0.5658828854560852,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.5510125517845154,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.49000000000000005,
+          "selected": false
+        },
+        {
+          "CE": 0.5584770441055298,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.5016543447971344,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.49428542256355285,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.490256541967392,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.495,
+          "selected": false
+        },
+        {
+          "CE": 0.46734496057033537,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.49,
+          "selected": false
+        },
+        {
+          "CE": 0.47093282639980316,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.495,
+          "selected": false
+        },
+        {
+          "CE": 0.46739737689495087,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.495,
+          "selected": false
+        },
+        {
+          "CE": 0.46723505556583406,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.46488025188446047,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4394573986530304,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4704557597637177,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.45472759306430816,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.433027857542038,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.42985335290431975,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4293989807367325,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4458492577075958,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4255326598882675,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4112937092781067,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4083282545208931,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4111347571015358,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4080720141530037,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.40498255342245104,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4003661423921585,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3990765199065208,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.4029602974653244,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.40292890965938566,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.40153674632310865,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.39185207188129423,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3936503857374191,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3929211273789406,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.383124440908432,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3778658002614975,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.38757619857788084,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4115235790610313,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3886675015091896,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.41317535787820814,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3660863056778908,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.39817228317260744,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.36757212579250337,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3620571240782738,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3693612664937973,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3762955665588379,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.37268476337194445,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3662528172135353,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.36720192730426787,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.37114548981189727,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3402084693312645,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.3683813661336899,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        }
+      ],
+      "init_sha256": "2401435c48aa9d710c3a47fcdea3d86da4fd8cb52edd891db2eedf1e4d3654f4",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-02",
+        "sub-03",
+        "sub-04",
+        "sub-07",
+        "sub-08",
+        "sub-09",
+        "sub-10"
+      ],
+      "inner_val_subjects": [
+        "sub-11"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold1_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "467c3f2c9a30d554135d9fb30abddf58560e96b7ca8d55828c979bdb569f9f0b",
+      "model": "EEGNet",
+      "normalizer_sha256": "0f74f2e95a3edcdaf45beda5b5d1116b27f8033110f6f887148dd665f60434bb",
+      "outer_test_subjects": [
+        "sub-05",
+        "sub-06",
+        "sub-12"
+      ],
+      "parameter_count": 33378,
+      "seed": 0,
+      "selected_epoch": 10
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.56,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold1_seed0/selected_best.pt",
+      "checkpoint_sha256": "ba653ad48822c5bd538525816de52a16cc18861e9cc56aca38ea343a0bd5d767",
+      "elapsed_seconds": 18.142073347000405,
+      "fold": 1,
+      "history": [
+        {
+          "CE": 0.7297569751739502,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.6800031423568725,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.643290889263153,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.5892956465482712,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.571284544467926,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.5190858572721482,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4915809527039528,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.46862629503011705,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.4580781698226929,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.46532970368862153,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": true
+        },
+        {
+          "CE": 0.43779631406068803,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.42329680025577543,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": true
+        },
+        {
+          "CE": 0.43218364268541337,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.39545069336891175,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.495,
+          "selected": false
+        },
+        {
+          "CE": 0.3948705196380615,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.40111267268657685,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.38715359270572663,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3917974278330803,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": true
+        },
+        {
+          "CE": 0.38784629553556443,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.39288707822561264,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3786627024412155,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.3457172870635986,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.386388036608696,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.35681652575731276,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.505,
+          "selected": false
+        },
+        {
+          "CE": 0.3417956858873367,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.3370131656527519,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.3373596094548702,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.3498285964131355,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.3191607490181923,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.52,
+          "selected": true
+        },
+        {
+          "CE": 0.33576023280620576,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.32524738013744353,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.535,
+          "selected": true
+        },
+        {
+          "CE": 0.314401912689209,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.535,
+          "selected": false
+        },
+        {
+          "CE": 0.31314548701047895,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.30752103552222254,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.29854947701096535,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.545,
+          "selected": true
+        },
+        {
+          "CE": 0.2842993974685669,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.28901207372546195,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.2905928522348404,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.2967004179954529,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.2815712630748749,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.3042778879404068,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.27832070738077164,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.27726796045899393,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.535,
+          "selected": false
+        },
+        {
+          "CE": 0.2709994107484818,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.2646265424787998,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.2906683385372162,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.26985983923077583,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.2909466981887817,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.258545970916748,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.55,
+          "selected": true
+        },
+        {
+          "CE": 0.27027465030550957,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.24019224867224692,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.25259013324975965,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.56,
+          "selected": true
+        },
+        {
+          "CE": 0.2778567112982273,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.515,
+          "selected": false
+        },
+        {
+          "CE": 0.2551128387451172,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.25218483805656433,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.24589741453528405,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.2352226547896862,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.2497835151851177,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.2370456762611866,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.24859649688005447,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.535,
+          "selected": false
+        }
+      ],
+      "init_sha256": "3196881559c2f03025d30d79b845b8b136846acc72637f1d0788cedc4b20d299",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-02",
+        "sub-03",
+        "sub-04",
+        "sub-07",
+        "sub-08",
+        "sub-09",
+        "sub-10"
+      ],
+      "inner_val_subjects": [
+        "sub-11"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold1_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "467c3f2c9a30d554135d9fb30abddf58560e96b7ca8d55828c979bdb569f9f0b",
+      "model": "SIRE-EEG",
+      "normalizer_sha256": "0f74f2e95a3edcdaf45beda5b5d1116b27f8033110f6f887148dd665f60434bb",
+      "outer_test_subjects": [
+        "sub-05",
+        "sub-06",
+        "sub-12"
+      ],
+      "parameter_count": 45626,
+      "seed": 0,
+      "selected_epoch": 52
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.645,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold2_seed0/selected_best.pt",
+      "checkpoint_sha256": "d2a19fb6287b0275c7a7a3b2cef15737a75699aa17076958a053587c87e559b3",
+      "elapsed_seconds": 7.041413796017878,
+      "fold": 2,
+      "history": [
+        {
+          "CE": 0.7213577032089233,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.6781042098999024,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.6730926036834717,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.6558943510055542,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.535,
+          "selected": false
+        },
+        {
+          "CE": 0.6620066165924072,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.55,
+          "selected": false
+        },
+        {
+          "CE": 0.6431756019592285,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.6410140514373779,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.6378619909286499,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.5549999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6196333050727845,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.53,
+          "selected": false
+        },
+        {
+          "CE": 0.6348447322845459,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": true
+        },
+        {
+          "CE": 0.6348182678222656,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.5700000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.6246592998504639,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.5449999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6422392725944519,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.6276932477951049,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.565,
+          "selected": false
+        },
+        {
+          "CE": 0.6154192566871644,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.55,
+          "selected": false
+        },
+        {
+          "CE": 0.6049325108528137,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.56,
+          "selected": false
+        },
+        {
+          "CE": 0.6009441494941712,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.5700000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5982017278671264,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.597025191783905,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.6010794281959534,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.5914078950881958,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.56,
+          "selected": false
+        },
+        {
+          "CE": 0.6083885908126831,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.5700000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.6165061712265014,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.545,
+          "selected": false
+        },
+        {
+          "CE": 0.5929602384567261,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.5967658042907715,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.5896946668624878,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.555,
+          "selected": false
+        },
+        {
+          "CE": 0.5837649464607239,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.5900000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5722508549690246,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.5689092159271241,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.56,
+          "selected": false
+        },
+        {
+          "CE": 0.5585007548332215,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.565,
+          "selected": false
+        },
+        {
+          "CE": 0.5641311049461365,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.5549999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5690853714942932,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.575,
+          "selected": false
+        },
+        {
+          "CE": 0.5536907076835632,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.5542329490184784,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": true
+        },
+        {
+          "CE": 0.5464230537414551,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.5287546336650848,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.5257518947124481,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.6200000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.518284547328949,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5259378254413605,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.5351289927959442,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.5900000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5191512048244477,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.5014591574668884,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5121684193611145,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.5069528222084045,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.5013148367404938,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": true
+        },
+        {
+          "CE": 0.49956414103507996,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.645,
+          "selected": true
+        },
+        {
+          "CE": 0.4978411108255386,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.4930429995059967,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.5156281232833863,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.48651012778282166,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.6100000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.49317083060741423,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.5114720374345779,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.48309330344200135,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.5142844080924988,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.494295659661293,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.48935516476631163,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.47254523634910583,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4850093126296997,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.4830745041370392,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.5040521860122681,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        }
+      ],
+      "init_sha256": "2401435c48aa9d710c3a47fcdea3d86da4fd8cb52edd891db2eedf1e4d3654f4",
+      "inner_train_subjects": [
+        "sub-02",
+        "sub-03",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-08",
+        "sub-10",
+        "sub-11",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-09"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold2_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "fa81cff625bcb5e67ef5b4c6c5838be5e40102e4326819f66b02172af31d47c1",
+      "model": "EEGNet",
+      "normalizer_sha256": "cae67d33040e734c40eda9a2d23f208a7c0a53e2f0945b33e68ebdf248e03dc9",
+      "outer_test_subjects": [
+        "sub-01",
+        "sub-04"
+      ],
+      "parameter_count": 33378,
+      "seed": 0,
+      "selected_epoch": 46
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.69,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold2_seed0/selected_best.pt",
+      "checkpoint_sha256": "88c609ef3b1f7edf22903cdfbbf93048428c1d003b6ef63dfda3fb6878061c3f",
+      "elapsed_seconds": 17.129302293993533,
+      "fold": 2,
+      "history": [
+        {
+          "CE": 0.7323647975921631,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.56,
+          "selected": false
+        },
+        {
+          "CE": 0.6913680553436279,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.6654532194137573,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.640612268447876,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.6280849695205688,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.6103224158287048,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.5962589085102081,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.5667888581752777,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.6499999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5567096084356308,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.665,
+          "selected": false
+        },
+        {
+          "CE": 0.5612083882093429,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": true
+        },
+        {
+          "CE": 0.5423529952764511,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.69,
+          "selected": true
+        },
+        {
+          "CE": 0.5430817931890488,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.675,
+          "selected": false
+        },
+        {
+          "CE": 0.5289829835295677,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.685,
+          "selected": false
+        },
+        {
+          "CE": 0.5174131691455841,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.665,
+          "selected": false
+        },
+        {
+          "CE": 0.514736746251583,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.69,
+          "selected": false
+        },
+        {
+          "CE": 0.4943573385477066,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.6699999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4869073048233986,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.4900170981884003,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.4578814834356308,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.6599999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.46406193226575854,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4636284843087196,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.665,
+          "selected": false
+        },
+        {
+          "CE": 0.45912629961967466,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.4688558354973793,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.47529893964529035,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4609724640846252,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4601388305425644,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.45617748647928236,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4564538344740868,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4546234220266342,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.4297842517495155,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.44890691339969635,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.4431722894310951,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.42059155106544494,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.4218246579170227,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.4179324746131897,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.575,
+          "selected": false
+        },
+        {
+          "CE": 0.44244626015424726,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.4194215998053551,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.4046251803636551,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.4138600051403046,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.41655957251787185,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.41559424102306364,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.38028193414211275,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.39030279219150543,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.38006985783576963,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.3859852284193039,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.3955503523349762,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.5800000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3796663761138916,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.3947724997997284,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.40286519527435305,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.3714639261364937,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.37796434611082075,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.37484132796525954,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.37254114001989364,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.3663386195898056,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.37527980357408525,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.5800000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.37327266186475755,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.5800000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3662630796432495,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.5900000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3530585840344429,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.5800000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3459390223026276,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.3929378479719162,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        }
+      ],
+      "init_sha256": "3196881559c2f03025d30d79b845b8b136846acc72637f1d0788cedc4b20d299",
+      "inner_train_subjects": [
+        "sub-02",
+        "sub-03",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-08",
+        "sub-10",
+        "sub-11",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-09"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold2_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "fa81cff625bcb5e67ef5b4c6c5838be5e40102e4326819f66b02172af31d47c1",
+      "model": "SIRE-EEG",
+      "normalizer_sha256": "cae67d33040e734c40eda9a2d23f208a7c0a53e2f0945b33e68ebdf248e03dc9",
+      "outer_test_subjects": [
+        "sub-01",
+        "sub-04"
+      ],
+      "parameter_count": 45626,
+      "seed": 0,
+      "selected_epoch": 11
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.855,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold3_seed0/selected_best.pt",
+      "checkpoint_sha256": "6c7e788bf233aee9562bb433e7e99392b6bfe054e53c09e9716ab359916096ce",
+      "elapsed_seconds": 7.212917458964512,
+      "fold": 3,
+      "history": [
+        {
+          "CE": 0.7183141708374023,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.5349999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6698747158050538,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.51,
+          "selected": false
+        },
+        {
+          "CE": 0.6557722091674805,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.55,
+          "selected": false
+        },
+        {
+          "CE": 0.6642802476882934,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.54,
+          "selected": false
+        },
+        {
+          "CE": 0.6488709211349487,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.638084602355957,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.575,
+          "selected": false
+        },
+        {
+          "CE": 0.6383561611175537,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.6372456312179565,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.6203787326812744,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.6163926124572754,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": true
+        },
+        {
+          "CE": 0.6280042052268981,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.6108529329299927,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": true
+        },
+        {
+          "CE": 0.6047708988189697,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.6031800746917725,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": true
+        },
+        {
+          "CE": 0.5839858531951905,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.6799999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.5665009260177613,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.675,
+          "selected": false
+        },
+        {
+          "CE": 0.560166883468628,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.675,
+          "selected": false
+        },
+        {
+          "CE": 0.5635734736919403,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.7,
+          "selected": true
+        },
+        {
+          "CE": 0.5723807513713837,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.665,
+          "selected": false
+        },
+        {
+          "CE": 0.5558217346668244,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.6950000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5450466275215149,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.7150000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.5359846651554108,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.7,
+          "selected": false
+        },
+        {
+          "CE": 0.5504002273082733,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.745,
+          "selected": true
+        },
+        {
+          "CE": 0.5346285402774811,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": true
+        },
+        {
+          "CE": 0.5231509268283844,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.745,
+          "selected": false
+        },
+        {
+          "CE": 0.5198542594909668,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.5148444503545762,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.765,
+          "selected": true
+        },
+        {
+          "CE": 0.5120366722345352,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.77,
+          "selected": true
+        },
+        {
+          "CE": 0.5085069894790649,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.7649999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.48058598935604097,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.735,
+          "selected": false
+        },
+        {
+          "CE": 0.5040002226829529,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.77,
+          "selected": false
+        },
+        {
+          "CE": 0.5020229071378708,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.7749999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.5007636189460755,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.49591304063797,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.765,
+          "selected": false
+        },
+        {
+          "CE": 0.47044738829135896,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.7749999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5075255364179612,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.755,
+          "selected": false
+        },
+        {
+          "CE": 0.4826882481575012,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.47428751885890963,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.49354413747787473,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.7849999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.4790880113840103,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.4842559725046158,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.815,
+          "selected": true
+        },
+        {
+          "CE": 0.45168052464723585,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.4590762183070183,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.4739411011338234,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.745,
+          "selected": false
+        },
+        {
+          "CE": 0.47410600781440737,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.48943975418806074,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.825,
+          "selected": true
+        },
+        {
+          "CE": 0.48084679394960406,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.46644250452518465,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.785,
+          "selected": false
+        },
+        {
+          "CE": 0.4633975148200989,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.8200000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.46182599365711213,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.83,
+          "selected": true
+        },
+        {
+          "CE": 0.46471843868494034,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.4582968905568123,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.775,
+          "selected": false
+        },
+        {
+          "CE": 0.4729276463389397,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.855,
+          "selected": true
+        },
+        {
+          "CE": 0.4517361164093018,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.8,
+          "selected": false
+        },
+        {
+          "CE": 0.47107154726982114,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.44605482220649717,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.765,
+          "selected": false
+        },
+        {
+          "CE": 0.4538619592785835,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.765,
+          "selected": false
+        },
+        {
+          "CE": 0.42803994566202164,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.83,
+          "selected": false
+        },
+        {
+          "CE": 0.431609208881855,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.76,
+          "selected": false
+        },
+        {
+          "CE": 0.46036018133163453,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        }
+      ],
+      "init_sha256": "2401435c48aa9d710c3a47fcdea3d86da4fd8cb52edd891db2eedf1e4d3654f4",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-02",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-08",
+        "sub-09",
+        "sub-10",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-03"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold3_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "ab923dbee8cf272aaa95904932d884f7c84d8bfc511bee5d2d2d30078d8956b0",
+      "model": "EEGNet",
+      "normalizer_sha256": "09e8c6d6ac4fb3bc189642321bc4dbb0e406a0f74c5e06a37de0ece1e81d5a58",
+      "outer_test_subjects": [
+        "sub-07",
+        "sub-11"
+      ],
+      "parameter_count": 33378,
+      "seed": 0,
+      "selected_epoch": 53
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.875,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold3_seed0/selected_best.pt",
+      "checkpoint_sha256": "3cbb46e820f8fc9e63688e430c6af718a3f4829a43164e476db35a5e86b03a87",
+      "elapsed_seconds": 17.946267291961703,
+      "fold": 3,
+      "history": [
+        {
+          "CE": 0.7386935949325562,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.5,
+          "selected": false
+        },
+        {
+          "CE": 0.6872350454330445,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.56,
+          "selected": false
+        },
+        {
+          "CE": 0.6616783618927002,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.6508607625961303,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.71,
+          "selected": false
+        },
+        {
+          "CE": 0.6332612991333008,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.7250000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5925205230712891,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.573446586728096,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.5461714044213295,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.8400000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5261662289500236,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.8300000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.5341522872447968,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.875,
+          "selected": true
+        },
+        {
+          "CE": 0.5019379690289497,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.85,
+          "selected": false
+        },
+        {
+          "CE": 0.48103509098291397,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4729602038860321,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.47044128477573394,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.81,
+          "selected": false
+        },
+        {
+          "CE": 0.4727438822388649,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.45260533392429353,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.45391995310783384,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.78,
+          "selected": false
+        },
+        {
+          "CE": 0.46300980299711225,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.79,
+          "selected": false
+        },
+        {
+          "CE": 0.4575976401567459,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.42992243319749834,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.74,
+          "selected": false
+        },
+        {
+          "CE": 0.41170638501644136,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.40715362280607226,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.6799999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.4343928396701813,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.432869029045105,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.745,
+          "selected": false
+        },
+        {
+          "CE": 0.43493811786174774,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.74,
+          "selected": false
+        },
+        {
+          "CE": 0.4129843354225159,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.75,
+          "selected": false
+        },
+        {
+          "CE": 0.4174207866191864,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.397970923781395,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.73,
+          "selected": false
+        },
+        {
+          "CE": 0.418356591463089,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.3800754904747009,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.67,
+          "selected": false
+        },
+        {
+          "CE": 0.4020238295197487,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.6799999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.40074327737092974,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.39131115227937696,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.67,
+          "selected": false
+        },
+        {
+          "CE": 0.39378983080387114,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.3776703983545303,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.67,
+          "selected": false
+        },
+        {
+          "CE": 0.39009522646665573,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.37608813047409057,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.645,
+          "selected": false
+        },
+        {
+          "CE": 0.3548557281494141,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.37829671800136566,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.69,
+          "selected": false
+        },
+        {
+          "CE": 0.36646806746721267,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.36354673057794573,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.351720866560936,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.66,
+          "selected": false
+        },
+        {
+          "CE": 0.3579561531543732,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.725,
+          "selected": false
+        },
+        {
+          "CE": 0.35943106561899185,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.3641694709658623,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.66,
+          "selected": false
+        },
+        {
+          "CE": 0.36146414279937744,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.72,
+          "selected": false
+        },
+        {
+          "CE": 0.33435413986444473,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.715,
+          "selected": false
+        },
+        {
+          "CE": 0.3641274109482765,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.74,
+          "selected": false
+        },
+        {
+          "CE": 0.34230833649635317,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.67,
+          "selected": false
+        },
+        {
+          "CE": 0.3452417030930519,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.725,
+          "selected": false
+        },
+        {
+          "CE": 0.3226934477686882,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.33890320286154746,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.36691800951957704,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.7949999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.33697313219308855,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.6950000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3445658192038536,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.3423045426607132,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.3314270615577698,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.29931185990571973,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.755,
+          "selected": false
+        },
+        {
+          "CE": 0.30772633850574493,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.3372512310743332,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.69,
+          "selected": false
+        }
+      ],
+      "init_sha256": "3196881559c2f03025d30d79b845b8b136846acc72637f1d0788cedc4b20d299",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-02",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-08",
+        "sub-09",
+        "sub-10",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-03"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold3_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "ab923dbee8cf272aaa95904932d884f7c84d8bfc511bee5d2d2d30078d8956b0",
+      "model": "SIRE-EEG",
+      "normalizer_sha256": "09e8c6d6ac4fb3bc189642321bc4dbb0e406a0f74c5e06a37de0ece1e81d5a58",
+      "outer_test_subjects": [
+        "sub-07",
+        "sub-11"
+      ],
+      "parameter_count": 45626,
+      "seed": 0,
+      "selected_epoch": 10
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.665,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold4_seed0/selected_best.pt",
+      "checkpoint_sha256": "8fac1376e380ed4fe9bf74366bd5cf6200b7b7d475fe59cf5c2e870ef87082c6",
+      "elapsed_seconds": 7.388960917014629,
+      "fold": 4,
+      "history": [
+        {
+          "CE": 0.7103989839553833,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.52,
+          "selected": false
+        },
+        {
+          "CE": 0.6753882884979248,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.575,
+          "selected": false
+        },
+        {
+          "CE": 0.6768887996673584,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.575,
+          "selected": false
+        },
+        {
+          "CE": 0.6576488018035889,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.5449999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6527307748794555,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.5449999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.6407802820205688,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.6460547924041748,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.5700000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.6335010051727294,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.6297017097473144,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.5700000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.6201979160308838,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": true
+        },
+        {
+          "CE": 0.6203286409378052,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": true
+        },
+        {
+          "CE": 0.6129330635070801,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.5549999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.604802918434143,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": true
+        },
+        {
+          "CE": 0.6067229628562927,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.5800000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.6031427264213562,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.545,
+          "selected": false
+        },
+        {
+          "CE": 0.578351891040802,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": true
+        },
+        {
+          "CE": 0.5673335134983063,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.6599999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.5752940118312836,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.5600327968597412,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.5486767649650574,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.6299999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5461243271827698,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.665,
+          "selected": true
+        },
+        {
+          "CE": 0.5366030216217041,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.665,
+          "selected": false
+        },
+        {
+          "CE": 0.5386921763420105,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.527035939693451,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.5435735642910003,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.5136001437902451,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.5224424451589584,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.5148005872964859,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.645,
+          "selected": false
+        },
+        {
+          "CE": 0.5075363129377365,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.5023132145404816,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.5206859111785889,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.5263002038002014,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.5073410838842392,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.4978335589170456,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.48415409624576566,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.5121306627988815,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.48255484998226167,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.5049250185489654,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.5073096930980683,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.65,
+          "selected": false
+        },
+        {
+          "CE": 0.48942118883132935,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.49654640853404997,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.46325558722019194,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.47659040689468385,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4648270845413208,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4845821648836136,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.6499999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.504336702823639,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.58,
+          "selected": false
+        },
+        {
+          "CE": 0.48214266896247865,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.47563250958919523,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.483312126994133,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4664307236671448,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.4404543250799179,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.4678391948342323,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.4759337052702904,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.55,
+          "selected": false
+        },
+        {
+          "CE": 0.4587536707520485,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.466346275806427,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4490185722708702,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.565,
+          "selected": false
+        },
+        {
+          "CE": 0.45873892605304717,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.57,
+          "selected": false
+        },
+        {
+          "CE": 0.44114387333393096,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.43257197439670564,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.4677900642156601,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.5900000000000001,
+          "selected": false
+        }
+      ],
+      "init_sha256": "2401435c48aa9d710c3a47fcdea3d86da4fd8cb52edd891db2eedf1e4d3654f4",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-03",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-08",
+        "sub-11",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-10"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/EEGNet/fold4_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "697172d4d66f4490a4182146fd9e1256016c7f562246759b0387262441fb3e15",
+      "model": "EEGNet",
+      "normalizer_sha256": "45abbf2347ce5878f8fdca522044914d06f947c13125842892a6a6eff1ad2f01",
+      "outer_test_subjects": [
+        "sub-02",
+        "sub-09"
+      ],
+      "parameter_count": 33378,
+      "seed": 0,
+      "selected_epoch": 21
+    },
+    {
+      "amp": true,
+      "best_inner_val_S2_subject_BA": 0.6799999999999999,
+      "checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold4_seed0/selected_best.pt",
+      "checkpoint_sha256": "cf36ebcc84618627a4e93bcc247b89987a1bebe7441837ede658f2956e8c1b6c",
+      "elapsed_seconds": 17.44424144201912,
+      "fold": 4,
+      "history": [
+        {
+          "CE": 0.7393622875213623,
+          "epoch": 1,
+          "inner_val_S2_subject_BA": 0.525,
+          "selected": false
+        },
+        {
+          "CE": 0.6965948581695557,
+          "epoch": 2,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.6760098934173584,
+          "epoch": 3,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.6500828504562378,
+          "epoch": 4,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.6308517038822175,
+          "epoch": 5,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.5978636562824249,
+          "epoch": 6,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.599051371216774,
+          "epoch": 7,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.5676112622022629,
+          "epoch": 8,
+          "inner_val_S2_subject_BA": 0.5599999999999999,
+          "selected": false
+        },
+        {
+          "CE": 0.5542419523000717,
+          "epoch": 9,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.551708173751831,
+          "epoch": 10,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": true
+        },
+        {
+          "CE": 0.5346494063735008,
+          "epoch": 11,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": true
+        },
+        {
+          "CE": 0.5216606423258782,
+          "epoch": 12,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": true
+        },
+        {
+          "CE": 0.5037591814994812,
+          "epoch": 13,
+          "inner_val_S2_subject_BA": 0.66,
+          "selected": true
+        },
+        {
+          "CE": 0.5021057561039924,
+          "epoch": 14,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.5023408070206642,
+          "epoch": 15,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.48660587668418886,
+          "epoch": 16,
+          "inner_val_S2_subject_BA": 0.655,
+          "selected": false
+        },
+        {
+          "CE": 0.4667414903640747,
+          "epoch": 17,
+          "inner_val_S2_subject_BA": 0.6799999999999999,
+          "selected": true
+        },
+        {
+          "CE": 0.48873390406370165,
+          "epoch": 18,
+          "inner_val_S2_subject_BA": 0.645,
+          "selected": false
+        },
+        {
+          "CE": 0.47043030261993407,
+          "epoch": 19,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.4580656781792641,
+          "epoch": 20,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.45686195939779284,
+          "epoch": 21,
+          "inner_val_S2_subject_BA": 0.64,
+          "selected": false
+        },
+        {
+          "CE": 0.4276515543460846,
+          "epoch": 22,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4379944384098053,
+          "epoch": 23,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.4499556481838226,
+          "epoch": 24,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.4578858807682991,
+          "epoch": 25,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.4301083654165268,
+          "epoch": 26,
+          "inner_val_S2_subject_BA": 0.63,
+          "selected": false
+        },
+        {
+          "CE": 0.423304046690464,
+          "epoch": 27,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.43531948179006574,
+          "epoch": 28,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.43792817294597625,
+          "epoch": 29,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4156499892473221,
+          "epoch": 30,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.4217395052313805,
+          "epoch": 31,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.4385183557868004,
+          "epoch": 32,
+          "inner_val_S2_subject_BA": 0.635,
+          "selected": false
+        },
+        {
+          "CE": 0.4051104485988617,
+          "epoch": 33,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.40595696270465853,
+          "epoch": 34,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.39674876630306244,
+          "epoch": 35,
+          "inner_val_S2_subject_BA": 0.585,
+          "selected": false
+        },
+        {
+          "CE": 0.40825445055961607,
+          "epoch": 36,
+          "inner_val_S2_subject_BA": 0.595,
+          "selected": false
+        },
+        {
+          "CE": 0.38602713495492935,
+          "epoch": 37,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.4024902120232582,
+          "epoch": 38,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.39880664348602296,
+          "epoch": 39,
+          "inner_val_S2_subject_BA": 0.62,
+          "selected": false
+        },
+        {
+          "CE": 0.38730179220438005,
+          "epoch": 40,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.4014769434928894,
+          "epoch": 41,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.37945529967546465,
+          "epoch": 42,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.3834024235606194,
+          "epoch": 43,
+          "inner_val_S2_subject_BA": 0.5900000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.37710243463516235,
+          "epoch": 44,
+          "inner_val_S2_subject_BA": 0.59,
+          "selected": false
+        },
+        {
+          "CE": 0.37346510887145995,
+          "epoch": 45,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.39732873886823655,
+          "epoch": 46,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.3575308158993721,
+          "epoch": 47,
+          "inner_val_S2_subject_BA": 0.605,
+          "selected": false
+        },
+        {
+          "CE": 0.3788017764687538,
+          "epoch": 48,
+          "inner_val_S2_subject_BA": 0.625,
+          "selected": false
+        },
+        {
+          "CE": 0.38873988687992095,
+          "epoch": 49,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.3827422961592674,
+          "epoch": 50,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.3678428024053574,
+          "epoch": 51,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.3658650189638138,
+          "epoch": 52,
+          "inner_val_S2_subject_BA": 0.5700000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3687307357788086,
+          "epoch": 53,
+          "inner_val_S2_subject_BA": 0.575,
+          "selected": false
+        },
+        {
+          "CE": 0.3399753853678703,
+          "epoch": 54,
+          "inner_val_S2_subject_BA": 0.615,
+          "selected": false
+        },
+        {
+          "CE": 0.3670532062649727,
+          "epoch": 55,
+          "inner_val_S2_subject_BA": 0.6000000000000001,
+          "selected": false
+        },
+        {
+          "CE": 0.3541149891912937,
+          "epoch": 56,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.3439822494983673,
+          "epoch": 57,
+          "inner_val_S2_subject_BA": 0.59,
+          "selected": false
+        },
+        {
+          "CE": 0.32928553596138954,
+          "epoch": 58,
+          "inner_val_S2_subject_BA": 0.61,
+          "selected": false
+        },
+        {
+          "CE": 0.339976541697979,
+          "epoch": 59,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        },
+        {
+          "CE": 0.3658273175358772,
+          "epoch": 60,
+          "inner_val_S2_subject_BA": 0.6,
+          "selected": false
+        }
+      ],
+      "init_sha256": "3196881559c2f03025d30d79b845b8b136846acc72637f1d0788cedc4b20d299",
+      "inner_train_subjects": [
+        "sub-01",
+        "sub-03",
+        "sub-04",
+        "sub-05",
+        "sub-06",
+        "sub-07",
+        "sub-08",
+        "sub-11",
+        "sub-12"
+      ],
+      "inner_val_subjects": [
+        "sub-10"
+      ],
+      "latest_checkpoint_path": "/root/p4_bnci2015_001_seed0_matched_episodic_v1/runtime/checkpoints/SIRE-EEG/fold4_seed0/checkpoint_latest.pt",
+      "manifest_sha256": "697172d4d66f4490a4182146fd9e1256016c7f562246759b0387262441fb3e15",
+      "model": "SIRE-EEG",
+      "normalizer_sha256": "45abbf2347ce5878f8fdca522044914d06f947c13125842892a6a6eff1ad2f01",
+      "outer_test_subjects": [
+        "sub-02",
+        "sub-09"
+      ],
+      "parameter_count": 45626,
+      "seed": 0,
+      "selected_epoch": 17
+    }
+  ],
+  "seed": 0,
+  "training_recipe": {
+    "checkpoint_selection": "inner future-session mean-subject BA, eligible epochs 10..60, earliest tie",
+    "episode_batch_size": 128,
+    "epochs": 60,
+    "gradient_clipping": 5.0,
+    "loss": "ordinary cross entropy",
+    "lr": 0.0003,
+    "optimizer": "AdamW",
+    "scheduler": "none",
+    "weight_decay": 0.0005
+  }
+}
