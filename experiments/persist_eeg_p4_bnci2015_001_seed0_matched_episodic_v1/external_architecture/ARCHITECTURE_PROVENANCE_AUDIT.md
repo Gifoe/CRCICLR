@@ -1,0 +1,7 @@
+# External architecture provenance audit
+
+- Frozen B0 Full: final `CompactLite(13, 'bn')`, source `/root/rivermind-data/CRCICLR_FINAL_CONFIRM_WORK/experiments/persist_eeg_carrier_dualdataset_screen_v1/code/run_carrier_screen.py` SHA-256 `920af131aabc272317da128f42be9961d5592619ce85ca99192029d1181f126f`, 45,626 parameters. Its existing BNCI selected checkpoints were reused without loading an optimizer or training step.
+- B1--B4 implementation: `/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/code/litebn_variants_v2.py` SHA-256 `ffe8cf1db4fbb72a0478a8d9f1659150624362eb4b99437db67af4b7e271f19c`, in P3 worktree commit `60d053f0cf1c6d8f77a0fd337f0ca8ad03224843`.
+- P3 training wrapper/config traced at `/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/code/run_litebn_ablation_v2.py` SHA-256 `5efe23174fd6a33735b384aea5a6a2195175d99f731f46e24c9e94e55171d95d` and `/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/protocol/PROTOCOL.json` SHA-256 `bbd99e7dfcac2c1e4e3cf786f0cd9f904b278e8586c47fbf12115ed561c4e3cb`.
+- B2 has exactly the same C=13 state-tensor key/shape map as Full. B1/B3/B4 were instantiated directly from the P3 class and audited for count and [1,2]/[1,64] forward outputs before training.
+- Counts: B1=45,498; B2=45,626; B3=45,698; B4=39,418. No architecture was changed after BNCI outcomes.

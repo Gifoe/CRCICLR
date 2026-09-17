@@ -1,0 +1,30 @@
+{
+  "device": "cuda",
+  "no_training": true,
+  "runs": 10,
+  "source_audit": {
+    "rank_projector_arrays_path": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_sire_rankmatched_scale_collapse_v1/protocol/random_projectors.npz",
+    "rank_projector_freeze": {
+      "arrays_sha256": "e769797e3ac2a0bf841f5f1b065f38b107fb5dc0cc87b8f493cafc99787079dc",
+      "checkpoint_audit_sha256": "44f6232fd51be42b520fe99c9f0f145b8c5cdda33eefe4ab00fc6a922f05dbff",
+      "manifest_sha256": "f6359d5a548d65e67fd5172593a10c51e86b5e0717e2c753c86726cf52c847cc",
+      "master_seed": 271828,
+      "path": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_sire_rankmatched_scale_collapse_v1/protocol/PROJECTION_FREEZE.json",
+      "projector_count": 100,
+      "status": "FROZEN_BEFORE_OUTCOME_EVALUATION"
+    },
+    "rank_projector_manifest_path": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_sire_rankmatched_scale_collapse_v1/protocol/RANDOM_PROJECTOR_MANIFEST.csv",
+    "source_hashes": {
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/code/litebn_variants_v2.py": "ffe8cf1db4fbb72a0478a8d9f1659150624362eb4b99437db67af4b7e271f19c",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/code/run_litebn_ablation_v2.py": "5efe23174fd6a33735b384aea5a6a2195175d99f731f46e24c9e94e55171d95d",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/code/run_peeh_bridge.py": "215cc8b393cc08f21f2536d9049527156e69230a08e5261a24abd8eb2c68dcc4",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/code/run_pswa_bridge.py": "7d04ff712b1eaaa4898b8ddff43b455c8e284dc706c6bd3af7a5a3a8e42c5251",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/protocol/PROTOCOL.json": "bbd99e7dfcac2c1e4e3cf786f0cd9f904b278e8586c47fbf12115ed561c4e3cb",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_litebn_ablation_v2_seed0/protocol/VARIANT_DEFINITIONS.json": "1dbfcd2f3ef7f0890ff07e7d9e05e72966900eeaaca1e9483923e77c22f1fa19",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_sire_rankmatched_scale_collapse_v1/code/run_rankmatched_projection_control.py": "4a603ce9b892994c5e40ce7644e1060c3009f3e980be708600cfaedb42c2cf4e",
+      "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK/experiments/persist_eeg_sire_rankmatched_scale_collapse_v1/code/summarize_rankmatched_projection_control.py": "e8191d229e88347893f9cdbb2254d621f2110cdd5a063fb099e06a62e31cb93a"
+    },
+    "tff_commit": "60d053f0cf1c6d8f77a0fd337f0ca8ad03224843",
+    "tff_worktree": "/root/rivermind-data/CRCICLR_TFF_REMAIN_WORK"
+  }
+}
