@@ -203,6 +203,7 @@ def aggregate() -> None:
     ci_positive = sum(r["CI_low_pp"] > 0 for r in primary)
     negative = sum(r["mean_pp"] < 0 for r in primary)
     lines = ["# Persistence incremental value: frozen diagnostic replay", "",
+             "Protocol amendment: the user authorized full direct analysis despite failed/incomplete PEEH seed0 replay. Checkpoint provenance remained mandatory. Numerical replay equivalence is NOT established; interpret effects as exploratory, not independently validated.", "",
              "This is framework analysis of previously accessed heldout cohorts, not a new untouched prospective confirmation.",
              "No neural network was retrained. PU/U/P were rank-matched within every estimable cell.", "",
              "| Model | OpenBMI MI | OpenBMI ERP | OpenBMI SSVEP | WBCIC MI |",
@@ -222,8 +223,12 @@ def aggregate() -> None:
         peeh_replay = list(csv.DictReader(f))
     with (OUT / "SEED0_PSWA_REPLAY_AUDIT.csv").open(newline="", encoding="utf-8") as f:
         pswa_replay = list(csv.DictReader(f))
+    amendment = json.loads((EXP / "protocol/DIRECT_ANALYSIS_AMENDMENT.json").read_text(encoding="utf-8"))
+    direct = amendment.get("mode") == "USER_AUTHORIZED_REPLAY_BYPASS"
     validation = {
-        "schema": "PERSIST_INCREMENTAL_VALUE_COMPLETION_V1", "pass": True, "status": "COMPLETE",
+        "schema": "PERSIST_INCREMENTAL_VALUE_COMPLETION_V1", "pass": True,
+        "status": "COMPLETE_REPLAY_UNVERIFIED" if direct else "COMPLETE",
+        "direct_analysis_amendment": direct, "scientific_replay_equivalence_established": False,
         "checkpoint_cells": len(cells), "models": len(MODELS), "tasks": len(TASKS), "folds": 5, "seeds": 3,
         "estimable_cells": sum(c["status"] == "ESTIMABLE" for c in cells.values()),
         "empty_PU_cells": sum(c["status"] == "EMPTY_PU" for c in cells.values()),
@@ -234,7 +239,8 @@ def aggregate() -> None:
         "neural_retraining": False, "heldout_selector_fitting": False,
         "model_task_estimable": len(primary), "task_aggregate_estimable": sum(r["status"] == "ESTIMABLE" for r in task_rows),
     }
-    if not validation["PEEH_seed0_replay_pass"] or not validation["PSWA_seed0_replay_pass"]:
+    validation["scientific_replay_equivalence_established"] = validation["PEEH_seed0_replay_pass"] and validation["PSWA_seed0_replay_pass"]
+    if not direct and not validation["scientific_replay_equivalence_established"]:
         raise RuntimeError("seed0 replay gate failed at finalization")
     (OUT / "COMPLETION.json").write_text(json.dumps(validation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("PERSIST_INCREMENTAL_VALUE_COMPLETE", flush=True)

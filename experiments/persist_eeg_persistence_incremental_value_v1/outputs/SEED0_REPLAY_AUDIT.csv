@@ -1,0 +1,75 @@
+model,task,fold,status,protected_rank,max_numeric_abs_delta,seconds,reason
+EEGNet,OpenBMI_MI,0,PASS,4,5.017965762962179e-09,0.0,
+EEGNet,OpenBMI_MI,1,PASS,3,4.939321084952708e-09,0.0,
+EEGNet,OpenBMI_MI,2,PASS,4,2.457867652894824e-09,6.75,
+EEGNet,OpenBMI_MI,3,PASS,8,1.8128408392492634e-09,20.14,
+EEGNet,OpenBMI_MI,4,PASS,5,6.571649738273955e-09,20.453,
+EEGNet,OpenBMI_ERP,0,PASS,6,2.3899629737712466e-08,44.532,
+EEGNet,OpenBMI_ERP,1,PASS,9,1.3471251240708935e-08,43.843,
+EEGNet,OpenBMI_ERP,2,PASS,8,1.9784801876887928e-08,44.094,
+EEGNet,OpenBMI_ERP,3,PASS,4,2.574040167818703e-08,43.672,
+EEGNet,OpenBMI_ERP,4,PASS,5,2.543831303936095e-08,43.906,
+EEGNet,OpenBMI_SSVEP,0,PASS,4,5.386932150353019e-09,26.0,
+EEGNet,OpenBMI_SSVEP,1,PASS,8,2.515344155185062e-09,25.141,
+EEGNet,OpenBMI_SSVEP,2,PASS,4,8.674216678272728e-09,24.484,
+EEGNet,OpenBMI_SSVEP,3,PASS,8,5.198075511692046e-09,24.469,
+EEGNet,OpenBMI_SSVEP,4,PASS,8,5.135918884624502e-09,24.938,
+EEGNet,WBCIC_MI,0,PASS,2,9.928597763386726e-09,28.781,
+EEGNet,WBCIC_MI,1,PASS,2,7.769314125643384e-09,28.859,
+EEGNet,WBCIC_MI,2,PASS,3,7.56209955765641e-09,28.328,
+EEGNet,WBCIC_MI,3,PASS,2,6.1737944062612016e-09,28.157,
+EEGNet,WBCIC_MI,4,PASS,1,1.1677413916041934e-08,27.968,
+CBraMod,OpenBMI_MI,0,PASS,0,4.0392750926156315e-06,39.063,
+CBraMod,OpenBMI_MI,1,PASS,4,0.046875000000001776,0.0,"random mean quantization drift, pp"
+CBraMod,OpenBMI_MI,2,PASS,0,0.0,23.297,
+CBraMod,OpenBMI_MI,3,FAIL,4,0.10937500000000044,0.0,random-control mean BA drift >0.1 pp
+CBraMod,OpenBMI_MI,4,PASS,4,0.07812500000000666,24.781,"random mean quantization drift, pp"
+CBraMod,OpenBMI_ERP,0,PASS,4,0.015624999999996891,57.688,"random mean quantization drift, pp"
+CBraMod,OpenBMI_ERP,1,PASS,0,0.0,54.39,
+CBraMod,OpenBMI_ERP,2,PASS,5,0.015624999999996891,54.75,"random mean quantization drift, pp"
+CBraMod,OpenBMI_ERP,3,PASS,4,0.015624999999996891,61.86,"random mean quantization drift, pp"
+CBraMod,OpenBMI_ERP,4,PASS,4,0.0,56.312,
+CBraMod,OpenBMI_SSVEP,0,PASS,0,0.0,28.813,
+CBraMod,OpenBMI_SSVEP,1,PASS,0,0.0,28.406,
+CBraMod,OpenBMI_SSVEP,2,PASS,0,0.0,28.859,
+CBraMod,OpenBMI_SSVEP,3,PASS,0,0.0,27.5,
+CBraMod,OpenBMI_SSVEP,4,FAIL,3,0.46000000000001595,27.453,random-control mean BA drift >0.1 pp
+CBraMod,WBCIC_MI,0,PASS,0,0.0,30.063,
+CBraMod,WBCIC_MI,1,PASS,4,0.046875000000001776,30.844,"random mean quantization drift, pp"
+CBraMod,WBCIC_MI,2,PASS,4,0.0,29.718,
+CBraMod,WBCIC_MI,3,PASS,4,0.0,29.641,
+CBraMod,WBCIC_MI,4,PROTOCOL_INVALID,,,27.781,"exit=1; stderr=t call last):
+  File ""D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1\experiments\persist_eeg_crossbackbone_peeh_v1\code\run_crossbackbone_peeh.py"", line 654, in <module>
+    if __name__==""__main__"":raise SystemExit(main())
+  File ""D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1\experiments\persist_eeg_crossbackbone_peeh_v1\code\run_crossbackbone_peeh.py"", line 650, in main
+    for m,t,f in jobs:evaluate(m,t,f,device)
+  File ""D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1\experiments\persist_eeg_crossbackbone_peeh_v1\code\run_crossbackbone_peeh.py"", line 571, in evaluate
+    spec=spectrum(h,y,sub,sess,task,model,fold);spec[""classes""]=data[""classes""]
+  File ""D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1\experiments\persist_eeg_crossbackbone_peeh_v1\code\run_crossbackbone_peeh.py"", line 292, in spectrum
+    if r < 4: raise RuntimeError(f""active rank below 4: {model}/{task}/f{fold}"")
+RuntimeError: active rank below 4: CBraMod/WBCIC_MI/f4
+"
+TeCh,OpenBMI_MI,0,PASS,4,0.015624999999996891,25.438,"random mean quantization drift, pp"
+TeCh,OpenBMI_MI,1,PASS,8,0.0,25.531,
+TeCh,OpenBMI_MI,2,PASS,8,0.015625000000007994,23.969,"random mean quantization drift, pp"
+TeCh,OpenBMI_MI,3,PASS,4,0.015624999999996891,24.422,"random mean quantization drift, pp"
+TeCh,OpenBMI_MI,4,PASS,4,0.031249999999993783,24.046,"random mean quantization drift, pp"
+TeCh,OpenBMI_ERP,0,PASS,8,0.015624999999996891,48.844,"random mean quantization drift, pp"
+TeCh,OpenBMI_ERP,1,PASS,8,0.015624999999996891,48.484,"random mean quantization drift, pp"
+TeCh,OpenBMI_ERP,2,PASS,4,0.0,48.406,
+TeCh,OpenBMI_ERP,3,PASS,7,0.015624999999996891,48.563,"random mean quantization drift, pp"
+TeCh,OpenBMI_ERP,4,PASS,8,0.0,49.156,
+TeCh,OpenBMI_SSVEP,0,PASS,4,0.0,51.516,
+TeCh,OpenBMI_SSVEP,1,PASS,12,0.0,50.812,
+TeCh,OpenBMI_SSVEP,2,PASS,4,0.0,50.641,
+TeCh,OpenBMI_SSVEP,3,PASS,8,0.0,55.594,
+TeCh,OpenBMI_SSVEP,4,PASS,8,0.0,50.531,
+TeCh,WBCIC_MI,0,FAIL,4,0.015625,26.25,intact or Protected BA changed
+TeCh,WBCIC_MI,1,PASS,4,0.015625000000007994,32.328,"random mean quantization drift, pp"
+TeCh,WBCIC_MI,2,PASS,8,0.0,31.906,
+TeCh,WBCIC_MI,3,FAIL,4,0.015625,25.672,intact or Protected BA changed
+TeCh,WBCIC_MI,4,PASS,4,0.0,31.234,
+ModernTCN,OpenBMI_MI,0,PASS,0,0.0,313.516,
+ModernTCN,OpenBMI_MI,1,PASS,0,0.0,312.719,
+ModernTCN,OpenBMI_MI,2,PASS,1,0.0,313.421,
+ModernTCN,OpenBMI_MI,3,PASS,0,0.0,312.454,

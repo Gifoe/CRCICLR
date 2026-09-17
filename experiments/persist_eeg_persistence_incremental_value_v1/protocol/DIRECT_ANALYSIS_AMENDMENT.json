@@ -1,0 +1,14 @@
+{
+  "schema": "PERSIST_EEG_INCREMENTAL_VALUE_PROTOCOL_AMENDMENT_2026_09_17",
+  "mode": "USER_AUTHORIZED_REPLAY_BYPASS",
+  "authority": "User instruction: 不需要复现了之前开始分析，全量加速完成",
+  "reason": "User prioritizes full direct analysis over completing the seed0 numerical replay gate.",
+  "checkpoint_provenance_required": true,
+  "checkpoint_provenance_status": "420/420 passed before amendment",
+  "PEEH_replay_status_at_amendment": "stopped at 63/100: 58 PASS, 4 FAIL, 1 PROTOCOL_INVALID",
+  "PSWA_replay_status_at_amendment": "100/100 audited: 85 PASS, 14 PU-empty, 1 PROTOCOL_INVALID",
+  "frozen_method_unchanged": true,
+  "heldout_selector_fitting_forbidden": true,
+  "neural_retraining_forbidden": true,
+  "interpretation": "Exploratory analysis of previously accessed heldout cohorts. Numerical replay equivalence is not established. Completion of 420 cells must not be described as a successful seed0 replay."
+}

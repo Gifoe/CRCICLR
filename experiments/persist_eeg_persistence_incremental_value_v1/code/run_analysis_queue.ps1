@@ -8,6 +8,7 @@ $env:OMP_NUM_THREADS = '1'
 $env:MKL_NUM_THREADS = '1'
 $env:OPENBLAS_NUM_THREADS = '1'
 $env:NUMEXPR_NUM_THREADS = '1'
+$env:INCREMENTAL_DIRECT_ANALYSIS = '1'
 $runtime = 'D:\nips-temp\TotalP\P1\persist_incremental_value_runtime'
 $code = 'D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1\experiments\persist_eeg_persistence_incremental_value_v1\code'
 $python = 'E:\Anaconda\envs\persist_stable_251\python.exe'
@@ -15,18 +16,9 @@ $log = Join-Path $runtime 'analysis_queue.log'
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
 
 try {
-    $replayExit = Join-Path $runtime 'seed0_isolated.exit'
-    $pswaExit = Join-Path $runtime 'pswa_replay.exit'
-    for ($minute = 0; $minute -lt 720; $minute++) {
-        if ((Test-Path -LiteralPath $replayExit) -and (Test-Path -LiteralPath $pswaExit)) { break }
-        Start-Sleep -Seconds 60
-    }
-    if (-not (Test-Path -LiteralPath $replayExit) -or -not (Test-Path -LiteralPath $pswaExit)) {
-        throw 'seed0 replay did not complete within 12 hours'
-    }
-    if ((Get-Content -LiteralPath $replayExit -Raw).Trim() -ne '0') { throw 'PEEH seed0 replay failed' }
-    if ((Get-Content -LiteralPath $pswaExit -Raw).Trim() -ne '0') { throw 'PSWA seed0 replay failed' }
-    "GATES_PASS $(Get-Date -Format o)" | Add-Content -LiteralPath $log
+    $amendment = Join-Path (Split-Path $code -Parent) 'protocol\DIRECT_ANALYSIS_AMENDMENT.json'
+    if (-not (Test-Path -LiteralPath $amendment)) { throw 'direct-analysis amendment missing' }
+    "DIRECT_ANALYSIS_AMENDMENT_SHA256 $((Get-FileHash -LiteralPath $amendment -Algorithm SHA256).Hash) $(Get-Date -Format o)" | Add-Content -LiteralPath $log
 
     $models = @('EEGNet', 'CBraMod', 'TeCh', 'ModernTCN', 'Medformer', 'EEGConformer', 'FBCNet')
     $tasks = @('OpenBMI_MI', 'OpenBMI_ERP', 'OpenBMI_SSVEP', 'WBCIC_MI')

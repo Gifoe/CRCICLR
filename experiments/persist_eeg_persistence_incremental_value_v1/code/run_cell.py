@@ -62,6 +62,11 @@ def gate() -> None:
     source = json.loads((EXP / "protocol/SOURCE_MANIFEST.json").read_text(encoding="utf-8"))
     if source["checkpoint_count"] != 420 or source["passed_checkpoint_count"] != 420 or source["problems"]:
         raise RuntimeError("provenance gate failed")
+    if os.environ.get("INCREMENTAL_DIRECT_ANALYSIS") == "1":
+        amendment = json.loads((EXP / "protocol/DIRECT_ANALYSIS_AMENDMENT.json").read_text(encoding="utf-8"))
+        if amendment.get("mode") != "USER_AUTHORIZED_REPLAY_BYPASS" or amendment.get("checkpoint_provenance_required") is not True:
+            raise RuntimeError("direct-analysis amendment missing or invalid")
+        return
     for name, expected_pass, expected_invalid in (
         ("SEED0_REPLAY_AUDIT.csv", 99, 1), ("SEED0_PSWA_REPLAY_AUDIT.csv", 85, 1)
     ):
