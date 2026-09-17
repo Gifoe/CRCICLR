@@ -47,8 +47,12 @@ def main() -> None:
     pending = iter(CELLS)
     done = 0
     failure = None
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
-        active = {pool.submit(run_cell, next(pending)) for _ in range(2)}
+    workers = int(os.environ.get("INCREMENTAL_ANALYSIS_WORKERS", "3"))
+    if workers < 1 or workers > 3:
+        raise RuntimeError("worker count must be in [1, 3]")
+    print(f"PARALLEL_WORKERS {workers}", flush=True)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+        active = {pool.submit(run_cell, next(pending)) for _ in range(workers)}
         while active:
             completed = next(concurrent.futures.as_completed(active))
             active.remove(completed)
