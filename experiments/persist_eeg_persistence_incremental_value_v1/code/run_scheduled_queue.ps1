@@ -28,6 +28,10 @@ $env:MKL_NUM_THREADS = '1'
 $env:OPENBLAS_NUM_THREADS = '1'
 $env:NUMEXPR_NUM_THREADS = '1'
 $env:PYTHONUNBUFFERED = '1'
+# The server's frozen true-outer cache is intentionally named with the
+# historical double-s suffix.  PEEH's legacy default uses the single-s path,
+# which is not the sealed cache location on this host.
+$env:TRUE_OUTER_WBCIC_CACHE = 'D:\nips-temp\TotalP\P2\wbcic_outer_cache\wbcic_epochss'
 
 Push-Location $code
 try {
@@ -37,12 +41,14 @@ try {
             & nvidia-smi 2>&1 | Tee-Object -FilePath $log -Append
         }
         'original' {
-            $env:INCREMENTAL_ANALYSIS_WORKERS = '3'
+            # Keep the post-reboot recovery below the observed safe VRAM envelope.
+            # The queue is resumable, so completed cells are still skipped.
+            $env:INCREMENTAL_ANALYSIS_WORKERS = '1'
             $command = '"' + $python + '" -u "' + (Join-Path $code 'run_analysis_parallel.py') + '" >> "' + $log + '" 2>&1'
             & cmd.exe /d /c $command
         }
         'eegnet' {
-            $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models EEGNet --workers 4 >> "' + $log + '" 2>&1'
+            $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models EEGNet --workers 3 >> "' + $log + '" 2>&1'
             & cmd.exe /d /c $command
         }
         'ordered' {

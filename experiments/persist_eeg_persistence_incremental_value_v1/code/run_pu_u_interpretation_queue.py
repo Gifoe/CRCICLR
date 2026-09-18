@@ -39,11 +39,21 @@ def main() -> None:
     jobs = [(model, task, fold, seed) for model in selected for task in TASKS for fold in range(5) for seed in range(3)
             if not path_for(model, task, fold, seed).is_file()]
     print("INTERPRETATION_JOBS", len(jobs), "workers=", args.workers, flush=True)
+    log_root = RUNTIME / "pu_u_logs"
+    log_root.mkdir(parents=True, exist_ok=True)
+
     def execute(job):
         model, task, fold, seed = job
-        result = subprocess.run([sys.executable, "-u", str(CODE / "run_pu_u_interpretation.py"), "cell", model, task, str(fold), str(seed)], check=False)
+        name = f"{model}_{task}_fold{fold}_seed{seed}.log"
+        log_path = log_root / name
+        with log_path.open("w", encoding="utf-8") as log:
+            result = subprocess.run(
+                [sys.executable, "-u", str(CODE / "run_pu_u_interpretation.py"),
+                 "cell", model, task, str(fold), str(seed)],
+                stdout=log, stderr=subprocess.STDOUT, check=False,
+            )
         if result.returncode:
-            raise RuntimeError(f"interpretation cell failed: {model} {task} {fold} {seed}")
+            raise RuntimeError(f"interpretation cell failed: {model} {task} {fold} {seed}; log={log_path}")
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
         list(pool.map(execute, jobs))
     print("INTERPRETATION_QUEUE_COMPLETE", flush=True)
