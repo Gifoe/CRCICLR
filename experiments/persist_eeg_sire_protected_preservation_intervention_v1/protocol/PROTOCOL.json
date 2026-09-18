@@ -1,0 +1,48 @@
+{
+  "PRD_lambda": 0.25,
+  "checkpoint_freeze_rule": "all Stage-2 epoch20 final checkpoints must exist before intervention heldout inference",
+  "early_stopping": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gradient_clip": 5.0,
+  "heldout_hyperparameter_tuning": false,
+  "heldout_scope": {
+    "OpenBMI_MI": "14-subject internal-heldout intervention evaluation",
+    "WBCIC_MI": "10-subject true-outer intervention evaluation"
+  },
+  "lr": 0.0003,
+  "new_CE_reference_training": false,
+  "optimizer": "AdamW",
+  "preserve_lambda": 0.25,
+  "primary": "ProtectedPreserve - mean(RandomPreserve R0,R1,R2)",
+  "primary_random_ids": [
+    0,
+    1,
+    2
+  ],
+  "random_overlap_rule": "exact PEEH active-coordinate sampling; overlap with P permitted",
+  "random_pool_size": 100,
+  "reference": "existing matched CE selected checkpoint theta0",
+  "scheduler": null,
+  "schema": "SIRE_PROTECTED_PRESERVATION_INTERVENTION_V1",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection": "Appendix-L repaired train-only PERSIST selection; fixed theta0 coordinate system",
+  "selector_retuning": false,
+  "split_sha256": "d313f8e1f2c105d0b387c607fb781b61d9a05d92875759e51ed0d4c6d889f42a",
+  "stage2_epochs": 20,
+  "steps_per_epoch": 20,
+  "tasks": [
+    "OpenBMI_MI",
+    "WBCIC_MI"
+  ],
+  "weight_decay": 0.0005
+}

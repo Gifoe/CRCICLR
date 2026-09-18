@@ -1,0 +1,50 @@
+{
+  "PRD_lambda": 0.25,
+  "all_intervention_checkpoints_frozen_before_heldout": true,
+  "biological_subject_bootstrap_draws": 20000,
+  "both_tasks_reported": true,
+  "fixed_update_count": 400,
+  "heldout_hyperparameter_tuning": false,
+  "interpretation": "primary effect is a paired biological-subject contrast; folds/seeds/random arms are not independent subjects",
+  "new_CE_reference_training": false,
+  "pre_heldout_freeze_status": "FROZEN_BEFORE_INTERVENTION_HELDOUT_INFERENCE",
+  "preserve_lambda": 0.25,
+  "primary_random_ids": [
+    0,
+    1,
+    2
+  ],
+  "protected_and_random_targets_frozen_before_stage2": true,
+  "protected_assignment_coverage": [
+    {
+      "estimable_cells": 15,
+      "protected_assignment_coverage": "15/15",
+      "protected_rank_max": 8,
+      "protected_rank_mean": 5.466666666666667,
+      "protected_rank_min": 3,
+      "task": "OpenBMI_MI",
+      "total_cells": 15
+    },
+    {
+      "estimable_cells": 15,
+      "protected_assignment_coverage": "15/15",
+      "protected_rank_max": 4,
+      "protected_rank_mean": 3.2666666666666666,
+      "protected_rank_min": 1,
+      "task": "WBCIC_MI",
+      "total_cells": 15
+    }
+  ],
+  "protected_train_only": true,
+  "random_pool_size": 100,
+  "rank_match_100_percent": true,
+  "reference_cells_audited": 30,
+  "reference_coordinate_system_fixed_before_stage2": true,
+  "reference_replay_pass": true,
+  "same_optimizer": true,
+  "same_stage2_manifests": true,
+  "same_theta0_initialization": true,
+  "selector_retuning": false,
+  "stage2_early_stopping": false,
+  "status": "COMPLETE"
+}
