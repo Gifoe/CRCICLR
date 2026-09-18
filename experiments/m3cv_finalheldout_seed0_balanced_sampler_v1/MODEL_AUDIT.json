@@ -1,0 +1,299 @@
+{
+  "EEGNet": {
+    "embedding": 64,
+    "input": [
+      64,
+      1000
+    ],
+    "output": [
+      2
+    ],
+    "parameters": 34194,
+    "source": "/root/rivermind-data/CRCICLR_FINAL_CONFIRM_WORK/experiments/persist_eeg_carrier_dualdataset_screen_v1/code/eegnet_locked.py",
+    "source_sha256": "f7c513c3f3cd1f326a74b4e419bd693e15ee8980a7c378f1c0bee8215b8b89dd",
+    "state_tensor_shapes": {
+      "bn1.bias": [
+        8
+      ],
+      "bn1.num_batches_tracked": [],
+      "bn1.running_mean": [
+        8
+      ],
+      "bn1.running_var": [
+        8
+      ],
+      "bn1.weight": [
+        8
+      ],
+      "bn2.bias": [
+        16
+      ],
+      "bn2.num_batches_tracked": [],
+      "bn2.running_mean": [
+        16
+      ],
+      "bn2.running_var": [
+        16
+      ],
+      "bn2.weight": [
+        16
+      ],
+      "bn3.bias": [
+        16
+      ],
+      "bn3.num_batches_tracked": [],
+      "bn3.running_mean": [
+        16
+      ],
+      "bn3.running_var": [
+        16
+      ],
+      "bn3.weight": [
+        16
+      ],
+      "depth.weight": [
+        16,
+        1,
+        1,
+        16
+      ],
+      "embedding.0.bias": [
+        64
+      ],
+      "embedding.0.weight": [
+        64,
+        496
+      ],
+      "embedding.2.bias": [
+        64
+      ],
+      "embedding.2.weight": [
+        64
+      ],
+      "head.bias": [
+        2
+      ],
+      "head.weight": [
+        2,
+        64
+      ],
+      "point.weight": [
+        16,
+        16,
+        1,
+        1
+      ],
+      "spatial.weight": [
+        16,
+        1,
+        64,
+        1
+      ],
+      "temporal.weight": [
+        8,
+        1,
+        1,
+        64
+      ]
+    }
+  },
+  "SIRE-EEG": {
+    "embedding": 64,
+    "input": [
+      64,
+      1000
+    ],
+    "output": [
+      2
+    ],
+    "parameters": 48074,
+    "source": "/root/rivermind-data/CRCICLR_FINAL_CONFIRM_WORK/experiments/persist_eeg_carrier_dualdataset_screen_v1/code/run_carrier_screen.py",
+    "source_sha256": "920af131aabc272317da128f42be9961d5592619ce85ca99192029d1181f126f",
+    "state_tensor_shapes": {
+      "depth1.weight": [
+        48,
+        1,
+        1,
+        15
+      ],
+      "depth2.weight": [
+        64,
+        1,
+        1,
+        31
+      ],
+      "embedding.0.bias": [
+        64
+      ],
+      "embedding.0.weight": [
+        64,
+        512
+      ],
+      "embedding.2.bias": [
+        64
+      ],
+      "embedding.2.weight": [
+        64
+      ],
+      "head.bias": [
+        2
+      ],
+      "head.weight": [
+        2,
+        64
+      ],
+      "norm1.bias": [
+        64
+      ],
+      "norm1.num_batches_tracked": [],
+      "norm1.running_mean": [
+        64
+      ],
+      "norm1.running_var": [
+        64
+      ],
+      "norm1.weight": [
+        64
+      ],
+      "norm2.bias": [
+        64
+      ],
+      "norm2.num_batches_tracked": [],
+      "norm2.running_mean": [
+        64
+      ],
+      "norm2.running_var": [
+        64
+      ],
+      "norm2.weight": [
+        64
+      ],
+      "point1.weight": [
+        64,
+        48,
+        1,
+        1
+      ],
+      "point2.weight": [
+        64,
+        64,
+        1,
+        1
+      ],
+      "spatial.0.weight": [
+        16,
+        1,
+        64,
+        1
+      ],
+      "spatial.1.weight": [
+        16,
+        1,
+        64,
+        1
+      ],
+      "spatial.2.weight": [
+        16,
+        1,
+        64,
+        1
+      ],
+      "spatial_norm.0.bias": [
+        16
+      ],
+      "spatial_norm.0.num_batches_tracked": [],
+      "spatial_norm.0.running_mean": [
+        16
+      ],
+      "spatial_norm.0.running_var": [
+        16
+      ],
+      "spatial_norm.0.weight": [
+        16
+      ],
+      "spatial_norm.1.bias": [
+        16
+      ],
+      "spatial_norm.1.num_batches_tracked": [],
+      "spatial_norm.1.running_mean": [
+        16
+      ],
+      "spatial_norm.1.running_var": [
+        16
+      ],
+      "spatial_norm.1.weight": [
+        16
+      ],
+      "spatial_norm.2.bias": [
+        16
+      ],
+      "spatial_norm.2.num_batches_tracked": [],
+      "spatial_norm.2.running_mean": [
+        16
+      ],
+      "spatial_norm.2.running_var": [
+        16
+      ],
+      "spatial_norm.2.weight": [
+        16
+      ],
+      "temporal.0.weight": [
+        8,
+        1,
+        1,
+        15
+      ],
+      "temporal.1.weight": [
+        8,
+        1,
+        1,
+        63
+      ],
+      "temporal.2.weight": [
+        8,
+        1,
+        1,
+        127
+      ],
+      "temporal_norm.0.bias": [
+        8
+      ],
+      "temporal_norm.0.num_batches_tracked": [],
+      "temporal_norm.0.running_mean": [
+        8
+      ],
+      "temporal_norm.0.running_var": [
+        8
+      ],
+      "temporal_norm.0.weight": [
+        8
+      ],
+      "temporal_norm.1.bias": [
+        8
+      ],
+      "temporal_norm.1.num_batches_tracked": [],
+      "temporal_norm.1.running_mean": [
+        8
+      ],
+      "temporal_norm.1.running_var": [
+        8
+      ],
+      "temporal_norm.1.weight": [
+        8
+      ],
+      "temporal_norm.2.bias": [
+        8
+      ],
+      "temporal_norm.2.num_batches_tracked": [],
+      "temporal_norm.2.running_mean": [
+        8
+      ],
+      "temporal_norm.2.running_var": [
+        8
+      ],
+      "temporal_norm.2.weight": [
+        8
+      ]
+    }
+  }
+}

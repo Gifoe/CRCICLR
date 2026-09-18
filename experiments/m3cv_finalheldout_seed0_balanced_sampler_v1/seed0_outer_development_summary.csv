@@ -1,0 +1,9 @@
+setting,row_type,population,model,metric,mean,CI95_low,CI95_high,subjects,future BA,future Macro-F1,WS-BA
+original_trial_equal,model,outer_development,EEGNet,,,,,75,0.9130411897192336,0.9119480637998694,0.8816445732726712
+original_trial_equal,model,outer_development,SIRE-EEG,,,,,75,0.9104955222138833,0.9091943167220135,0.8790282333392021
+original_trial_equal,paired_SIRE_minus_EEGNet,outer_development,SIRE-EEG minus EEGNet,future BA,-0.002545667505350262,-0.008543743767766824,0.0034206928650220366,75,,,
+original_trial_equal,paired_SIRE_minus_EEGNet,outer_development,SIRE-EEG minus EEGNet,WS-BA,-0.0026163399334688453,-0.00922666880421107,0.004121025087144737,75,,,
+hierarchical_balanced,model,outer_development,EEGNet,,,,,75,0.9155400612555749,0.9145170791709393,0.8820593466149171
+hierarchical_balanced,model,outer_development,SIRE-EEG,,,,,75,0.9120772346565473,0.9107557595055391,0.8795803336136383
+hierarchical_balanced,paired_SIRE_minus_EEGNet,outer_development,SIRE-EEG minus EEGNet,future BA,-0.003462826599027471,-0.00897575091531447,0.002261903671596101,75,,,
+hierarchical_balanced,paired_SIRE_minus_EEGNet,outer_development,SIRE-EEG minus EEGNet,WS-BA,-0.0024790130012791556,-0.007969691380345008,0.0031527496680266534,75,,,
