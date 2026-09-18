@@ -7,7 +7,7 @@ checkpoint, data split, selector, rank, statistical unit, or analysis code.
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'eegconformer_tech', 'ordered')]
+    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'eegconformer_tech', 'ordered', 'remaining_x2')]
     [string]$Mode
 )
 
@@ -75,6 +75,16 @@ try {
         }
         'ordered' {
             $command = '"' + $python + '" -u "' + (Join-Path $code 'run_ordered_pu_u_analysis.py') + '" --workers 3 --poll-seconds 30 --external-running EEGNet >> "' + $log + '" 2>&1'
+            & cmd.exe /d /c $command
+        }
+        'remaining_x2' {
+            # The frozen explanation work for the remaining four source
+            # models is independent.  Six workers doubles the prior safe
+            # non-ERP concurrency (three), while the queue itself continues
+            # to serialize OpenBMI-ERP globally to avoid its multi-GB RAM
+            # materialization.  This is scheduling-only: every cell's
+            # inputs, code path, and numerical thread settings are unchanged.
+            $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models FBCNet CBraMod Medformer ModernTCN --workers 6 >> "' + $log + '" 2>&1'
             & cmd.exe /d /c $command
         }
     }
