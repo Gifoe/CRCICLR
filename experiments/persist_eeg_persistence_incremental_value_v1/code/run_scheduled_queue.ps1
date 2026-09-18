@@ -7,7 +7,7 @@ checkpoint, data split, selector, rank, statistical unit, or analysis code.
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'eegconformer_tech', 'ordered', 'remaining_x2')]
+    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'eegconformer_tech', 'ordered', 'remaining_x2', 'remaining_recovery')]
     [string]$Mode
 )
 
@@ -86,6 +86,20 @@ try {
             # inputs, code path, and numerical thread settings are unchanged.
             $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models FBCNet CBraMod Medformer ModernTCN --workers 6 >> "' + $log + '" 2>&1'
             & cmd.exe /d /c $command
+        }
+        'remaining_recovery' {
+            # Six simultaneous ModernTCN spectrum cells exceeded the RTX
+            # 5090 VRAM budget (one cell requires a transient 4.77 GiB
+            # spectrum allocation).  Run ModernTCN at a conservative smaller
+            # model-specific concurrency first, then resume the residual
+            # FBCNet/CBraMod/Medformer ERP cells.  The latter are globally
+            # serial inside the queue, preserving the RAM-safe scheduling
+            # rule and all frozen numerical computations.
+            $modern = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models ModernTCN --workers 3 >> "' + $log + '" 2>&1'
+            & cmd.exe /d /c $modern
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $residual = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models FBCNet CBraMod Medformer --workers 6 >> "' + $log + '" 2>&1'
+            & cmd.exe /d /c $residual
         }
     }
     $exitCode = $LASTEXITCODE
