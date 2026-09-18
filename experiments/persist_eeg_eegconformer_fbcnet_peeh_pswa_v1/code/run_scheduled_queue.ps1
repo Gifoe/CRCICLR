@@ -41,36 +41,35 @@ function Invoke-Queue {
   } } }
   Write-Output ("{0}_PENDING={1}" -f $Stage, @($jobs).Count)
   $running = @()
-  foreach($job in $jobs) {
-    while(@($running).Count -ge $Workers) {
-      $finished = $running | Where-Object { $_.Process.HasExited }
-      if(@($finished).Count -eq 0) { Start-Sleep -Seconds 2; continue }
-      foreach($item in $finished) {
-        $item.Process.Refresh()
-        if($item.Process.ExitCode -ne 0) {
-          throw ("{0} failed: {1}/{2}/fold{3}; see {4}" -f $Stage,$item.Model,$item.Task,$item.Fold,$item.Log)
-        }
-        $running = @($running | Where-Object { $_ -ne $item })
-      }
+  function Collect-Finished {
+    param([System.Collections.ArrayList]$Items)
+    $finished = @()
+    foreach($item in @($Items)) {
+      $item.Process.Refresh()
+      if($item.Process.HasExited) { $finished += $item }
     }
+    foreach($item in $finished) {
+      # The cell JSON is atomically written only after the Python runner has
+      # completed its numerical work.  A sporadic Windows child-process exit
+      # status after that write must not make the parent rerun a valid frozen
+      # cell; a non-zero status with no cell remains a hard error.
+      if($item.Process.ExitCode -ne 0 -and -not (Test-Path -LiteralPath $item.Done)) {
+        throw ("{0} failed: {1}/{2}/fold{3}; see {4}" -f $Stage,$item.Model,$item.Task,$item.Fold,$item.Log)
+      }
+      Write-Output ("DONE {0} {1} {2} fold={3} exit={4}" -f $Stage,$item.Model,$item.Task,$item.Fold,$item.Process.ExitCode)
+      [void]$Items.Remove($item)
+    }
+  }
+  $running = [System.Collections.ArrayList]::new()
+  foreach($job in $jobs) {
+    while($running.Count -ge $Workers) { Collect-Finished -Items $running; if($running.Count -ge $Workers) { Start-Sleep -Seconds 2 } }
     $log = Join-Path $LogRoot ("{0}_{1}_{2}_fold{3}.log" -f $Stage,$job.Model,$job.Task,$job.Fold)
     $args = @($Script, '--stage', 'run', '--model', $job.Model, '--task', $job.Task, '--fold', [string]$job.Fold)
     $p = Start-Process -FilePath $Python -ArgumentList $args -RedirectStandardOutput $log -RedirectStandardError ($log + '.err') -PassThru -WindowStyle Hidden
-    $running += [PSCustomObject]@{Process=$p; Model=$job.Model; Task=$job.Task; Fold=$job.Fold; Log=$log}
+    [void]$running.Add([PSCustomObject]@{Process=$p; Model=$job.Model; Task=$job.Task; Fold=$job.Fold; Done=$job.Done; Log=$log})
     Write-Output ("START {0} {1} {2} fold={3} pid={4}" -f $Stage,$job.Model,$job.Task,$job.Fold,$p.Id)
   }
-  while(@($running).Count) {
-    $finished = $running | Where-Object { $_.Process.HasExited }
-    if(@($finished).Count -eq 0) { Start-Sleep -Seconds 2; continue }
-    foreach($item in $finished) {
-      $item.Process.Refresh()
-      if($item.Process.ExitCode -ne 0) {
-        throw ("{0} failed: {1}/{2}/fold{3}; see {4}" -f $Stage,$item.Model,$item.Task,$item.Fold,$item.Log)
-      }
-      Write-Output ("DONE {0} {1} {2} fold={3}" -f $Stage,$item.Model,$item.Task,$item.Fold)
-      $running = @($running | Where-Object { $_ -ne $item })
-    }
-  }
+  while($running.Count) { Collect-Finished -Items $running; if($running.Count) { Start-Sleep -Seconds 2 } }
 }
 
 if($Mode -in @('all','peeh')) {

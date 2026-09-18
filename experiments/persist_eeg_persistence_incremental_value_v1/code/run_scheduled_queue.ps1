@@ -7,7 +7,7 @@ checkpoint, data split, selector, rank, statistical unit, or analysis code.
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('probe', 'original', 'eegnet', 'ordered')]
+    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'ordered')]
     [string]$Mode
 )
 
@@ -49,6 +49,20 @@ try {
         }
         'eegnet' {
             $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models EEGNet --workers 3 >> "' + $log + '" 2>&1'
+            & cmd.exe /d /c $command
+        }
+        'eegconformer' {
+            # EEGConformer has a complete frozen source matrix and can be
+            # analyzed independently while FBCNet's remaining source cells
+            # finish.  This is a scheduling change only; the queue itself
+            # remains resume-safe and numerically unchanged.
+            $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models EEGConformer --workers 3 >> "' + $log + '" 2>&1'
+            & cmd.exe /d /c $command
+        }
+        'tech' {
+            # TeCh is already a complete frozen source model.  Its analysis
+            # does not depend on the outstanding FBCNet source cells.
+            $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models TeCh --workers 3 >> "' + $log + '" 2>&1'
             & cmd.exe /d /c $command
         }
         'ordered' {
