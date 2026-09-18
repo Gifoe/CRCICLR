@@ -7,7 +7,7 @@ checkpoint, data split, selector, rank, statistical unit, or analysis code.
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'ordered')]
+    [ValidateSet('probe', 'original', 'eegnet', 'eegconformer', 'tech', 'eegconformer_tech', 'ordered')]
     [string]$Mode
 )
 
@@ -63,6 +63,14 @@ try {
             # TeCh is already a complete frozen source model.  Its analysis
             # does not depend on the outstanding FBCNet source cells.
             $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models TeCh --workers 3 >> "' + $log + '" 2>&1'
+            & cmd.exe /d /c $command
+        }
+        'eegconformer_tech' {
+            # One shared queue keeps OpenBMI-ERP globally serial while using
+            # three workers for all other task cells.  Separate model queues
+            # would each serialize ERP but could still collide with one
+            # another in RAM.
+            $command = '"' + $python + '" -u "' + (Join-Path $code 'run_pu_u_interpretation_queue.py') + '" --models EEGConformer TeCh --workers 3 >> "' + $log + '" 2>&1'
             & cmd.exe /d /c $command
         }
         'ordered' {

@@ -38,7 +38,14 @@ def main() -> None:
     print("INTERPRETATION_MODELS", ",".join(selected), "excluded_incomplete=", ",".join(excluded), flush=True)
     jobs = [(model, task, fold, seed) for model in selected for task in TASKS for fold in range(5) for seed in range(3)
             if not path_for(model, task, fold, seed).is_file()]
-    print("INTERPRETATION_JOBS", len(jobs), "workers=", args.workers, flush=True)
+    # ERP's full heldout session matrix is much larger than the other tasks.
+    # Parallel ERP cells duplicate several GB of normalized arrays and can hit
+    # the host memory ceiling.  Serialization changes only process timing, not
+    # cached data, seeds, model inference, or any numerical result.
+    parallel_jobs = [job for job in jobs if job[1] != "OpenBMI_ERP"]
+    erp_jobs = [job for job in jobs if job[1] == "OpenBMI_ERP"]
+    print("INTERPRETATION_JOBS", len(jobs), "parallel_non_erp=", len(parallel_jobs),
+          "erp_serial=", len(erp_jobs), "workers=", args.workers, flush=True)
     log_root = RUNTIME / "pu_u_logs"
     log_root.mkdir(parents=True, exist_ok=True)
 
@@ -54,8 +61,13 @@ def main() -> None:
             )
         if result.returncode:
             raise RuntimeError(f"interpretation cell failed: {model} {task} {fold} {seed}; log={log_path}")
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
-        list(pool.map(execute, jobs))
+    if parallel_jobs:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
+            list(pool.map(execute, parallel_jobs))
+    if erp_jobs:
+        # Do not overlap memory-heavy ERP normalization with another ERP cell.
+        for job in erp_jobs:
+            execute(job)
     print("INTERPRETATION_QUEUE_COMPLETE", flush=True)
 
 
