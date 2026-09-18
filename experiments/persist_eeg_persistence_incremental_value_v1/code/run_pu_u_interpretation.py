@@ -10,6 +10,7 @@ import argparse
 import csv
 import hashlib
 import json
+import os
 from collections import defaultdict
 from pathlib import Path
 
@@ -23,6 +24,8 @@ MODELS = ("EEGNet", "CBraMod", "TeCh", "ModernTCN", "Medformer", "EEGConformer",
 TASKS = ("OpenBMI_MI", "OpenBMI_ERP", "OpenBMI_SSVEP", "WBCIC_MI")
 OUT = run_cell.EXP / "outputs"
 CELL_ROOT = run_cell.RUNTIME / "pu_u_interpretation"
+EXECUTION_MODE = os.environ.get("PERSIST_EXECUTION_MODE", "FROZEN_REPLAY")
+CPU_EXPLORATORY = EXECUTION_MODE == "CPU_EXPLORATORY_NON_EQUIVALENT"
 
 
 def stable_seed(*parts: object) -> int:
@@ -49,7 +52,14 @@ def mean_subject(values: dict[str, float]) -> float:
 def score_by_session(q_source: np.ndarray, source_y: np.ndarray, representations: dict[str, np.ndarray],
                      evaluation: dict[str, dict], dims: list[int], classes: int) -> dict[str, dict[str, float]]:
     if not dims:
-        return {name: {} for name in representations}
+        # ``ridge_scores`` has the closed-form no-coordinate solution
+        # ``score = mean(one_hot(source_y))``.  Calling it with an [N,0]
+        # array instead emits empty-slice warnings; spell out the exact same
+        # argmax decision so rank-complete random removals remain defined.
+        prior_class = int(np.eye(classes, dtype=np.float64)[source_y].mean(0).argmax())
+        return {name: run_cell.ba_by_subject(np.full(len(value["y"]), prior_class, dtype=np.int64),
+                                             value["y"], value["subjects"].astype(str))
+                for name, value in evaluation.items()}
     result = {}
     for name, q_eval in representations.items():
         value = evaluation[name]
@@ -77,12 +87,14 @@ def cell(model: str, task: str, fold: int, seed: int) -> None:
         raise RuntimeError("Experiment 1 cell identity mismatch")
     base = {"identity": [model, task, fold, seed], "source_cell": str(source_path),
             "source_status": source["status"], "training_performed": False,
-            "selector_changed": False, "heldout_used_for_selection": False}
+            "selector_changed": False, "heldout_used_for_selection": False,
+            "execution_mode": EXECUTION_MODE,
+            "numerical_replay_equivalence": not CPU_EXPLORATORY}
     if source["status"] != "ESTIMABLE":
         target.parent.mkdir(parents=True, exist_ok=True); target.write_text(json.dumps(base, indent=2) + "\n"); return
     run_cell.gate()
     audit = run_cell.audit_row(model, task, fold, seed)
-    checkpoint = Path(audit["checkpoint_path"])
+    checkpoint = Path(audit.get("local_checkpoint_path", audit["checkpoint_path"]))
     if run_cell.digest(checkpoint) != audit["checkpoint_sha256"] or source["checkpoint_sha256"] != audit["checkpoint_sha256"]:
         raise RuntimeError("checkpoint provenance changed")
     record = json.loads((checkpoint.parent / "record.json").read_text(encoding="utf-8"))
@@ -98,13 +110,15 @@ def cell(model: str, task: str, fold: int, seed: int) -> None:
     owner = np.concatenate([capped["source_subjects"], capped["future_subjects"]])
     sessions = np.concatenate([np.full(len(hs), data["source_session"]), np.full(len(hf), data["future_session"])]).astype(np.int64)
     spec = run_cell.peeh.spectrum(h, y, owner, sessions, task, model, fold); spec["classes"] = data["classes"]
-    if int(spec["rank"]) != int(source["active_rank"]) or spec["blocks"] != source["blocks"]:
+    spectrum_matches_frozen = (int(spec["rank"]) == int(source["active_rank"]) and spec["blocks"] == source["blocks"])
+    if not CPU_EXPLORATORY and not spectrum_matches_frozen:
         raise RuntimeError("frozen spectrum differs from Experiment 1")
     assignments = source["utility_evidence"]
-    selected = run_cell.selectors.choose(spec, assignments)
     stored = {name: tuple(map(int, source["selector_coordinates"][name])) for name in ("PU", "U_only", "P_only")}
-    if any(tuple(selected[name].coordinates) != stored[name] for name in stored):
-        raise RuntimeError("selector reconstruction mismatch")
+    if not CPU_EXPLORATORY:
+        selected = run_cell.selectors.choose(spec, assignments)
+        if any(tuple(selected[name].coordinates) != stored[name] for name in stored):
+            raise RuntimeError("selector reconstruction mismatch")
     q_source = run_cell.peeh.canonical(hs, spec).astype(np.float32)
     representations, evaluation = {}, capped["evaluation"]
     for name, value in evaluation.items():
@@ -155,7 +169,8 @@ def cell(model: str, task: str, fold: int, seed: int) -> None:
                            "persistence_margin": float(source["support"][block_id]["rho"]) - float(source["support"][block_id]["null_p95"]),
                            "persistence_pass": bool(source["support"][block_id]["persistence_supported"]),
                            "future": bf, "worst": bw})
-    result = {**base, "rank": {name: len(stored[name]) for name in stored}, "selector_blocks": source["selector_blocks"],
+    result = {**base, "spectrum_matches_frozen": spectrum_matches_frozen,
+              "rank": {name: len(stored[name]) for name in stored}, "selector_blocks": source["selector_blocks"],
               "selector_coordinates": source["selector_coordinates"], "selector_absolute": all_selector,
               "u_composition": {"persistent_blocks": persistent_blocks, "nonpersistent_blocks": nonpersistent_blocks,
                                 "persistent_rank": len(p_dims), "nonpersistent_rank": len(n_dims)},
@@ -173,9 +188,9 @@ def bootstrap(values: dict[str, list[float]], *parts: object) -> tuple[float, fl
     return float(a.mean()), float(np.quantile(draws, .025)), float(np.quantile(draws, .975)), len(a)
 
 
-def aggregate() -> None:
+def aggregate(selected_models: tuple[str, ...] = MODELS) -> None:
     source_cells, interpretation = [], []
-    for model in MODELS:
+    for model in selected_models:
         for task in TASKS:
             for fold in range(5):
                 for seed in range(3):
@@ -235,7 +250,8 @@ def aggregate() -> None:
         if len(table)>=4:
             y=np.asarray([r[0] for r in table]);x=np.column_stack([np.ones(len(table)),[r[1] for r in table],[r[2] for r in table],[r[3] for r in table]]);coef=np.linalg.lstsq(x,y,rcond=None)[0];regression.append({"model":model,"task":task,"n_blocks":len(table),"intercept":coef[0],"TRAIN_utility_coefficient":coef[1],"persistence_margin_coefficient":coef[2],"block_rank_coefficient":coef[3],"descriptive_only":True})
     write_csv("PERSISTENCE_CONDITIONAL_REGRESSION.csv",regression)
-    report = ["# PU vs U-only explanatory analysis", "", "Status: `COMPLETE_REPLAY_UNVERIFIED` exploratory direct analysis. No neural network was trained; selectors and frozen checkpoint provenance were unchanged.", "", "## Required interpretation", "", "The CSV outputs contain the per-cell, subject-unit, and biological-subject bootstrap summaries required to distinguish overlap/persistence rediscovery from distinct subspaces. `UTILITY_MATCHED_TASK_SUMMARY.csv` is the primary conditional persistence test; block rows are aggregated within biological subject before bootstrap.", "", "Do not interpret P-only as a success criterion; it is retained only as the Experiment 1 negative control."]
+    status = "CPU_EXPLORATORY_NON_EQUIVALENT" if CPU_EXPLORATORY else "COMPLETE_REPLAY_UNVERIFIED"
+    report = ["# PU vs U-only explanatory analysis", "", f"Status: `{status}`. No neural network was trained; selectors and frozen checkpoint provenance were unchanged.", "", "## Required interpretation", "", "The CSV outputs contain the per-cell, subject-unit, and biological-subject bootstrap summaries required to distinguish overlap/persistence rediscovery from distinct subspaces. `UTILITY_MATCHED_TASK_SUMMARY.csv` is the primary conditional persistence test; block rows are aggregated within biological subject before bootstrap.", "", "Do not interpret P-only as a success criterion; it is retained only as the Experiment 1 negative control."]
     (OUT / "FINAL_PU_U_INTERPRETATION_REPORT.md").write_text("\n".join(report)+"\n",encoding="utf-8")
     print("PU_U_INTERPRETATION_AGGREGATE_COMPLETE",flush=True)
 
@@ -248,10 +264,10 @@ def _groups(rows: list[dict], key):
 
 def main() -> None:
     parser=argparse.ArgumentParser(); sub=parser.add_subparsers(dest="command",required=True)
-    one=sub.add_parser("cell");one.add_argument("model",choices=MODELS);one.add_argument("task",choices=TASKS);one.add_argument("fold",type=int,choices=range(5));one.add_argument("seed",type=int,choices=range(3));sub.add_parser("aggregate")
+    one=sub.add_parser("cell");one.add_argument("model",choices=MODELS);one.add_argument("task",choices=TASKS);one.add_argument("fold",type=int,choices=range(5));one.add_argument("seed",type=int,choices=range(3)); all_cells=sub.add_parser("aggregate");all_cells.add_argument("--models",nargs="+",choices=MODELS,default=list(MODELS))
     args=parser.parse_args()
     if args.command=="cell": cell(args.model,args.task,args.fold,args.seed)
-    else: aggregate()
+    else: aggregate(tuple(args.models))
 
 
 if __name__ == "__main__": main()

@@ -19,16 +19,36 @@ import numpy as np
 import torch
 from sklearn.metrics import balanced_accuracy_score
 
-ROOT = Path(__file__).resolve().parents[3]
-EXP = Path(__file__).resolve().parents[1]
-P1 = ROOT.parent
-RUNTIME = P1 / "persist_incremental_value_runtime/analysis"
-BASELINE_CODE = ROOT / "experiments/persist_eeg_eegconformer_fbcnet_multiseed_v1/code"
-PSWA_CODE = ROOT / "experiments/persist_eeg_baseline_metrics_closure_v1/code/published_run_pswa_recovery.py"
-os.environ.setdefault("PEEH_REPO", str(ROOT))
-os.environ.setdefault("PEEH_RUNTIME", str(P1 / "persist_incremental_value_runtime/seed0_replay"))
-os.environ.setdefault("PSWA_RUNTIME", str(RUNTIME))
-os.environ.setdefault("SEVEN_RUNTIME", str(P1 / "seven_backbone_fourtask_3seed_runtime"))
+LOCAL_BASELINE_ROOT = os.environ.get("PERSIST_LOCAL_BASELINE_ROOT")
+if LOCAL_BASELINE_ROOT:
+    # This adapter changes only filesystem resolution.  The frozen cache,
+    # split, normalizer, selector, and analysis mechanics remain in their
+    # historical source modules.  A local checkpoint is accepted only after
+    # its SHA-256 matches the locked audit row (see ``audit_row`` below).
+    EXP = Path(LOCAL_BASELINE_ROOT).resolve()
+    ROOT = Path(os.environ["PERSIST_SOURCE_REPO"]).resolve()
+    RUNTIME = Path(os.environ.get("PERSIST_ANALYSIS_ROOT", str(EXP))).resolve()
+    BASELINE_CODE = ROOT / "experiments/persist_eeg_eegconformer_fbcnet_multiseed_v1/code"
+    PSWA_CODE = ROOT / "experiments/persist_eeg_baseline_metrics_closure_v1/code/published_run_pswa_recovery.py"
+    os.environ.setdefault("PEEH_REPO", str(ROOT))
+    os.environ.setdefault("PEEH_RUNTIME", str(EXP / "runtime" / "seed0_replay"))
+    os.environ.setdefault("PSWA_RUNTIME", str(RUNTIME))
+    os.environ.setdefault("SEVEN_RUNTIME", str(EXP / "runtime" / "seven_backbone"))
+    os.environ.setdefault("SEVEN_REPO", str(ROOT))
+    os.environ.setdefault("FULL_OPENBMI_CACHE", str(EXP / "openbmi"))
+    os.environ.setdefault("FULL_WBCIC_CACHE", str(EXP / "wbcic_epochs"))
+    os.environ.setdefault("TRUE_OUTER_WBCIC_CACHE", str(EXP / "wbcic_epochss"))
+else:
+    ROOT = Path(__file__).resolve().parents[3]
+    EXP = Path(__file__).resolve().parents[1]
+    P1 = ROOT.parent
+    RUNTIME = P1 / "persist_incremental_value_runtime/analysis"
+    BASELINE_CODE = ROOT / "experiments/persist_eeg_eegconformer_fbcnet_multiseed_v1/code"
+    PSWA_CODE = ROOT / "experiments/persist_eeg_baseline_metrics_closure_v1/code/published_run_pswa_recovery.py"
+    os.environ.setdefault("PEEH_REPO", str(ROOT))
+    os.environ.setdefault("PEEH_RUNTIME", str(P1 / "persist_incremental_value_runtime/seed0_replay"))
+    os.environ.setdefault("PSWA_RUNTIME", str(RUNTIME))
+    os.environ.setdefault("SEVEN_RUNTIME", str(P1 / "seven_backbone_fourtask_3seed_runtime"))
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
@@ -85,7 +105,32 @@ def audit_row(model: str, task: str, fold: int, seed: int) -> dict[str, str]:
                    (model, task, fold, seed)]
     if len(matches) != 1 or matches[0]["status"] != "PASS":
         raise RuntimeError("checkpoint provenance not passed")
-    return matches[0]
+    row = matches[0]
+    if not LOCAL_BASELINE_ROOT:
+        return row
+    local_map = EXP / "outputs" / "LOCAL_CHECKPOINT_MAP.csv"
+    if not local_map.is_file():
+        raise RuntimeError("local checkpoint map is missing")
+    with local_map.open(newline="", encoding="utf-8") as f:
+        local_matches = [r for r in csv.DictReader(f) if (
+            r["model"], r["task"], int(r["fold"]), int(r["seed"])
+        ) == (model, task, fold, seed) and r["audit_status"] == "PASS"
+             and r["sha_match"] == "True" and r["duplicate_local_key"] != "True"]
+    if len(local_matches) != 1:
+        raise RuntimeError(f"expected one SHA-locked local checkpoint, found {len(local_matches)}")
+    local = local_matches[0]
+    if local["local_sha256"] != row["checkpoint_sha256"]:
+        raise RuntimeError("local checkpoint SHA does not equal frozen audit SHA")
+    local_checkpoint = Path(local["local_checkpoint_path"])
+    local_record = Path(local["local_record_path"])
+    if not local_checkpoint.is_file() or not local_record.is_file():
+        raise RuntimeError("SHA-locked local checkpoint or record is absent")
+    identity = json.loads(local_record.read_text(encoding="utf-8"))
+    if (identity.get("model"), identity.get("task"), int(identity.get("fold", -1)), int(identity.get("seed", -1))) != (model, task, fold, seed):
+        raise RuntimeError("local record identity mismatch")
+    row = dict(row)
+    row["local_checkpoint_path"] = str(local_checkpoint)
+    return row
 
 
 def build_model(model: str, record: dict, checkpoint: Path, device: torch.device):
@@ -153,7 +198,7 @@ def run(model: str, task: str, fold: int, seed: int) -> None:
         print("CELL_CACHED", model, task, fold, seed, found["status"], flush=True)
         return
     audit = audit_row(model, task, fold, seed)
-    checkpoint = Path(audit["checkpoint_path"])
+    checkpoint = Path(audit.get("local_checkpoint_path", audit["checkpoint_path"]))
     if digest(checkpoint) != audit["checkpoint_sha256"]:
         raise RuntimeError("checkpoint changed since provenance lock")
     record = json.loads((checkpoint.parent / "record.json").read_text(encoding="utf-8"))
