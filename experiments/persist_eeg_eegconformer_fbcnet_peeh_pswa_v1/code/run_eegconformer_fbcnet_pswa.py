@@ -515,7 +515,7 @@ def aggregate() -> None:
         else:
             lines.append(f"|{row['Model']}|{row['Task']}|{row['Protected coverage']}|NA|NA|NA|NA|{row['Recovery status']}|")
     (OUT / "FINAL_CROSSBACKBONE_PSWA_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"PSWA_AGGREGATE_COMPLETE priority3={priority_complete} five={five_complete}", flush=True)
+    print(f"PSWA_AGGREGATE_COMPLETE priority2={priority_complete}", flush=True)
 
 
 def main() -> int:
