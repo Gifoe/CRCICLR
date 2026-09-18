@@ -10,7 +10,9 @@ from run_pu_u_interpretation import MODELS, TASKS, path_for
 
 
 CODE = Path(__file__).resolve().parent
-ROOT = CODE.parents[3]
+# ``CODE`` is the code directory itself, whereas run_cell derives ROOT from
+# a file path.  Therefore its repository parent is index 2, not index 3.
+ROOT = CODE.parents[2]
 RUNTIME = ROOT.parent / "persist_incremental_value_runtime/analysis"
 
 
