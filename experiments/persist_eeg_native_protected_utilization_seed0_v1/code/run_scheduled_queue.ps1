@@ -1,6 +1,6 @@
 <# Runs the frozen native Protected audit outside an SSH job object. #>
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][ValidateSet('probe','all','aggregate','fbc_a','fbc_b','fbc_c')][string]$Mode)
+param([Parameter(Mandatory=$true)][ValidateSet('probe','all','aggregate','fbc_a','fbc_b','fbc_c','fbc_s1','fbc_s2','fbc_s3','fbc_s4')][string]$Mode)
 
 $ErrorActionPreference = 'Stop'
 $code = $PSScriptRoot
@@ -28,6 +28,13 @@ try {
     'fbc_a' { @('cell FBCNet OpenBMI_MI 4','cell FBCNet OpenBMI_SSVEP 0') }
     'fbc_b' { @('cell FBCNet OpenBMI_SSVEP 1','cell FBCNet OpenBMI_SSVEP 3') }
     'fbc_c' { @('cell FBCNet OpenBMI_SSVEP 2','cell FBCNet OpenBMI_SSVEP 4') }
+    # One cell per worker is used only when measured memory headroom permits
+    # four concurrent FBCNet audits. It is scheduling-only and preserves every
+    # frozen numerical operation and random draw.
+    'fbc_s1' { @('cell FBCNet OpenBMI_SSVEP 1') }
+    'fbc_s2' { @('cell FBCNet OpenBMI_SSVEP 2') }
+    'fbc_s3' { @('cell FBCNet OpenBMI_SSVEP 3') }
+    'fbc_s4' { @('cell FBCNet OpenBMI_SSVEP 4') }
   }
   foreach ($cellArgs in $commands) {
     $command = '"' + $python + '" -u "' + (Join-Path $code 'run_native_protected_utilization.py') + '" ' + $cellArgs + ' >> "' + $log + '" 2>&1'
