@@ -396,11 +396,12 @@ def mean_subject_ba(y: np.ndarray, z: np.ndarray, subjects: np.ndarray) -> float
 
 def choose_alpha(z0: np.ndarray, zp: np.ndarray, zc: np.ndarray, y: np.ndarray, subjects: np.ndarray) -> float:
     """Nested subject-CV selection of one global suppression strength, TRAIN only."""
+    base = np.broadcast_to(z0, zp.shape)
     candidates: list[list[float]] = [[] for _ in SUPPRESS_ALPHAS]
     for held in subject_groups(subjects):
         ix = np.isin(subjects, held)
         for i, alpha in enumerate(SUPPRESS_ALPHAS):
-            candidates[i].append(mean_subject_ba(y[ix], z0[ix] + zp[ix] + alpha * zc[ix], subjects[ix]))
+            candidates[i].append(mean_subject_ba(y[ix], base[ix] + zp[ix] + alpha * zc[ix], subjects[ix]))
     scores = np.asarray([np.mean(v) for v in candidates])
     return float(SUPPRESS_ALPHAS[int(np.argmax(scores))])
 
