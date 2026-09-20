@@ -400,9 +400,15 @@ def cell(model:str,task:str,fold:int)->None:
         device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
         net,head=UP.helper(model).build_model({"Model":model,"Task":task,"fold":fold,"seed":0,"channels":int(record.get("channels") or 62),"samples":int(record.get("samples") or 1000),"classes":int(record["classes"]),"checkpoint_path":str(ckpt),"recipe_name":record.get("recipe",{}).get("name"),"trainable_parameters":int(record.get("trainable_parameters",record.get("parameters",0)))},device)
         runner=Stages(net,head,model,device); tx,ty,ts,tse=UP.capped_train(data,task,model,fold); stage_check(runner,tx)
-        train=train_centroids(runner,data,model,task,fold); spec=UP.helper(model).spectrum(train["h_trials"],ty,ts,tse,task,model,fold); dims=np.asarray(stored.get("protected_blocks",[]),int)
+        train=train_centroids(runner,data,model,task,fold)
+        # The canonical basis must be bitwise compatible with the preceding
+        # audit.  Reuse its exact pre-head capture routine and batching for the
+        # basis, while retaining the manual activations only for stage maps.
+        href,_,_=UP.hook_representations(net,head,tx,model,device)
+        if not np.allclose(train["h_trials"],href,rtol=1e-5,atol=1e-6): raise RuntimeError("manual classifier-input capture mismatch")
+        spec=UP.helper(model).spectrum(href,ty,ts,tse,task,model,fold); dims=np.asarray(stored.get("protected_blocks",[]),int)
         basis_sha=UP.array_sha(spec["mean"],spec["basis"],spec["scale"],spec["directions"])
-        if basis_sha != prior.get("basis_sha256") or int(spec["rank"])!=int(stored.get("rank",-1)) or np.any(dims<0) or np.any(dims>=spec["rank"]): raise RuntimeError("frozen final P/basis cannot be reproduced")
+        if basis_sha != prior.get("basis_sha256") or int(spec["rank"])!=int(stored.get("rank",-1)) or np.any(dims<0) or np.any(dims>=spec["rank"]): raise RuntimeError(f"frozen final P/basis cannot be reproduced: new={basis_sha} locked={prior.get('basis_sha256')}")
         randoms=UP.random_dims(spec["rank"],len(dims),model,task,fold,"native-equal-rank-random")
         qtrain=canonical(train["h"],spec); qall=np.concatenate([qtrain[:,dims]]+[qtrain[:,d] for d in randoms],axis=1).astype(np.float32)
         ox1,oy1,os1=capped_outer(data,model,task,fold,"source"); ox2,oy2,os2=capped_outer(data,model,task,fold,"future")
