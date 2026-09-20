@@ -375,7 +375,7 @@ def gate_features(zp: np.ndarray, zc: np.ndarray, z: np.ndarray, q: np.ndarray, 
         cosine[:, None], np.linalg.norm(cp, axis=1)[:, None], np.linalg.norm(cc, axis=1)[:, None],
         (np.linalg.norm(zp, axis=1) / np.maximum(np.linalg.norm(zc, axis=1), EPS))[:, None],
         near[:, :1], near[:, 1:2], (near[:, 1:2] - near[:, :1]),
-    ]).astype(np.float32)
+    ], axis=1).astype(np.float32)
 
 
 def fit_logistic(x: np.ndarray, target: np.ndarray, c: float, seed: int) -> tuple[Any | None, np.ndarray, np.ndarray]:
