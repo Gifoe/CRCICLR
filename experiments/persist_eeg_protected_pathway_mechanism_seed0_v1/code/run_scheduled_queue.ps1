@@ -1,6 +1,6 @@
 <# Runs one frozen pathway-audit command outside the SSH job object. #>
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][ValidateSet('lock','all','aggregate','probe','worker_a','worker_b','worker_c','accel_fbcnet_ssvep_fold4','accel_eegconformer_ssvep_fold4')][string]$Mode)
+param([Parameter(Mandatory=$true)][ValidateSet('lock','all','aggregate','probe','worker_a','worker_b','worker_c','accel_fbcnet_ssvep_fold4','accel_fbcnet_ssvep_fold3','accel_eegconformer_ssvep_fold4')][string]$Mode)
 $ErrorActionPreference='Stop'
 $code=$PSScriptRoot
 $runtime='D:\nips-temp\TotalP\P1\protected_pathway_mechanism_runtime'
@@ -26,6 +26,7 @@ try {
     # Scheduling-only tail split: this cell is disjoint from the active worker's
     # current command; the normal queued worker will bypass its terminal JSON.
     'accel_fbcnet_ssvep_fold4' {@('cell FBCNet OpenBMI_SSVEP 4')}
+    'accel_fbcnet_ssvep_fold3' {@('cell FBCNet OpenBMI_SSVEP 3')}
     'accel_eegconformer_ssvep_fold4' {@('cell EEGConformer OpenBMI_SSVEP 4')}
     default {@($Mode)}
   }
