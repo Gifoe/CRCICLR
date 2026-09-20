@@ -16,6 +16,7 @@ import os
 import sys
 import time
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,7 @@ MODELS, TASKS, FOLDS, SEED = ("EEGNet", "EEGConformer", "FBCNet"), ("OpenBMI_MI"
 CAP, RANDOM_DRAWS, SUBJECT_FOLDS, BOOTSTRAPS = 16, 100, 5, 2000
 RIDGE_ALPHAS = (0.0, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0)
 SUPPRESS_ALPHAS, GATE_CS, GATE_TAUS = (0.0, 0.25, 0.5, 0.75), (0.01, 0.1, 1.0, 10.0), (0.25, 0.5, 0.75)
+RANDOM_ROUTING_WORKERS = max(1, min(4, int(os.environ.get("ROUTING_RANDOM_WORKERS", "1"))))
 EPS = 1e-12
 
 
@@ -463,10 +465,10 @@ def failure_modes(zp: np.ndarray, zc: np.ndarray, z: np.ndarray, y: np.ndarray, 
     return rows, failure1, failure3
 
 
-def route_one(qtrain: np.ndarray, ztrain: np.ndarray, ytrain: np.ndarray, strain: np.ndarray, qouter: np.ndarray, zouter: np.ndarray, youter: np.ndarray, souter: np.ndarray, spec: dict[str, Any], dims: np.ndarray, head: torch.nn.Module, classes: int, seed_parts: tuple[object, ...], detailed: bool) -> dict[str, Any]:
-    raw = UP.raw_base(spec); w = head.weight.detach().float().cpu().numpy(); bias = head.bias.detach().float().cpu().numpy() if head.bias is not None else 0.0
-    z0 = (spec["mean"] @ w.T + bias)[None, :].astype(np.float32)
-    zptrain = (qtrain[:, dims] @ raw[dims]) @ w.T; zpouter = (qouter[:, dims] @ raw[dims]) @ w.T
+def route_one(qtrain: np.ndarray, ztrain: np.ndarray, ytrain: np.ndarray, strain: np.ndarray, qouter: np.ndarray, zouter: np.ndarray, youter: np.ndarray, souter: np.ndarray, spec: dict[str, Any], dims: np.ndarray, weight: np.ndarray, bias: np.ndarray | float, classes: int, seed_parts: tuple[object, ...], detailed: bool) -> dict[str, Any]:
+    raw = UP.raw_base(spec)
+    z0 = (spec["mean"] @ weight.T + bias)[None, :].astype(np.float32)
+    zptrain = (qtrain[:, dims] @ raw[dims]) @ weight.T; zpouter = (qouter[:, dims] @ raw[dims]) @ weight.T
     zctrain = ztrain - z0 - zptrain; zcouter = zouter - z0 - zpouter
     if not np.allclose(zouter, z0 + zpouter + zcouter, rtol=2e-5, atol=3e-5):
         raise RuntimeError("routing decomposition mismatch")
@@ -581,12 +583,19 @@ def cell(model: str, task: str, fold: int) -> None:
         if not np.allclose(oz_direct, oz, rtol=1e-5, atol=1e-6):
             raise RuntimeError("outer native-head replay mismatch")
         qg = PW.canonical(gh, spec).astype(np.float32); qo = PW.canonical(oh, spec).astype(np.float32)
-        protected = route_one(qg, gz, gy, gs, qo, oz, data["outer_future_y"], data["outer_future_subjects"].astype(str), spec, dims, head, data["classes"], (model, task, fold, "Protected"), True)
-        random_rows: list[dict[str, Any]] = []
-        for draw, rd in enumerate(random_dims):
-            control = route_one(qg, gz, gy, gs, qo, oz, data["outer_future_y"], data["outer_future_subjects"].astype(str), spec, rd, head, data["classes"], (model, task, fold, "random", draw), False)
+        weight = head.weight.detach().float().cpu().numpy().copy(); bias = head.bias.detach().float().cpu().numpy().copy() if head.bias is not None else 0.0
+        protected = route_one(qg, gz, gy, gs, qo, oz, data["outer_future_y"], data["outer_future_subjects"].astype(str), spec, dims, weight, bias, data["classes"], (model, task, fold, "Protected"), True)
+        def one_random(item: tuple[int, np.ndarray]) -> dict[str, Any]:
+            draw, rd = item
+            control = route_one(qg, gz, gy, gs, qo, oz, data["outer_future_y"], data["outer_future_subjects"].astype(str), spec, rd, weight, bias, data["classes"], (model, task, fold, "random", draw), False)
             gains = [r["delta_BA"] for r in control["subject_rows"]]
-            random_rows.append({"draw": draw, "random_dims": rd.tolist(), "gain_BA": float(np.mean(gains)), "gain_MacroF1": float(np.mean([r["delta_MacroF1"] for r in control["subject_rows"]])), "gain_CE": float(np.mean([r["delta_CE"] for r in control["subject_rows"]])), **control["config"]})
+            return {"draw": draw, "random_dims": rd.tolist(), "gain_BA": float(np.mean(gains)), "gain_MacroF1": float(np.mean([r["delta_MacroF1"] for r in control["subject_rows"]])), "gain_CE": float(np.mean([r["delta_CE"] for r in control["subject_rows"]])), **control["config"]}
+        if RANDOM_ROUTING_WORKERS == 1:
+            random_rows = [one_random(item) for item in enumerate(random_dims)]
+        else:
+            # Each draw is seed-isolated and has no GPU/model mutation; map preserves draw order.
+            with ThreadPoolExecutor(max_workers=RANDOM_ROUTING_WORKERS, thread_name_prefix="routing-random") as pool:
+                random_rows = list(pool.map(one_random, enumerate(random_dims)))
         p_gain = float(np.mean([r["delta_BA"] for r in protected["subject_rows"]]))
         values = np.asarray([r["gain_BA"] for r in random_rows])
         for row in protected["subject_rows"]:

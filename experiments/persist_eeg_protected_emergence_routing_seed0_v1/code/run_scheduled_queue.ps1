@@ -9,6 +9,7 @@ $env:PERSIST_SOURCE_REPO='D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VAL
 $env:PEEH_EXTENSION_ROOT=Join-Path $env:PERSIST_SOURCE_REPO 'experiments\persist_eeg_eegconformer_fbcnet_peeh_pswa_v1'
 $env:PEEH_EEGNET_ROOT=Join-Path $env:PERSIST_SOURCE_REPO 'experiments\persist_eeg_crossbackbone_peeh_v1'
 $env:ROUTING_RUNTIME=$runtime
+$env:ROUTING_RANDOM_WORKERS='4'
 $env:OMP_NUM_THREADS='1';$env:MKL_NUM_THREADS='1';$env:OPENBLAS_NUM_THREADS='1';$env:NUMEXPR_NUM_THREADS='1';$env:PYTHONUNBUFFERED='1'
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
 $log=Join-Path $runtime ("scheduled_{0}.log" -f $Mode)
