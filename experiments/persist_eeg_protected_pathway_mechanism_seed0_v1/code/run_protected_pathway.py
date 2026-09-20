@@ -229,7 +229,7 @@ def ridge_predict(fit_a: np.ndarray, fit_y: np.ndarray, test_a: np.ndarray) -> n
 
 def score_crossfit(a: np.ndarray, qall: np.ndarray, subjects: np.ndarray, sessions: np.ndarray, direction: int, model: str, task: str, fold: int) -> list[dict[str,Any]]:
     """Fit one session, evaluate held subjects in same or opposite session."""
-    src, dst = (1,1) if direction == 0 else (1,2) if direction == 1 else (2,1)
+    src, dst = (1,1) if direction == 0 else (2,2) if direction == 1 else (1,2) if direction == 2 else (2,1)
     subs=natural(subjects); out=[]
     for k in range(CROSS_FITS):
         held=np.asarray([s for i,s in enumerate(subs) if i % CROSS_FITS == k])
@@ -240,7 +240,8 @@ def score_crossfit(a: np.ndarray, qall: np.ndarray, subjects: np.ndarray, sessio
             ix=np.flatnonzero(ss==s); p=pred[ix]; y=yy[ix]; rank=qall.shape[1]//(RANDOM_DRAWS+1)
             pr,pn,pc=metrics(y[:,:rank],p[:,:rank]); rr=[]
             for j in range(RANDOM_DRAWS): rr.append(metrics(y[:,rank*(j+1):rank*(j+2)],p[:,rank*(j+1):rank*(j+2)])[0])
-            out.append({"subject_id":s,"direction":("within_s1" if direction==0 else "s1_to_s2" if direction==1 else "s2_to_s1"),"protected_R2":pr,"random_R2":float(np.mean(rr)),"R2_excess":pr-float(np.mean(rr)),"normalized_MSE":pn,"coordinate_correlation":pc})
+            label=("within_s1" if direction==0 else "within_s2" if direction==1 else "s1_to_s2" if direction==2 else "s2_to_s1")
+            out.append({"subject_id":s,"direction":label,"protected_R2":pr,"random_R2":float(np.mean(rr)),"R2_excess":pr-float(np.mean(rr)),"normalized_MSE":pn,"coordinate_correlation":pc})
     return out
 
 
@@ -351,6 +352,18 @@ def session_effect(r:Stages,name:str,qpath:np.ndarray,fit:PathFit,spec:dict[str,
     return out
 
 
+def output_evidence_stability(h1:np.ndarray,y1:np.ndarray,s1:np.ndarray,h2:np.ndarray,y2:np.ndarray,s2:np.ndarray,spec:dict[str,Any],dims:np.ndarray,head:torch.nn.Module)->dict[str,dict[str,float]]:
+    """Same-subject/class source--future stability of the exact final P evidence."""
+    q1,q2=canonical(h1,spec),canonical(h2,spec); raw=UP.raw_base(spec); w=head.weight.detach().float().cpu().numpy(); zp1=(q1[:,dims]@raw[dims])@w.T; zp2=(q2[:,dims]@raw[dims])@w.T; out={}
+    for sub in sorted(set(s1.astype(str)) & set(s2.astype(str)), key=lambda x:int(x) if x.isdigit() else x):
+        a=[]; b=[]
+        for lab in sorted(set(y1[s1.astype(str)==sub]) & set(y2[s2.astype(str)==sub])):
+            a.append(centered(zp1[(s1.astype(str)==sub)&(y1==lab)]).mean(0)); b.append(centered(zp2[(s2.astype(str)==sub)&(y2==lab)]).mean(0))
+        if not a: continue
+        x,y=np.concatenate(a),np.concatenate(b); out[sub]={"output_P_evidence_cosine":float(np.dot(x,y)/max(np.linalg.norm(x)*np.linalg.norm(y),EPS)),"output_P_evidence_normalized_rms":float(np.sqrt(np.mean((x-y)**2))/max(np.sqrt(np.mean(x*x)),EPS))}
+    return out
+
+
 def decision(h:np.ndarray,z:np.ndarray,y:np.ndarray,s:np.ndarray,spec:dict[str,Any],dims:np.ndarray,head:torch.nn.Module)->tuple[list[dict[str,Any]],list[dict[str,Any]]]:
     if not isinstance(head,torch.nn.Linear): raise RuntimeError("native classification head is not affine Linear")
     raw=UP.raw_base(spec); q=canonical(h,spec); hp=q[:,dims]@raw[dims]; other=np.setdiff1d(np.arange(spec["rank"]),dims); hn=q[:,other]@raw[other] if len(other) else np.zeros_like(h); rr=UP.residual(h,q,spec)
@@ -393,14 +406,14 @@ def cell(model:str,task:str,fold:int)->None:
         randoms=UP.random_dims(spec["rank"],len(dims),model,task,fold,"native-equal-rank-random")
         qtrain=canonical(train["h"],spec); qall=np.concatenate([qtrain[:,dims]]+[qtrain[:,d] for d in randoms],axis=1).astype(np.float32)
         ox1,oy1,os1=capped_outer(data,model,task,fold,"source"); ox2,oy2,os2=capped_outer(data,model,task,fold,"future")
-        final=outer_stage(runner,ox2,"classifier_input"); decomp,conflict=decision(final["h"],final["z"],oy2,os2,spec,dims,head)
+        final=outer_stage(runner,ox2,"classifier_input"); source_final=outer_stage(runner,ox1,"classifier_input"); evidence_stability=output_evidence_stability(source_final["h"],oy1,os1,final["h"],oy2,os2,spec,dims,head); decomp,conflict=decision(final["h"],final["z"],oy2,os2,spec,dims,head)
         rec_rows=[]; path_rows=[]; causal_rows=[]; inter_rows=[]; session_rows=[]
         for name in runner.names:
             a=train["acts"][name]; shape=train["shapes"][name]; subs=np.asarray(train["subjects"]); ses=np.asarray(train["sessions"])
-            cf=score_crossfit(a,qall,subs,ses,0,model,task,fold)+score_crossfit(a,qall,subs,ses,1,model,task,fold)+score_crossfit(a,qall,subs,ses,2,model,task,fold)
+            cf=score_crossfit(a,qall,subs,ses,0,model,task,fold)+score_crossfit(a,qall,subs,ses,1,model,task,fold)+score_crossfit(a,qall,subs,ses,2,model,task,fold)+score_crossfit(a,qall,subs,ses,3,model,task,fold)
             def avg(rows,key,cond=None):
                 z=[r[key] for r in rows if cond is None or r["direction"]==cond]; return float(np.nanmean(z)) if z else float("nan")
-            rec_rows.append({"layer_name":name,"activation_shape":shape,"protected_rank":len(dims),"within_session_R2":avg(cf,"protected_R2","within_s1"),"cross_session_R2":float(np.nanmean([avg(cf,"protected_R2","s1_to_s2"),avg(cf,"protected_R2","s2_to_s1")])),"random_R2":float(np.nanmean([avg(cf,"random_R2","s1_to_s2"),avg(cf,"random_R2","s2_to_s1")])),"R2_excess":float(np.nanmean([avg(cf,"R2_excess","s1_to_s2"),avg(cf,"R2_excess","s2_to_s1")])),"normalized_MSE":float(np.nanmean([avg(cf,"normalized_MSE","s1_to_s2"),avg(cf,"normalized_MSE","s2_to_s1")])),"coordinate_correlation":float(np.nanmean([avg(cf,"coordinate_correlation","s1_to_s2"),avg(cf,"coordinate_correlation","s2_to_s1")])),"subject_crossfit_rows":cf})
+            rec_rows.append({"layer_name":name,"activation_shape":shape,"protected_rank":len(dims),"within_session_R2":float(np.nanmean([avg(cf,"protected_R2","within_s1"),avg(cf,"protected_R2","within_s2")])),"cross_session_R2":float(np.nanmean([avg(cf,"protected_R2","s1_to_s2"),avg(cf,"protected_R2","s2_to_s1")])),"random_R2":float(np.nanmean([avg(cf,"random_R2","s1_to_s2"),avg(cf,"random_R2","s2_to_s1")])),"R2_excess":float(np.nanmean([avg(cf,"R2_excess","s1_to_s2"),avg(cf,"R2_excess","s2_to_s1")])),"normalized_MSE":float(np.nanmean([avg(cf,"normalized_MSE","s1_to_s2"),avg(cf,"normalized_MSE","s2_to_s1")])),"coordinate_correlation":float(np.nanmean([avg(cf,"coordinate_correlation","s1_to_s2"),avg(cf,"coordinate_correlation","s2_to_s1")])),"subject_crossfit_rows":cf})
             fit=PathFit(a); qp,sv=fit.q(qtrain[:,dims]); p1=PathFit(a[ses==data["source_session"]]); p2=PathFit(a[ses==data["future_session"]]); q1,_=p1.q(qtrain[ses==data["source_session"]][:,dims]); q2,_=p2.q(qtrain[ses==data["future_session"]][:,dims])
             random_overlap=[]
             for rd in randoms:
@@ -415,7 +428,7 @@ def cell(model:str,task:str,fold:int)->None:
                     qr,_=fit.q(qtrain[:,rd]); rr.append(patch_effect(runner,name,qr,fit,spec,dims,fut,oy2,os2,pairs,True)); ri.append({s:v.get("interaction",float("nan")) for s,v in rr[-1].items()}); sr.append(session_effect(runner,name,qr,fit,spec,dims,src,oy1,os1,fut,oy2,os2,spairs))
                 rm=merge_random(rr); se=session_effect(runner,name,qp,fit,spec,dims,src,oy1,os1,fut,oy2,os2,spairs); sm=merge_random(sr)
                 for sub,v in pp.items(): causal_rows.append({"layer_name":name,"subject_id":sub,**{k:v.get(k,float("nan")) for k in ("delta_qP","delta_qnonP","donor_margin_transfer","donor_label_transfer","logit_rms","flip_rate","true_margin_loss")},**{"random_"+k:rm.get(sub,{}).get(k,float("nan")) for k in ("delta_qP","delta_qnonP","donor_margin_transfer","donor_label_transfer","logit_rms","flip_rate","true_margin_loss")}}); inter_rows.append({"layer_name":name,"subject_id":sub,"interaction_P":v.get("interaction",float("nan")),"interaction_random":rm.get(sub,{}).get("interaction",float("nan")),"interaction_excess":v.get("interaction",float("nan"))-rm.get(sub,{}).get("interaction",float("nan"))})
-                for sub,v in se.items(): session_rows.append({"layer_name":name,"subject_id":sub,**v,"random_effect_cosine":sm.get(sub,{}).get("effect_cosine",float("nan")),"random_qP_0":sm.get(sub,{}).get("qP_0",float("nan")),"random_qP_1":sm.get(sub,{}).get("qP_1",float("nan"))})
+                for sub,v in se.items(): session_rows.append({"layer_name":name,"subject_id":sub,**v,**evidence_stability.get(sub,{}),"random_effect_cosine":sm.get(sub,{}).get("effect_cosine",float("nan")),"random_qP_0":sm.get(sub,{}).get("qP_0",float("nan")),"random_qP_1":sm.get(sub,{}).get("qP_1",float("nan"))})
             else:
                 path_rows[-1]["causal_status"]="NOT_APPLICABLE_FINAL_AFFINE_HEAD"
         prov={"checkpoint_sha256":sha(ckpt),"normalizer_sha256":data["normalizer"]["mean_std_sha256"],"basis_sha256":basis_sha,"protected_assignment_sha256":hashlib.sha256(json.dumps(stored.get("protected_assignment",[]),sort_keys=True).encode()).hexdigest(),"split_sha256":data["split_sha256"],"previous_cell_sha256":sha(UP.target_path(model,task,fold)),"protected_dims":dims.tolist(),"random_subsets_sha256":hashlib.sha256(np.concatenate(randoms).tobytes()).hexdigest()}
@@ -432,7 +445,7 @@ def lock() -> None:
             for f in FOLDS:
                 record,stored,ckpt,prior=previous(m,t,f); data=UP.outer_data(t,f)
                 rows.append({"model":m,"task":t,"fold":f,"checkpoint_sha256":sha(ckpt),"normalizer_sha256":data["normalizer"]["mean_std_sha256"],"protected_assignment_sha256":hashlib.sha256(json.dumps(stored.get("protected_assignment",[]),sort_keys=True).encode()).hexdigest(),"previous_cell_sha256":sha(UP.target_path(m,t,f)),"previous_status":prior.get("status"),"final_heldout_accessed":False})
-    value={"schema":"PERSIST_EEG_PROTECTED_PATHWAY_MECHANISM_SEED0_V1","seed":0,"models":MODELS,"tasks":TASKS,"folds":FOLDS,"random_controls":RANDOM_DRAWS,"ridge_alpha":RIDGE_ALPHA,"subject_crossfit_folds":CROSS_FITS,"per_subject_class_cap":CAP,"patch_pairs_per_subject_class":PATCH_CAP,"final_P_definition":"fixed previous classifier-input canonical Protected coordinates only","intermediate_P_reselection":False,"backbone_training":False,"head_or_probe_refit":False,"final_heldout_accessed":False,"cells":rows,"created_utc":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())}
+    value={"schema":"PERSIST_EEG_PROTECTED_PATHWAY_MECHANISM_SEED0_V1","seed":0,"models":MODELS,"tasks":TASKS,"folds":FOLDS,"random_controls":RANDOM_DRAWS,"ridge_alpha":RIDGE_ALPHA,"subject_crossfit_folds":CROSS_FITS,"mapping_unit":"TRAIN subject-session-class activation centroid computed from deterministic capped trials; equal subject/session/class weighting","per_subject_class_cap":CAP,"patch_pairs_per_subject_class":PATCH_CAP,"final_P_definition":"fixed previous classifier-input canonical Protected coordinates only","intermediate_P_reselection":False,"backbone_training":False,"head_or_probe_refit":False,"final_heldout_accessed":False,"cells":rows,"created_utc":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())}
     write_json(PROTOCOL/"PROVENANCE.json",value); (PROTOCOL/"PROVENANCE.sha256").write_text(sha(PROTOCOL/"PROVENANCE.json")+"\n",encoding="utf-8"); print("PROTOCOL_LOCKED",len(rows),flush=True)
 
 
