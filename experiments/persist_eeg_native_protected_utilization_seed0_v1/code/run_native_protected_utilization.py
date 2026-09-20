@@ -348,7 +348,7 @@ def cell(model: str, task: str, fold: int) -> None:
         subj=[]
         for s in natural(data["outer_future_subjects"]):
             row={**base,"subject_id":s,"finite_P":finite_p[s],"finite_random":finite_a[s],"finite_normmatched_random":finite_b[s],"local_P":local_p[s],"local_random":local_rm[s],"local_ratio":local_p[s]/max(local_rm[s],EPS),"interaction_P":inter_p.get(s,float("nan")),"interaction_random":inter_rm.get(s,float("nan"))}; subj.append(row)
-        same={k:float(np.mean([r[k] for r in session_rows])) for k in session_rows[0]} if session_rows else {"centered_logit_rms":float("nan"),"true_margin_change":float("nan"),"JS":float("nan"),"prediction_consistent":float("nan")}
+        same={k:float(np.mean([r[k] for r in session_rows])) for k in ("centered_logit_rms","true_margin_change","JS","prediction_consistent")} if session_rows else {"centered_logit_rms":float("nan"),"true_margin_change":float("nan"),"JS":float("nan"),"prediction_consistent":float("nan")}
         result={**base,"status":"COMPLETE","protected_rank":len(dims),"rank":spec["rank"],**prov,"subjects":subj,"swap":{"protected":swap_p,"random_mean":swap_r,"subject_rows":swap_subject},"same_label_cross_session":same,"same_label_pair_count":len(session_rows)}
         write_json(target,result); print("CELL_COMPLETE",model,task,fold,flush=True)
         del net,ht,he,hs; torch.cuda.empty_cache();
