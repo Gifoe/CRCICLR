@@ -1,6 +1,11 @@
 <# Runs one frozen emergence-routing command outside the SSH job object. #>
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][ValidateSet('lock','aggregate','probe','worker_a','worker_b','worker_c')][string]$Mode)
+param(
+  [Parameter(Mandatory=$true)][ValidateSet('lock','aggregate','probe','worker_a','worker_b','worker_c','cell')][string]$Mode,
+  [ValidateSet('EEGNet','EEGConformer','FBCNet')][string]$Model,
+  [ValidateSet('OpenBMI_MI','OpenBMI_SSVEP')][string]$Task,
+  [int]$Fold=-1
+)
 $ErrorActionPreference='Stop'
 $code=$PSScriptRoot
 $runtime='D:\nips-temp\TotalP\P1\protected_emergence_routing_runtime'
@@ -12,14 +17,17 @@ $env:ROUTING_RUNTIME=$runtime
 $env:ROUTING_RANDOM_WORKERS='4'
 $env:OMP_NUM_THREADS='1';$env:MKL_NUM_THREADS='1';$env:OPENBLAS_NUM_THREADS='1';$env:NUMEXPR_NUM_THREADS='1';$env:PYTHONUNBUFFERED='1'
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
-$log=Join-Path $runtime ("scheduled_{0}.log" -f $Mode)
+$logSuffix=if($Mode -eq 'cell'){ "{0}_{1}_{2}_f{3}" -f $Mode,$Model,$Task,$Fold }else{$Mode}
+$log=Join-Path $runtime ("scheduled_{0}.log" -f $logSuffix)
 Push-Location $code
 try {
+  if($Mode -eq 'cell' -and ([string]::IsNullOrWhiteSpace($Model) -or [string]::IsNullOrWhiteSpace($Task) -or $Fold -notin 0..4)){throw 'cell mode requires Model, Task, and Fold 0..4'}
   "ROUTING_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
   $commands=switch($Mode){
     'lock' {@('lock')}
     'aggregate' {@('aggregate')}
     'probe' {@('cell EEGNet OpenBMI_MI 0')}
+    'cell' {@("cell $Model $Task $Fold")}
     'worker_a' {@('cell EEGNet OpenBMI_MI 0','cell EEGNet OpenBMI_MI 1','cell EEGNet OpenBMI_MI 2','cell EEGNet OpenBMI_MI 3','cell EEGNet OpenBMI_MI 4','cell EEGNet OpenBMI_SSVEP 0','cell EEGNet OpenBMI_SSVEP 1','cell EEGNet OpenBMI_SSVEP 2','cell EEGNet OpenBMI_SSVEP 3','cell EEGNet OpenBMI_SSVEP 4')}
     'worker_b' {@('cell EEGConformer OpenBMI_MI 0','cell EEGConformer OpenBMI_MI 1','cell EEGConformer OpenBMI_MI 2','cell EEGConformer OpenBMI_MI 3','cell EEGConformer OpenBMI_MI 4','cell EEGConformer OpenBMI_SSVEP 0','cell EEGConformer OpenBMI_SSVEP 1','cell EEGConformer OpenBMI_SSVEP 2','cell EEGConformer OpenBMI_SSVEP 3','cell EEGConformer OpenBMI_SSVEP 4')}
     'worker_c' {@('cell FBCNet OpenBMI_MI 0','cell FBCNet OpenBMI_MI 1','cell FBCNet OpenBMI_MI 2','cell FBCNet OpenBMI_MI 3','cell FBCNet OpenBMI_MI 4','cell FBCNet OpenBMI_SSVEP 0','cell FBCNet OpenBMI_SSVEP 1','cell FBCNet OpenBMI_SSVEP 2','cell FBCNet OpenBMI_SSVEP 3','cell FBCNet OpenBMI_SSVEP 4')}
