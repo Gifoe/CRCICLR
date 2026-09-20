@@ -1,6 +1,6 @@
 <# Runs the frozen native Protected audit outside an SSH job object. #>
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][ValidateSet('probe','all','aggregate')][string]$Mode)
+param([Parameter(Mandatory=$true)][ValidateSet('probe','all','aggregate','fbc_a','fbc_b','fbc_c')][string]$Mode)
 
 $ErrorActionPreference = 'Stop'
 $code = $PSScriptRoot
@@ -18,11 +18,22 @@ $env:OMP_NUM_THREADS='1'; $env:MKL_NUM_THREADS='1'; $env:OPENBLAS_NUM_THREADS='1
 Push-Location $code
 try {
   "NATIVE_AUDIT_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
-  if ($Mode -eq 'probe') { $args = 'cell EEGNet OpenBMI_MI 0' }
-  elseif ($Mode -eq 'all') { $args = 'run-all' }
-  else { $args = 'aggregate' }
-  $command = '"' + $python + '" -u "' + (Join-Path $code 'run_native_protected_utilization.py') + '" ' + $args + ' >> "' + $log + '" 2>&1'
-  & cmd.exe /d /c $command
+  $commands = switch ($Mode) {
+    'probe' { @('cell EEGNet OpenBMI_MI 0') }
+    'all' { @('run-all') }
+    'aggregate' { @('aggregate') }
+    # FBCNet's bounded filterbank path was previously stable at three
+    # workers.  These disjoint cells only change scheduling; they retain
+    # the same frozen checkpoint, assignment, random draws, and numerics.
+    'fbc_a' { @('cell FBCNet OpenBMI_MI 4','cell FBCNet OpenBMI_SSVEP 0') }
+    'fbc_b' { @('cell FBCNet OpenBMI_SSVEP 1','cell FBCNet OpenBMI_SSVEP 3') }
+    'fbc_c' { @('cell FBCNet OpenBMI_SSVEP 2','cell FBCNet OpenBMI_SSVEP 4') }
+  }
+  foreach ($cellArgs in $commands) {
+    $command = '"' + $python + '" -u "' + (Join-Path $code 'run_native_protected_utilization.py') + '" ' + $cellArgs + ' >> "' + $log + '" 2>&1'
+    & cmd.exe /d /c $command
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+  }
   $exitCode=$LASTEXITCODE
   "NATIVE_AUDIT_END mode=$Mode exit=$exitCode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
   exit $exitCode
