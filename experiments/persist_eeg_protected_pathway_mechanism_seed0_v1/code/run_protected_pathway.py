@@ -296,7 +296,7 @@ def session_pairs(a1:np.ndarray,y1:np.ndarray,s1:np.ndarray,a2:np.ndarray,y2:np.
 def canonical(h:np.ndarray,spec:dict[str,Any])->np.ndarray: return UP.helper("EEGNet").canonical(h,spec)
 
 
-def patch_effect(r:Stages,name:str,qpath:np.ndarray,fit:PathFit,spec:dict[str,Any],dims:np.ndarray,base:dict[str,np.ndarray],y:np.ndarray,s:np.ndarray,pairs:list[tuple[int,int]], interaction:bool=False)->dict[str,dict[str,float]]:
+def patch_effect(r:Stages,name:str,shape:list[int],qpath:np.ndarray,fit:PathFit,spec:dict[str,Any],dims:np.ndarray,base:dict[str,np.ndarray],y:np.ndarray,s:np.ndarray,pairs:list[tuple[int,int]], interaction:bool=False)->dict[str,dict[str,float]]:
     if not pairs: return {}
     ii=np.asarray([x[0] for x in pairs]); jj=np.asarray([x[1] for x in pairs]); d=np.setdiff1d(np.arange(spec["rank"]),dims)
     qdev=torch.from_numpy(qpath).to(r.device); mu=torch.from_numpy(fit.mean).to(r.device); sd=torch.from_numpy(fit.std).to(r.device)
@@ -305,10 +305,10 @@ def patch_effect(r:Stages,name:str,qpath:np.ndarray,fit:PathFit,spec:dict[str,An
         for start in range(0,len(ii),8):
             a,b=ii[start:start+8],jj[start:start+8]; ai=torch.from_numpy(base["a"][a]).to(r.device); aj=torch.from_numpy(base["a"][b]).to(r.device)
             xi=(ai-mu)/sd; xj=(aj-mu)/sd; pi=(xi@qdev)@qdev.T; pj=(xj@qdev)@qdev.T
-            x10=pj+(xi-pi); h10,z10=r.from_stage(name,x10*sd+mu); q10=canonical(h10.float().cpu().numpy(),spec)
+            x10=pj+(xi-pi); h10,z10=r.from_stage(name,(x10*sd+mu).reshape((len(a),*shape))); q10=canonical(h10.float().cpu().numpy(),spec)
             z0=base["z"][a]; q0=canonical(base["h"][a],spec); donor=y[b]; dz=centered(z10.float().cpu().numpy()-z0)
             if interaction:
-                x01=pi+(xj-pj); _,z01=r.from_stage(name,x01*sd+mu); z11=base["z"][b]; inter=np.linalg.norm(centered(z0-z10.float().cpu().numpy()-z01.float().cpu().numpy()+z11),axis=1)
+                x01=pi+(xj-pj); _,z01=r.from_stage(name,(x01*sd+mu).reshape((len(a),*shape))); z11=base["z"][b]; inter=np.linalg.norm(centered(z0-z10.float().cpu().numpy()-z01.float().cpu().numpy()+z11),axis=1)
             for k,owner in enumerate(s[a].astype(str)):
                 row[owner]["delta_qP"].append(float(np.sqrt(np.mean((q10[k,dims]-q0[k,dims])**2))))
                 row[owner]["delta_qnonP"].append(float(np.sqrt(np.mean((q10[k,d]-q0[k,d])**2))) if len(d) else 0.0)
@@ -328,7 +328,7 @@ def merge_random(rows:list[dict[str,dict[str,float]]])->dict[str,dict[str,float]
     return out
 
 
-def session_effect(r:Stages,name:str,qpath:np.ndarray,fit:PathFit,spec:dict[str,Any],dims:np.ndarray,a1:dict[str,np.ndarray],y1:np.ndarray,s1:np.ndarray,a2:dict[str,np.ndarray],y2:np.ndarray,s2:np.ndarray,pairs:list[tuple[int,int,int]])->dict[str,dict[str,float]]:
+def session_effect(r:Stages,name:str,shape:list[int],qpath:np.ndarray,fit:PathFit,spec:dict[str,Any],dims:np.ndarray,a1:dict[str,np.ndarray],y1:np.ndarray,s1:np.ndarray,a2:dict[str,np.ndarray],y2:np.ndarray,s2:np.ndarray,pairs:list[tuple[int,int,int]])->dict[str,dict[str,float]]:
     ret=defaultdict(lambda:defaultdict(list)); qdev=torch.from_numpy(qpath).to(r.device); mu=torch.from_numpy(fit.mean).to(r.device); sd=torch.from_numpy(fit.std).to(r.device)
     d=np.setdiff1d(np.arange(spec["rank"]),dims)
     for side in (0,1):
@@ -338,7 +338,7 @@ def session_effect(r:Stages,name:str,qpath:np.ndarray,fit:PathFit,spec:dict[str,
         with torch.inference_mode():
             for start in range(0,len(rec),8):
                 ii,jj=rec[start:start+8],don[start:start+8]; ai=torch.from_numpy(base["a"][ii]).to(r.device); aj=torch.from_numpy(other["a"][jj]).to(r.device)
-                xi=(ai-mu)/sd; xj=(aj-mu)/sd; pi=(xi@qdev)@qdev.T; pj=(xj@qdev)@qdev.T; h,z=r.from_stage(name,(pj+(xi-pi))*sd+mu)
+                xi=(ai-mu)/sd; xj=(aj-mu)/sd; pi=(xi@qdev)@qdev.T; pj=(xj@qdev)@qdev.T; h,z=r.from_stage(name,((pj+(xi-pi))*sd+mu).reshape((len(ii),*shape)))
                 q=canonical(h.float().cpu().numpy(),spec); q0=canonical(base["h"][ii],spec); z0=base["z"][ii]; zz=z.float().cpu().numpy()
                 for k,sub in enumerate(ss[ii].astype(str)):
                     ret[sub][f"qP_{side}"].append(float(np.sqrt(np.mean((q[k,dims]-q0[k,dims])**2))))
@@ -429,10 +429,10 @@ def cell(model:str,task:str,fold:int)->None:
             nonlinear = name != "classifier_input"
             if nonlinear:
                 fut=outer_stage(runner,ox2,name); src=outer_stage(runner,ox1,name); pairs=cross_label_pairs(fut["a"],oy2,os2,model,task,fold,name); spairs=session_pairs(src["a"],oy1,os1,fut["a"],oy2,os2,model,task,fold,name)
-                pp=patch_effect(runner,name,qp,fit,spec,dims,fut,oy2,os2,pairs,True); rr=[]; ri=[]; sr=[]
+                pp=patch_effect(runner,name,shape,qp,fit,spec,dims,fut,oy2,os2,pairs,True); rr=[]; ri=[]; sr=[]
                 for rd in randoms:
-                    qr,_=fit.q(qtrain[:,rd]); rr.append(patch_effect(runner,name,qr,fit,spec,dims,fut,oy2,os2,pairs,True)); ri.append({s:v.get("interaction",float("nan")) for s,v in rr[-1].items()}); sr.append(session_effect(runner,name,qr,fit,spec,dims,src,oy1,os1,fut,oy2,os2,spairs))
-                rm=merge_random(rr); se=session_effect(runner,name,qp,fit,spec,dims,src,oy1,os1,fut,oy2,os2,spairs); sm=merge_random(sr)
+                    qr,_=fit.q(qtrain[:,rd]); rr.append(patch_effect(runner,name,shape,qr,fit,spec,dims,fut,oy2,os2,pairs,True)); ri.append({s:v.get("interaction",float("nan")) for s,v in rr[-1].items()}); sr.append(session_effect(runner,name,shape,qr,fit,spec,dims,src,oy1,os1,fut,oy2,os2,spairs))
+                rm=merge_random(rr); se=session_effect(runner,name,shape,qp,fit,spec,dims,src,oy1,os1,fut,oy2,os2,spairs); sm=merge_random(sr)
                 for sub,v in pp.items(): causal_rows.append({"layer_name":name,"subject_id":sub,**{k:v.get(k,float("nan")) for k in ("delta_qP","delta_qnonP","donor_margin_transfer","donor_label_transfer","logit_rms","flip_rate","true_margin_loss")},**{"random_"+k:rm.get(sub,{}).get(k,float("nan")) for k in ("delta_qP","delta_qnonP","donor_margin_transfer","donor_label_transfer","logit_rms","flip_rate","true_margin_loss")}}); inter_rows.append({"layer_name":name,"subject_id":sub,"interaction_P":v.get("interaction",float("nan")),"interaction_random":rm.get(sub,{}).get("interaction",float("nan")),"interaction_excess":v.get("interaction",float("nan"))-rm.get(sub,{}).get("interaction",float("nan"))})
                 for sub,v in se.items(): session_rows.append({"layer_name":name,"subject_id":sub,**v,**evidence_stability.get(sub,{}),"random_effect_cosine":sm.get(sub,{}).get("effect_cosine",float("nan")),"random_qP_0":sm.get(sub,{}).get("qP_0",float("nan")),"random_qP_1":sm.get(sub,{}).get("qP_1",float("nan"))})
             else:
