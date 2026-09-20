@@ -1,6 +1,6 @@
 <# Runs one frozen pathway-audit command outside the SSH job object. #>
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][ValidateSet('lock','all','aggregate','probe')][string]$Mode)
+param([Parameter(Mandatory=$true)][ValidateSet('lock','all','aggregate','probe','worker_a','worker_b','worker_c')][string]$Mode)
 $ErrorActionPreference='Stop'
 $code=$PSScriptRoot
 $runtime='D:\nips-temp\TotalP\P1\protected_pathway_mechanism_runtime'
@@ -15,8 +15,20 @@ $log=Join-Path $runtime ("scheduled_{0}.log" -f $Mode)
 Push-Location $code
 try {
   "PATHWAY_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
-  $arg=if($Mode -eq 'probe'){'cell EEGNet OpenBMI_MI 0'}elseif($Mode -eq 'all'){'run-all'}else{$Mode}
-  & cmd.exe /d /c ('"'+$python+'" -u "'+(Join-Path $code 'run_protected_pathway.py')+'" '+$arg+' >> "'+$log+'" 2>&1')
+  $commands=switch($Mode){
+    'probe' {@('cell EEGNet OpenBMI_MI 0')}
+    'all' {@('run-all')}
+    # These queues are disjoint. They change only scheduling and preserve every
+    # frozen cell definition, random draw, and numerical operation.
+    'worker_a' {@('cell EEGNet OpenBMI_MI 1','cell EEGNet OpenBMI_MI 2','cell EEGNet OpenBMI_MI 3','cell EEGNet OpenBMI_MI 4','cell EEGConformer OpenBMI_MI 0','cell EEGConformer OpenBMI_MI 1','cell EEGConformer OpenBMI_MI 2','cell EEGConformer OpenBMI_MI 3','cell EEGConformer OpenBMI_MI 4')}
+    'worker_b' {@('cell EEGNet OpenBMI_SSVEP 0','cell EEGNet OpenBMI_SSVEP 1','cell EEGNet OpenBMI_SSVEP 2','cell EEGNet OpenBMI_SSVEP 3','cell EEGNet OpenBMI_SSVEP 4','cell EEGConformer OpenBMI_SSVEP 0','cell EEGConformer OpenBMI_SSVEP 1','cell EEGConformer OpenBMI_SSVEP 2','cell EEGConformer OpenBMI_SSVEP 3','cell EEGConformer OpenBMI_SSVEP 4')}
+    'worker_c' {@('cell FBCNet OpenBMI_MI 0','cell FBCNet OpenBMI_MI 1','cell FBCNet OpenBMI_MI 2','cell FBCNet OpenBMI_MI 3','cell FBCNet OpenBMI_MI 4','cell FBCNet OpenBMI_SSVEP 0','cell FBCNet OpenBMI_SSVEP 1','cell FBCNet OpenBMI_SSVEP 2','cell FBCNet OpenBMI_SSVEP 3','cell FBCNet OpenBMI_SSVEP 4')}
+    default {@($Mode)}
+  }
+  foreach($arg in $commands){
+    & cmd.exe /d /c ('"'+$python+'" -u "'+(Join-Path $code 'run_protected_pathway.py')+'" '+$arg+' >> "'+$log+'" 2>&1')
+    if($LASTEXITCODE -ne 0){exit $LASTEXITCODE}
+  }
   $exitCode=$LASTEXITCODE; "PATHWAY_END mode=$Mode exit=$exitCode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append; exit $exitCode
 } catch { "PATHWAY_EXCEPTION mode=$Mode $_" | Tee-Object -FilePath $log -Append; exit 1 }
 finally { Pop-Location }
