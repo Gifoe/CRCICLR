@@ -1,0 +1,656 @@
+{
+  "cells": [
+    {
+      "checkpoint_sha256": "845b6bcecd6cced7774da1328bd3fd6cd29316376e45d39d878df99ec35391cb",
+      "final_heldout_accessed": false,
+      "fold": 0,
+      "model": "EEGNet",
+      "normalizer_sha256": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+      "outer_subject_ids": [
+        "3",
+        "5",
+        "6",
+        "15",
+        "32",
+        "33",
+        "38",
+        "47"
+      ],
+      "protected_assignment_sha256": "802526bbe20e98cc8e2d47720b1b2775a2687b4934504db4347b9c162f07f124",
+      "seed": 0,
+      "stored_cell_sha256": "759c7d66f48e0fff7d2a7daa88a0a0244060a309465748e3c29cd7c9931dde31",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "31ece43171bf5373a32bc0aa46adc23920f1296ad9d59cc83d3f421c9f536afd",
+      "final_heldout_accessed": false,
+      "fold": 1,
+      "model": "EEGNet",
+      "normalizer_sha256": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+      "outer_subject_ids": [
+        "2",
+        "14",
+        "26",
+        "28",
+        "31",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_assignment_sha256": "6b64f0bbe8ea79323219019d342d5d03389d6ec53188557c5e50586c4928b0b2",
+      "seed": 0,
+      "stored_cell_sha256": "f90b10efa676b2c51a6a060ea7d23432cef5c85ac31f45a86edac9d16e9c965d",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "e05e706370a70479056262c6acd3d50303eaeedcebb34c25c1975683b5a1b31b",
+      "final_heldout_accessed": false,
+      "fold": 2,
+      "model": "EEGNet",
+      "normalizer_sha256": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+      "outer_subject_ids": [
+        "1",
+        "8",
+        "11",
+        "23",
+        "30",
+        "48",
+        "50",
+        "52"
+      ],
+      "protected_assignment_sha256": "e6940be75bbe2be6c50f28c1a0669cce25e567d46d20ccb2e8a52e7eb9348ed9",
+      "seed": 0,
+      "stored_cell_sha256": "cb027ce8b8c34ce7845db1ef64f1e665aa31f8605e3cde38c7b106a268f3103f",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "bb6d51d2dadc12c03a159b73194845094b24093d251dd44713055016f30b09c8",
+      "final_heldout_accessed": false,
+      "fold": 3,
+      "model": "EEGNet",
+      "normalizer_sha256": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+      "outer_subject_ids": [
+        "10",
+        "16",
+        "19",
+        "22",
+        "27",
+        "34",
+        "45",
+        "49"
+      ],
+      "protected_assignment_sha256": "4ac0159a0f48ef872649e2890646f2a4f2601f1d2c05d741522cfba15d87a42c",
+      "seed": 0,
+      "stored_cell_sha256": "bb80dcb4bfcfeeb96f0e9342c9b5dc40d209dd667c47c0ca87d3662a4ddbe582",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "92f2de1b95d785fd5f801b05625a2b8a9b475cfc3831262a63cf406d5b896462",
+      "final_heldout_accessed": false,
+      "fold": 4,
+      "model": "EEGNet",
+      "normalizer_sha256": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d",
+      "outer_subject_ids": [
+        "7",
+        "9",
+        "20",
+        "21",
+        "41",
+        "44",
+        "46",
+        "53"
+      ],
+      "protected_assignment_sha256": "d93a98ab5397644b26c763b9dac3e0a94b10bf5b8a7cee60d6dd04f12d133758",
+      "seed": 0,
+      "stored_cell_sha256": "142048919d21d3f15f18e849acd468fa82d987ad96b884182c94ec45aef35f57",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "861b3f566bfc00ddb1036072b3d82948ba562540f8d1b67718262b52ab8bbe16",
+      "final_heldout_accessed": false,
+      "fold": 0,
+      "model": "EEGNet",
+      "normalizer_sha256": "ee5e5751bdcf139783ff744897d821bf571b82584eb02518b105d673d9c906a2",
+      "outer_subject_ids": [
+        "15",
+        "38",
+        "6",
+        "33",
+        "32",
+        "3",
+        "5",
+        "47"
+      ],
+      "protected_assignment_sha256": "5c7eae649945a3a2ce0999ac8984c519b0077299acded6abf3574051c570d0dc",
+      "seed": 0,
+      "stored_cell_sha256": "59b66e9e66b9ab08f1ada9b2a5b26e0a98b5f4f60c9612eb811008b9f77b608e",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "c52842b9bd3717a4239149aa711cc7c894a28959e1ed897577af14acf1f55f50",
+      "final_heldout_accessed": false,
+      "fold": 1,
+      "model": "EEGNet",
+      "normalizer_sha256": "3ccca7591e0a73b37af6be0cd7a48c06ad58b0690e9e045892cf121dc791498b",
+      "outer_subject_ids": [
+        "26",
+        "2",
+        "14",
+        "31",
+        "28",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_assignment_sha256": "ad6719ed8ca15d5177b27fd490ee213e481a2dd07ddff815083a827ae0ee7fce",
+      "seed": 0,
+      "stored_cell_sha256": "c39b705cb3e7b5690561bd8e14a14f84afa953ced45eb2115efb2396caf7878f",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "6aa5e6e296ab32f1f69f03090f052d8a71c09dedc03bbc11d287cf9873a62040",
+      "final_heldout_accessed": false,
+      "fold": 2,
+      "model": "EEGNet",
+      "normalizer_sha256": "65457744184c97f7501093f7f0ae77803c77c55c76221e4319732fe46e157686",
+      "outer_subject_ids": [
+        "50",
+        "52",
+        "23",
+        "1",
+        "30",
+        "48",
+        "11",
+        "8"
+      ],
+      "protected_assignment_sha256": "d7d3205c99dc37fa3e413db542ce7dfcc3e37cfbed5a08a779396543d8bda120",
+      "seed": 0,
+      "stored_cell_sha256": "92ebf9baa8fb639b21366dd158eb847afdf802b4422eb5ce7e2540428944cefb",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "f286e0fb5018864344844f980e946f9724b00dae7a5a53c55c88465841ba6c12",
+      "final_heldout_accessed": false,
+      "fold": 3,
+      "model": "EEGNet",
+      "normalizer_sha256": "23fc006691b42bd16828108fc89922654fa7567a759b789614a5642702113b52",
+      "outer_subject_ids": [
+        "45",
+        "34",
+        "27",
+        "49",
+        "10",
+        "22",
+        "19",
+        "16"
+      ],
+      "protected_assignment_sha256": "13155ac64f563af94f1599e7935e5f09cd9afd4a72ca93b0adc805ad1cc3ccae",
+      "seed": 0,
+      "stored_cell_sha256": "87dcb8b576eefa473d603c03eca955411138b850085712150d388549d1b550d7",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "d11730326b518db0ae6fc3239bd31ff3f1a2e364ddd293c9b656c2e756a1b56e",
+      "final_heldout_accessed": false,
+      "fold": 4,
+      "model": "EEGNet",
+      "normalizer_sha256": "f35658c5b6e9edf7065b881ffbf59d3e0e0afa7726e18c3849663747b9413dda",
+      "outer_subject_ids": [
+        "9",
+        "53",
+        "7",
+        "20",
+        "41",
+        "46",
+        "21",
+        "44"
+      ],
+      "protected_assignment_sha256": "57e7a03f24dbf66a5955b94f112f5c553486f2120cfb14705d5cbef18b5c3789",
+      "seed": 0,
+      "stored_cell_sha256": "20d9dbc02595afc4aa32ea8199759ecaf67943ed947cd636d71c01893c679100",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "cc650b3011d1f05b208cc93fbebf98ab89bc1749213f02afb8667177212859f1",
+      "final_heldout_accessed": false,
+      "fold": 0,
+      "model": "EEGConformer",
+      "normalizer_sha256": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+      "outer_subject_ids": [
+        "3",
+        "5",
+        "6",
+        "15",
+        "32",
+        "33",
+        "38",
+        "47"
+      ],
+      "protected_assignment_sha256": "f4db8aa0feb8eaf7d9d9cae6b55db56631c45f185d871a3964f627eb1efa9148",
+      "seed": 0,
+      "stored_cell_sha256": "fb6620993f5b97a6f28ca9ac4a5bc4fe4cd57a90902b6c16fe05851e1b4fa344",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "38b50eed3b72893c0868bcc86ab55cb249d76fa0a32a375b352d6dbb37768a3e",
+      "final_heldout_accessed": false,
+      "fold": 1,
+      "model": "EEGConformer",
+      "normalizer_sha256": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+      "outer_subject_ids": [
+        "2",
+        "14",
+        "26",
+        "28",
+        "31",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_assignment_sha256": "84b96651efea4c5f357b4f570fb71a0bd566ca90813fa0197d20a19b96e57e43",
+      "seed": 0,
+      "stored_cell_sha256": "1cefb247856d0a82a6be893b3087b9c231ce4e2c41bea5dc100b7d6ce070444e",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "a5a0a2eafbba9b026c6368c26c3f3f7021adc2daca0091dd43662c3447374c34",
+      "final_heldout_accessed": false,
+      "fold": 2,
+      "model": "EEGConformer",
+      "normalizer_sha256": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+      "outer_subject_ids": [
+        "1",
+        "8",
+        "11",
+        "23",
+        "30",
+        "48",
+        "50",
+        "52"
+      ],
+      "protected_assignment_sha256": "044835f1d4a669221e644dabd8aefb873f76c599239218fc87aac834d339e398",
+      "seed": 0,
+      "stored_cell_sha256": "3bbf1dd92d645c7752627c5fd05eab6bc74f4ae33c6793962db2f5926104f224",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "ee78fd8820d87c3a5caf05e5c7f49c30de7646cb6def3fa53b2f4856bdde570a",
+      "final_heldout_accessed": false,
+      "fold": 3,
+      "model": "EEGConformer",
+      "normalizer_sha256": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+      "outer_subject_ids": [
+        "10",
+        "16",
+        "19",
+        "22",
+        "27",
+        "34",
+        "45",
+        "49"
+      ],
+      "protected_assignment_sha256": "79f7780a055ca52a8363692742247412d7a60d4ac610bc4cad1e31b0fca288ee",
+      "seed": 0,
+      "stored_cell_sha256": "9bbbe71298c1eb3615a7ef5dfc786eb38ece8da225b8413252f4631e98ef0648",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "8ee4853ad1850a57ef7ba3c6091f132fe2ab4c169efa140810e39cd20076f77b",
+      "final_heldout_accessed": false,
+      "fold": 4,
+      "model": "EEGConformer",
+      "normalizer_sha256": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d",
+      "outer_subject_ids": [
+        "7",
+        "9",
+        "20",
+        "21",
+        "41",
+        "44",
+        "46",
+        "53"
+      ],
+      "protected_assignment_sha256": "1b3f965dedfe4442b0e1d7810d28fc4e6349f88739fd774ad1ba1681985df07f",
+      "seed": 0,
+      "stored_cell_sha256": "5bb8c39456f2dd31a11b8917bd342c7beab0006f5174e929a47b3c5dc5356b67",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "ed322e47fbd576ca0f782cc16a4255edbb8b2268683ca14865318fa15f64b400",
+      "final_heldout_accessed": false,
+      "fold": 0,
+      "model": "EEGConformer",
+      "normalizer_sha256": "ee5e5751bdcf139783ff744897d821bf571b82584eb02518b105d673d9c906a2",
+      "outer_subject_ids": [
+        "15",
+        "38",
+        "6",
+        "33",
+        "32",
+        "3",
+        "5",
+        "47"
+      ],
+      "protected_assignment_sha256": "3951691b75431b5038b511d76cedadab2e4d51d083c274f1d05dd793cbf93b68",
+      "seed": 0,
+      "stored_cell_sha256": "d18042fde7521ccc49c9bb7307afec42c1448d5e4a42db249cbf01baa19b5dc1",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "32f75fd16bbe0eff08e3188a355638875f14106e7890072708a0f26b07796e2f",
+      "final_heldout_accessed": false,
+      "fold": 1,
+      "model": "EEGConformer",
+      "normalizer_sha256": "3ccca7591e0a73b37af6be0cd7a48c06ad58b0690e9e045892cf121dc791498b",
+      "outer_subject_ids": [
+        "26",
+        "2",
+        "14",
+        "31",
+        "28",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_assignment_sha256": "45b404367edefc61877303399d207b9311409c274c5865cf16e71bd99e40805c",
+      "seed": 0,
+      "stored_cell_sha256": "75f2573f4cd23d99217d8c08ebe4ddf90099520b7f9f2400ee4df563707120ff",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "b3f95a55bf72ebb6e60bab30891cd9766e80a824713c2b64e697652c3a114955",
+      "final_heldout_accessed": false,
+      "fold": 2,
+      "model": "EEGConformer",
+      "normalizer_sha256": "65457744184c97f7501093f7f0ae77803c77c55c76221e4319732fe46e157686",
+      "outer_subject_ids": [
+        "50",
+        "52",
+        "23",
+        "1",
+        "30",
+        "48",
+        "11",
+        "8"
+      ],
+      "protected_assignment_sha256": "ab44d7e870b03c5212e68a78fe24308b5139f7cc0c24345d2de5a3952aa11212",
+      "seed": 0,
+      "stored_cell_sha256": "21a2627936a69eac6995d8eb6224d165ce8469b0ca434c07518eafb9a334353b",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "8f2fc67d712feb757b872fc8c6175b50ad1671bb1d3e5d185d099740466418ff",
+      "final_heldout_accessed": false,
+      "fold": 3,
+      "model": "EEGConformer",
+      "normalizer_sha256": "23fc006691b42bd16828108fc89922654fa7567a759b789614a5642702113b52",
+      "outer_subject_ids": [
+        "45",
+        "34",
+        "27",
+        "49",
+        "10",
+        "22",
+        "19",
+        "16"
+      ],
+      "protected_assignment_sha256": "bb7d4c64c799fdb38614b04ec8aba62d94a2e401fa8ea3dbce5e1e23894b2651",
+      "seed": 0,
+      "stored_cell_sha256": "93cbea224c4b9738b83f7783a94eb7d270e091052bf8b7f53b081f925967ad17",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "0983ae1b20b62337dddd631620ae2e5ef4fda69cb170ffb8fa5a6b5e559d8cff",
+      "final_heldout_accessed": false,
+      "fold": 4,
+      "model": "EEGConformer",
+      "normalizer_sha256": "f35658c5b6e9edf7065b881ffbf59d3e0e0afa7726e18c3849663747b9413dda",
+      "outer_subject_ids": [
+        "9",
+        "53",
+        "7",
+        "20",
+        "41",
+        "46",
+        "21",
+        "44"
+      ],
+      "protected_assignment_sha256": "eec62521ecc39de4c17f57e729b6babe554a621ff353e8aa87a3bee08821dd8d",
+      "seed": 0,
+      "stored_cell_sha256": "7253048d0d73909e97f98225cff97245d8e62c2f3542592559d9527787d912bd",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "5d63a62ad4a4221b3375918d1946c4c500180c9488a034dc1f10641ff677c01c",
+      "final_heldout_accessed": false,
+      "fold": 0,
+      "model": "FBCNet",
+      "normalizer_sha256": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+      "outer_subject_ids": [
+        "3",
+        "5",
+        "6",
+        "15",
+        "32",
+        "33",
+        "38",
+        "47"
+      ],
+      "protected_assignment_sha256": "a660fdd13093bc12bd5adc55d041b3e6f96eef2f894bbc4acb9d6a2d56405c29",
+      "seed": 0,
+      "stored_cell_sha256": "e4cc5ba2efa2def7dce042810b0d91d4a30f01a79bce0697947abaf99c805ff5",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "00ad7b9183d522cb29294a8662d7d1071b4a840f7ca6a2893a763e55e2f7cfbd",
+      "final_heldout_accessed": false,
+      "fold": 1,
+      "model": "FBCNet",
+      "normalizer_sha256": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+      "outer_subject_ids": [
+        "2",
+        "14",
+        "26",
+        "28",
+        "31",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_assignment_sha256": "5358b31646866019795fe36490c079bb30fcb076d54bc631cacd9c150f4cbc40",
+      "seed": 0,
+      "stored_cell_sha256": "d0454357848559355b95c12bc76572874c6c1b2eb20204de0e79db10f845fdec",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "42a7277dbe16002f9ff2f79bb6185521a9d836fe936adb98e9b7d0e53f794c32",
+      "final_heldout_accessed": false,
+      "fold": 2,
+      "model": "FBCNet",
+      "normalizer_sha256": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+      "outer_subject_ids": [
+        "1",
+        "8",
+        "11",
+        "23",
+        "30",
+        "48",
+        "50",
+        "52"
+      ],
+      "protected_assignment_sha256": "359f0e58a457da7631799f5cd89c0041f7e63f751bcd27cf29f07e2c0fec2f5f",
+      "seed": 0,
+      "stored_cell_sha256": "9f398f200aff108fa7a370900083762014691e8fe25ff28a32a1d9d52d380534",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "8c47a60b9e1a0508f35982630bd3202f7f62a71ff48d2079c563e5bb4f6856cd",
+      "final_heldout_accessed": false,
+      "fold": 3,
+      "model": "FBCNet",
+      "normalizer_sha256": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+      "outer_subject_ids": [
+        "10",
+        "16",
+        "19",
+        "22",
+        "27",
+        "34",
+        "45",
+        "49"
+      ],
+      "protected_assignment_sha256": "b061f816c0e75b93309b913e1c7c6805cab1c3cefc19f10c428f973602fd45b6",
+      "seed": 0,
+      "stored_cell_sha256": "e014c7679d15bcb5fa8518f73b3b0baf39cd9b3a0e966ffcfd64934e0aea5dad",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "e9c3fad380b3a5f4f8b204c661e6d4a693617a5077ccfdb5b5f0fb9d528e2111",
+      "final_heldout_accessed": false,
+      "fold": 4,
+      "model": "FBCNet",
+      "normalizer_sha256": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d",
+      "outer_subject_ids": [
+        "7",
+        "9",
+        "20",
+        "21",
+        "41",
+        "44",
+        "46",
+        "53"
+      ],
+      "protected_assignment_sha256": "e27da4e78ed9d25dcb23412ac23adb41ed7449ef2fa5534c9a5aa3b2791a0560",
+      "seed": 0,
+      "stored_cell_sha256": "33d94d28f660e9ca39fe58bf6c97da442ba25640136c9341c0ca688c57606a7b",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "checkpoint_sha256": "940d8a3571b0761b40070e37f40b814d735a6a635eeb8f9d5e6fb1264f4da126",
+      "final_heldout_accessed": false,
+      "fold": 0,
+      "model": "FBCNet",
+      "normalizer_sha256": "ee5e5751bdcf139783ff744897d821bf571b82584eb02518b105d673d9c906a2",
+      "outer_subject_ids": [
+        "15",
+        "38",
+        "6",
+        "33",
+        "32",
+        "3",
+        "5",
+        "47"
+      ],
+      "protected_assignment_sha256": "3753f973372e50340da16fd97186e9f2249cc0ef1972e5c44e46b61274c021ce",
+      "seed": 0,
+      "stored_cell_sha256": "9d4a338357b0996cba3aea426cb44618f71ecb6df06f819b7267a1235e3bc369",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "fbf3e0a2fd674dcd12c4778ec354e898abd4613328abf4aef3eb58086d400243",
+      "final_heldout_accessed": false,
+      "fold": 1,
+      "model": "FBCNet",
+      "normalizer_sha256": "3ccca7591e0a73b37af6be0cd7a48c06ad58b0690e9e045892cf121dc791498b",
+      "outer_subject_ids": [
+        "26",
+        "2",
+        "14",
+        "31",
+        "28",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_assignment_sha256": "4cd41a13dab7831f545f875eea708c080ade102e64483f40b7a1d89aa09c9d8a",
+      "seed": 0,
+      "stored_cell_sha256": "2361d796ac4e8816620af7be054af6cff5a094cbbbd94c638d9a1def4e8831b1",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "1e76fb805ac34d9b98f5923843e040deadfebb4667f244ac72a78365289e03c7",
+      "final_heldout_accessed": false,
+      "fold": 2,
+      "model": "FBCNet",
+      "normalizer_sha256": "65457744184c97f7501093f7f0ae77803c77c55c76221e4319732fe46e157686",
+      "outer_subject_ids": [
+        "50",
+        "52",
+        "23",
+        "1",
+        "30",
+        "48",
+        "11",
+        "8"
+      ],
+      "protected_assignment_sha256": "5123125cbe859867e6bdf6ab7954c6d2a61133892735c77144638fef6d87fe65",
+      "seed": 0,
+      "stored_cell_sha256": "91b3bf76efcf6181403fabb1e0741a66a8068bd2ebfbea1c4f094640be070375",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "5751369f8c080b81e938e9a69b5a0490a349d954dfb5db7a57af0b2546d39f60",
+      "final_heldout_accessed": false,
+      "fold": 3,
+      "model": "FBCNet",
+      "normalizer_sha256": "23fc006691b42bd16828108fc89922654fa7567a759b789614a5642702113b52",
+      "outer_subject_ids": [
+        "45",
+        "34",
+        "27",
+        "49",
+        "10",
+        "22",
+        "19",
+        "16"
+      ],
+      "protected_assignment_sha256": "064669a838321e2f859ac62b1b3e74d1dd5d949c1392cbf49fe57a25a975c013",
+      "seed": 0,
+      "stored_cell_sha256": "3f3737e9e95ebeca8185cd787c3628eb221d12cbb246504663397480ce84e956",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "checkpoint_sha256": "8bd111fd7213f9ee971ff9d6dd720c7eb60407a477c1a01b39efad5d5a9c4d56",
+      "final_heldout_accessed": false,
+      "fold": 4,
+      "model": "FBCNet",
+      "normalizer_sha256": "f35658c5b6e9edf7065b881ffbf59d3e0e0afa7726e18c3849663747b9413dda",
+      "outer_subject_ids": [
+        "9",
+        "53",
+        "7",
+        "20",
+        "41",
+        "46",
+        "21",
+        "44"
+      ],
+      "protected_assignment_sha256": "706696f5a7300bc0e27885accf0b05176650b95baf9c4436669cb5e130e62b1e",
+      "seed": 0,
+      "stored_cell_sha256": "0b06146b48f5c65088408d8962333d28f080b830f78116f39f0b23c875222360",
+      "task": "OpenBMI_SSVEP"
+    }
+  ],
+  "created_utc": "2026-09-20T16:52:10Z",
+  "evaluation": "outer-development only",
+  "final_heldout_accessed": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "EEGNet",
+    "EEGConformer",
+    "FBCNet"
+  ],
+  "random_draws": 100,
+  "schema": "PERSIST_EEG_NATIVE_PROTECTED_UTILIZATION_SEED0_V1",
+  "seed": 0,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_SSVEP"
+  ]
+}
