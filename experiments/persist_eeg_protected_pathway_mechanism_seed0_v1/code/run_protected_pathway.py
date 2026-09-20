@@ -189,8 +189,11 @@ def train_centroids(r: Stages, data: dict[str, Any], model: str, task: str, fold
     x,y,s,se = UP.capped_train(data,task,model,fold); gi,keys = groups(s,se,y); count=np.bincount(gi,minlength=len(keys)).astype(np.float32)
     sums: dict[str,np.ndarray] = {}; hsum=None; htrials=[]
     with torch.inference_mode():
-        for start in range(0,len(x),16):
-            batch=gi[start:start+16]; vals,h,_=r.all(r.tensor(x[start:start+16]))
+        # Match the preceding frozen P audit's 32-example forward batching so
+        # the manual classifier-input activations are numerically comparable
+        # to its exact pre-head hook, including EEG-Conformer attention kernels.
+        for start in range(0,len(x),32):
+            batch=gi[start:start+32]; vals,h,_=r.all(r.tensor(x[start:start+32]))
             if hsum is None:
                 hsum=np.zeros((len(keys),h.numel()//len(h)),np.float32)
                 for n,v in vals.items(): sums[n]=np.zeros((len(keys),v.numel()//len(v)),np.float32)
