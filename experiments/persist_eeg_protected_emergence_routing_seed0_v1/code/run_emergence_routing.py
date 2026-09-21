@@ -36,6 +36,7 @@ CAP, RANDOM_DRAWS, SUBJECT_FOLDS, BOOTSTRAPS = 16, 100, 5, 2000
 RIDGE_ALPHAS = (0.0, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0)
 SUPPRESS_ALPHAS, GATE_CS, GATE_TAUS = (0.0, 0.25, 0.5, 0.75), (0.01, 0.1, 1.0, 10.0), (0.25, 0.5, 0.75)
 RANDOM_ROUTING_WORKERS = max(1, min(4, int(os.environ.get("ROUTING_RANDOM_WORKERS", "1"))))
+MAPPING_FEATURE_CHUNK = max(256, int(os.environ.get("ROUTING_MAPPING_FEATURE_CHUNK", "8192")))
 EPS = 1e-12
 
 
@@ -197,28 +198,41 @@ def exact_target(h: np.ndarray, spec: dict[str, Any], dims: np.ndarray) -> tuple
     return q_exact.astype(np.float32), err
 
 
-def standardise(x: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    mean = x.mean(axis=0, dtype=np.float64).astype(np.float32)
-    std = np.maximum(x.std(axis=0, dtype=np.float64).astype(np.float32), 1e-6)
-    return (x - mean) / std, mean, std
+def standardised_tensor(x: np.ndarray, mean: np.ndarray, std: np.ndarray, dev: torch.device) -> torch.Tensor:
+    """Materialize an exact NumPy-standardized tensor directly on the device.
+
+    Blocks bound host peak memory, but the final device tensor preserves the
+    historical one-shot GEMM order used by the original dual ridge solve.
+    """
+    out = torch.empty(x.shape, device=dev, dtype=torch.float32)
+    for start in range(0, x.shape[1], MAPPING_FEATURE_CHUNK):
+        stop = min(x.shape[1], start + MAPPING_FEATURE_CHUNK)
+        block = np.ascontiguousarray((x[:, start:stop] - mean[start:stop]) / std[start:stop], dtype=np.float32)
+        out[:, start:stop].copy_(torch.from_numpy(block).to(dev))
+        del block
+    return out
 
 
 def kernel_predictions(xfit: np.ndarray, yfit: np.ndarray, xtest: np.ndarray) -> np.ndarray:
-    """All fixed ridge alphas in a memory-safe dual solve; output A,N,T,K."""
-    xf, mean, std = standardise(xfit)
-    xt = (xtest - mean) / std
-    n, width = len(xf), xfit.shape[1]
+    """All fixed ridge alphas with historical standardized dual-ridge algebra."""
+    n, width = len(xfit), xfit.shape[1]
     if n < 2:
         raise RuntimeError("insufficient TRAIN trials for dual ridge")
+    mean = xfit.mean(axis=0, dtype=np.float64).astype(np.float32)
+    std = np.maximum(xfit.std(axis=0, dtype=np.float64).astype(np.float32), 1e-6)
     dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     with torch.inference_mode():
-        a = torch.from_numpy(np.ascontiguousarray(xf)).to(dev)
+        # This keeps the original full-matrix GEMMs and only streams host-side
+        # standardization.  It is therefore numerically equivalent to the
+        # historical (x - mean) / std implementation while avoiding its host
+        # multi-GB temporary allocation.
+        a = standardised_tensor(xfit, mean, std, dev)
+        t = standardised_tensor(xtest, mean, std, dev)
         b = torch.from_numpy(np.ascontiguousarray(yfit.reshape(n, -1))).to(dev)
-        t = torch.from_numpy(np.ascontiguousarray(xt)).to(dev)
         kernel = (a @ a.T) / max(width, 1)
+        kt = (t @ a.T) / max(width, 1)
         eig, vec = torch.linalg.eigh(kernel)
         vt_y = vec.T @ b
-        kt = (t @ a.T) / max(width, 1)
         floor = torch.clamp(eig[-1].abs() * 1e-8, min=1e-8)
         parts = []
         for alpha in RIDGE_ALPHAS:
