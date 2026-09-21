@@ -46,6 +46,11 @@ def sha(p:Path)->str:
     with p.open("rb") as f:
         for b in iter(lambda:f.read(8<<20),b""):h.update(b)
     return h.hexdigest()
+def array_digest(*arrays):
+    digest=hashlib.sha256()
+    for value in arrays:
+        a=np.ascontiguousarray(value);digest.update(str(a.dtype).encode());digest.update(str(a.shape).encode());digest.update(memoryview(a).cast('B'))
+    return digest.hexdigest()
 def tpath(m:str,t:str,f:int)->Path:return RUNTIME/"cells"/m.lower()/t.lower()/f"fold{f}_seed0.json"
 def center(z:np.ndarray)->np.ndarray:return z-z.mean(1,keepdims=True)
 def sm(z:np.ndarray)->np.ndarray:
@@ -58,14 +63,21 @@ def subs(s:np.ndarray)->list[str]:return BR.natural(s)
 def cosine(a:np.ndarray,b:np.ndarray)->np.ndarray:return np.sum(a*b,1)/np.maximum(np.linalg.norm(a,axis=1)*np.linalg.norm(b,axis=1),EPS)
 def entropy(z:np.ndarray)->np.ndarray:
     p=sm(z);return -np.sum(p*np.log(np.clip(p,EPS,1)),1)
+def probability_metrics(target,pred):
+    if not len(target):return {'AUROC':None,'AUPRC':None,'Brier':None,'accuracy':None,'ECE':None}
+    bins=np.minimum((pred*10).astype(int),9);ece=0.
+    for b in range(10):
+        ix=bins==b
+        if ix.any():ece+=float(ix.mean())*abs(float(pred[ix].mean()-target[ix].mean()))
+    return {'AUROC':float(roc_auc_score(target,pred)) if len(np.unique(target))>1 else None,'AUPRC':float(average_precision_score(target,pred)) if target.any() else None,'Brier':float(brier_score_loss(target,pred)),'accuracy':float(np.mean((pred>=.5)==target)),'ECE':ece}
 
 def groups(s:np.ndarray)->list[np.ndarray]:
-    u=subs(s); return [np.asarray([x==v for x in s.astype(str)]) for v in u]
+    return [np.isin(s,g) for g in BR.subject_groups(np.asarray(subs(s))) if len(g)]
 def fit_logit(x:np.ndarray,y:np.ndarray,c:float,sd:int):
     mu=x.mean(0,dtype=np.float64).astype(np.float32);st=np.maximum(x.std(0,dtype=np.float64).astype(np.float32),1e-6)
-    if len(np.unique(y))<2:return None,mu,st
+    if len(np.unique(y))<2:return float(y[0]),mu,st
     q=LogisticRegression(C=c,penalty="l2",solver="lbfgs",max_iter=1000,random_state=sd).fit((x-mu)/st,y);return q,mu,st
-def prob(q:Any,mu:np.ndarray,st:np.ndarray,x:np.ndarray)->np.ndarray:return np.zeros(len(x),np.float32) if q is None else q.predict_proba((x-mu)/st)[:,1].astype(np.float32)
+def prob(q:Any,mu:np.ndarray,st:np.ndarray,x:np.ndarray)->np.ndarray:return np.full(len(x),q,np.float32) if isinstance(q,float) else q.predict_proba((x-mu)/st)[:,1].astype(np.float32)
 def pick_logit(x:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...]):
     best=(-np.inf,CS[0])
     for c in CS:
@@ -106,7 +118,12 @@ def ridge_oof(x:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...]):
         if v<best[0]:best=(v,l,o)
     q,mu,st=fit_ridge(x,y,best[1]);return best[2],q,mu,st,float(best[1]),float(best[0])
 def logit_oof(x:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...]):
-    """Select regularization strictly within TRAIN subjects and return LSO scores."""
+    """Nested held-subject TRAIN selection; held predictions exclude C selection."""
+    nested=np.zeros(len(y),np.float32)
+    for k,g in enumerate(groups(s)):
+        if not (~g).any():raise RuntimeError('insufficient subjects for nested logistic CV')
+        q,mu,st,_=pick_logit(x[~g],y[~g],s[~g],(*tag,'inner',k))
+        nested[g]=prob(q,mu,st,x[g])
     best=(-np.inf,CS[0],None)
     for c in CS:
         o=np.zeros(len(y),np.float32)
@@ -114,10 +131,28 @@ def logit_oof(x:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...]):
             q,mu,st=fit_logit(x[~g],y[~g],c,seed(*tag,c,k));o[g]=prob(q,mu,st,x[g])
         score=float(np.mean([ba(y[g],(o[g]>=.5).astype(int)) for g in groups(s)]))
         if score>best[0]:best=(score,c,o)
-    q,mu,st=fit_logit(x,y,best[1],seed(*tag,"full"));return best[2],q,mu,st,float(best[1]),float(best[0])
+    q,mu,st=fit_logit(x,y,best[1],seed(*tag,"full"));return nested,q,mu,st,float(best[1]),float(np.mean([ba(y[s==sub],(nested[s==sub]>=.5).astype(int)) for sub in subs(s)]))
+
+def nested_gain_predictions(x,y,s,xo):
+    """Independent Ridge targets share design matrices, never their alpha choices."""
+    def select(xx,yy,ss):
+        predictions=np.zeros((len(LAM),*yy.shape),np.float32)
+        for g in groups(ss):
+            train=xx[~g];mu=train.mean(0,dtype=np.float64).astype(np.float32);st=np.maximum(train.std(0,dtype=np.float64).astype(np.float32),1e-6)
+            xf=(train-mu)/st;xt=(xx[g]-mu)/st
+            for j,l in enumerate(LAM):predictions[j,g]=Ridge(alpha=l).fit(xf,yy[~g]).predict(xt)
+        mse=np.mean((predictions-yy[None])**2,axis=1)
+        chosen=np.argmin(mse,axis=0)
+        return np.asarray(LAM)[chosen],mse[chosen,np.arange(yy.shape[1])]
+    out=np.zeros_like(y)
+    for g in groups(s):
+        alphas,_=select(x[~g],y[~g],s[~g]);model,mu,st=fit_ridge(x[~g],y[~g],alphas)
+        out[g]=rp(model,mu,st,x[g])
+    alphas,mse=select(x,y,s);model,mu,st=fit_ridge(x,y,alphas)
+    return out,rp(model,mu,st,xo),alphas,mse
 
 def features(z0:np.ndarray,zp:np.ndarray,zc:np.ndarray,z:np.ndarray,q:np.ndarray,cent:np.ndarray|None=None)->np.ndarray:
-    k=z.shape[1];pp,pc,pn=zp.argmax(1),zc.argmax(1),z.argmax(1);oh=lambda a:np.eye(k,dtype=np.float32)[a];a,b,n=center(zp),center(zc),center(z)
+    k=z.shape[1];pp,pc,pn=(z0+zp).argmax(1),(z0+zc).argmax(1),z.argmax(1);oh=lambda a:np.eye(k,dtype=np.float32)[a];a,b,n=center(zp),center(zc),center(z)
     pgap=zp[np.arange(len(zp)),pp]-zp[np.arange(len(zp)),pc];cgap=zc[np.arange(len(zc)),pp]-zc[np.arange(len(zc)),pc];ngap=z[np.arange(len(z)),pp]-z[np.arange(len(z)),pc]
     switches=[]
     for i in range(len(z)):
@@ -126,13 +161,17 @@ def features(z0:np.ndarray,zp:np.ndarray,zc:np.ndarray,z:np.ndarray,q:np.ndarray
             if bb==aa:continue
             u=(z0[0,aa]-z0[0,bb])+(zp[i,aa]-zp[i,bb]);v=zc[i,aa]-zc[i,bb]
             if abs(v)>EPS and 0<=-u/v<=1:roots.append(float(-u/v))
-        roots.sort(); switches.append((roots[0] if roots else -1.,len(roots)))
-    sw=np.asarray(switches,np.float32);base=np.c_[oh(pp),oh(pc),oh(pn),(pp==pc),(pp==pn),(pc==pn),margin(zp),margin(zc),margin(z),entropy(zp),entropy(zc),entropy(z),np.linalg.norm(a,axis=1),np.linalg.norm(b,axis=1),np.linalg.norm(a,axis=1)/np.maximum(np.linalg.norm(b,axis=1),EPS),cosine(a,b),cosine(a,n),cosine(b,n),pgap,cgap,ngap,sw[:,0],1-np.maximum(sw[:,0],0),sw[:,1],sw[:,0]<0]
+        roots.sort(reverse=True)
+        first=roots[0] if roots else -1.
+        after=int((z0[0]+zp[i]+max(0.,first-1e-5)*zc[i]).argmax()) if roots else int(pn[i])
+        switches.append((first,len(roots),after,int(after==pp[i])))
+    sw=np.asarray(switches,np.float32);base=np.c_[oh(pp),oh(pc),oh(pn),(pp==pc),(pp==pn),(pc==pn),margin(z0+zp),margin(z0+zc),margin(z),entropy(z0+zp),entropy(z0+zc),entropy(z),np.linalg.norm(a,axis=1),np.linalg.norm(b,axis=1),np.linalg.norm(a,axis=1)/np.maximum(np.linalg.norm(b,axis=1),EPS),cosine(a,b),cosine(a,n),cosine(b,n),pgap,cgap,ngap,sw[:,0],1-np.maximum(sw[:,0],0),sw[:,1],sw[:,0]<0]
+    base=np.c_[base,oh(sw[:,2].astype(int)),sw[:,3]]
     if cent is not None:
         d=np.linalg.norm(q[:,None]-cent[None],axis=2);near=np.partition(d,1,axis=1)[:,:2];base=np.c_[base,near,near[:,1]-near[:,0]]
     return base.astype(np.float32)
 
-def pathway_features(acts:dict[str,np.ndarray],acts_o:dict[str,np.ndarray],q:np.ndarray,qo:np.ndarray,s:np.ndarray,tag:tuple[object,...])->tuple[np.ndarray,np.ndarray,list[dict[str,Any]]]:
+def pathway_features_legacy(acts:dict[str,np.ndarray],acts_o:dict[str,np.ndarray],q:np.ndarray,qo:np.ndarray,s:np.ndarray,tag:tuple[object,...])->tuple[np.ndarray,np.ndarray,list[dict[str,Any]]]:
     """Frozen pathway maps: LSO TRAIN map outputs for policy fitting, then all-TRAIN outer maps."""
     cols_t=[];cols_o=[]; audit=[]
     for name,a in acts.items():
@@ -144,12 +183,94 @@ def pathway_features(acts:dict[str,np.ndarray],acts_o:dict[str,np.ndarray],q:np.
         print('PATHWAY_DONE',tag,name,'seconds',round(time.perf_counter()-started,2),flush=True)
     return np.stack(cols_t,1).astype(np.float32),np.stack(cols_o,1).astype(np.float32),audit
 
+def shared_pathway_predictions(xfit,yfit,xtest):
+    """Share only X kernels/eigendecomposition; preserve each target GEMM shape."""
+    n,width=xfit.shape
+    mean=xfit.mean(0,dtype=np.float64).astype(np.float32);std=np.maximum(xfit.std(0,dtype=np.float64).astype(np.float32),1e-6)
+    dev=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    with torch.inference_mode():
+        a=BR.standardised_tensor(xfit,mean,std,dev);t=BR.standardised_tensor(xtest,mean,std,dev)
+        kernel=(a@a.T)/max(width,1);kt=(t@a.T)/max(width,1)
+        eig,vec=torch.linalg.eigh(kernel);floor=torch.clamp(eig[-1].abs()*1e-8,min=1e-8)
+        del a,t,kernel
+        predictions=[]
+        for j in range(yfit.shape[1]):
+            b=torch.from_numpy(np.ascontiguousarray(yfit[:,j].reshape(n,-1))).to(dev);vty=vec.T@b
+            parts=[]
+            for alpha in BR.RIDGE_ALPHAS:
+                den=torch.clamp(eig,min=floor) if alpha==0 else eig+alpha
+                parts.append((kt@(vec@(vty/den[:,None]))).cpu().numpy())
+            predictions.append(np.stack(parts,0))
+        result=np.stack(predictions,2).astype(np.float32)
+    return result
+
+def pathway_bank(acts,acts_o,q,qo,s,subsets,raw,w,tag):
+    """Reuse the preceding GPU dual solver for P and all 20 fixed controls together.
+
+    Each target retains its own TRAIN nested subject-CV alpha. Expensive kernels
+    depend only on layer activations, so their computation is shared across targets.
+    """
+    targets=np.stack([q[:,d] for d in subsets],1)
+    truth_o=np.stack([qo[:,d] for d in subsets],1)
+    evidence_maps=np.stack([raw[d]@w.T for d in subsets])
+    cols_t=[[] for _ in subsets];cols_o=[[] for _ in subsets]
+    ev_t=[[] for _ in subsets];ev_o=[[] for _ in subsets];audits=[[] for _ in subsets]
+    masks=[np.isin(s,g) for g in BR.subject_groups(np.asarray(subs(s))) if len(g)]
+    def select(a,y,ss):
+        scores=[]
+        for held in BR.subject_groups(np.asarray(subs(ss))):
+            ix=np.isin(ss,held)
+            if not ix.any() or (~ix).sum()<2:continue
+            pred=shared_pathway_predictions(a[~ix],y[~ix],a[ix])
+            scores.append(BR.r2_matrix(y[ix],pred,ss[ix]))
+        if not scores:raise RuntimeError('insufficient TRAIN subjects for nested pathway CV')
+        return np.nanargmax(np.nanmean(scores,axis=0),axis=0)
+    for name,a in acts.items():
+        if name=='classifier_input':continue  # not one of the requested evidence stages
+        begin=time.perf_counter();print('PATHWAY_GPU_START',tag,name,a.shape,flush=True)
+        key=hashlib.sha256((sha(Path(__file__))+array_digest(a,acts_o[name],targets)+str(tuple(s))+name).encode()).hexdigest()
+        cache=RUNTIME/'mapping_cache'/str(tag[0])/str(tag[1])/str(tag[2])/(name+'_'+key+'.npz')
+        if cache.is_file():
+            with np.load(cache,allow_pickle=False) as saved:pt=saved['pt'];po=saved['po'];chosen=saved['chosen']
+        else:
+            pt=np.zeros_like(targets);indices=np.arange(len(subsets))
+            for fold,held in enumerate(masks):
+                chosen_inner=select(a[~held],targets[~held],s[~held])
+                predictions=shared_pathway_predictions(a[~held],targets[~held],a[held])
+                pt[held]=np.stack([predictions[chosen_inner[j],:,j] for j in indices],1)
+                print('PATHWAY_GPU_CROSSFIT',name,fold+1,len(masks),flush=True)
+            chosen=select(a,targets,s)
+            predictions=shared_pathway_predictions(a,targets,acts_o[name])
+            po=np.stack([predictions[chosen[j],:,j] for j in indices],1)
+            cache.parent.mkdir(parents=True,exist_ok=True)
+            tmp=cache.with_suffix('.part')
+            with tmp.open('wb') as stream:np.savez_compressed(stream,pt=pt,po=po,chosen=chosen)
+            os.replace(tmp,cache)
+        for j in range(len(subsets)):
+            for pred,truth,columns,evidence in ((pt[:,j],targets[:,j],cols_t[j],ev_t[j]),(po[:,j],truth_o[:,j],cols_o[j],ev_o[j])):
+                zp=truth@evidence_maps[j];zhat=pred@evidence_maps[j]
+                columns.extend([cosine(pred,truth),np.linalg.norm(pred-truth,axis=1)/np.maximum(np.linalg.norm(truth,axis=1),EPS),cosine(center(zhat),center(zp)),(zhat.argmax(1)==zp.argmax(1)).astype(np.float32),margin(zhat)-margin(zp)])
+                evidence.append(zhat)
+            audits[j].append({'layer_name':name,'ridge_lambda':float(BR.RIDGE_ALPHAS[chosen[j]]),'solver':'previous_frozen_GPU_dual_kernel','nested_subject_cv':True,'seconds_shared':round(time.perf_counter()-begin,3)})
+        print('PATHWAY_GPU_DONE',name,'seconds',round(time.perf_counter()-begin,2),flush=True)
+    for j in range(len(subsets)):
+        for ev,cols,truth in ((ev_t[j],cols_t[j],targets[:,j]),(ev_o[j],cols_o[j],truth_o[:,j])):
+            zfinal=truth@evidence_maps[j];stack=np.stack(ev,1)
+            cols.extend([(stack.argmax(2)==zfinal.argmax(1)[:,None]).mean(1),np.var(stack-stack.mean(2,keepdims=True),axis=1).mean(1),np.var(np.stack([margin(z) for z in ev],1),axis=1),cosine(center(ev[0]),center(ev[-1]))])
+    return [(np.stack(cols_t[j],1).astype(np.float32),np.stack(cols_o[j],1).astype(np.float32),audits[j]) for j in range(len(subsets))]
+
 def oracle(z0:np.ndarray,zp:np.ndarray,zc:np.ndarray,y:np.ndarray,s:np.ndarray,grid:np.ndarray)->tuple[list[dict[str,Any]],dict[str,np.ndarray]]:
     zz=np.stack([z0+bp*zp+ac*zc for bp,ac in grid],1); losses=np.stack([ce(zz[:,i],y) for i in range(len(grid))],1);best=losses.argmin(1);native=np.where((grid==1).all(1))[0][0];pred=zz.argmax(2);correct=pred==y[:,None];rows=[]
+    competitor=zz.copy();competitor[np.arange(len(y)),:,y]=-np.inf
+    true_margin=zz[np.arange(len(y)),:,y]-competitor.max(2)
+    native_top=zz[:,native].argmax(1);other=zz.copy();other[np.arange(len(y)),:,native_top]=-np.inf
+    native_margin=zz[np.arange(len(y)),:,native_top]-other.max(2)
+    margin_best=true_margin.argmax(1)
     for sub in subs(s):
         ix=s.astype(str)==sub;n=zz[ix,native];o=zz[ix,best[ix]]
-        rows.append({"subject_id":sub,"native_BA":ba(y[ix],n.argmax(1)),"oracle_BA":ba(y[ix],o.argmax(1)),"oracle_BA_gain":ba(y[ix],o.argmax(1))-ba(y[ix],n.argmax(1)),"native_CE":float(ce(n,y[ix]).mean()),"oracle_CE":float(ce(o,y[ix]).mean()),"recoverable_error_rate":float(np.mean((n.argmax(1)!=y[ix])&np.any(correct[ix],1)))})
-    return rows,{"logits":zz,"best":best,"correct":correct,"native":native,"loss":losses}
+        harmful=correct[ix,native]&np.any(~correct[ix],axis=1)
+        rows.append({"subject_id":sub,"native_BA":ba(y[ix],n.argmax(1)),"oracle_BA":ba(y[ix],o.argmax(1)),"oracle_BA_gain":ba(y[ix],o.argmax(1))-ba(y[ix],n.argmax(1)),"native_CE":float(ce(n,y[ix]).mean()),"oracle_CE":float(ce(o,y[ix]).mean()),"oracle_CE_gain":float((ce(n,y[ix])-ce(o,y[ix])).mean()),"recoverable_error_rate":float(np.mean((n.argmax(1)!=y[ix])&np.any(correct[ix],1))),"harmable_correct_rate":float(harmful.mean())})
+    return rows,{"logits":zz,"best":best,"correct":correct,"native":native,"loss":losses,"true_margin":true_margin,"native_top1_margin":native_margin,"margin_best":margin_best,"predicted_class":pred,"entropy":np.stack([entropy(zz[:,i]) for i in range(len(grid))],1)}
 
 def taxonomy(surface:dict[str,np.ndarray],y:np.ndarray,s:np.ndarray,grid:np.ndarray)->list[dict[str,Any]]:
     zz,correct,native=surface["logits"],surface["correct"],surface["native"];rows=[]
@@ -161,9 +282,15 @@ def taxonomy(surface:dict[str,np.ndarray],y:np.ndarray,s:np.ndarray,grid:np.ndar
             good=np.flatnonzero(correct[i]);flags={"C_DOWN_ONLY":any(grid[j,0]==1 and grid[j,1]<1 for j in good),"P_UP_ONLY":any(grid[j,0]>1 and grid[j,1]==1 for j in good),"P_DOWN_ONLY":any(grid[j,0]<1 and grid[j,1]==1 for j in good),"C_UP_ONLY":any(grid[j,0]==1 and grid[j,1]>1 for j in good)}
             if not len(good):typ="NOT_REWEIGHT_RECOVERABLE"
             else:
-                single=any(flags.values());typ=next((k for k,v in flags.items() if v),"JOINT_REWEIGHT") if single else "JOINT_REWEIGHT";dist.append(float(d[good].min()))
+                single=any(flags.values())
+                single_good=[j for j in good if grid[j,0]==1 or grid[j,1]==1]
+                nearest=min(single_good if single_good else list(good),key=lambda j:(d[j],j))
+                b,a=grid[nearest]
+                typ=('C_DOWN_ONLY' if a<1 else 'C_UP_ONLY') if b==1 else ('P_UP_ONLY' if b>1 else 'P_DOWN_ONLY') if a==1 else 'JOINT_REWEIGHT'
+                dist.append(float(d[good].min()))
+            for flag,value in flags.items():counts[flag+'_flag']+=int(value)
             counts[typ]+=1
-        rows.append({"subject_id":sub,**{k:int(counts[k]) for k in ("C_DOWN_ONLY","P_UP_ONLY","P_DOWN_ONLY","C_UP_ONLY","JOINT_REWEIGHT","NOT_REWEIGHT_RECOVERABLE")},"minimum_intervention_distance":float(np.mean(dist)) if dist else float("nan")})
+        rows.append({"subject_id":sub,**dict(counts),**{k:int(counts[k]) for k in ("C_DOWN_ONLY","P_UP_ONLY","P_DOWN_ONLY","C_UP_ONLY","JOINT_REWEIGHT","NOT_REWEIGHT_RECOVERABLE")},"minimum_intervention_distance":float(np.mean(dist)) if dist else float("nan")})
     return rows
 
 def metric_rows(y:np.ndarray,s:np.ndarray,outputs:dict[str,np.ndarray])->list[dict[str,Any]]:
@@ -172,6 +299,18 @@ def metric_rows(y:np.ndarray,s:np.ndarray,outputs:dict[str,np.ndarray])->list[di
         ix=s.astype(str)==sub;row={"subject_id":sub}
         for name,z in outputs.items():row[name+"_BA"]=ba(y[ix],z[ix].argmax(1));row[name+"_MacroF1"]=float(f1_score(y[ix],z[ix].argmax(1),average="macro",zero_division=0));row[name+"_CE"]=float(ce(z[ix],y[ix]).mean())
         rows.append(row)
+    return rows
+
+def disagreement_rows(y,s,z0,zp,zc,z,outputs,surface):
+    pp,pc,pn=(z0+zp).argmax(1),(z0+zc).argmax(1),z.argmax(1);d=pp!=pc;rows=[]
+    for sub in subs(s):
+        base=s==sub
+        for group,mask in [('disagreement',d),('P_correct_C_wrong',d&(pp==y)&(pc!=y)),('P_wrong_C_correct',d&(pp!=y)&(pc==y)),('ambiguous',d&(pp!=y)&(pc!=y))]:
+            ix=base&mask;n=int(ix.sum())
+            row={'subject_id':sub,'subset':group,'n_trials':n,'fraction':float(n/base.sum()),'native_accuracy':float(np.mean(pn[ix]==y[ix])) if n else None,'P_only_accuracy':float(np.mean(pp[ix]==y[ix])) if n else None,'C_only_accuracy':float(np.mean(pc[ix]==y[ix])) if n else None,'oracle_recoverable_fraction':float(np.mean(np.any(surface['correct'][ix],1))) if n else None}
+            for name,logits in outputs.items():
+                pred=logits.argmax(1);row[name+'_corrected_errors']=int(np.sum(ix&(pn!=y)&(pred==y)));row[name+'_introduced_errors']=int(np.sum(ix&(pn==y)&(pred!=y)))
+            rows.append(row)
     return rows
 
 def subject_score(y:np.ndarray,s:np.ndarray,z:np.ndarray)->float:
@@ -184,35 +323,37 @@ def policy_subject_rows(y:np.ndarray,s:np.ndarray,z:np.ndarray,name:str,meta:dic
     return rows
 def gain_distill(x:np.ndarray,xo:np.ndarray,states:list[np.ndarray],states_o:list[np.ndarray],native:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...],name:str)->tuple[np.ndarray,list[dict[str,Any]],dict[str,Any]]:
     """One Ridge gain predictor per frozen candidate; selection uses only LSO TRAIN predictions."""
-    pred_t=[np.zeros(len(y),np.float32)];pred_o=[np.zeros(len(states_o[0]),np.float32)];lam=[];mse=[]
-    for i,z in enumerate(states[1:],1):
-        target=ce(native,y)-ce(z,y);ot,q,mu,st,l,e=ridge_oof(x,target,s,(*tag,name,i));pred_t.append(ot);pred_o.append(rp(q,mu,st,xo));lam.append(l);mse.append(e)
-    pt,po=np.stack(pred_t,1),np.stack(pred_o,1); best=(-np.inf,DELTAS[0])
+    target=np.stack([ce(native,y)-ce(z,y) for z in states[1:]],1)
+    ot,oo,lam,mse=nested_gain_predictions(x,target,s,xo)
+    pt,po=np.c_[np.zeros(len(y)),ot],np.c_[np.zeros(len(xo)),oo];best=(-np.inf,DELTAS[0])
     for d in DELTAS:
         sel=np.argmax(pt,1);sel[pt[np.arange(len(y)),sel]<=d]=0;zz=np.stack(states,1)[np.arange(len(y)),sel];v=subject_score(y,s,zz)
         if v>best[0]:best=(v,d)
     sel=np.argmax(po,1);sel[po[np.arange(len(sel)),sel]<=best[1]]=0;outer=np.stack(states_o,1)[np.arange(len(sel)),sel]
-    return outer,policy_subject_rows(y=np.asarray([],int),s=np.asarray([],str),z=np.empty((0,0)),name=name,meta={}) if False else [],{"policy":name,"feature_family":tag[-1],"selected_delta":float(best[1]),"train_lso_BA":float(best[0]),"ridge_lambdas":lam,"ridge_lso_mse":mse,"outer_selection":sel}
+    return outer,[],{"policy":name,"feature_family":tag[-1],"selected_delta":float(best[1]),"train_nested_subject_BA":float(best[0]),"ridge_lambdas":lam.tolist(),"ridge_lso_mse":mse.tolist(),"outer_selection":sel}
 def gain_policy_rows(y:np.ndarray,s:np.ndarray,z:np.ndarray,meta:dict[str,Any])->list[dict[str,Any]]:
     return policy_subject_rows(y,s,z,str(meta["policy"]),{k:v for k,v in meta.items() if k!="outer_selection"})
 def reliability_arbitration(x:np.ndarray,xo:np.ndarray,zp:np.ndarray,zc:np.ndarray,zpo:np.ndarray,zco:np.ndarray,z0:np.ndarray,z0o:np.ndarray,y:np.ndarray,yo:np.ndarray,s:np.ndarray,tag:tuple[object,...])->tuple[np.ndarray,list[dict[str,Any]],dict[str,Any]]:
-    tp=(zp.argmax(1)==y).astype(int);tc=(zc.argmax(1)==y).astype(int)
+    pp,pc=(z0+zp).argmax(1),(z0+zc).argmax(1)
+    opp,opc=(z0o+zpo).argmax(1),(z0o+zco).argmax(1)
+    tp=(pp==y).astype(int);tc=(pc==y).astype(int)
     op,qp,mp,sp,cp,vp=logit_oof(x,tp,s,(*tag,"rP"));oc,qc,mc,sc,cc,vc=logit_oof(x,tc,s,(*tag,"rC"))
-    oop, ooc=prob(qp,mp,sp,xo),prob(qc,mc,sc,xo); best=(-np.inf,.25,.0)
+    oop, ooc=prob(qp,mp,sp,xo),prob(qc,mc,sc,xo); best=(-np.inf,.25,.25)
     for tau in (.25,.5,.75):
-      for a in ALPHA[:-1]:
-        zz=z0+zp+np.where(oc<tau*op,a,1.)[:,None]*zc;v=subject_score(y,s,zz)
+      for a in (.25,.5,.75):
+        zz=z0+zp+np.where((pp!=pc)&(op-oc>tau),a,1.)[:,None]*zc;v=subject_score(y,s,zz)
         if v>best[0]:best=(v,tau,float(a))
-    a=np.where(ooc<best[1]*oop,best[2],1.).astype(np.float32);outer=z0o+zpo+a[:,None]*zco
+    a=np.where((opp!=opc)&(oop-ooc>best[1]),best[2],1.).astype(np.float32);outer=z0o+zpo+a[:,None]*zco
     rows=[]
-    for name,target,pred,c,score in (("rP",(zpo.argmax(1)==yo).astype(int),oop,cp,vp),("rC",(zco.argmax(1)==yo).astype(int),ooc,cc,vc)):
-        rows.append({"target":name,"feature_family":tag[-1],"C":c,"train_lso_BA":score,"outer_AUROC":float(roc_auc_score(target,pred)) if len(np.unique(target))>1 else float("nan"),"outer_AUPRC":float(average_precision_score(target,pred)) if len(np.unique(target))>1 else float("nan"),"outer_Brier":float(brier_score_loss(target,pred))})
+    for name,target,pred,c,score in (("rP",(opp==yo).astype(int),oop,cp,vp),("rC",(opc==yo).astype(int),ooc,cc,vc)):
+        rows.append({"target":name,"feature_family":tag[-1],"C":c,"train_nested_subject_BA":score,**probability_metrics(target,pred)})
     return outer,rows,{"policy":"ReliabilityArbitration","feature_family":tag[-1],"selected_tau":best[1],"selected_alpha":best[2],"train_lso_BA":best[0]}
 def direct_arbiter(x:np.ndarray,xo:np.ndarray,zp:np.ndarray,zc:np.ndarray,zpo:np.ndarray,zco:np.ndarray,y:np.ndarray,yo:np.ndarray,s:np.ndarray,tag:tuple[object,...])->dict[str,Any]:
-    d=zp.argmax(1)!=zc.argmax(1);do=zpo.argmax(1)!=zco.argmax(1)
+    disagreement=zp.argmax(1)!=zc.argmax(1);disagreement_o=zpo.argmax(1)!=zco.argmax(1)
+    d=disagreement & ((zp.argmax(1)==y) ^ (zc.argmax(1)==y));do=disagreement_o & ((zpo.argmax(1)==yo) ^ (zco.argmax(1)==yo))
     if int(d.sum())<4 or len(np.unique((zp[d].argmax(1)==y[d]).astype(int)))<2:return {"status":"FAIL_CLOSED_INSUFFICIENT_TRAIN_DISAGREEMENT","feature_family":tag[-1]}
     target=(zp[d].argmax(1)==y[d]).astype(int);ot,q,mu,st,c,v=logit_oof(x[d],target,s[d],(*tag,"direct"));p=prob(q,mu,st,xo[do]);outer=(zpo[do].argmax(1)==yo[do]).astype(int)
-    return {"status":"COMPLETE","feature_family":tag[-1],"C":c,"train_lso_BA":v,"train_disagreement_n":int(d.sum()),"outer_disagreement_n":int(do.sum()),"outer_AUROC":float(roc_auc_score(outer,p)) if len(np.unique(outer))>1 else float("nan"),"outer_AUPRC":float(average_precision_score(outer,p)) if len(np.unique(outer))>1 else float("nan"),"outer_Brier":float(brier_score_loss(outer,p)) if len(outer) else float("nan")}
+    return {"status":"COMPLETE","feature_family":tag[-1],"C":c,"train_nested_subject_BA":v,"train_disagreement_n":int(disagreement.sum()),"outer_disagreement_n":int(disagreement_o.sum()),"train_ambiguous_n":int((disagreement&~d).sum()),"outer_ambiguous_n":int((disagreement_o&~do).sum()),"outer_primary_n":int(do.sum()),**probability_metrics(outer,p)}
 
 def reliability(x:np.ndarray,zp:np.ndarray,zc:np.ndarray,y:np.ndarray,s:np.ndarray,xo:np.ndarray,zpo:np.ndarray,zco:np.ndarray,yo:np.ndarray,tag:tuple[object,...])->list[dict[str,Any]]:
     rows=[]
@@ -226,7 +367,12 @@ def cell(m:str,t:str,f:int)->None:
     base={"model":m,"task":t,"fold":f,"seed":0,"backbone_training":False,"head_refit":False,"final_heldout_accessed":False}
     try:
         if not (PROTOCOL/"PROVENANCE.json").is_file():raise RuntimeError("protocol lock required")
+        expected_hash=(PROTOCOL/'PROVENANCE.sha256').read_text().strip()
+        if sha(PROTOCOL/'PROVENANCE.json')!=expected_hash:raise RuntimeError('protocol lock hash changed')
+        frozen=json.loads((PROTOCOL/'PROVENANCE.json').read_text())
+        provenance=next(r for r in frozen['cells'] if (r['model'],r['task'],r['fold'])==(m,t,f))
         rec,stored,ckpt,pathway=PW.previous(m,t,f)
+        if sha(ckpt)!=provenance['checkpoint_sha256'] or sha(PW.path(m,t,f))!=provenance['previous_pathway_sha256']:raise RuntimeError('frozen upstream source hash mismatch')
         if pathway.get("status")!="COMPLETE":raise RuntimeError("previous pathway cell not COMPLETE")
         data=UP.outer_data(t,f)
         if data["normalizer"]["mean_std_sha256"]!=rec["normalizer"]["mean_std_sha256"]:raise RuntimeError("normalizer mismatch")
@@ -235,11 +381,16 @@ def cell(m:str,t:str,f:int)->None:
         if basis_sha!=pathway.get("basis_sha256"):raise RuntimeError("frozen canonical basis mismatch")
         x,y,s,se=BR.trial_train(data,m,t,f);acts,h,z=BR.forward_stages(run,x);q,z0,zp,zc=BR.decompose(h,z,spec,dims,head); ox,oy,os=data["outer_future_x"],data["outer_future_y"].astype(int),data["outer_future_subjects"].astype(str);oacts,oh,oz=BR.forward_stages(run,ox);qo,oz0,ozp,ozc=BR.decompose(oh,oz,spec,dims,head)
         exact=float(max(np.max(np.abs(z-(z0+zp+zc))),np.max(np.abs(oz-(oz0+ozp+ozc)))));
+        BR.exact_target(h,spec,dims);BR.exact_target(oh,spec,dims)
         if exact>=1e-5:raise RuntimeError(f"FAIL_PROTOCOL exact decomposition {exact}")
-        cent=np.asarray([q[y==c].mean(0) for c in range(data["classes"])],np.float32);ga=features(z0,zp,zc,z,q,cent);go=features(oz0,ozp,ozc,oz,qo,cent)
-        pft,pfo,pfa=pathway_features(acts,oacts,q[:,dims],qo[:,dims],s,(m,t,f));qd,cd=q[:,dims],cent[:,dims];od=qo[:,dims];dt=np.linalg.norm(qd[:,None]-cd[None],axis=2)[:,:2];do=np.linalg.norm(od[:,None]-cd[None],axis=2)[:,:2]
+        cent=np.asarray([q[y==c].mean(0) for c in range(data["classes"])],np.float32);ga=features(z0,zp,zc,z,q);go=features(oz0,ozp,ozc,oz,qo)
+        randoms=UP.random_dims(spec["rank"],len(dims),m,t,f,"native-equal-rank-random");raw=UP.raw_base(spec);w=head.weight.detach().float().cpu().numpy()
+        bank=pathway_bank(acts,oacts,q,qo,s,[dims]+list(randoms[:PATH_DRAWS]),raw,w,(m,t,f))
+        pft,pfo,pfa=bank[0];qd,cd=q[:,dims],cent[:,dims];od=qo[:,dims];dt=np.sort(np.linalg.norm(qd[:,None]-cd[None],axis=2),axis=1)[:,:2];do=np.sort(np.linalg.norm(od[:,None]-cd[None],axis=2),axis=1)[:,:2]
         fa={"A":ga,"B":np.c_[ga,dt],"C":np.c_[ga,pft],"D":np.c_[ga,dt,pft]};fo={"A":go,"B":np.c_[go,do],"C":np.c_[go,pfo],"D":np.c_[go,do,pfo]}
         grid1=np.c_[np.ones(len(ALPHA)),ALPHA];grid2=np.asarray([(b,a) for b in SCALE for a in SCALE],np.float32);po,sp=oracle(oz0,ozp,ozc,oy,os,grid1);two,sp2=oracle(oz0,ozp,ozc,oy,os,grid2);tax=taxonomy(sp2,oy,os,grid2)
+        surface_path=RUNTIME/'surfaces'/m/t/f'fold{f}_seed0.npz';surface_path.parent.mkdir(parents=True,exist_ok=True)
+        np.savez_compressed(surface_path,grid_1d=grid1,grid_2d=grid2,subject_ids=os,**{'one_d_'+k:v for k,v in sp.items()},**{'two_d_'+k:v for k,v in sp2.items()})
         randoms=UP.random_dims(spec["rank"],len(dims),m,t,f,"native-equal-rank-random");raw=UP.raw_base(spec);w=head.weight.detach().float().cpu().numpy();random=[]
         for j,d in enumerate(randoms):
             rz=(qo[:,d]@raw[d])@w.T;rc=oz-oz0-rz; rr,_=oracle(oz0,rz,rc,oy,os,grid1);rt,_=oracle(oz0,rz,rc,oy,os,grid2);random.append({"draw":j,"suppression_BA_gain":float(np.mean([r["oracle_BA_gain"] for r in rr])),"two_d_BA_gain":float(np.mean([r["oracle_BA_gain"] for r in rt]))})
@@ -250,7 +401,7 @@ def cell(m:str,t:str,f:int)->None:
         for name in ("A","B","C","D"):
             print('RELIABILITY_START',m,t,f,name,flush=True)
             rz,rr,rm=reliability_arbitration(fa[name],fo[name],zp,zc,ozp,ozc,z0,oz0,y,oy,s,(m,t,f,name));rel+=rr;policy+=gain_policy_rows(oy,os,rz,rm);learned[f"reliability_{name}"]=rz
-            arb.append(direct_arbiter(fa[name],fo[name],zp,zc,ozp,ozc,y,oy,s,(m,t,f,name)))
+            arb.append(direct_arbiter(fa[name],fo[name],z0+zp,z0+zc,oz0+ozp,oz0+ozc,y,oy,s,(m,t,f,name)))
         for name in ("A","C","D"):
             print('GAIN_START',m,t,f,name,flush=True)
             gz,_,gm=gain_distill(fa[name],fo[name],one_train,one_outer,z,y,s,(m,t,f,name),"one_d_gain");policy+=gain_policy_rows(oy,os,gz,gm);learned[f"gain_alpha_{name}"]=gz
@@ -261,10 +412,11 @@ def cell(m:str,t:str,f:int)->None:
         def random_learned(pair:tuple[int,np.ndarray])->dict[str,Any]:
             j,d=pair
             rzt=(q[:,d]@raw[d])@w.T;rzo=(qo[:,d]@raw[d])@w.T;rct=z-z0-rzt;rco=oz-oz0-rzo
-            rga=features(z0,rzt,rct,z,q,cent);rgo=features(oz0,rzo,rco,oz,qo,cent)
+            rga=features(z0,rzt,rct,z,q);rgo=features(oz0,rzo,rco,oz,qo)
             rs=[z]+[z0+rzt+a*rct for a in ALPHA[:-1]];rso=[oz]+[oz0+rzo+a*rco for a in ALPHA[:-1]]
             rz,_,rm=gain_distill(rga,rgo,rs,rso,z,y,s,(m,t,f,j,"randomA"),"random_one_d_gain")
-            return {"draw":j,"control":"equal_rank_random_learned_alpha","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"selected_delta":rm["selected_delta"],"train_lso_BA":rm["train_lso_BA"]}
+            rr,_,rrm=reliability_arbitration(rga,rgo,rzt,rct,rzo,rco,z0,oz0,y,oy,s,(m,t,f,j,'randomA'))
+            return {"draw":j,"control":"equal_rank_random_learned_alpha","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"reliability_mean_subject_BA":subject_score(oy,os,rr),"selected_delta":rm["selected_delta"],"train_nested_subject_BA":rm["train_nested_subject_BA"],"subject_rows":gain_policy_rows(oy,os,rz,rm),"reliability_subject_rows":gain_policy_rows(oy,os,rr,rrm)}
         # Independent controls are ordered after collection. Each regression itself remains single-threaded.
         workers=max(1,min(4,int(environ.get("ARBITRATION_RANDOM_WORKERS","4"))))
         with ThreadPoolExecutor(max_workers=workers,thread_name_prefix="random_policy") as pool:
@@ -274,13 +426,16 @@ def cell(m:str,t:str,f:int)->None:
         # K2: 20 pathway-aware random controls use identical frozen layer maps and ridge protocol.
         for j,d in enumerate(randoms[:PATH_DRAWS]):
             rzt=(q[:,d]@raw[d])@w.T;rzo=(qo[:,d]@raw[d])@w.T;rct=z-z0-rzt;rco=oz-oz0-rzo
-            ptt,pto,_=pathway_features(acts,oacts,q[:,d],qo[:,d],s,(m,t,f,j,"random_path"));rga=features(z0,rzt,rct,z,q,cent);rgo=features(oz0,rzo,rco,oz,qo,cent)
-            rf=np.c_[rga,ptt];ro=np.c_[rgo,pto];rs=[z]+[z0+rzt+a*rct for a in ALPHA[:-1]];rso=[oz]+[oz0+rzo+a*rco for a in ALPHA[:-1]]
+            ptt,pto,_=bank[j+1];rga=features(z0,rzt,rct,z,q);rgo=features(oz0,rzo,rco,oz,qo)
+            rt_dist=np.sort(np.linalg.norm(q[:,d][:,None]-cent[:,d][None],axis=2),axis=1)[:,:2];ro_dist=np.sort(np.linalg.norm(qo[:,d][:,None]-cent[:,d][None],axis=2),axis=1)[:,:2]
+            rf=np.c_[rga,rt_dist,ptt];ro=np.c_[rgo,ro_dist,pto];rs=[z]+[z0+rzt+a*rct for a in ALPHA[:-1]];rso=[oz]+[oz0+rzo+a*rco for a in ALPHA[:-1]]
             rz,_,rm=gain_distill(rf,ro,rs,rso,z,y,s,(m,t,f,j,"random_path_D"),"random_pathway_gain")
-            random_pathway.append({"draw":j,"control":"equal_rank_random_pathway_D","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"selected_delta":rm["selected_delta"],"train_lso_BA":rm["train_lso_BA"]})
-        prov={"checkpoint_sha256":sha(ckpt),"normalizer_sha256":data["normalizer"]["mean_std_sha256"],"basis_sha256":basis_sha,"protected_dims":dims.tolist(),"split_sha256":data["split_sha256"],"random_subsets_sha256":hashlib.sha256(np.concatenate(randoms).tobytes()).hexdigest()}
-        jwrite(dst,{**base,"status":"COMPLETE",**prov,"exact_max_abs":exact,"oracle_specificity":specrow,"response_surface":metric_rows(oy,os,outputs),"taxonomy":tax,"pathway_audit":pfa,"reliability":rel,"direct_arbiter":arb,"gain_distillation":policy,"two_d_arbitration":two_policy,"random_oracle":random,"random_learned_policy":random_policy,"random_pathway_policy":random_pathway,"policy_status":"COMPLETE_TRAIN_ONLY_NESTED_SUBJECT_CV"});print("CELL_COMPLETE",m,t,f,flush=True);del net;torch.cuda.empty_cache()
-    except Exception as e:jwrite(dst,{**base,"status":"FAIL_CLOSED","reason":f"{type(e).__name__}: {e}"});print("CELL_FAIL_CLOSED",m,t,f,str(e),flush=True)
+            random_pathway.append({"draw":j,"control":"equal_rank_random_pathway_D","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"selected_delta":rm["selected_delta"],"train_nested_subject_BA":rm["train_nested_subject_BA"],"subject_rows":gain_policy_rows(oy,os,rz,rm)})
+        prov={"checkpoint_sha256":sha(ckpt),"normalizer_sha256":data["normalizer"]["mean_std_sha256"],"basis_sha256":basis_sha,"protected_dims":dims.tolist(),"split_sha256":data["split_sha256"],"random_subsets_sha256":hashlib.sha256(np.concatenate(randoms).tobytes()).hexdigest(),"implementation_sha256":sha(Path(__file__)),"surface_sha256":sha(surface_path),"protocol_sha256":expected_hash,"implementation_revision":"protocol_repair_v2"}
+        jwrite(dst,{**base,"status":"COMPLETE",**prov,"exact_max_abs":exact,"oracle_specificity":specrow,"response_surface":metric_rows(oy,os,outputs),"taxonomy":tax,"pathway_audit":pfa,"reliability":rel,"direct_arbiter":arb,"disagreement":disagreement_rows(oy,os,oz0,ozp,ozc,oz,outputs,sp2),"gain_distillation":policy,"two_d_arbitration":two_policy,"random_oracle":random,"random_learned_policy":random_policy,"random_pathway_policy":random_pathway,"policy_status":"COMPLETE_TRAIN_ONLY_NESTED_SUBJECT_CV"});print("CELL_COMPLETE",m,t,f,flush=True);del net;torch.cuda.empty_cache()
+    except Exception as e:
+        import traceback
+        jwrite(dst,{**base,"status":"FAIL_CLOSED","reason":f"{type(e).__name__}: {e}"});print("CELL_FAIL_CLOSED",m,t,f,str(e),flush=True);traceback.print_exc();raise SystemExit(1)
 
 def lock()->None:
     rows=[]
@@ -301,7 +456,10 @@ def aggregate()->None:
     for c in cells:
       b={k:c.get(k) for k in ("model","task","fold","seed","status","checkpoint_sha256","basis_sha256","split_sha256")};status.append(b)
       if c.get("status")!="COMPLETE":continue
-      for name,key in (("P_RANDOM_ORACLE_SPECIFICITY","oracle_specificity"),("PC_RESPONSE_SURFACE_SUMMARY","response_surface"),("PC_ERROR_RESCUE_TAXONOMY","taxonomy"),("TRIAL_GEOMETRY_FEATURE_AUDIT","pathway_audit"),("PATHWAY_RELIABILITY_ABLATION","reliability"),("GAIN_DISTILLATION_RESULTS","gain_distillation"),("TWO_D_ARBITRATION_RESULTS","two_d_arbitration"),("DISAGREEMENT_SUBSET_RESULTS","direct_arbiter"),("RANDOM_POLICY_CONTROLS","random_oracle"),("RANDOM_POLICY_CONTROLS","random_learned_policy"),("RANDOM_POLICY_CONTROLS","random_pathway_policy")):
+      if c.get('implementation_revision')!='protocol_repair_v2':raise RuntimeError('reject pre-repair cells')
+      if c.get('final_heldout_accessed') is not False or c.get('exact_max_abs',1)>=1e-5:raise RuntimeError('cell integrity validation failed')
+      if len(c.get('random_oracle',[]))!=100 or len(c.get('random_learned_policy',[]))!=100 or len(c.get('random_pathway_policy',[]))!=20:raise RuntimeError('missing fixed random controls')
+      for name,key in (("P_RANDOM_ORACLE_SPECIFICITY","oracle_specificity"),("PC_RESPONSE_SURFACE_SUMMARY","response_surface"),("PC_ERROR_RESCUE_TAXONOMY","taxonomy"),("TRIAL_GEOMETRY_FEATURE_AUDIT","pathway_audit"),("RELIABILITY_RESULTS","reliability"),("RELIABILITY_RESULTS","direct_arbiter"),("PATHWAY_RELIABILITY_ABLATION","reliability"),("GAIN_DISTILLATION_RESULTS","gain_distillation"),("TWO_D_ARBITRATION_RESULTS","two_d_arbitration"),("DISAGREEMENT_SUBSET_RESULTS","disagreement"),("RANDOM_POLICY_CONTROLS","random_oracle"),("RANDOM_POLICY_CONTROLS","random_learned_policy"),("RANDOM_POLICY_CONTROLS","random_pathway_policy")):
        vals=c.get(key,[]);vals=vals if isinstance(vals,list) else [vals]
        tables[name]+=[{**b,**r} for r in vals]
     cwrite(OUT/"CELL_STATUS.csv",status)
@@ -309,11 +467,32 @@ def aggregate()->None:
     summary=[]
     for m in MODELS:
      for t in TASKS:
-      rr=[r for r in tables["P_RANDOM_ORACLE_SPECIFICITY"] if r["model"]==m and r["task"]==t];summary.append({"model":m,"task":t,"status":"COMPLETE" if rr else "INCOMPLETE","P_specific_oracle_gain_mean":float(np.mean([r["P_oracle_BA_gain"] for r in rr])) if rr else float("nan"),"P_minus_random_mean":float(np.mean([r["P_minus_random"] for r in rr])) if rr else float("nan")})
+      rr=[r for r in tables["P_RANDOM_ORACLE_SPECIFICITY"] if r["model"]==m and r["task"]==t];summary.append({"model":m,"task":t,"status":"COMPLETE" if len(rr)==5 else "INCOMPLETE","completed_folds":len(rr),"P_specific_oracle_gain_mean":float(np.mean([r["P_oracle_BA_gain"] for r in rr])) if rr else float("nan"),"P_minus_random_mean":float(np.mean([r["P_minus_random"] for r in rr])) if rr else float("nan")})
     cwrite(OUT/"MODEL_TASK_SUMMARY.csv",summary)
     cwrite(OUT/"PC_EXACT_DECOMPOSITION_AUDIT.csv",[{**r,"exact_max_abs":c.get("exact_max_abs"),"final_heldout_accessed":c.get("final_heldout_accessed")} for r,c in zip(status,cells)])
     completed=sum(c.get("status")=="COMPLETE" for c in cells);failed=len(cells)-completed
-    (OUT/"REPORT.md").write_text(f"# Protected P/C arbitration reliability audit\n\nCells: {completed}/{len(cells)} COMPLETE; {failed} fail-closed. All cells reuse frozen checkpoints, normalizers, canonical bases, Protected dimensions, random subsets, and splits. No backbone/head was trained or refit; final-heldout data were not accessed. Policy rows are frozen all-TRAIN refits after leave-subject-out TRAIN selection; only outer-development labels are used for reported evaluation.\n",encoding="utf-8");print("AGGREGATE_COMPLETE",flush=True)
+    paired=[]
+    for m in MODELS:
+     for t in TASKS:
+      rows=[r for r in tables['PC_RESPONSE_SURFACE_SUMMARY'] if r['model']==m and r['task']==t]
+      if not rows:continue
+      policies=[k[:-3] for k in rows[0] if k.endswith('_BA') and k!='native_BA']
+      for policy_name in policies:
+       for metric in ('BA','MacroF1','CE'):
+        subject_deltas=defaultdict(list);fold_deltas=defaultdict(list)
+        for row in rows:
+         delta=float(row[policy_name+'_'+metric])-float(row['native_'+metric]);subject_deltas[str(row['subject_id'])].append(delta);fold_deltas[row['fold']].append(delta)
+        values=np.asarray([np.mean(v) for v in subject_deltas.values()]);rng=np.random.default_rng(seed(m,t,policy_name,metric,'subject_bootstrap'))
+        boot=np.mean(rng.choice(values,size=(BOOT,len(values)),replace=True),axis=1)
+        paired.append({'model':m,'task':t,'policy':policy_name,'metric':metric,'unit':'biological_subject','subjects':len(values),'delta_mean':float(values.mean()),'ci_low':float(np.quantile(boot,.025)),'ci_high':float(np.quantile(boot,.975)),'positive_folds':sum(np.mean(v)>0 for v in fold_deltas.values()),'folds':len(fold_deltas)})
+    cwrite(OUT/'PAIRED_SUBJECT_BOOTSTRAP.csv',paired)
+    report=[f'# Protected P/C arbitration reliability audit\n\nCells: {completed}/{len(cells)} COMPLETE; {failed} fail-closed. Final-heldout access: NO. Frozen backbone, native head, basis and P were reused. Statistical unit: biological subject; repeated fold measurements are averaged per subject before bootstrapping. Oracle rows are label-aware diagnostics only.\n']
+    for row in summary:
+      m,t=row['model'],row['task'];report.append(f'\n## {m} / {t}\n\nCompleted folds: {row["completed_folds"]}/5. P oracle BA gain: {row["P_specific_oracle_gain_mean"]:.6g}; P minus random mean: {row["P_minus_random_mean"]:.6g}. These descriptive differences alone do not establish Protected specificity.\n')
+      for stat in paired:
+       if stat['model']==m and stat['task']==t and stat['metric']=='BA':report.append(f'- {stat["policy"]}: BA delta {stat["delta_mean"]:.6g}, subject-bootstrap 95% CI [{stat["ci_low"]:.6g}, {stat["ci_high"]:.6g}], positive folds {stat["positive_folds"]}/{stat["folds"]}.')
+      report.append('\nError mechanisms, reliability calibration, feature ablations and disagreement error transitions are recorded in the corresponding compact tables. A failed policy does not by itself establish whether reliability is unpredictable or oracle headroom is generic; that attribution requires comparing these diagnostics.\n')
+    (OUT/'REPORT.md').write_text('\n'.join(report),encoding='utf-8');jwrite(OUT/'PROVENANCE.json',json.loads((PROTOCOL/'PROVENANCE.json').read_text()));print('AGGREGATE_COMPLETE',flush=True)
 def main()->None:
  p=argparse.ArgumentParser();p.add_argument("mode",choices=("lock","cell","aggregate"));p.add_argument("model",nargs="?");p.add_argument("task",nargs="?");p.add_argument("fold",nargs="?",type=int);a=p.parse_args()
  if a.mode=="lock":lock()

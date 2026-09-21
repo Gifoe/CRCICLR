@@ -20,7 +20,7 @@ $suffix=if($Mode -eq 'cell'){"cell_{0}_{1}_f{2}" -f $Model,$Task,$Fold}else{$Mod
 $log=Join-Path $runtime ("scheduled_arbitration_{0}.log" -f $suffix)
 Push-Location $code
 try {
-  "ARBITRATION_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
+  "ARBITRATION_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -FilePath $log -Append -Encoding utf8
   $entry=Join-Path $code 'run_arbitration.py'
   # cmd.exe owns stderr redirection: PyTorch warnings are diagnostic text, not PowerShell terminating errors.
   if($Mode -eq 'probe') { $command='"'+$python+'" -u "'+$entry+'" cell EEGNet OpenBMI_MI 0 >> "'+$log+'" 2>&1' }
@@ -29,7 +29,7 @@ try {
   & cmd.exe /d /c $command
   if($LASTEXITCODE -ne 0){ throw "arbitration Python exited $LASTEXITCODE" }
   $exitCode=$LASTEXITCODE
-  "ARBITRATION_END mode=$Mode exit=$exitCode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
+  "ARBITRATION_END mode=$Mode exit=$exitCode utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -FilePath $log -Append -Encoding utf8
   exit $exitCode
-} catch { "ARBITRATION_EXCEPTION mode=$Mode $_" | Tee-Object -FilePath $log -Append; exit 1 }
+} catch { "ARBITRATION_EXCEPTION mode=$Mode $_" | Out-File -FilePath $log -Append -Encoding utf8; exit 1 }
 finally { Pop-Location }
