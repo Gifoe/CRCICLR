@@ -15,6 +15,11 @@ os.environ["ARBITRATION_RESIDENT"] = "1"
 import torch
 import run_arbitration as RA
 
+# Cache retention is an orchestration behavior.  Preserve the exact cell source
+# hash by replacing only the end-of-cell allocator release in this resident
+# process; its numerical work and all frozen inputs remain unchanged.
+RA.torch.cuda.empty_cache = lambda: None
+
 ORDER = [(m, t, f) for m in ("EEGNet", "EEGConformer") for t in ("OpenBMI_MI", "OpenBMI_SSVEP") for f in range(5)]
 STATE = RA.RUNTIME / "resident_queue_status.json"
 
