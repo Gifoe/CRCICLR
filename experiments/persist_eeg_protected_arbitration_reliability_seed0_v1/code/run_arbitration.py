@@ -510,12 +510,37 @@ def aggregate()->None:
         boot=np.mean(rng.choice(values,size=(BOOT,len(values)),replace=True),axis=1)
         paired.append({'model':m,'task':t,'policy':policy_name,'metric':metric,'unit':'biological_subject','subjects':len(values),'delta_mean':float(values.mean()),'ci_low':float(np.quantile(boot,.025)),'ci_high':float(np.quantile(boot,.975)),'positive_folds':sum(np.mean(v)>0 for v in fold_deltas.values()),'folds':len(fold_deltas)})
     cwrite(OUT/'PAIRED_SUBJECT_BOOTSTRAP.csv',paired)
-    report=[f'# Protected P/C arbitration reliability audit\n\nCells: {completed}/{len(cells)} COMPLETE; {failed} fail-closed. Final-heldout access: NO. Frozen backbone, native head, basis and P were reused. Statistical unit: biological subject; repeated fold measurements are averaged per subject before bootstrapping. Oracle rows are label-aware diagnostics only.\n']
+    def mt(name,m,t):return [r for r in tables[name] if r['model']==m and r['task']==t]
+    def mean(rows,key):
+      out=[]
+      for r in rows:
+       try:
+        v=float(r.get(key,'nan'))
+        if np.isfinite(v):out.append(v)
+       except (TypeError,ValueError):pass
+      return float(np.mean(out)) if out else float('nan')
+    def stat(m,t,policy):
+      return next((r for r in paired if r['model']==m and r['task']==t and r['policy']==policy and r['metric']=='BA'),None)
+    def brief(s):return 'not available' if s is None else f'{s["delta_mean"]:.6g} (95% CI [{s["ci_low"]:.6g}, {s["ci_high"]:.6g}]; positive folds {s["positive_folds"]}/{s["folds"]})'
+    report=[f'# Protected P/C arbitration reliability audit\n\nCells: {completed}/{len(cells)} COMPLETE; {failed} fail-closed. Final-heldout access: NO. Frozen backbone, native head, bases, Protected dimensions, splits and locked random subsets were reused. Statistical unit: biological subject; repeated fold measurements are averaged per subject before bootstrapping. Oracle rows are label-aware diagnostics only and are never presented as deployable-policy results.\n']
     for row in summary:
-      m,t=row['model'],row['task'];report.append(f'\n## {m} / {t}\n\nCompleted folds: {row["completed_folds"]}/5. P oracle BA gain: {row["P_specific_oracle_gain_mean"]:.6g}; P minus random mean: {row["P_minus_random_mean"]:.6g}. These descriptive differences alone do not establish Protected specificity.\n')
-      for stat in paired:
-       if stat['model']==m and stat['task']==t and stat['metric']=='BA':report.append(f'- {stat["policy"]}: BA delta {stat["delta_mean"]:.6g}, subject-bootstrap 95% CI [{stat["ci_low"]:.6g}, {stat["ci_high"]:.6g}], positive folds {stat["positive_folds"]}/{stat["folds"]}.')
-      report.append('\nError mechanisms, reliability calibration, feature ablations and disagreement error transitions are recorded in the corresponding compact tables. A failed policy does not by itself establish whether reliability is unpredictable or oracle headroom is generic; that attribution requires comparing these diagnostics.\n')
+      m,t=row['model'],row['task'];oracle=mt('P_RANDOM_ORACLE_SPECIFICITY',m,t);tax=mt('PC_ERROR_RESCUE_TAXONOMY',m,t);rel=mt('RELIABILITY_RESULTS',m,t);dis=mt('DISAGREEMENT_SUBSET_RESULTS',m,t)
+      pminus=mean(oracle,'P_minus_random');pp=mean(oracle,'P_percentile');ep=mean(oracle,'empirical_p')
+      families={}
+      for target in ('rP','rC',''):
+       for family in ('A','C','D'):
+        rows=[r for r in rel if r.get('target','')==target and r.get('feature_family')==family]
+        families[(target or 'arbiter',family)]=(mean(rows,'AUROC'),mean(rows,'AUPRC'),mean(rows,'Brier'),mean(rows,'accuracy'))
+      tax_keys=('C_DOWN_ONLY','P_UP_ONLY','P_DOWN_ONLY','C_UP_ONLY','JOINT_REWEIGHT','NOT_REWEIGHT_RECOVERABLE')
+      tax_summary=', '.join(f'{k}={mean(tax,k):.3g}' for k in tax_keys)
+      dominant=max(tax_keys,key=lambda k:mean(tax,k)) if tax else 'not available'
+      drows=[r for r in dis if r.get('subset')=='disagreement'];disrate=mean(drows,'fraction');precover=mean(drows,'oracle_recoverable_fraction')
+      alpha=stat(m,t,'gain_alpha_D');two=stat(m,t,'gain_2d_D');reliability=stat(m,t,'reliability_D')
+      p_specific='is not supported' if not np.isfinite(pminus) or pminus<=0 else 'is descriptively positive but requires the fixed random-control comparison for attribution'
+      report.append(f'''\n## {m} / {t}\n\nCompleted folds: {row["completed_folds"]}/5.\n\n1. **P-specific oracle headroom.** Mean P suppression-oracle BA gain was {row["P_specific_oracle_gain_mean"]:.6g}; P minus the equal-rank-random mean was {pminus:.6g}, mean P percentile was {pp:.6g}, and mean empirical p was {ep:.6g}. Therefore Protected-specific headroom {p_specific}; this report does not attribute generic reweighting headroom to P.\n\n2. **How native errors are reweight-recoverable.** Mean subject-fold rescue counts were {tax_summary}; the largest mean category was {dominant}. Mean minimum log-scale intervention distance was {mean(tax,'minimum_intervention_distance'):.6g}. These are response-surface diagnostics, not policy performance.\n\n3. **P-only and C-only reliability.** FEATURE-D outer metrics (AUROC/AUPRC/Brier) were rP={families[('rP','D')][0]:.6g}/{families[('rP','D')][1]:.6g}/{families[('rP','D')][2]:.6g} and rC={families[('rC','D')][0]:.6g}/{families[('rC','D')][1]:.6g}/{families[('rC','D')][2]:.6g}. These are outer-development evaluations only.\n\n4. **P/C disagreement arbiter.** Disagreement fraction was {disrate:.6g}; the direct arbiter FEATURE-D outer AUROC/AUPRC/Brier/accuracy was {families[('arbiter','D')][0]:.6g}/{families[('arbiter','D')][1]:.6g}/{families[('arbiter','D')][2]:.6g}/{families[('arbiter','D')][3]:.6g}.\n\n5. **Pathway-consistency contribution.** For rP, FEATURE-A to C to D AUROC was {families[('rP','A')][0]:.6g} → {families[('rP','C')][0]:.6g} → {families[('rP','D')][0]:.6g}; for rC it was {families[('rC','A')][0]:.6g} → {families[('rC','C')][0]:.6g} → {families[('rC','D')][0]:.6g}. This ablation is descriptive across the fixed outer folds; no untested causal claim is made.\n\n6. **Where suppression oracle headroom occurs.** On disagreement trials, mean oracle-recoverable fraction was {precover:.6g}; the rescue taxonomy above identifies whether attenuation, P scaling, joint scaling, or no fixed-grid reweighting was involved.\n\n7. **Can TRAIN-only gain models distill suppression benefit?** FEATURE-D gain-alpha BA delta versus native was {brief(alpha)}.\n\n8. **Does the learned alpha policy improve outer subjects?** The result in item 7 is the biological-subject bootstrap estimate; an interval spanning zero is not evidence of a reliable improvement.\n\n9. **Does 2D arbitration clearly exceed suppression-only?** FEATURE-D 2D gain-policy BA delta was {brief(two)}, versus suppression-only {brief(alpha)}. This is a comparison of fixed TRAIN-only policies, not an oracle comparison.\n\n10. **Why learned policies may fail.** FEATURE-D reliability-routing BA delta was {brief(reliability)}. Reliability, disagreement, pathway ablation, random-policy controls and gain-distillation results are all retained in their compact tables; a near-zero or uncertain policy delta must not be attributed to one mechanism without those diagnostics agreeing.\n''')
+      report.append('\n### Policy bootstrap summary\n')
+      for s in paired:
+       if s['model']==m and s['task']==t and s['metric']=='BA':report.append(f'- {s["policy"]}: {brief(s)}')
     (OUT/'REPORT.md').write_text('\n'.join(report),encoding='utf-8');jwrite(OUT/'PROVENANCE.json',json.loads((PROTOCOL/'PROVENANCE.json').read_text()));print('AGGREGATE_COMPLETE',flush=True)
 def main()->None:
  p=argparse.ArgumentParser();p.add_argument("mode",choices=("lock","cell","aggregate"));p.add_argument("model",nargs="?");p.add_argument("task",nargs="?");p.add_argument("fold",nargs="?",type=int);a=p.parse_args()
