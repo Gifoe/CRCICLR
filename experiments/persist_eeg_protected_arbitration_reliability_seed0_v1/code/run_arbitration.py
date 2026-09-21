@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse, csv, hashlib, importlib.util, json, os, sys, time
+from os import environ
 from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
 from pathlib import Path
@@ -88,11 +89,19 @@ def pick_ridge(x:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...]):
     q,mu,st=fit_ridge(x,y,best[1]);return q,mu,st,float(best[1])
 def ridge_oof(x:np.ndarray,y:np.ndarray,s:np.ndarray,tag:tuple[object,...]):
     """Leave-subject-out TRAIN predictions plus an all-TRAIN frozen refit."""
+    # Every lambda uses the same held-subject split and TRAIN standardization.
+    # Reuse those arrays, while retaining separate sklearn fits and their solver.
+    predictions=[np.zeros_like(y,dtype=np.float32) for _ in LAM]
+    for g in groups(s):
+        train_x=x[~g];train_y=y[~g]
+        mu=train_x.mean(0,dtype=np.float64).astype(np.float32)
+        st=np.maximum(train_x.std(0,dtype=np.float64).astype(np.float32),1e-6)
+        fit_x=(train_x-mu)/st;held_x=(x[g]-mu)/st
+        for i,l in enumerate(LAM):
+            estimator=Ridge(alpha=l).fit(fit_x,train_y)
+            predictions[i][g]=estimator.predict(held_x).astype(np.float32)
     best=(np.inf,LAM[0],None)
-    for l in LAM:
-        o=np.zeros_like(y,dtype=np.float32)
-        for g in groups(s):
-            q,mu,st=fit_ridge(x[~g],y[~g],l);o[g]=rp(q,mu,st,x[g])
+    for l,o in zip(LAM,predictions):
         v=float(np.mean((o-y)**2))
         if v<best[0]:best=(v,l,o)
     q,mu,st=fit_ridge(x,y,best[1]);return best[2],q,mu,st,float(best[1]),float(best[0])
@@ -127,9 +136,12 @@ def pathway_features(acts:dict[str,np.ndarray],acts_o:dict[str,np.ndarray],q:np.
     """Frozen pathway maps: LSO TRAIN map outputs for policy fitting, then all-TRAIN outer maps."""
     cols_t=[];cols_o=[]; audit=[]
     for name,a in acts.items():
+        started=time.perf_counter()
+        print('PATHWAY_START',tag,name,'shape',a.shape,flush=True)
         pt,qfit,mu,st,l,mse=ridge_oof(a,q,s,(*tag,name,"path"));po=rp(qfit,mu,st,acts_o[name])
         ct,co=cosine(pt,q),cosine(po,qo);et=np.linalg.norm(pt-q,axis=1)/np.maximum(np.linalg.norm(q,axis=1),EPS);eo=np.linalg.norm(po-qo,axis=1)/np.maximum(np.linalg.norm(qo,axis=1),EPS)
         cols_t.extend([ct,et]);cols_o.extend([co,eo]);audit.append({"layer_name":name,"ridge_lambda":l,"train_lso_mse":mse,"train_qP_cosine_mean":float(np.mean(ct)),"outer_qP_cosine_mean":float(np.mean(co)),"outer_qP_norm_error_mean":float(np.mean(eo))})
+        print('PATHWAY_DONE',tag,name,'seconds',round(time.perf_counter()-started,2),flush=True)
     return np.stack(cols_t,1).astype(np.float32),np.stack(cols_o,1).astype(np.float32),audit
 
 def oracle(z0:np.ndarray,zp:np.ndarray,zc:np.ndarray,y:np.ndarray,s:np.ndarray,grid:np.ndarray)->tuple[list[dict[str,Any]],dict[str,np.ndarray]]:
@@ -236,9 +248,11 @@ def cell(m:str,t:str,f:int)->None:
         one_train=[z]+[z0+zp+a*zc for a in ALPHA[:-1]];one_outer=[oz]+[oz0+ozp+a*ozc for a in ALPHA[:-1]]
         two_train=[z]+[z0+b*zp+a*zc for b,a in grid2 if not (b==1 and a==1)];two_outer=[oz]+[oz0+b*ozp+a*ozc for b,a in grid2 if not (b==1 and a==1)]
         for name in ("A","B","C","D"):
+            print('RELIABILITY_START',m,t,f,name,flush=True)
             rz,rr,rm=reliability_arbitration(fa[name],fo[name],zp,zc,ozp,ozc,z0,oz0,y,oy,s,(m,t,f,name));rel+=rr;policy+=gain_policy_rows(oy,os,rz,rm);learned[f"reliability_{name}"]=rz
             arb.append(direct_arbiter(fa[name],fo[name],zp,zc,ozp,ozc,y,oy,s,(m,t,f,name)))
         for name in ("A","C","D"):
+            print('GAIN_START',m,t,f,name,flush=True)
             gz,_,gm=gain_distill(fa[name],fo[name],one_train,one_outer,z,y,s,(m,t,f,name),"one_d_gain");policy+=gain_policy_rows(oy,os,gz,gm);learned[f"gain_alpha_{name}"]=gz
             tz,_,tm=gain_distill(fa[name],fo[name],two_train,two_outer,z,y,s,(m,t,f,name),"two_d_gain");two_policy+=gain_policy_rows(oy,os,tz,tm);learned[f"gain_2d_{name}"]=tz
         outputs={"native":oz,"P_only":oz0+ozp,"C_only":oz0+ozc,**{f"fixed_alpha_{a:g}":oz0+ozp+a*ozc for a in ALPHA},"oracle_suppression":sp["logits"][np.arange(len(oy)),sp["best"]],"oracle_2d":sp2["logits"][np.arange(len(oy)),sp2["best"]],**learned}
@@ -252,9 +266,11 @@ def cell(m:str,t:str,f:int)->None:
             rz,_,rm=gain_distill(rga,rgo,rs,rso,z,y,s,(m,t,f,j,"randomA"),"random_one_d_gain")
             return {"draw":j,"control":"equal_rank_random_learned_alpha","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"selected_delta":rm["selected_delta"],"train_lso_BA":rm["train_lso_BA"]}
         # Independent controls are ordered after collection. Each regression itself remains single-threaded.
-        workers=max(1,min(4,int(os.environ.get("ARBITRATION_RANDOM_WORKERS","4"))))
+        workers=max(1,min(4,int(environ.get("ARBITRATION_RANDOM_WORKERS","4"))))
         with ThreadPoolExecutor(max_workers=workers,thread_name_prefix="random_policy") as pool:
-            random_policy=list(pool.map(random_learned,enumerate(randoms)))
+            for result in pool.map(random_learned,enumerate(randoms)):
+                random_policy.append(result)
+                if len(random_policy)%10==0:print('RANDOM_POLICY_DONE',len(random_policy),'of',len(randoms),flush=True)
         # K2: 20 pathway-aware random controls use identical frozen layer maps and ridge protocol.
         for j,d in enumerate(randoms[:PATH_DRAWS]):
             rzt=(q[:,d]@raw[d])@w.T;rzo=(qo[:,d]@raw[d])@w.T;rct=z-z0-rzt;rco=oz-oz0-rzo
