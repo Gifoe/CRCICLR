@@ -21,9 +21,12 @@ Push-Location $code
 try {
   "ARBITRATION_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
   $entry=Join-Path $code 'run_arbitration.py'
-  if($Mode -eq 'probe') { & $python -u $entry cell EEGNet OpenBMI_MI 0 *>> $log }
-  elseif($Mode -eq 'cell') { & $python -u $entry cell $Model $Task $Fold *>> $log }
-  else { & $python -u $entry $Mode *>> $log }
+  # cmd.exe owns stderr redirection: PyTorch warnings are diagnostic text, not PowerShell terminating errors.
+  if($Mode -eq 'probe') { $command='"'+$python+'" -u "'+$entry+'" cell EEGNet OpenBMI_MI 0 >> "'+$log+'" 2>&1' }
+  elseif($Mode -eq 'cell') { $command='"'+$python+'" -u "'+$entry+'" cell '+$Model+' '+$Task+' '+$Fold+' >> "'+$log+'" 2>&1' }
+  else { $command='"'+$python+'" -u "'+$entry+'" '+$Mode+' >> "'+$log+'" 2>&1' }
+  & cmd.exe /d /c $command
+  if($LASTEXITCODE -ne 0){ throw "arbitration Python exited $LASTEXITCODE" }
   $exitCode=$LASTEXITCODE
   "ARBITRATION_END mode=$Mode exit=$exitCode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
   exit $exitCode
