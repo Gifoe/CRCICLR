@@ -12,6 +12,7 @@ $runtime='D:\nips-temp\TotalP\P1\protected_arbitration_reliability_runtime'
 $python='E:\Anaconda\envs\persist_stable_251\python.exe'
 $env:PERSIST_SOURCE_REPO='D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1'
 $env:ARBITRATION_RUNTIME=$runtime
+$env:ARBITRATION_RANDOM_WORKERS='4'
 $env:OMP_NUM_THREADS='1';$env:MKL_NUM_THREADS='1';$env:OPENBLAS_NUM_THREADS='1';$env:NUMEXPR_NUM_THREADS='1';$env:PYTHONUNBUFFERED='1'
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
 if($Mode -eq 'cell' -and ([string]::IsNullOrWhiteSpace($Model) -or [string]::IsNullOrWhiteSpace($Task) -or $Fold -notin 0..4)){throw 'cell mode requires Model, Task, and Fold 0..4'}

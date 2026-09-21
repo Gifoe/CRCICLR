@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse, csv, hashlib, importlib.util, json, os, sys, time
+from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -243,12 +244,17 @@ def cell(m:str,t:str,f:int)->None:
         outputs={"native":oz,"P_only":oz0+ozp,"C_only":oz0+ozc,**{f"fixed_alpha_{a:g}":oz0+ozp+a*ozc for a in ALPHA},"oracle_suppression":sp["logits"][np.arange(len(oy)),sp["best"]],"oracle_2d":sp2["logits"][np.arange(len(oy)),sp2["best"]],**learned}
         random_policy=[];random_pathway=[]
         # K1: 100 equal-rank random learned alpha policies, trained only on their own TRAIN geometry.
-        for j,d in enumerate(randoms):
+        def random_learned(pair:tuple[int,np.ndarray])->dict[str,Any]:
+            j,d=pair
             rzt=(q[:,d]@raw[d])@w.T;rzo=(qo[:,d]@raw[d])@w.T;rct=z-z0-rzt;rco=oz-oz0-rzo
             rga=features(z0,rzt,rct,z,q,cent);rgo=features(oz0,rzo,rco,oz,qo,cent)
             rs=[z]+[z0+rzt+a*rct for a in ALPHA[:-1]];rso=[oz]+[oz0+rzo+a*rco for a in ALPHA[:-1]]
             rz,_,rm=gain_distill(rga,rgo,rs,rso,z,y,s,(m,t,f,j,"randomA"),"random_one_d_gain")
-            random_policy.append({"draw":j,"control":"equal_rank_random_learned_alpha","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"selected_delta":rm["selected_delta"],"train_lso_BA":rm["train_lso_BA"]})
+            return {"draw":j,"control":"equal_rank_random_learned_alpha","mean_subject_BA":float(np.mean([r["BA"] for r in gain_policy_rows(oy,os,rz,rm)])),"selected_delta":rm["selected_delta"],"train_lso_BA":rm["train_lso_BA"]}
+        # Independent controls are ordered after collection. Each regression itself remains single-threaded.
+        workers=max(1,min(4,int(os.environ.get("ARBITRATION_RANDOM_WORKERS","4"))))
+        with ThreadPoolExecutor(max_workers=workers,thread_name_prefix="random_policy") as pool:
+            random_policy=list(pool.map(random_learned,enumerate(randoms)))
         # K2: 20 pathway-aware random controls use identical frozen layer maps and ridge protocol.
         for j,d in enumerate(randoms[:PATH_DRAWS]):
             rzt=(q[:,d]@raw[d])@w.T;rzo=(qo[:,d]@raw[d])@w.T;rct=z-z0-rzt;rco=oz-oz0-rzo
