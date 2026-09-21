@@ -20,8 +20,10 @@ $log=Join-Path $runtime ("scheduled_arbitration_{0}.log" -f $suffix)
 Push-Location $code
 try {
   "ARBITRATION_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
-  $invokeArgs=if($Mode -eq 'probe'){@('cell','EEGNet','OpenBMI_MI','0')}elseif($Mode -eq 'cell'){@('cell',$Model,$Task,"$Fold")}else{@($Mode)}
-  & $python -u (Join-Path $code 'run_arbitration.py') @invokeArgs *>> $log
+  $entry=Join-Path $code 'run_arbitration.py'
+  if($Mode -eq 'probe') { & $python -u $entry cell EEGNet OpenBMI_MI 0 *>> $log }
+  elseif($Mode -eq 'cell') { & $python -u $entry cell $Model $Task $Fold *>> $log }
+  else { & $python -u $entry $Mode *>> $log }
   $exitCode=$LASTEXITCODE
   "ARBITRATION_END mode=$Mode exit=$exitCode utc=$([DateTime]::UtcNow.ToString('o'))" | Tee-Object -FilePath $log -Append
   exit $exitCode
