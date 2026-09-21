@@ -210,18 +210,40 @@ def pathway_bank(acts,acts_o,q,qo,s,subsets,raw,w,tag):
     Each target retains its own TRAIN nested subject-CV alpha. Expensive kernels
     depend only on layer activations, so their computation is shared across targets.
     """
+    class IndexedRows:
+        """A row view which streams only feature chunks, never a full host copy."""
+        def __init__(self,source,rows):
+            self.source=source;self.rows=np.asarray(rows,dtype=np.intp);self.shape=(len(self.rows),source.shape[1]);self.chunk=getattr(BR,'MAPPING_FEATURE_CHUNK',16384)
+        def __getitem__(self,key):
+            rows,columns=key
+            if rows!=slice(None):raise IndexError('IndexedRows supports all-row feature chunks only')
+            return np.ascontiguousarray(self.source[self.rows,columns])
+        def mean(self,axis,dtype):
+            if axis!=0:raise ValueError('IndexedRows supports column statistics only')
+            out=np.empty(self.shape[1],dtype=dtype)
+            for start in range(0,self.shape[1],self.chunk):
+                stop=min(self.shape[1],start+self.chunk)
+                out[start:stop]=self.source[self.rows,start:stop].mean(axis=0,dtype=dtype)
+            return out
+        def std(self,axis,dtype):
+            if axis!=0:raise ValueError('IndexedRows supports column statistics only')
+            out=np.empty(self.shape[1],dtype=dtype)
+            for start in range(0,self.shape[1],self.chunk):
+                stop=min(self.shape[1],start+self.chunk)
+                out[start:stop]=self.source[self.rows,start:stop].std(axis=0,dtype=dtype)
+            return out
     targets=np.stack([q[:,d] for d in subsets],1)
     truth_o=np.stack([qo[:,d] for d in subsets],1)
     evidence_maps=np.stack([raw[d]@w.T for d in subsets])
     cols_t=[[] for _ in subsets];cols_o=[[] for _ in subsets]
     ev_t=[[] for _ in subsets];ev_o=[[] for _ in subsets];audits=[[] for _ in subsets]
     masks=[np.isin(s,g) for g in BR.subject_groups(np.asarray(subs(s))) if len(g)]
-    def select(a,y,ss):
+    def select(a,y,ss,rows):
         scores=[]
         for held in BR.subject_groups(np.asarray(subs(ss))):
             ix=np.isin(ss,held)
             if not ix.any() or (~ix).sum()<2:continue
-            pred=shared_pathway_predictions(a[~ix],y[~ix],a[ix])
+            pred=shared_pathway_predictions(IndexedRows(a,rows[~ix]),y[~ix],IndexedRows(a,rows[ix]))
             scores.append(BR.r2_matrix(y[ix],pred,ss[ix]))
         if not scores:raise RuntimeError('insufficient TRAIN subjects for nested pathway CV')
         return np.nanargmax(np.nanmean(scores,axis=0),axis=0)
@@ -234,13 +256,15 @@ def pathway_bank(acts,acts_o,q,qo,s,subsets,raw,w,tag):
             with np.load(cache,allow_pickle=False) as saved:pt=saved['pt'];po=saved['po'];chosen=saved['chosen']
         else:
             pt=np.zeros_like(targets);indices=np.arange(len(subsets))
+            all_rows=np.arange(len(a),dtype=np.intp)
             for fold,held in enumerate(masks):
-                chosen_inner=select(a[~held],targets[~held],s[~held])
-                predictions=shared_pathway_predictions(a[~held],targets[~held],a[held])
+                train_rows,test_rows=all_rows[~held],all_rows[held]
+                chosen_inner=select(a,targets[~held],s[~held],train_rows)
+                predictions=shared_pathway_predictions(IndexedRows(a,train_rows),targets[~held],IndexedRows(a,test_rows))
                 pt[held]=np.stack([predictions[chosen_inner[j],:,j] for j in indices],1)
                 print('PATHWAY_GPU_CROSSFIT',name,fold+1,len(masks),flush=True)
-            chosen=select(a,targets,s)
-            predictions=shared_pathway_predictions(a,targets,acts_o[name])
+            chosen=select(a,targets,s,all_rows)
+            predictions=shared_pathway_predictions(IndexedRows(a,all_rows),targets,IndexedRows(acts_o[name],np.arange(len(acts_o[name]),dtype=np.intp)))
             po=np.stack([predictions[chosen[j],:,j] for j in indices],1)
             cache.parent.mkdir(parents=True,exist_ok=True)
             tmp=cache.with_suffix('.part')
