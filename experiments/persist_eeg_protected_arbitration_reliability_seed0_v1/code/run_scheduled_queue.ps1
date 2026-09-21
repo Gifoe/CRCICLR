@@ -1,7 +1,7 @@
 <# Runs exactly one frozen arbitration command outside the SSH job object. #>
 [CmdletBinding()]
 param(
-  [Parameter(Mandatory=$true)][ValidateSet('lock','aggregate','probe','cell')][string]$Mode,
+  [Parameter(Mandatory=$true)][ValidateSet('lock','aggregate','probe','cell','resident')][string]$Mode,
   [ValidateSet('EEGNet','EEGConformer')][string]$Model,
   [ValidateSet('OpenBMI_MI','OpenBMI_SSVEP')][string]$Task,
   [int]$Fold=-1
@@ -23,7 +23,8 @@ try {
   "ARBITRATION_START mode=$Mode utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -FilePath $log -Append -Encoding utf8
   $entry=Join-Path $code 'run_arbitration.py'
   # cmd.exe owns stderr redirection: PyTorch warnings are diagnostic text, not PowerShell terminating errors.
-  if($Mode -eq 'probe') { $command='"'+$python+'" -u "'+$entry+'" cell EEGNet OpenBMI_MI 0 >> "'+$log+'" 2>&1' }
+  if($Mode -eq 'resident') { $env:ARBITRATION_RESIDENT='1'; $entry=Join-Path $code 'run_resident_queue.py'; $command='"'+$python+'" -u "'+$entry+'" >> "'+$log+'" 2>&1' }
+  elseif($Mode -eq 'probe') { $command='"'+$python+'" -u "'+$entry+'" cell EEGNet OpenBMI_MI 0 >> "'+$log+'" 2>&1' }
   elseif($Mode -eq 'cell') { $command='"'+$python+'" -u "'+$entry+'" cell '+$Model+' '+$Task+' '+$Fold+' >> "'+$log+'" 2>&1' }
   else { $command='"'+$python+'" -u "'+$entry+'" '+$Mode+' >> "'+$log+'" 2>&1' }
   & cmd.exe /d /c $command
