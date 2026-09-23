@@ -1,0 +1,84 @@
+<# Continuously complete fold1 endpoint audit and six checkpoint-native P_t audits. #>
+$ErrorActionPreference = 'Stop'
+$repo = 'D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1'
+$experiment = Join-Path $repo 'experiments\persist_eeg_pc_mechanism_closure_seed0_v1'
+$runtime = 'D:\nips-temp\TotalP\P1\pc_mechanism_closure_runtime'
+$cell = Join-Path $runtime 'cells\eegnet\openbmi_mi\fold1_seed0'
+$endpointEntry = Join-Path $experiment 'code\audit_replica_endpoints_eegnet_v1.py'
+$nativeEntry = Join-Path $experiment 'code\audit_native_pt_eegnet_v3.py'
+$mainLog = Join-Path $runtime 'scheduled_endpoint_native_EEGNet_OpenBMI_MI_f1_v1.log'
+$env:PERSIST_SOURCE_REPO = $repo
+$env:MECHANISM_RUNTIME = $runtime
+$env:COUPLING_RUNTIME = 'D:\nips-temp\TotalP\P1\protected_complement_coupling_runtime'
+$env:SEVEN_RUNTIME = 'D:\nips-temp\TotalP\P1\seven_backbone_fourtask_3seed_runtime'
+$env:OFFICIAL_BACKBONE_ROOT = Join-Path $env:SEVEN_RUNTIME 'official'
+$env:PYTHONUNBUFFERED = '1'
+$python = 'E:\Anaconda\envs\persist_stable_251\python.exe'
+
+function Wait-Resources {
+  param([string]$Phase)
+  while ($true) {
+    $freeGb = (Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory / 1MB
+    $gpuMiB = [int](([string]((& nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits) | Select-Object -First 1)).Trim())
+    if ($freeGb -ge 40 -and $gpuMiB -ge 16000) {
+      "$Phase RESOURCE_READY free_gb=$([Math]::Round($freeGb,2)) gpu_mib=$gpuMiB utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Append -Encoding utf8
+      return
+    }
+    "$Phase RESOURCE_WAIT free_gb=$([Math]::Round($freeGb,2)) gpu_mib=$gpuMiB utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Append -Encoding utf8
+    Start-Sleep -Seconds 30
+  }
+}
+
+try {
+  if (Test-Path -LiteralPath $mainLog) { throw 'pipeline log already exists' }
+  if ((Get-FileHash -LiteralPath $endpointEntry -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'c17fea451c653f6279ddfedf8992e99780cb8296b9e10b50162ac91ca6827209') { throw 'endpoint source SHA mismatch' }
+  if ((Get-FileHash -LiteralPath $nativeEntry -Algorithm SHA256).Hash.ToLowerInvariant() -ne '14ade22a3391d3461fffeb0a3da43d896633b03eedc4c4d89acec90c0af72d5a') { throw 'native P_t source SHA mismatch' }
+  if ((Get-FileHash -LiteralPath (Join-Path $experiment 'protocol\MECHANISM_CLOSURE_ANALYSIS_LOCK.md') -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'ac12d33f7d30b2c846ec4c4fb07f8513bf25e372943a767b134883bf095a7c88') { throw 'analysis lock SHA mismatch' }
+  if ((Get-FileHash -LiteralPath (Join-Path $experiment 'protocol\FINAL_PROJECTOR_AMENDMENT.md') -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'aec1e604d38f1901bd9eca7e072e30a3d496a28061a726ebbe63133259b0e474') { throw 'amendment SHA mismatch' }
+  $replay = Get-Content -LiteralPath (Join-Path $cell 'replay_v2\REPLAY_AUDIT.json') -Raw | ConvertFrom-Json
+  if ($replay.status -ne 'REPLAY_COMPLETE' -or $replay.epochs_saved -ne 60 -or
+      $replay.trajectory_provenance -ne 'RETRAINED_REPLICA_TRAJECTORY' -or
+      $replay.final_heldout_accessed -ne $false) { throw 'replay prerequisite invalid' }
+  "ENDPOINT_NATIVE_F1_START utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Encoding utf8
+
+  $endpoint = Join-Path $cell 'REPLICA_ENDPOINT_AUDIT_V1.json'
+  $endpointFailure = Join-Path $cell 'REPLICA_ENDPOINT_AUDIT_V1_FAIL_CLOSED.json'
+  if (-not (Test-Path -LiteralPath $endpoint)) {
+    if (Test-Path -LiteralPath $endpointFailure) { throw 'endpoint audit already failed closed' }
+    Wait-Resources 'ENDPOINT'
+    $endpointLog = Join-Path $runtime 'scheduled_replica_endpoint_audit_EEGNet_OpenBMI_MI_f1_v1.log'
+    if (Test-Path -LiteralPath $endpointLog) { throw 'endpoint log already exists' }
+    $cmd = '"' + $python + '" -u "' + $endpointEntry + '" --task OpenBMI_MI --fold 1 >> "' + $endpointLog + '" 2>&1'
+    & cmd.exe /d /c $cmd
+    if ($LASTEXITCODE -ne 0) { throw "endpoint audit exited $LASTEXITCODE" }
+  }
+  $endpointAudit = Get-Content -LiteralPath $endpoint -Raw | ConvertFrom-Json
+  if ($endpointAudit.status -ne 'REPLICA_ENDPOINTS_AUDITED_PENDING_NATIVE_P_AND_MECHANISM' -or
+      $endpointAudit.final_heldout_accessed -ne $false -or @($endpointAudit.schedule).Count -ne 6) { throw 'endpoint audit invalid' }
+  "ENDPOINT_COMPLETE utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Append -Encoding utf8
+
+  foreach ($epoch in @(6,15,30,45,49,60)) {
+    $tag = '{0:d3}' -f $epoch
+    $result = Join-Path $cell "checkpoint_native_pt_v3\epoch_$tag.json"
+    $failure = Join-Path $cell "checkpoint_native_pt_v3\epoch_$tag.FAIL_CLOSED.json"
+    if (-not (Test-Path -LiteralPath $result)) {
+      if (Test-Path -LiteralPath $failure) { throw "native P_t epoch $epoch already failed closed" }
+      Wait-Resources "NATIVE_PT_E$tag"
+      $phaseLog = Join-Path $runtime "scheduled_native_pt_EEGNet_OpenBMI_MI_f1_e${tag}_v3.log"
+      if (Test-Path -LiteralPath $phaseLog) { throw "native P_t log already exists at epoch $epoch" }
+      $cmd = '"' + $python + '" -u "' + $nativeEntry + '" --task OpenBMI_MI --fold 1 --epoch ' + $epoch + ' >> "' + $phaseLog + '" 2>&1'
+      & cmd.exe /d /c $cmd
+      if ($LASTEXITCODE -ne 0) { throw "native P_t epoch $epoch exited $LASTEXITCODE" }
+    }
+    $row = Get-Content -LiteralPath $result -Raw | ConvertFrom-Json
+    if ($row.status -ne 'NATIVE_CHECKPOINT_PT_COMPLETE_PENDING_BACKTRACE_AND_MECHANISM' -or
+        [int]$row.epoch -ne $epoch -or $row.outer_development_accessed -ne $false -or
+        $row.final_heldout_accessed -ne $false) { throw "native P_t epoch $epoch invalid" }
+    "NATIVE_PT_E${tag}_COMPLETE utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Append -Encoding utf8
+  }
+  "ENDPOINT_NATIVE_F1_COMPLETE utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Append -Encoding utf8
+  exit 0
+} catch {
+  if (Test-Path -LiteralPath $mainLog) { "ENDPOINT_NATIVE_F1_EXCEPTION $_ utc=$([DateTime]::UtcNow.ToString('o'))" | Out-File -LiteralPath $mainLog -Append -Encoding utf8 }
+  exit 1
+}

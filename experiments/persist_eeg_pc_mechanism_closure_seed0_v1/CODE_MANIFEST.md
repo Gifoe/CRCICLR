@@ -1,0 +1,7 @@
+# Phase-2 code and provenance manifest — first five cell release
+
+This release packages the frozen protocol/amendment/analysis lock, gate audit, versioned analysis implementation and engineering history under `code/`, plus compact outputs for EEGNet / OpenBMI MI / seed0 folds 0–4. The exact source files copied to the original server are identified in the per-cell provenance JSON by SHA256. Runtime logs, tensors, checkpoints, caches, full replay traces, raw trial arrays, and per-draw 3 MB directional stage JSONs are intentionally excluded.
+
+The `code/` directory contains the shared data, sampling, mediation and directional implementations; replay, checkpoint, final-P backtrace and native-P_t audit code; cell-specific wrappers and engineering probes. It retains versioned earlier attempts to make implementation history inspectable. Probes and failed wrappers are not scientific outputs. The corrected per-cell wrappers and source hashes are listed in `outputs/first_five/VALIDATION_SUMMARY.json`; source manifests were independently downloaded and re-hashed before release. The portable validator can verify the compact results on its own; pass `--source-audit-root` to additionally re-hash the separately transferred source JSONs.
+
+The five-cell release is intentionally partial. It is not the requested 20-cell synthesis. See `outputs/first_five/FAILURE_DISCLOSURES.md` for known unavailable historical intermediate checkpoints, replica replay labeling, engineering failures, and interpretation boundaries.

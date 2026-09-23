@@ -1,0 +1,61 @@
+{
+  "analysis_lock_sha256": "ac12d33f7d30b2c846ec4c4fb07f8513bf25e372943a767b134883bf095a7c88",
+  "final_heldout_accessed": false,
+  "fold": 1,
+  "implementation_sha256": "c272f4caa80c68ce9b3e5dc44b5f50451aa417d26fbe9a7d35e2e66cea224616",
+  "model": "EEGNet",
+  "outer_development_accessed": true,
+  "output_rows": {
+    "FINAL_P_BACKTRACE.csv": 624,
+    "MECHANISM_REGIMES.csv": 68,
+    "PC_DIRECTIONAL_INTERACTION.csv": 3400,
+    "PC_DIRECTIONAL_RANDOM_CONTROL.csv": 100,
+    "PC_LONG_RANGE_MEDIATION.csv": 204,
+    "PC_MEDIATION_TRANSITIONS.csv": 272,
+    "SUBJECT_SESSION_MECHANISM_DRIFT.csv": 34,
+    "SUBJECT_SESSION_MECHANISM_SIGNATURE.csv": 68,
+    "TRAINING_PC_MECHANISM.csv": 312,
+    "TRAINING_TRAJECTORY_AUDIT.csv": 6
+  },
+  "output_sha256": {
+    "FINAL_P_BACKTRACE.csv": "7b6d8b19357b2c067e38c4da3e7fe67f183aed9f96c88d1c47550f99aa1cc162",
+    "MECHANISM_REGIMES.csv": "d4501ab4591268abb5ca307b246ab672a2dca34e4bb576dd5cc4c42761826c9c",
+    "PC_DIRECTIONAL_INTERACTION.csv": "683d09daf873403675cae81b1ce9ac6e4537fe814e93705fca2d7315b129c09e",
+    "PC_DIRECTIONAL_RANDOM_CONTROL.csv": "f16f7d0974ee0db4aecb36c0fb01ff42563dbf7075ffe79adceb9f2d2bf37045",
+    "PC_LONG_RANGE_MEDIATION.csv": "8fc1ac4f67877ed0e2731f9e2f542d690542be2b98ceda0b3cba5f62f3ae7c0f",
+    "PC_MEDIATION_TRANSITIONS.csv": "e99b0e8c0cf8245f9ad88d0b7c905dd981ebe319d8fdf136dcbcf944d01de267",
+    "SUBJECT_SESSION_MECHANISM_DRIFT.csv": "3bc2a286f40410043395ddbc2d6a305d1da1f3febfa7dbc652e4ac0ab2272862",
+    "SUBJECT_SESSION_MECHANISM_SIGNATURE.csv": "ed1de088b1fc8b1f739810eadaaadafb65b98f48c066345beb5bd3afc7628e79",
+    "TRAINING_PC_MECHANISM.csv": "86e80c361e4cfa5fdcbc3c12118de6fa1cf686875af39d2dd0d61b25c836d617",
+    "TRAINING_TRAJECTORY_AUDIT.csv": "80e8eea55138e9631a1905c0f73ccd158dcaa5df26ac2e4a794ff274eb75f7e6"
+  },
+  "projector_amendment_sha256": "aec1e604d38f1901bd9eca7e072e30a3d496a28061a726ebbe63133259b0e474",
+  "regime_metadata": {
+    "k_candidates": {
+      "2": 0.23381500886647721,
+      "3": 0.17751777609328917,
+      "4": 0.17764541269182052
+    },
+    "outer_used_for_selection": false,
+    "pca_rank": 8,
+    "selected_k": 2,
+    "status": "SECONDARY_TRAIN_DEFINED_REGIMES",
+    "train_explained_variance": 0.9043024312570234,
+    "train_silhouette": 0.23381500886647721
+  },
+  "report_sha256": "0a6525e230fac3023a18bd3a4f6aad8df57e5790952899ab0b66ceee3766a30a",
+  "seed": 0,
+  "source_backtrace_sha256": "daa1a57f29c146c7cf48a436840a7f7cbc26244d2a4369d11cd8ea18b0a407a1",
+  "source_cell": "D:\\nips-temp\\TotalP\\P1\\pc_mechanism_closure_runtime\\cells\\eegnet\\openbmi_mi\\fold1_seed0",
+  "source_directional_manifest_sha256": "c3a7334f888cac4bae5b4226c66afcb0878c2207b53f6a1eddaaeab0d9434be9",
+  "source_endpoint_audit_sha256": "28b16ceb96b005d9ef41fec8d4b016032fa8b6f8a5f6d6c81277e7d662c2dba1",
+  "source_mediation_manifest_sha256": "2cf763644b595377a308a194322bf7ce6b7dc86ec7661d65506e019aea43f2d6",
+  "source_replay_audit_sha256": "18c839851d9dc8d29f54b583340a5d1a3ab1ff379e284be0222063ab23173f2c",
+  "source_subject_v2_sha256": "fcbd1f623635e56d4d88de181066589061f5fb31bc1d1f7fce30c4f7b2f3b049",
+  "status": "CELL_COMPACT_PREVIEW_COMPLETE_NOT_20_CELL_RESULT",
+  "task": "OpenBMI_MI",
+  "trajectory_provenance": "RETRAINED_REPLICA_TRAJECTORY",
+  "upstream_gate_sha256": "7cdc2c0fe5b5e32dcb98b917a344d0eaaf0cfca75eec3a504d56650f2223df5a",
+  "upstream_implementation_sha256": "4aab984969f4ba43128ed738a38ac138d94ee1c9b1252662af91b0c44e3f8eee",
+  "upstream_protocol_sha256": "3ddb5006bf7159b00a0c80fed31856849ccdaa69ecf5060b0161c8673327e15c"
+}
