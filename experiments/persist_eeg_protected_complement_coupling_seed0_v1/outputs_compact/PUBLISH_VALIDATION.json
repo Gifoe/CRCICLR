@@ -1,0 +1,487 @@
+{
+  "compact_sha256": {
+    "FINAL_PC_DECOMPOSITION_AUDIT.csv": "d2af36967638a09154a647776900fe388155acdcd5a4cdb8da499587922724a1",
+    "LAYER_PC_DECOMPOSITION_AUDIT.csv": "7c0931d63b576670cf93e03aeb0860c2bed2ee8c62a419476ec2e645ec3413ef",
+    "MODEL_TASK_SUMMARY.csv": "82575f781d8d341dc5207f9b89a588a06804e8bb7aaf04a66a2273425491837c",
+    "PC_ERROR_PREDICTABILITY.csv": "7af157bc56728a25ac67ea7c227e89fcdb469f7650ee2d304b0cce3b260339e6",
+    "PC_FUNCTIONAL_SURROGATE.csv": "26733bc4edca47e002973d988800a2bc78c87c5dc0adc95d05bb82a02ff32149",
+    "PC_LOCAL_CONDITIONAL_SENSITIVITY.csv": "40900a357940f04524d6f4289dbddfc0cfdb47a43b9d95b6f7637b3504744f9e",
+    "PC_MAIN_EFFECTS.csv": "97ae9d8737603d438834301566b977bf1282881a4250189a25a66638e1ce9b5c",
+    "PC_RANDOM_SPECIFICITY.csv": "805d5aa6bd11c02094ac129195ef7dd0e969ee1ee1e6d7ed8b51234179fa1310",
+    "PROVENANCE.json": "9c172e7934ac702b2cf7b821ddc5865a85a5a5d2f3bb5d20c9da67108df3c336",
+    "REPORT.md": "22246dec0f9afdcb729065be6f8a5b46d6aa54fb6241325531edbb93c7b72ea5"
+  },
+  "corrected_prediction_is_post_outcome_exploratory": true,
+  "criterion_A_qualifying_layer_summaries": 13,
+  "criterion_A_qualifying_model_tasks": [
+    "EEGConformer/OpenBMI_MI",
+    "EEGConformer/OpenBMI_SSVEP",
+    "EEGNet/OpenBMI_MI",
+    "EEGNet/OpenBMI_SSVEP"
+  ],
+  "criterion_C_confirmatory_eligible": false,
+  "final_heldout_accessed": false,
+  "frozen_protocol_sha256": "3ddb5006bf7159b00a0c80fed31856849ccdaa69ecf5060b0161c8673327e15c",
+  "minimum_future_label_free_pairs_per_stage_cell": 512,
+  "original_cells_valid": 20,
+  "original_full_output_manifest": {
+    "FINAL_PC_DECOMPOSITION_AUDIT.csv": {
+      "bytes": 3086,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "status",
+        "max_abs_z_error",
+        "max_abs_h_error",
+        "final_heldout_accessed",
+        "basis_sha256"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 5,
+        "EEGConformer/OpenBMI_SSVEP": 5,
+        "EEGNet/OpenBMI_MI": 5,
+        "EEGNet/OpenBMI_SSVEP": 5
+      },
+      "rows": 20,
+      "sha256": "d2af36967638a09154a647776900fe388155acdcd5a4cdb8da499587922724a1"
+    },
+    "LAYER_PC_DECOMPOSITION_AUDIT.csv": {
+      "bytes": 20892,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "module_path",
+        "activation_shape",
+        "P_path_rank",
+        "mapping_sha256",
+        "max_abs_reconstruction"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 35,
+        "EEGConformer/OpenBMI_SSVEP": 35,
+        "EEGNet/OpenBMI_MI": 25,
+        "EEGNet/OpenBMI_SSVEP": 25
+      },
+      "rows": 120,
+      "sha256": "7c0931d63b576670cf93e03aeb0860c2bed2ee8c62a419476ec2e645ec3413ef"
+    },
+    "MODEL_TASK_SUMMARY.csv": {
+      "bytes": 1891,
+      "columns": [
+        "model",
+        "task",
+        "cells_complete",
+        "max_final_logit_error",
+        "max_interaction_layer",
+        "max_interaction_norm",
+        "specific_positive_layers",
+        "max_bilinear_delta_R2_layer",
+        "max_bilinear_delta_R2",
+        "native_error_AUROC_BASE",
+        "native_error_AUROC_ALL_LAYER",
+        "native_error_delta_AUROC",
+        "native_error_delta_AUROC_CI_low",
+        "native_error_delta_AUROC_CI_high",
+        "bilinear_peak_additive_R2",
+        "bilinear_peak_bilinear_R2",
+        "bilinear_peak_matched_MLP_R2",
+        "bilinear_P_minus_random_gain",
+        "bilinear_P_minus_random_CI_low",
+        "bilinear_P_minus_random_CI_high",
+        "final_heldout_accessed"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 1,
+        "EEGConformer/OpenBMI_SSVEP": 1,
+        "EEGNet/OpenBMI_MI": 1,
+        "EEGNet/OpenBMI_SSVEP": 1
+      },
+      "rows": 4,
+      "sha256": "a9d078522d719d54bc5412f3f88301f2799a6f23db75e96b3b2e747e5c0650b4"
+    },
+    "PC_ERROR_LINKAGE.csv": {
+      "bytes": 17279129,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "subject_id",
+        "native_correct",
+        "interaction_norm",
+        "interaction_margin_effect",
+        "interaction_helps_correct",
+        "interaction_contributes_error",
+        "interaction_reverses_P",
+        "interaction_enables_C_rescue"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 17920,
+        "EEGConformer/OpenBMI_SSVEP": 84000,
+        "EEGNet/OpenBMI_MI": 12800,
+        "EEGNet/OpenBMI_SSVEP": 60000
+      },
+      "rows": 174720,
+      "sha256": "d4b6892251adf36f9f52c1a373131b636f7f765829251ae58ba8019836f407f7"
+    },
+    "PC_ERROR_PREDICTABILITY.csv": {
+      "bytes": 1058271,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "AUPRC",
+        "AUROC",
+        "Brier",
+        "ECE_10bin",
+        "family",
+        "subject_id",
+        "target",
+        "train_selected_C",
+        "delta_AUROC_over_BASE",
+        "delta_AUPRC_over_BASE",
+        "delta_Brier_over_BASE",
+        "delta_ECE_10bin_over_BASE"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 1440,
+        "EEGConformer/OpenBMI_SSVEP": 1440,
+        "EEGNet/OpenBMI_MI": 1120,
+        "EEGNet/OpenBMI_SSVEP": 1120
+      },
+      "rows": 5120,
+      "sha256": "7e6bf904fd5b7180a8ab52d6553f6ec207880d39f7c8a0a5fd0c657128d3ba2d"
+    },
+    "PC_FUNCTIONAL_SURROGATE.csv": {
+      "bytes": 907783,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "KL_to_native",
+        "PCA_C_dim",
+        "actual_C_dim",
+        "centered_logit_R2",
+        "family",
+        "hard_prediction_agreement",
+        "logit_cosine",
+        "native_margin_correlation",
+        "selected_bilinear_rank",
+        "subject_id",
+        "delta_R2_over_additive"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 1680,
+        "EEGConformer/OpenBMI_SSVEP": 1680,
+        "EEGNet/OpenBMI_MI": 1200,
+        "EEGNet/OpenBMI_SSVEP": 1200
+      },
+      "rows": 5760,
+      "sha256": "26733bc4edca47e002973d988800a2bc78c87c5dc0adc95d05bb82a02ff32149"
+    },
+    "PC_INTERACTION.csv": {
+      "bytes": 69588827,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "C_donor_label_transfer",
+        "C_donor_margin_effect",
+        "C_effect_context_cosine",
+        "C_effect_magnitude_ratio",
+        "C_effect_norm",
+        "C_margin_sign_flip",
+        "C_prediction_flip",
+        "C_recipient_margin_effect",
+        "D_JC",
+        "D_JP",
+        "P_donor_label_transfer",
+        "P_donor_margin_effect",
+        "P_effect_context_cosine",
+        "P_effect_magnitude_ratio",
+        "P_effect_norm",
+        "P_margin_sign_flip",
+        "P_prediction_flip",
+        "P_recipient_margin_effect",
+        "donor",
+        "donor_label",
+        "interaction_alignment_with_correct_decision",
+        "interaction_contributes_error",
+        "interaction_donor_margin_effect",
+        "interaction_enables_C_rescue",
+        "interaction_helps_correct",
+        "interaction_main_ratio",
+        "interaction_margin_effect",
+        "interaction_native_top1_margin_effect",
+        "interaction_norm",
+        "interaction_reverses_P",
+        "native_correct",
+        "recipient",
+        "recipient_label",
+        "session",
+        "subject_id"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 17920,
+        "EEGConformer/OpenBMI_SSVEP": 84000,
+        "EEGNet/OpenBMI_MI": 12800,
+        "EEGNet/OpenBMI_SSVEP": 60000
+      },
+      "rows": 174720,
+      "sha256": "f16d54c66697da0d5326f965d844b15e713c40d31e85cb6d886d2bf458bff2bd"
+    },
+    "PC_LOCAL_CONDITIONAL_SENSITIVITY.csv": {
+      "bytes": 73166,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "subject_id",
+        "D_JP",
+        "D_JC"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 280,
+        "EEGConformer/OpenBMI_SSVEP": 280,
+        "EEGNet/OpenBMI_MI": 200,
+        "EEGNet/OpenBMI_SSVEP": 200
+      },
+      "rows": 960,
+      "sha256": "40900a357940f04524d6f4289dbddfc0cfdb47a43b9d95b6f7637b3504744f9e"
+    },
+    "PC_MAIN_EFFECTS.csv": {
+      "bytes": 266864,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "C_donor_label_transfer",
+        "C_donor_margin_effect",
+        "C_effect_context_cosine",
+        "C_effect_magnitude_ratio",
+        "C_effect_norm",
+        "C_margin_sign_flip",
+        "C_prediction_flip",
+        "C_recipient_margin_effect",
+        "P_donor_label_transfer",
+        "P_donor_margin_effect",
+        "P_effect_context_cosine",
+        "P_effect_magnitude_ratio",
+        "P_effect_norm",
+        "P_margin_sign_flip",
+        "P_prediction_flip",
+        "P_recipient_margin_effect",
+        "pairs",
+        "subject_id"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 280,
+        "EEGConformer/OpenBMI_SSVEP": 280,
+        "EEGNet/OpenBMI_MI": 200,
+        "EEGNet/OpenBMI_SSVEP": 200
+      },
+      "rows": 960,
+      "sha256": "97ae9d8737603d438834301566b977bf1282881a4250189a25a66638e1ce9b5c"
+    },
+    "PC_RANDOM_SPECIFICITY.csv": {
+      "bytes": 4724,
+      "columns": [
+        "model",
+        "task",
+        "layer_name",
+        "P_interaction_norm",
+        "random_interaction_mean",
+        "P_minus_random",
+        "subject_CI_low",
+        "subject_CI_high",
+        "random_percentile",
+        "empirical_p",
+        "positive_folds",
+        "bootstrap_unit"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 7,
+        "EEGConformer/OpenBMI_SSVEP": 7,
+        "EEGNet/OpenBMI_MI": 5,
+        "EEGNet/OpenBMI_SSVEP": 5
+      },
+      "rows": 24,
+      "sha256": "805d5aa6bd11c02094ac129195ef7dd0e969ee1ee1e6d7ed8b51234179fa1310"
+    },
+    "PC_RANDOM_SURROGATE_CONTROL.csv": {
+      "bytes": 19495056,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "KL_to_native",
+        "PCA_C_dim",
+        "actual_C_dim",
+        "centered_logit_R2",
+        "draw",
+        "family",
+        "hard_prediction_agreement",
+        "logit_cosine",
+        "native_margin_correlation",
+        "selected_bilinear_rank",
+        "subject_id",
+        "delta_R2_over_additive",
+        "P_delta_R2",
+        "P_minus_random_delta_R2"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 33600,
+        "EEGConformer/OpenBMI_SSVEP": 33600,
+        "EEGNet/OpenBMI_MI": 24000,
+        "EEGNet/OpenBMI_SSVEP": 24000
+      },
+      "rows": 115200,
+      "sha256": "b1b6b836971773587dd0ac97b1ec17b82944cbf2ad26933a936f6f72c6f940e2"
+    },
+    "PC_SESSION_STABILITY.csv": {
+      "bytes": 63376448,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "layer_name",
+        "partition",
+        "E_C_correlation",
+        "E_C_cosine",
+        "E_C_normalized_rms",
+        "E_P_correlation",
+        "E_P_cosine",
+        "E_P_normalized_rms",
+        "I_PC_correlation",
+        "I_PC_cosine",
+        "I_PC_normalized_rms",
+        "J_C_correlation",
+        "J_C_cosine",
+        "J_C_normalized_rms",
+        "J_P_correlation",
+        "J_P_cosine",
+        "J_P_normalized_rms",
+        "matched_class_pairs",
+        "pair_type",
+        "subject_id",
+        "I_PC_norm",
+        "matched_pairs",
+        "draw"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 56560,
+        "EEGConformer/OpenBMI_SSVEP": 56560,
+        "EEGNet/OpenBMI_MI": 40400,
+        "EEGNet/OpenBMI_SSVEP": 40400
+      },
+      "rows": 193920,
+      "sha256": "5c32e1fb494ab08a1d41674fb6db4fc83d25209447619e18efbd1966bc5ae3d7"
+    },
+    "PROVENANCE.json": {
+      "bytes": 2258,
+      "sha256": "a315c92179e56678cfd9d19b7a290fad0571cdebaf6494ac02747c9476d356d1"
+    },
+    "REPORT.md": {
+      "bytes": 8734,
+      "sha256": "fd2db2778bfdaa4d26907aaa4649ad82a41ad6378809d2f5ada8d1124d54394f"
+    }
+  },
+  "original_implementation_sha256": "4aab984969f4ba43128ed738a38ac138d94ee1c9b1252662af91b0c44e3f8eee",
+  "original_prediction_claim_valid": false,
+  "repair_implementation_sha256": "a3008191adff61b6009f63b8dfc9150713f23792212e3a9b1605f04f42f9f9c8",
+  "repaired_cells_valid": 20,
+  "repaired_full_output_manifest": {
+    "MODEL_TASK_SUMMARY.csv": {
+      "bytes": 2155,
+      "columns": [
+        "model",
+        "task",
+        "cells_complete",
+        "max_final_logit_error",
+        "max_interaction_layer",
+        "max_interaction_norm",
+        "specific_positive_layers",
+        "max_bilinear_delta_R2_layer",
+        "max_bilinear_delta_R2",
+        "native_error_AUROC_BASE",
+        "native_error_AUROC_ALL_LAYER",
+        "native_error_delta_AUROC",
+        "native_error_delta_AUROC_CI_low",
+        "native_error_delta_AUROC_CI_high",
+        "bilinear_peak_additive_R2",
+        "bilinear_peak_bilinear_R2",
+        "bilinear_peak_matched_MLP_R2",
+        "bilinear_P_minus_random_gain",
+        "bilinear_P_minus_random_CI_low",
+        "bilinear_P_minus_random_CI_high",
+        "final_heldout_accessed",
+        "error_prediction_provenance"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 1,
+        "EEGConformer/OpenBMI_SSVEP": 1,
+        "EEGNet/OpenBMI_MI": 1,
+        "EEGNet/OpenBMI_SSVEP": 1
+      },
+      "rows": 4,
+      "sha256": "82575f781d8d341dc5207f9b89a588a06804e8bb7aaf04a66a2273425491837c"
+    },
+    "PC_ERROR_PREDICTABILITY.csv": {
+      "bytes": 1060498,
+      "columns": [
+        "model",
+        "task",
+        "fold",
+        "seed",
+        "AUPRC",
+        "AUROC",
+        "Brier",
+        "ECE_10bin",
+        "family",
+        "subject_id",
+        "target",
+        "train_selected_C",
+        "delta_AUROC_over_BASE",
+        "delta_AUPRC_over_BASE",
+        "delta_Brier_over_BASE",
+        "delta_ECE_10bin_over_BASE"
+      ],
+      "model_task_row_counts": {
+        "EEGConformer/OpenBMI_MI": 1440,
+        "EEGConformer/OpenBMI_SSVEP": 1440,
+        "EEGNet/OpenBMI_MI": 1120,
+        "EEGNet/OpenBMI_SSVEP": 1120
+      },
+      "rows": 5120,
+      "sha256": "7af157bc56728a25ac67ea7c227e89fcdb469f7650ee2d304b0cce3b260339e6"
+    },
+    "PROVENANCE.json": {
+      "bytes": 3223,
+      "sha256": "9c172e7934ac702b2cf7b821ddc5865a85a5a5d2f3bb5d20c9da67108df3c336"
+    },
+    "REPORT.md": {
+      "bytes": 9756,
+      "sha256": "178feb21d39ebe2475cd5d7658726288b2c6d6652150254cd03629e1e8227067"
+    }
+  },
+  "schema": "PERSIST_EEG_PROTECTED_COMPLEMENT_COUPLING_REVIEWED_COMPACT_V2",
+  "unchanged_baseline_subject_target_rows": 640
+}

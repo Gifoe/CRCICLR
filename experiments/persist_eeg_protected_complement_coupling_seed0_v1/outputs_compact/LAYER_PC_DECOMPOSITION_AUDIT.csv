@@ -1,0 +1,121 @@
+model,task,fold,seed,layer_name,module_path,activation_shape,P_path_rank,mapping_sha256,max_abs_reconstruction
+EEGNet,OpenBMI_MI,0,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",4,fac38897a18bdcdd898243e64913753830b56e5caff84b4fa4df9236ed8a4054,1.9073486328125e-06
+EEGNet,OpenBMI_MI,0,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",4,7dbc21a8fa8a28ed4f2c759e5e5f970c4e6b9d0b40dffc98dee5c04f97a36982,9.5367431640625e-07
+EEGNet,OpenBMI_MI,0,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",4,0c99232d51140f6f733f2f4768c6b4b974d6bc6cdb15ffa259afe7f950e6317e,4.76837158203125e-07
+EEGNet,OpenBMI_MI,0,0,embedding_64d,model.embedding,[64],4,163fa9d25b5368b6772d9a92a058f64e19a79fcaddecc37278c84902bd9f4e0a,2.384185791015625e-07
+EEGNet,OpenBMI_MI,0,0,classifier_input,frozen native head input,[64],4,7f650917e314bd09db680611a1eddcd953e2ee421a090585b663169a54d68e9d,2.384185791015625e-07
+EEGNet,OpenBMI_MI,1,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",3,14a23506ec16ba9c77c0de76e17d7535f640378c2e6c613fac38a2deaf9ad888,9.5367431640625e-07
+EEGNet,OpenBMI_MI,1,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",3,7999e5744e6f0c8d35bc2d3161dcb6605d21c3770a0e3bf7a3e57073a3e4da37,4.76837158203125e-07
+EEGNet,OpenBMI_MI,1,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",3,a58fb9ad2e2a1e475ee418cbb6f0d9915130387dc24956c9e997c231efcd7f7d,4.76837158203125e-07
+EEGNet,OpenBMI_MI,1,0,embedding_64d,model.embedding,[64],3,2c9fade4336b46eaefc2902723415b40977fb79adcbfa1299948368a7c8975f2,2.384185791015625e-07
+EEGNet,OpenBMI_MI,1,0,classifier_input,frozen native head input,[64],3,122b2167003ccf57af5101b76effc31bb742b5d74b9c5acd22c66055d9c947c5,2.384185791015625e-07
+EEGNet,OpenBMI_MI,2,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",4,0865835f71ed203ba8e597a979c3b906c4f8c00dfc7b73b93a34105f8aed561e,1.9073486328125e-06
+EEGNet,OpenBMI_MI,2,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",4,01aa0018f23dea29ecc750934543599c822f17fff0da3abfb649ff32cda8ef5a,9.5367431640625e-07
+EEGNet,OpenBMI_MI,2,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",4,95f7d697d5393f755b2fbc0fd1695a4f0a9555bcdb23b2aa93ec4501cbffc863,2.384185791015625e-07
+EEGNet,OpenBMI_MI,2,0,embedding_64d,model.embedding,[64],4,a9471947b87ed37e5796db53dae81edea9bcc7aadd4868d7e9060c72d13ae133,2.384185791015625e-07
+EEGNet,OpenBMI_MI,2,0,classifier_input,frozen native head input,[64],4,d5942f928c0f5da34c1ca13a6eae3ebbdd514c8949c1548c946144dd61ddc6c0,2.384185791015625e-07
+EEGNet,OpenBMI_MI,3,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",8,b6ffa589e2e2debac89a2577ed86e5be0540dd029160015103f5369c2cbf1b77,1.9073486328125e-06
+EEGNet,OpenBMI_MI,3,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",8,60f9f51532cd4ac80201238f6a993094601edc678a27da2fb7ada6a8c16fc1d7,9.5367431640625e-07
+EEGNet,OpenBMI_MI,3,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",8,9ec173525a24a8b263e88a08e54be5a2a14afa2a9f18b9b37397e4d79619e0b0,4.76837158203125e-07
+EEGNet,OpenBMI_MI,3,0,embedding_64d,model.embedding,[64],8,663d4c05efa3a02d791a6ab80f837aeccdf351eddfe8f4216f76677c06432f84,2.384185791015625e-07
+EEGNet,OpenBMI_MI,3,0,classifier_input,frozen native head input,[64],8,c1550e9956f91a822662f0f5272bb081969230542e423fdc70788a2ed6602e92,4.76837158203125e-07
+EEGNet,OpenBMI_MI,4,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",5,5592ea68bc8eb012230d720116ba185ff610a4c9c50d13e1218ab0f1b618753d,1.9073486328125e-06
+EEGNet,OpenBMI_MI,4,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",5,23d6fb7541bd43f7ff287c4a4d95b8144ff3952de60bac3c5a60dc27c3f1fea5,9.5367431640625e-07
+EEGNet,OpenBMI_MI,4,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",5,c9afa8db3d29e29e3800f7628353a2cb91e6251eb2f5add9bea6f2dbd0c03068,4.76837158203125e-07
+EEGNet,OpenBMI_MI,4,0,embedding_64d,model.embedding,[64],5,4b74b7112d72ab21ace74b28bec228f9abae8b267303d6018bf3c7828a003234,2.384185791015625e-07
+EEGNet,OpenBMI_MI,4,0,classifier_input,frozen native head input,[64],5,998a36d91e9e44f877aa0648fdb054c597e9d1486919a91f4a56828f59e2b381,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,0,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",4,dcaa1ae41e5f74a4cf264ab5356fecf09e2e69b1ea54b46a5382f71cd9691a74,1.9073486328125e-06
+EEGNet,OpenBMI_SSVEP,0,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",4,b3b4c374f60d95668a42066818a4af93cbb0a6068a0767bc6cbd91c249dd0f5d,4.76837158203125e-07
+EEGNet,OpenBMI_SSVEP,0,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",4,cd9b8d79037bb306502187ae3b0d8c9c1e5dbd2b06d22314a5874d762d353b80,1.1920928955078125e-07
+EEGNet,OpenBMI_SSVEP,0,0,embedding_64d,model.embedding,[64],4,a3ce2616de9c20fbb9235de6c2f840ceb2cac588a9093508fe626fa9ddec1a00,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,0,0,classifier_input,frozen native head input,[64],4,217330a72ee520c4943a41ef360f7956bbea3609554365217a16747581ad3ac2,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,1,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",8,42d562550af80d2f2b613bf69b8be9891be8a36d5eca804e3bf0739940ffb850,9.5367431640625e-07
+EEGNet,OpenBMI_SSVEP,1,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",8,f6683ff60776afd1eee940f0fe242259c0822196324213cc1d9f59ce80824b0e,4.76837158203125e-07
+EEGNet,OpenBMI_SSVEP,1,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",8,488359644271ee3e9f3e78a7d91fd6b813fa9cdedd7e3dcd7d569905f00744f0,1.1920928955078125e-07
+EEGNet,OpenBMI_SSVEP,1,0,embedding_64d,model.embedding,[64],8,1f7d2cbdea125382732c9833cb96df4fa3aa35dcda15644992949ce62e50ee8e,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,1,0,classifier_input,frozen native head input,[64],8,a8688838c9b2cf7204379f6e15a846570a45034014070f279fd0e89bad4b4382,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,2,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",4,e3d15b7bf6e0acff7dd571d3df41bb4ee13d2b212079959026e0a68896adcdf9,9.5367431640625e-07
+EEGNet,OpenBMI_SSVEP,2,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",4,640d3842ce113895901233d2e93b5096bd1c0901aca382aadecfcc1b7d184a55,9.5367431640625e-07
+EEGNet,OpenBMI_SSVEP,2,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",4,860e1eed0e73582b447a9a4809e3ba2f4dcd2c1400a24bd16b14517a3f248dba,5.960464477539063e-08
+EEGNet,OpenBMI_SSVEP,2,0,embedding_64d,model.embedding,[64],4,7479bf882ef55fe84970b981aad9bc94488958e14db4cab0340b7cfd11be1423,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,2,0,classifier_input,frozen native head input,[64],4,881ac55ab40ff4584c5bcf835d0d0d81224ee4fdd4d4b1af3ae366c358ba539b,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,3,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",8,131d930de402b007b8d5e4b056b7ce5f2a5fbb70202b4c7596c0905e1ea06fb3,9.5367431640625e-07
+EEGNet,OpenBMI_SSVEP,3,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",8,fbdaa114778e44fb43038db87f6ff274a2ef40aa2ef704c91a9d73e1d67ba2b9,4.76837158203125e-07
+EEGNet,OpenBMI_SSVEP,3,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",8,b3dea59e782a91bb5ec6598d698507d3a30f801482b3f0f0b3c07ad858aea749,1.1920928955078125e-07
+EEGNet,OpenBMI_SSVEP,3,0,embedding_64d,model.embedding,[64],8,47216971e667860a4550c1233898b2d3173ab70ee4cedfa10b0f1b6ccfee14a2,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,3,0,classifier_input,frozen native head input,[64],8,33dbaa587cca44d6911df32b2bc08df4e7101ebc1089884e89801f5f5dee5f67,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,4,0,temporal_bn,model.temporal -> model.bn1,"[8, 62, 1000]",8,f55826d69864fba83634e0ffc0b95333d785a1a851dc27894f4ea16c508306f3,9.5367431640625e-07
+EEGNet,OpenBMI_SSVEP,4,0,spatial_elu_pool1,model.spatial -> model.bn2 -> elu -> model.pool1 -> model.drop1,"[16, 1, 250]",8,621e2d988addfdedfa17307bbf9de768cb08c943cd287077237366519a944389,4.76837158203125e-07
+EEGNet,OpenBMI_SSVEP,4,0,depth_point_elu_pool2,model.depth -> model.point -> model.bn3 -> elu -> model.pool2 -> model.drop2,"[16, 1, 31]",8,a40de619e855405c1d2a9eeaa87df5b6d262d07061b2593c97142a39f3a66881,1.1920928955078125e-07
+EEGNet,OpenBMI_SSVEP,4,0,embedding_64d,model.embedding,[64],8,dd5ca9f43edfcf19723e85b0dff2354170399ba30a224cc77061f9e1d4d37a73,2.384185791015625e-07
+EEGNet,OpenBMI_SSVEP,4,0,classifier_input,frozen native head input,[64],8,a81ccf66aa27c6d8787c0b7ef189434fd4113c21cbb09ea468d7544132e7b09f,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,0,0,patch_tokenizer,model.patch,"[61, 40]",7,6581301296eb8cb448b5ad8743b6a2572463dd472e7554da3574ae6db62e7b2a,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,0,0,conformer_block2,model.encoder[1],"[61, 40]",7,18d19f20613b4af94099d32ac54f7b141db914e85754e798b0902bb8b237a77c,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,0,0,conformer_block4,model.encoder[3],"[61, 40]",7,5bb4108fdcf3de04a2f57795838890bec470cb53af07310de86a522ef463f5eb,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,0,0,conformer_block6,model.encoder[5],"[61, 40]",7,87a0685ef6f59d4655ca2865ff88f555e5ec012462d508089eba2f73cd59d4d2,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,0,0,classifier_256_elu,model.classifier[0:2],[256],7,c9fe33d8479b1ae4e185c926e5c5b23707851d1fa61591a8e1b3840943bf7abe,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,0,0,classifier_32_elu,model.classifier[2:5],[32],7,152c6b69a1057809b384da6733d63c86cc42532f00cbfaddc3b032d676235d56,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,0,0,classifier_input,model.classifier[5] -> frozen native head input,[32],7,c57b0b58a6ba86ec7c78ca69c546fd1220f9ad7c5d623ef35cc57527a46d28b5,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,1,0,patch_tokenizer,model.patch,"[61, 40]",5,af63890b612ad7ae5ff9f6ed982b317b4f568f89900d176f034c49cb10a99131,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,1,0,conformer_block2,model.encoder[1],"[61, 40]",5,3b8ef70adbcf570e385083ed6452384dae83f3074e37302ec5016e3b83645bd6,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,1,0,conformer_block4,model.encoder[3],"[61, 40]",5,27e7a1ca630254a20e51e00090b75f99f295c41739b701f77279d96d7ddd2747,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,1,0,conformer_block6,model.encoder[5],"[61, 40]",5,0b4fdf59d53887ca06e2a0649156eaf2a2308067c3d0c92e511a7465549aa557,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,1,0,classifier_256_elu,model.classifier[0:2],[256],5,9c03c7cc5b544c2c06d81de0710d23a2bee456c1a0ea485edc60e000df7c6426,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,1,0,classifier_32_elu,model.classifier[2:5],[32],5,a3181e8572826d34206733e7f26be9020c134239ec960d84083cd97dd7771af2,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,1,0,classifier_input,model.classifier[5] -> frozen native head input,[32],5,15bc2b41b4a35759d9becc35af56e97bea66ea5b19e7d50b1b9c3f895d2fe8ba,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,2,0,patch_tokenizer,model.patch,"[61, 40]",5,61a5a792857ebce890f75f42afa31e7c2768c5e402ed162b14cd868065ba344d,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,2,0,conformer_block2,model.encoder[1],"[61, 40]",5,8c327e6911ebc538442ecad7a213304c83327137ac572e30999ce5d147a5ac25,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,2,0,conformer_block4,model.encoder[3],"[61, 40]",5,820c93c456ceee02891edd58696c469232e68c581c39dbfb97a7474e3edcc04c,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,2,0,conformer_block6,model.encoder[5],"[61, 40]",5,00bc98645d07e9c832ed6cf04de287f12cd654693cd61478ea4806183a7639c8,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,2,0,classifier_256_elu,model.classifier[0:2],[256],5,79199ccf58e677a02f50da77b0fc9c61727c2caa745d33c693ef56ec49bfea51,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,2,0,classifier_32_elu,model.classifier[2:5],[32],5,3cf4a966ba299e1f912a23a90ce497fe89fc6a9da40bfd4a0825967686f1fd8a,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,2,0,classifier_input,model.classifier[5] -> frozen native head input,[32],5,0ffe8bbdc6a14e7d49ae8e44f23fb45ffafb1fd1c87ad405e5dd11d49455c525,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,3,0,patch_tokenizer,model.patch,"[61, 40]",8,d9a191cdd172af5f7bdf59714ec1a492854a2ff348c8aedbe92225a1d88bd332,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,3,0,conformer_block2,model.encoder[1],"[61, 40]",8,f416285edb97b7923e232d9e9f8685cae982106fdfdf3f0360ec7a4481dc3054,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,3,0,conformer_block4,model.encoder[3],"[61, 40]",8,5226f28eea1538584879eed4307d9b5f90050197873413e43342e75db952a278,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,3,0,conformer_block6,model.encoder[5],"[61, 40]",8,5620149a7f197d7a300c8f7b0fa7b0e8e5aa0cd4adb6932752060ce260736641,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,3,0,classifier_256_elu,model.classifier[0:2],[256],8,e69ba01fc667ea939c4c33febf9b68ff60af8e2860bd007ca02ffd5e4f88cb5b,9.5367431640625e-07
+EEGConformer,OpenBMI_MI,3,0,classifier_32_elu,model.classifier[2:5],[32],8,a9f325ee9b364c5325f2d6402cfed488553f38a8e01a301fad2dbbb5c1ed8b87,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,3,0,classifier_input,model.classifier[5] -> frozen native head input,[32],8,e146c73ab6f34260108a61988a519b7f619bd77d5a7ee2ad2afaaa061940168c,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,4,0,patch_tokenizer,model.patch,"[61, 40]",8,1b98fe22059ad9cbc0d0ed1678399a3b5322d4106ae65410ffad546480da66fe,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,4,0,conformer_block2,model.encoder[1],"[61, 40]",8,e38dc648a601db1161b6ecbf7500ce07507db02c60c12ae6a3b2dc6db2f1faf1,2.384185791015625e-07
+EEGConformer,OpenBMI_MI,4,0,conformer_block4,model.encoder[3],"[61, 40]",8,d0a3b4d54c8c352cc4def39dfeb9b6492a1f3e1d2de957d0c824eaeaae0781e7,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,4,0,conformer_block6,model.encoder[5],"[61, 40]",8,c23ab52793d26e628a2954e5f9c018da9d0427bad8438a0d3f67f8bb0738e189,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,4,0,classifier_256_elu,model.classifier[0:2],[256],8,256f5b65f9c50fa1b88ceababd4c6479c46807819ac875bf4e7ca1c05517ad53,9.5367431640625e-07
+EEGConformer,OpenBMI_MI,4,0,classifier_32_elu,model.classifier[2:5],[32],8,827ad400ea3795f403844589119353ea73684ba690ea4838a37f9ddfbc279a00,4.76837158203125e-07
+EEGConformer,OpenBMI_MI,4,0,classifier_input,model.classifier[5] -> frozen native head input,[32],8,9ffc4c177f367407fffc94a6b6f50bf4f5aa2f6400253c3fa6308809cceae241,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,0,0,patch_tokenizer,model.patch,"[61, 40]",4,1c32ac76479fedd0c68bd2e9e1ea5c2571e67bbfe3585b4f08ca3bc8166da1ad,1.1920928955078125e-07
+EEGConformer,OpenBMI_SSVEP,0,0,conformer_block2,model.encoder[1],"[61, 40]",4,1fe50b15fc8a2aa904c3f82ece0da1b4143e1e8eb2fb92f49cdfcccb7d3999f6,2.384185791015625e-07
+EEGConformer,OpenBMI_SSVEP,0,0,conformer_block4,model.encoder[3],"[61, 40]",4,364783202641e753674577f6417a90be948ac84099f6d8c541fbb5bc85d64eae,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,0,0,conformer_block6,model.encoder[5],"[61, 40]",4,e2c0ef8a9dfa8dfe74a3a6e01dcb6ce281313feab705c25de3df973fb083d452,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,0,0,classifier_256_elu,model.classifier[0:2],[256],4,e695d3418c0500937e25071b10e813a66e42fbb819668066404aba7988dbb31b,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,0,0,classifier_32_elu,model.classifier[2:5],[32],4,b2cf69fe652b812a70cfc776d462c13a897ec53e56c91af7bcd63f1ec75240dc,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,0,0,classifier_input,model.classifier[5] -> frozen native head input,[32],4,15e1f115cf26f946e9b06be8bdc324fc10e8327b6016dda2a9bc5ec83437baa4,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,1,0,patch_tokenizer,model.patch,"[61, 40]",6,5e24d1a537ed849e902c8e8392059984dccee5b2b6718223301fd8abc0b57ef6,1.1920928955078125e-07
+EEGConformer,OpenBMI_SSVEP,1,0,conformer_block2,model.encoder[1],"[61, 40]",6,032e7007324f62a5f68ee32aa80756c1e0a4714dfa9d2fc34ef76c1b879dd1dd,2.384185791015625e-07
+EEGConformer,OpenBMI_SSVEP,1,0,conformer_block4,model.encoder[3],"[61, 40]",6,c1ce4a7af11e7c2c6d7774f5ba00d37d5fae787b158c5acef056484eef22e115,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,1,0,conformer_block6,model.encoder[5],"[61, 40]",6,f82ea304982596c1817fdc4d00477ef582a5f3c552a749e039d86807551905cb,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,1,0,classifier_256_elu,model.classifier[0:2],[256],6,5b6386c65c3c2f957466aacf6ba2f200ce53d1f5bf38e21463d4451e881d925c,9.5367431640625e-07
+EEGConformer,OpenBMI_SSVEP,1,0,classifier_32_elu,model.classifier[2:5],[32],6,6b2664cfdcec63e723584c4e2fdca8b5019629c0d966390f2b34df0de3a34ebe,9.5367431640625e-07
+EEGConformer,OpenBMI_SSVEP,1,0,classifier_input,model.classifier[5] -> frozen native head input,[32],6,9644f237bc70a5664f3b46930d58a92d7f600b138fb68e700477121c2d5c32e0,9.5367431640625e-07
+EEGConformer,OpenBMI_SSVEP,2,0,patch_tokenizer,model.patch,"[61, 40]",4,6e9f6914d03b561c3b631c33027d55a2bcf9e82069b9979a5189997db33a92b3,2.384185791015625e-07
+EEGConformer,OpenBMI_SSVEP,2,0,conformer_block2,model.encoder[1],"[61, 40]",4,37e6fe3a405257a60e00b590167353f2bcc1a055ff8c6552cdee45036c30e4e9,2.384185791015625e-07
+EEGConformer,OpenBMI_SSVEP,2,0,conformer_block4,model.encoder[3],"[61, 40]",4,ee780c15be1ffafd85c7530a64d46c29c126d2fa4e3e164ed1b9eeedef9b4c4b,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,2,0,conformer_block6,model.encoder[5],"[61, 40]",4,a9b944af846963c78242847c7b51dc1f4bcf8d8968f53b7910be8d0bcaef9385,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,2,0,classifier_256_elu,model.classifier[0:2],[256],4,dd3dfc8948be7f2a8fe025ad8d131950a4e73b3db0f38987e868bb115711c7be,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,2,0,classifier_32_elu,model.classifier[2:5],[32],4,fb87c41b1778a89dfae240b214ecf95761fa79746c88540243c2e6a5a25917bf,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,2,0,classifier_input,model.classifier[5] -> frozen native head input,[32],4,054ce80d1beb6790c97e359396a3d475b7d25b1136a586d1ba725ec1c363cfa8,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,3,0,patch_tokenizer,model.patch,"[61, 40]",8,5eac5a6e07bf383e0bd8134f2c8a220996c98f223bc2e2ee970e16fbc67975aa,1.1920928955078125e-07
+EEGConformer,OpenBMI_SSVEP,3,0,conformer_block2,model.encoder[1],"[61, 40]",8,3f918c98acd4c8f93e95049d4ddee2a533b87cf064e9fd5b156f79beaefd3a0e,2.384185791015625e-07
+EEGConformer,OpenBMI_SSVEP,3,0,conformer_block4,model.encoder[3],"[61, 40]",8,00f1d262d5dc73e43eb78b40a2fa0078bf9adc7c81d2720266d633d7cebf856e,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,3,0,conformer_block6,model.encoder[5],"[61, 40]",8,f79478f95dbe7c0a8459243a564c4bdf989d247426939ef3498458a75fc3733b,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,3,0,classifier_256_elu,model.classifier[0:2],[256],8,3f4e349efae4401263c5aa80c0ea56f341aed16b07e5b0a7c7c46d1cadfaa655,9.5367431640625e-07
+EEGConformer,OpenBMI_SSVEP,3,0,classifier_32_elu,model.classifier[2:5],[32],8,498d6543b2891f06470a034ba6c9971e0160e074d2020df663e53e62d61ab161,9.5367431640625e-07
+EEGConformer,OpenBMI_SSVEP,3,0,classifier_input,model.classifier[5] -> frozen native head input,[32],8,e1643809b4689ebd22d8763a49116e4da0be4c818721ffa514aeaacfdfddec9c,9.5367431640625e-07
+EEGConformer,OpenBMI_SSVEP,4,0,patch_tokenizer,model.patch,"[61, 40]",4,4b5cf8168addbde261930cae3f3f46bb0bec6ca8ca619af76a17af98c182ccb1,1.1920928955078125e-07
+EEGConformer,OpenBMI_SSVEP,4,0,conformer_block2,model.encoder[1],"[61, 40]",4,4ee19906fe095550e9f2b280e0c0be2e6f3cfeb22c1086e3ddc93df33167fe38,2.384185791015625e-07
+EEGConformer,OpenBMI_SSVEP,4,0,conformer_block4,model.encoder[3],"[61, 40]",4,c404c95b1a2a66e1a8bae827abe1ff7cf0a14413a33b9e55d14901af34d2c191,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,4,0,conformer_block6,model.encoder[5],"[61, 40]",4,e709070eddb3cea781569b5870c8db1aff49db2a891be6bbc35f05dce88b31ce,4.76837158203125e-07
+EEGConformer,OpenBMI_SSVEP,4,0,classifier_256_elu,model.classifier[0:2],[256],4,69a345e979c43cfef8f90bec523429c32e3ff4d4ae66b4f7d85efa0840bcd366,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,4,0,classifier_32_elu,model.classifier[2:5],[32],4,9d966badfdf1569f36cb2bacd48fcfabb91ada462d3f0b4d714b5f574e8af813,1.9073486328125e-06
+EEGConformer,OpenBMI_SSVEP,4,0,classifier_input,model.classifier[5] -> frozen native head input,[32],4,5eca6d9c9aa432b5e7d1b0ac2ace8fb72570a274d3acbbbafb410e6278554a7c,1.9073486328125e-06
