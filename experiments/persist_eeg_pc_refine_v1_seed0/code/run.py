@@ -890,6 +890,17 @@ def aggregate() -> None:
                                   "difference": d, "CI95_low": lo, "CI95_high": hi, "bootstrap_draws": 20000, "unit": "biological subject"})
         for p in parts: p.close()
     csv_write(OUTPUT / "HELDOUT_SUBJECT_RESULTS.csv", subject_rows)
+    session_rows = []
+    for task in TASKS:
+        for session in ((0,1,2) if task == "WBCIC_MI" else (1,2)):
+            for variant in VARIANTS:
+                group = [r for r in subject_rows if r["task"] == task and r["session"] == f"S{session}" and r["variant"] == variant]
+                expected = 10 if task == "WBCIC_MI" else 14
+                if len(group) != expected: raise RuntimeError("session summary subject count mismatch")
+                session_rows.append({"task": task, "session": f"S{session}", "variant": variant,
+                                     "subjects": expected, **{metric: float(np.mean([r[metric] for r in group]))
+                                                            for metric in ("BA", "macro_F1", "NLL")}})
+    csv_write(OUTPUT / "HELDOUT_SESSION_SUMMARY.csv", session_rows)
     csv_write(OUTPUT / "HELDOUT_MODEL_TASK_SUMMARY.csv", summary_rows)
     csv_write(OUTPUT / "PAIRED_HELDOUT_CONTRASTS.csv", contrasts)
     csv_write(OUTPUT / "HELDOUT_RESCUE_HARM.csv", rescue)
@@ -906,6 +917,16 @@ def aggregate() -> None:
               "| Task | Metric | Difference | 95% CI |", "| --- | --- | ---: | ---: |"]
     for row in contrasts:
         lines.append(f"| {row['task']} | {row['metric']} | {row['difference']:+.4f} | [{row['CI95_low']:+.4f}, {row['CI95_high']:+.4f}] |")
+    lines += ["", "## Physical-session subject-equal BA", "",
+              "OpenBMI physical S1/S2; WBCIC physical S0/S1/S2 corresponds to paper S1/S2/S3.", "",
+              "| Task | Session | Baseline BA | Protected-PC BA |", "| --- | --- | ---: | ---: |"]
+    by_session = {(r["task"], r["session"], r["variant"]): r for r in session_rows}
+    for task in TASKS:
+        for session in ((0,1,2) if task == "WBCIC_MI" else (1,2)):
+            label = f"S{session}"
+            b = by_session[task, label, "BASELINE"]["BA"]
+            p = by_session[task, label, "PROTECTED_PC_REFINE"]["BA"]
+            lines.append(f"| {task} | {label} | {b:.4f} | {p:.4f} |")
     gains = [summary[task, "PROTECTED_PC_REFINE"]["BA"] - summary[task, "BASELINE"]["BA"] for task in TASKS]
     lines += ["", "## Interpretation", "", f"Protected-PC has a positive heldout BA difference on {sum(x > 0 for x in gains)}/4 tasks.",
               "The user narrowed this run to the modified model and its matched seed-0 baseline. This comparison cannot isolate a mechanism-specific gain from a generic adapter effect.",
