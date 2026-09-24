@@ -1,0 +1,57 @@
+{
+  "cell_count": 5,
+  "cells": [
+    {
+      "bytes": 1423044,
+      "directory": "eegnet_openbmi_ssvep_fold0_seed0",
+      "file_count": 12,
+      "fold": 0,
+      "provenance_sha256": "dff2284c10dfc075bd6cad93c35143912949f2fddacb29000043a66a5c814135",
+      "validated_output_files": 10
+    },
+    {
+      "bytes": 1434560,
+      "directory": "eegnet_openbmi_ssvep_fold1_seed0",
+      "file_count": 12,
+      "fold": 1,
+      "provenance_sha256": "8c45b6436f630e15932b2bc609bd79f1ba32b4285bbf7c628577a8c87bb34bf5",
+      "validated_output_files": 10
+    },
+    {
+      "bytes": 1384682,
+      "directory": "eegnet_openbmi_ssvep_fold2_seed0",
+      "file_count": 12,
+      "fold": 2,
+      "provenance_sha256": "fae59d02a81fefc57ea0531f7909877496cce091e238faa02babb5feae1ced4d",
+      "validated_output_files": 10
+    },
+    {
+      "bytes": 1395529,
+      "directory": "eegnet_openbmi_ssvep_fold3_seed0",
+      "file_count": 12,
+      "fold": 3,
+      "provenance_sha256": "1af6a40244ee1c9d017e55f3fcdc7ed08a4d29f6ad42e960039e5dcd62fba5ad",
+      "validated_output_files": 10
+    },
+    {
+      "bytes": 1429153,
+      "directory": "eegnet_openbmi_ssvep_fold4_seed0",
+      "file_count": 12,
+      "fold": 4,
+      "provenance_sha256": "5d31ff981b2005a5e2a71ee8f967f7149bb60773f5912ad26b354087f0b3c622",
+      "validated_output_files": 10
+    }
+  ],
+  "checks": [
+    "exact compact file inventory",
+    "all provenance-declared output SHA-256 digests",
+    "all provenance-declared CSV row counts",
+    "report SHA-256 digest",
+    "cell identity and compact-preview status",
+    "final-heldout exclusion and no outer-outcome selection"
+  ],
+  "final_heldout_accessed": false,
+  "outer_used_for_selection": false,
+  "scope": "EEGNet/OpenBMI_SSVEP folds 0-4, seed 0; compact previews only",
+  "status": "PASS"
+}
