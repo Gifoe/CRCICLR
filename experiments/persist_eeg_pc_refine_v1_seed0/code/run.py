@@ -730,7 +730,11 @@ def final_lock() -> None:
             if cell["status"] != "COMPLETE": raise RuntimeError(f"refit incomplete: {task}/{fold}: {cell['status']}")
             for variant, expected in cell["checkpoints"].items():
                 if sha(directory / f"{variant}.pt") != expected: raise RuntimeError("refit checkpoint hash mismatch")
-            rows.append(cell)
+            stored = np.load(directory / "bases.npz", allow_pickle=False)
+            for key, expected in cell["basis_hashes"].items():
+                if arr_sha(stored[key]) != expected: raise RuntimeError(f"refit basis hash mismatch: {task}/{fold}/{key}")
+            stored.close()
+            rows.append({**cell, "bases_npz_sha256": sha(directory / "bases.npz")})
     compile_preheldout_audits()
     code = Path(__file__)
     manifest = json.loads((REPO / "experiments" / "persist_eeg_final_heldout_confirmation_v1" / "protocol" / "FINAL_HOLDOUT_MANIFEST.json").read_text(encoding="utf-8"))
@@ -770,6 +774,13 @@ def check_final_lock() -> dict[str, Any]:
         raise RuntimeError("contingent exploratory plan changed after final lock")
     for p, expected in lock["evaluator_source_hashes"].items():
         if sha(REPO / p) != expected: raise RuntimeError("evaluator changed after final lock")
+    for cell in lock["cells"]:
+        directory = cell_dir(cell["task"], cell["fold"], "refit")
+        if sha(directory / "bases.npz") != cell["bases_npz_sha256"]:
+            raise RuntimeError("refit basis file changed after final lock")
+        for variant, expected in cell["checkpoints"].items():
+            if sha(directory / f"{variant}.pt") != expected:
+                raise RuntimeError("refit checkpoint changed after final lock")
     return lock
 
 

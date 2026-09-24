@@ -22,6 +22,14 @@ No checkpoint, selected epoch, projector, PCA basis, or discovery result from
 that run is eligible for the corrected V1 analysis. All cells must be rerun
 with alpha 1.0 before final lock or heldout access.
 
+The first alpha-1.0 protocol lock SHA256 was
+`c82ac9aff5eb591a4cb3868040fce6fd99982b57ad33221d356f738864967c76`.
+While corrected training was running, final-lock verification was strengthened
+to hash and recheck the stored basis file and both refit checkpoints. This
+changes no model, training, discovery, or evaluator computation. The first
+alpha-1.0 lock is preserved as `PROTOCOL_LOCK_CORRECTED_INITIAL.json`;
+the active lock is regenerated from the strengthened source before heldout.
+
 The following training and model AST hashes stayed identical between the
 first two-variant source and the source before this PathFit correction.
 Only `projector` changes in the corrected source:
