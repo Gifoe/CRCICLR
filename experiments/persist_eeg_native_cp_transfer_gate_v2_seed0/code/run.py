@@ -111,10 +111,9 @@ class Gate(nn.Module):
         self.use_tau = use_tau
         self.lnp = nn.LayerNorm(rs, elementwise_affine=False)
         self.lnt = nn.LayerNorm(rd, elementwise_affine=False)
-        self.w1 = nn.Linear(rs + (rd if use_tau else 0), 8)
-        self.w2 = nn.Linear(8, rd)
+        self.w1 = nn.Linear(rs + (rd if use_tau else 0), 8, bias=False)
+        self.w2 = nn.Linear(8, rd, bias=False)
         nn.init.zeros_(self.w2.weight)
-        nn.init.zeros_(self.w2.bias)
 
     def forward(self, p, tau):
         u = torch.cat((self.lnp(p), self.lnt(tau)), dim=1) if self.use_tau else self.lnp(p)
@@ -408,7 +407,7 @@ def consolidate():
                            16*base["channels"]*base["samples"] + f0_macs +
                            successor*64 + 64*base["classes"])
             for variant in VARIANTS:
-                gateparams=0 if variant=="BASELINE" else (rs+(0 if variant=="P_ONLY_TRANSFER_GATE" else rd))*8+8+8*rd+rd
+                gateparams=0 if variant=="BASELINE" else (rs+(0 if variant=="P_ONLY_TRANSFER_GATE" else rd))*8+8*rd
                 inputmac=0 if variant=="BASELINE" else spatial*rs+successor*rd+successor*rd+8*(rs+(0 if variant=="P_ONLY_TRANSFER_GATE" else rd))+8*rd+successor*rd
                 efficiency.append({"task":task,"fold":fold,"variant":variant,"baseline_params":nbase,
                                    "trainable_params":gateparams,"total_params":nbase+gateparams,
