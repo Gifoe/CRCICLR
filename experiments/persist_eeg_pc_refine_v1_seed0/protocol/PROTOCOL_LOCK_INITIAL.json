@@ -1,0 +1,66 @@
+{
+  "BN_running_statistics": "frozen",
+  "context_dim": 16,
+  "created_utc": "2026-09-24T09:26:07Z",
+  "discovery_selection": "subject-equal BA then NLL then earlier epoch",
+  "final_heldout_accessed": false,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "insertion": "spatial_elu_pool1_after_drop1",
+  "interaction_dim": 8,
+  "phase1": {
+    "epochs": 20,
+    "lr": 0.0003
+  },
+  "phase2": {
+    "adapter_lr": 0.0001,
+    "epochs": 10,
+    "suffix_lr": 1e-05
+  },
+  "schema": "PC_REFINE_EEGNET_V1_SEED0",
+  "seed": 0,
+  "source_code_sha256": "962da577a0143de33fc01d18123407aee0502b04ee7ca9e2144d9e61a481f47c",
+  "source_refs": [
+    {
+      "exists": true,
+      "path": "experiments/persist_eeg_canonical_eegnet_baseline"
+    },
+    {
+      "exists": true,
+      "path": "experiments/persist_eeg_baseline_metrics_closure_v1"
+    },
+    {
+      "exists": true,
+      "path": "experiments/persist_eeg_openbmi_task_generality_v1"
+    },
+    {
+      "exists": true,
+      "path": "experiments/persist_eeg_seven_backbone_fourtask_3seed_v1"
+    },
+    {
+      "exists": true,
+      "path": "experiments/persist_eeg_crossbackbone_peeh_v1"
+    },
+    {
+      "exists": true,
+      "path": "experiments/persist_eeg_protected_complement_coupling_seed0_v1"
+    }
+  ],
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "trust_lambda": 0.0001,
+  "variants": [
+    "BASELINE",
+    "PROTECTED_PC_REFINE"
+  ],
+  "weight_decay": 0.0005
+}

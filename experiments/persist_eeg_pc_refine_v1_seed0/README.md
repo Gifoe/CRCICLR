@@ -23,3 +23,10 @@ exploratory and does not alter the locked V1 result.
 Large checkpoints and trial predictions are stored in `PC_REFINE_RUNTIME` and
 are deliberately excluded from Git. The compact audit and report files are
 written to this experiment's `outputs` directory.
+
+The completed results and their interpretation are in
+`RESULTS_INTERPRETATION.md`, `outputs/FINAL_REPORT.md`, and
+`outputs/exploratory_random/EXPLORATORY_RANDOM_REPORT.md`. The locked
+aggregation failed on differing fold-specific Protected ranks; the
+post-heldout technical recovery and its exploratory status are documented
+in `protocol/POST_HELDOUT_AGGREGATION_RECOVERY.md`.

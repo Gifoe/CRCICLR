@@ -1,0 +1,20 @@
+{
+  "eligible_tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "epoch_schedule": "reuse corresponding Protected-PC discovery-selected phase1/phase2 epochs; no random-control outcome selection",
+  "gains": {
+    "OpenBMI_ERP": -0.002077922077922123,
+    "OpenBMI_MI": 0.002142857142857113,
+    "OpenBMI_SSVEP": 0.0014285714285714457,
+    "WBCIC_MI": 0.020999999999999908
+  },
+  "phase": "EXPLORATORY_POST_HELDOUT",
+  "primary_final_lock_sha256": "24d01984d82288f0771644d5437e4540bad9c9b74632bd027bf918815fd338c7",
+  "primary_result_sha256": "de618d1b307668e585ead132a38f06e0792b3813d81fa25ae9cce490cd0a59c4",
+  "random_bases_prelocked": true,
+  "source_sha256": "8791ea4c4835645de3004a8db0c51a6a0a3698c186d20e58e6a646cd47ac8a82",
+  "trigger": "per-task primary heldout BA point difference > 0"
+}

@@ -1,0 +1,112 @@
+{
+  "only_metric_formula_change": "top3 correction-energy share is calculated within each fold then averaged across folds",
+  "original_code_sha256": "e4d265ca9e79d79e93a46ed175b974ae197b7dff30c9654481e3644002e4e342",
+  "original_final_eval_lock_sha256": "24d01984d82288f0771644d5437e4540bad9c9b74632bd027bf918815fd338c7",
+  "prediction_cells": [
+    {
+      "fold": 0,
+      "sha256": "2bae082a151878ae7d892b6c8ed32385f5c2005952c3d350041fe8f78bb57e73",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 1,
+      "sha256": "81116e7315964fd147542536a8ff9aaab75282b9f6e77a7def348a9f1f37753d",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 2,
+      "sha256": "8747263a1eb9680c032afa9ec9fa3dae3ef7f92b9069390f2d77a575a4de2dfe",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 3,
+      "sha256": "dda514092c85c57207ce6c085657a8224d36f47324837d7146eab9fc94877d27",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 4,
+      "sha256": "00f583c9e276a9335a4aa205ef9187a43fa8835ada4c73999b9273c0895c85a2",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 0,
+      "sha256": "4fbde4ef986b2e69888b9633f2014597d95da51278f08d49287d33c33aa69a97",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 1,
+      "sha256": "cd686e1e10983b7fdfe4c2e2046415c271b38a9fefa6b1975d3b164ac2915fa5",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 2,
+      "sha256": "56acc85f6517e0e38993db1ff938f1d815daf5d42899040e7514a2264f30bb7a",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 3,
+      "sha256": "fc2ac914d6b7433ab14f0c37f2ad2600e45533235a9943424a7ac39216afab17",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 4,
+      "sha256": "ed31d6f492d51a47a0fdae9a51fbd8bb44e4ee9c8fd64274a96a2ec653efe81d",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "fold": 0,
+      "sha256": "46a7a4a30dc1e61378f3e03ed2e89ce6932edbdeef84122252aab396ac2de2ad",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 1,
+      "sha256": "c9c4b4774ed50ac0ce90454611c9b91258f6be12d36c9ffdb8aac78fa4ae4780",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 2,
+      "sha256": "81138dce5586484eba77dcfec9ade4d198da03708965ce7304e11991753d7e5e",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 3,
+      "sha256": "5326254dcdb06f01938ce6f2b34909c495b5ae25ce65f613dd5419844c9183a0",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 4,
+      "sha256": "76b787adc21e8d9b210d1663d63016470319ed171856f761f7aa79eec9e99b73",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 0,
+      "sha256": "e5fe2b5503ff43f3a857f5d1f2ce1034a1a8f6250c5eba15be95f53896f39a4d",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 1,
+      "sha256": "58f226b6bef99a2d2ed25861fad39d74cee080488be72f175da13fddf5e78b43",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 2,
+      "sha256": "24eab4afbe0abdacf12c6d8d667821c0c266a49ed89a0fc04a03e46cd54fd411",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 3,
+      "sha256": "535f205619c3599b01d8fa467e2aa11576445d3d19be782bb83b88c2d3792b69",
+      "task": "WBCIC_MI"
+    },
+    {
+      "fold": 4,
+      "sha256": "9bc1af839164096c6df8827fab92620579add9d6e94737f47929efd14bfaded1",
+      "task": "WBCIC_MI"
+    }
+  ],
+  "primary_BA_F1_NLL_formulas": "byte-for-byte unchanged from locked run.py aggregate",
+  "reason": "Original aggregate failed on ragged fold-specific Protected rank vectors.",
+  "recovery_code_sha256": "31184ba16f3662160febf9248ea607a675f110c5b311f357c4c31b42799c5ea9",
+  "schema": "PC_REFINE_V1_POST_HELDOUT_TECHNICAL_RECOVERY",
+  "status": "EXPLORATORY_POST_HELDOUT"
+}
