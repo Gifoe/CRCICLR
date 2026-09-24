@@ -5,6 +5,9 @@ EEGNet checkpoint recipe, TRAIN-only PERSIST Protected discovery, and the
 formal OpenBMI 14-subject / WBCIC true-outer 10-subject final evaluator. Per the
 user's narrowed scope, it trains only PROTECTED_PC_REFINE and the matched
 canonical seed-0 baseline needed to measure its heldout gain.
+The intermediate pathway projector uses the audited PathFit ridge alpha 1.0.
+The earlier alpha-0.01 training run was archived before heldout access and
+is excluded from this experiment's results; see the protocol amendment.
 
 Run `python code/run.py preflight`, `python code/run.py discover --task TASK --fold F`,
 `python code/run.py refit --task TASK --fold F`, `python code/run.py lock`,

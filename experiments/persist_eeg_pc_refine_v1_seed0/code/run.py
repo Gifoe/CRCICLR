@@ -228,7 +228,7 @@ def projector(centroid_a: np.ndarray, targets: np.ndarray) -> tuple[np.ndarray, 
     y = torch.from_numpy(np.ascontiguousarray(targets.astype(np.float32))).to(DEVICE)
     with torch.inference_mode():
         k = x @ x.T / max(x.shape[1], 1)
-        a = torch.linalg.solve(k + 0.01 * torch.eye(len(x), device=DEVICE), y)
+        a = torch.linalg.solve(k + 1.0 * torch.eye(len(x), device=DEVICE), y)
         b = (x.T @ a / max(x.shape[1], 1)).cpu().numpy().astype(np.float32)
     u, s, _ = np.linalg.svd(b, full_matrices=False)
     rank = max(1, int((s > max(float(s[0]) * 1e-6, 1e-8)).sum()))
@@ -515,7 +515,8 @@ def protocol_lock() -> None:
              "variants": VARIANTS, "insertion": "spatial_elu_pool1_after_drop1", "context_dim": 16, "interaction_dim": 8,
              "contingent_random_followup": "run only for tasks with positive primary final-heldout BA point difference; exploratory post-heldout; use prelocked random basis and Protected-PC selected epoch budgets",
              "phase1": {"epochs": 20, "lr": 3e-4}, "phase2": {"epochs": 10, "adapter_lr": 1e-4, "suffix_lr": 1e-5},
-             "weight_decay": 5e-4, "trust_lambda": 1e-4, "BN_running_statistics": "frozen",
+             "weight_decay": 5e-4, "trust_lambda": 1e-4, "pathway_ridge_alpha": 1.0,
+             "BN_running_statistics": "frozen",
              "discovery_selection": "subject-equal BA then NLL then earlier epoch", "final_heldout_accessed": False,
              "source_refs": [{"path": str(x.relative_to(REPO)), "exists": x.is_dir()} for x in refs],
              "source_code_sha256": sha(Path(__file__)), "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
@@ -744,7 +745,8 @@ def final_lock() -> None:
                                    "protected": "single post-drop1 spatial_elu_pool1 PCAdapter; dC=16, dI=8, zero-initialized W_o; suffix Phase2"},
              "hyperparameters": {"phase1_epochs_max":20,"phase2_epochs_max":10,"phase1_adapter_lr":3e-4,
                                   "phase2_adapter_lr":1e-4,"phase2_suffix_lr":1e-5,"weight_decay":5e-4,
-                                  "trust_lambda":1e-4,"batch_size":128,"BN_running_stats":"frozen"},
+                                  "trust_lambda":1e-4,"batch_size":128,"pathway_ridge_alpha":1.0,
+                                  "BN_running_stats":"frozen"},
              "protocol_lock_sha256": sha(PROTOCOL / "PROTOCOL_LOCK.json"), "cells": rows,
              "evaluator": "same canonical task cache loader; five-fold probability mean per biological subject/session/trial; subject-equal BA, Macro-F1, NLL, worst-session BA",
              "evaluator_source_hashes": {str(p.relative_to(REPO)): sha(p) for p in (SEVEN_CODE / "tech_recipe_selection.py", SEVEN_CODE / "backbone_models.py", REPO / "experiments" / "persist_eeg_baseline_metrics_closure_v1" / "code" / "run_frozen_sessions.py")},
