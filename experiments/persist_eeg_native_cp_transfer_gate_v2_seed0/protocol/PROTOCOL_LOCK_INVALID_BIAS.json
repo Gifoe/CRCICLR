@@ -1,0 +1,53 @@
+{
+  "baseline": "V1 verified canonical seed0 anchor for discovery; verified canonical V1 refit baseline for final",
+  "code_sha256": "191d9118d9b11d360cbbb8aab2e06d8cd14c3e6af49044961ab203c58ae3013a",
+  "created_utc": "2026-09-24T16:42:12Z",
+  "final": "five-fold probability mean; biological-subject equal metrics; 20000 paired bootstrap draws",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gate": {
+    "activation": "GELU",
+    "hidden_dim": 8,
+    "layer_norm_affine": false,
+    "output_zero_init": true,
+    "range": [
+      0.5,
+      1.5
+    ],
+    "trainable": "W1 and W2 only"
+  },
+  "heldout_accessed": false,
+  "pathway_ridge_alpha": 1.0,
+  "random": "seeded Gaussian QR; exactly rank matched; one draw per cell/stage",
+  "schema": "NATIVE_CP_TRANSFER_GATE_V2_SEED0",
+  "seed": 0,
+  "tasks": [
+    "OpenBMI_MI",
+    "OpenBMI_ERP",
+    "OpenBMI_SSVEP",
+    "WBCIC_MI"
+  ],
+  "training": {
+    "batch_order": "same within task/fold/phase/epoch across all gate variants",
+    "batch_size": 128,
+    "epochs_max": 20,
+    "lr": 0.0003,
+    "optimizer": "AdamW",
+    "selection": "subject equal BA, lower NLL, earlier epoch",
+    "trust_lambda": 0.001,
+    "weight_decay": 0.0005
+  },
+  "v1_utility_sha256": "e4d265ca9e79d79e93a46ed175b974ae197b7dff30c9654481e3644002e4e342",
+  "variants": [
+    "BASELINE",
+    "P_ONLY_TRANSFER_GATE",
+    "RANDOM_TRANSFER_GATE",
+    "PROTECTED_NATIVE_TRANSFER_GATE"
+  ],
+  "zone": "spatial_elu_pool1_after_drop1 -> depth_point_elu_pool2_after_drop2"
+}

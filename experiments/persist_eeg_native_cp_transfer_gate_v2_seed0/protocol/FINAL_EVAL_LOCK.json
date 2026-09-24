@@ -1,0 +1,505 @@
+{
+  "cells": [
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_mi/fold0_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "47709dfb51a71085a30b7e7c3a0630e03f6ede2f81148988f3d383328568ffb4",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "66b53e3eeb5218d369569519031cd4e6ad524d2db55e9337d90f9034adc15b9b",
+        "P_ONLY_TRANSFER_GATE": "a1cde4488c6ca6879b8f76a679dd2ccee8c1e653d7abadee2b2ffc1fb31418a2",
+        "RANDOM_TRANSFER_GATE": "5f5cff3bad07398c7b81232b1f04ae18b1218ebc2b6277746136faf1cf11f13d"
+      },
+      "fold": 0,
+      "normalizer_sha256": "5e6306dbc2e8312ef83f45bd12a1869931bac421b978b0251f8c3ad4b23d45a0",
+      "projector_hash": "e1b489736ecb9141e3743639c7e63cf77310fd354d9430977120f0113d1197f4",
+      "projectors_sha256": "1dc03085c936ec05e370fc57a7a4c5be767c1d20d1634db1dbe8a1e0fd45481c",
+      "random_projector_hash": "4d4ca62e8ed423ac12819d28db0bf3ce7ed44b80b5db3e45c745722c8809fec2",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 15,
+        "P_ONLY_TRANSFER_GATE": 8,
+        "RANDOM_TRANSFER_GATE": 20
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_mi/fold1_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "66ea1044181e5e8a816b87f0f93e011e0613233e1de9e8bd12c74e9d791e6cf2",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "ab9e1ddebf7c1e1bdf5c6c9400cb33d44b03d7686375e10424db638303756f3e",
+        "P_ONLY_TRANSFER_GATE": "06b8317e44e1025c176d2576c05f301ab3c1fdc080d3056cf2f6339f7a3779db",
+        "RANDOM_TRANSFER_GATE": "d98b0bb81a37deba40b5b37882abb0a3edb15e3466dbfe04f5885ec13936304e"
+      },
+      "fold": 1,
+      "normalizer_sha256": "5e6306dbc2e8312ef83f45bd12a1869931bac421b978b0251f8c3ad4b23d45a0",
+      "projector_hash": "d66d573471291b1e349e9ff4b27dbd33615e8ab46882cd6eb226a85534507b18",
+      "projectors_sha256": "45b7faf6bbd87647b850c72a88f7df60b95110bb64b172e64c80c6d958963429",
+      "random_projector_hash": "1982e95f44e905138cf0dcdffdf8a34b5e8929cb18456352b541d9141194cd21",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 12,
+        "P_ONLY_TRANSFER_GATE": 20,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_mi/fold2_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "af96aa26aded8340c30684808373828e8759e2dbec11fc7afc3e5993695a6eb3",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "5da21b93031b65f0633e1739b7d2ea8059cd8348a1afd58f41950bb41331bb1f",
+        "P_ONLY_TRANSFER_GATE": "14681d28ece8c5f53e081f2b4a98ec256b643056884b381f33611d0082f53976",
+        "RANDOM_TRANSFER_GATE": "60894f9c55bb5d70439ea8387be60e9a994bdb37bb9761b1293a17796f90f181"
+      },
+      "fold": 2,
+      "normalizer_sha256": "5e6306dbc2e8312ef83f45bd12a1869931bac421b978b0251f8c3ad4b23d45a0",
+      "projector_hash": "de694da5e719443d56ce9e927db55f7122c88a17455649e6499e92241467addf",
+      "projectors_sha256": "736ba6faace94216aca122b80a79c40b44da50795220881775ec1e9c8926647f",
+      "random_projector_hash": "257830b490df3628d5ef44811a2e89d65e2921cbc6d343386440577ae20b2756",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 11,
+        "P_ONLY_TRANSFER_GATE": 1,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_mi/fold3_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "ae1255135750f076b6e3d0b710a93efda6f09b1f42c861015121cac1750e36ca",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "84759692c4416c298dd0847be1475bbe42387dffa8fb9de18ce663f044e65611",
+        "P_ONLY_TRANSFER_GATE": "bea43a659c040ee83a30fffbb62556d9f9e0058075d2e21b5793861ad495d1d5",
+        "RANDOM_TRANSFER_GATE": "0b54b736fe0f77d28f472e8af840f1c6cafcc195c3ce5eb56f930c9d03e28d94"
+      },
+      "fold": 3,
+      "normalizer_sha256": "5e6306dbc2e8312ef83f45bd12a1869931bac421b978b0251f8c3ad4b23d45a0",
+      "projector_hash": "06840f5f514d78435fa860065040eea5b5d1fcb8d52e443b3724eca0d9f74ab4",
+      "projectors_sha256": "df594f6c291256a0a4419127f8995084b84ecd8b2508ed41409515b26714c4f2",
+      "random_projector_hash": "f959dc2f1b7524cbe9c4effb95d2c3fc2b79b9da7f291848c235ed180181ad2f",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 1,
+        "P_ONLY_TRANSFER_GATE": 1,
+        "RANDOM_TRANSFER_GATE": 20
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_mi/fold4_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "1e46394f1dcbc7e7a7c1499d8c1135dba41a35016ae3f8d92014b40754f3d026",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "a1f66fbf3f48a8f5d7981ccde2caa3eae2a06e1a72de4c51b36ebaf3ee47014a",
+        "P_ONLY_TRANSFER_GATE": "8a2fcbd5c9c431a3359eaf01a3cb90045a78a44a36566b54313eeec177cfdcb7",
+        "RANDOM_TRANSFER_GATE": "caada4a8352ae4deeaab6c03aea43024aafa03303214dd69d468dca1e137679f"
+      },
+      "fold": 4,
+      "normalizer_sha256": "5e6306dbc2e8312ef83f45bd12a1869931bac421b978b0251f8c3ad4b23d45a0",
+      "projector_hash": "b9a9ff10081680e080861b3c6f222c0fe12e4f63d3630c463dad0d4636c49b35",
+      "projectors_sha256": "bc64efef2fc1a20d5a0a7aaaf3d1cebd32dc96b553507e6b90816895a35de77f",
+      "random_projector_hash": "f4eb3c614b91977959d67ccff026725c74c59b852a8bc5de4e413b188421ff10",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 3,
+        "P_ONLY_TRANSFER_GATE": 18,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_erp/fold0_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "164f7400819ad4b7b5a1bbd44ad9eb47042e0f30f53196ebc14b840931b0e484",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "f3b6f78cecefcf2a4374068b5201a6134073f17a3693630cc72c05dcb17f32cb",
+        "P_ONLY_TRANSFER_GATE": "1fffcc9809dfe67285c62d2d0c49cccfe448ff94393e76fc6e026c8c067bb410",
+        "RANDOM_TRANSFER_GATE": "5d05d63f99b8648ab415961559363ebec170ecdcfe94db5af908da1833d6689e"
+      },
+      "fold": 0,
+      "normalizer_sha256": "fc5aff80215fb7db0a65f54647ced36cdd76a0bfe86e10afea7dc630212b6d21",
+      "projector_hash": "8bde2267bd0605bb25014e15ef66b84e3b60b624f9bfb88b25f2348582be6f4c",
+      "projectors_sha256": "87129ef0d13126b8b3026a06034e64ae4b258c918ef9b29419af29f03958f241",
+      "random_projector_hash": "60d0de444ff9fd3c7331fac1155e7f538376bf774f47e1bd424c7164af6c73ea",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 13,
+        "P_ONLY_TRANSFER_GATE": 5,
+        "RANDOM_TRANSFER_GATE": 20
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_erp/fold1_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "6a25cc1fee3e0ae5e124aa6b01eb1b558cfb8836220453742bffcd84b7ec2a28",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "464661cf988dbb3c01dc5a1085ca30aa5d0fe94ffc99a57fe9c24c8a54497ce4",
+        "P_ONLY_TRANSFER_GATE": "1b856f445ad7c8d6c7f62b89b809f69e7a01374502835989a509dcd3d97463df",
+        "RANDOM_TRANSFER_GATE": "418181490af470cecd24b0ca3dbc8e2da98881841e605fcbfb28e2723ad98dc8"
+      },
+      "fold": 1,
+      "normalizer_sha256": "fc5aff80215fb7db0a65f54647ced36cdd76a0bfe86e10afea7dc630212b6d21",
+      "projector_hash": "858112f208eb7520f03a1bec53e2758fe23b854ea4c6b41c2725d0b8478af5ef",
+      "projectors_sha256": "e3c3445d3db9696e88b2df94c871e9bdbbf31ae144d6515c5b0f0333b8874c69",
+      "random_projector_hash": "ba3f52cdd2ca7621e29b40db8f5c672c5a2e9a8f38c51f560bff40157654a719",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 15,
+        "P_ONLY_TRANSFER_GATE": 17,
+        "RANDOM_TRANSFER_GATE": 6
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_erp/fold2_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "cca30fd67ed2da428172cfff14c4f818100f177dda473b80c6a66301968bbe51",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "ab43eb7a01b72512d4e7a54a69a03ccb7b7b004bcb516c6b796626d5c5249747",
+        "P_ONLY_TRANSFER_GATE": "28ce1ec6ccdf9d68a1cbd23c813f9191beeb8bf1d30ec3a8d4528609b967d832",
+        "RANDOM_TRANSFER_GATE": "8a6ff29815ba97f0e637f6f19381fb9b5af70980b233b417d129a81bc8fbd7ac"
+      },
+      "fold": 2,
+      "normalizer_sha256": "fc5aff80215fb7db0a65f54647ced36cdd76a0bfe86e10afea7dc630212b6d21",
+      "projector_hash": "72c629d1b6e39c4f8a9ceb6bcbc553debf87f52422d8793e8f3955d38151ae91",
+      "projectors_sha256": "1890536d01dcc32ae9547a1bc7a3b772fc82912694975474c8cd707c98aeba74",
+      "random_projector_hash": "4e6612ad36ad0f426e97a4e1bf4d171ece14ac5b5573c9e54c0b83788b0e7ae4",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 1,
+        "P_ONLY_TRANSFER_GATE": 2,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_erp/fold3_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "0f3865e08dee1a280adb5667eb1dd2ffd7e21646d90dfdaf9ce9bbcca7e9336b",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "f51af7553ab5cf8e272a1f13ed475f35c76b3502e1d33ce69912654bc1c2f32c",
+        "P_ONLY_TRANSFER_GATE": "aaeb3833b44a370094b011dd55fd2cbf5df48fd50f73e3dc54ea3a2d7fe43a28",
+        "RANDOM_TRANSFER_GATE": "0b3345724e540245f2a743fb520f45d991a9605fd8c59d2939e69d9959fcfd3b"
+      },
+      "fold": 3,
+      "normalizer_sha256": "fc5aff80215fb7db0a65f54647ced36cdd76a0bfe86e10afea7dc630212b6d21",
+      "projector_hash": "e60b3231af545541abab2f922d3dee88aea7ba93990a8eb2bab009158da6b876",
+      "projectors_sha256": "85d9f6237c67c7044a9ba863d9ab11b3ce6991ca43b35450ee9b45c6e193ce9d",
+      "random_projector_hash": "470b509c8da7586b6f11a3a903fe922447c1ba686c196e9cfe38a7d2d9e466c3",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 20,
+        "P_ONLY_TRANSFER_GATE": 13,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_erp/fold4_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "2cba89d35f5d16980c40599f6498a2d72d3e91a0b774bfc0331ba9bf24f4babe",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "36c31e81c01b3a07598bdd16ad9cbb4efa28947219754cee47fe93206716c45e",
+        "P_ONLY_TRANSFER_GATE": "6e9e2c1742ec0f5553a8818bbf4b7ff9721e5e0e954c52d7429a996a9f0aaabb",
+        "RANDOM_TRANSFER_GATE": "1090e52da00add75b5ed61256d988c1ed59b4aaa1046b719f4cd8b6e10905abd"
+      },
+      "fold": 4,
+      "normalizer_sha256": "fc5aff80215fb7db0a65f54647ced36cdd76a0bfe86e10afea7dc630212b6d21",
+      "projector_hash": "531add4a388ab73da4c4757fc47f8bc1aeb881853c997159c94ba07704a967ea",
+      "projectors_sha256": "157be1bb73cd55f11011f298c7aad852b43129e6c53e90d62e9bf924c4991f1f",
+      "random_projector_hash": "b8e1de935ecb2b984f1e0075b74134910cdf95f8cbe77ed0e95c13da5a663d80",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 2,
+        "P_ONLY_TRANSFER_GATE": 2,
+        "RANDOM_TRANSFER_GATE": 7
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_ssvep/fold0_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "55b8f8500aaa58a88b28cf3eec42a4c3748f806e30c8e28850ba4601ee109f87",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "6b1164270cee18b53fb2a8563eeec9552286c523dd4fdaf25cc9fac91fa97f2c",
+        "P_ONLY_TRANSFER_GATE": "28b05db724f5cf0923c2c4a069b59240999b26f1dbf42b5437c5dcec070cfa01",
+        "RANDOM_TRANSFER_GATE": "6a92e1a782754445677420866a0f334ed5a1d589d3abf1cf58e8ac0493b10849"
+      },
+      "fold": 0,
+      "normalizer_sha256": "5ed87f71ae1fa3a51e5eb5df140aca6515d3ba9857c0e8056ad6b40dc41091b9",
+      "projector_hash": "dc50d75af42c95e0051ed8e8f322c4454e61a9269ac722f8815ab0c60aa6c9c8",
+      "projectors_sha256": "045c60264af5d35a7fb3025607882a4f7aebce2fad6f973831772b601640164d",
+      "random_projector_hash": "8c2eb2c109d970f6325b2c06319b48a6de0ef49db254eaa49c3ef7f00356691c",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 1,
+        "P_ONLY_TRANSFER_GATE": 1,
+        "RANDOM_TRANSFER_GATE": 9
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_ssvep/fold1_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "bca5bb3f5549d4211dca2f25ef14b621797788aa35ce1bfef11765161c5c7713",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "f5e89d0f269001b912cf68f9835f71d6e42f0b4ae7fb94cf094642dee2bbe499",
+        "P_ONLY_TRANSFER_GATE": "86d77415f91e059763ddf5066040ae7504af86b911ef72516c27e276ba64e0d8",
+        "RANDOM_TRANSFER_GATE": "3ac8c5d6d87c4c90644b05b3f8a8df7c88dbf9752ce2b27e39872d217e8790eb"
+      },
+      "fold": 1,
+      "normalizer_sha256": "5ed87f71ae1fa3a51e5eb5df140aca6515d3ba9857c0e8056ad6b40dc41091b9",
+      "projector_hash": "0899d2aa3d8e3d3af1def7f36a126e208bf96677d99b46f0ab6690af8ac85ad7",
+      "projectors_sha256": "f5b6b53440f256820847e2f754b27a3e1d53ff516706b21c5666a1b8ff8d2827",
+      "random_projector_hash": "ee95d7c2161c68b0611be37c26179424803db87c16b3846319392ea59b1bfe15",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 3,
+        "P_ONLY_TRANSFER_GATE": 4,
+        "RANDOM_TRANSFER_GATE": 11
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_ssvep/fold2_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "52cd045b98af2e78e7a39d7806b257b8becc8dc185dd900428aa141fc4f821e5",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "669f3fba43b1e551eca40e8ad2f600460e83efb6290c47da13b7796c5ba8092f",
+        "P_ONLY_TRANSFER_GATE": "91a8310fd33c53f6910c5dcddad70cea34cc6abb1731380d10b0134a4939fc9d",
+        "RANDOM_TRANSFER_GATE": "f46f9eceaddf3253bf551d4547acc65d044b223faebb75a724fe999c8060afb9"
+      },
+      "fold": 2,
+      "normalizer_sha256": "5ed87f71ae1fa3a51e5eb5df140aca6515d3ba9857c0e8056ad6b40dc41091b9",
+      "projector_hash": "757e4173a1f79a50f87b87f150bfd5410936d87f681c0a97bc0e5400e882287d",
+      "projectors_sha256": "999673d316eeedfd4cf8b40e81392f5583248c9f6c4f3bd99047b827916f21c6",
+      "random_projector_hash": "bac91cd02102c56ebf04683ae5b57901f59fe7a80fbb8de6da74ef86645f6b4f",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 1,
+        "P_ONLY_TRANSFER_GATE": 1,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_ssvep/fold3_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "2faccade8bf51c0f7f5c879d472afb65a70c46012f68cf967a0eaf440b5b03c4",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "1fe729776b8e6e3e2dd194ff55222d0de9b5a613ac7434390baa9cbdfe04b78e",
+        "P_ONLY_TRANSFER_GATE": "64f0becce83ae53cd09114a2b2ae93c8b3d05d1c175a3dfbcd8b15c1d8e1b3bd",
+        "RANDOM_TRANSFER_GATE": "0896db6c8966a0e7907a91f56c63849c60d05a5c48bc0bcb679332cf0ddef3d8"
+      },
+      "fold": 3,
+      "normalizer_sha256": "5ed87f71ae1fa3a51e5eb5df140aca6515d3ba9857c0e8056ad6b40dc41091b9",
+      "projector_hash": "e47fc85b4c557bf6838a5535402093bc5b5459634d965ebf71810a1f845d9f3f",
+      "projectors_sha256": "dd1f114f7e1bbf4fcf859297944d7ff6e6a75b1b558dab8efceb1b2aa8e9343d",
+      "random_projector_hash": "07784bb790ae38eb3ab3f2d0e31291be20b2ec5891ffa99c72cb8b704cf61f31",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 20,
+        "P_ONLY_TRANSFER_GATE": 17,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/openbmi_ssvep/fold4_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "9dc53eb27e3301247b5981c9abf320af49bc9f7e4533c5b0b7bd20e3b4d7516f",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "63440d5232e487947d419972d1f673e116950d182ebfdd9c92bfef8fcabd20be",
+        "P_ONLY_TRANSFER_GATE": "0839221397dd4cd77244c3641ba9bc307c7828de512a653660a93b51b48b4b02",
+        "RANDOM_TRANSFER_GATE": "1a080af4d1931e10d69178310d648cea2b1fe8bfbea3a84ba9c5a40c4257f6ea"
+      },
+      "fold": 4,
+      "normalizer_sha256": "5ed87f71ae1fa3a51e5eb5df140aca6515d3ba9857c0e8056ad6b40dc41091b9",
+      "projector_hash": "e9068c2497a183a3acdf14ba18d318f27c2f1398a9b746ee826a479e915200ec",
+      "projectors_sha256": "55544598c768d6b1ef5740901f72c1445a50f71d212e6e3d453243db8932984f",
+      "random_projector_hash": "355a101f67a8af460acbad8a9e7533232832c10c61b09d253dd3c3ad5c3f7f92",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 7,
+        "P_ONLY_TRANSFER_GATE": 3,
+        "RANDOM_TRANSFER_GATE": 16
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/wbcic_mi/fold0_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "247dd8a58b75cc18a8ecc0b9ba428a2c8249ec6870936d905f007fb295dc6ac9",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "af18b817743d2fe8f1405a71c26d5d28c795c383201b6095da09b5f936a0194e",
+        "P_ONLY_TRANSFER_GATE": "2b8b16af288b765555bb7dd0d3e43aba64681501ec662cf10224ce84b9430c5d",
+        "RANDOM_TRANSFER_GATE": "06d439a133463cef589cec02bffdf353c722bf5cce3a9d70051d4deed3124601"
+      },
+      "fold": 0,
+      "normalizer_sha256": "f34355e70e0bdcdaabd8b523270393711301dd4c95d5d8bd805396d6ceafbb4d",
+      "projector_hash": "5ea549892458bdc28ed015eceb5d9511adda31e5b6f05b82401c5485f613be00",
+      "projectors_sha256": "a4572cea3d3f9ce784bcbb566ff880d39cc94dcbd98a7f5a31f03ff92e3cc28c",
+      "random_projector_hash": "ff8cefa9240f1b5c8ab39c36682aed32ec56026a086fa07183aa4d28a7702944",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 12,
+        "P_ONLY_TRANSFER_GATE": 13,
+        "RANDOM_TRANSFER_GATE": 14
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "WBCIC_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/wbcic_mi/fold1_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "3010f93cb42cf4a000902b489d64847bfbd500a4c1c8e323d2d676daa2a6873b",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "a8838bc7976f147205e21e74c42a08f52b8176006f6b03bf860f471a8c40ec5e",
+        "P_ONLY_TRANSFER_GATE": "bbc69463559e0bcce4989f34ea48e6d7d34179957b5cf980d066890ded68206a",
+        "RANDOM_TRANSFER_GATE": "972473bc93099a1f3d7e68478a6a5ff719a530da8dc32f1dad75a86cce3216e7"
+      },
+      "fold": 1,
+      "normalizer_sha256": "f34355e70e0bdcdaabd8b523270393711301dd4c95d5d8bd805396d6ceafbb4d",
+      "projector_hash": "c4679bcd2e27529cff9d96be96a926a6981cb32f46b5ef00ce857e99c51871cb",
+      "projectors_sha256": "099bd68df4445df21acefdce614e6ce98601834eea590357bb89705e6c19c6f6",
+      "random_projector_hash": "110a4a85c466f09fbce50c99ca6690eb8b16b8b2c2c45eb1dae3c929a2333472",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 20,
+        "P_ONLY_TRANSFER_GATE": 13,
+        "RANDOM_TRANSFER_GATE": 2
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "WBCIC_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/wbcic_mi/fold2_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "518a587bb83d50ea78a526601d9bd3708011e364513e6d76502c8e567871d0f6",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "9de3f1be0b115b4d92de68eb92ac61e5b1d8a07e78b28a29e4d6c34edc95a52d",
+        "P_ONLY_TRANSFER_GATE": "616cb8368a4d1e2a7156c7494879fb3f0345d670a6001dd137257d30682c816c",
+        "RANDOM_TRANSFER_GATE": "a04c8d434476a0b5d3f1c378b9fad1015aab6ae4ca8e5fb501f5b3111e394950"
+      },
+      "fold": 2,
+      "normalizer_sha256": "f34355e70e0bdcdaabd8b523270393711301dd4c95d5d8bd805396d6ceafbb4d",
+      "projector_hash": "ea80d74857e716cb4bc4c67b5307a225902b64c3630e868e7fdaa06092ca9a97",
+      "projectors_sha256": "e387de6621ae17d3321df9f56b4b98d55cbb44023a16a5c05426b91badeef86d",
+      "random_projector_hash": "172d34904daccbb6a0432b354bc423b0cbbab4ea6f3a5d36b6d8801860f514c8",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 1,
+        "P_ONLY_TRANSFER_GATE": 1,
+        "RANDOM_TRANSFER_GATE": 15
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "WBCIC_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/wbcic_mi/fold3_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "00b6659d18cb209f8032d0b964bae77c3195caa71a309307065277473625a60d",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "f8f90b70959c81f27bca0224f0b4976450b0c9e9ec8a5de3941521364e3a5e86",
+        "P_ONLY_TRANSFER_GATE": "08787f0e3caba4ddacdcfffba042047503e7190a880984c0b5100549f8f3fd77",
+        "RANDOM_TRANSFER_GATE": "ac21e2954b8bb5ef739c327807434beaf3766507dc55be099758c580074f245f"
+      },
+      "fold": 3,
+      "normalizer_sha256": "f34355e70e0bdcdaabd8b523270393711301dd4c95d5d8bd805396d6ceafbb4d",
+      "projector_hash": "f5c39d515ddbd69cbb9c9658daeb720d8846a4806fbb99acb665af250a9f0c5d",
+      "projectors_sha256": "bc7f0077f71b3117817bc043b98b980fa958b75bd2beedf27faaadaa8c8de26c",
+      "random_projector_hash": "4c529c046cb8db8502ff7dc6b992e1df4cceb52751a09d5517ee65b7e87bf4cb",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 11,
+        "P_ONLY_TRANSFER_GATE": 16,
+        "RANDOM_TRANSFER_GATE": 20
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "WBCIC_MI"
+    },
+    {
+      "baseline_checkpoint": "/root/rivermind-data/pc_refine_v1_runtime/refit/wbcic_mi/fold4_seed0/BASELINE.pt",
+      "checkpoints": {
+        "BASELINE": "0d8a3866740181818ca42035181ed42f51b69a6788ed953dc029102b2bfd22de",
+        "PROTECTED_NATIVE_TRANSFER_GATE": "7cb95f106480d7d7ca30f37762e348a5cf76b4d103f622e1e29eea5167abd922",
+        "P_ONLY_TRANSFER_GATE": "fde92038318bc959c04ee862115b19360669bf333de716b5b9d1a51d27498b44",
+        "RANDOM_TRANSFER_GATE": "2c3bc792323bacdee6541bdfe9a0b3bccec582ee3b3ba72d1148ed9196c54874"
+      },
+      "fold": 4,
+      "normalizer_sha256": "f34355e70e0bdcdaabd8b523270393711301dd4c95d5d8bd805396d6ceafbb4d",
+      "projector_hash": "e9391752f9013636e4a9748e0400c2ece9a8832099b3e4de3142f91e2a12e03f",
+      "projectors_sha256": "45d1eb2bd040dd08afb59f718a3c068a3a968025485e5fa4b3ea109f4d0fe69c",
+      "random_projector_hash": "5eba6e9938eebec899799fe0a2cba1b719ad2e7a30d744bf241685b83e32f528",
+      "selected_epochs": {
+        "PROTECTED_NATIVE_TRANSFER_GATE": 1,
+        "P_ONLY_TRANSFER_GATE": 1,
+        "RANDOM_TRANSFER_GATE": 1
+      },
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "status": "COMPLETE",
+      "task": "WBCIC_MI"
+    }
+  ],
+  "code_sha256": "83bf9f9db71edfba4e91d04ad26e0be5779109221f9edd1d0a36461f06ab1c91",
+  "created_utc": "2026-09-24T17:08:45Z",
+  "dependency_hashes": {
+    "experiments/persist_eeg_baseline_metrics_closure_v1/code/run_frozen_sessions.py": "f5049e3d838850b77b81f1918bd335cb3c188b9e300dadf4aafdf07e6429f4c2",
+    "experiments/persist_eeg_crossbackbone_peeh_v1/code/run_crossbackbone_peeh.py": "6dd2f5d6677a9847bfadb6ec4d200d3d5b76d2560c814f0e73265c30ec273d12",
+    "experiments/persist_eeg_openbmi_task_generality_v1/code/task_datasets.py": "1c06a54b2a4f4bccb1682ed8b4f9d7d617f4b7da0708ba85d158c9daaab500c3",
+    "experiments/persist_eeg_outcome_blind_modern_backbone_seed0_v1/code/modern_common.py": "1cc258c30fa5a238f93a7679d4612676113bf6a09a796fd6965ff3cc2c3885a2",
+    "experiments/persist_eeg_pc_refine_v1_seed0/code/run.py": "e4d265ca9e79d79e93a46ed175b974ae197b7dff30c9654481e3644002e4e342",
+    "experiments/persist_eeg_seven_backbone_fourtask_3seed_v1/code/backbone_models.py": "bec59448f4a02503e40f962a6823448af04159c37a6836015d2f47d62370a208",
+    "experiments/persist_eeg_seven_backbone_fourtask_3seed_v1/code/tech_recipe_selection.py": "aa6f32b401b3649f7dd5d7474e16b5fa101a77401142bf1c8bb2f9eebc669ba6"
+  },
+  "heldout_subjects": {
+    "OpenBMI": [
+      "4",
+      "12",
+      "13",
+      "17",
+      "18",
+      "24",
+      "25",
+      "29",
+      "36",
+      "37",
+      "39",
+      "42",
+      "51",
+      "54"
+    ],
+    "WBCIC_true_outer": [
+      "sub-4",
+      "sub-8",
+      "sub-10",
+      "sub-15",
+      "sub-20",
+      "sub-39",
+      "sub-40",
+      "sub-43",
+      "sub-46",
+      "sub-51"
+    ]
+  },
+  "hyperparameters": {
+    "batch_order": "same within task/fold/phase/epoch across all gate variants",
+    "batch_size": 128,
+    "epochs_max": 20,
+    "lr": 0.0003,
+    "optimizer": "AdamW",
+    "selection": "subject equal BA, lower NLL, earlier epoch",
+    "trust_lambda": 0.001,
+    "weight_decay": 0.0005
+  },
+  "metric_definitions": {
+    "NLL": "subject equal future S2",
+    "bootstrap": "20000 paired biological subject resamples",
+    "macro_F1": "subject equal future S2",
+    "primary": "future physical S2 subject equal BA after five-fold probability mean",
+    "worst_session_BA": "subject equal minimum per physical session"
+  },
+  "protocol_sha256": "cce2fc309fc05a8752566be302e4ac8c9710da0186715051a9158df40b93662e",
+  "schema": "NATIVE_CP_TRANSFER_GATE_V2_FINAL_EVAL_LOCK",
+  "source_commit": "959829ad4e30d3ea2bda82a2988bbc0bf7c5facb"
+}
