@@ -1,0 +1,41 @@
+{
+  "BN_running_state_byte_identical": true,
+  "P_C_reconstruction_max_abs": 1.9073486328125e-06,
+  "alpha_one_native_identity": {
+    "logits_max_abs": 0.0,
+    "prediction_exact": true,
+    "raw_suffix_batch_roundoff_max_abs": 2.384185791015625e-07,
+    "representation_max_abs": 0.0,
+    "successor_C_reconstruction_max_abs": 2.3672797011542457e-07
+  },
+  "batch_audit": {
+    "batches_per_epoch": 82,
+    "duplicates_per_epoch": 0,
+    "min_rescue_batches": 8,
+    "orders_sha256": "47ae416c3d972a3bc8961bedbf505dc02b61968562b470d5d36384169b5c4091",
+    "rescue_count_per_epoch": 8,
+    "sample_exposures_per_epoch": 5200
+  },
+  "batch_order_sha256": "47ae416c3d972a3bc8961bedbf505dc02b61968562b470d5d36384169b5c4091",
+  "changed_state_names": [
+    "depth1.weight",
+    "point1.weight"
+  ],
+  "discovery_array_reads": 0,
+  "epoch0_C_drift": 4.765274177578669e-08,
+  "epoch0_P_drift": 1.0943760597771101e-07,
+  "fold": 0,
+  "geometry_sha256": "b7047a4320b8188114b61af3141276b0ce5b9ae75a10496179fc3dda8e7803ac",
+  "gradient_names": [
+    "depth1.weight",
+    "point1.weight"
+  ],
+  "minimum_movement_selection_deterministic": true,
+  "native_correct_preserved": true,
+  "native_wrong_in_smoke": 32,
+  "rescue_targets_in_smoke": 8,
+  "rescue_targets_prediction_correct": true,
+  "role": "inner_train_only",
+  "status": "PASS",
+  "teacher_indexed_trials": 64
+}
