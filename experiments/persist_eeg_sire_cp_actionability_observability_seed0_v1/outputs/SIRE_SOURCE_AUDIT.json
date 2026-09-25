@@ -1,0 +1,201 @@
+{
+  "architecture_sha256": "5500cc2aa64289e16cbaf0b85a6f3aefccd362aa91957a3b0a09e4151b10dc81",
+  "baseline_metric_provenance": "frozen Full seed0 selected_best checkpoints; historical checkpoint selection recorded as inner future-session mean-subject BA, epochs 10-60, earliest tie; current task uses the matched EEGNet inner-train/discovery roles and recomputed discovery metrics",
+  "carrier_source_path": "/root/rivermind-data/CRCICLR_FINAL_CONFIRM_WORK/experiments/persist_eeg_carrier_dualdataset_screen_v1/code/run_carrier_screen.py",
+  "carrier_source_sha256": "920af131aabc272317da128f42be9961d5592619ce85ca99192029d1181f126f",
+  "cells": [
+    {
+      "fold": 0,
+      "frozen_checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold0_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "6ac976196e0658f66888c0fe23c909c6745c567e57c05cb7e5b2f2113adc5c8c",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold0.npz",
+      "normalizer_sha256": "12d47d87b6c5f890babc3a9452672a2e7c29a9ec550f544df24d8acc4259b3fe",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "seed": 0,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 1,
+      "frozen_checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold1_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "a8229c7f05ac72bea13934f14f5d3600e10e889454687be06f47105e61d3747e",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold1.npz",
+      "normalizer_sha256": "2dcccf19c978071b433212549388d9fa8a43224eec3dbb980ccdee27af1de9db",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "seed": 0,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 2,
+      "frozen_checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold2_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "36a06475f75712f3c00276cc8de5aab7552c5aa6c5ee94cd201f543692751814",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold2.npz",
+      "normalizer_sha256": "2d746d812678d332f4771d21ce01123ddd5e32aa0fb569c5064b7691df0fa7e6",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "seed": 0,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 3,
+      "frozen_checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold3_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "2eb9b20d2f2ce7ba385fc296872935bf2ca5a1b5cc30e9f699d502dc25f1b256",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold3.npz",
+      "normalizer_sha256": "040fc77f68d09d091af77dda00d1a472e30e1a7c1292f2f9bd136630069a6569",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "seed": 0,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 4,
+      "frozen_checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold4_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "656f9fd20601d63bed1fe5d4730a815288cc3a29c0c0357ce95559dd04ea6b63",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold4.npz",
+      "normalizer_sha256": "c04fbdc0d215369e977dffa0c159801dd8fbf42e82538b262c3b254498e56b1f",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "seed": 0,
+      "task": "OpenBMI_MI"
+    },
+    {
+      "fold": 0,
+      "frozen_checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold0_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "6b46c3e8d910d5f469accbd9561b3f5b2eaf1d9b21f237d46229d5f85f3347a2",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_ssvep_fold0.npz",
+      "normalizer_sha256": "8b87a52a8f24f8c1a54be04b246ee89940af491206239c8450fa3d992ec2e894",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "seed": 0,
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 1,
+      "frozen_checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold1_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "4a461aa942074529c03f69729feea592406dbb9a3d16657d7a05e51274a0ab91",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_ssvep_fold1.npz",
+      "normalizer_sha256": "0a6c3470fb47219953f0463b1b71fd52e1a83b893e8287d2cd889d5504961afb",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "seed": 0,
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 2,
+      "frozen_checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold2_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "393369f8bbeb7ed6cf7d11ff2e8634ec97c659caac0a69d0e16b4ee09210e5b8",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_ssvep_fold2.npz",
+      "normalizer_sha256": "2cf3d93d2dbbd20c388ecc03d41b33867ea12910a767f615301721da7e989500",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "seed": 0,
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 3,
+      "frozen_checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold3_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "69f2772a3ba8dc5ffb15cf63533bb9e590293fb58e7d095b4121b3fd78786fd0",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_ssvep_fold3.npz",
+      "normalizer_sha256": "5de151ef256588f67ce9b022f53352da1103a16dc00e30dfc67c540377e9a0ea",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "seed": 0,
+      "task": "OpenBMI_SSVEP"
+    },
+    {
+      "fold": 4,
+      "frozen_checkpoint_path": "/root/rivermind-data/openbmi_task_generality_runtime/ssvep_fold4_seed0_litebn/selected_best.pt",
+      "frozen_checkpoint_sha256": "ade61a2103ff649aa1d4810b29c9006dcfdee9f80bde04ebe2af941681c32273",
+      "historically_exposed_diagnostic": true,
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_ssvep_fold4.npz",
+      "normalizer_sha256": "a6d450f79a67753b82b934a01a5c0e726e68f69a0d3a20949440ee73b446376d",
+      "protected_coordinates_from_frozen_sire_persist_record": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "seed": 0,
+      "task": "OpenBMI_SSVEP"
+    }
+  ],
+  "formal_model_name": "SIRE-EEG",
+  "historical_final_heldout_diagnostic_exposure": true,
+  "historical_names": {
+    "CompactLite": "canonical implementation class name",
+    "LiteBN": "artifact provenance name"
+  },
+  "new_neural_training": 0,
+  "task_model_builder_path": "/root/rivermind-data/CRCICLR_PC_REFINE_WORK/experiments/persist_eeg_openbmi_task_generality_v1/code/task_datasets.py",
+  "task_model_builder_sha256": "1c06a54b2a4f4bccb1682ed8b4f9d7d617f4b7da0708ba85d158c9daaab500c3"
+}
