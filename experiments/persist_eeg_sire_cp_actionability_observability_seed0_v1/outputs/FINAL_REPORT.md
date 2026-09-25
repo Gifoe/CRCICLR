@@ -8,8 +8,8 @@ Oracle-1dir and sequential Oracle-top3 balanced-accuracy gains are reported belo
 
 | Task | Baseline BA | Oracle-1 ΔBA [95% CI] | Oracle-top3 ΔBA [95% CI] | Random ΔBA [95% CI] | Structured−random [95% CI] |
 |---|---:|---:|---:|---:|---:|
-| OpenBMI_MI | 0.7737 | +0.0261 [+0.0168, +0.0380] | +0.0310 [+0.0205, +0.0443] | +0.0007 [+0.0001, +0.0013] | +0.0303 [+0.0199, +0.0439] |
-| OpenBMI_SSVEP | 0.9201 | +0.0139 [+0.0082, +0.0202] | +0.0167 [+0.0097, +0.0243] | +0.0000 [+0.0000, +0.0000] | +0.0167 [+0.0096, +0.0243] |
+| OpenBMI_MI | 0.7737 | +0.0261 [+0.0168, +0.0381] | +0.0310 [+0.0206, +0.0443] | +0.0007 [+0.0001, +0.0013] | +0.0303 [+0.0199, +0.0437] |
+| OpenBMI_SSVEP | 0.9201 | +0.0139 [+0.0082, +0.0201] | +0.0167 [+0.0096, +0.0242] | +0.0000 [+0.0000, +0.0000] | +0.0167 [+0.0096, +0.0243] |
 
 ## Q2. Is optimal routing trial-conditional?
 
@@ -24,9 +24,9 @@ The diagnostic router is fit on inner-train subjects with grouped OOF CV and eva
 | Task | Backbone | Baseline BA | Oracle1 ΔBA | Oracle3 ΔBA | Random ΔBA | Conditional profiles | Router action BA | Router ΔBA | Oracle recovered |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | OpenBMI_MI | EEGNet | 0.801 | 0.040 | 0.053 | 0.003 | 0.998 | 0.600 | 0.001 | 0.010 |
-| OpenBMI_MI | SIRE-EEG | 0.774 | 0.026 | 0.031 | 0.001 | 0.997 | 0.342 | -0.001 | -0.046 |
+| OpenBMI_MI | SIRE-EEG | 0.774 | 0.026 | 0.031 | 0.001 | 0.997 | 0.554 | -0.001 | -0.046 |
 | OpenBMI_SSVEP | EEGNet | 0.965 | 0.010 | 0.011 | 0.001 | 0.992 | 0.553 | -0.001 | -0.051 |
-| OpenBMI_SSVEP | SIRE-EEG | 0.920 | 0.014 | 0.017 | 0.000 | 0.999 | 0.543 | -0.000 | -0.028 |
+| OpenBMI_SSVEP | SIRE-EEG | 0.920 | 0.014 | 0.017 | 0.000 | 0.999 | 0.531 | -0.000 | -0.028 |
 
 ## Interpretation
 

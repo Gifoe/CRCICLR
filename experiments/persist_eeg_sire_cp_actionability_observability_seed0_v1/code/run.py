@@ -1240,7 +1240,7 @@ def compare_backbones(sire_head, sire_router, conditional, sire_router_predictio
              "router_delta_BA":er["router_BA_gain"],"oracle_headroom_recovered":er["fraction_oracle_headroom_recovered"],"source":"frozen prior output CSV values"},
             {"task":task,"backbone":"SIRE-EEG","baseline_BA":sh["baseline_BA"],"oracle1_delta_BA":sh["ORACLE_1DIR_delta_BA"],
              "oracle3_delta_BA":sh["ORACLE_TOP3_delta_BA"],"random_oracle_delta_BA":sh["RANDOM_DIRECTION_ORACLE_delta_BA"],
-             "trial_conditionality_fraction":cond_s,"router_action_balanced_accuracy":sa[0]["balanced_accuracy"] if sa else "",
+             "trial_conditionality_fraction":cond_s,"router_action_balanced_accuracy":sr["router_action_balanced_accuracy"] if sr else "",
              "router_delta_BA":sr["router_BA_gain"] if sr else "","oracle_headroom_recovered":sr["fraction_oracle_headroom_recovered"] if sr else "",
              "source":"current frozen SIRE development-only output"}])
     return rows
