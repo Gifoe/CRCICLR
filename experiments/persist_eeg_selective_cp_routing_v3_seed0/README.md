@@ -19,11 +19,14 @@ anchors, and Python dependencies available:
 
 ```bash
 python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run.py preflight
-python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run_queue.py prepare --workers 4
+python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run_queue.py prepare --workers 2
 python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run.py lock
-python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run_queue.py final-eval --workers 4
+python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run_queue.py final-eval --workers 2
 python experiments/persist_eeg_selective_cp_routing_v3_seed0/code/run.py aggregate
 ```
+
+Two workers were used on the configured server because its experiment container
+has a 58 GiB memory limit; four-worker ERP preparation exceeded that limit.
 
 `preflight` verifies source locks and baseline checkpoint hashes without
 loading EEG arrays. `prepare` reads only the non-final-heldout refit-training
