@@ -1,0 +1,406 @@
+{
+  "BN_running_states_unchanged": true,
+  "all_invariants_passed": true,
+  "cells": [
+    {
+      "arms": [
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "CE_ONLY_CONTINUATION",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold0_seed0/CE_ONLY_CONTINUATION.pt",
+          "checkpoint_sha256": "4f8f7a01e893bd4a175aab8e9ce10165cba348fb110066ffd63f5ac6d89a3d27",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "69b7991ec4752dc756e8d87156ea07e9203dec1da63b250d67f164fb3cd587f6",
+          "fold": 0,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "74d257c3287db801f744bac1915e6fb12e80f825b9b325f7d7f0829fb95a0ab9",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "6ac976196e0658f66888c0fe23c909c6745c567e57c05cb7e5b2f2113adc5c8c",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "3d30cdc7dc927b93068c372a240b77d2dea29309670ece40e938942e61187d20",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        },
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "LOCAL_CONSTRAINED_P",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold0_seed0/LOCAL_CONSTRAINED_P.pt",
+          "checkpoint_sha256": "76727c73530d04508910c0a8e5e7249aa053b64c1c8aab4a007e3e5c28180742",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "73192f90509474e506f8fb1e8f7ab5f373d70cf9e77f10befef8394ed27d4158",
+          "fold": 0,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "74d257c3287db801f744bac1915e6fb12e80f825b9b325f7d7f0829fb95a0ab9",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "6ac976196e0658f66888c0fe23c909c6745c567e57c05cb7e5b2f2113adc5c8c",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "3d30cdc7dc927b93068c372a240b77d2dea29309670ece40e938942e61187d20",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        }
+      ],
+      "fold": 0,
+      "identical_batch_order": true,
+      "identical_initialization": true,
+      "identical_optimizer_steps": true,
+      "source_teacher_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "source_teacher_state_unchanged": true,
+      "task": "OpenBMI_MI",
+      "teacher_cache_sha256": "50dc29560963865088cf35c3a1849ff30e503f25ef8ffb7c09a4250a3e76e70d"
+    },
+    {
+      "arms": [
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "CE_ONLY_CONTINUATION",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold1_seed0/CE_ONLY_CONTINUATION.pt",
+          "checkpoint_sha256": "f99b3b7abc243b2f0bd6d7f6a198be870afde8087efa95c324c6f39534484e6a",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "2dc5ac4bf4a3236234c631b9da98a3db324e7c087e5e9fc7690192a645b2a0b1",
+          "fold": 1,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "4d2dfa40461bf00bda94506df9d8820a943b17a6aa6f5a28b7f2463d71307626",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "a8229c7f05ac72bea13934f14f5d3600e10e889454687be06f47105e61d3747e",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "a72f13b9930c6332aee8b2962d53379c650060f5fccf172c1fc26910f86a8c4d",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        },
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "LOCAL_CONSTRAINED_P",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold1_seed0/LOCAL_CONSTRAINED_P.pt",
+          "checkpoint_sha256": "488850ffaef90b0e0c7fffed40fb613c8f569a73be5a7b7fdcb27025825d9c3c",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "a4dc8fa071339e9a33e2523d8de0fde42923d64e61d18b28ea1bb4e281855075",
+          "fold": 1,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "4d2dfa40461bf00bda94506df9d8820a943b17a6aa6f5a28b7f2463d71307626",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "a8229c7f05ac72bea13934f14f5d3600e10e889454687be06f47105e61d3747e",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "a72f13b9930c6332aee8b2962d53379c650060f5fccf172c1fc26910f86a8c4d",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        }
+      ],
+      "fold": 1,
+      "identical_batch_order": true,
+      "identical_initialization": true,
+      "identical_optimizer_steps": true,
+      "source_teacher_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "source_teacher_state_unchanged": true,
+      "task": "OpenBMI_MI",
+      "teacher_cache_sha256": "a082c6d669970ce8fd430c511a97103a07e63bf39dfdce981ac1f4a6034fd236"
+    },
+    {
+      "arms": [
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "CE_ONLY_CONTINUATION",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold2_seed0/CE_ONLY_CONTINUATION.pt",
+          "checkpoint_sha256": "3e04afb9f4438204751864e047ae338d73aba5a4fffa519985d554cda660651f",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "5cfe48d82b7015ccb15ae54356c393f9642c92818e2a60c00a6824a2f8cd368d",
+          "fold": 2,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "97f8e7cbcfc423f4c5082561048530064d7dbc77f862dc438c020ccdf9288840",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "36a06475f75712f3c00276cc8de5aab7552c5aa6c5ee94cd201f543692751814",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "a67af08407d6994bc2156b3c2f356f40e19047ba269ff6ba2a9f50f111b3787f",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        },
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "LOCAL_CONSTRAINED_P",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold2_seed0/LOCAL_CONSTRAINED_P.pt",
+          "checkpoint_sha256": "7395de7c22dfb978d736281851c76865a8a2acdc638e3a1649218482987d65e1",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "fe4d694cdcdbf26f873695154b0597d7b89781342e752b502fe9600e9d877349",
+          "fold": 2,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "97f8e7cbcfc423f4c5082561048530064d7dbc77f862dc438c020ccdf9288840",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "36a06475f75712f3c00276cc8de5aab7552c5aa6c5ee94cd201f543692751814",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "a67af08407d6994bc2156b3c2f356f40e19047ba269ff6ba2a9f50f111b3787f",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        }
+      ],
+      "fold": 2,
+      "identical_batch_order": true,
+      "identical_initialization": true,
+      "identical_optimizer_steps": true,
+      "source_teacher_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "source_teacher_state_unchanged": true,
+      "task": "OpenBMI_MI",
+      "teacher_cache_sha256": "79db2d9d8e8f6d34f016060cccad77ef6c7ba83c6d666d8de8a7d0765aeb63e4"
+    },
+    {
+      "arms": [
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "CE_ONLY_CONTINUATION",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold3_seed0/CE_ONLY_CONTINUATION.pt",
+          "checkpoint_sha256": "f8c8783f70e0e7022b5019d2ff5686f102df4c7fadea773e77e269deaa3655d1",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "bfeb3acc8ab90968dc281d3916f5d20b25cf568701c0935f1227062fb03e13cf",
+          "fold": 3,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "fc89b55e76092b22aad071ab382693e5cc2c1a63ca43bedca82748583de3a83b",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "2eb9b20d2f2ce7ba385fc296872935bf2ca5a1b5cc30e9f699d502dc25f1b256",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "7f39e9b5986ba0e78a9bcf9127536ec3042d151e4073e060d7c663bcbf330bc0",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        },
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "LOCAL_CONSTRAINED_P",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold3_seed0/LOCAL_CONSTRAINED_P.pt",
+          "checkpoint_sha256": "347f3014b83c7124a0c99658ef50c8e86add33f49387513377e4c3c4b933c421",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "88bf78cb9a65540b73916a86619428abe2723fae238c1924fddb26f6b44b64cb",
+          "fold": 3,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "fc89b55e76092b22aad071ab382693e5cc2c1a63ca43bedca82748583de3a83b",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "2eb9b20d2f2ce7ba385fc296872935bf2ca5a1b5cc30e9f699d502dc25f1b256",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "7f39e9b5986ba0e78a9bcf9127536ec3042d151e4073e060d7c663bcbf330bc0",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        }
+      ],
+      "fold": 3,
+      "identical_batch_order": true,
+      "identical_initialization": true,
+      "identical_optimizer_steps": true,
+      "source_teacher_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "source_teacher_state_unchanged": true,
+      "task": "OpenBMI_MI",
+      "teacher_cache_sha256": "2735f0ed5813685b24183509d39fa704ac94c3f74ec5353a01c461266daf7975"
+    },
+    {
+      "arms": [
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "CE_ONLY_CONTINUATION",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold4_seed0/CE_ONLY_CONTINUATION.pt",
+          "checkpoint_sha256": "f9baf14e7a985c8764114ce2390240e7b7113037f2a1bd569697ac9ce4efc60a",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "84a196c97955dd9541c398cd3df7a7333cf79faf9809ec151db1178e88e9bac7",
+          "fold": 4,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "729d5d199a3e77fa07785bfbab196d5a3343781925d2eb198dd57f5733aaec53",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "656f9fd20601d63bed1fe5d4730a815288cc3a29c0c0357ce95559dd04ea6b63",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "1859ccafc1827d60aedc77de04f76817f3cfb74f01acb49c537712f11a71543d",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        },
+        {
+          "BN_running_state_byte_identical": true,
+          "all_other_state_bit_identical": true,
+          "arm": "LOCAL_CONSTRAINED_P",
+          "changed_state_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "checkpoint_runtime_path": "/root/rivermind-data/sire_local_p_construction_seed0_runtime/cells/openbmi_mi/fold4_seed0/LOCAL_CONSTRAINED_P.pt",
+          "checkpoint_sha256": "cda0dd95d76df5c809e7ff8ad4d97b55881bafdd0ac19fba3b97bd408fbd377f",
+          "dropout_disabled": true,
+          "epochs": 20,
+          "expected_steps": 1640,
+          "final_model_state_sha256": "49a25b3e1e1c8e199901ec4159238252b6ef9fa9e7a42e44141cadbc15f65d7b",
+          "fold": 4,
+          "gradient_clip": 5.0,
+          "initial_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+          "lr": 0.0001,
+          "model_eval_mode": true,
+          "optimizer": "AdamW",
+          "optimizer_steps": 1640,
+          "order_sha256": "729d5d199a3e77fa07785bfbab196d5a3343781925d2eb198dd57f5733aaec53",
+          "protocol_sha256": "b5b82132f16516132671a7230608ab8e31c96e935572f8b4016e9afa3765358e",
+          "source_checkpoint_sha256": "656f9fd20601d63bed1fe5d4730a815288cc3a29c0c0357ce95559dd04ea6b63",
+          "task": "OpenBMI_MI",
+          "train_manifest_sha256": "1859ccafc1827d60aedc77de04f76817f3cfb74f01acb49c537712f11a71543d",
+          "trainable_parameter_count": 3792,
+          "trainable_parameter_names": [
+            "depth1.weight",
+            "point1.weight"
+          ],
+          "weight_decay": 0.0005
+        }
+      ],
+      "fold": 4,
+      "identical_batch_order": true,
+      "identical_initialization": true,
+      "identical_optimizer_steps": true,
+      "source_teacher_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "source_teacher_state_unchanged": true,
+      "task": "OpenBMI_MI",
+      "teacher_cache_sha256": "bebb43dbd3676f0a566923561a2d0b6d42d12db3f984e2f4eb7e0accde318b34"
+    }
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "only_depth1_and_point1_changed": true,
+  "same_optimizer_manifest_and_steps_per_fold": true,
+  "task": "OpenBMI_MI"
+}

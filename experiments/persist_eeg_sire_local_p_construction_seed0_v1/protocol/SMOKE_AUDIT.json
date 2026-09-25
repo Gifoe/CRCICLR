@@ -1,0 +1,29 @@
+{
+  "BN_running_state_byte_identical": true,
+  "P_plus_C_reconstruction_max_abs": 7.62939453125e-06,
+  "alpha_one_native_reconstruction": {
+    "logits_max_abs": 0.0,
+    "prediction_exact": true,
+    "raw_suffix_batch_roundoff_max_abs": 2.384185791015625e-07,
+    "representation_max_abs": 0.0,
+    "successor_C_reconstruction_max_abs": 2.3672797011542457e-07
+  },
+  "changed_state_names": [
+    "depth1.weight",
+    "point1.weight"
+  ],
+  "eval_mode_with_gradients": true,
+  "fold": 0,
+  "geometry_file_sha256": "b7047a4320b8188114b61af3141276b0ce5b9ae75a10496179fc3dda8e7803ac",
+  "gradient_parameter_names": [
+    "depth1.weight",
+    "point1.weight"
+  ],
+  "identical_arm_order_sha256": "74d257c3287db801f744bac1915e6fb12e80f825b9b325f7d7f0829fb95a0ab9",
+  "identical_optimizer_step_count": 1640,
+  "status": "PASS",
+  "task": "OpenBMI_MI",
+  "teacher_accepted_in_smoke": 16,
+  "teacher_sample_index_count": 16,
+  "train_trials": 5200
+}
