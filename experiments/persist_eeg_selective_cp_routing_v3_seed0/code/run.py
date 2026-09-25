@@ -146,9 +146,10 @@ def preflight() -> None:
         for fold in FOLDS:
             data_role, split, cache_name, source_sessions, future_session = B.role(task, fold)
             rec, ck, v2rec = baseline_record(task, fold)
+            anchor_rec, _ = B.source_anchor(task, fold)
             if rec.get("split_sha256") != split:
                 raise RuntimeError(f"canonical split mismatch: {task}/{fold}")
-            if rec.get("normalizer_sha256") != rec.get("normalizer", {}).get("mean_std_sha256"):
+            if rec.get("normalizer_sha256") != anchor_rec.get("normalizer", {}).get("mean_std_sha256"):
                 raise RuntimeError(f"canonical normalizer record mismatch: {task}/{fold}")
             if not any(c.get("task") == task and int(c.get("fold", -1)) == fold and
                        c.get("checkpoints", {}).get("BASELINE") == sha(ck) for c in v2final["cells"]):
@@ -156,7 +157,7 @@ def preflight() -> None:
             checks.append({"task": task, "fold": fold, "split_sha256": split,
                            "baseline_checkpoint_sha256": sha(ck),
                            "normalizer_sha256": rec["normalizer_sha256"],
-                           "selected_epoch_budget": int(rec["selected_epoch_budget"]),
+                           "selected_epoch_budget": int(anchor_rec["selected_epoch"]),
                            "nonfinal_refit_subject_count": len(set(map(str, data_role["inner_train_subjects"] + data_role["inner_val_subjects"] + data_role["outer_dev_subjects"]))),
                            "source_sessions": list(source_sessions), "future_session": int(future_session),
                            "v2_baseline_hash_match": True})
