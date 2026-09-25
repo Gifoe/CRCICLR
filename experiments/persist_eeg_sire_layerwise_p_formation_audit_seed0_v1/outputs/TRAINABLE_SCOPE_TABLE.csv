@@ -1,0 +1,6 @@
+task,scope,parameter_count,parameter_names,classifier_head_frozen,used_for_training_in_this_audit
+OpenBMI_MI,SCOPE_A_LOCAL,3792,"[""depth1.weight"", ""point1.weight""]",True,False
+OpenBMI_MI,SCOPE_B_SHARED,9872,"[""depth1.weight"", ""depth2.weight"", ""point1.weight"", ""point2.weight""]",True,False
+OpenBMI_MI,SCOPE_C_SPATIAL_SHARED,12848,"[""depth1.weight"", ""depth2.weight"", ""point1.weight"", ""point2.weight"", ""spatial.0.weight"", ""spatial.1.weight"", ""spatial.2.weight""]",True,False
+OpenBMI_MI,SCOPE_D_FULL_FEATURE,14488,"[""depth1.weight"", ""depth2.weight"", ""point1.weight"", ""point2.weight"", ""spatial.0.weight"", ""spatial.1.weight"", ""spatial.2.weight"", ""temporal.0.weight"", ""temporal.1.weight"", ""temporal.2.weight""]",True,False
+OpenBMI_MI,SCOPE_E_FEATURE_PLUS_EMBED,47448,"[""depth1.weight"", ""depth2.weight"", ""embedding.0.bias"", ""embedding.0.weight"", ""embedding.2.bias"", ""embedding.2.weight"", ""point1.weight"", ""point2.weight"", ""spatial.0.weight"", ""spatial.1.weight"", ""spatial.2.weight"", ""temporal.0.weight"", ""temporal.1.weight"", ""temporal.2.weight""]",True,False

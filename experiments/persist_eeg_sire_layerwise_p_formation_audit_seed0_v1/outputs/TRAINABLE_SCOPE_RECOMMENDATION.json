@@ -1,0 +1,21 @@
+{
+  "active_serial_successor_stages": [
+    "H_SHARED1",
+    "H_SHARED2"
+  ],
+  "active_serial_transitions": [
+    "H_CONCAT -> H_SHARED1",
+    "H_SHARED1 -> H_SHARED2"
+  ],
+  "development_diagnostic_only": true,
+  "distinctive_branch_outputs": [
+    "BRANCH_15",
+    "BRANCH_63",
+    "BRANCH_127"
+  ],
+  "limitation": "Branch-output erasure cannot separate the parameter-specific effects of temporal versus spatial filters; a full temporal scope is not identifiable from this audit.",
+  "local_scope_verdict": "LOCAL_SCOPE_TOO_NARROW",
+  "no_scope_trained": true,
+  "recommended_scope": "SCOPE_B_SHARED",
+  "rule": "3/4 locked criteria for each serial transition; smallest nested scope covering active parameterized transitions; branch output effects are diagnostic but do not by themselves require temporal or spatial parameters to train"
+}

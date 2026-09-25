@@ -1,0 +1,450 @@
+{
+  "all_historical_source_successor_hashes_exact": true,
+  "cells": [
+    {
+      "final_P_dimensions": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "final_heldout_eeg_reads": 0,
+      "final_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "fitted_on_inner_train_only": true,
+      "fitted_pathway_archive_sha256": "db2ad94ee6fc25d1cfe33063cfaf9b8c12921577e688c374c23a9bb4c3cf4d07",
+      "fitted_pathway_runtime_path": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold0_seed0/FITTED_PATHWAYS.npz",
+      "fold": 0,
+      "historical_Q_source_successor_exact": true,
+      "outer_dev_eeg_reads": 0,
+      "source_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "spectrum_sha256": "db759b1864fefe32b868429489389e2e7d68ff3bb7659c201701242387c28ba6",
+      "stages": [
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "0ec307a4f8f96a31572bdf6417f69cc0e51ce4377f2b29c250d23ec77b737fe6",
+          "rank": 8,
+          "stage": "BRANCH_15"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "96bc192a892e5328c0e4d43a155827ecd4da8a6ac6d750ad556c9ef6931e721a",
+          "rank": 8,
+          "stage": "BRANCH_63"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "90e13e0b130eeae6a1be8bbe0fc44ed9e1ed9890a09bafb8dbaf388b11eb044f",
+          "rank": 8,
+          "stage": "BRANCH_127"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 12000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "76e54521131f648214777841e466c0e39623afe952c4175e74a7fa6971f5e6ac",
+          "rank": 8,
+          "stage": "H_CONCAT"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 8000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "cef75f3d49920a4541ff05fe408fc686de3a9f47b1ec6477e1636ff69cf3a244",
+          "rank": 8,
+          "stage": "H_SHARED1"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 3968,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "6259c9cc158642855b785ce70536734cf6251eeaf3fef98f9989ec3169a53abf",
+          "rank": 8,
+          "stage": "H_SHARED2"
+        },
+        {
+          "canonical_exact": true,
+          "centroid_count": 104,
+          "feature_dimension": 64,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "7017fd7f463df0a9759ede3123982078fa4bbbe781581f4953b9bbc536dc8d15",
+          "rank": 8,
+          "stage": "EMBEDDING"
+        }
+      ],
+      "task": "OpenBMI_MI"
+    },
+    {
+      "final_P_dimensions": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "final_heldout_eeg_reads": 0,
+      "final_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "fitted_on_inner_train_only": true,
+      "fitted_pathway_archive_sha256": "2b1513ccbd9cdbb3d0e65b041436cbecb07b45777958bfd2befa367172e3b7cf",
+      "fitted_pathway_runtime_path": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold1_seed0/FITTED_PATHWAYS.npz",
+      "fold": 1,
+      "historical_Q_source_successor_exact": true,
+      "outer_dev_eeg_reads": 0,
+      "source_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "spectrum_sha256": "a7c939b200d59436154706ef21e96328bbee97d2000aea5fefb38b7d9bd66a3a",
+      "stages": [
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "a1d5ec3af3ff4bd7013743d32941dddecaa3536133fb0ea263e4aac69787907a",
+          "rank": 8,
+          "stage": "BRANCH_15"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "c9ea9372e920ed1eb786d9e9a9808186ec9af75d85be57cc031c7f9d9d2db34d",
+          "rank": 8,
+          "stage": "BRANCH_63"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "be9106c68400915fdc72d32319c35dc37926a26cfc07f553150452299b522ba4",
+          "rank": 8,
+          "stage": "BRANCH_127"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 12000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "b544856ec43bd6e1f5407e0f20cadf26762f7c8a270a09083635cb040c7444aa",
+          "rank": 8,
+          "stage": "H_CONCAT"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 8000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "dbad358f76f62b480d6b8e9c5067e72f09aa4c511b790dbf6acb9513bb92d942",
+          "rank": 8,
+          "stage": "H_SHARED1"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 3968,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "ae1125062e595238055f20219e5133a36fb5e625d7738a0e233c392ccbf1ce79",
+          "rank": 8,
+          "stage": "H_SHARED2"
+        },
+        {
+          "canonical_exact": true,
+          "centroid_count": 104,
+          "feature_dimension": 64,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "20c2580660733da58408dd868d2cd9bc05f40b6841de68ed3c0c5abb6070d220",
+          "rank": 8,
+          "stage": "EMBEDDING"
+        }
+      ],
+      "task": "OpenBMI_MI"
+    },
+    {
+      "final_P_dimensions": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "final_heldout_eeg_reads": 0,
+      "final_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "fitted_on_inner_train_only": true,
+      "fitted_pathway_archive_sha256": "04c7d78c8a6fdf2d2ff10071aa7b5048f2bd0f6c021922c270904cc91c543c19",
+      "fitted_pathway_runtime_path": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold2_seed0/FITTED_PATHWAYS.npz",
+      "fold": 2,
+      "historical_Q_source_successor_exact": true,
+      "outer_dev_eeg_reads": 0,
+      "source_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "spectrum_sha256": "87d78d86fd45e5d3966decebdcc70e79d2fe601dc5fe6da640619b625a2793df",
+      "stages": [
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "a62ca4b46efffef828df353a35965c856adb58f03bfedda9e9aab97c6b4d01b2",
+          "rank": 8,
+          "stage": "BRANCH_15"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "20d4d71c78aba4abffb626b447c60f1b786a88938062f6ae8801526ed8bbaeab",
+          "rank": 8,
+          "stage": "BRANCH_63"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "905996a47a21b0afe142ae450b05dd439c15794c5f1be6f1ffc67965b79bac47",
+          "rank": 8,
+          "stage": "BRANCH_127"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 12000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "5407b3963adf1d7476d3fac8fe92e77e4c51b1a18b6502a1ff11a5c355a14eee",
+          "rank": 8,
+          "stage": "H_CONCAT"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 8000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "a17f24586c40872afc7c26293e32f0d7cfb6b0dea6d59950be123ac365608d7e",
+          "rank": 8,
+          "stage": "H_SHARED1"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 3968,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "a50af7097729813561f848260f008affe4228059e31ac77847f4fc33a4199cd4",
+          "rank": 8,
+          "stage": "H_SHARED2"
+        },
+        {
+          "canonical_exact": true,
+          "centroid_count": 104,
+          "feature_dimension": 64,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "e573e947f7b98ab56a644e4b56d785b975be40f1ce1a2508422a8955efb64684",
+          "rank": 8,
+          "stage": "EMBEDDING"
+        }
+      ],
+      "task": "OpenBMI_MI"
+    },
+    {
+      "final_P_dimensions": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "final_heldout_eeg_reads": 0,
+      "final_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "fitted_on_inner_train_only": true,
+      "fitted_pathway_archive_sha256": "b0ce6c4de0098e9473a749b34a181f1e717b8f8c8f9535730a0b840a0d90a521",
+      "fitted_pathway_runtime_path": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold3_seed0/FITTED_PATHWAYS.npz",
+      "fold": 3,
+      "historical_Q_source_successor_exact": true,
+      "outer_dev_eeg_reads": 0,
+      "source_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "spectrum_sha256": "78b0f101797f61f980ed63b78534be98242d26d652e81e2b344640682fa79739",
+      "stages": [
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "eb99f28230e1ee4f9389127ea70e09770add518547332e6a905ef6cc1717d282",
+          "rank": 8,
+          "stage": "BRANCH_15"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "6bfcffeda7748b12490e95c8f204043f34e2037715121e5f208c9c4a11eaa79f",
+          "rank": 8,
+          "stage": "BRANCH_63"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "d2f8c4de5e376e1f9a2b04e5186d66ed4ff3d9a0a81a63ac79d196033f9c85fe",
+          "rank": 8,
+          "stage": "BRANCH_127"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 12000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "669f8030cac8c2530827e1949c251a1ddaf9cd1351a4452971df03a33703a3f0",
+          "rank": 8,
+          "stage": "H_CONCAT"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 8000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "3f11ee6eab7c8081dae5a38f1015ad04ef32d8762ece1f947d029005e900a9e8",
+          "rank": 8,
+          "stage": "H_SHARED1"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 3968,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "7222577120518b6b4c88d140bbf8516894f00058582bc2dcf874e7de24abfc52",
+          "rank": 8,
+          "stage": "H_SHARED2"
+        },
+        {
+          "canonical_exact": true,
+          "centroid_count": 104,
+          "feature_dimension": 64,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "45efdf1a4873a03b611d1d0a3548f9cc91da6a116be8c9ad908ed27c22eaed1c",
+          "rank": 8,
+          "stage": "EMBEDDING"
+        }
+      ],
+      "task": "OpenBMI_MI"
+    },
+    {
+      "final_P_dimensions": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "final_heldout_eeg_reads": 0,
+      "final_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "fitted_on_inner_train_only": true,
+      "fitted_pathway_archive_sha256": "7fb7f17b135f8c4a7aceedd89b726785661daa0fcefcb0ffd47934ce77914aee",
+      "fitted_pathway_runtime_path": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold4_seed0/FITTED_PATHWAYS.npz",
+      "fold": 4,
+      "historical_Q_source_successor_exact": true,
+      "outer_dev_eeg_reads": 0,
+      "source_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "spectrum_sha256": "732d0876a8d78cf3949da092f25c85b765ecd18fefca7f86ac0fb5f5bfcdd82c",
+      "stages": [
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "fe90ad3b5d6561b8212dfa180eb231bff8e2a2ba4808ba02f75984ba20499bc1",
+          "rank": 4,
+          "stage": "BRANCH_15"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "2886828ede5311ee64b3762d87b513424c9ce10eaeef07ac4ae6425495b685ab",
+          "rank": 4,
+          "stage": "BRANCH_63"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 4000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "37262c0b27147a406abc918de1fe8e7212e52ee1b1ed5e02734ea671cbbc04bf",
+          "rank": 4,
+          "stage": "BRANCH_127"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 12000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "4f75438e01dac1fb04b1e4d542c40fcbabee02664bb12604a1b186b64144e454",
+          "rank": 4,
+          "stage": "H_CONCAT"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 8000,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "8658f32dd420c94612e598fd5747eda97449795c70a197b3a61cb512ac2a467f",
+          "rank": 4,
+          "stage": "H_SHARED1"
+        },
+        {
+          "canonical_exact": false,
+          "centroid_count": 104,
+          "feature_dimension": 3968,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "c15383d01dc0f231524df8b3d640df1dec69196b9a501c06c935f418695f7317",
+          "rank": 4,
+          "stage": "H_SHARED2"
+        },
+        {
+          "canonical_exact": true,
+          "centroid_count": 104,
+          "feature_dimension": 64,
+          "fit_role": "inner_train_only",
+          "q_mu_sha256": "f43070660ba70eec91944aeec00208f8565a7da4c168c9251c3d889d2e26c637",
+          "rank": 4,
+          "stage": "EMBEDDING"
+        }
+      ],
+      "task": "OpenBMI_MI"
+    }
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "task": "OpenBMI_MI",
+  "train_only_pathfit_and_final_P": true
+}

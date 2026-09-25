@@ -1,0 +1,88 @@
+{
+  "all_stage_P_C_reconstructions_passed": true,
+  "final_P_coordinates": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "final_heldout_eeg_reads": 0,
+  "fold": 0,
+  "historical_geometry_exact": true,
+  "native_stage_and_logits_max_abs": 4.76837158203125e-07,
+  "no_neural_parameter_or_BN_state_change": true,
+  "outer_dev_eeg_reads": 0,
+  "random_controls_rank_matched": true,
+  "source_checkpoint_sha256": "6ac976196e0658f66888c0fe23c909c6745c567e57c05cb7e5b2f2113adc5c8c",
+  "stage_geometry": [
+    {
+      "canonical_exact": false,
+      "centroid_count": 104,
+      "feature_dimension": 4000,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "0ec307a4f8f96a31572bdf6417f69cc0e51ce4377f2b29c250d23ec77b737fe6",
+      "rank": 8,
+      "stage": "BRANCH_15"
+    },
+    {
+      "canonical_exact": false,
+      "centroid_count": 104,
+      "feature_dimension": 4000,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "96bc192a892e5328c0e4d43a155827ecd4da8a6ac6d750ad556c9ef6931e721a",
+      "rank": 8,
+      "stage": "BRANCH_63"
+    },
+    {
+      "canonical_exact": false,
+      "centroid_count": 104,
+      "feature_dimension": 4000,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "90e13e0b130eeae6a1be8bbe0fc44ed9e1ed9890a09bafb8dbaf388b11eb044f",
+      "rank": 8,
+      "stage": "BRANCH_127"
+    },
+    {
+      "canonical_exact": false,
+      "centroid_count": 104,
+      "feature_dimension": 12000,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "76e54521131f648214777841e466c0e39623afe952c4175e74a7fa6971f5e6ac",
+      "rank": 8,
+      "stage": "H_CONCAT"
+    },
+    {
+      "canonical_exact": false,
+      "centroid_count": 104,
+      "feature_dimension": 8000,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "cef75f3d49920a4541ff05fe408fc686de3a9f47b1ec6477e1636ff69cf3a244",
+      "rank": 8,
+      "stage": "H_SHARED1"
+    },
+    {
+      "canonical_exact": false,
+      "centroid_count": 104,
+      "feature_dimension": 3968,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "6259c9cc158642855b785ce70536734cf6251eeaf3fef98f9989ec3169a53abf",
+      "rank": 8,
+      "stage": "H_SHARED2"
+    },
+    {
+      "canonical_exact": true,
+      "centroid_count": 104,
+      "feature_dimension": 64,
+      "fit_role": "inner_train_only",
+      "q_mu_sha256": "7017fd7f463df0a9759ede3123982078fa4bbbe781581f4953b9bbc536dc8d15",
+      "rank": 8,
+      "stage": "EMBEDDING"
+    }
+  ],
+  "status": "PASS",
+  "train_only_centroids": true
+}
