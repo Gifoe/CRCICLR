@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gc
 import hashlib
 import importlib.util
 import json
@@ -200,12 +201,12 @@ def f0(model, hs: torch.Tensor, samples: int) -> torch.Tensor:
 
 def successor_reconstruction_error(model, hs, qd, md, samples):
     errors=[]
-    q=torch.as_tensor(qd,dtype=torch.float32,device=DEVICE);mu=torch.as_tensor(md,dtype=torch.float32,device=DEVICE)
+    q=torch.as_tensor(qd,dtype=torch.float64,device=DEVICE);mu=torch.as_tensor(md,dtype=torch.float64,device=DEVICE)
     model.eval()
     with torch.inference_mode():
         for i in range(0,len(hs),128):
             x=torch.from_numpy(np.ascontiguousarray(hs[i:i+128])).to(DEVICE)
-            y=f0(model,x,samples);centered=y-mu;p=centered@q;c=centered-p@q.T
+            y=f0(model,x,samples).to(torch.float64);centered=y-mu;p=centered@q;c=centered-p@q.T
             errors.append(torch.max(torch.abs(centered-(p@q.T+c))).item())
     return max(errors,default=0.0)
 
@@ -214,18 +215,39 @@ def suffix(model, hd: torch.Tensor) -> torch.Tensor:
     return model.head(model.embedding(hd))
 
 
-def prepare_arrays(task: str, data: dict):
-    # Read non-heldout refit roles one physical session at a time so session identity
-    # is preserved for the subject-equal utility aggregation.
+def prepare_training_features(task: str, data: dict, model):
+    # Stream physical sessions while preserving the original global batch boundaries.
+    # This matches spatial(model, concatenate(sessions)) without retaining all raw EEG.
     subject_ids = list(map(str, data["subjects"]))
     mapping = dict(data["mapping"])
-    xs=[]; ys=[]; subs=[]; sessions=[]
+    activations=[]; ys=[]; subs=[]; session_ids=[]; carry=None
     for session in tuple(data["source_sessions"])+(int(data["future_session"]),):
         raw, labels, sub, mapping = B.rows(task, subject_ids, (int(session),), data["cache_name"], mapping)
         x=((raw-data["mu"][None,:,None])/np.maximum(data["sd"][None,:,None],1e-6)).astype(np.float32)
-        xs.append(x);ys.append(labels.astype(np.int64));subs.append(sub.astype(str))
-        sessions.append(np.full(len(labels),int(session),dtype=np.int64))
-    return np.concatenate(xs),np.concatenate(ys),np.concatenate(subs),np.concatenate(sessions)
+        ys.append(labels.astype(np.int64));subs.append(sub.astype(str))
+        session_ids.append(np.full(len(labels),int(session),dtype=np.int64))
+        start=0
+        if carry is not None and len(carry):
+            need=128-len(carry)
+            if len(x)<need:
+                carry=np.concatenate((carry,x),axis=0)
+                del raw,x
+                print("REFIT_TRAIN_SESSION_FEATURES",task,int(session),"trials",len(labels),flush=True)
+                continue
+            first=np.concatenate((carry,x[:need]),axis=0)
+            activations.append(spatial(model,first,batch=128))
+            del first,carry
+            carry=None
+            start=need
+        full_end=start+((len(x)-start)//128)*128
+        if full_end>start:
+            activations.append(spatial(model,x[start:full_end],batch=128))
+        carry=x[full_end:].copy() if full_end<len(x) else None
+        del raw,x
+        print("REFIT_TRAIN_SESSION_FEATURES",task,int(session),"trials",len(labels),flush=True)
+    if carry is not None and len(carry):
+        activations.append(spatial(model,carry,batch=128))
+    return np.concatenate(activations),np.concatenate(ys),np.concatenate(subs),np.concatenate(session_ids)
 
 
 def fit_c_basis(hs: np.ndarray, qs: np.ndarray, ms: np.ndarray, task: str, fold: int):
@@ -427,10 +449,12 @@ def identity_audit(model, hs, samples, qs, ms, basis, qd, md):
 
 def prepare(task: str, fold: int):
     d=cell(task,fold); d.mkdir(parents=True,exist_ok=True)
+    current_code_hash=sha(Path(__file__).resolve())
     if (d/"PREPARE_COMPLETE.json").exists():
         rec=json.loads((d/"PREPARE_COMPLETE.json").read_text())
-        if rec.get("status")=="COMPLETE":
+        if rec.get("status")=="COMPLETE" and rec.get("prepare_code_sha256")==current_code_hash:
             print("PREPARE_ALREADY_COMPLETE",task,fold,flush=True); return
+        (d/"PREPARE_COMPLETE.json").unlink()
     pref=json.loads((RUNTIME/"PREFLIGHT.json").read_text())
     if pref.get("status")!="PASS": raise RuntimeError("preflight required")
     rec,ck,v2rec=baseline_record(task,fold)
@@ -441,7 +465,6 @@ def prepare(task: str, fold: int):
     payload=torch.load(ck,map_location="cpu",weights_only=False)
     model.load_state_dict(payload["state_dict"],strict=True)
     before=freeze_model(model)
-    x,y,subjects,sessions=prepare_arrays(task,data)
     # Recompute final-refit geometry using the audited V2 PERSIST pathway fit on this exact pool.
     projector, project_record=V2.fit_bases(model,data,task,fold)
     if projector is None or project_record.get("status")!="COMPLETE":
@@ -450,12 +473,19 @@ def prepare(task: str, fold: int):
     e_s=float(np.max(np.abs(qs.T@qs-np.eye(qs.shape[1]))))
     e_d=float(np.max(np.abs(qd.T@qd-np.eye(qd.shape[1]))))
     if e_s>=1e-5 or e_d>=1e-5: raise RuntimeError("projector orthonormality failed")
-    hs=spatial(model,x)
-    successor_error=successor_reconstruction_error(model,hs,qd,md,x.shape[2])
+    # The projectors are fixed. Release the large raw refit arrays, then stream
+    # each legal physical session through the frozen spatial block.
+    for key in ("source","future","sy","fy","ss","fs"):
+        data.pop(key,None)
+    gc.collect()
+    hs,y,subjects,sessions=prepare_training_features(task,data,model)
+    successor_error=successor_reconstruction_error(model,hs,qd,md,data["samples"])
     if successor_error>=1e-5: raise RuntimeError(f"successor P/C reconstruction failed: {successor_error}")
     basis,hc,cbrec=fit_c_basis(hs,qs,ms,task,fold)
+    del hc
+    gc.collect()
     # Exact TRAIN-only native erasure estimand copied from the audited V2.5 implementation.
-    utility,ids,subject_matrix,up,lo,hi,status,bootstrap_seed=utility_from_train(model,hs,y,subjects,sessions,qs,ms,qd,md,basis,x.shape[2],task,fold)
+    utility,ids,subject_matrix,up,lo,hi,status,bootstrap_seed=utility_from_train(model,hs,y,subjects,sessions,qs,ms,qd,md,basis,data["samples"],task,fold)
     scale,rpos,rprimary=route_coefficients(up,lo,hi,status)
     permutation=derangement(len(rprimary),stable_seed("SHUFFLE",task,fold))
     rshuffle=rprimary[permutation]
@@ -463,7 +493,7 @@ def prepare(task: str, fold: int):
     for item in randoms:
         item["coefficients"]=(1.0+(rprimary-1.0)[item["coefficient_permutation"]]).astype(np.float32)
     # Identity audit is run before the protocol lock and only on legal refit TRAIN activations.
-    ident=identity_audit(model,hs[:min(64,len(hs))],x.shape[2],qs,ms,basis,qd,md)
+    ident=identity_audit(model,hs[:min(64,len(hs))],data["samples"],qs,ms,basis,qd,md)
     if not state_identical(model,before): raise RuntimeError("frozen baseline state changed during preparation")
     direction=[]; routes=[]
     for j in range(len(up)):
@@ -491,7 +521,7 @@ def prepare(task: str, fold: int):
         "spatial_rank":int(qs.shape[1]),"successor_rank":int(qd.shape[1]),"qs_orthogonality_error":e_s,
         "qd_orthogonality_error":e_d,"spatial_decomposition_reconstruction_max_abs_error":cbrec["spatial_decomposition_max_abs_error"],
         "successor_decomposition_reconstruction_max_abs_error":successor_error,
-        "training_subject_count":len(set(subjects)),"training_trial_count":len(x),
+        "training_subject_count":len(set(subjects)),"training_trial_count":len(hs),
         "final_refit_normalizer_sha256":data["normalizer"]["mean_std_sha256"],
         "baseline_checkpoint_sha256":sha(ck),"baseline_state_parameter_count":sum(p.numel() for p in model.parameters()),
         "trainable_parameter_count":sum(p.requires_grad for p in model.parameters())})
@@ -509,15 +539,15 @@ def prepare(task: str, fold: int):
                 "rank":int(len(up)),"orthogonality_error":float(np.max(np.abs(item["basis"].T@item["basis"]-np.eye(len(up))))),
                 "protected_overlap_error":float(np.max(np.abs(qs.T@item["basis"])))})
     cwrite(d/"RANDOM_BASIS_AUDIT.csv",random_audit)
-    jwrite(d/"PREPARE_COMPLETE.json",{"status":"COMPLETE","task":task,"fold":fold,
+    jwrite(d/"PREPARE_COMPLETE.json",{"status":"COMPLETE","task":task,"fold":fold,"prepare_code_sha256":current_code_hash,
         "baseline_checkpoint_sha256":sha(ck),"v2_baseline_checkpoint_sha256":v2rec["checkpoints"]["BASELINE"],
         "normalizer_sha256":data["normalizer"]["mean_std_sha256"],"split_sha256":data["split"],
         "training_pool_role":"inner_train + inner_val + outer_dev; final-heldout excluded",
-        "training_subjects":len(set(subjects)),"training_trials":len(x),"geometry_sha256":sha(d/"geometry.npz"),
+        "training_subjects":len(set(subjects)),"training_trials":len(hs),"geometry_sha256":sha(d/"geometry.npz"),
         "projector_audit_sha256":sha(d/"PROJECTOR_AUDIT.json"),"c_basis_audit_sha256":sha(d/"C_BASIS_AUDIT.json"),
         "direction_utility_sha256":sha(d/"DIRECTION_UTILITY.csv"),"identity_audit_sha256":sha(d/"IDENTITY_ROUTING_AUDIT.csv"),
         "final_heldout_array_reads":0,"model_frozen":True,"new_trainable_parameters":0})
-    print("PREPARE_COMPLETE",task,fold,"trials",len(x),"subjects",len(ids),"K",len(up),
+    print("PREPARE_COMPLETE",task,fold,"trials",len(hs),"subjects",len(ids),"K",len(up),
           "C+",int(np.sum(status=="C_PLUS")),"C-",int(np.sum(status=="C_MINUS")),flush=True)
 
 
