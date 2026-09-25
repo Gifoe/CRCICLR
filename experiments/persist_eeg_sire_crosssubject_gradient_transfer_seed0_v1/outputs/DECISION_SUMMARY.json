@@ -1,0 +1,163 @@
+{
+  "canonical_model_weights_fully_restored": true,
+  "discovery_one_step_transfer": {
+    "BALANCED": {
+      "T_PER": 0.0002673685550689697,
+      "T_PU": -0.00039577484130859375,
+      "T_task": -0.0004488050937652588,
+      "delta_Ponly_BA": -0.0011666666666666492,
+      "delta_full_BA": -0.0015000000000000124
+    },
+    "CONFLICT_AWARE": {
+      "T_PER": 0.0002673685550689697,
+      "T_PU": -0.00039577484130859375,
+      "T_task": -0.0004488050937652588,
+      "delta_Ponly_BA": -0.0011666666666666492,
+      "delta_full_BA": -0.0015000000000000124
+    },
+    "FULL_CE": {
+      "T_PER": 2.969503402709961e-05,
+      "T_PU": -0.0004717886447906494,
+      "T_task": -0.0006068944931030273,
+      "delta_Ponly_BA": -0.0011666666666666492,
+      "delta_full_BA": -0.001333333333333342
+    },
+    "PU_PER_RAW": {
+      "T_PER": 0.0003274083137512207,
+      "T_PU": -0.0003398597240447998,
+      "T_task": -0.00039380788803100586,
+      "delta_Ponly_BA": -0.0009999999999999788,
+      "delta_full_BA": -0.001333333333333342
+    },
+    "P_UTILITY": {
+      "T_PER": -7.3730945587158205e-06,
+      "T_PU": -0.0005781292915344238,
+      "T_task": -0.0006287872791290283,
+      "delta_Ponly_BA": -0.001666666666666683,
+      "delta_full_BA": -0.0016666666666666607
+    },
+    "SHARED1_PERSISTENCE": {
+      "T_PER": 0.00038899779319763185,
+      "T_PU": -9.572505950927734e-06,
+      "T_task": -4.369020462036133e-05,
+      "delta_Ponly_BA": -0.0001666666666666483,
+      "delta_full_BA": -0.0001666666666666483
+    }
+  },
+  "eligible_directions": [],
+  "final_heldout_eeg_reads": 0,
+  "mean_train_val_gradient_cosine": {
+    "FULL_CE": 0.4443765762168914,
+    "P_UTILITY": 0.4454251191392541,
+    "SHARED1_PERSISTENCE": -0.04513176846434362
+  },
+  "outer_dev_eeg_reads": 0,
+  "primary_meta_held_transfer": {
+    "BALANCED": {
+      "T_PER": -6.878376007080078e-07,
+      "T_PU": 0.0004265040159225464,
+      "T_task": 0.0005834800004959106,
+      "delta_Ponly_BA": 0.00037333333333334107,
+      "delta_full_BA": 0.0004000000000000048
+    },
+    "CONFLICT_AWARE": {
+      "T_PER": -6.878376007080078e-07,
+      "T_PU": 0.0004265040159225464,
+      "T_task": 0.0005834800004959106,
+      "delta_Ponly_BA": 0.00037333333333334107,
+      "delta_full_BA": 0.0004000000000000048
+    },
+    "FULL_CE": {
+      "T_PER": 9.615540504455567e-05,
+      "T_PU": 0.00048566043376922606,
+      "T_task": 0.0008260226249694825,
+      "delta_Ponly_BA": 0.0003266666666666751,
+      "delta_full_BA": 0.00035333333333333885
+    },
+    "PU_PER_RAW": {
+      "T_PER": -2.4586915969848633e-05,
+      "T_PU": 0.0004103744029998779,
+      "T_task": 0.0005638986825942993,
+      "delta_Ponly_BA": 0.0004133333333333411,
+      "delta_full_BA": 0.00040666666666667073
+    },
+    "P_UTILITY": {
+      "T_PER": 7.90727138519287e-05,
+      "T_PU": 0.000554700493812561,
+      "T_task": 0.0007264250516891479,
+      "delta_Ponly_BA": 0.0002666666666666728,
+      "delta_full_BA": 0.00042666666666667295
+    },
+    "SHARED1_PERSISTENCE": {
+      "T_PER": -8.003830909729004e-05,
+      "T_PU": 5.059778690338135e-05,
+      "T_task": 0.00010076284408569336,
+      "delta_Ponly_BA": 0.00019333333333333426,
+      "delta_full_BA": 0.0001933333333333298
+    }
+  },
+  "primary_sign_consistency": {
+    "BALANCED": {
+      "Ponly_and_persistence_fraction": "0.32",
+      "Ponly_improve_fraction": "0.8",
+      "all_three_improve_fraction": "0.32",
+      "direction": "BALANCED",
+      "meta_splits": "25",
+      "persistence_improve_fraction": "0.44",
+      "task_and_persistence_fraction": "0.32",
+      "task_improve_fraction": "0.8"
+    },
+    "CONFLICT_AWARE": {
+      "Ponly_and_persistence_fraction": "0.32",
+      "Ponly_improve_fraction": "0.8",
+      "all_three_improve_fraction": "0.32",
+      "direction": "CONFLICT_AWARE",
+      "meta_splits": "25",
+      "persistence_improve_fraction": "0.44",
+      "task_and_persistence_fraction": "0.32",
+      "task_improve_fraction": "0.8"
+    },
+    "FULL_CE": {
+      "Ponly_and_persistence_fraction": "0.56",
+      "Ponly_improve_fraction": "0.76",
+      "all_three_improve_fraction": "0.56",
+      "direction": "FULL_CE",
+      "meta_splits": "25",
+      "persistence_improve_fraction": "0.72",
+      "task_and_persistence_fraction": "0.56",
+      "task_improve_fraction": "0.76"
+    },
+    "PU_PER_RAW": {
+      "Ponly_and_persistence_fraction": "0.32",
+      "Ponly_improve_fraction": "0.8",
+      "all_three_improve_fraction": "0.32",
+      "direction": "PU_PER_RAW",
+      "meta_splits": "25",
+      "persistence_improve_fraction": "0.44",
+      "task_and_persistence_fraction": "0.32",
+      "task_improve_fraction": "0.8"
+    },
+    "P_UTILITY": {
+      "Ponly_and_persistence_fraction": "0.44",
+      "Ponly_improve_fraction": "0.76",
+      "all_three_improve_fraction": "0.44",
+      "direction": "P_UTILITY",
+      "meta_splits": "25",
+      "persistence_improve_fraction": "0.6",
+      "task_and_persistence_fraction": "0.44",
+      "task_improve_fraction": "0.76"
+    },
+    "SHARED1_PERSISTENCE": {
+      "Ponly_and_persistence_fraction": "0.24",
+      "Ponly_improve_fraction": "0.68",
+      "all_three_improve_fraction": "0.24",
+      "direction": "SHARED1_PERSISTENCE",
+      "meta_splits": "25",
+      "persistence_improve_fraction": "0.36",
+      "task_and_persistence_fraction": "0.36",
+      "task_improve_fraction": "0.8"
+    }
+  },
+  "recommended_next_action": "Do not wrap the same P objectives in subject-level meta optimization yet; change representation or objective definition first.",
+  "terminal_label": "PERSISTENCE_GRADIENT_SUBJECT_SPECIFIC"
+}

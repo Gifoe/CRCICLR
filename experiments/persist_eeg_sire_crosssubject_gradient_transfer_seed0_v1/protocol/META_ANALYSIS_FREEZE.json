@@ -1,0 +1,44 @@
+{
+  "all_five_outer_folds_meta_complete": true,
+  "code_amendment": {
+    "amended_code_sha256": "6a8c0afeeb66becaf8d0e4b654668730c990b43583c27bbff5c928634cd1496b",
+    "directions_steps_objectives_and_decision_rules_unchanged": true,
+    "discovery_effect_rows_before_amendment": 0,
+    "inner_meta_results_unchanged": true,
+    "previous_code_sha256": "d3f4074046d5d6e233e1f13a8b6e4e852f0f3e538c3f53d29fc95c1cd785e4a0",
+    "reason": "discovery extraction lacked frozen-reference p10/c10/p20/c20 arrays; derive them from native h1/h2 and locked Q/mu before baseline evaluation",
+    "schema": "DISCOVERY_PRE_EVALUATION_CACHE_HOTFIX"
+  },
+  "code_sha256": "6a8c0afeeb66becaf8d0e4b654668730c990b43583c27bbff5c928634cd1496b",
+  "decision_rule": {
+    "combined_directions_require_both_PU_and_persistence": true,
+    "conflict_label": "PU_PER cosine negative in >=70% of splits; RAW fails at least one P metric; conflict-aware exceeds RAW on both P metrics by >20% of absolute RAW effect plus 1e-8",
+    "discovery_consistency": "same intended metric beneficial mean sign, not direction selection",
+    "no_systematic_task_deterioration": "mean held CE change <= 0",
+    "subject_specific_label": "source intended metric improves, train-val cosine <=0.05, held intended metric does not improve",
+    "transfer_sign_fraction_min": 0.7
+  },
+  "directions": [
+    "FULL_CE",
+    "P_UTILITY",
+    "SHARED1_PERSISTENCE",
+    "PU_PER_RAW",
+    "BALANCED",
+    "CONFLICT_AWARE"
+  ],
+  "discovery_eeg_reads_at_freeze": 0,
+  "locked_file_sha256": {
+    "CROSS_SUBJECT_GRADIENT_ALIGNMENT.csv": "e9c117c0ad349e639897984a0d3361639623989263c47d16d42e5f8b774a5371",
+    "FIRST_ORDER_TRANSFER_CHECK.csv": "17e7db27d0567f8cee3ae61c56f06fa22988c78c4aa367b40b4ac44145842166",
+    "GRADIENT_ALIGNMENT.csv": "b54de58a5532723dc24624a37f636e1740cc6a65fc7b26a5332129e13306fdb6",
+    "GRADIENT_CONFLICT_AUDIT.csv": "a57c072cabcaa349bfd73e203777e22f898bd71f4937769cf26bfcb2bee5ca69",
+    "META_SUBJECT_SPLITS.json": "fbfebf37e43d9d11a87ff3179760837aefba93197b9f44c98e0b71a8493fe7fa",
+    "META_VAL_VIRTUAL_STEP_EFFECTS.csv": "3dc2915ec7c3b8ddea497abcedb771cecbd250361e07d2ce481d45ccb264ef4e",
+    "PROTOCOL_LOCK.json": "5bb851da1088661dc6e85e3d4211f9b6fed0646e47d0c0e1c33c7d85f19e36ad",
+    "SOURCE_VS_HELD_TRANSFER.csv": "eb87308ad9d8a227c433fc5d3615bde443af2a83a176e851de3e19d870bbc047",
+    "TRANSFER_SIGN_CONSISTENCY.csv": "0f9d5a17f7dc035f3b7732effb548f16c2d3b1032b95600117373d8513a757a1",
+    "TRANSFER_SUMMARY.csv": "dd72aa191fe3d0c258318fdf891dd76f2b10831d19d48eb39e95e107909e00d5"
+  },
+  "primary_relative_step": 0.0003,
+  "schema": "META_ANALYSIS_FREEZE_BEFORE_DISCOVERY"
+}

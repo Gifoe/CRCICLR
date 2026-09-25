@@ -1,0 +1,8 @@
+analysis,direction,metric,n,Pearson,Spearman,mean_cosine,negative_fraction,mean_T_task,mean_T_PU,mean_T_PER
+train_val_gradient_cosine_vs_held_transfer,P_UTILITY,T_PU,25,0.9376373258895139,0.9538461538461538,,,,,
+train_val_gradient_cosine_vs_held_transfer,SHARED1_PERSISTENCE,T_PER,25,0.9520697025829139,0.9838461538461538,,,,,
+train_val_gradient_cosine_vs_held_transfer,FULL_CE,T_task,25,0.927678238029659,0.9476923076923076,,,,,
+PU_PER_train_conflict,,,25,,,0.04664782084524632,0.08,,,
+combined_direction_held_transfer,PU_PER_RAW,,25,,,,,0.0005638986825942993,0.0004103744029998779,-2.4586915969848633e-05
+combined_direction_held_transfer,BALANCED,,25,,,,,0.0005834800004959106,0.0004265040159225464,-6.878376007080078e-07
+combined_direction_held_transfer,CONFLICT_AWARE,,25,,,,,0.0005834800004959106,0.0004265040159225464,-6.878376007080078e-07
