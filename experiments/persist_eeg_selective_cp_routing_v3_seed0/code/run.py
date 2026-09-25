@@ -147,12 +147,13 @@ def preflight() -> None:
             data_role, split, cache_name, source_sessions, future_session = B.role(task, fold)
             rec, ck, v2rec = baseline_record(task, fold)
             anchor_rec, _ = B.source_anchor(task, fold)
+            v1cell = next(c for c in v1_final["cells"] if c["task"] == task and int(c["fold"]) == fold)
+            v2cell = next(c for c in v2final["cells"] if c["task"] == task and int(c["fold"]) == fold)
             if rec.get("split_sha256") != split:
                 raise RuntimeError(f"canonical split mismatch: {task}/{fold}")
-            if rec.get("normalizer_sha256") != anchor_rec.get("normalizer", {}).get("mean_std_sha256"):
-                raise RuntimeError(f"canonical normalizer record mismatch: {task}/{fold}")
-            if not any(c.get("task") == task and int(c.get("fold", -1)) == fold and
-                       c.get("checkpoints", {}).get("BASELINE") == sha(ck) for c in v2final["cells"]):
+            if rec.get("normalizer_sha256") != v1cell.get("normalizer_sha256") or rec.get("normalizer_sha256") != v2cell.get("normalizer_sha256"):
+                raise RuntimeError(f"canonical final-refit normalizer differs from V1/V2 locks: {task}/{fold}")
+            if v1cell.get("checkpoints", {}).get("BASELINE") != sha(ck) or v2cell.get("checkpoints", {}).get("BASELINE") != sha(ck):
                 raise RuntimeError(f"V2 final lock does not verify canonical baseline: {task}/{fold}")
             checks.append({"task": task, "fold": fold, "split_sha256": split,
                            "baseline_checkpoint_sha256": sha(ck),
