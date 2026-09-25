@@ -1,0 +1,269 @@
+{
+  "all_BN_buffers_byte_identical": true,
+  "both_arms_matched_steps_exposure_order_initialization": true,
+  "cells": [
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "SHARED_CE_CONTINUATION",
+      "batch_order_sha256": "0699f1b49134c605b663e698bbcb56ff3c7188f26dd9de75042ce73edce87336",
+      "canonical_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "69d452aa370a5b9067de65fedbd0b2da835a5bd44a7a5bcb1e56b62aa08dc6ca",
+      "fold": 0,
+      "geometry_archive_sha256": "db2ad94ee6fc25d1cfe33063cfaf9b8c12921577e688c374c23a9bb4c3cf4d07",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "STAGEWISE_PU_SHARED",
+      "batch_order_sha256": "0699f1b49134c605b663e698bbcb56ff3c7188f26dd9de75042ce73edce87336",
+      "canonical_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "ef2415e2ac9f8910a2f864196a8d89cf5fcd5b7dac0fc90b5cc1c4bf260e9ff6",
+      "fold": 0,
+      "geometry_archive_sha256": "db2ad94ee6fc25d1cfe33063cfaf9b8c12921577e688c374c23a9bb4c3cf4d07",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "58834bd72fe77950edce8ab133b126da7b4932acc4b31900cba73d0d936667cb",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "SHARED_CE_CONTINUATION",
+      "batch_order_sha256": "921c1fbc920f9dc5128d186a0b9c84a1b9a960591dcad63d0c46916a13b8f4fb",
+      "canonical_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "3d43969a1c6b6e9cbfa6a43e3bf1d4311a038d473558e3d0dad05ef440eeac33",
+      "fold": 1,
+      "geometry_archive_sha256": "2b1513ccbd9cdbb3d0e65b041436cbecb07b45777958bfd2befa367172e3b7cf",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "STAGEWISE_PU_SHARED",
+      "batch_order_sha256": "921c1fbc920f9dc5128d186a0b9c84a1b9a960591dcad63d0c46916a13b8f4fb",
+      "canonical_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "d0236b169684b72a93f923082a34e2c28444ee2b2c1b1d05d343323c3050beb7",
+      "fold": 1,
+      "geometry_archive_sha256": "2b1513ccbd9cdbb3d0e65b041436cbecb07b45777958bfd2befa367172e3b7cf",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "7f8aa4ecd00d110e2717746f6c44eefcaa5596fac8f36f103dd7a0878b8aca91",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "SHARED_CE_CONTINUATION",
+      "batch_order_sha256": "cb1260c5fc2c7537cb64a6f538a7192c8d83b4a3ec818e1caf16c98d7921fb76",
+      "canonical_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "2a2aaaffecd58aa99be804db122d323742f81a8f5d78bd33f25ba33f0cc53f66",
+      "fold": 2,
+      "geometry_archive_sha256": "04c7d78c8a6fdf2d2ff10071aa7b5048f2bd0f6c021922c270904cc91c543c19",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "STAGEWISE_PU_SHARED",
+      "batch_order_sha256": "cb1260c5fc2c7537cb64a6f538a7192c8d83b4a3ec818e1caf16c98d7921fb76",
+      "canonical_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "d32d413e8b090c275407daa531f909639ecf5f1e0c92d833885cbb94a1fc178f",
+      "fold": 2,
+      "geometry_archive_sha256": "04c7d78c8a6fdf2d2ff10071aa7b5048f2bd0f6c021922c270904cc91c543c19",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "a90557e8b423c03fd45f8a4976be377de6cc3ead2f183a789241cc6d38fe8e80",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "SHARED_CE_CONTINUATION",
+      "batch_order_sha256": "5dcf343ffa6e4ed6a1627cab4944a1877a91a11b639d269c715152347957da12",
+      "canonical_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "01075d579bbc0569c685ab487b7e69a6405dacf2584a6b264d93754154a7213f",
+      "fold": 3,
+      "geometry_archive_sha256": "b0ce6c4de0098e9473a749b34a181f1e717b8f8c8f9535730a0b840a0d90a521",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "STAGEWISE_PU_SHARED",
+      "batch_order_sha256": "5dcf343ffa6e4ed6a1627cab4944a1877a91a11b639d269c715152347957da12",
+      "canonical_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "47fcab9f27da74f993963a50efdb3ac3b52d4c12d84265c6cbb33185273781e8",
+      "fold": 3,
+      "geometry_archive_sha256": "b0ce6c4de0098e9473a749b34a181f1e717b8f8c8f9535730a0b840a0d90a521",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "0748644906207893ed02f3705fc39c7d3b1a007adc80a7970edbb4455b1dc4fd",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "SHARED_CE_CONTINUATION",
+      "batch_order_sha256": "e3ba92b1e13ada8c57fdb7221f6f6762c9d81264f078d9ec0b1667c97ac2a64d",
+      "canonical_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "49ff220034b1e071234a5540d21c88784495ab32562a1f1e7ae9dd8f6f62deb8",
+      "fold": 4,
+      "geometry_archive_sha256": "7fb7f17b135f8c4a7aceedd89b726785661daa0fcefcb0ffd47934ce77914aee",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    },
+    {
+      "all_batchnorm_state_byte_identical": true,
+      "all_nontrainable_state_byte_identical": true,
+      "arm": "STAGEWISE_PU_SHARED",
+      "batch_order_sha256": "e3ba92b1e13ada8c57fdb7221f6f6762c9d81264f078d9ec0b1667c97ac2a64d",
+      "canonical_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "changed_state_keys": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ],
+      "final_model_state_sha256": "4a194e461e918f114dad9c931f7e35445a0140b2e38b40e110b8f32855cbd85d",
+      "fold": 4,
+      "geometry_archive_sha256": "7fb7f17b135f8c4a7aceedd89b726785661daa0fcefcb0ffd47934ce77914aee",
+      "global_eval_mode": true,
+      "initial_model_state_sha256": "f5fbd4181eab5cdb8ab92374babd48469a2e3a10b2ca28e0f460175e14b6d6d8",
+      "optimizer_steps": 500,
+      "sample_exposures": 104000,
+      "trainable_parameters": [
+        "depth1.weight",
+        "depth2.weight",
+        "point1.weight",
+        "point2.weight"
+      ]
+    }
+  ],
+  "geometry_hashes_verified": true,
+  "only_four_allowed_parameters_changed": true,
+  "status": "PASS"
+}

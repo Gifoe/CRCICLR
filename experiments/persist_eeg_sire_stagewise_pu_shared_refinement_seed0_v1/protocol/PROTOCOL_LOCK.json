@@ -1,0 +1,422 @@
+{
+  "anchor_temperature": 2.0,
+  "arms": [
+    "SHARED_CE_CONTINUATION",
+    "STAGEWISE_PU_SHARED"
+  ],
+  "batching": "each subject-class unit contributes two trials per session per batch; all groups synchronously shuffled; every trial exactly once per epoch; identical batch indices for both arms",
+  "bootstrap_subject_draws": 20000,
+  "cells": [
+    {
+      "cache_name": "mi",
+      "checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold0_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "6ac976196e0658f66888c0fe23c909c6745c567e57c05cb7e5b2f2113adc5c8c",
+      "discovery_subjects": [
+        "8",
+        "9",
+        "11",
+        "14",
+        "19",
+        "26"
+      ],
+      "fold": 0,
+      "future_session": 2,
+      "geometry_archive": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold0_seed0/FITTED_PATHWAYS.npz",
+      "geometry_archive_sha256": "db2ad94ee6fc25d1cfe33063cfaf9b8c12921577e688c374c23a9bb4c3cf4d07",
+      "geometry_q_mu_sha256": {
+        "H_SHARED1": "cef75f3d49920a4541ff05fe408fc686de3a9f47b1ec6477e1636ff69cf3a244",
+        "H_SHARED2": "6259c9cc158642855b785ce70536734cf6251eeaf3fef98f9989ec3169a53abf"
+      },
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold0.npz",
+      "normalizer_sha256": "12d47d87b6c5f890babc3a9452672a2e7c29a9ec550f544df24d8acc4259b3fe",
+      "outer_dev_subjects_excluded": [
+        "3",
+        "5",
+        "6",
+        "15",
+        "32",
+        "33",
+        "38",
+        "47"
+      ],
+      "protected_coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "source_sessions": [
+        1
+      ],
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "train_subjects": [
+        "1",
+        "2",
+        "7",
+        "10",
+        "16",
+        "20",
+        "21",
+        "22",
+        "23",
+        "27",
+        "28",
+        "30",
+        "31",
+        "34",
+        "35",
+        "40",
+        "41",
+        "43",
+        "44",
+        "45",
+        "46",
+        "48",
+        "49",
+        "50",
+        "52",
+        "53"
+      ]
+    },
+    {
+      "cache_name": "mi",
+      "checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold1_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "a8229c7f05ac72bea13934f14f5d3600e10e889454687be06f47105e61d3747e",
+      "discovery_subjects": [
+        "1",
+        "8",
+        "11",
+        "15",
+        "44",
+        "52"
+      ],
+      "fold": 1,
+      "future_session": 2,
+      "geometry_archive": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold1_seed0/FITTED_PATHWAYS.npz",
+      "geometry_archive_sha256": "2b1513ccbd9cdbb3d0e65b041436cbecb07b45777958bfd2befa367172e3b7cf",
+      "geometry_q_mu_sha256": {
+        "H_SHARED1": "dbad358f76f62b480d6b8e9c5067e72f09aa4c511b790dbf6acb9513bb92d942",
+        "H_SHARED2": "ae1125062e595238055f20219e5133a36fb5e625d7738a0e233c392ccbf1ce79"
+      },
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold1.npz",
+      "normalizer_sha256": "2dcccf19c978071b433212549388d9fa8a43224eec3dbb980ccdee27af1de9db",
+      "outer_dev_subjects_excluded": [
+        "2",
+        "14",
+        "26",
+        "28",
+        "31",
+        "35",
+        "40",
+        "43"
+      ],
+      "protected_coordinates": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source_sessions": [
+        1
+      ],
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "train_subjects": [
+        "3",
+        "5",
+        "6",
+        "7",
+        "9",
+        "10",
+        "16",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "27",
+        "30",
+        "32",
+        "33",
+        "34",
+        "38",
+        "41",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53"
+      ]
+    },
+    {
+      "cache_name": "mi",
+      "checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold2_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "36a06475f75712f3c00276cc8de5aab7552c5aa6c5ee94cd201f543692751814",
+      "discovery_subjects": [
+        "5",
+        "6",
+        "14",
+        "35",
+        "45",
+        "46"
+      ],
+      "fold": 2,
+      "future_session": 2,
+      "geometry_archive": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold2_seed0/FITTED_PATHWAYS.npz",
+      "geometry_archive_sha256": "04c7d78c8a6fdf2d2ff10071aa7b5048f2bd0f6c021922c270904cc91c543c19",
+      "geometry_q_mu_sha256": {
+        "H_SHARED1": "a17f24586c40872afc7c26293e32f0d7cfb6b0dea6d59950be123ac365608d7e",
+        "H_SHARED2": "a50af7097729813561f848260f008affe4228059e31ac77847f4fc33a4199cd4"
+      },
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold2.npz",
+      "normalizer_sha256": "2d746d812678d332f4771d21ce01123ddd5e32aa0fb569c5064b7691df0fa7e6",
+      "outer_dev_subjects_excluded": [
+        "1",
+        "8",
+        "11",
+        "23",
+        "30",
+        "48",
+        "50",
+        "52"
+      ],
+      "protected_coordinates": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source_sessions": [
+        1
+      ],
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "train_subjects": [
+        "2",
+        "3",
+        "7",
+        "9",
+        "10",
+        "15",
+        "16",
+        "19",
+        "20",
+        "21",
+        "22",
+        "26",
+        "27",
+        "28",
+        "31",
+        "32",
+        "33",
+        "34",
+        "38",
+        "40",
+        "41",
+        "43",
+        "44",
+        "47",
+        "49",
+        "53"
+      ]
+    },
+    {
+      "cache_name": "mi",
+      "checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold3_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "2eb9b20d2f2ce7ba385fc296872935bf2ca5a1b5cc30e9f699d502dc25f1b256",
+      "discovery_subjects": [
+        "8",
+        "14",
+        "32",
+        "35",
+        "43",
+        "46"
+      ],
+      "fold": 3,
+      "future_session": 2,
+      "geometry_archive": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold3_seed0/FITTED_PATHWAYS.npz",
+      "geometry_archive_sha256": "b0ce6c4de0098e9473a749b34a181f1e717b8f8c8f9535730a0b840a0d90a521",
+      "geometry_q_mu_sha256": {
+        "H_SHARED1": "3f11ee6eab7c8081dae5a38f1015ad04ef32d8762ece1f947d029005e900a9e8",
+        "H_SHARED2": "7222577120518b6b4c88d140bbf8516894f00058582bc2dcf874e7de24abfc52"
+      },
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold3.npz",
+      "normalizer_sha256": "040fc77f68d09d091af77dda00d1a472e30e1a7c1292f2f9bd136630069a6569",
+      "outer_dev_subjects_excluded": [
+        "10",
+        "16",
+        "19",
+        "22",
+        "27",
+        "34",
+        "45",
+        "49"
+      ],
+      "protected_coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "source_sessions": [
+        1
+      ],
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "train_subjects": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7",
+        "9",
+        "11",
+        "15",
+        "20",
+        "21",
+        "23",
+        "26",
+        "28",
+        "30",
+        "31",
+        "33",
+        "38",
+        "40",
+        "41",
+        "44",
+        "47",
+        "48",
+        "50",
+        "52",
+        "53"
+      ]
+    },
+    {
+      "cache_name": "mi",
+      "checkpoint_path": "/root/rivermind-data/carrier_5fold_multiseed_stability_runtime/openbmi_fold4_seed0_litebn/selected_best.pt",
+      "checkpoint_sha256": "656f9fd20601d63bed1fe5d4730a815288cc3a29c0c0357ce95559dd04ea6b63",
+      "discovery_subjects": [
+        "11",
+        "15",
+        "34",
+        "38",
+        "48",
+        "52"
+      ],
+      "fold": 4,
+      "future_session": 2,
+      "geometry_archive": "/root/rivermind-data/sire_layerwise_p_formation_seed0_runtime/cells/fold4_seed0/FITTED_PATHWAYS.npz",
+      "geometry_archive_sha256": "7fb7f17b135f8c4a7aceedd89b726785661daa0fcefcb0ffd47934ce77914aee",
+      "geometry_q_mu_sha256": {
+        "H_SHARED1": "8658f32dd420c94612e598fd5747eda97449795c70a197b3a61cb512ac2a467f",
+        "H_SHARED2": "c15383d01dc0f231524df8b3d640df1dec69196b9a501c06c935f418695f7317"
+      },
+      "normalizer_path": "/root/rivermind-data/litebn_x_singlemodel_seed0_runtime/normalizers/openbmi_mi_fold4.npz",
+      "normalizer_sha256": "c04fbdc0d215369e977dffa0c159801dd8fbf42e82538b262c3b254498e56b1f",
+      "outer_dev_subjects_excluded": [
+        "7",
+        "9",
+        "20",
+        "21",
+        "41",
+        "44",
+        "46",
+        "53"
+      ],
+      "protected_coordinates": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "source_sessions": [
+        1
+      ],
+      "split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+      "train_subjects": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "8",
+        "10",
+        "14",
+        "16",
+        "19",
+        "22",
+        "23",
+        "26",
+        "27",
+        "28",
+        "30",
+        "31",
+        "32",
+        "33",
+        "35",
+        "40",
+        "43",
+        "45",
+        "47",
+        "49",
+        "50"
+      ]
+    }
+  ],
+  "checkpoint_endpoint": "fixed_epoch20",
+  "epochs": 20,
+  "final_heldout_eeg_reads": 0,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "geometry": "exact layerwise train-only frozen PathFit Q and mu",
+  "gradient_clip": 5.0,
+  "historical_provenance_caveat": "The canonical selected checkpoints have historical diagnostic evaluations on final-heldout subjects recorded in the source manifest. This experiment performs zero final-heldout EEG array reads and does not erase that historical exposure.",
+  "lambda_C": 0.1,
+  "lambda_anchor": 0.1,
+  "lambda_off": 0.01,
+  "lambda_persist": 1.0,
+  "lambda_var": 0.1,
+  "lr": 0.0001,
+  "margin_persist": 0.02,
+  "model_mode": "eval_all_times",
+  "optimizer": "AdamW",
+  "outer_dev_eeg_reads": 0,
+  "prior_layerwise_geometry_audit_sha256": "971a1295c82f944f21703d671badee9921438e035178820cd6be4174087c6892",
+  "prior_layerwise_protocol_sha256": "d8dd06cea7b989067de73e1b52d9051f221df2bef13dd5a13ec1541f1a30ab23",
+  "roles_read": [
+    "inner_train",
+    "discovery_after_epoch20_only"
+  ],
+  "schema": "SIRE_STAGEWISE_PU_SHARED_REFINEMENT_SEED0_V1",
+  "seed": 0,
+  "task": "OpenBMI_MI",
+  "trainable_parameters": [
+    "depth1.weight",
+    "depth2.weight",
+    "point1.weight",
+    "point2.weight"
+  ],
+  "variance_floor_fraction": 0.8,
+  "weight_decay": 0.0005
+}
