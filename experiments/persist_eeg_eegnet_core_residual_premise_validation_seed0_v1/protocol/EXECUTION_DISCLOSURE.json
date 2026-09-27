@@ -1,0 +1,35 @@
+{
+  "schema": "CORE_RESIDUAL_EXECUTION_DISCLOSURE_V1",
+  "source_server_protocol_snapshot": "TASKCORE_SOURCE_PROTOCOL_LOCK.json (committed source SHA 6cc859e700b97613087a9e0c695c174ab3dff4d1b419def594325ac8de8ca04c)",
+  "server_taskcore_runtime_output_folder": "outputs_v4",
+  "server_taskcore_runtime_code": "run_v4.py",
+  "preoutcome_amendment": "PROTOCOL_AMENDMENT_PREOUTCOME.json; frozen before evaluation output or outcome inspection",
+  "preserved_attempts": [
+    {
+      "attempt": "evaluate_all_v1",
+      "result": "failed closed before fold-0 output",
+      "cause": "source NLL reproduction gate caught float64 versus source float32 probability convention",
+      "phase_log_sha256": "c5c20e14dd15e0e6a74daf4e4b9baab851898fb87ff88f30cd93e720c1168421",
+      "fold_log_sha256": "415200b0d747e5b2c39a16045a8fd6276356fce8d954ff9e2889aab93ef1aadb"
+    },
+    {
+      "attempt": "evaluate_all_v2",
+      "result": "failed closed before fold-0 output",
+      "cause": "float32 probability rounded to one in OOF logit clip; promoted to float64 before clipping",
+      "phase_log_sha256": "3686a3d9acd43e26ff2c3ecece4fab88a12d3c904d009815abaab2652d885f45",
+      "fold_log_sha256": "b1da57445f8d1ab3b6032b70db15c6fd26e582b2ffeebca9f3df52d609ab20db"
+    },
+    {
+      "attempt": "aggregate_v1",
+      "result": "all fold outcomes unchanged; interpretation incorrectly mapped to Case E",
+      "cause": "Case C branch used an inverted predictive-maximality guard",
+      "entry_sha256": "c19518a2636f9e3ebe886412d44861c1cba9fd06380962e156d176e69e59d2d2",
+      "decision_summary_sha256": "8016125c2dd494c68b20b4c13f6582959f7428f74ff6a317747bdd9309991969",
+      "correction": "aggregate_v2 maps all-five-fold same-family relation-and-BA dominance to user-specified Case C; source outputs and numerical thresholds unchanged"
+    }
+  ],
+  "successful_evaluation_attempt": "evaluate_all_v3",
+  "successful_aggregate_attempt": "aggregate_v2",
+  "no_neural_training": true,
+  "final_heldout_eeg_reads": 0
+}

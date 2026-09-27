@@ -1,0 +1,83 @@
+{
+  "CORE_RESIDUAL_PREMISE_SUPPORTED": false,
+  "G_NOT_PREDICTIVE_MAXIMAL": true,
+  "G_relation_plus_0_03_folds": {
+    "PCA_R": 1,
+    "SUPERVISED_DECISION_R": 0
+  },
+  "alternative_predictive_comparison": {
+    "PCA_R": {
+      "BA_better_by_at_least_0_005": 4,
+      "NLL_lower": 5
+    },
+    "SUPERVISED_DECISION_R": {
+      "BA_better_by_at_least_0_005": 4,
+      "NLL_lower": 5
+    }
+  },
+  "core_role": "CORE_ROLE_NOT_ESTABLISHED",
+  "final_heldout_eeg_reads": 0,
+  "generic_family_dominates_G_relation_and_BA_all_folds": {
+    "PCA_R": false,
+    "SUPERVISED_DECISION_R": true
+  },
+  "lower_variability_folds": {
+    "PCA_R": {
+      "session_task_instability": 4,
+      "subject_task_heterogeneity": 4
+    },
+    "SUPERVISED_DECISION_R": {
+      "session_task_instability": 0,
+      "subject_task_heterogeneity": 0
+    }
+  },
+  "next_action": "STOP_P_SPECIFIC_MODEL_DESIGN",
+  "primary_interpretation": "G_NOT_DISTINCT_FROM_GENERIC_PREDICTIVE_SUBSPACE",
+  "relation_only_gate": false,
+  "residual_decisions": {
+    "C_CURRENT": {
+      "RESIDUAL_COMPLEMENTS_G": false,
+      "capacity_BA_advantage_folds": 5,
+      "capacity_NLL_advantage_folds": 1,
+      "capacity_specific": true,
+      "joint_BA_gain_at_least_0_005_folds": 0,
+      "joint_NLL_gain_folds": 0,
+      "rescue_fraction_equal_fold_subject_equal": 0.4647020386270553,
+      "stack_favorable": true,
+      "stacked_BA_equal_fold": 0.7228515625,
+      "stacked_NLL_equal_fold": 0.5639005835982384
+    },
+    "NEITHER": {
+      "RESIDUAL_COMPLEMENTS_G": true,
+      "capacity_BA_advantage_folds": 3,
+      "capacity_NLL_advantage_folds": 0,
+      "capacity_specific": true,
+      "joint_BA_gain_at_least_0_005_folds": 3,
+      "joint_NLL_gain_folds": 0,
+      "rescue_fraction_equal_fold_subject_equal": 0.3343340528231934,
+      "stack_favorable": true,
+      "stacked_BA_equal_fold": 0.72734375,
+      "stacked_NLL_equal_fold": 0.5594129928544563
+    },
+    "P_NOT_U": {
+      "RESIDUAL_COMPLEMENTS_G": false,
+      "capacity_BA_advantage_folds": 3,
+      "capacity_NLL_advantage_folds": 0,
+      "capacity_specific": true,
+      "joint_BA_gain_at_least_0_005_folds": 2,
+      "joint_NLL_gain_folds": 0,
+      "rescue_fraction_equal_fold_subject_equal": 0.29218934738185226,
+      "stack_favorable": true,
+      "stacked_BA_equal_fold": 0.7208984375,
+      "stacked_NLL_equal_fold": 0.5601213263102869
+    }
+  },
+  "residual_roles": [
+    "MISSING_UTILITY_IN_NONPERSISTENT_RESIDUAL"
+  ],
+  "schema": "CORE_RESIDUAL_PREMISE_DECISION_V1",
+  "source_commits": {
+    "p_semantics": "8a8b708b30e19a20a83902d272fbe53fe8279f12",
+    "taskcore": "d5184c5423806693a3b218f2d0329cd6b29d5d9a"
+  }
+}
