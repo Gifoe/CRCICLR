@@ -1,0 +1,176 @@
+{
+  "G_minus_P_NOT_U": {
+    "cross_subject_decoder_BA": {
+      "equal_fold_mean": 0.0078125,
+      "positive_folds": 3
+    },
+    "cross_subject_relation_cosine": {
+      "equal_fold_mean": 0.05858211116965748,
+      "positive_folds": 4
+    }
+  },
+  "G_rank_random_reference": {
+    "cross_subject_decoder_BA": [
+      {
+        "G_percentile_among_random": 0.97,
+        "G_value": 0.7529296875,
+        "fold": 0,
+        "random_mean": 0.68126953125,
+        "random_p95": 0.7470703125
+      },
+      {
+        "G_percentile_among_random": 1.0,
+        "G_value": 0.7939453125,
+        "fold": 1,
+        "random_mean": 0.678974609375,
+        "random_p95": 0.763671875
+      },
+      {
+        "G_percentile_among_random": 1.0,
+        "G_value": 0.6787109375,
+        "fold": 2,
+        "random_mean": 0.61267578125,
+        "random_p95": 0.6591796875
+      },
+      {
+        "G_percentile_among_random": 0.78,
+        "G_value": 0.6552734375,
+        "fold": 3,
+        "random_mean": 0.637705078125,
+        "random_p95": 0.66796875
+      },
+      {
+        "G_percentile_among_random": 1.0,
+        "G_value": 0.6982421875,
+        "fold": 4,
+        "random_mean": 0.6303125,
+        "random_p95": 0.6728515625
+      }
+    ],
+    "cross_subject_relation_cosine": [
+      {
+        "G_percentile_among_random": 1.0,
+        "G_value": 0.9723391554276712,
+        "fold": 0,
+        "random_mean": 0.8064932316928476,
+        "random_p95": 0.9547407562514997
+      },
+      {
+        "G_percentile_among_random": 0.99,
+        "G_value": 0.9822188025086521,
+        "fold": 1,
+        "random_mean": 0.859364602888191,
+        "random_p95": 0.9738263552043164
+      },
+      {
+        "G_percentile_among_random": 1.0,
+        "G_value": 0.9421580621355103,
+        "fold": 2,
+        "random_mean": 0.7183361464604225,
+        "random_p95": 0.8835154022535654
+      },
+      {
+        "G_percentile_among_random": 0.96,
+        "G_value": 0.8312816234615872,
+        "fold": 3,
+        "random_mean": 0.7033108285996406,
+        "random_p95": 0.8302739527351606
+      },
+      {
+        "G_percentile_among_random": 1.0,
+        "G_value": 0.8804444242448354,
+        "fold": 4,
+        "random_mean": 0.7011830425929788,
+        "random_p95": 0.84563316996287
+      }
+    ]
+  },
+  "G_specificity_4_of_5_rule": {
+    "COVARIANCE_MATCHED_RANDOM": {
+      "cross_subject_decoder_BA": {
+        "pass_4_of_5": true,
+        "positive_folds": 4
+      },
+      "cross_subject_relation_cosine": {
+        "pass_4_of_5": true,
+        "positive_folds": 5
+      }
+    },
+    "ENERGY_MATCHED_RANDOM": {
+      "cross_subject_decoder_BA": {
+        "pass_4_of_5": true,
+        "positive_folds": 4
+      },
+      "cross_subject_relation_cosine": {
+        "pass_4_of_5": true,
+        "positive_folds": 5
+      }
+    },
+    "PCA_ENERGY_CONTROL": {
+      "cross_subject_decoder_BA": {
+        "pass_4_of_5": false,
+        "positive_folds": 0
+      },
+      "cross_subject_relation_cosine": {
+        "pass_4_of_5": true,
+        "positive_folds": 5
+      }
+    }
+  },
+  "P_ALL_above_own_rank_energy_covariance_controls": {
+    "P_ALL_COVARIANCE_MATCHED_RANDOM": {
+      "cross_subject_decoder_BA": 2,
+      "cross_subject_relation_cosine": 5
+    },
+    "P_ALL_ENERGY_MATCHED_RANDOM": {
+      "cross_subject_decoder_BA": 1,
+      "cross_subject_relation_cosine": 4
+    },
+    "P_ALL_RANK_RANDOM": {
+      "cross_subject_decoder_BA": 4,
+      "cross_subject_relation_cosine": 5
+    }
+  },
+  "direct_persistence_beyond_utility": "NOT_ESTIMABLE_DUE_TO_SUPPORT_OVERLAP",
+  "final_heldout_eeg_reads": 0,
+  "folds": 5,
+  "matched_control_quality": {
+    "COVARIANCE_MATCHED_RANDOM": {
+      "achieved_energy_ratio_mean": 0.34332680294257195,
+      "achieved_energy_ratio_range": [
+        0.28643573660020294,
+        0.46813941707303525
+      ],
+      "overlap_with_G_mean": 0.11050584231880953,
+      "overlap_with_G_range": [
+        0.061126630130627524,
+        0.19265686954542605
+      ],
+      "spectrum_log_RMS_mean": 1.0372729078744984
+    },
+    "ENERGY_MATCHED_RANDOM": {
+      "achieved_energy_ratio_mean": 0.34454144284651883,
+      "achieved_energy_ratio_range": [
+        0.29105290148738383,
+        0.46813941707303525
+      ],
+      "overlap_with_G_mean": 0.11117445243811921,
+      "overlap_with_G_range": [
+        0.02635235343721215,
+        0.19265686954542605
+      ],
+      "spectrum_log_RMS_mean": 1.047600246203437
+    }
+  },
+  "material_utility_localization_rule_passed": false,
+  "mechanism_interpretation": "MIXED_OR_INCONCLUSIVE",
+  "next_model_decision": "MECHANISM_NOT_IDENTIFIED_YET",
+  "schema": "EEGNET_P_TASKCORE_SPECIFICITY_DECISION_V1",
+  "source_attribution_labels": [
+    "PERSISTENCE_BEYOND_UTILITY_NOT_DIRECTLY_ESTIMABLE",
+    "PROTECTED_SPECIFICITY_NOT_ESTABLISHED"
+  ],
+  "source_commit": "8a8b708b30e19a20a83902d272fbe53fe8279f12",
+  "specificity_survives": false,
+  "utility_rank_overlap": 1.0
+}
