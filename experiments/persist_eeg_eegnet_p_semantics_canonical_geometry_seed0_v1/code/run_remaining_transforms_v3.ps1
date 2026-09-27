@@ -1,0 +1,80 @@
+$ErrorActionPreference='Stop'
+$repo='D:\nips-temp\TotalP\P1\CRCICLR_PERSIST_INCREMENTAL_VALUE_V1'
+$exp=Join-Path $repo 'experiments\persist_eeg_eegnet_p_semantics_canonical_geometry_seed0_v1'
+$runtime='D:\nips-temp\TotalP\P1\p_semantics_canonical_geometry_runtime'
+$entry=Join-Path $exp 'code\transform_runner_v3.py'
+$log=Join-Path $runtime 'remaining_transforms_v3.log'
+$python='E:\Anaconda\envs\persist_stable_251\python.exe'
+$env:PERSIST_SOURCE_REPO=$repo
+$env:P_SEMANTICS_RUNTIME=$runtime
+$env:PYTHONUNBUFFERED='1'
+function Log([string]$message){$message|Out-File -LiteralPath $log -Append -Encoding utf8}
+try {
+  if(Test-Path -LiteralPath $log){throw 'log exists; refuse duplicate'}
+  $checks=@{
+    'code\transform_runner_v3.py'='728780435acccae6e3aa9e1712515c8c6c18da524e6105ffc71d84575cae3977'
+    'code\canonical.py'='a806d525cc10840f88a3eea2e9e60100b2104aae2e1f697c06e98ce2c7582cdc'
+    'code\analysis_runner.py'='0a8913b4593c3ebc78819903838efdff15a5c67af3e1d7218256a5aad342002b'
+    'code\data_geometry.py'='c3e8e496d2989a3805e1d3edbb8b5c3b39c253a0b6e6d5544ed6f8f8990f27a1'
+    'code\semantics.py'='6c1703556ba93ffc23619f7e02acb1eaf7e1fce908cbb45103cfc312f7c015ed'
+    'code\decoders.py'='32c6008f4f0e341bf26d34d03154900f5ea41d1a8cce48895721a2018835e0c8'
+    'protocol\PROTOCOL_LOCK.json'='c65bd28a7856ad1c5ba139908b56cf54ac22a16d51f076f3079cb8971d7b7245'
+  }
+  foreach($key in $checks.Keys){
+    if((Get-FileHash -LiteralPath (Join-Path $exp $key) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $checks[$key]){
+      throw "SHA mismatch $key"
+    }
+  }
+  $precedingName='PERSIST_EEG_P_SEMANTICS_EARLY_PERMUTATIONS_V3'
+  "REMAINING_TRANSFORMS_V3_START utc=$([DateTime]::UtcNow.ToString('o'))"|Out-File -LiteralPath $log -Encoding utf8
+  while($true){
+    $preceding=Get-ScheduledTask -TaskName $precedingName
+    $info=Get-ScheduledTaskInfo -TaskName $precedingName
+    if($preceding.State -eq 'Ready'){
+      if($info.LastTaskResult -ne 0){throw 'preceding early permutations failed'}
+      if(-not ((Get-Content -LiteralPath (Join-Path $runtime 'permutations_early_v3.log') -Tail 2) -match 'EARLY_PERMUTATIONS_V3_ALL_COMPLETE')){
+        throw 'preceding early permutations incomplete'
+      }
+      break
+    }
+    Log "WAIT_PRECEDING state=$($preceding.State) utc=$([DateTime]::UtcNow.ToString('o'))"
+    Start-Sleep -Seconds 30
+  }
+  foreach($stage in @('embedding_64d','depth_point_elu_pool2','spatial_elu_pool1','temporal_bn')){
+    foreach($fold in 0..4){
+      if($stage -eq 'embedding_64d' -and $fold -eq 0){continue}
+      $output=Join-Path $runtime "analysis\fold${fold}_seed0\$stage\transform"
+      if(Test-Path -LiteralPath $output){throw "output exists; refuse duplicate fold=$fold stage=$stage"}
+      while($true){
+        $ram=(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory/1MB
+        $gpu=[int]([string]((& nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits)|Select-Object -First 1)).Trim()
+        $heavy=@(Get-CimInstance Win32_Process|Where-Object{
+          $_.Name -match '^python(\.exe)?$' -and $_.CommandLine -and
+          $_.CommandLine -match 'persist_eeg_pc_mechanism_closure_seed0_v1|p_semantics_canonical_geometry_runtime|analysis_runner.py|transform_runner|permutation_runner'
+        })
+        if($ram -ge 40 -and $gpu -ge 16000 -and $heavy.Count -eq 0){break}
+        Log "WAIT_RESOURCE fold=$fold stage=$stage ram_gb=$([math]::Round($ram,2)) gpu_mib=$gpu heavy=$($heavy.Count) utc=$([DateTime]::UtcNow.ToString('o'))"
+        Start-Sleep -Seconds 30
+      }
+      Log "LAUNCH fold=$fold stage=$stage ram_gb=$([math]::Round($ram,2)) gpu_mib=$gpu utc=$([DateTime]::UtcNow.ToString('o'))"
+      $cmd='"'+$python+'" -u "'+$entry+'" --fold '+$fold+' --stage '+$stage+' >> "'+$log+'" 2>&1'
+      & cmd.exe /d /c $cmd
+      if($LASTEXITCODE -ne 0){throw "python failed fold=$fold stage=$stage exit=$LASTEXITCODE"}
+      $audit=Join-Path $output 'AUDIT.json'
+      $record=Get-Content -LiteralPath $audit -Raw|ConvertFrom-Json
+      if($record.schema -ne 'P_SEMANTICS_FOLD_STAGE_TRANSFORM_V3' -or
+         $record.final_heldout_eeg_reads -ne 0 -or
+         $record.target_decoder_refit -ne $false -or
+         $record.TRAIN_labels_used_for_unsupervised_rank_CV -ne $false -or
+         $record.transform_fit_population -ne 'TRAIN_GEOMETRY_ONLY'){
+        throw "invalid audit fold=$fold stage=$stage"
+      }
+      Log "COMPLETE fold=$fold stage=$stage audit_sha=$((Get-FileHash -LiteralPath $audit -Algorithm SHA256).Hash.ToLowerInvariant()) utc=$([DateTime]::UtcNow.ToString('o'))"
+    }
+  }
+  Log "REMAINING_TRANSFORMS_V3_ALL_COMPLETE utc=$([DateTime]::UtcNow.ToString('o'))"
+  exit 0
+} catch {
+  if(Test-Path -LiteralPath $log){Log "REMAINING_TRANSFORMS_V3_EXCEPTION $($_.Exception.Message) utc=$([DateTime]::UtcNow.ToString('o'))"}
+  exit 1
+}

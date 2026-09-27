@@ -1,0 +1,20 @@
+{
+  "schema": "P_SEMANTICS_CANONICAL_UPSTREAM_SOURCE_AUDIT_V1",
+  "execution_location": "original server; reused frozen EEGNet/OpenBMI loader and PathFit",
+  "server_repo_HEAD_at_audit": "248807af2f6d223416da7ac69e504be746db0651",
+  "server_repo_dirty_unrelated_tracked_files_preserved": true,
+  "eegnet_peeh_source": {
+    "relative_path": "experiments/persist_eeg_crossbackbone_peeh_v1/code/run_crossbackbone_peeh.py",
+    "server_raw_sha256": "6dd2f5d6677a9847bfadb6ec4d200d3d5b76d2560c814f0e73265c30ec273d12",
+    "local_worktree_raw_sha256": "6dd2f5d6677a9847bfadb6ec4d200d3d5b76d2560c814f0e73265c30ec273d12"
+  },
+  "pathfit_source": {
+    "relative_path": "experiments/persist_eeg_protected_pathway_mechanism_seed0_v1/code/run_protected_pathway.py",
+    "server_raw_sha256": "30284438f61d88509117f11b469465d6bafabb177199cdcefabcd63ffe1d90ad",
+    "local_worktree_raw_sha256": "da7889366da239fe87c0f0bd954b957ab008d4e8a02073de7d4b94f249c1b034",
+    "local_worktree_LF_normalized_sha256": "30284438f61d88509117f11b469465d6bafabb177199cdcefabcd63ffe1d90ad",
+    "difference": "CRLF versus LF line endings only; normalized bytes identical"
+  },
+  "frozen_checkpoint_and_split_hashes": "protocol/PROTOCOL_LOCK.json",
+  "fresh_geometry_hashes": "protocol/GEOMETRY_PROVENANCE.json"
+}

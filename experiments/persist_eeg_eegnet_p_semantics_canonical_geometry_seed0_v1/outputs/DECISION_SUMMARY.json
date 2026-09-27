@@ -1,0 +1,50 @@
+{
+  "schema": "P_SEMANTICS_DECISION_SUMMARY_V1",
+  "scope": "canonical EEGNet / OpenBMI_MI / seed 0 / folds 0-4",
+  "primary_population": "OUTER_DEVELOPMENT; subject-disjoint; evaluation only",
+  "summary_rule": "equal-weight mean of five fold-level estimates; descriptive, not an outer-selected hyperparameter",
+  "primary_stage": "embedding_64d",
+  "primary_family": "P",
+  "embedding_equal_fold_means": {
+    "subject_baseline_persistence_cosine": {"P": 0.622146187, "C": 0.569790939, "RANDOM": 0.539802699, "FULL": 0.568095004},
+    "within_subject_task_relation_cosine": {"P": 0.856467815, "C": 0.30905454, "RANDOM": 0.606984555, "FULL": 0.658833832},
+    "cross_subject_task_relation_cosine_same_session": {"P": 0.921688, "C": 0.431688, "RANDOM": 0.748061, "FULL": 0.785005},
+    "subject_ID_probe_balanced_accuracy_TRAIN_GEOMETRY": {"P": 0.1538, "C": 0.3038, "RANDOM": 0.1207, "FULL": 0.2865, "chance": 0.03846},
+    "frozen_S1_to_S2_decoder_BA_outer": {"P": 0.701, "C": 0.612, "RANDOM": 0.637, "FULL": 0.729},
+    "frozen_S2_to_S1_decoder_BA_outer": {"P": 0.718, "C": 0.623, "RANDOM": 0.646, "FULL": 0.732},
+    "frozen_cross_subject_decoder_BA_outer": {"P": 0.716, "C": 0.611, "RANDOM": 0.644, "FULL": 0.73},
+    "session_decoder_normal_angle_degrees": {"P": 19.997, "C": 60.147, "RANDOM": 24.389, "FULL": 38.14},
+    "centroid_variance_fraction_outer": {"P_class": 0.544, "P_subject": 0.213, "C_class": 0.089, "C_subject": 0.545},
+    "centroid_mean_squared_norm_outer": {"P": 4.978, "C": 4.374, "RANDOM": 0.686, "FULL": 9.351}
+  },
+  "permutation_controls": {
+    "draws_per_fold": 200,
+    "P_embedding_baseline_subject_pair_p_range": [0.004975, 0.0199],
+    "P_embedding_task_relation_subject_pair_p_range": [0.109, 0.746],
+    "P_embedding_cross_subject_task_relation_label_null_p_all_folds": 0.004975,
+    "interpretation": "P baseline depends on biological-subject matching; the P task relation is label-related but does not depend strongly on matching the same subject across sessions."
+  },
+  "canonicalization": {
+    "locked_material_BA_recovery_threshold": 0.03,
+    "locked_material_geometry_residual_reduction_fraction": 0.1,
+    "smallest_useful_unsupervised_transform": "NONE",
+    "P_embedding_best_mean_zero_shot_global_BA_recovery": 0.0035,
+    "P_embedding_target_unlabeled_diagonal_mean_BA_recovery": 0.0219,
+    "target_unlabeled_meets_material_threshold": false,
+    "P_embedding_label_assisted_oracle_best_mean_BA_recovery": 0.017,
+    "oracle_is_deployable": false
+  },
+  "strongest_transfer_layer": "embedding_64d; highest P cross-subject task-relation cosine and frozen cross-subject BA; shared layer has a smaller session-boundary angle",
+  "semantic_labels": ["P_SHARED_TASK_CORE_SUPPORTED", "P_MIXED_TASK_AND_SUBJECT_STRUCTURE"],
+  "primary_next_model_recommendation": "FACTORIZED_TASK_CONTEXT_MODEL",
+  "recommendation_reason": "The final P contains a transferable class relation in all five folds, but biological-subject-matched baselines and above-chance subject-ID information remain. Explicitly factor shared task relation from stable context; do not generically amplify P.",
+  "limits": [
+    "P selection uses TRAIN-label-informed erasure utility; task content is partly expected from the definition.",
+    "Random controls are rank-matched, not energy-matched; P centroid energy is about 7.3 times random on OUTER_DEVELOPMENT. Protected-specificity independent of energy is not established.",
+    "Intermediate PathFit P is a pathway to final P, not independent biological persistence.",
+    "Part C uses a label-blind held sample inventory; its absolute BA must not be compared directly with Parts A/B absolute BA.",
+    "Historical outer-development inspection exists in prior mechanism artifacts; current geometry/probe/transform fitting used TRAIN_GEOMETRY only.",
+    "No neural model was trained; a future architecture's performance is not inferred."
+  ],
+  "final_heldout_EEG_reads": 0
+}

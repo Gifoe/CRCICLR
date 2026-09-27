@@ -1,0 +1,59 @@
+{
+  "schema": "PERSIST_EEG_EEGNET_P_SEMANTICS_CANONICAL_GEOMETRY_SEED0_V1",
+  "locked_before_outer_development_analysis": true,
+  "task": "OpenBMI_MI",
+  "backbone": "canonical EEGNet",
+  "seed": 0,
+  "folds": [0, 1, 2, 3, 4],
+  "checkpoint_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+  "checkpoints_sha256": {
+    "0": "845b6bcecd6cced7774da1328bd3fd6cd29316376e45d39d878df99ec35391cb",
+    "1": "31ece43171bf5373a32bc0aa46adc23920f1296ad9d59cc83d3f421c9f536afd",
+    "2": "e05e706370a70479056262c6acd3d50303eaeedcebb34c25c1975683b5a1b31b",
+    "3": "bb6d51d2dadc12c03a159b73194845094b24093d251dd44713055016f30b09c8",
+    "4": "92f2de1b95d785fd5f801b05625a2b8a9b475cfc3831262a63cf406d5b896462"
+  },
+  "canonical_normalizer_sha256": {
+    "0": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+    "1": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+    "2": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+    "3": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+    "4": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d"
+  },
+  "roles": {
+    "TRAIN_GEOMETRY": "inner-train subject identities, both sessions; only fitting population",
+    "CHECKPOINT_VALIDATION": "inner-val subject identities; participated in checkpoint selection, report separately",
+    "OUTER_DEVELOPMENT": "outer-dev subject identities; primary subject-disjoint evaluation, no fitting"
+  },
+  "final_heldout_EEG_reads_allowed": 0,
+  "neural_training_allowed": false,
+  "outer_development_selection_allowed": false,
+  "geometry": {
+    "fit_population": "TRAIN_GEOMETRY only",
+    "normalizer": "canonical checkpoint source-session inner-train normalization",
+    "trial_cap_per_subject_session_class": 32,
+    "trial_cap_seed_convention": "existing PEEH train-source/train-future/evaluation",
+    "whitening": "PEEH fixed-seed top active subspace, rank20 cap, eigen floor",
+    "persistence_permutations": 200,
+    "utility_subject_half_splits": 5,
+    "random_erasure_draws": 100,
+    "protected_selection": "existing persistence-supported and positive absolute/excess CE-harm 95pct lower CI convention, fitted anew on TRAIN_GEOMETRY",
+    "intermediate_P": "TRAIN_GEOMETRY subject-session-class centroid PathFit to the new final-P coordinates; not independent biological persistence",
+    "pathfit_ridge_alpha": 1.0,
+    "random_subspace_draws": 20
+  },
+  "analysis": {
+    "stages": ["temporal_bn", "spatial_elu_pool1", "depth_point_elu_pool2", "embedding_64d"],
+    "families": ["FULL", "P", "C", "RANDOM"],
+    "subject_bootstrap_draws": 20000,
+    "session_permutation_draws": 200,
+    "within_subject_session_label_permutation_draws": 200,
+    "decoder": "StandardScaler fitted on TRAIN only, L2 logistic regression C=1, fixed; target decoder never refit",
+    "canonical_transform_families": ["identity", "translation", "diagonal_affine", "orthogonal_translation", "lowrank_residual_affine_r1", "lowrank_residual_affine_r2", "lowrank_residual_affine_r4", "lowrank_residual_affine_r8"],
+    "transform_rank_selection": "TRAIN_GEOMETRY cross-validation only",
+    "descriptive_material_BA_recovery_threshold": 0.03,
+    "descriptive_material_relation_residual_reduction_fraction": 0.1,
+    "interpretation_rule": "Conservative conjunction of semantic, frozen-decoder and held-subject transform evidence; ambiguity yields diagnostic-only or mixed label, not a causal claim"
+  },
+  "historical_exposure_note": "Canonical checkpoint inner-val used for checkpoint selection. Any historical outer-dev inspection in prior analysis artifacts is disclosed separately and not used for current fitting."
+}

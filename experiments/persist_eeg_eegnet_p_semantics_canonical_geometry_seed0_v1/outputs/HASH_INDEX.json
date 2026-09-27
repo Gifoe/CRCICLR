@@ -1,0 +1,2395 @@
+{
+  "aborted_preexecution_tasks_sha256": "e2f39d26959deafe76bb2b1c107d0e02d694238393219489db66ada5814c6835",
+  "aggregate_files": {
+    "BASELINE_PERSISTENCE.csv": {
+      "rows": 4140,
+      "sha256": "f38d1a7db6662b2d10cd97e635f3182ba651b8e56dc01071704ad1d1a5eb04c5"
+    },
+    "CROSS_SUBJECT_TRANSFORM.csv": {
+      "rows": 34040,
+      "sha256": "16ed5d0c4cb3d9a17df4590d88fbb5d12be5a771bbb85f8c1b4e0716ed9a65da"
+    },
+    "DECODER_BOUNDARY_STABILITY.csv": {
+      "rows": 460,
+      "sha256": "193371264e2b1ea67bb145f4c3c3a480dcfc4a9e2e2eb01523ebf420e23b71b2"
+    },
+    "ENERGY_COVARIANCE.csv": {
+      "rows": 1380,
+      "sha256": "c4bd6bdbc21ff927e4ab6fb625e186569f89780e398ab2fcc1c69780a20d2858"
+    },
+    "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv": {
+      "rows": 2760,
+      "sha256": "66522774728551a5c2d1f486d75d40907978e37dc08caf849bdc2bac46a3de36"
+    },
+    "FROZEN_DECODER_SESSION_TRANSFER.csv": {
+      "rows": 2760,
+      "sha256": "1c92dce3c6ac32252e44c84370e29555e1b1342ac6685e57d92979050990ccfe"
+    },
+    "GLOBAL_SESSION_TRANSFORM.csv": {
+      "rows": 14720,
+      "sha256": "096b91b2444b68836afdcbf194a61a3dadace4696eab036f1a74ce0942f154c1"
+    },
+    "ORIGINAL_HEAD_P_FUNCTION.csv": {
+      "rows": 690,
+      "sha256": "a22f3fc675119fb285899cef9564732ec1363b6e67e1284898d39bfc3f53a582"
+    },
+    "PERMUTATION_CONTROL_SUMMARY.csv": {
+      "rows": 3220,
+      "sha256": "69acf823065bda002b9c88f9254cd9ad5b43958298641154382f8054433dd3ed"
+    },
+    "P_SEMANTIC_PROBES.csv": {
+      "rows": 4140,
+      "sha256": "c50aa54ac2fc043a1a31959d9257f0e38e015b497bf44e3c5aebb4adce2b4714"
+    },
+    "REPRESENTATION_VARIANCE_DECOMPOSITION.csv": {
+      "rows": 8280,
+      "sha256": "b32fbdf0e02f0e1c425cf2b067cc93599e713d7dce4ceae1b9b0bd2b03c16d8c"
+    },
+    "TASK_RELATION_CROSS_SUBJECT.csv": {
+      "rows": 22080,
+      "sha256": "89182b3906caa037d5c3b5a8a29443013be5e50b8446a757e8c5a004d0d89228"
+    },
+    "TASK_RELATION_WITHIN_SUBJECT.csv": {
+      "rows": 4140,
+      "sha256": "9cd4d752ec003aeb54569e91e1e7634a38b6d88c900c7357a7ada985bb695785"
+    },
+    "TRANSFORMATION_COMPLEXITY_CURVE.csv": {
+      "rows": 14720,
+      "sha256": "096b91b2444b68836afdcbf194a61a3dadace4696eab036f1a74ce0942f154c1"
+    },
+    "TRANSFORM_DECODER_RECOVERY.csv": {
+      "rows": 14720,
+      "sha256": "096b91b2444b68836afdcbf194a61a3dadace4696eab036f1a74ce0942f154c1"
+    }
+  },
+  "derived_files": {
+    "DECISION_SUMMARY.json": "cbe33a9a752e68916ebc584e1cef6d0d8064e3d4e99c5b95e133077b0139dae4",
+    "FINAL_HELDOUT_EXCLUSION_AUDIT.json": "56ee1c9d80d4c42f1327a21f4e2aef1612489640a3913bfb8678230bb101dc5d",
+    "FINAL_REPORT.md": "98b157e887408beaa29c91760efa123c5298a2a145c3c9e34860cb1fe8441121",
+    "LAYERWISE_STABLE_TASK_SUMMARY.csv": {
+      "rows": 16,
+      "sha256": "0cd15e4e3613c35dc14523dd38089e275a6d4d4428c405a62f1176af11c3ac72"
+    }
+  },
+  "code_sha256": {
+    "code/aggregate_compact.py": "8e58d9e32ffbeddf3550f2cd8fa90f2acca5d95b94656cfb82cac3e03ea37421",
+    "code/analysis_runner.py": "0a8913b4593c3ebc78819903838efdff15a5c67af3e1d7218256a5aad342002b",
+    "code/build_geometry_provenance.py": "caf7faf0290a8b91708e738bfa348c7ba0acfe306b1e906860ba791e1f700ced",
+    "code/build_layerwise_summary.py": "2dc6e914cb4ef2a984161a912b6f07b08bcccb12541fa45db261bff5de0ae67f",
+    "code/canonical.py": "a806d525cc10840f88a3eea2e9e60100b2104aae2e1f697c06e98ce2c7582cdc",
+    "code/data_geometry.py": "c3e8e496d2989a3805e1d3edbb8b5c3b39c253a0b6e6d5544ed6f8f8990f27a1",
+    "code/decoders.py": "32c6008f4f0e341bf26d34d03154900f5ea41d1a8cce48895721a2018835e0c8",
+    "code/permutation_runner.py": "20f1d620e14039c69081fb198419c993df173449e15968138b380c07af49d074",
+    "code/permutation_runner_v2.py": "239761df4fd249940becab171d523297cf8d91442415f98722c2f3c4957dd77d",
+    "code/permutations.py": "f1a322909bbab24bdbf51f7cbba54e48d989d34c3f9ed2fa151da75e6b0da2c1",
+    "code/permutations_v2.py": "069618d2db51ec730c5d1363661dcf4d96891ea5c7c2f1930c42e4665fbefbbe",
+    "code/run.py": "1ea88ab1a3a4a54d3ca130169d711409e25fd6742657149f79c48b0a671a39a9",
+    "code/run_analysis_fold0_embedding_decoders_v1.ps1": "719a4696f0ffcc3398878fb5a4969d5cf51c9d93d21818c0ae5e7aa6dc4645a6",
+    "code/run_analysis_fold0_embedding_semantics_v1.ps1": "93278dc7c3afeb4310699367afa639bd4f2ba3ce46f87fcaafd23a29034a80fe",
+    "code/run_geometry_fold0.ps1": "3cd78afbbeea0053fe8a2a83b3cbdd927f6f2abae79c8336ea95a1c432352d33",
+    "code/run_geometry_folds1to4_v1.ps1": "e86a28aac655602a9fecfd3f7084b43173dd799a6444349cfdc78279c6e0f751",
+    "code/run_permutation_fold0_embedding_v1.ps1": "8be3ef4293f46f21f64ed850186b42eeb364c2ecf7347405b3ac7509722617bc",
+    "code/run_permutation_fold0_embedding_v3.ps1": "5cc70c0861433f0dfd5b4a703d8485ce90a8e0a71d51edb2b9f2be3c079caa64",
+    "code/run_permutations_early_v2.ps1": "644e319f560a34a5e5f6008a269fa8c50555535f38c4ae8f45929143f4a8ccf6",
+    "code/run_permutations_early_v3.ps1": "a399ef58ac205528abba46f7a69340b6e7b63ccd4a703f2470246095d9427082",
+    "code/run_remaining_decoders_v1.ps1": "01493de72dd5af1b178d54c12756eb0df9887276b83265b04cdd8201982bb567",
+    "code/run_remaining_embedding_permutations_v1.ps1": "7d439b3683d170ee3717697b18a6109c484e7d1e96a150086fb90b391318079f",
+    "code/run_remaining_semantics_v1.ps1": "7e088bd1006c56b0a4dad0cdc4ed2f5f339496ef784ab2669197eb69030f6532",
+    "code/run_remaining_transforms_v3.ps1": "fb91bf7dc3cdb356496893f9c980fb771fc19a7dda55b432910ccd6bf1c6c73d",
+    "code/run_transform_fold0_embedding_v1.ps1": "24e443ac062694ad09effd6a72a2801e981813d017cdfab0eed2933fb854fa4a",
+    "code/run_transform_fold0_embedding_v3.ps1": "0e3ad56c6ac01e94597ca2957dc0ce6695049b006558abaf661892d8f9d91e1e",
+    "code/run_transform_fold0_shared_v2_pilot.ps1": "312e0401c3d4bf343b31d6f89c9b4a253fd76ef67eefefe365f179f7cb5e869c",
+    "code/semantics.py": "6c1703556ba93ffc23619f7e02acb1eaf7e1fce908cbb45103cfc312f7c015ed",
+    "code/test_canonical_contract.py": "a47d1cfaf9831700b7ae220559b2c1d2b3450427cafe358b7032dd2d0d21b60d",
+    "code/transform_runner.py": "174c340701ccb91efa1c3f33a2e21e82d59c70a00ab89b152dfac4b6d91976fe",
+    "code/transform_runner_v2.py": "4f3c870963ba240529197ef542074bc7d56364c73262e4e06449582477a30174",
+    "code/transform_runner_v3.py": "728780435acccae6e3aa9e1712515c8c6c18da524e6105ffc71d84575cae3977"
+  },
+  "final_heldout_eeg_reads": 0,
+  "geometry_provenance_sha256": "70f282cd6be1132297bb17aa1c8e91d0ff65be275c2cf4120fee389a5ee41a75",
+  "protocol_lock_sha256": "c65bd28a7856ad1c5ba139908b56cf54ac22a16d51f076f3079cb8971d7b7245",
+  "schema": "P_SEMANTICS_COMPACT_HASH_INDEX_V1",
+  "stage_file_manifest": [
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "07eadaaacdaae836a6d2434e69ea64e0eab4deeb3366d35497e9e6446f701fc2",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "ebbeaef2a07ff297b61ad5d7f34cdbbe1f94df01914ec85d43c602b20a240282",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "a8802e3620b22445dfcce398428b628e09b92d9a36d8a7b7431aa210f733b2cd",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "d21d938028a66d890ef18167004b7c600957b1b9a366fa0e7f6943d4f551bbae",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "8df010e1306b193c69167348f1e58b57c21d32234f6e753d381bd7205085cca9",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "b3c08acd050eb8326e53cb531b0af105a2f615fcd0780b4615939c86fd2f66b0",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "3fc6c8dfb2da47cb5cab1d36ff30faf8e4f73cabb27aac42b8e12e487fd9b576",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "9dc540f2e18dd244dd57f672ba8df99ecaa5f6ab7fc5c1706b2992cf86f8e81e",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "23486fdf3e45f84318c0c61deeae5029b9fc24455033a9c2ed61b188fbed6c16",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "c143e1fd86b8634e2dd9a478db31b7164475b0d0e41f828f468c78de1657f361",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8826a9c04004f7f136d33de09a2fbad3e55d4ab07488f8292b9280ca4443c949",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8826a9c04004f7f136d33de09a2fbad3e55d4ab07488f8292b9280ca4443c949",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8826a9c04004f7f136d33de09a2fbad3e55d4ab07488f8292b9280ca4443c949",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 0,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "c7a929214500dbc070b97e56d8ba235959380398bf166a6633745dcbcf43d052",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "f5fad1b64cf449e14a76baa89a7cb3e99e68d77a3a5bd1eb1e6728e46edf84f1",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "f8fc00e3d27653b099a45b6b7f781bae9f51b7f4d988bb419500e6bcbcba7717",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "2333c8ce06bfb352f56df239799a9251669db220a71648e580338628a8b10632",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "e171a4c0b194ad258ea64425fb8da4e4e48a5e37b7ef00ff8802b44457c03344",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "a68bbddc12e2beee1a7392c01036a06b934983b74fcb3b21497b984d15a72fda",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "71ecffef520b6c15cc635f2decc1e4f8c7777913f7836b515de14efa92cee9b4",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "35dbe970f8b21903e42e939b121799a2a9a8f69a92c145820555512034e50780",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "da634ac72db2a955e74eea26cc561e01e40028041e5f42ce59b74a02f3d2ad32",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "f947e6c63f938de34f7933eec6ef5ec0cdcb174b03b3af8253843b6516c38be7",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "df353a96ee71c4edf8b59e91ca1bb05a58196bb8349c4c2f8ae6d0a82de5a79b",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "bc1a5072d09c7ec972515a501319777154186a5bf63721fff6de1016c8fe46b9",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "bc1a5072d09c7ec972515a501319777154186a5bf63721fff6de1016c8fe46b9",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "bc1a5072d09c7ec972515a501319777154186a5bf63721fff6de1016c8fe46b9",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 0,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "ceeff8836e937a00e7756784fd184c4ded5543efc8a4c3efe8321030af9796b9",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "65f7ad5c1f80c913d25e5072edcdf83aedc7f39046dae2edfce82207bebf6c11",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "b41cabae66f06d9d332f05939432afeacc81991dc185c32edd0c7d5ba8915d85",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "229c2c43e0218e450fc6107cef78e728403630d35cce414be64726c554d4a5b9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "ee337c7adc692a1e445e26cd39e8deb1e8402cb1c643a0e6315605360edddf0e",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "3df8cc9a784c70abedcc5712ec732cdafac6001a7c2a9bdbff13b05013e9516b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "e7c4302b01f398c45b94a775ddc59adfc5baf6403b7ccee1ad2dc0c099a97fac",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "e126c80840151f1caaeb1eb91862ed326eb3d33d8351e29314ce5857d99a2645",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "e1da8f9a7702b0000a047026b149b9e9b37cfeaa8d5c773fdcb2b673bacec4dd",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "7ee8b03eaea54e4e8153396bf01c25e14d24b719376aa6520dc3dad698f55f9c",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "4dfced51e9a0d2f6d7fd5fdbbb8404badb56879c2db86c192fb6f16cf79d9776",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "37f71c0631afddd4b45d210bca6fc14a5f1cdd01754ac1b0d98e04b256e19b90",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "37f71c0631afddd4b45d210bca6fc14a5f1cdd01754ac1b0d98e04b256e19b90",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "37f71c0631afddd4b45d210bca6fc14a5f1cdd01754ac1b0d98e04b256e19b90",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 0,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "2d0490db72d30f4a6ca23d0239a4fdd2c10d2ca75f754903f72271a264ac05b9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "b539b6ebcb6f38b7708410f31096cda22988dd6e6987be264c93b4e1722b6dfe",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "6ab0717fd2af0cb6bacd828e03c6117d2fcb36dcf4735c208729b82bed62fde6",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "ca0b07a438e2c397b75918016083374f1e571d94956d7529046c82025a618d34",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "2bbdb639c0de9f1800227ebd8b3785e22ff2ff0a22513ca1bd93ecf72703cafb",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 0,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "8bfbfce9aa78995ee2b34dcab2baffada71c6f859207cb065c6ac2fa5b5481d4",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "e7b7a3067f2f7c683279d5a7142abc1d1d8854312b80358f3f4e00cc03754b61",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "8fc64aeb8154af653d1744524729cf6f57d1f4c2cdffe05565281ff1fdafd7db",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "24adf5d3790c77d9b64b32613b353b284ca18227c514401efddd7ff08b40b7bd",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ORIGINAL_HEAD_P_FUNCTION.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "4e8f360adfc96143f2250eeccc8006e0772d8846b391d6288793ef91b02f499b",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 0,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "0a6cef750703a0519c32a47428ee189676c9326d6ac0637a8fa2aa0ecf893371",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "fc01c75cf7c2ccfe8bfa1a7f2dff1c13c5df477d0e4543e9503f3dcd07346796",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "38344fbcc68d28ce5baaff26e08cad0f63cd6af8b729b58be252fc5bada33b63",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "38344fbcc68d28ce5baaff26e08cad0f63cd6af8b729b58be252fc5bada33b63",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 0,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "38344fbcc68d28ce5baaff26e08cad0f63cd6af8b729b58be252fc5bada33b63",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 0,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "9cc8ff8f952e04017b1cb8c5a37d02a7c7b9c5e36cbfd22f71058616e1a3c5c9",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "e9d66f435bdeccf1a0610f4dba5764bcaedeb1f7af11dd416f983465cfd82244",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "381b5b9eda85c5a99b4e9aff71226b8fcdb63375e34b306c9ffab24c849f1264",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "7c05d217e3b28900eecb3cb7a0ebdf1633bad1c341a17812995e8d733a728e74",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "fb1fc6899ec254c0147cac98aaed98aed97afd11d0d66d0004b7dd8482ac7fc1",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "fa9ee02ad1a3c5a26515d0367a23b1be75a4a52a26c2edbe193d918fa51a404d",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "7301c43ee3d858c50edc8138d653515654aec9ca7d1492c7b663d50535b3e155",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "d881766732dde06a674b5539175282a7a655c4176c53bef0cefd7e7d00db8e14",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "af99913760fc246fb14c59dfb139329378200d567a16b49019cba87533b9d014",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "c097ce16b0c221ebada18818fd69f6543fa0389678d44340ae72b6538310ad99",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "d75576d68619191bafae5310e0b63df0d4f2f8606c0438240b3250468e804792",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2bcdab2f165e51eba6f8c02b913f5eddccff7aa22e25fdd0c5f959fa27411dd8",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2bcdab2f165e51eba6f8c02b913f5eddccff7aa22e25fdd0c5f959fa27411dd8",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2bcdab2f165e51eba6f8c02b913f5eddccff7aa22e25fdd0c5f959fa27411dd8",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 1,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "be4a98584421ac06e66da9aa8ec3137edf7dee00cfbcf68790cd4a827c301a1d",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "228fa02b8681561ffd8c41213d0f7a777183989750dce1625a95e5d7655a56b9",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "df134ff86c88854b95dbc3ec0c1252ef634d7d70247ccca494deb3aa10431cba",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "8a88f167e5e3129f725f134fc0635f6e9c98dfbd7d41088a33cca38a29660b57",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "a21156de886d5841072c57d9753dc921748d2d2449be11bc57825849e78eb2b9",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "963df588ebd45d644cec9df36f84d9b04edf8e05f3bd472b7ae243b3a1554f22",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "39f2ffe78725877f5f300aaf48e6d8b7a15d30d0730d065eef2c5737b69ffe86",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "028d8b0ee49796fe998cf39c282576404f07238c2aa765bde918a8286944ba43",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "24ae5bace6022e497d87ebe3ac112c63d1dd9b16ddb7d1522352c4bbbafbcb13",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "7a8fc858e6614c8d2741deaf4cc3efefa961caecc0f45d749f0395e65f76eecd",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "2f6d0f1d15e27912b549df721de745fa860ab110ef4c9acac2f5cc582bf0ebbc",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "e145e60843cf6e30a212f881b20aa6c9634e9504beae5ddbc1762dac96d3047a",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "e145e60843cf6e30a212f881b20aa6c9634e9504beae5ddbc1762dac96d3047a",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "e145e60843cf6e30a212f881b20aa6c9634e9504beae5ddbc1762dac96d3047a",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 1,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "91a93795162a76d91d77aaa4c61a717e6cf74f36122642f83989dd649f4cdc8b",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "28778c282da6971374351e1737d53f5454c05b5c96fa86081909e7d3e2c401d7",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "57b0b05d16686b44c14efa814971daa117fd1033f0ef917ddbcb44a7dc5b82ea",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "d186d28c2b6a320c54f76421936039075337d4187aa8c3c4df3bcebe4c2139cf",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "d7543336373e2fee2da878883d5ad5602263b5edd841ff88de118d89efcdf22d",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "896c881d796c468078cb03d068a1876f84fd313d209bd926f1389e6cdab3b478",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "ae1baa8d3b4b180a538ae66a393b44c59c47d960c1ea04f27e887c1b6e5620d9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "55049a4373ecfc15d165c477bd6c82bad40401aa807fdc61de38cfa29c23469b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "599141c902d38157936f09f5a88f9089d738efa8bcd4f77486666cb471b646e5",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "6ac4430289cd0da538257b539f6d6d2d2d2e024bd08c839ed0f2d82645d49e85",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "f095dbb039b208fbc7134b3c619ada17207376d47b176ca966a7860a7bdf6a6a",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8d8f6679276e98d8eab5676f0a13ba29aba6b28acbfb880de7dd89c362b2912b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8d8f6679276e98d8eab5676f0a13ba29aba6b28acbfb880de7dd89c362b2912b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8d8f6679276e98d8eab5676f0a13ba29aba6b28acbfb880de7dd89c362b2912b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 1,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "eca62cce2da9ea3bf0551be0815140a6b06cfa160745e5bce7a4690adac87410",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "dfbc3e440a7d7409bd8bb2e23e74d0009d08eb463f06f78e2a5fd53d2ae5defb",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "f2dd3afaf6afcc85325037211c6655a651a038d12b227dee671254a2b18ad4a5",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "f3c1a0fed8767bc39443312d08d1b2552bf058b08323fe407b40ca13e8a517c9",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "d69082f78e409f971550afe97e9776069b9fb9d81411ba51d99970d9c692fe2f",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 1,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "f60b18604d02cb370deb2d24d3e261f5ea5fe41ac72638c167afe15c0f2d60a1",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "9d0dee2b958b840cc5ea4bfe8cd2d28b4d95394ab66b4beab2d0012df77a5a06",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "aae1b6f7fba74543d130ccf634aea7fcd4ed8fe92464af1d9458ebfee0c6535c",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "84cbe8608baa3048d8a6d7582c8f4dec841f23f7f6adec40df3e2f0a0291de1c",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ORIGINAL_HEAD_P_FUNCTION.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "115b9912972de099c0e65d34ccf2bfa2b17a9f4d831dc2b6aca9c1075b093b31",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 1,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "09424dd629a1bc07c7e51f68a76738e20725683fb0fbb447dbf149fbb806f961",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "df62e1a7ef8bde0adbabb4096f1c41c498d2752057caf87b7cf21cef10ee7a35",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "4547373b81d4938ea867aac7b4335feeeaafb425e70b88240832edd5547e5f16",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "4547373b81d4938ea867aac7b4335feeeaafb425e70b88240832edd5547e5f16",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 1,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "4547373b81d4938ea867aac7b4335feeeaafb425e70b88240832edd5547e5f16",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 1,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "3201dee734e24672103a224d4d5f7ff0ad3accee15dc66d61567bb4e41254d42",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "a150a5b175574a3d8f81c138a4dc5d9809b7496562e13ecf77af790234fcad3e",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "0edd795ebec810d21ed7cda9c03decd064eb5323071ca7d672f7becca42fcbe8",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "66ea3817004059241386f934b40f1f7a049fd2fa43288b966c5bf92a16d09064",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "af57c2c518c9575a36cfbadccdf08096c87c221536ed889a6a575626f2250267",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "c9b8004879b09fe72b553a066a55f3d2e7e5ebaa915b9b5ec52aac70279eccd0",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "90e592456a2a7b3125525875f109dbb610555ead3eb2b9fdd72f812413cea3c3",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "dc00844e9701dd41344a2b5d2b5a00fea5796ff64ccf5712d3889a5f17eae747",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "7a64e32f5a3d9f60e073961f73a3a87100dc396876eb07b8d7b4ff1c65b8b2cb",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "b9c298abe9b1d1c9598d4986259870235af2b65e9d297383b6c3680f6cfed8ef",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "74473e0076f1cd114963ba4d46e639163ad0b5b2cf58f7279bc1b4cad571872c",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8e0993ba96b184c0890fc1985e2a6f60de817ff958c7c7ed51961402f5b0270a",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8e0993ba96b184c0890fc1985e2a6f60de817ff958c7c7ed51961402f5b0270a",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "8e0993ba96b184c0890fc1985e2a6f60de817ff958c7c7ed51961402f5b0270a",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 2,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "2e07a7326da294337481b40561a9c76c19a11cbac1efca4d63c28622c183838c",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "5d1e2f388189d67de0361936561200bae1d643b04eee2e52a7738468843081cb",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "590146466adf18b7c1f5e7603246860a207631af9b358ac6aefc2bccdd834039",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "36ed50c9ba18b1069011f24e7f008eeb3a55196e82d217cceb748513953f3454",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "822ab309055e96f3e11b2a1c2e06b1b4fc790b8f163a3c9336c1d144ecbab56f",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "d010bde85f9a7ed745b829c44eae67daaaa899fe0b4521dafa9c468213d31259",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "7633a41b3c9a36b793cebaafefa9150f5c88cd3c69cd0924364e647a3fb0a0ea",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "3b8ac4e4b097fb985627438ccf4d85bc6d3e07e298b5759fd435d8218e13f1bc",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "734ea05634dbe18a4dbeeb3ff72b5a018c8aecd8ec43a3d758419b32a90cd367",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "6925cd64e24efbd150bb51a85795642b2da0397f028c9764c2af723c9e0dc82d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "7618197aa8177f2bf28046a95f18e5e5af939b1d1042427cef36c84c3c22c554",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "046c9a0b3c891e569aeb189db809227adabfe004f13fff75a4c54c78e8788d5d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "046c9a0b3c891e569aeb189db809227adabfe004f13fff75a4c54c78e8788d5d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "046c9a0b3c891e569aeb189db809227adabfe004f13fff75a4c54c78e8788d5d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 2,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "0dcf675860eec548742ac3e38ce4742e1bcdfdd363ee65f4ae196db66766ee90",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "c0a8539690f5fe5580496df4dc0a53b39fbc56d82ea28bc4c6dd46428f6398ce",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "de3166290dcb1037d8aee8aa706d86228ca0f5ed9adc92b45680c05ad4eff7a4",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "625223e69638c18975415177efda05b78007b14a0833a6152c0e2473bcadfc02",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "e85b9bbeb5af2546a986672eaabde39fae29dbe2d731b847ecacc20588aff064",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "900afac5bfc9ac9aa9713375eeae0a169ad69ea5bc65a50c175cc6cd56754b2e",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "e0331bf8cd7a63e16198ce7352091372729cf0367d8970eb9705174ba8c33fb0",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "e34ccb7efd1dfd83c931a04e9a48c4212569d39e2ccf2ecd09bb38647991e1a7",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "61d3dc327cddc42ad2f2a9f7b7f02b8618e49a9c3f4e14d36b7300010202c0c6",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "e516cf1a08260a73967c92cfc29e42403a62a1619b551f4768eb22cdd1f046db",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "6b247227e7dc2eea8055028abca11cd495219ed541d3089099a3648d1a61868a",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "373a1bdfc8a2aa63b255d9c8efd641857b953ddcb70e20e745591dbe4a80dcb9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "373a1bdfc8a2aa63b255d9c8efd641857b953ddcb70e20e745591dbe4a80dcb9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "373a1bdfc8a2aa63b255d9c8efd641857b953ddcb70e20e745591dbe4a80dcb9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 2,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "34f76bf927bc6dbbb37f005a0a50dfd2aa785eb1eef450c246d4dcbc537f05e0",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "556118c5c72537add4409efebf4f264826f4f12433f68d8acb3cc2f24010d5bc",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "7d6ce54d650420da19a7bfccda342caf155cb14cbf6992b2bf30821a6b268993",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "08133215c67ba225883999a26aa26e83a3407dbff3fb5e4b51b783c99546b929",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "3230fa18e5c9b2932b049cee362f706f20bd2be6a8e3f30aed94d59826cf0e65",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 2,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "dfe541c79c8ed438232446d40fc331ceb7e1d0ddecef83db2aeffa5ee45cb8d6",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "ad910c4beae331787917a00c54a5db531e126aec8ee5f9381d13e62df7fa2243",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "967460536026c791f0853c6f5a9d3650f7a609251ccce74451c7467d1ad5834a",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "a63dc2af85c91bd2ab047d9abe85577a6b840b153ebc5c566ae29b0ba2e58eb7",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ORIGINAL_HEAD_P_FUNCTION.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "abff38446045b191a7bdc4c3264b20d62dabe80b48b1fb5719403455510fa4d7",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 2,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "1665ffa0dd9efa337de498ba3fa076a67d7db93f2115e045c7f2e5ee2e57525c",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "4a0924dfe747e85ff5e6c2a57e7c5f555e8de1cc2276ad6ee011ed91d1de46a8",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "aa98b0da80fd5a413415acfa080da6cc599ef0a41ad73c830502bef7d69fd349",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "aa98b0da80fd5a413415acfa080da6cc599ef0a41ad73c830502bef7d69fd349",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 2,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "aa98b0da80fd5a413415acfa080da6cc599ef0a41ad73c830502bef7d69fd349",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 2,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "1b35b66ae412111971577d1840086961997c3effe001d8362ee18cca600fba18",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "2825c441b3fdaa65374432d63afdab183f537991503c349b6361cc17bc7aac26",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "83884cc9b13b7b45db6427465d4a8e85223bc75383ed288a37a808ca8269643b",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "27c47798057fe1a4247f03db84d5944ec68d8aec8fd399ca1cafe8cf13055fa0",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "ee2ea7f072f8598e03a02b34bee62a14d9c36c73336bb20ce7ba57c16b6f0c87",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "c5613ef29083f42a4ad065abc28f50c3f5e0ab95a676adf5ebb38f9e104a0678",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "b8037b456e02b7498a773013d182e50abaabfcf8453de39fae68a4ac6c85e7ca",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "22e79f08f7de2352af626f43724f022c9d2cf9e8729343347856e62cd761a6de",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "7293c3074ff1d5f67130076aa47a71a94254653dc2b6df5c5a2eb7dd49086941",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "56bc1228fc42a5f18dba8a34b8f81d58ae7fe527549594df195055bf290b8e88",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "48a8467e0ec4a691e0318ae1fc253c56387cd3c42a40de146f58a3fd8a36b8be",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2e63c86baeb5fe20c02533f72ab45a48d7f3edf02c1db0a6aee4b6c0bcea97dc",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2e63c86baeb5fe20c02533f72ab45a48d7f3edf02c1db0a6aee4b6c0bcea97dc",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2e63c86baeb5fe20c02533f72ab45a48d7f3edf02c1db0a6aee4b6c0bcea97dc",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 3,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "746d1d6a003cb663aaa50ed218721e02cea232d17c5f1556b23b13875722cdb1",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "93d70bc81b9a7e74bc7af3cfeb3c859ad08d7b811ecc723a349c9279cf85cb59",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "fc0c364e23cc1293088c3e3d791a9c1ed7b5aa4fdb0898c02204b1cf84c40e62",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "843c5ae4406c9bb4b66fe2eed971bc1f388e31c2de055a0991f1ecfa94217637",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "e07aa98ae9d5e681c5854434f0d73f83e790d17520c3c4f62d7c078efa9936dd",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "77f1a6a3a2e0b776654b5d0bee644422f04e9ed2f2b70f3b73696320ea7e618f",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "d2718dba895308e671a2feb35d1c7946e4637c9b5585bb741c8420b27999a071",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "442acf48a866a795ebf8215d6651d3dcf7fe48f1edbcea042be0254825c55e76",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "f1be685ac5af819a7b40b0795f7b4d8cbb2d46b948d9897fb051adff781f7b37",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "ab2b3cbe732632cdc3e403dcb34d300251056fd8280fff76afbb9ff8062c3d65",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "a6091271cf1d03f33f2c490eab702fe1adf4d9b301c815c1cdea0b7b27342adb",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "9193e81ae6cb9a8075e718d85af137006998ac0c70d2f0cd8074b6b24209ee5f",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "9193e81ae6cb9a8075e718d85af137006998ac0c70d2f0cd8074b6b24209ee5f",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "9193e81ae6cb9a8075e718d85af137006998ac0c70d2f0cd8074b6b24209ee5f",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 3,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "633d78f0f7d8b84116f2c58c3f6286ba6e56f24edd58515b7b9ce02b53b2706c",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "5216ebcc1484842998069a020d0facd2ab9adb82669338979eb739ae487a44fd",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "0ec4890fae85fcab271d59350c425887718c250a601329f9077b6bfb800d1bf6",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "429936c01685f6d810d4af82bc57f8f90864f6b45799291d758ac6d33e34eca9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "adde760afe4e25d77d181775728862cbc1e936038ea59085ad15b9167d2736af",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "38834a239ef25081df2f9fcf11744069ca30409b00b47e4b40cd41eea146aa01",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "9c7920d62a5b10ebc334bc2fc1c2e9cef9ee182eb82b58a98e5764e29a945abe",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "9e28bd5b2c9551dda6f8c9f1691a184975f5d9f1341893758eb90109b5908124",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "5ee61155e0ccaa2543727b7633612bd68be26af4e4cb1d4b881dae9d79d78150",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "531268ff32332889de29bca28f1fc132a9ec491c1224fb2c5a0866072d4db6ce",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "8d215dafbc765ed91b1d7cade5b7620002b5ee3e6c940a92a313b5f59e6d5874",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "88992c282082530bbb7f3e1b285e79ed72ec01b232eea75f5385cf6152ba19e7",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "88992c282082530bbb7f3e1b285e79ed72ec01b232eea75f5385cf6152ba19e7",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "88992c282082530bbb7f3e1b285e79ed72ec01b232eea75f5385cf6152ba19e7",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 3,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "93f71a748c26c4ab413ac148e450f2f764677b0859aea468ea03b1ab29aa225c",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "c02ce8fc7486b55734951f7c35077ba1068125bd7d9c10fc193f8b58913c92ac",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "dc3c2d55faaad29ccd77bbf86d3462af9135dde295d3a4d805f9c3694053f2fe",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "2642d46ce233c54927aad4a98b7bdf222b063f5f963c7d851caac9345aff7803",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "26d06e38f67d2520f708f618ffdd59284af16f95cbf147ce7591b79ae469ff87",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 3,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "54bb95159d7ec29d054e73fcb0e8cd880a1e859857ac9ca9f126c1404700fe43",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "fef4f601d1cf232376b5caf02200331309e63e5939639f2d82f8485d2ac8ca87",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "8e0b761dc924cdf83fc0bd4bf329883f5c6a23e956f38a6b75317f6fab722acd",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "5f8336f55a51dff3840820f66be1fe674cbdd28bf4198f017c0777965432e754",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ORIGINAL_HEAD_P_FUNCTION.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "bd2b12752279e700e0bc1ab11bfac05a81cc6a113d58f241e3d773da82d6ce12",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 3,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "ab33ac1899592dc839d12b585da9a12251c826275451e0bac995336b933e8d52",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "c848803b1b1cf6a971bbdc133dd203e3abe83542ca48595a11d4f03a320427c3",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "d8288eb8a8f5f4a4df1d68e697b1f5551ed17f27407f9b700a98b40e0df3cadd",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "d8288eb8a8f5f4a4df1d68e697b1f5551ed17f27407f9b700a98b40e0df3cadd",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 3,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "d8288eb8a8f5f4a4df1d68e697b1f5551ed17f27407f9b700a98b40e0df3cadd",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 3,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "ef057082141c0c4558926f21cb8220d531cd582387de113993f08e8d382bffdf",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "318f64c7bc91e2836a0ce017be2d3226374f520523a7ed22f86a9bfbbe099424",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "2550e33aeb07a8c5e8fca1fb92667f241e580f3fb6699fe08b38914fe0d44d7a",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "7ebe5332cb23df6a9d5ac0e9b257a9b619be0a4f4eaae0ca104618a073cad618",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "9453732f7d0f98eefe0136e3f451227d8154cfa53bd7a00ef7dd83f7f35e0454",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "c2945054708beaeb452637f68a0f43809a46c44fd008938bbee29e6c57fac89d",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "206af05251dd7dc3294e1aed9622856352f18745a8d9ec27ab98a28e312ba89f",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "2201934cf1d3aff77676b0dbd217b28cb091a1ee0bdb6f4488bd975575d262ec",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "6e1923f2861a51a0f09f7fa2f1400cc8d212fa45db7421c53d7f019928e7ef4b",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "1f127af12a597c17fca6809d23245cd09fcf53319dc7554037e773e4d3460572",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "b2fff901ce7d4131b19f2b473ef8180f53fad340f1311c9611cf3cab7f104af9",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "bdd632e5e46191dc1fb61696d387f0cc833cef7a2fbeac1179b744ac2808b83c",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "bdd632e5e46191dc1fb61696d387f0cc833cef7a2fbeac1179b744ac2808b83c",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "bdd632e5e46191dc1fb61696d387f0cc833cef7a2fbeac1179b744ac2808b83c",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 4,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "ca4d7b514682807d5ce1bc4f0af11bdecfa98d45f28cffea973aa29e56a1b804",
+      "stage": "temporal_bn"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "5097ec9c3c42f2b382b71b5e049d37511a621942ac6556f50747c9805efbeceb",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "e1e9e1e18b2c8f0591ff7f800bd9ee01a3f6e6d745cb793575624e9913846a18",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "dbef94c367d1abb5a845addcfb07613e4f03b8d4df5b32dcd5e1db5feff2ed8d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "bbe910d08fba1193c494c41349bed24a1e042cb330e27a0fdc6971b64c771fad",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "2e1d93d8f92ad4acc7076d6dce686993a21f523ec2b8d88fe67fc1218a03b45f",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "a9f9abd99732129cebe538721bad5e46a39ff52add5ef8b1f38bf8e37bcfc94e",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "1e2fb38c4c8936984141b280041337ec06bc86638746fe0dc719685372790df5",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "d10291a2c0f338449bea7f87353968b6d4ee69db364ad9ce7d426ce1b7ac71b6",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "969683eb21ea4ace62157276f16c9e4c9dd5212a9554c12941a372dfee674607",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "5a0d20ca5bc9e8021f336cac185d08ee51e07a0fb766b7da84e6496dd042ec5b",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2806784a472f570e49edf5a33389cf759b21f6c4f7fd3e3e61343608125d2e5d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2806784a472f570e49edf5a33389cf759b21f6c4f7fd3e3e61343608125d2e5d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "2806784a472f570e49edf5a33389cf759b21f6c4f7fd3e3e61343608125d2e5d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 4,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "b8b592012c877a9fcd6112e4562574863e2d93bf7de4ecd910ad0f429d9c6475",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "d43134499faea2d2058f13260769fab6f14d19785aa103611d6ae0d6387bd7f9",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "a1b66237071014a818089562f1b9ea234f99c5be9a9114bbe976be0b4acda84b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "eaa1583d7b86af45ddadc6926cc5867a5cde6dafae0cfccdcb92a9fb09394609",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "f57d464f37e3c035ca1f28a1dc4106b616d00b513c2a13f7ba9cc3b3385bd3c0",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "e1c53139a78239ad80b888110f63c0d1244cc45a355b9ae9e92e690383bf6860",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "ba55bb213c980de5e6cbeaf5a5d3f6817e27584c22a7bf3d9b7eb13424432a2e",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "8d21df8773e87fd7f334f95723fe187c9bf2ab8b21e48fe05202bea61a44f81b",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "63b11f0e40551ae237c2bc4fc27efbd709e43c2fb03b0256c073589d792e0958",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "0c21c01662f3ef4b0457a4ea02c3cff15620887b93b18b259e79690fc5979293",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "6549ddc79bf9d34c6e7c2a73232377748ac246cb3362c9a435427c81f8f44bd2",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "26b81b7bfb25103c864d418a40c61106affb79618a0266f581abe21066b838e0",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "26b81b7bfb25103c864d418a40c61106affb79618a0266f581abe21066b838e0",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "26b81b7bfb25103c864d418a40c61106affb79618a0266f581abe21066b838e0",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 4,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "d281ee5ad6db44323f4ae2bbba88e84739644e159343e8c2fcc6a4f11d52f4b3",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "file": "BASELINE_PERSISTENCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "bf75431352cb9494c4fd45255bbbe82bc11790dfd23d0bc69de48b6f0a71d944",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ENERGY_COVARIANCE.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 69,
+      "sha256": "d1dfd42bd1b0aa5eb88b22e62de69f517f69b6ffb8f56a0b421856ff7f3d7008",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "REPRESENTATION_VARIANCE_DECOMPOSITION.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 414,
+      "sha256": "36218fce79909b06b92db8c586f7e40f1cb26966dcca297d67396011955b1116",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_CROSS_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 1104,
+      "sha256": "1f40eef976012282c4df1b5e5ff979f321d320b63e759a0e5ae2acf21f81239e",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TASK_RELATION_WITHIN_SUBJECT.csv",
+      "fold": 4,
+      "part": "semantics",
+      "rows": 207,
+      "sha256": "b72d30f6eae5f23a720e17e5ba0cc4321f4533905046e3690dd8c13b9d48e903",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "DECODER_BOUNDARY_STABILITY.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 23,
+      "sha256": "0bb7ba4fda7b3889bbb92b3303c79c46c5d959e02f9f7bdcbbad5846c380649d",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_CROSS_SUBJECT_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "09371eb1205bdc80c42c9b8ea7b3dba6a53f4fec93df9ef7527132368f366a3e",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "FROZEN_DECODER_SESSION_TRANSFER.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "ae93187b768129dc73b6733de960d24d83ec9ce5b6499cbefdb610c46f1cd070",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "ORIGINAL_HEAD_P_FUNCTION.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 138,
+      "sha256": "1b6500279d24f7d919235cd9debfdc6a43440071c6ffeb9c012eb5b9a091f2bc",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "P_SEMANTIC_PROBES.csv",
+      "fold": 4,
+      "part": "decoders",
+      "rows": 207,
+      "sha256": "abb854598b5f11168c79b53c71005af8b898631c562edc8791e070d6cfccd7ed",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "CROSS_SUBJECT_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 1702,
+      "sha256": "24c04cce94f5135e9eb35671e67cb47b844c46010168fb498dbd1c4b3b44d68f",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "GLOBAL_SESSION_TRANSFORM.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "612fc5cbd8e094ff30156a7a3261b152213ba50fed8af7c836b9823c5fa76de5",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORMATION_COMPLEXITY_CURVE.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "612fc5cbd8e094ff30156a7a3261b152213ba50fed8af7c836b9823c5fa76de5",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "TRANSFORM_DECODER_RECOVERY.csv",
+      "fold": 4,
+      "part": "transform",
+      "rows": 736,
+      "sha256": "612fc5cbd8e094ff30156a7a3261b152213ba50fed8af7c836b9823c5fa76de5",
+      "stage": "embedding_64d"
+    },
+    {
+      "file": "PERMUTATION_CONTROL_SUMMARY.csv",
+      "fold": 4,
+      "part": "permutations",
+      "rows": 161,
+      "sha256": "e101d13e0afc023eb65081f64ce35a07464e712c74301c4459cddf4288ebc160",
+      "stage": "embedding_64d"
+    }
+  ],
+  "upstream_source_audit_sha256": "996ab807d0acd7881d25820fb9d205dc8c34d8e14526de6e1f6bd60a369985f9"
+}

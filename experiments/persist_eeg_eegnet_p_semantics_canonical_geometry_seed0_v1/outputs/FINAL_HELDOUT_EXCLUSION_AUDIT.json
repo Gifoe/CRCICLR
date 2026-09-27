@@ -1,0 +1,575 @@
+{
+  "aborted_preexecution_tasks_sha256": "e2f39d26959deafe76bb2b1c107d0e02d694238393219489db66ada5814c6835",
+  "all_analysis_final_heldout_eeg_reads_zero": true,
+  "all_geometry_final_heldout_eeg_reads_zero": true,
+  "analysis_audit_manifest": [
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "semantics",
+      "sha256": "0e67485a1f8557ae41c729c64d965d4a2316202443e2a3dfa6b2f5a558155f53",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "decoders",
+      "sha256": "04e63b015ea5220cf8cf05156c28604e68a5144b879d95fb43df2ab4b9bc9aaf",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "transform",
+      "sha256": "b8a9b2ed6462acedd21edd94783305aa6fde1a10a0519470dfc3cadb51b245f8",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "permutations",
+      "sha256": "07738b1ee477789f26d09ee876949bb409018f0ecded1befe3d975c15b97e7bd",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "semantics",
+      "sha256": "b189d5e9086217310038b791d7550d0e8c68c30bee874710b8cb8a5db5131306",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "decoders",
+      "sha256": "7605f1079ddf7d0a03813c1b550f2aeb4bbbff70b42d418dfad1401752803f85",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "transform",
+      "sha256": "7bcfc13bea2a33c227cb3c126affbfbfdfcd5b04e384fac403dae11bf258ead0",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "permutations",
+      "sha256": "6942f3cf32214429b4960598ff71f70fb24a4a1943ea0559a12f9612b8dc9f3b",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "semantics",
+      "sha256": "033289b2d1628f38939d7ff2d5ae4c24035f4b19f4f88e55144af83e157f9cc3",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "decoders",
+      "sha256": "6f33791a77bc771db4f0a07e41e0b846f02283bd9eaa850369265707b293dc16",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "transform",
+      "sha256": "80af787b0666c5df25d5a43184adbefd691976809a6a7fc6aea219b0791b8994",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "permutations",
+      "sha256": "aafd5c238413db064774d6576c12c8d8b46f7b38e4243d120c446babe741ca65",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "semantics",
+      "sha256": "10134c97e7449f4403730166b18365e9cf8c1b5ddfe19721f2c42624175c6eaa",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "decoders",
+      "sha256": "246b5d20df51fb892590a94ecab14b807840b75d637dff4f6b9987d8850d5658",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "transform",
+      "sha256": "482479b74de5bcc3c381cb564711ecd3bb85708bab90956b48886d3bf58973c5",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 0,
+      "part": "permutations",
+      "sha256": "a03c131abdcbf03913b086f9c7dc8af827c51e0b0f497ebf9f3464070a865d99",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "semantics",
+      "sha256": "f96064dd7baa48f9a26b00f724d26b865eeb18812eca46e4e2f40cef0a335d9f",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "decoders",
+      "sha256": "56b15b639c8452420f305da255ea59f867acf53fd5c2ad8a9442451ceb59d876",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "transform",
+      "sha256": "6b5ffe3b221238007319d60db3536bf31943f8ad39f0694c6bc1d59ed6388498",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "permutations",
+      "sha256": "c9632099223f3f1eee60454bb52647ea86b19d1ec52c182b9c24a8c0683fa752",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "semantics",
+      "sha256": "8a724172f186afec08fe2461b39d0a925b12d17739c4d2645d3d27adbc4c5144",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "decoders",
+      "sha256": "1926878ee84865ae4dffae3168f6669461ec7d1ac7ab0fbdd056ac802dcf0ad5",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "transform",
+      "sha256": "328a0d97595a36e8ed60d7f13bbfb0e21da3d95ff7f7a940da6f7c109d26aef5",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "permutations",
+      "sha256": "0343bf85b8b2a36b0a709e79e62908baf0dc5b1e08330324b3a17270d90fdf35",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "semantics",
+      "sha256": "fa4675ffe4095ec4d376b0f013b05953156a4a44128214e11109501c89627fcd",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "decoders",
+      "sha256": "229b588e56530af0cc1df8002caa36930e58c8eaeab3b752ec97e27e9ee01032",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "transform",
+      "sha256": "9199f534dfedffb955eff73622cc0f9a5d1758a4020a2bc6842ecc5f99cb2674",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "permutations",
+      "sha256": "66ac21e4d1a55742de821dad28bb019246167aeb4037d0de797ac406fa8fcffb",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "semantics",
+      "sha256": "a6becb616b511d5af380fb30d0aeacce90c8d5c7b1e676bbc0894c8e23102d59",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "decoders",
+      "sha256": "4d4e7cd366a9882c62b893682f40fee19c7d66aef1ab26fc018c3eed36d91c0e",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "transform",
+      "sha256": "9108643d2c5b53413eb05dad386c91d7c992676904f5e9e91ef0fecbf4db3ba5",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 1,
+      "part": "permutations",
+      "sha256": "b80c7e1d6c742f688e2984f1191fc05d4a85a58891a1c09c55f0e55f86391d86",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "semantics",
+      "sha256": "4684dafe1e50868c8739a98c4bcdbf84a4f3118928645539add46cf64646547b",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "decoders",
+      "sha256": "2ba446f07fb1ee327ecc187360ba3de6658a5b52964cf3c3318e165626b11331",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "transform",
+      "sha256": "61b7077c15f111760f681a63c50b028e0e2a5087021b658571562d4c2faa64dd",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "permutations",
+      "sha256": "bb579886c5e92b1e589d67a86c33da6be3ccc0f430723aa8c8ba547f62c82e07",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "semantics",
+      "sha256": "fb1f2feeb14e8b566ba87584d5a22963e721aec171ffcd700a49558068a1eb62",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "decoders",
+      "sha256": "89693b386e0edcf54f551b92185812094164409c61cade0a8ee3f111df943659",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "transform",
+      "sha256": "451e4c921073c528fd57738656eea0c5213c90e6f43140f128237611d7c2c2f7",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "permutations",
+      "sha256": "6ddf43079bed2de706725c592220e51742914a43a06bf5ed1d4701cc3f4fcdad",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "semantics",
+      "sha256": "8d9f401a3e79387f831d083134c8544f6609edc2a739201777bcec3cadf64e4f",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "decoders",
+      "sha256": "bf5ddf24047a66346e359a9e122fd6be7ae4688a9416420f7d9f9c25bd343bcd",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "transform",
+      "sha256": "a158207904a9b276a353f2e88a4542629eac3dffef15d8df118753def79fdfdc",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "permutations",
+      "sha256": "6294ff49a6c1f5826988093bde69e9e45b0212266efc249b88431dbf3b30a1f8",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "semantics",
+      "sha256": "f68bddf2b648f6adbfc29626b5f1c89cc95cfcbf504a9ed7731fc38cab02ad00",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "decoders",
+      "sha256": "a58e360c0fbf3eac891f99e48f57ae1eecfe496b1eaa2922bcb4332b0fc5efb2",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "transform",
+      "sha256": "0a9e04a2babcb534181bb91ed0aea34406df54e6342d4355b708ca078504c3d2",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 2,
+      "part": "permutations",
+      "sha256": "4534b2f5a18b6540201e84a43f70f9fc155bcf759cbe85aeff79015662413a08",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "semantics",
+      "sha256": "c205bde71a96ca09b0f8f8d65c4a301b852a3d7de9953da5e53713e8669aaf47",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "decoders",
+      "sha256": "6080f2188377ceb6f2e74ff2d44563fad700a3ed9c1cab0254dd170e10e9a250",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "transform",
+      "sha256": "ad76915ffc1edd49c246e431d36f38c549176c68f4f77ca490fae216703916e2",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "permutations",
+      "sha256": "e4ba9976ca521bc8b9a311353acbd3785e243af0ba45c3d555f42d00c8e6e175",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "semantics",
+      "sha256": "2e4183badcece7f605279a2a744d42a1d121ad5e421d21aeff41f64c67e0c74b",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "decoders",
+      "sha256": "5dfdea7795eb57071bed33d7ec27caf420bb51a38528bb8f7fdafbfe1dc32252",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "transform",
+      "sha256": "a21a03623b2e8915989e6c4eda79f1d8ed73cccf9569d4399555e446c2ef6019",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "permutations",
+      "sha256": "6ffb5e2d283d20252404d225b26ed7a734728b4fc1e910e1b2bb9a859046704d",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "semantics",
+      "sha256": "0ef414b17ae5f90f249588d9150cc569c1746c8f46228c8a28f1377b9b98fd37",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "decoders",
+      "sha256": "3c19cccd44399b6f94a6b415947f75082ef489f6b04bd188647d02b414fd9382",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "transform",
+      "sha256": "581f45e31d4e652c4a6a9d21bfc4f079ef590d426552bcdfadd62537bf9a440c",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "permutations",
+      "sha256": "5c943953a8db1b2ccade8a5f8bf0cbf07a1a6bf62cbd3801ef60921b108d0e74",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "semantics",
+      "sha256": "b5b9b3042b6d6203995ad1ae7a31e2e7927b49d7ff2b3472fd666226dfb7fa14",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "decoders",
+      "sha256": "555ec5efaebc19c06c8b42a8c112cb68e542fce9100da2d45e08485ae12eb4e3",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "transform",
+      "sha256": "833b60afc4608f4ef32b84544d73352a6b92dd18bfad41dfae1a136dd8504f2e",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 3,
+      "part": "permutations",
+      "sha256": "76d9052782dc57795d6ac0120dfce86fb1451bb1fd8df4bb35c247a381c4ae0d",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "semantics",
+      "sha256": "0c372403d45d25d740dd4db1d497e1a53990ea6d7097c12da8245f551aa1df41",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "decoders",
+      "sha256": "d15c2e8338d91a7d40852c1678f99fe6275a44e22c2a7f86a0f59bdf5e697bfe",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "transform",
+      "sha256": "3bd1292c5f8ebf9b14fd6a14a3742a96490f88de614fb89c241ce89cfa8dd376",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "permutations",
+      "sha256": "81a1686e506994d48c2e8da1896334fc19d9deca0c41233d9a17a4ddaf8155a5",
+      "stage": "temporal_bn"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "semantics",
+      "sha256": "379effcda2f1f2f7fef6ab384a9681e9fa1916ffafeb1c99b4271a60749f6559",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "decoders",
+      "sha256": "796a8b9eb6e2518618cd6947ae2ac0e2d1773fa4c3e322ea9435e8bc170aa0d2",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "transform",
+      "sha256": "c9193b5b2c310d82d52bac76a1153ebf46035d196e113c31ac64fa5a781e7348",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "permutations",
+      "sha256": "4e4a51e22aa05507d0d8079bc977c701490a4711b5abcda4f349bfacffdd8b52",
+      "stage": "spatial_elu_pool1"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "semantics",
+      "sha256": "256aadb8617ca55e912ff08ed1e7332a6ea98efe4ff87cf909c66703159ae5fd",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "decoders",
+      "sha256": "9166b561662fd1be2466976f5e3507fe7969b4f45ba525fca11905d552aa3f7c",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "transform",
+      "sha256": "8a49d3177d7ee43bee666c03268534e20d06fec60e350d2e11bba739d6937cc8",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "permutations",
+      "sha256": "a1ede9abfb0f8e2d64e3a2aa411ace1a837ce840585a490c20c1ab6b10ee12ec",
+      "stage": "depth_point_elu_pool2"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "semantics",
+      "sha256": "8179b8047f6197b426f83019346e19d1dba78b7cf1d79d2bdfd6eff61afe49b2",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "decoders",
+      "sha256": "01c883a2a01b36e800b051ce1fa1774ba92254bf26fe5234b6dc6d51fcda84b7",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "transform",
+      "sha256": "3f5f6a71cd12de6d18de920dacd1f3a872f8efe4e4be9f5e6db07552135a1c1f",
+      "stage": "embedding_64d"
+    },
+    {
+      "final_heldout_eeg_reads": 0,
+      "fold": 4,
+      "part": "permutations",
+      "sha256": "f3b9ba3dd8368a7459b12d4d6ab34806075cba0ac98b6c50967296223b67f8bf",
+      "stage": "embedding_64d"
+    }
+  ],
+  "analysis_fold_stage_parts_verified": 80,
+  "final_heldout_eeg_reads": 0,
+  "geometry_folds_verified": 5,
+  "geometry_provenance_sha256": "70f282cd6be1132297bb17aa1c8e91d0ff65be275c2cf4120fee389a5ee41a75",
+  "protocol_lock_sha256": "c65bd28a7856ad1c5ba139908b56cf54ac22a16d51f076f3079cb8971d7b7245",
+  "schema": "P_SEMANTICS_FINAL_HELDOUT_EXCLUSION_AUDIT_V1",
+  "scope": "current frozen-mechanism experiment only; historical checkpoint/outer-dev exposure disclosed separately",
+  "upstream_source_audit_sha256": "996ab807d0acd7881d25820fb9d205dc8c34d8e14526de6e1f6bd60a369985f9"
+}

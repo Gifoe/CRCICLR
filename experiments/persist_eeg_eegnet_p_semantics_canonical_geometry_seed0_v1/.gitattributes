@@ -1,0 +1,5 @@
+# Preserve the exact audited bytes, including server-origin CRLF JSON files.
+protocol/*.json -text
+outputs/*.csv -text
+outputs/*.json -text
+outputs/*.md -text

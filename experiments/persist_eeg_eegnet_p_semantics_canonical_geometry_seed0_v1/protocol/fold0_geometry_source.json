@@ -1,0 +1,229 @@
+{
+  "all_train_rows": 3328,
+  "canonical_checkpoint_selected_epoch": 49,
+  "checkpoint_normalizer_sha256": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+  "checkpoint_record_sha256": "27fef645f6a411585077d9f86808e12a7c9fcabd1a84c51be8b8b05fec2803e1",
+  "checkpoint_sha256": "845b6bcecd6cced7774da1328bd3fd6cd29316376e45d39d878df99ec35391cb",
+  "checkpoint_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+  "checkpoint_validation_eeg_reads": 0,
+  "checkpoint_validation_used_for_fit": false,
+  "final_P_rank": 4,
+  "final_P_selected_coordinates": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "final_P_selection_assignment": [
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": -1.965700053951132e-05,
+      "absolute_CI_high": 0.00027644539437137535,
+      "absolute_CI_low": -0.0002987650099035096,
+      "block": 0,
+      "dimensions": 1,
+      "excess_CE_harm": -0.008991032580559203,
+      "excess_CI_high": -0.007845707351012124,
+      "excess_CI_low": -0.010214469212020887,
+      "fold": 0,
+      "persistence_supported": true,
+      "protected": false
+    },
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": 0.0055830102060809485,
+      "absolute_CI_high": 0.008610477220393846,
+      "absolute_CI_low": 0.00268696767198945,
+      "block": 1,
+      "dimensions": 1,
+      "excess_CE_harm": -0.004354530602293038,
+      "excess_CI_high": -0.0021098533524095335,
+      "excess_CI_low": -0.006627631451775596,
+      "fold": 0,
+      "persistence_supported": true,
+      "protected": false
+    },
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": 0.10425337361106712,
+      "absolute_CI_high": 0.12485159614857724,
+      "absolute_CI_low": 0.0863474075319228,
+      "block": 2,
+      "dimensions": 4,
+      "excess_CE_harm": 0.08492616484595984,
+      "excess_CI_high": 0.10538893936301312,
+      "excess_CI_low": 0.06769035352358967,
+      "fold": 0,
+      "persistence_supported": true,
+      "protected": true
+    },
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": 0.03156995105226127,
+      "absolute_CI_high": 0.03700102266353296,
+      "absolute_CI_low": 0.026373162475822665,
+      "block": 3,
+      "dimensions": 4,
+      "excess_CE_harm": -0.004621441118197205,
+      "excess_CI_high": 0.0011610514188619826,
+      "excess_CI_low": -0.011387643569925403,
+      "fold": 0,
+      "persistence_supported": true,
+      "protected": false
+    },
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": 0.025577219577962437,
+      "absolute_CI_high": 0.029676003881939323,
+      "absolute_CI_low": 0.021501115342778883,
+      "block": 4,
+      "dimensions": 4,
+      "excess_CE_harm": -0.012168906956158927,
+      "excess_CI_high": -0.00473003605902859,
+      "excess_CI_low": -0.01987217058208772,
+      "fold": 0,
+      "persistence_supported": true,
+      "protected": false
+    },
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": 0.008119731294085882,
+      "absolute_CI_high": 0.010033303679599927,
+      "absolute_CI_low": 0.0062113785859888165,
+      "block": 5,
+      "dimensions": 4,
+      "excess_CE_harm": -0.03594520026912554,
+      "excess_CI_high": -0.02998584722881897,
+      "excess_CI_low": -0.042323999779877185,
+      "fold": 0,
+      "persistence_supported": false,
+      "protected": false
+    },
+    {
+      "Model": "EEGNet",
+      "Task": "OpenBMI_MI",
+      "absolute_CE_harm": 0.005661188495963632,
+      "absolute_CI_high": 0.007459652243749398,
+      "absolute_CI_low": 0.003930205900583823,
+      "block": 6,
+      "dimensions": 2,
+      "excess_CE_harm": -0.011935904396834942,
+      "excess_CI_high": -0.009247701810455573,
+      "excess_CI_low": -0.014593199049737831,
+      "fold": 0,
+      "persistence_supported": false,
+      "protected": false
+    }
+  ],
+  "final_heldout_accessed": false,
+  "final_heldout_eeg_reads": 0,
+  "final_whitening_basis_sha256": "99249634adc927c2fb88ae62ca8ff7e1aa2554a2530a029ab597574ddd7c839f",
+  "final_whitening_mean_sha256": "998320db7b487a7a7086a362f59a900ad033ba68638118a7e7c51eea03f5b21d",
+  "fit_rows": 3328,
+  "fit_subject_ids_sha256": "2905f8c5fc206ef320e3e459757240633e267fd631d2b00c67958bcb4a373a6f",
+  "fit_subjects": [
+    "1",
+    "10",
+    "16",
+    "2",
+    "20",
+    "21",
+    "22",
+    "23",
+    "27",
+    "28",
+    "30",
+    "31",
+    "34",
+    "35",
+    "40",
+    "41",
+    "43",
+    "44",
+    "45",
+    "46",
+    "48",
+    "49",
+    "50",
+    "52",
+    "53",
+    "7"
+  ],
+  "fold": 0,
+  "model_state_sha256_before_after": "f249de9e613c0a1989b252a6b29d77c29937803fd5f66e58572618ffb1b9fbbb",
+  "outer_development_eeg_reads": 0,
+  "outer_development_used_for_fit": false,
+  "population": "TRAIN_GEOMETRY only",
+  "schema": "P_SEMANTICS_EEGNET_INNER_TRAIN_GEOMETRY_V1",
+  "stage_diagnostics": {
+    "depth_point_elu_pool2": {
+      "fit_centroid_count": 104,
+      "method": "TRAIN-only PathFit to final-P coordinates",
+      "ridge_alpha": 1.0,
+      "singular_values": [
+        0.37209272384643555,
+        0.10198190808296204,
+        0.0849214419722557,
+        0.07924770563840866
+      ],
+      "train_centroid_projected_variance": 0.24605689942836761
+    },
+    "embedding_64d": {
+      "method": "fresh TRAIN-only final P",
+      "train_centroid_R2": 1.0
+    },
+    "spatial_elu_pool1": {
+      "fit_centroid_count": 104,
+      "method": "TRAIN-only PathFit to final-P coordinates",
+      "ridge_alpha": 1.0,
+      "singular_values": [
+        0.15545304119586945,
+        0.036616064608097076,
+        0.030872898176312447,
+        0.028531255200505257
+      ],
+      "train_centroid_projected_variance": 2.2895421981811523
+    },
+    "temporal_bn": {
+      "fit_centroid_count": 104,
+      "method": "TRAIN-only PathFit to final-P coordinates",
+      "ridge_alpha": 1.0,
+      "singular_values": [
+        0.014048930257558823,
+        0.0032596332021057606,
+        0.002580147935077548,
+        0.002509266370907426
+      ],
+      "train_centroid_projected_variance": 235.44985961914062
+    }
+  },
+  "stage_geometry_sha256": {
+    "depth_point_elu_pool2": "e8678b6b93baf538771c2b5745536fab50b0243049172e9f206c0cfc1f19f277",
+    "embedding_64d": "5a9895d2c3cc43e59c49bbb2a20537a1c0b15b1aacdac099dc9f447898ecf753",
+    "spatial_elu_pool1": "4665fdec676653c9a4e8ea24a6b9eee431642e4adb05918d49e9c3124b3d822a",
+    "temporal_bn": "d178015087354c4ed75f1fa63a189c20963fbb67ddf261a0fd055222ead6cd4e"
+  },
+  "stage_names": [
+    "temporal_bn",
+    "spatial_elu_pool1",
+    "depth_point_elu_pool2",
+    "embedding_64d"
+  ],
+  "train_capped_future_rows": 1664,
+  "train_capped_source_rows": 1664,
+  "train_feature_sha256": {
+    "depth_point_elu_pool2": "d721f814919796050e14f85e950fd1ebd0575430a065ce57387e4ab7198b13c4",
+    "embedding_64d": "835f0ae066fe7f8a980f86583c34919437fd6b2c845ed3692221e59a1f25a38b",
+    "spatial_elu_pool1": "276e4e2039ffc4083de65de41f2646d0030c60195935ecfebf7a94ece81ba26e",
+    "temporal_bn": "69802048eece8b5f11b11d4cf49666d59ccb06e052617f9aa34cc72882d8f756"
+  },
+  "train_future_full_raw_rows": 2600,
+  "train_logits_sha256": "7cb435b18e1dc752d762f02c228e8e4017960b0a1bde589fcc646eec8f808fdc",
+  "train_source_normalizer_full_raw_rows": 2600
+}
