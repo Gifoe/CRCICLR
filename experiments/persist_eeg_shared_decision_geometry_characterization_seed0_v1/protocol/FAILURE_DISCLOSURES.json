@@ -1,0 +1,32 @@
+{
+  "schema": "SDG_FAILURE_DISCLOSURES_V1",
+  "accepted_full_trial_fold_failures": 0,
+  "preliminary_cap32_excluded": true,
+  "wrapper_and_serialization_attempts": [
+    {
+      "attempt": "SSH-detached EEGNet/OpenBMI_MI/fold0 launch",
+      "observation": "Child process exited after the SSH command ended; no valid fold result or scientific output was produced.",
+      "disposition": "Preserved the zero-length stdout/stderr files; changed to a Windows scheduled task. No unrelated process was stopped."
+    },
+    {
+      "attempt": "PERSIST_EEG_SDG_EEGNET_MI_F0_V1",
+      "observation": "Windows PowerShell promoted a PyTorch native stderr warning to a terminating error before fold output was written.",
+      "disposition": "Preserved the task failure log; version-forward wrapper V2 retained stderr but checked the native exit code."
+    },
+    {
+      "attempt": "PERSIST_EEG_SDG_EEGNET_MI_F0_V2",
+      "observation": "All fold computation reached JSON serialization, but a numpy.int64 value was not serializable. The opened JSON was incomplete and never accepted as a result.",
+      "disposition": "Preserved the incomplete file as logs/eegnet_openbmi_mi_fold0.v1.failed_partial.json; version-forward fold runner V2 uses a typed JSON converter and atomic new-file rename. Wrapper V3 reran the fold from frozen source."
+    }
+  ],
+  "preliminary_runs": "EEGNet/OpenBMI_MI/fold0 task V3 and the gated, sequential remaining-14 queue each exited successfully, but all 15 preliminary fold results were excluded because of the diagnostic trial cap. Their runtime and output artifacts are preserved outside the final Git outputs.",
+  "full_trial_runs": "PERSIST_EEG_SDG_FULL_15_V1 completed and verified the first eight full-trial folds, then was stopped while safely waiting with no fold child. PERSIST_EEG_SDG_FULL_REMAINING_V2 verified all eight prior result hashes against V1 completion records and resumed the remaining seven folds with the same 40 GB RAM / 16000 MiB GPU launch gates but a shorter resource polling interval. Final status is verified separately in final provenance and outputs.",
+  "full_trial_queue_transition": {
+    "v1_completed_fold_count": 8,
+    "v1_stop_condition": "Waiting on resources; no fold child process, eight complete result files, and exact owned scheduled task only",
+    "v2_first_task_start": "Task Scheduler returned result 1 because the action omitted ExecutionPolicy Bypass; no V2 script log, failure log, or fold output was produced.",
+    "v2_correction": "Updated only the exact owned V2 task action to match V1's ExecutionPolicy Bypass, then started it once. V2 preflight independently verified all eight prior fold hashes and started the ninth fold under the unchanged resource gate."
+  },
+  "artifact_transfer": "Two parallel SFTP downloads failed and one left a partial local CSV. The partial file was preserved outside the Git branch, then all affected files were fetched serially. All 22 output files and both generated provenance files match the server SHA-256 hashes exactly.",
+  "formal_final_heldout_eeg_reads": 0
+}

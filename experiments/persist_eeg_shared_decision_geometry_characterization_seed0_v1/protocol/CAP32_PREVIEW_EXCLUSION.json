@@ -1,0 +1,9 @@
+{
+  "schema": "SDG_CAP32_PREVIEW_EXCLUSION_V1",
+  "reason": "A preliminary 15-fold diagnostic used a deterministic 32-trial-per-subject/session/class cap. This did not satisfy the attached requirement that the common TRAIN_GEOMETRY feature standardizer use every TRAIN trial embedding.",
+  "status": "EXCLUDED_FROM_FINAL_RESULTS_AND_MODEL_GATE",
+  "preliminary_local_archive": "D:\\chenyu-iclr\\shared_decision_geometry_cap32_preview_20260928",
+  "preliminary_server_runtime": "D:\\nips-temp\\TotalP\\P1\\shared_decision_geometry_runtime",
+  "remedy": "Version-forward full-trial protocol and runner; recompute all 15 fold-cells in a new server runtime, then aggregate and audit only the full-trial results.",
+  "formal_final_heldout_eeg_reads_in_preview": 0
+}

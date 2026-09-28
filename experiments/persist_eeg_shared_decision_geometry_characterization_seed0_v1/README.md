@@ -1,0 +1,13 @@
+# Shared decision geometry characterization
+
+Frozen-backbone, seed-0 mechanism audit for EEGNet/OpenBMI_MI, EEGNet/OpenBMI_ERP, and EEGConformer/OpenBMI_MI across folds 0–4. This branch does not train a neural network or implement a new architecture.
+
+`code/run.py fold --backbone EEGNet --task OpenBMI_MI --fold 0` performs one immutable fold-cell. Each fold result is stored outside Git in `SDG_RUNTIME/folds`. After all 15 fold-cells are complete, `code/run.py aggregate` produces the compact protocol, CSV audits, decision summary, and report. The runtime is intentionally excluded from Git.
+
+The accepted server run uses the no-cap protocol. `code/run_full_15_queue_v1.ps1` completed eight folds; after a resource-wait transition with no child process, `code/run_full_remaining_queue_v2.ps1` verified their hashes and resumed the remaining seven under the unchanged launch thresholds. Earlier cap-32 diagnostic wrappers and outputs are preserved in the local preview archive outside this branch; see `protocol/CAP32_PREVIEW_EXCLUSION.json` and `protocol/FAILURE_DISCLOSURES.json`.
+
+The historical neural input normalizer is reproduced from all TRAIN source-session trials and checked against the selected checkpoint record. Diagnostic embeddings use every trial in the frozen subject roles, without a cap. A single common TRAIN-derived StandardScaler defines the primary vector coordinate system; regularized TRAIN-only whitening is a separate sensitivity analysis. Both physical sessions are read for subjects in each frozen role, but the checkpoint-validation subjects are explicitly marked as previously used for checkpoint selection. Formal final-heldout EEG is never read.
+
+The experiment characterizes post-hoc local decision directions and their shared/residual geometry. It does not establish that the neural network explicitly factorizes its own decision rule.
+
+All 15 fold-cells completed. Under the locked common-standardized primary coordinates, none of the three backbone/task cells passes the low-rank label; all three pass the unseen-subject label. TRAIN-only whitening reverses the low-rank result in every cell, so the structural interpretation is coordinate-dependent. Only EEGNet/OpenBMI_MI passes the private-complement gate, through NLL rather than a meaningful balanced-accuracy gain. The locked overall interpretation is `SHARED_DECISION_GEOMETRY_NOT_SUPPORTED`, with next action `STOP_THIS_MODEL_DIRECTION`. The evaluation used the frozen OUTER_DEVELOPMENT subjects; formal final-heldout EEG reads were zero. See `outputs/FINAL_REPORT.md` and `outputs/DECISION_SUMMARY.json` for the full evidence and per-fold table.

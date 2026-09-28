@@ -1,0 +1,40 @@
+{
+  "schema": "PERSIST_EEG_SHARED_DECISION_GEOMETRY_CHARACTERIZATION_SEED0_V1",
+  "source_commits": [
+    "8a8b708b30e19a20a83902d272fbe53fe8279f12",
+    "d5184c5423806693a3b218f2d0329cd6b29d5d9a",
+    "378f71f46fcfc7f8644e8885f15a95af169038d0"
+  ],
+  "cells": [
+    ["EEGNet", "OpenBMI_MI"],
+    ["EEGNet", "OpenBMI_ERP"],
+    ["EEGConformer", "OpenBMI_MI"]
+  ],
+  "seed": 0,
+  "folds": [0, 1, 2, 3, 4],
+  "neural_training": false,
+  "representation": "exact final-affine input, verified against native logits",
+  "historical_neural_input_normalizer": "all uncapped source-session trials from historical TRAIN subjects",
+  "diagnostic_trial_cap_per_subject_session_class": null,
+  "roles": ["TRAIN_GEOMETRY", "CHECKPOINT_VALIDATION", "OUTER_DEVELOPMENT"],
+  "role_sessions": "both physical sessions for each subject role; historical checkpoint selection used future session only",
+  "primary_coordinate": "COMMON_STANDARDIZED",
+  "primary_standardizer": "one StandardScaler fitted on all TRAIN_GEOMETRY trial embeddings, both sessions",
+  "sensitivity_coordinate": "COMMON_WHITENED",
+  "whitening_eigenvalue_floor": "max(1e-4 * largest TRAIN covariance eigenvalue, 1e-8)",
+  "local_classifier": {"name": "LogisticRegression", "penalty": "l2", "C": 1.0, "solver": "liblinear", "random_state": 0, "class_weight_ERP": "balanced", "class_weight_MI": null},
+  "class_orientation": "increasing class-1 logit",
+  "matrix_primary": "uncentered unit local normals",
+  "matrix_sensitivity": "row-centered unit local normals",
+  "label_null_permutations_per_fold_coordinate": 200,
+  "isotropic_null_draws_per_fold_coordinate": 1000,
+  "strength_matched_orientation_draws_per_fold_coordinate": 200,
+  "random_rank_matched_bases_per_fold_coordinate_rank": 100,
+  "rank_choices": ["TRAIN k90", "min(4, TRAIN k90)"],
+  "low_dimension_gate": "all three real-vs-label-null 5/95 percentile criteria in >=4/5 folds",
+  "unseen_geometry_gate": "coverage and cosine above 95th-percentile random basis in >=4/5 folds; shared BA >=0.55 and >=full BA-0.05 in >=4/5 folds",
+  "private_utility_gate": "subject-equal private rescue >=0.10 and stacked BA gain >=0.005 in >=3/5 folds or positive NLL gain in >=4/5 folds",
+  "stacker": "two-margin LogisticRegression fitted on subject-grouped TRAIN OOF predictions, with OOF scaler/basis/base decoders refitted excluding each OOF subject",
+  "outer_policy": "evaluation metrics and evaluation-only local decision normals; never scaling, basis, rank, decoder, fusion or threshold fit",
+  "formal_final_heldout_eeg_reads": 0
+}
