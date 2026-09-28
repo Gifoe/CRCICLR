@@ -1,0 +1,36 @@
+{
+  "Gate_A": false,
+  "Gate_B": false,
+  "PC_augmentation_gain_BA": -0.0015000000000000568,
+  "branch": "codex/persist-eeg-context-decision-identifiability-seed0-v1",
+  "exact_next_action": "STOP_CONTEXT_MODEL_DIRECTION",
+  "fold_shuffled_p95_BA": {
+    "0": 0.7838125,
+    "1": 0.7825,
+    "2": 0.7050000000000001,
+    "3": 0.717625,
+    "4": 0.7213124999999999
+  },
+  "formal_final_heldout_eeg_reads": 0,
+  "outer_audit_sha256": [
+    "544671e1b94f79c874277488a3654902b3addc9fcce8e047efc866df555a9dd1",
+    "d9d4749d92886ed6cb86ecf8c7bbe3414dc20070e2cd8c8e17625f939ece3388",
+    "785878f34a5b77bac72f2765779e5ca094c96bfffa0ece3177bf2cdfa862f0f9",
+    "1c1b8f413c230492421a9e897c997d734f56cb324321c2977717e8e3ca6fd337",
+    "e36dc4425e1ce6e821bd1fe6aee34ce9725566075b1a37df7d13a949ec0d1191"
+  ],
+  "outer_historically_exposed": true,
+  "pooled_context_gain_BA": -0.0030000000000001137,
+  "pooled_context_minus_mean_BA": -0.0040000000000000036,
+  "pooled_oracle_headroom_BA": -0.05775000000000008,
+  "pooled_recovery": null,
+  "primary_interpretation": "NO_MEANINGFUL_PERSONALIZATION_HEADROOM",
+  "schema": "CID_DECISION_V1",
+  "train_seal_sha256": [
+    "29b0eed29deff95dfbdf6c7f68da534d802182d7b15eab6e92d5c5b9b61fc43d",
+    "501d470614d35859e0274ff5c266b064672bb30bb9ff026d3118537b6e159da1",
+    "89bb1487ed6963ff38334709a78f443678e97874f76229abe1af1f493ebf0cd8",
+    "73d2d2594712518f10d9a3abb9d1c6ab729d3b32804e9b9d0e24619214005a7b",
+    "5d5550a6073baf232ff88522ff715f4644d48fe6ae0cb7ea771f3ca82a8de574"
+  ]
+}

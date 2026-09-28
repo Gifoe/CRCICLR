@@ -1,0 +1,13 @@
+{
+  "OUTER_only_after_all_train_seals": true,
+  "OUTER_s1_labels_oracle_only": true,
+  "OUTER_s2_labels_outcome_only": true,
+  "all_train_seals_exist": true,
+  "formal_final_heldout_eeg_reads": 0,
+  "historical_outer_exposure_disclosed": true,
+  "population_roles": {
+    "CHECKPOINT_VALIDATION": "historically checkpoint-selection exposed; inventory only",
+    "OUTER_DEVELOPMENT": "evaluation after all choices are frozen",
+    "TRAIN_GEOMETRY": "all fitting, selection and LOSO outcomes"
+  }
+}

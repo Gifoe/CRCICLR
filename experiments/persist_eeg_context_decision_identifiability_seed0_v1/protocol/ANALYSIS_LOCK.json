@@ -1,0 +1,21 @@
+{
+  "schema": "PERSIST_EEG_CONTEXT_ANALYSIS_LOCK_V1",
+  "locked_before_new_outer_access": true,
+  "primary_deployable_family": "best of CTX_MOMENTS, CTX_COV, CTX_PRED, CTX_COMBINED by TRAIN-only nested subject LOSO",
+  "primary_budget": "ALL",
+  "threshold": "zero native/logistic margin; no OUTER threshold tuning",
+  "case_priority": [
+    "Gate A failure -> CASE D",
+    "Gate A pass and Oracle minus mean-correction pooled BA < 0.003 -> CASE C",
+    "Gate A pass and Gate B failure -> CASE B",
+    "Both gates pass and PC augmentation improves generic context pooled BA by >= 0.003 with >= 4 positive folds -> CASE E",
+    "Both gates pass otherwise -> CASE F"
+  ],
+  "case_A_note": "CASE A is the generic positive label; CASE F is its mutually exclusive no-material-PC-augmentation reporting subtype.",
+  "gate_B_shuffled": "primary full-context BA strictly exceeds fold-specific 95th percentile of 200 shuffled TRAIN-context mappers in >=4 folds",
+  "gate_B_bootstrap": "lower 95% subject-paired CI for context-minus-global BA > -0.005",
+  "biological_subject_bootstrap": "average repeated-fold appearances within subject first; resample unique subjects 20000 times",
+  "null_permutation": "permute TRAIN context-to-target assignment only; selected hyperparameters and source corrections stay fixed; deterministic seed 0",
+  "pc_scope": "secondary augmentation of combined descriptor only, never classifier intervention",
+  "final_heldout_reads": 0
+}
