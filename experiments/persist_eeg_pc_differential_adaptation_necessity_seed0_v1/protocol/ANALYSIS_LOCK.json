@@ -1,0 +1,26 @@
+{
+  "schema": "PCDA_PRE_OUTER_ANALYSIS_LOCK_V1",
+  "created_before_any_outer_development_eeg_read": true,
+  "subject_bootstrap_draws": 20000,
+  "pooled_unit": "biological subject; mean fold effects within subject before resampling",
+  "primary_cell": "EEGNet/OpenBMI_MI",
+  "gate_A": "selected absolute alpha gap >=0.25 in at least four of five folds",
+  "gate_B": "outer differential minus best-uniform BA >=0.005 in at least four of five folds and pooled paired 95% CI lower bound >0",
+  "gate_C": "outer differential minus norm-matched-uniform BA >0 in at least four folds and pooled paired 95% CI lower bound >-0.005",
+  "gate_D_random": "outer Protected differential BA exceeds 95th percentile of 100 separately TRAIN-selected rank-matched random partitions in at least four folds",
+  "gate_D_PCA": "outer Protected differential BA exceeds PCA differential in at least three folds or pooled paired 95% CI lower bound >0",
+  "gate_D_supervised": "honest comparison, no Protected-specific conclusion when supervised-decision differential pooled BA is at least Protected BA without a positive Protected-minus-supervised paired 95% CI",
+  "gate_E_replication": "at least one replication cell has positive differential-minus-best-uniform BA in at least three folds and positive pooled subject-equal mean",
+  "oracle_nontransfer_label": "evaluation-only per-subject best-grid versus per-subject best-diagonal BA headroom >=0.005 in a majority of outer subjects, while global TRAIN-selected primary differential fails gate B",
+  "uniform_explains_label": "primary differential beats full-generic BA but fails best-uniform or norm-matched contrast",
+  "interpretation_priority": [
+    "PERSISTENCE_GUIDED_DIFFERENTIAL_ADAPTATION_SUPPORTED when A-E all pass and Protected competitive with supervised control",
+    "DIFFERENTIAL_ADAPTATION_SUPPORTED_BUT_NOT_PERSIST_SPECIFIC when A/B/C/E pass but PCA or supervised decision is as good or better",
+    "OFF_DIAGONAL_ORACLE_EXISTS_BUT_DOES_NOT_TRANSFER when evaluation-only oracle headroom exists but B fails",
+    "UNIFORM_SHRINKAGE_EXPLAINS_THE_GAIN when the differential beats full generic but B or C fails",
+    "PC_DIFFERENTIAL_ADAPTATION_NOT_SUPPORTED otherwise"
+  ],
+  "meaningful_negative_effect_BA": -0.005,
+  "success_is_not_forced": true,
+  "formal_final_heldout_eeg_reads": 0
+}

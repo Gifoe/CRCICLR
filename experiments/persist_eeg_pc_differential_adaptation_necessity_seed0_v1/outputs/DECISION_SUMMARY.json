@@ -1,0 +1,78 @@
+{
+  "analysis_lock_sha256": "c245021b69022921f46ea6a1414791b8c01348382aad04361c479d939bf9f4a5",
+  "branch": "codex/persist-eeg-pc-differential-adaptation-necessity-seed0-v1",
+  "exact_next_action": "STOP_PC_SPECIFIC_ADAPTATION",
+  "formal_final_heldout_eeg_reads": 0,
+  "gate_A": false,
+  "gate_B": false,
+  "gate_C": false,
+  "gate_D": false,
+  "gate_D_PCA": false,
+  "gate_D_random": false,
+  "gate_D_supervised_honesty": false,
+  "gate_E": false,
+  "generic_gain_over_full": true,
+  "oracle_headroom_majority": false,
+  "primary_bootstrap": {
+    "PCA": {
+      "CI95_high": 0.003999999999999998,
+      "CI95_low": -0.001999999999999999,
+      "backbone": "EEGNet",
+      "biological_subjects": 40,
+      "bootstrap_draws": 20000,
+      "contrast": "Differential_minus_PCA",
+      "mean_delta_BA": 0.0010000000000000009,
+      "task": "OpenBMI_MI"
+    },
+    "normmatched": {
+      "CI95_high": 0.006,
+      "CI95_low": -0.0002500000000000002,
+      "backbone": "EEGNet",
+      "biological_subjects": 40,
+      "bootstrap_draws": 20000,
+      "contrast": "Differential_minus_NormMatchedUniform",
+      "mean_delta_BA": 0.00275,
+      "task": "OpenBMI_MI"
+    },
+    "supervised": {
+      "CI95_high": 0.002250000000000002,
+      "CI95_low": -0.002749999999999991,
+      "backbone": "EEGNet",
+      "biological_subjects": 40,
+      "bootstrap_draws": 20000,
+      "contrast": "Differential_minus_SupervisedDecision",
+      "mean_delta_BA": -0.0002500000000000002,
+      "task": "OpenBMI_MI"
+    },
+    "uniform": {
+      "CI95_high": 0.0032500000000000085,
+      "CI95_low": -0.0017499999999999987,
+      "backbone": "EEGNet",
+      "biological_subjects": 40,
+      "bootstrap_draws": 20000,
+      "contrast": "Differential_minus_BestUniform",
+      "mean_delta_BA": 0.0007500000000000035,
+      "task": "OpenBMI_MI"
+    }
+  },
+  "primary_interpretation": "UNIFORM_SHRINKAGE_EXPLAINS_THE_GAIN",
+  "protocol_lock_sha256": "fb856216903422091916114de48bd63a755d94d601ab1346a9e0c082fb31ba5d",
+  "replications": [
+    {
+      "backbone": "EEGNet",
+      "pooled_mean_delta_BA": -0.001242424242424231,
+      "positive_folds": 1,
+      "qualitatively_consistent": false,
+      "task": "OpenBMI_ERP"
+    },
+    {
+      "backbone": "EEGConformer",
+      "pooled_mean_delta_BA": 0.000250000000000003,
+      "positive_folds": 1,
+      "qualitatively_consistent": false,
+      "task": "OpenBMI_MI"
+    }
+  ],
+  "schema": "PCDA_DECISION_SUMMARY_V1",
+  "structured_alternative_competitive": true
+}
