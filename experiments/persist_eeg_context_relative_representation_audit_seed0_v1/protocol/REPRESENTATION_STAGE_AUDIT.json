@@ -1,0 +1,584 @@
+{
+  "all_other_stage_operations": "flatten canonical tensor; EMBEDDING exact native head input",
+  "canonical_stage_names": {
+    "EMBEDDING": "embedding_64d",
+    "SHARED": "depth_point_elu_pool2",
+    "SPATIAL": "spatial_elu_pool1",
+    "TEMPORAL": "temporal_bn"
+  },
+  "extraction_hook": {
+    "EMBEDDING": "EEGNet.embedding output, exact final affine head input",
+    "SHARED": "EEGNet.drop2(pool2(elu(bn3(point(depth))))) output in exact manual forward",
+    "SPATIAL": "EEGNet.drop1(pool1(elu(bn2(spatial)))) output in exact manual forward",
+    "TEMPORAL": "EEGNet.bn1(temporal) output in exact manual forward"
+  },
+  "formal_final_heldout_eeg_reads": 0,
+  "native_forward_check": "every batch manual-stage logits torch.allclose to model(batch), rtol=1e-5 atol=1e-6",
+  "primary_stage": "EMBEDDING",
+  "schema": "CONTEXT_RELATIVE_REPRESENTATION_STAGES_V1",
+  "stage_by_fold_role": {
+    "0": {
+      "OUTER_DEVELOPMENT": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      },
+      "TRAIN_GEOMETRY": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      }
+    },
+    "1": {
+      "OUTER_DEVELOPMENT": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      },
+      "TRAIN_GEOMETRY": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      }
+    },
+    "2": {
+      "OUTER_DEVELOPMENT": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      },
+      "TRAIN_GEOMETRY": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      }
+    },
+    "3": {
+      "OUTER_DEVELOPMENT": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      },
+      "TRAIN_GEOMETRY": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      }
+    },
+    "4": {
+      "OUTER_DEVELOPMENT": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      },
+      "TRAIN_GEOMETRY": {
+        "EMBEDDING": {
+          "canonical_boundary": "embedding_64d",
+          "feature_dim": 64,
+          "operation": "flatten canonical tensor",
+          "primary": true,
+          "raw_tensor_shape_excluding_batch": [
+            64
+          ]
+        },
+        "SHARED": {
+          "canonical_boundary": "depth_point_elu_pool2",
+          "feature_dim": 496,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            31
+          ]
+        },
+        "SPATIAL": {
+          "canonical_boundary": "spatial_elu_pool1",
+          "feature_dim": 4000,
+          "operation": "flatten canonical tensor",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            16,
+            1,
+            250
+          ]
+        },
+        "TEMPORAL": {
+          "canonical_boundary": "temporal_bn",
+          "feature_dim": 7936,
+          "operation": "adaptive average time pool to 16 bins, then flatten",
+          "primary": false,
+          "raw_tensor_shape_excluding_batch": [
+            8,
+            62,
+            1000
+          ]
+        }
+      }
+    }
+  },
+  "stage_feature_sha256_by_fold_role": {
+    "0": {
+      "OUTER_DEVELOPMENT": {
+        "session1_EMBEDDING": "b8ccb9e2b47d57a96216bd78f9b5c1e94190ac30f7c5c9d59577d525f6aa66c3",
+        "session1_SHARED": "9a5fa8020e80ffc0d3432b80312eca59c088986ac24480565cbf761453f5e8b2",
+        "session1_SPATIAL": "7f39ecb3b194999f4ca02a8c02f10fdf274317c47733a57ab0f0d2f8236027ce",
+        "session1_TEMPORAL": "d8e35a6ded517deb5c16f63a231ccddc7b16eaefbd0a2c2b73bee64b2ba84626",
+        "session2_EMBEDDING": "691986aadce8fd87c3ea1981556be87b3eab152b16d4fcad83ceca3f38058b81",
+        "session2_SHARED": "e46c2253b75f2a3c1f2ff07c44ef1e67d40741041349e2d364c5662a2f3454db",
+        "session2_SPATIAL": "096642f722b2f9a803f970d225f49f2f77a299a55bc5e4c85e8b6caa2bb7d109",
+        "session2_TEMPORAL": "4f7760646fb82309c1ca0026f2c44065b65300e558d1160c0128ff6c41cc4c60"
+      },
+      "TRAIN_GEOMETRY": {
+        "session1_EMBEDDING": "ceec08a559fdbe00ffc9d29a21060babfb74c13dc1098f7139b631d3515fe11b",
+        "session1_SHARED": "c20769539446d7f4b15edf9132889711a6db04b8d63ad4c0297b73d9f24a74ed",
+        "session1_SPATIAL": "2b7700983e9c8d540290d1c1f46ac1e2c2df0a0318999b4710202d7dc621b2a6",
+        "session1_TEMPORAL": "0f27e33d6fe91933f059484fc1cbcbeb1f0d6ec3e87c0443611e5132ad29bda5",
+        "session2_EMBEDDING": "9bd3284aab64ed7d033e70e8a39faa0e295dd793fc0f4f59984f8a7140fab5b8",
+        "session2_SHARED": "e6394fbea5a1f3c924fa37665eab608850caeee2eda3949032b6fb6431cbaccf",
+        "session2_SPATIAL": "374d7140953db98373095ae1f96a62c7a3611d459b65003625ec941c784625a9",
+        "session2_TEMPORAL": "80302ae14f684418b7b4f4b1848650e594f81396e93ada9cd7f937330a63cb11"
+      }
+    },
+    "1": {
+      "OUTER_DEVELOPMENT": {
+        "session1_EMBEDDING": "a9fd28dcd1a3a7a3a698ee060c3798ddddd25bbd3e4be5e5253d0a21f52777ff",
+        "session1_SHARED": "99f5331ea57c71480cf2e7a66a64db2f00cd68c905738f82067a2f5fb2198246",
+        "session1_SPATIAL": "83df945916309fc2e0a919897b085e01c2d4be1b374244bb68df33f99b5d52aa",
+        "session1_TEMPORAL": "1b02c3a716e8c624b38027661d3166b53319ba59eb0ee3f873925e5d08fb865c",
+        "session2_EMBEDDING": "a55a1f54799e8de57eb16b99c434b4df791aa9f71aa57da6fab37a7f29e1ba04",
+        "session2_SHARED": "c7089421985d1d117a9848b723fc1cbc088a5603e1f411b0ad589c4827df8110",
+        "session2_SPATIAL": "f9357a0b5bfee7ea6f78be2150b32d3e151521f6d08a2e23a7bbf97943180dd4",
+        "session2_TEMPORAL": "14bdb51822458be8dcb8faff1a7aab907caa05a1b60e409e96fe0f25295f115c"
+      },
+      "TRAIN_GEOMETRY": {
+        "session1_EMBEDDING": "66ffc689498bceebe3622ac90e5dca2ddc57bc08f3c4583f15a845786be14397",
+        "session1_SHARED": "5febbfbe72f316eae0df434fcd1da97edae759179711b4beb25a7f66c00cea08",
+        "session1_SPATIAL": "5fb8c74914bccbd6058b0dda656f02105724f21a99858cb3411382f580c1512d",
+        "session1_TEMPORAL": "d06aae65c0548128f836e780ac2884cd47c71915f03b912d8f37f551117a2c49",
+        "session2_EMBEDDING": "5b8c72990241fc7c15c5a714886403d594ed98d837d3ec24857a152ae865d8fb",
+        "session2_SHARED": "d867b2cc5be23579459d659653f4bc01dafe5a919f65633a7ade176a84bb44f1",
+        "session2_SPATIAL": "0a1053eaf5582cedf8f02b4e0807695b62b0cc5e968396d78bb771fe60720f8d",
+        "session2_TEMPORAL": "9c026f529f451b5b0b2266e3190f8cdac34b482e83e65b1423e2d97d4b62d2c3"
+      }
+    },
+    "2": {
+      "OUTER_DEVELOPMENT": {
+        "session1_EMBEDDING": "e4ebd11fe6ef58e768b0f0f21d1339152cf17a5364898bf3f8d2b0e88752dad5",
+        "session1_SHARED": "53daf5f7cc8052a445e774812ef6bdd036adf4dd4ca2f1e1fe452261f210ab22",
+        "session1_SPATIAL": "f13b95a1f2196d7f37bc251335eba4cf80a88de4aa6979c26643f0af683f35e3",
+        "session1_TEMPORAL": "f89f5e4222fa76d68a49fd88104f31533d8265e60a2deb84cd2eb40c12319d92",
+        "session2_EMBEDDING": "d2740d3033fb88c0cc8481dd510af7bac7f95bae4e6a38d9b930ba0102d47bc0",
+        "session2_SHARED": "c185243f13dc6dbac896ae039ed9b50b4ee9e0852db8916a874cc2fe57873d1a",
+        "session2_SPATIAL": "f0a3377c64528a811cec5e1e5d672aa1c00a73d1b62071c0ed365567f7dc3fa4",
+        "session2_TEMPORAL": "d7460fe8838556475290b0a18ad7c9fefd6ad26bdf7b1dbe4d5c58df3ae5976d"
+      },
+      "TRAIN_GEOMETRY": {
+        "session1_EMBEDDING": "053a67c958b3b6f126ceb9e7884d242e690e8716f0173f7a54249a21820f74b6",
+        "session1_SHARED": "d44ffddb1cf75b75309a9000e65752fa63d5912c0aba74376180562c77fc8daa",
+        "session1_SPATIAL": "43caf89d17c964ef589c28891876ede8ebcfc9de69838a67c2c9f626cb021a5e",
+        "session1_TEMPORAL": "118493c97beb6130b7aa206a5f72ccf637ed81d941d725c3ecb99f0262048ca7",
+        "session2_EMBEDDING": "f1e5df5aeb04e17bc6c276b9d9a73d56179a553b6266e81eee58a2856d26c0be",
+        "session2_SHARED": "d1c10e536f6a40141587667c246c7658f3149649cef38dbf63283edace90482f",
+        "session2_SPATIAL": "348cc721ade93be2a894ed3d7b0c9e4790362665e8c1fa2aec91d1bd0e11c10f",
+        "session2_TEMPORAL": "42b2fa9a8f84d3d292f6a89fdbb93b046d41f08d328611660712ad6ec3e3c0cf"
+      }
+    },
+    "3": {
+      "OUTER_DEVELOPMENT": {
+        "session1_EMBEDDING": "bd9b93e322a7ada2e2566c9c7d5acac8d974d3fdd0272391158d1a45151a916c",
+        "session1_SHARED": "f4c0a30fb075aced13eaa545e42e5d76e44b147b7c524080ab2e3f059ca5763d",
+        "session1_SPATIAL": "081a2d80718dfe98b545913a196457dfd57087a59f5c967948db4bb60f2b4a3f",
+        "session1_TEMPORAL": "3008161a4a28ec482ee1a9adc1fad85a4dfcd053472af9385634a864e0449c7a",
+        "session2_EMBEDDING": "2f9138e6ab4cfc201e4c38c2951c6376df5fb223cc3f65c29e0b1e87bdb92a7b",
+        "session2_SHARED": "21e8793ebda927cb716ef9c699fc6c21956510959c6feaebb416cf8354ef1903",
+        "session2_SPATIAL": "0df70a4bc265da5d97edbcab41348a7c0b31f72cd72118de6cc07d09c3f63d7d",
+        "session2_TEMPORAL": "904082112486e9854fed474f7b6022f297631d2e1c82190691939caf5a8efbd0"
+      },
+      "TRAIN_GEOMETRY": {
+        "session1_EMBEDDING": "13bd4a4cbae0884b16c8b30cc1263996b11dd8b9de58f91d6f1513c8c60220bd",
+        "session1_SHARED": "ced3675877c46ea82c7ad0a8dfdd3adb9b460ae3a2278084dbd9f0e0dba07d57",
+        "session1_SPATIAL": "612d4d70cb2a2247a9d4e47fb997c015ea13554ffed7ee4edf46c6dcb02c1afc",
+        "session1_TEMPORAL": "32c66bc9230cc538aa27b282e8d33556b3367bdccd26e92f7b6feb4415b57090",
+        "session2_EMBEDDING": "aac8926427417bc0a99b99a45cac855134b71f534936703be2d44e319419b1ab",
+        "session2_SHARED": "2b675ae99199a2c9bde93a7f1b989d4269cbd01edfd54f9793b621211ec1eb75",
+        "session2_SPATIAL": "ee4c8110f01cf858e7e2f836dcea54fc85569cd16641162e9f3a71323e26aab7",
+        "session2_TEMPORAL": "a37825bfa941a26bfd2d51ba39f7a6938fba498c7758173eec9d0bcd5478d0dd"
+      }
+    },
+    "4": {
+      "OUTER_DEVELOPMENT": {
+        "session1_EMBEDDING": "4917bde3a549f27d0cbc4ed26cf2abcb89e9ccda559c675438a460b42dcb7161",
+        "session1_SHARED": "c98b149fed6b309e74fbff400a19cd662f0300eb038c1c7a65d3108b7394b3f7",
+        "session1_SPATIAL": "34864c23ffa7ac3a4ed9e2a8ffd547eee80866c19812bb15357c4fa682e82dd6",
+        "session1_TEMPORAL": "1b174be7ea79b9ce9c68c725a2695e563254955bd4ca7e01e549fb778d52fec0",
+        "session2_EMBEDDING": "b27bb3632aaf5f9bb48da55ef47dd58a0ac08d1bb37ec297f365b2aaaa39f8c9",
+        "session2_SHARED": "3746b363a35ec0b354a26f3978cca29d2f5baee38113b5d2a7783fb1e8978f78",
+        "session2_SPATIAL": "7049eeba80d91368278753d87501f013ccc67264173fd9ed04ddbb9115c33417",
+        "session2_TEMPORAL": "3fc92944cb571e820aa11006af42a067933958869029484b754cb5d3fc0c65eb"
+      },
+      "TRAIN_GEOMETRY": {
+        "session1_EMBEDDING": "b64e3f2d6bf2ba643f76acb8b0a7221543bbc16aed501ce26e75d38284822ab1",
+        "session1_SHARED": "8858388462f0286f6ea41d6a2bbfeb9a008b5ac68d29b6e914795cca22aab76e",
+        "session1_SPATIAL": "e85120c9d95a83e8f590df46451427194cf1f0da1332c8e2e7dac8e4ac01d46c",
+        "session1_TEMPORAL": "875f0d3c6f801c32bb4560dd67c4483c8c838448b162fdefcaee2378d8b42d83",
+        "session2_EMBEDDING": "08e3e7bd4404cce4c93c4de624e72445cd7434d9e680aee1124a1bea0a10a003",
+        "session2_SHARED": "b2234b69fe3e4e68c487719a2ee2ecad48609be93bb36fb4a9ecc48ba9330bb9",
+        "session2_SPATIAL": "a0649b08a9c2274f88c535d6ff3668fb7262d857e6b5a370153b74014d5f4cb7",
+        "session2_TEMPORAL": "b10467c06f0091cd2568654accfc15cae775c0e0caa92713ca7b8f019c59137c"
+      }
+    }
+  },
+  "temporal_pool_disclosure": "canonical temporal_bn boundary, deterministic adaptive time average to 16 bins before flatten; secondary stage only"
+}

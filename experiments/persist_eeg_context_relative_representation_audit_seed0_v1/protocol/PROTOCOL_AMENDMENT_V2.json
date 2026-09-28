@@ -1,0 +1,14 @@
+{
+  "schema": "PERSIST_EEG_CONTEXT_RELATIVE_REPRESENTATION_AUDIT_AMENDMENT_V2",
+  "timing": "after fold0 TRAIN feature extraction; before any TRAIN selection or OUTER EEG read",
+  "reason": "Make qualitative class-information and alternative-case wording deterministic before seeing any model outcomes.",
+  "changes_to_primary_protocol": "none; all original scopes, comparisons, and gates remain in force",
+  "gate_e_operational": "TRAIN-only relative class probe BA loss no worse than 0.010 and relative/absolute class variance at least 0.90",
+  "case_operational": {
+    "CLASS_BALANCE_EXPLAINS_CONTEXT_REFERENCE": "natural REL gain nonpositive while label-assisted matched-outcome context gain at least 0.010 and absolute Pearson correlation of natural context class fraction with natural REL gain at least 0.5",
+    "GLOBAL_CENTERING_EXPLAINS_THE_EFFECT": "REL-ABS positive but REL-global-center nonpositive",
+    "GEOMETRY_STABILIZES_WITHOUT_PREDICTIVE_GAIN": "same-class centroid cosine gains at least 0.05 but REL-ABS nonpositive; class-relation Gate A still reported failed",
+    "CURRENT_SESSION_REFERENCE_REQUIRED_BUT_GAIN_SMALL": "0 < pooled REL-ABS < 0.010 and current-session REL exceeds S1-reference and wrong-reference mean",
+    "NO_CONTEXT_RELATIVE_ADVANTAGE": "default when support gates fail"
+  }
+}

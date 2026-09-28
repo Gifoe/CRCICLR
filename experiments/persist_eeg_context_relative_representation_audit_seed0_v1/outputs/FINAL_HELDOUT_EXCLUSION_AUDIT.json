@@ -1,0 +1,16 @@
+{
+  "all_train_locks_sha256": {
+    "fold0": "7dab6f15ed7079e6133970c5cfd5d71ab01a137c5450b3c12b93823e0a0f5373",
+    "fold1": "11070393ba38dd1fa89738b01fcb4b440fe3868080dc18a2414b76a05dcf441f",
+    "fold2": "beff52270c6353e749328165057fd305ae93c2152dd3baf3b910c68ce6f7f5b7",
+    "fold3": "96ba31af5e5e8955a2d586c7ad00c60fd1ec975e60f34cc0b6bb7f3b8175d3d9",
+    "fold4": "151c12b1cce478c3c294937bc30e0fdefdba74e69a5e33d48b6c424ef2c28764"
+  },
+  "allowed_roles": [
+    "TRAIN_GEOMETRY",
+    "OUTER_DEVELOPMENT"
+  ],
+  "checkpoint_validation": "inventory only; no EEG read",
+  "formal_final_heldout_eeg_reads": 0,
+  "outer_development": "historically exposed, evaluation-only after all TRAIN locks"
+}

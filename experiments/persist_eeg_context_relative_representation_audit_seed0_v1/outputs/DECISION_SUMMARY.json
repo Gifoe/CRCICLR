@@ -1,0 +1,40 @@
+{
+  "answers": {
+    "Q1": "TRAIN recording-mean shift / within-session RMS = 0.2567 (EMBEDDING).",
+    "Q10": "Secondary largest descriptive OUTER stage gain: SPATIAL (+0.010544 BA); EMBEDDING remains predeclared primary and no OUTER stage selects the claim.",
+    "Q11": "TRAIN session probe BA change = +0.014555; class probe change = +0.009993.",
+    "Q12": "CURRENT_SESSION_REFERENCE_REQUIRED_BUT_GAIN_SMALL; exact next action STOP_ARCHITECTURE_DIRECTION. Gate A is algebraically unattainable under REL_MEAN.",
+    "Q2": "TRAIN session-within-subject variance reduction = -0.095290; see decomposition for class/residual tradeoff.",
+    "Q3": "Class-relation cosine gain = 0.000000000; session-constant subtraction cannot alter this relation. Same-class centroid cosine gain = -0.308727.",
+    "Q4": "TRAIN class probe BA change = 0.009993; relative/absolute class variance ratio = 1.000000; Gate E passes.",
+    "Q5": "OUTER subject-equal REL-ABS BA = +0.005599, 95% subject CI [-0.008041,0.018562].",
+    "Q6": "REL-global-center BA contrast = +0.005599; feature-standardization BA = 0.738181.",
+    "Q7": "Real minus wrong-reference mean BA = +0.016881; p95 fold controls and 200 draws/fold retained.",
+    "Q8": "Current REL minus S1-reference BA = +0.013694.",
+    "Q9": "Context class fraction versus subject gain correlation = +0.0040; matched label-assisted diagnostic gain = -0.003668; labels never form deployed references."
+  },
+  "class_relation_translation_invariant": true,
+  "context_class_fraction_gain_correlation": 0.0039591302277069374,
+  "folds": {
+    "absolute_BA": 0.7389928866423432,
+    "class_probe_BA_change": 0.00999320993888555,
+    "relation_gain": 4.7704895589362195e-18,
+    "relative_BA": 0.7445921356722988,
+    "session_variance_reduction": -0.09529006286424684,
+    "shrink_BA": 0.7440486574114291
+  },
+  "formal_final_heldout_eeg_reads": 0,
+  "gates": {
+    "A": false,
+    "B": false,
+    "C": true,
+    "D": true,
+    "E": true
+  },
+  "label_assisted_matched_gain": -0.003667615064673874,
+  "next_action": "STOP_ARCHITECTURE_DIRECTION",
+  "outer_historically_exposed": true,
+  "outer_selection": false,
+  "primary_interpretation": "CURRENT_SESSION_REFERENCE_REQUIRED_BUT_GAIN_SMALL",
+  "schema": "CONTEXT_RELATIVE_DECISION_V1"
+}

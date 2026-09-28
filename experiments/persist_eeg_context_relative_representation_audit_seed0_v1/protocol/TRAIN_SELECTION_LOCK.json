@@ -1,0 +1,17 @@
+{
+  "schema": "PERSIST_EEG_CONTEXT_RELATIVE_TRAIN_SELECTION_LOCK_V1",
+  "timing": "frozen before first OUTER_DEVELOPMENT EEG read",
+  "primary_stage": "EMBEDDING",
+  "role": "TRAIN_GEOMETRY",
+  "protocol_lock_sha256": "0258c4539969f080592703275633b705939ef1605addac10a56b8d353c75bfe3",
+  "protocol_amendment_sha256": "4c265589ee842704efcb8150f2c0d853575b97bca001304d0dd2a1e1f385089c",
+  "folds": {
+    "0": {"B": 32, "C_absolute": 0.01, "C_relative": 0.01, "lambda_shrink": 1.0, "lambda_z": 0.25, "pca_k": 4, "train_selection_sha256": "7dab6f15ed7079e6133970c5cfd5d71ab01a137c5450b3c12b93823e0a0f5373"},
+    "1": {"B": 64, "C_absolute": 0.1, "C_relative": 0.1, "lambda_shrink": 1.0, "lambda_z": 0.5, "pca_k": 1, "train_selection_sha256": "11070393ba38dd1fa89738b01fcb4b440fe3868080dc18a2414b76a05dcf441f"},
+    "2": {"B": 64, "C_absolute": 0.1, "C_relative": 10.0, "lambda_shrink": 1.0, "lambda_z": 0.75, "pca_k": 2, "train_selection_sha256": "beff52270c6353e749328165057fd305ae93c2152dd3baf3b910c68ce6f7f5b7"},
+    "3": {"B": 64, "C_absolute": 0.1, "C_relative": 0.01, "lambda_shrink": 1.0, "lambda_z": 1.0, "pca_k": 1, "train_selection_sha256": "96ba31af5e5e8955a2d586c7ad00c60fd1ec975e60f34cc0b6bb7f3b8175d3d9"},
+    "4": {"B": 64, "C_absolute": 0.01, "C_relative": 0.01, "lambda_shrink": 0.75, "lambda_z": 0.5, "pca_k": 1, "train_selection_sha256": "151c12b1cce478c3c294937bc30e0fdefdba74e69a5e33d48b6c424ef2c28764"}
+  },
+  "outer_selection": false,
+  "formal_final_heldout_eeg_reads": 0
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "PERSIST_EEG_CONTEXT_RELATIVE_REPRESENTATION_AUDIT_SEED0_V1",
+  "scope": {"backbone": "EEGNet", "task": "OpenBMI_MI", "seed": 0, "folds": [0, 1, 2, 3, 4]},
+  "roles": {"TRAIN_GEOMETRY": "fit and select only", "CHECKPOINT_VALIDATION": "inventory only; historically selection-exposed", "OUTER_DEVELOPMENT": "evaluation only; historically exposed", "FINAL_HELDOUT": "zero EEG reads"},
+  "primary_stage": "EMBEDDING",
+  "stages": {"TEMPORAL": "temporal_bn", "SPATIAL": "spatial_elu_pool1", "SHARED": "depth_point_elu_pool2", "EMBEDDING": "embedding_64d"},
+  "primary_context": "FIRST_B same biological subject and session, deterministic cache order; no labels; disjoint outcomes",
+  "budgets": [8, 16, 32, 64],
+  "lambdas": [0.25, 0.5, 0.75, 1.0],
+  "decoder": {"family": "LogisticRegression", "class_weight": "balanced", "solver": "lbfgs", "max_iter": 2000, "C": [0.01, 0.1, 1.0, 10.0], "selection": "TRAIN subject-held-out pseudo-target S2, subject-equal BA; same grid for ABS and REL; deterministic smallest-C tie break"},
+  "train_selection": "TRAIN subject-held-out pseudo-target S2 episodes, pooled subject-equal BA; select B and lambda before any OUTER EEG read; smallest B/lambda tie break",
+  "primary_metric": "biological-subject-equal balanced accuracy",
+  "secondary_metrics": ["macro_f1", "nll"],
+  "wrong_subject_permutations": 200,
+  "random_reference_draws": 200,
+  "trial_order_random_draws": 100,
+  "paired_bootstrap_draws": 20000,
+  "pca_k": [1, 2, 4, 8],
+  "gates": {"A": "class-relation cosine gain >=0.05 or drift reduction >=10%; >=4/5 folds", "B": "pooled REL-ABS BA>=0.010, positive >=4/5 folds, subject-bootstrap lower95>0", "C": "positive pooled REL-global-center and REL-feature-standardization", "D": "real > wrong-reference p95 >=4/5 or paired CI>0", "E": "class information preserved"},
+  "mathematical_invariant": "For any session-constant r, (c1-r)-(c0-r)=c1-c0 exactly. Gate A is unattainable for REL_MEAN under the specified class-relation metric.",
+  "case_priority": ["CLASS_BALANCE_EXPLAINS_CONTEXT_REFERENCE", "GLOBAL_CENTERING_EXPLAINS_THE_EFFECT", "GEOMETRY_STABILIZES_WITHOUT_PREDICTIVE_GAIN", "CURRENT_SESSION_REFERENCE_REQUIRED_BUT_GAIN_SMALL", "RECORDING_CONTEXT_RELATIVE_ENCODING_SUPPORTED", "NO_CONTEXT_RELATIVE_ADVANTAGE"],
+  "prohibited": ["formal final-heldout EEG", "neural updates", "P/C manipulation", "OUTER-based selection", "causal or biological-baseline claims", "performance-model training"]
+}
