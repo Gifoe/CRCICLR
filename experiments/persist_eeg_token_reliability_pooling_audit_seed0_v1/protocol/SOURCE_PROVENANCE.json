@@ -1,0 +1,35 @@
+{
+  "schema": "TOKEN_RELIABILITY_SOURCE_PROVENANCE_V1",
+  "checkpoint_regime": "five existing task-trained CBraMod/OpenBMI_MI/seed0 SEARCH selected checkpoints; no neural backbone training in this audit",
+  "checkpoint_source_experiment": "persist_eeg_seven_backbone_fourtask_3seed_v1",
+  "selected_checkpoints_sha256_by_fold": {
+    "0": "405686b31aa08a2084a5ea7e6efb4edc93f7baf09b3f12cdce2b05515e903d24",
+    "1": "d1e10247f6af7d898e12dbb619f7b087f507795a0573272de1498a0b1fdb8a23",
+    "2": "a2102c41198a1d140cf6817ed736fcf803ea765838ceed6eea064ec28ee1f77d",
+    "3": "f0973d95c5aeb33c8590f1f14fa87f7192520dc09f98b1626822133142b2ed6e",
+    "4": "90680ed588ceff53fe8e0a430f9e26267a669efb42873538b980980e0eceeb5f"
+  },
+  "selected_epoch_by_fold": {"0": 15, "1": 20, "2": 54, "3": 39, "4": 15},
+  "preflight_frozen_model_state_sha256_by_fold": {
+    "0": "677edecd7c7d4a0a0ad62b17834058b1e6055d10a35e7790b5f7646820e0cd96",
+    "1": "9b03ace6e8dfa4ee253b6794782ac188a44dfbfe7c1987cea2591c425d1d22c5",
+    "2": "568c5888585671a69234a0e551e5291d75ccef8feae490387b9c57a82656ed20",
+    "3": "51efd8968d9684115ba943a3fdbbb3e7c6b306180022b81eac5d1eaedc9d2cf7",
+    "4": "f7508b47199ad570787029f3b88853cfd1df5d0b7211c9f392c46968be50e59c"
+  },
+  "checkpoint_source_backbone_models_py_sha256": "bec59448f4a02503e40f962a6823448af04159c37a6836015d2f47d62370a208",
+  "checkpoint_source_benchmark_data_py_sha256": "4f6f672d3ef88327c56543acab5a23b6de3af4b6090e42b24be2a2622e605444",
+  "official_cbramod_commit": "b9e961003214326972c567eff390e75b0287e32a",
+  "official_cbramod_models_cbramod_py_sha256": "57019e52336137c7dee253ec38663f78905553370af596a125fe4aae142c3357",
+  "frozen_fivefold_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+  "source_session1_normalizer_sha256_by_fold": {
+    "0": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+    "1": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+    "2": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+    "3": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+    "4": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d"
+  },
+  "benchmark_downstream_model": "CBraModAdapter: official CBraMod with proj_out=Identity; global mean(dim=(channel,patch)); Linear(200,2) task head; benchmark checkpoint contains both fine-tuned backbone and task head",
+  "formal_final_heldout_eeg_reads": 0,
+  "outer_development_warning": "historically exposed development cohort, evaluation-only for this new audit"
+}

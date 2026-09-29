@@ -1,0 +1,21 @@
+# Preserved pre-result implementation attempts
+
+- `run_preflight_v1.ps1`: its direct Python call failed before producing a
+  scientific result. The log is empty because the wrapper stopped on native
+  stderr under PowerShell's terminating-error setting.
+- `run_preflight_v2.ps1`: exposed the cause: `ModuleNotFoundError:
+  backbone_models` in the new extraction entry point. Its transcript remains
+  in the original-server runtime. The version-forward `run_v2.py` inserted the
+  benchmark code directory before importing the adapter.
+- `run_preflight_v3.ps1`: passed the fold-0 checkpoint, normalizer, split, and
+  token-shape checks. Its status label incorrectly said `NO_EEG_READ` even
+  though it recomputed the normalizer from TRAIN Session-1 EEG. No OUTER or
+  final-heldout EEG was read. The label was corrected in `run_v3.py`.
+- `run_preflight_all_v4.ps1`: passed all five folds using `run_v3.py`, and
+  additionally checked equivalence of the token-hook mean/head path with the
+  benchmark downstream forward on a synthetic input. It read TRAIN Session-1
+  EEG only to recompute the benchmark normalizer.
+
+These failures and corrections must not be presented as evidence for token
+reliability or predictive utility. The heavy extraction and scoring queues
+remain separate, hash-pinned, and fail closed on pre-existing outputs.
