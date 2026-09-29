@@ -28,14 +28,35 @@ waiting for the utility task to finish with result 0. It uses hash-pinned
 `summarize_train_evidence_v1.py`, creates runtime-only `train_evidence_v1`,
 and must not be duplicated. Validate its output hashes and copy only compact
 tables to the worktree after completion.
+
+The exact task `PERSIST_EEG_TOKEN_RELIABILITY_SELECTION_QUEUE_V1` is also
+running in a *waiting* state. It waits for TRAIN evidence success, then uses
+`code/select_train.py` (remote `select_train_v1.py`) to recompute R and U
+without each held TRAIN biological subject, select q/tau/C entirely inside
+TRAIN, and create five immutable `TRAIN_SELECTION_SEAL.json` files. This is
+computationally expensive; do not start another heavy lane or duplicate it.
+
+The original `PERSIST_EEG_TOKEN_RELIABILITY_OUTER_QUEUE_V1` waiting task was
+stopped before any OUTER output because its random-control summary omitted
+subject-level rows needed for paired bootstrap. Its transcript is preserved.
+The version-forward task `PERSIST_EEG_TOKEN_RELIABILITY_OUTER_QUEUE_V2` is
+running in a *waiting* state; it may open OUTER only after all five TRAIN
+selection seals and a successful selection task. It then extracts/evaluates
+one fold at a time, with 500 random top-k and 500 random two-stream controls
+and subject-level rows. V1 must not be restarted.
+
+The light `PERSIST_EEG_TOKEN_RELIABILITY_FINAL_COMPACT_QUEUE_V1` is waiting
+for OUTER V2 success. It hash-checks every source seal, runs 20,000 paired
+biological-subject bootstrap draws, generates required tables/heatmaps,
+decision JSON, and report into runtime-only `final_compact_v1`. Review every
+file and hash before copying compact artifacts to GitHub. Any stage failure
+must be preserved and corrected under a new version, never overwritten.
 The original high-dimensional erasure fit emits convergence warnings; preserve
 the log and do not overinterpret U_erase. The extraction and reliability
 queues are already complete and must never be rerun.
 
 The preregistered qualification chain cannot pass Gate A or Gate B, regardless
 of later predictive comparisons. The attachment nevertheless requested a full
-selection/OUTER comparison; those stages have not been implemented or run.
-Do not fabricate missing comparisons. A transparent early-stop report is
-scientifically defensible; if continuing every comparison, complete TRAIN-only
-selection before opening OUTER. Do not alter the frozen protocol or use OUTER
-to rescue the negative premises.
+selection/OUTER comparison; code and fail-closed queues are staged but those
+results have not run. Do not fabricate missing comparisons. Do not alter the
+frozen protocol or use OUTER to rescue the negative premises.

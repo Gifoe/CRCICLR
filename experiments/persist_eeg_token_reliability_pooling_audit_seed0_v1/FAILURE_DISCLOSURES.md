@@ -26,3 +26,11 @@ remain separate, hash-pinned, and fail closed on pre-existing outputs.
   single-token utility probe does not use this high-dimensional fit; any
   erasure-based descriptive conclusion must be marked provisional unless a
   separately versioned convergence audit resolves the warning.
+
+- The `PERSIST_EEG_TOKEN_RELIABILITY_OUTER_QUEUE_V1` scheduled task was stopped
+  while it was only waiting for TRAIN selection. All five OUTER output paths
+  were absent at the stop, and the partial V1 waiting transcript was kept.
+  The V1 evaluator had draw-level random-control summaries but omitted the
+  subject-level random-control rows needed for a biological-subject paired
+  bootstrap. A version-forward V2 evaluator/queue adds those rows; V1 produced
+  no scientific OUTER result and must not be restarted.
