@@ -1,0 +1,61 @@
+{
+  "schema": "CBRAMOD_TOKEN_REPRESENTATION_PROVENANCE_V1",
+  "status": "COMPLETE_TRAIN_EXTRACTION_ONLY",
+  "backbone": "CBraMod",
+  "task": "OpenBMI_MI",
+  "seed": 0,
+  "checkpoint_regime": "existing task-trained seven-backbone SEARCH selected checkpoints, frozen",
+  "token_hook": "CBraModAdapter.model.encoder output, before Identity proj_out and mean(dim=(1,2))",
+  "token_shape_per_trial": [62, 4, 200],
+  "flattened_token_shape_per_trial": [248, 200],
+  "token_index_order": "channel-major, then temporal patch; k=4*channel+patch",
+  "extractor_code_sha256": "73e38d37f4ce0bd38ae9faaef776da72d722f400b9d6eba604bb63a3961cb386",
+  "benchmark_backbone_models_py_sha256": "bec59448f4a02503e40f962a6823448af04159c37a6836015d2f47d62370a208",
+  "benchmark_preprocessing_py_sha256": "4f6f672d3ef88327c56543acab5a23b6de3af4b6090e42b24be2a2622e605444",
+  "official_cbramod_models_cbramod_py_sha256": "57019e52336137c7dee253ec38663f78905553370af596a125fe4aae142c3357",
+  "frozen_split_sha256": "726edcc0562bed30af66b54299e416141675ffc545903804ac376c96a62fe068",
+  "folds": [
+    {
+      "fold": 0, "train_trials": 5200, "train_subjects": 26,
+      "checkpoint_sha256": "405686b31aa08a2084a5ea7e6efb4edc93f7baf09b3f12cdce2b05515e903d24",
+      "normalizer_sha256": "b0177be0754fe5ff53cd0f5060f7faef0a3d0c6415e7eb9cf49cd48150651e81",
+      "model_state_before_sha256": "677edecd7c7d4a0a0ad62b17834058b1e6055d10a35e7790b5f7646820e0cd96",
+      "model_state_after_sha256": "677edecd7c7d4a0a0ad62b17834058b1e6055d10a35e7790b5f7646820e0cd96",
+      "runtime_extraction_provenance_sha256": "6b67dcb72cdf18cf1d3e65d94e309875950d8ca533c924b4c36d9f081a1dfc5e"
+    },
+    {
+      "fold": 1, "train_trials": 5200, "train_subjects": 26,
+      "checkpoint_sha256": "d1e10247f6af7d898e12dbb619f7b087f507795a0573272de1498a0b1fdb8a23",
+      "normalizer_sha256": "a9357c2c7be97fd094c7b0062fc8c20699aaf0a2da45e80e7c6df30280bcd944",
+      "model_state_before_sha256": "9b03ace6e8dfa4ee253b6794782ac188a44dfbfe7c1987cea2591c425d1d22c5",
+      "model_state_after_sha256": "9b03ace6e8dfa4ee253b6794782ac188a44dfbfe7c1987cea2591c425d1d22c5",
+      "runtime_extraction_provenance_sha256": "7ecd1653bef2fc4ccf4b96ba94995f39632dafd2f88377622a4ce1343f2b198a"
+    },
+    {
+      "fold": 2, "train_trials": 5200, "train_subjects": 26,
+      "checkpoint_sha256": "a2102c41198a1d140cf6817ed736fcf803ea765838ceed6eea064ec28ee1f77d",
+      "normalizer_sha256": "947ff3ef08f8c67d395636a407f030771a9bad4135b8e37e026faafebd4937ec",
+      "model_state_before_sha256": "568c5888585671a69234a0e551e5291d75ccef8feae490387b9c57a82656ed20",
+      "model_state_after_sha256": "568c5888585671a69234a0e551e5291d75ccef8feae490387b9c57a82656ed20",
+      "runtime_extraction_provenance_sha256": "33a524188c5611459920037b42c235d4d50446deae11e7d86a9d5dafa534c4fc"
+    },
+    {
+      "fold": 3, "train_trials": 5200, "train_subjects": 26,
+      "checkpoint_sha256": "f0973d95c5aeb33c8590f1f14fa87f7192520dc09f98b1626822133142b2ed6e",
+      "normalizer_sha256": "518c157ce4bee1bd71ea84341c5e383c93f7e73d05cf1ade7a1c84f3c121c0c5",
+      "model_state_before_sha256": "51efd8968d9684115ba943a3fdbbb3e7c6b306180022b81eac5d1eaedc9d2cf7",
+      "model_state_after_sha256": "51efd8968d9684115ba943a3fdbbb3e7c6b306180022b81eac5d1eaedc9d2cf7",
+      "runtime_extraction_provenance_sha256": "afc0750ce1b881554c010de9f9d1237324600481ca0dfe3fe8f2e90b94f35712"
+    },
+    {
+      "fold": 4, "train_trials": 5200, "train_subjects": 26,
+      "checkpoint_sha256": "90680ed588ceff53fe8e0a430f9e26267a669efb42873538b980980e0eceeb5f",
+      "normalizer_sha256": "aa5cc368db6730fff9bf926805d6492fdfc62c0603b0b06f451ec1c696f0d16d",
+      "model_state_before_sha256": "f7508b47199ad570787029f3b88853cfd1df5d0b7211c9f392c46968be50e59c",
+      "model_state_after_sha256": "f7508b47199ad570787029f3b88853cfd1df5d0b7211c9f392c46968be50e59c",
+      "runtime_extraction_provenance_sha256": "a9627dc0f7df072f011a5d8a0264739b363d3c0cac0767e88146cffe9d202a37"
+    }
+  ],
+  "outer_development_eeg_reads_in_this_audit": 0,
+  "formal_final_heldout_eeg_reads": 0
+}

@@ -18,8 +18,12 @@ heatmap alone cannot satisfy the decision gates. The previously observed
 boundary is that pooled P/C structure can be diagnostically meaningful even
 when final-embedding interventions do not robustly improve prediction.
 
-Status: all five source/checkpoint preflights passed, including the exact
-`62 × 4 × 200` hook shape and downstream-forward equivalence. Heavy TRAIN
-token extraction, reliability nulls, and utility runs are queued behind a
-server resource gate. No scientific result or OUTER evaluation is claimed
-until all required outputs pass validation.
+Status: all five source/checkpoint preflights and TRAIN token extractions
+passed. The TRAIN reliability, 500+500 null, and 200 split-half audits are
+complete. The hash-checked [TRAIN gate review](outputs/TRAIN_GATE_A_B_REVIEW.json)
+finds that neither preregistered Gate A nor Gate B passes. This is an early
+negative result, not evidence for pooling utility. The separate TRAIN utility
+queue is still running; no OUTER or formal final-heldout EEG has been opened
+for this audit. No predictive gate or final architecture decision is claimed.
+See [the checkpoint findings](PRELIMINARY_TRAIN_FINDINGS.md) for exact values
+and the limitations of this partial result.

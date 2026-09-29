@@ -1,0 +1,131 @@
+{
+  "crossfold_reliability_rank_spearman": [
+    {
+      "fold_a": 0,
+      "fold_b": 1,
+      "spearman_R": 0.20999054334092276
+    },
+    {
+      "fold_a": 0,
+      "fold_b": 2,
+      "spearman_R": 0.37619014650740873
+    },
+    {
+      "fold_a": 0,
+      "fold_b": 3,
+      "spearman_R": 0.5437224934739611
+    },
+    {
+      "fold_a": 0,
+      "fold_b": 4,
+      "spearman_R": 0.4965996937993583
+    },
+    {
+      "fold_a": 1,
+      "fold_b": 2,
+      "spearman_R": 0.05640480165404991
+    },
+    {
+      "fold_a": 1,
+      "fold_b": 3,
+      "spearman_R": 0.07942649532438228
+    },
+    {
+      "fold_a": 1,
+      "fold_b": 4,
+      "spearman_R": -0.1472705501383882
+    },
+    {
+      "fold_a": 2,
+      "fold_b": 3,
+      "spearman_R": 0.5054600011643806
+    },
+    {
+      "fold_a": 2,
+      "fold_b": 4,
+      "spearman_R": 0.2709332825621409
+    },
+    {
+      "fold_a": 3,
+      "fold_b": 4,
+      "spearman_R": 0.4483510639134833
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "gate_A_fold": false,
+      "label_null_spread_empirical_p": 0.1157684630738523,
+      "pairing_null_spread_empirical_p": 0.3772455089820359,
+      "pairing_null_std_p95": 0.13671976767874633,
+      "real_reliability_std": 0.11867016375532113,
+      "real_top_bottom_quartile_gap": 0.2996499762844751,
+      "reliability_seal_sha256": "e042f77c196fa342171652575c8c68541b584914b686adc34bc72aabbb2f296e",
+      "split_half_mean_spearman": 0.2302769967161318,
+      "split_half_mean_top_quartile_jaccard": 0.19675765784297147,
+      "train_subject_count": 26
+    },
+    {
+      "fold": 1,
+      "gate_A_fold": false,
+      "label_null_spread_empirical_p": 0.7465069860279441,
+      "pairing_null_spread_empirical_p": 0.5808383233532934,
+      "pairing_null_std_p95": 0.08297441721383203,
+      "real_reliability_std": 0.07759301020892927,
+      "real_top_bottom_quartile_gap": 0.19609026282953493,
+      "reliability_seal_sha256": "598215a47010338a21d10b33252d42f92f2cddea6bc161005c7df9830b458b30",
+      "split_half_mean_spearman": -0.135968213981694,
+      "split_half_mean_top_quartile_jaccard": 0.10545478632216546,
+      "train_subject_count": 26
+    },
+    {
+      "fold": 2,
+      "gate_A_fold": false,
+      "label_null_spread_empirical_p": 0.023952095808383235,
+      "pairing_null_spread_empirical_p": 0.20159680638722555,
+      "pairing_null_std_p95": 0.1759882833588332,
+      "real_reliability_std": 0.17488226460912584,
+      "real_top_bottom_quartile_gap": 0.44880757609475275,
+      "reliability_seal_sha256": "eef9e8cc85337b50233621673925be5ea976249894d4803c9c67118e7006213b",
+      "split_half_mean_spearman": 0.5265735699753433,
+      "split_half_mean_top_quartile_jaccard": 0.3661129868451185,
+      "train_subject_count": 26
+    },
+    {
+      "fold": 3,
+      "gate_A_fold": false,
+      "label_null_spread_empirical_p": 0.10379241516966067,
+      "pairing_null_spread_empirical_p": 0.4630738522954092,
+      "pairing_null_std_p95": 0.12748108049538187,
+      "real_reliability_std": 0.12353105348088109,
+      "real_top_bottom_quartile_gap": 0.31532722248187967,
+      "reliability_seal_sha256": "104562b7c2f203f04cd3361d1f1e95c766205815eefa4904cc4f714398ef9eac",
+      "split_half_mean_spearman": 0.24618438754364455,
+      "split_half_mean_top_quartile_jaccard": 0.14962695435557258,
+      "train_subject_count": 26
+    },
+    {
+      "fold": 4,
+      "gate_A_fold": false,
+      "label_null_spread_empirical_p": 0.015968063872255488,
+      "pairing_null_spread_empirical_p": 0.16766467065868262,
+      "pairing_null_std_p95": 0.18177555231853332,
+      "real_reliability_std": 0.16312866550457722,
+      "real_top_bottom_quartile_gap": 0.4293738275821299,
+      "reliability_seal_sha256": "f54db728f9a3f35029e5acbe375ea65f72404be17eb211f2a69d0f6278d2c417",
+      "split_half_mean_spearman": 0.5068060409327003,
+      "split_half_mean_top_quartile_jaccard": 0.3367421332462592,
+      "train_subject_count": 26
+    }
+  ],
+  "formal_final_heldout_eeg_reads": 0,
+  "gate_A_pass": false,
+  "gate_B_crossfold_consistency": "DESCRIPTIVE_ONLY_NO_POST_HOC_THRESHOLD",
+  "gate_B_numeric_pass": false,
+  "interpretation_if_stopped_now": "NO_MEANINGFUL_TOKEN_RELIABILITY_HETEROGENEITY",
+  "outer_development_eeg_reads": 0,
+  "schema": "TOKEN_RELIABILITY_TRAIN_GATES_A_B_REVIEW_V1",
+  "split_half_mean_spearman_across_folds": 0.2747745562372252,
+  "split_half_mean_top_quartile_jaccard_across_folds": 0.23093890372241743,
+  "status": "COMPLETE_TRAIN_ONLY_GATE_REVIEW"
+}

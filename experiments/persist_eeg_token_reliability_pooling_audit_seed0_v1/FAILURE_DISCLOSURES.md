@@ -19,3 +19,10 @@
 These failures and corrections must not be presented as evidence for token
 reliability or predictive utility. The heavy extraction and scoring queues
 remain separate, hash-pinned, and fail closed on pre-existing outputs.
+
+- The original TRAIN utility queue emits `ConvergenceWarning: Liblinear failed
+  to converge` during high-dimensional all-token erasure fits. The queue is
+  preserved rather than silently restarted or overwritten. The primary
+  single-token utility probe does not use this high-dimensional fit; any
+  erasure-based descriptive conclusion must be marked provisional unless a
+  separately versioned convergence audit resolves the warning.
