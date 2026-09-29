@@ -34,3 +34,10 @@ remain separate, hash-pinned, and fail closed on pre-existing outputs.
   subject-level random-control rows needed for a biological-subject paired
   bootstrap. A version-forward V2 evaluator/queue adds those rows; V1 produced
   no scientific OUTER result and must not be restarted.
+
+- The `PERSIST_EEG_TOKEN_RELIABILITY_FINAL_COMPACT_QUEUE_V1` task was likewise
+  stopped while waiting. No final compact output existed; its V1 transcript
+  and code remain on the original server. V1 summarized a fixed top-quartile
+  RU overlap rather than the fold-specific TRAIN-selected RU subsets required
+  for the crossfold-stability output. `finalize_v2.py` and a distinct V2 queue
+  add the selected-subset Jaccard; V1 must not be restarted.

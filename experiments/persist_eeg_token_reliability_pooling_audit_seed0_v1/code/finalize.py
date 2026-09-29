@@ -300,7 +300,8 @@ def report(provenance: dict, frames: dict[str, pd.DataFrame], decision_doc: dict
              ". A label-null signal in a subset of folds does not rescue the predeclared pairing-null Gate A.", "",
              f"**Q3.** Reproducible ranking? No: mean split-half Spearman {fmt(review['split_half_mean_spearman_across_folds'])} "
              f"and quartile Jaccard {fmt(review['split_half_mean_top_quartile_jaccard_across_folds'])}; "
-             f"mean crossfold Spearman {fmt(decision_doc['crossfold_pairwise_R_spearman_mean'])}.", "",
+             f"mean crossfold Spearman {fmt(decision_doc['crossfold_pairwise_R_spearman_mean'])}; "
+             f"actual TRAIN-selected RU subset Jaccard {fmt(frames['CROSSFOLD_TOKEN_STABILITY.csv'].RU_selected_subset_jaccard.mean())}.", "",
              f"**Q4.** Reliability–utility relation? Across-fold R/U_probe Spearman mean {fmt(float(np.mean(r_u)))} "
              f"(range {fmt(min(r_u))} to {fmt(max(r_u))}). U_erase is provisional because the all-token "
              "liblinear fit emitted convergence warnings.", "",
@@ -321,6 +322,9 @@ def report(provenance: dict, frames: dict[str, pd.DataFrame], decision_doc: dict
                      f"difference {fmt(pooled[a]-pooled[b])}. "
                      "This does not override the failed prerequisite gates.")
         lines.append("")
+    lines.extend([f"For Q10, reliability-only weighting BA {fmt(pooled['RELIABILITY_WEIGHTED'])} "
+                  f"versus RELIABLE_TOPK {fmt(pooled['RELIABLE_TOPK'])}; "
+                  f"difference {fmt(pooled['RELIABILITY_WEIGHTED']-pooled['RELIABLE_TOPK'])}.", ""])
     lines.extend([
         f"For Q9, the matched RANDOM_TOPK pooled p95 is {fmt(decision_doc['random_topk_p95_pooled_subject_equal_BA'])}; "
         f"Gate E is {decision_doc['gates']['E']}.", "",
@@ -423,9 +427,27 @@ def main() -> None:
     repo = Path(__file__).resolve().parents[3]
     provenance, _, frames = compact_sources(runtime)
     provenance["runtime"] = str(runtime)
-    output = runtime / "final_compact_v1"
+    output = runtime / "final_compact_v2"
     output.mkdir(exist_ok=False)
     frames["TOKEN_INDEX.csv"] = token_index(repo)
+    # The earlier TRAIN descriptive table compares fixed top-quartile joint
+    # sets. Add the actual subsets at the frozen, fold-specific TRAIN-selected
+    # q values required by the protocol, without using OUTER outcomes.
+    selected_q = frames["TRAIN_POOLING_SELECTION.csv"]
+    actual_sets = []
+    for fold in range(5):
+        r = frames["TOKEN_RELIABILITY.csv"].query("fold == @fold").sort_values("token_index").R_cos.to_numpy()
+        u = frames["TOKEN_UTILITY.csv"].query("fold == @fold").sort_values("token_index").U_probe.to_numpy()
+        q = float(selected_q.query("fold == @fold and method == 'RELIABLE_UTILITY_TOPK'").parameter.iloc[0])
+        score = (r-r.mean())/r.std() + (u-u.mean())/u.std()
+        actual_sets.append(set(rank_subset(score, q).tolist()))
+    stability = frames["CROSSFOLD_TOKEN_STABILITY.csv"].copy()
+    stability["RU_selected_subset_jaccard"] = [
+        len(actual_sets[int(row.fold_a)] & actual_sets[int(row.fold_b)]) /
+        len(actual_sets[int(row.fold_a)] | actual_sets[int(row.fold_b)])
+        for row in stability.itertuples(index=False)
+    ]
+    frames["CROSSFOLD_TOKEN_STABILITY.csv"] = stability
     effects, biological, fold_ba = selected_pivot(frames)
     frames["SUBJECT_LEVEL_EFFECTS.csv"] = effects
     boot = bootstrap(biological)
@@ -463,7 +485,7 @@ def main() -> None:
         json.dumps(exclusion, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     (output / "FINAL_REPORT.md").write_text(
         report(provenance, frames, result, effects, fold_ba, boot), encoding="utf-8")
-    inventory = {"schema": "TOKEN_POOLING_FINAL_COMPACT_INVENTORY_V1",
+    inventory = {"schema": "TOKEN_POOLING_FINAL_COMPACT_INVENTORY_V2",
                  "status": "COMPLETE_REVIEW_REQUIRED_BEFORE_GIT_PUSH",
                  "train_evidence_provenance_sha256": provenance["evidence_sha256"],
                  "train_gate_review_sha256": provenance["review_sha256"],

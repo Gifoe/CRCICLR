@@ -45,10 +45,13 @@ selection seals and a successful selection task. It then extracts/evaluates
 one fold at a time, with 500 random top-k and 500 random two-stream controls
 and subject-level rows. V1 must not be restarted.
 
-The light `PERSIST_EEG_TOKEN_RELIABILITY_FINAL_COMPACT_QUEUE_V1` is waiting
-for OUTER V2 success. It hash-checks every source seal, runs 20,000 paired
+The original final-compact V1 waiting task was stopped before output because
+its stability table lacked the actual fold-specific TRAIN-selected RU subset
+overlap. Its transcript is preserved. The light
+`PERSIST_EEG_TOKEN_RELIABILITY_FINAL_COMPACT_QUEUE_V2` waits for OUTER V2
+success. It hash-checks every source seal, runs 20,000 paired
 biological-subject bootstrap draws, generates required tables/heatmaps,
-decision JSON, and report into runtime-only `final_compact_v1`. Review every
+decision JSON, and report into runtime-only `final_compact_v2`. Review every
 file and hash before copying compact artifacts to GitHub. Any stage failure
 must be preserved and corrected under a new version, never overwritten.
 The original high-dimensional erasure fit emits convergence warnings; preserve
